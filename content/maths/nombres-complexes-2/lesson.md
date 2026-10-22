@@ -573,7 +573,7 @@ Avant de te lancer, un dernier réflexe sur les ensembles de points : tu as vu l
 
      NOTE AJOUTÉE (dette d'examen, vague B1, 2026-09-27) :
      (6) [PROSE LIVRÉE] GAP-A « Euler formulas / factorisation by the half
-     angle » (docs/audits/dette-examen/maths.md, § nombres-complexes-2) :
+     angle » (maths.md (supprimé le 2026-10-22), § nombres-complexes-2) :
      nouvelle sous-section en fin de R2, "Une factorisation utile :
      $1+e^{i\theta}$ et $1-e^{i\theta}$" — les deux factorisations, la
      condition de signe sur $\cos(\theta/2)$ (le piège nommé explicitement),

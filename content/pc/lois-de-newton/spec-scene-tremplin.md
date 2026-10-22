@@ -72,7 +72,7 @@ l. 269 et l. 272) ; la prose du corpus aussi
 (`content/pc/chute-mouvements-plans/lesson.md:339` et `:591`,
 `content/pc/chute-mouvements-plans/items.yaml:427`,
 `content/pc/chute-mouvements-plans/spec-extension.md:256`,
-`content/pc/lois-de-newton/REVIEW-2026-09-12.md:65`). Le **nom exact** est
+`REVIEW-2026-09-12.md (supprimé le 2026-10-22):65`). Le **nom exact** est
 **Frenet** (Jean Frédéric Frenet), ce que `content/pc/chute-mouvements-plans/bank.yaml`
 documente déjà longuement (l. 2966 : « *« Freinet » est un pédagogue, sans
 rapport* » ; l. 2997 : l'arabe du sujet écrit `فريني`) et emploie dans sa propre
@@ -1420,7 +1420,7 @@ armé sur cette notion. Ne pas s'en autoriser un de plus pour autant.*)
 `resultante-mal-composee` et les dix-sept autres **inchangés**.
 `ramp_coverage` : **R3 : 4 → 6**, **R8 : 3 → 5**, les sept autres inchangés —
 total $3+5+4+6+3+4+4+3+5 = 37$ ✓. `coverage_summary` régénéré par
-`node web/scripts/resume-couverture.mjs`, jamais à la main.
+`node resume-couverture.mjs (supprimé le 2026-10-22)`, jamais à la main.
 
 ### 8.4 Ce que ce paquet NE referme pas, et il faut le dire
 
@@ -1985,7 +1985,7 @@ l'écrivent en toutes lettres. »
   ne fait rougir que la famille qui le garde (§11.4).
 - `node web/scripts/test-tremplin.mjs` : les tables A, B, C, D et E du §5.7,
   l'invariant $a_N\times R = v^2$ et l'identité gaz/freinage, à $10^{-12}$.
-- `node web/scripts/resume-couverture.mjs` régénéré : `total_items` passe à
+- `node resume-couverture.mjs (supprimé le 2026-10-22)` régénéré : `total_items` passe à
   **37**, `acceleration-traitee-comme-un-nombre` à **4**,
   `force-entretient-mouvement` à **7**, `ramp_coverage` R3 à **6** et R8 à **5**.
 - **Aucune forme du §9 n'apparaît dans le panneau rendu**, une sonde par forme, et
@@ -2018,7 +2018,7 @@ ce sont des **mesures à faire**, pas des affirmations à croire.
    d'en-tête `CHEMIN À CRÉER:` n'a donc **pas** été relue sur la première version
    de la proposition du banc (`git show aa5d04be:…`) : elle est recopiée de la
    proposition SVT, qui survit et qui la porte
-   (`docs/pipeline/propositions/svt-chaines-de-montagnes-scene-foyers.md`, l. 9-14).
+   (`svt-chaines-de-montagnes-scene-foyers.md (supprimé le 2026-10-22)`, l. 9-14).
    Si la forme exacte attendue par la porte `liens-fichiers` diffère, c'est **ici**
    qu'il faut corriger, pas dans la porte.
 2. **Le rayon du tremplin n'existe nulle part dans la source.** J'ai lu

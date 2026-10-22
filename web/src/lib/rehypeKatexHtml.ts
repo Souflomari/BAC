@@ -1,7 +1,7 @@
 /**
  * rehypeKatexHtml — KaTeX rendu en UNE chaîne, pas en 40 nœuds React.
  *
- * POURQUOI CE FICHIER EXISTE (mesure du 2026-09-04, `scripts/poids-sweep.mjs`
+ * POURQUOI CE FICHIER EXISTE (mesure du 2026-09-04, `poids-sweep.mjs (supprimé le 2026-10-22)`
  * et la sonde d'hydratation) :
  *
  *   Une leçon dense porte ~1 000 formules. `rehype-katex` produit, pour
@@ -32,7 +32,7 @@
  * nœuds. Ce qui change, c'est ce que React et le protocole RSC ont à
  * PORTER : une chaîne au lieu d'un arbre.
  *
- * COMMENT C'EST VÉRIFIÉ. `scripts/katex-identite.mjs` re-rend chaque page
+ * COMMENT C'EST VÉRIFIÉ. `katex-identite.mjs (supprimé le 2026-10-22)` re-rend chaque page
  * du corpus et compare le HTML de la prose octet par octet avec la version
  * d'avant. Une différence, même d'un espace, fait échouer.
  *

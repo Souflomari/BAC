@@ -55,7 +55,7 @@ L'épreuve **SM 2017 session normale** est assemblée à **10,00/20** dans
 Examens blancs. Cet exercice vaut exactement les 10 points qui manquent.
 Cinquième et dernière pièce transcriptible du gisement SM — la sixième,
 SM 2020, est **suspendue** pour cause de format à choix (voir
-`docs/grounding/known-issues.md` K-0).
+`known-issues.md (supprimé le 2026-10-22)` K-0).
 
 ## En-tête du scan (relu)
 

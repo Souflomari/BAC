@@ -4,7 +4,7 @@
 > **Subject / stream:** Mathématiques — Sciences Mathématiques (SMA / SMB), 2ème Bac
 > **`skills.code` target:** `sma_prob_conditionnelle` *(proposed — see "Skill attribution & open items" §0.4; the legacy unprefixed `conditional_prob` UUID is `33333333-0000-0000-0000-000000000017` and must NOT be reused for SMA items, per the ADR 0011 two-parallel-banks ruling)*
 > **`subject_code`:** `math`
-> **Pipeline step:** 1 of 7 (`docs/pipeline/pipeline.md`). This spec is the input to content-author (step 2) and item-author (step 3).
+> **Pipeline step:** 1 of 7 (`pipeline.md (supprimé le 2026-10-22)`). This spec is the input to content-author (step 2) and item-author (step 3).
 > **Authored by:** pedagogy-architect (Opus), autonomously.
 > **Language policy:** This spec's *meta* is English. **Every student-facing string** — lesson prose, item stems, choices, explanations, hints, and the misconception `label` / `description` / `contradicts_principle` as they will be stored and shown — **MUST be authored in French.** The French exemplars in this spec are the register and the substance the authors copy; they are not placeholders to be translated from English.
 >

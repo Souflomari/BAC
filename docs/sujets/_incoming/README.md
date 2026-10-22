@@ -172,7 +172,7 @@ mais il vaut mieux ne pas l'y envoyer.
 
 **SM 2020 est le sixième, et il est SUSPENDU** — pas oublié. Son format à
 choix n'est pas représentable par l'assembleur d'épreuves ; voir
-`docs/grounding/known-issues.md` **K-0**, qui pose trois issues possibles et
+`known-issues.md (supprimé le 2026-10-22)` **K-0**, qui pose trois issues possibles et
 n'en choisit aucune. Le transcrire avant l'arbitrage produirait une épreuve à
 23,5/20.
 

@@ -2,7 +2,7 @@
 
 **Statut :** OWNER-DIRECTED (Day 11) — la direction est décidée par le
 propriétaire ; les choix d'implémentation marqués `[LEDGER]` sont consignés
-dans `docs/audits/fable-day3-ledger.md` §11 avec le statut habituel
+dans `fable-day3-ledger.md (supprimé le 2026-10-22)` §11 avec le statut habituel
 FABLE-DECIDED / OWNER-REVIEW-PENDING.
 **Rôle de ce document :** contrat d'implémentation complet. Si la fenêtre de
 travail se ferme en cours de build, un modèle froid (Opus/Sonnet) doit pouvoir
@@ -25,7 +25,7 @@ toucher (avec ancres), et les critères de vérification.
    définition clé du chapitre courant) avec des emplacements de notes de
    marge à ≥1536px. Le motif de couverture M1 habite le masthead.
    **Ceci clôt la revue M/W laissée ouverte au Day-8** (ledger §9,
-   `docs/audits/fable-day3-ledger.md:554`) : adoption = M1 + (W3 adapté) +
+   `fable-day3-ledger.md (supprimé le 2026-10-22):554`) : adoption = M1 + (W3 adapté) +
    W1-aux-emplacements. `[LEDGER]`
 
 Non-négociables transverses : RULES.md tient (branche seulement, aucun push
@@ -266,7 +266,7 @@ Le DOM reste propre jusqu'à l'impression réelle. (Chrome/Firefox : événement
 
 ### 2.8 Template v2 — amendement
 
-`docs/pipeline/NOTION-TEMPLATE-V2.md` §E (Assets, lignes 115-130) gagne un
+`NOTION-TEMPLATE-V2.md (supprimé le 2026-10-22)` §E (Assets, lignes 115-130) gagne un
 champ **`stages`** : tout brief de figure déclare soit `stages: [ordre des
 étapes + ce que chaque étape enseigne]`, soit `stages: entier (raison)`.
 L'ordre des étapes est AUTORÉ, jamais improvisé par l'agent d'implémentation.

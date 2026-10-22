@@ -24,7 +24,7 @@
 > correctement étiqueté, et sert de patron à ce que les autres notions viennent
 > seulement d'obtenir.
 >
-> **Exécution :** `docs/audits/dette-examen/vague-c-retag.md`.
+> **Exécution :** `vague-c-retag.md (supprimé le 2026-10-22)`.
 
 ---
 

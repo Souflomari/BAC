@@ -4,7 +4,7 @@
  * MINIMAL STRUCTURE ONLY (Day-3 mechanical batch): hairline, wordmark echo,
  * one nav link, a purpose line, the year. The FINAL contents are owner
  * decision — option set C (`/options/end/c1|c2`, ledger in
- * docs/audits/fable-day3-ledger.md). This component is structured so the
+ * fable-day3-ledger.md (supprimé le 2026-10-22)). This component is structured so the
  * chosen variant swaps in cheaply: everything renders inside one <footer>
  * whose inner container carries the SAME spine class as header + main
  * (alignment by construction).

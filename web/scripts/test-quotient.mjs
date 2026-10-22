@@ -1,7 +1,7 @@
 /**
  * test-quotient.mjs — le modèle EXACT de « l'échelle des quotients »
  * (web/src/lib/scene2d/quotient-modele.ts ; spec
- * docs/pipeline/propositions/pc-evolution-spontanee-scene-quotient.md §5, §7.6 A, §11.1).
+ * pc-evolution-spontanee-scene-quotient.md (supprimé le 2026-10-22) §5, §7.6 A, §11.1).
  *
  * Ce que ce test garde, avant tout navigateur — chaque nombre refait par une SECONDE voie
  * (flottants et logarithmes, depuis les valeurs recopiées de la spec, rien du modèle) :

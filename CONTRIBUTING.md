@@ -63,7 +63,7 @@ non-negotiables in `.claude/CLAUDE.md`. In short:
 Lessons and items are **files** under `content/<subject>/<notion>/`
 (`lesson.md` + `items.yaml`, plus `media/` for coded figures). They are validated
 by `web/scripts/validate-content.mjs` and rendered by the Next.js app — there are
-no Dart encoders. The agent roster that produces content is `docs/agents/ROSTER.md`.
+no Dart encoders. The agent roster that produces content is `ROSTER.md (supprimé le 2026-10-22)`.
 
 ---
 

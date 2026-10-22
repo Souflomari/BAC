@@ -1,6 +1,6 @@
 # Both-ways handoff test — Probabilités conditionnelles
 
-> The test RULES §5 / `docs/pipeline/pipeline.md` says to run before trusting the
+> The test RULES §5 / `pipeline.md (supprimé le 2026-10-22)` says to run before trusting the
 > pipeline: author the first notion **both ways** and compare.
 > - **(A)** through the pipeline — pedagogy-architect `spec.md` → content-author `lesson.md` (Sonnet).
 > - **(B)** a direct, high-effort single-Opus pass — `lesson.directB.md`, written without the spec/Sonnet handoff.

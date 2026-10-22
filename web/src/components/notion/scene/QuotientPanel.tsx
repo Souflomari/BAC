@@ -3,7 +3,7 @@
 /**
  * QuotientPanel — « l'échelle des quotients » (PC · evolution-spontanee, en tête de R2 /
  * chapitre 3 ; spec
- * docs/pipeline/propositions/pc-evolution-spontanee-scene-quotient.md).
+ * pc-evolution-spontanee-scene-quotient.md (supprimé le 2026-10-22)).
  *
  * Le seizième manipulable sur l'appareillage des scènes (ADR 0041) : opt-in au clic, cinq
  * étapes à pari, ni temps ni course — le verdict est immédiat, c'est le DESSIN qui répond

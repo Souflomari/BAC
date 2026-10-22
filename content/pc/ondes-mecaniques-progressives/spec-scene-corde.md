@@ -12,7 +12,7 @@ question porte sa réponse par défaut, chacune reste réversible).
 **Correction (2026-09-24, construction) :** l'exercice filmé de la banque est `bk-2015-r-x2` (session de rattrapage 2015), pas `bk-2018-n-x2` (des ultrasons dans un liquide) — relevé par la critique de fidélité au bac, corrigé ici et dans la `suite` de S3. Son ébranlement est une crête PUIS un creux : « le même geste » est retiré.
 
 **Ce qu'elle paie : rien.** Il faut le dire d'entrée, parce que c'est l'inverse de
-la cuve à ondes. `docs/audits/dette-manipulable-2026-09-20.md` **ne nomme pas cette
+la cuve à ondes. `dette-manipulable-2026-09-20.md (supprimé le 2026-10-22)` **ne nomme pas cette
 notion** : aucune spec n'a jamais prescrit ici un manipulable qu'une figure figée
 aurait remplacé. Cette scène ne solde donc aucune dette écrite — elle doit se
 justifier **entièrement** par le critère du §1 de l'ADR 0041 transposé au plan, et
@@ -1058,7 +1058,7 @@ de ligne ; utiliser `"… \\tau …"` entre guillemets doubles, ou un bloc **lit
   de `celerite-est-vitesse-point` (3 items) et que la corriger le ferait tomber à 2.
   **La scène ne le répare pas** (les paris ne comptent pas). Question 7, §13.
 - **`coverage_summary` est un tableau GÉNÉRÉ** : le régénérer par
-  `node web/scripts/resume-couverture.mjs`, ne jamais le retoucher à la main. *(Et
+  `node resume-couverture.mjs (supprimé le 2026-10-22)`, ne jamais le retoucher à la main. *(Et
   pendant qu'on y est : la `REVIEW` signale un bloc d'en-tête périmé qui déclare
   « le plancher n'est PAS atteint » à côté de `floor_met: true`. C'est une décision de
   registre — owner — pas un correctif d'architecte.)*
@@ -1456,7 +1456,7 @@ dans un fichier dont le §1 dit que la scène **n'est pas** en 3D, et
 - `node web/scripts/scene-corde.mjs --essai-rouge` : **chaque** famille crie, avec le
   vert qui l'a précédée, même dossier, même commande ; et chaque sabotage ne fait
   rougir que la famille qui le garde (§11.4).
-- `node web/scripts/resume-couverture.mjs` régénéré si §8.3 est appliqué ;
+- `node resume-couverture.mjs (supprimé le 2026-10-22)` régénéré si §8.3 est appliqué ;
   `total_items` passe à **24**, `photo-film-confondus` à **3**.
 - Les quatre retouches de prose du §4 sont posées **aux quatre ancres nommées**, et
   aucune ne précède le marqueur en répondant à un pari (§4, dernier paragraphe).

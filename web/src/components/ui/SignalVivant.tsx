@@ -11,7 +11,7 @@
  * TOUTES les pages — l'atelier n'avait ni bandeau ni signal avant.
  *
  * POURQUOI SI PEU DE CODE POUR QUELQUE CHOSE D'AUSSI BÊTE. Mesuré le
- * 2026-09-04 sur un réseau qui rampe (`docs/audits/reseau-malade.md`) : la
+ * 2026-09-04 sur un réseau qui rampe (`reseau-malade.md (supprimé le 2026-10-22)`) : la
  * perte d'UN SEUL morceau de JavaScript laisse le cours parfaitement lisible
  * — il est rendu par le serveur — et la page entièrement MORTE, sans un mot.
  * Un composant React ne peut pas prévenir dans ce cas : dans ce cas, il n'est

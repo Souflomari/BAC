@@ -79,7 +79,7 @@ function emitPrint() {
   const lignes = Object.entries(vars).map(([k, v]) => `    ${k}: ${v};`);
   return (
     "/* Le papier n'a pas de thème : le clair, quel que soit ce qu'on lit à l'écran.\n" +
-    "   Voir docs/audits/impression.md — mesuré, pas supposé. */\n" +
+    "   Voir impression.md (supprimé le 2026-10-22) — mesuré, pas supposé. */\n" +
     "@media print {\n" +
     `  :root,\n  :root.dark {\n${lignes.join("\n")}\n    color-scheme: light;\n  }\n` +
     "}\n"

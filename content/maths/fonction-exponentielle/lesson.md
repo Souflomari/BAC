@@ -633,7 +633,7 @@ Aucun de ces quatre n'est un manque de ce chapitre : ce sont des outils transver
      (R3) par cohérence avec le traitement de (ln u)' dans le chapitre
      précédent — à confirmer contre la progression réelle des manuels.
 
-     NOTE (dette d'examen, vague B2, 2026-09-27 — docs/audits/DETTE-EXAMEN.md) :
+     NOTE (dette d'examen, vague B2, 2026-09-27 — DETTE-EXAMEN.md (supprimé le 2026-10-22)) :
      R4 gagne « Une autre limite de référence : (eʰ−1)/h, lue comme un taux
      d'accroissement » — la limite montrée comme exp'(0), un engagement écrit
      avant la révélation (cp-r4-taux-accroissement), l'exemple habillé
@@ -655,7 +655,7 @@ Aucun de ces quatre n'est un manque de ce chapitre : ce sont des outils transver
      « Fonctions puissances x^α » porte donc, dans la prose lue par l'élève,
      la phrase « au programme de la filière Sciences Mathématiques ; en
      Sciences Expérimentales, tu peux passer… ». Corrigé le 2026-10-20
-     (docs/audits/critiques/cadre-GH-fidelite.md, constat F1) : la version
+     (cadre-GH-fidelite.md (supprimé le 2026-10-22), constat F1) : la version
      précédente de cette note disait « a^x et x^α SM-seuls » et « aucun
      marqueur inline, jamais dans la prose lue par l'élève » — deux erreurs,
      la seconde contredite par la phrase posée dans le même commit. Une note

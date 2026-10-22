@@ -59,7 +59,7 @@ misconceptions:
     label: "« Confondre la PHOTO de la corde (élongation en fonction de la distance x, à un instant figé) et le FILM d'un point (élongation en fonction du temps t, à une abscisse figée) »"
     description: "L'élève lit ou dessine un graphe sans identifier son axe des abscisses. Formes : recopier le geste de la source y_S(t) tel quel comme aspect de la corde, au lieu de son MIROIR (le point le plus éloigné de S rejoue ce que S a fait en PREMIER) ; lire une durée sur une photo (ou une distance sur un film) sans passer par la célérité ; conclure d'un graphe qu'un point « monte puis descend » alors que le graphe montre une corde, ou l'inverse. Ce modèle répond CORRECTEMENT à toute question purement numérique sur τ = d/v : il ne se révèle qu'en demandant de LIRE ou de DESSINER une corde."
     contradicts_principle: "Une photo et un film sont deux coupes différentes du même phénomène : la photo fige le temps et parcourt l'espace, le film fige l'espace et parcourt le temps. Sur une photo, une largeur est une DISTANCE (on passe à une durée en divisant par v) et la forme est le geste de la source RETOURNÉ, parce qu'on remonte le temps du geste en s'éloignant de S. Sur un film, l'abscisse est une DURÉE et la courbe de M est celle de S décalée de +τ vers la droite."
-  # Ajoutés le 2026-09-27 (docs/audits/dette-examen/pc-2.md §2, gaps A1/A2/B1) —
+  # Ajoutés le 2026-09-27 (pc-2.md (supprimé le 2026-10-22) §2, gaps A1/A2/B1) —
   # aucun id existant ne nomme honnêtement ces deux modèles : les onze
   # ci-dessus portent sur la nature de l'onde, la célérité, ou la relation
   # à UN seul trajet ; ceux-ci portent sur la façon de COMBINER deux
@@ -1903,7 +1903,7 @@ items:
       change l'amplitude du coup, ni si l'on change la paire de photos
       choisie, tant que le milieu reste le même.
 
-  # Ajouté le 2026-09-27 (docs/audits/dette-examen/pc-2.md §2, A1) : l'écho —
+  # Ajouté le 2026-09-27 (pc-2.md (supprimé le 2026-10-22) §2, A1) : l'écho —
   # 2L = vΔt — n'était démontré nulle part avant la réécriture du rung R4
   # (§ « Une onde qui fait l'aller-retour : l'écho ») et jamais testé.
   # Nombres et contexte propres (échographie médicale), distincts du sondeur
@@ -1980,7 +1980,7 @@ items:
       Oublier ce facteur $2$ (ou l'appliquer dans le mauvais sens) double —
       ou quadruple — la profondeur trouvée par rapport à sa vraie valeur.
 
-  # Ajouté le 2026-09-27 (docs/audits/dette-examen/pc-2.md §2, A2) :
+  # Ajouté le 2026-09-27 (pc-2.md (supprimé le 2026-10-22) §2, A2) :
   # l'émetteur placé ENTRE les deux récepteurs — τ = (d − 2ℓ)/v — n'existait
   # dans aucun item (R4 ne couvrait que la source EXTÉRIEURE à la paire de
   # microphones). Nombres propres (d = 1,34 m, τ = 1,0 ms), distincts de
@@ -2067,7 +2067,7 @@ items:
       $0{,}50\ \text{m}$ convient ; $d - \ell = 0{,}84\ \text{m}$ est bien
       la distance, plus grande, jusqu'à $R_2$.
 
-  # Ajouté le 2026-09-27 (docs/audits/dette-examen/pc-2.md §2, B1) : la
+  # Ajouté le 2026-09-27 (pc-2.md (supprimé le 2026-10-22) §2, B1) : la
   # lecture « décalage en divisions × sensibilité », désormais travaillée
   # dans l'exemple du rung R4, n'était testée par aucun item (les deux
   # pièges de la leçon — largeur de salve, début-à-fin — n'avaient jamais
@@ -2146,7 +2146,7 @@ items:
       compter du début d'une salve à la fin de l'autre ($6$ divisions, qui
       ajoute la largeur d'une salve au décalage réel).
 
-  # Ajouté le 2026-09-27 (docs/audits/dette-examen/pc-2.md §2, B2) :
+  # Ajouté le 2026-09-27 (pc-2.md (supprimé le 2026-10-22) §2, B2) :
   # τ = L(1/V₁ − 1/V₂) n'était démontré que dans l'exercice embarqué r-bac
   # (le sujet même de bk-2018-n-x2), jamais testé par un item. Nombres et
   # contexte propres (rail d'acier / air, L = 340 m), distincts du
@@ -2400,9 +2400,9 @@ items:
 # par un checkpoint, ce qui ne compte pas), `son-nature` (1) et
 # `periodicite-hors-cadre` (1). Tableau GÉNÉRÉ contre
 # web/scripts/lib/couverture-compte.mjs, gardé par
-# web/scripts/resume-couverture.mjs.
+# resume-couverture.mjs (supprimé le 2026-10-22).
 #
-# MIS À JOUR le 2026-09-27 (docs/audits/dette-examen/pc-2.md §2 — gaps A1,
+# MIS À JOUR le 2026-09-27 (pc-2.md (supprimé le 2026-10-22) §2 — gaps A1,
 # A2, B1, B2) : OMP-27…OMP-30 comblent les quatre gaps du debt-examen
 # (écho ; émetteur entre récepteurs ; oscillogramme à deux voies ; deux
 # milieux). Ni id existant n'était honnête pour « deux trajets combinés »
@@ -2419,7 +2419,7 @@ coverage_summary:
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul ; les paris de la scène
     corde-photo-film non plus. Tableau recompté contre
-    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par resume-couverture.mjs (supprimé le 2026-10-22).
   per_misconception:
     mc.physics.pc_omp.onde-transporte-matiere:              { count: 7, items: [OMP-1, OMP-2, OMP-7, OMP-8, OMP-9, OMP-10, OMP-25] }
     mc.physics.pc_omp.onde-sans-energie:                    { count: 4, items: [OMP-2, OMP-7, OMP-8, OMP-10] }
@@ -2451,7 +2451,7 @@ coverage_summary:
     2026-09-24 avec la scène corde-photo-film, spec §8), et les deux
     douzième et treizième, deux-trajets-un-seul et
     oscillogramme-mauvais-reperes (ouvertes le 2026-09-27 en comblant les
-    gaps A1/A2/B1/B2 du debt-examen, docs/audits/dette-examen/pc-2.md §2) —
+    gaps A1/A2/B1/B2 du debt-examen, pc-2.md (supprimé le 2026-10-22) §2) —
     la marge y est nulle et tout retrait d'item la casse. deux-trajets-un-seul
     couvre volontairement trois FORMES différentes du même modèle (l'aller-
     retour d'un écho sur OMP-27, deux distances vers un point intermédiaire

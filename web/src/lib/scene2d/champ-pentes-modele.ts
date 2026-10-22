@@ -1,7 +1,7 @@
 /**
  * champ-pentes-modele.ts — le modèle EXACT de « ce que l'équation dit en chaque point »
  * (Maths · equations-differentielles, R2 ; spec
- * docs/pipeline/propositions/maths-equations-differentielles-scene-pentes.md §5).
+ * maths-equations-differentielles-scene-pentes.md (supprimé le 2026-10-22) §5).
  *
  * UNE équation, y′ = a·y + b, et ce qu'elle impose en chaque point du plan : une pente
  * a·y₀ + b qui ne dépend QUE de la hauteur (§7.2), une hauteur où elle s'annule, −b/a (§7.3),

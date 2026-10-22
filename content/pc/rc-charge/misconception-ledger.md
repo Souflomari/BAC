@@ -18,7 +18,7 @@
 > l'élève est en français.** Les blocs YAML ci-dessous sont à coller tels quels
 > dans `items.yaml` (guillemets doubles, `\\` pour LaTeX).
 >
-> **Exécution :** `docs/audits/dette-examen/vague-c-retag.md` (plan mécanique,
+> **Exécution :** `vague-c-retag.md (supprimé le 2026-10-22)` (plan mécanique,
 > item par item, choix par choix). Ce fichier-ci porte le JUGEMENT ; le plan
 > porte les gestes.
 

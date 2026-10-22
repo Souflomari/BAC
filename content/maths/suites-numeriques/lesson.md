@@ -144,7 +144,7 @@ Ce qu'il faut retenir de la formule arithmétique : c'est **(nombre de termes) �
 
 ### Exemple travaillé : sommer des termes consécutifs, et compter ce qu'on somme
 
-<!-- G8 (docs/audits/DETTE-CADRE.md, 2026-10-20) : les deux formules étaient énoncées
+<!-- G8 (DETTE-CADRE.md (supprimé le 2026-10-22), 2026-10-20) : les deux formules étaient énoncées
      sans exemple, et la somme de u_p à u_n n'était posée nulle part (maths-sexp.yaml,
      « calculer une somme de termes consécutifs »). Commun aux deux filières : pas de
      phrase de filière. -->
@@ -969,7 +969,7 @@ Même machinerie profonde, autre habillage : une suite récurrente $u_{n+1}=f(u_
 
      NOTE AJOUTÉE (dette d'examen, vague B1, 2026-09-27) :
      (8) [PROSE LIVRÉE] GAP-B minor « Monotonicity by the quotient
-     u_{n+1}/u_n — stated, never worked » (docs/audits/dette-examen/maths.md,
+     u_{n+1}/u_n — stated, never worked » (maths.md (supprimé le 2026-10-22),
      § suites-numeriques, ligne ~451 ; testé par SUITES-18 et SUITES-35 sans
      jamais être montré). Un exemple travaillé ajouté juste après la
      variante du quotient (R4) : $u_n=2^n/n!$, $u_{n+1}/u_n=2/(n+1)\le1$

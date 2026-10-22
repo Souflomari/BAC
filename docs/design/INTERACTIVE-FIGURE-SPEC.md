@@ -264,7 +264,7 @@ Pour chaque figure manipulable, la batterie ajoute :
   2026-07-07 (raisons : licence commerciale, vérification headless
   impossible, fidélité du vocabulaire français).
 - Le pipeline de migration « staging simple » des ~29 graphes et ~36
-  schémas restants (`docs/pipeline/post-fable-work-order.md` Item 3)
+  schémas restants (`post-fable-work-order.md (supprimé le 2026-10-22)` Item 3)
   continue sur sa propre voie, non bloqué par cette spec — la plupart de
   ces figures n'ont pas besoin de manipulation.
 - `arbre-pondere` (déjà signalé comme la migration la plus difficile,

@@ -373,7 +373,7 @@ fantôme, aucune faute de frappe.
 **Point d'attention pour le classement de l'exercice 2 :** la question 1-a est
 une application directe du **théorème des accroissements finis** à
 $x \mapsto e^x$ sur $\left[\frac{k}{n}, \frac{k+1}{n}\right]$. Le docket de
-complétude (`docs/audits/lesson-completeness-docket.md`, catégorie C) note que
+complétude (`lesson-completeness-docket.md (supprimé le 2026-10-22)`, catégorie C) note que
 Rolle et le TAF sont **spécifiques SM** et volontairement non promus au rang de
 rung dans `derivabilite-etude-fonctions`. Ce sujet étant SM, l'usage est
 légitime — mais il faudra le ponter au point d'usage dans le `reasoning`, comme

@@ -1,6 +1,6 @@
 /**
  * plan-complexe-rapport-rendu.ts — le rendu Canvas 2D du « rapport lu depuis un
- * sommet » (spec docs/pipeline/propositions/maths-nombres-complexes-2-scene-w.md
+ * sommet » (spec maths-nombres-complexes-2-scene-w.md (supprimé le 2026-10-22)
  * §5.1, §6.2).
  *
  * LE REPÈRE est celui de la scène sœur (`plan-repere.ts`) : carré, isotrope,

@@ -473,7 +473,7 @@ Deux annulations séparées — celle des termes en $x$ et celle des constantes.
 
 ### Exemple travaillé — deux racines complexes, avec amortissement ($\Delta < 0$, $\alpha \neq 0$)
 
-<!-- G8 (docs/audits/DETTE-CADRE.md, 2026-10-20) : le cas 3 n'avait qu'une formule et
+<!-- G8 (DETTE-CADRE.md (supprimé le 2026-10-22), 2026-10-20) : le cas 3 n'avait qu'une formule et
      l'oscillateur (alpha = 0) comme seule illustration. Aucune phrase de filière : la seule
      ligne qui exclut y''+ay'+by=0 du programme SExp (maths-sexp.yaml, limites) est `derived`,
      démentie par le sujet SExp vérifié 2022 N (voir checkpoints.yaml, en-tête) ; règle 1 de

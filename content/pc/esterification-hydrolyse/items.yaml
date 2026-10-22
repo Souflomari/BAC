@@ -1624,7 +1624,7 @@ items:
       Pas la simple mise à l'échelle.
 
   # ── E1 (dette d'examen pc-1) : intérêt du chauffage à reflux ────────────────
-  # Ajouté le 2026-09-27 : GAP-A de docs/audits/dette-examen/pc-1.md —
+  # Ajouté le 2026-09-27 : GAP-A de pc-1.md (supprimé le 2026-10-22) —
   # bk-2017-n-x1c q1 et bk-2015-r-x1b q2-3a demandent toutes deux « quel est
   # l'intérêt du chauffage à reflux ? », jamais testé. Rung R4 : c'est
   # exactement le paragraphe « Le chauffage » du chapitre 5, où la prose vient
@@ -1705,7 +1705,7 @@ items:
     habilete: application_experimentale
 
   # ── E2 (dette d'examen pc-1) : mélange non équimolaire, K=4 ─────────────────
-  # Ajouté le 2026-09-27 : GAP-B de docs/audits/dette-examen/pc-1.md — l'excès
+  # Ajouté le 2026-09-27 : GAP-B de pc-1.md (supprimé le 2026-10-22) — l'excès
   # de réactif est déjà résolu au chapitre 6 (1,0/2,0 mol), mais aucun item ne
   # fait résoudre l'équation du second degré par l'élève. Chiffres neufs
   # (0,50 / 1,50 mol), distincts de bk-2013-r-x1c (150/100 mmol) et de
@@ -1803,14 +1803,14 @@ items:
 # `primary_misconception`. Sous la convention de la chaîne (au distracteur),
 # il en restait trois : `equilibre-percu-comme-arret` (1 item),
 # `obstacle-physique-invente` (1) et `tau-depend-de-n0` (2). EH-27 et EH-28 les
-# referment. Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
+# referment. Tableau GÉNÉRÉ, gardé par resume-couverture.mjs (supprimé le 2026-10-22).
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par resume-couverture.mjs (supprimé le 2026-10-22).
   per_misconception:
     mc.physics.pc_esterification_hydrolyse.catalyseur-augmente-rendement:        { count: 7, items: [EH-1, EH-4, EH-7, EH-9, EH-13, EH-17, EH-23] }
     mc.physics.pc_esterification_hydrolyse.chauffage-augmente-rendement:         { count: 5, items: [EH-2, EH-4, EH-9, EH-22, EH-29] }
@@ -1857,7 +1857,7 @@ coverage_summary:
   # (EH-30, deux distracteurs) ; cinetique-thermodynamique-confondues de 6 à 7
   # (EH-29, deux distracteurs). Aucune misconception nouvelle déclarée.
   # MISE À JOUR 2026-10-20 (critique de fidélité des vagues D-E,
-  # docs/audits/critiques/pc-vagues-DE-fidelite.md, constat 6) : dans EH-30,
+  # pc-vagues-DE-fidelite.md (supprimé le 2026-10-22), constat 6) : dans EH-30,
   # le distracteur 0,77 mol se disait « termes croisés oubliés », mais
   # oublier les termes croisés donne 0,75 + x², et x² = 4(0,75 + x²) n'a
   # aucune racine réelle — le modèle annoncé ne produisait pas ce nombre.

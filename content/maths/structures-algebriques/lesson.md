@@ -700,7 +700,7 @@ Même chaîne d'outils, un habillage différent : une autre loi, d'autres matric
 
 <!-- NOTE AJOUTÉE (dette d'examen, vague B — GAP-B "Transport de structure by
      an isomorphism (group, then ring/field with two laws) — stated, never
-     worked", docs/audits/dette-examen/maths.md, § structures-algebriques,
+     worked", maths.md (supprimé le 2026-10-22), § structures-algebriques,
      ligne ~374 ; 8 entrées de bank.yaml sur 9 dépendent de ce geste) :
      [PROSE LIVRÉE, 2026-09-27] R7 gagne un exemple travaillé complet entre le
      théorème abstrait (529-535) et l'exercice bac (désormais après ligne
@@ -755,7 +755,7 @@ Même chaîne d'outils, un habillage différent : une autre loi, d'autres matric
      NOTE AJOUTÉE (dette d'examen, vague B1, 2026-09-27) :
      [PROSE LIVRÉE] GAP-B « A law defined by a formula (symbolic
      associativity, neutral by identification, symmetric by solving) »
-     (docs/audits/dette-examen/maths.md, § structures-algebriques, ligne
+     (maths.md (supprimé le 2026-10-22), § structures-algebriques, ligne
      ~389 ; 10 entrées de bank.yaml). Nouvelle sous-section en fin de R2,
      "Un exemple donné par une formule, pas par une table" : $x\ast y =
      x+y+xy$ sur $E=\mathbb{R}\setminus\{-1\}$ (ensemble et loi ORIGINAUX,
@@ -1238,7 +1238,7 @@ Même chaîne, un autre ensemble de matrices — et deux questions de plus, que 
 [[exercise:r8-variation]]
 
 <!-- NOTE D'AUTEUR (content-author, 2026-10-20) — chapitre 11, construit depuis
-     docs/pipeline/propositions/maths-structures-espaces-vectoriels.md (révision (b)
+     maths-structures-espaces-vectoriels.md (supprimé le 2026-10-22) (révision (b)
      du 2026-10-20, après la passe arithmétique), défauts du §15 pris tels qu'écrits.
 
      Ordre des morceaux : exactement le §10.2 de la spec — accroche + pari 1

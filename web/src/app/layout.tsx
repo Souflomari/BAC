@@ -130,7 +130,7 @@ const SITE_JSONLD = {
 // le thème ici (audit 2026-08-15) : appliquée après hydratation, elle
 // faisait sauter toute la page d'un cran une fois le JS chargé — sur le
 // réglage même dont dépendent les élèves qui voient mal.
-// La veille d'hydratation, premier temps (docs/audits/reseau-malade.md,
+// La veille d'hydratation, premier temps (reseau-malade.md (supprimé le 2026-10-22),
 // HANDOFF §11.29) : un morceau de JavaScript PERDU fait tirer `error` sur son
 // <script> — capté ici, en tête. Un morceau perdu avant l'hydratation, c'est
 // une page morte à coup sûr : on le dit tout de suite, sans attendre un

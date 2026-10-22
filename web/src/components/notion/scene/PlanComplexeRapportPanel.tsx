@@ -3,7 +3,7 @@
 /**
  * PlanComplexeRapportPanel — « le rapport lu depuis un sommet » (Maths ·
  * nombres-complexes-2, R6 ; spec
- * docs/pipeline/propositions/maths-nombres-complexes-2-scene-w.md).
+ * maths-nombres-complexes-2-scene-w.md (supprimé le 2026-10-22)).
  *
  * Le quinzième manipulable sur l'appareillage des scènes (ADR 0041), la scène
  * sœur de `plan-complexe-transformation` (R5) : opt-in au clic, quatre étapes,

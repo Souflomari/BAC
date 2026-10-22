@@ -1,7 +1,7 @@
 /**
  * quotient-rendu.ts — le rendu Canvas 2D de « l'échelle des quotients » (PC ·
  * evolution-spontanee ; spec
- * docs/pipeline/propositions/pc-evolution-spontanee-scene-quotient.md §5.5, §6.2, §11.2).
+ * pc-evolution-spontanee-scene-quotient.md (supprimé le 2026-10-22) §5.5, §6.2, §11.2).
  *
  * TROIS OBJETS, DÉCLARÉS SÉPARÉMENT (§5.5). L'AXE D'ENSEMBLE (A) : fixe, 46 décades,
  * 10⁻⁴ … 10⁴², jamais redimensionné — c'est ce qui rend comparables les trois pivots K. La

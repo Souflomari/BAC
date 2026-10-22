@@ -84,7 +84,7 @@ panneau `web/src/components/notion/scene/NoyauxPanel.tsx`.
 `content/pc/decroissance-radioactive/` **ne porte aucun `spec.md`** (dossier listé :
 `lesson.md`, `items.yaml`, `checkpoints.yaml`, `bank.yaml`, `exercises.yaml`,
 `REVIEW-2026-09-11.md`). Aucune spec n'y a donc jamais prescrit d'`[[embed:]]` : cette
-scène **ne solde aucune dette écrite** (`docs/audits/dette-manipulable-2026-09-20.md`
+scène **ne solde aucune dette écrite** (`dette-manipulable-2026-09-20.md (supprimé le 2026-10-22)`
 ne la nomme pas ; il ne reste d'ailleurs qu'une substitution, `lecture-Ve-courbe-dosage`,
 `DECISIONS-EN-ATTENTE` §22). Elle doit donc se justifier **entièrement** par un trou
 **mesuré** — DÉCISIONS §23. Voici les cinq candidats pesés, et la mesure de chacun.
@@ -1212,7 +1212,7 @@ explicitement le tableau, et un tableau est un document que le schéma sait port
 `division-lineaire-demi-vies: 8` (+ DECRO-34 C) ; `confond-demi-vie-constante-lambda: 5`
 (+ DECRO-34 D) ; `confond-activite-nombre-noyaux: 4` (+ DECRO-35 D) ;
 `lambda-depend-conditions-externes: 14` (+ DECRO-32 D, DECRO-35 C). `coverage_summary`
-régénéré par `node web/scripts/resume-couverture.mjs`.
+régénéré par `node resume-couverture.mjs (supprimé le 2026-10-22)`.
 
 **Ce que ce paquet NE referme pas, et il faut le dire.** Le champ `habilete` **n'existe sur
 aucun des 31 items** de cette notion (0 occurrence) ; ajouter les quatre nouveaux ne rend
@@ -1648,7 +1648,7 @@ nulle, ce qui serait un mensonge de descripteur — **à refuser**.
 - `node web/scripts/scene-noyaux.mjs --essai-rouge` : **chaque** famille crie, avec le vert
   qui l'a précédée, même dossier, même commande ; et chaque sabotage ne fait rougir que la
   famille qui le garde (§11.4).
-- `node web/scripts/resume-couverture.mjs` régénéré : `total_items` passe à **35**,
+- `node resume-couverture.mjs (supprimé le 2026-10-22)` régénéré : `total_items` passe à **35**,
   `loi-population-vs-noyau` à **3**, `confond-activite-nombre-noyaux` à **4**,
   `demi-vie-egale-duree-de-vie-totale` à **7**, `division-lineaire-demi-vies` à **8**,
   `confond-demi-vie-constante-lambda` à **5**, `lambda-depend-conditions-externes` à **14**.

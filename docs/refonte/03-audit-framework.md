@@ -75,7 +75,7 @@ version rendue en hebdomadaire.
 - **44** sont déclarés « hors champ » de la batterie : 40 tournent en CI, 4 ne tournent nulle part
   (`trois-moteurs`, `figures-trois-moteurs`, `temps-de-chargement`, `scene-ergonomie`).
 - **53** ne sont lancés ni par la CI ni par la batterie. 50 d'entre eux sont catalogués comme outils à la
-  demande dans `docs/audits/INSTRUMENTS.md` (2 595 lignes). Les 3 autres (`_srv.sh`,
+  demande dans `INSTRUMENTS.md (supprimé le 2026-10-22)` (2 595 lignes). Les 3 autres (`_srv.sh`,
   `audit-round3-wf.js`, `audit-round4-wf.js`) échappent au contrôle d'orphelins, qui ne regarde que les
   `.mjs`.
 - Dates : 126 des 146 scripts ont été créés entre le 2026-09-03 et le 2026-09-28
@@ -255,7 +255,7 @@ lignes, dont 279 de commentaires, et embarque trois gardes sur lui-même : la d�
   `data-hors-panneau`.
 - **9 sceaux** à resceller, **69 essais rouges** à entretenir dans un manifeste JSON, et un protocole de
   campagne de sabotage (`scripts/campagnes/`, environ 4 min par sabotage, 44 à 87 sabotages par porte).
-- Le flux de notion par critiques (`docs/agents/ROSTER.md` §4–5) : vague 1 (2 critiques), puis vague 2 (4
+- Le flux de notion par critiques (`ROSTER.md (supprimé le 2026-10-22)` §4–5) : vague 1 (2 critiques), puis vague 2 (4
   critiques), avec un ordre d'arbitrage entre critiques.
 
 ### 2.4 Où est allé l'effort (depuis le 2026-09-01)
@@ -426,7 +426,7 @@ contraintes réelles et les interdictions qui protègent encore contre un échec
 | `.claude/CLAUDE.md:241-270` | « Open decisions (resolve before resuming build) », dont 3 sur 5 marquées RESOLVED | — | fossile : ne garder que la synchronisation production et la voie média |
 | `docs/Rules/RULES.md:156-184` (§5) | « 5-family budgets (Fable 5, Opus 5, Sonnet 5…) » ; « des specs assez détaillées pour que Sonnet 5 exécute fidèlement au lieu de deviner » | un exécutant plus faible que le concepteur, d'où la séparation « Opus pense, Sonnet exécute » et des specs-contrats énormes | des noms de modèle épinglés vieillissent sans prévenir : décrire des rôles (« jugement », « volume », « génération en lot ») et mettre les modèles dans un seul tableau |
 | `RULES.md:150`, `:277-278`, `:302` | « not yet decided », « roster forthcoming », « Status summary: Not yet decided… the exact agent roster » | — | contredit par §5 (« RESOLVED ») : supprimer |
-| `RULES.md:279-286` et `docs/pipeline/day7-briefs/README.md:16-42` | protocole de brief : « ne jamais redire les docs », « Do not commit — le dispatcher vérifie, mesure et commite », test de portabilité sur une session froide | conçu pour des sessions froides de modèle standard (test du Day 7) | le principe utile tient en une ligne : « un brief nomme son critère d'acceptation vérifiable ». Le reste est à archiver |
+| `RULES.md:279-286` et `README.md (supprimé le 2026-10-22):16-42` | protocole de brief : « ne jamais redire les docs », « Do not commit — le dispatcher vérifie, mesure et commite », test de portabilité sur une session froide | conçu pour des sessions froides de modèle standard (test du Day 7) | le principe utile tient en une ligne : « un brief nomme son critère d'acceptation vérifiable ». Le reste est à archiver |
 | `RULES.md:287-292` | « The QA loop has three legs, none optional », dont un audit externe périodique | des instruments qui ne voyaient que ce qu'on leur demandait | garder l'idée, remplacer le rituel : passe hebdomadaire plus regard du propriétaire sur le site |
 | `.claude/agents/*.md`, `model:` | 10 × `claude-opus-5`, 7 × `claude-sonnet-5` | — | génération précédente (les identifiants courants sont `claude-opus-5-5`, `claude-sonnet-5-5`, `claude-haiku-5-5`) : utiliser les alias `opus` / `sonnet` / `haiku` / `inherit` |
 | les 17 agents, dernière ligne | « Status: v0.1. Provisional; refine against the first notion » | — | fossile : 62 notions plus tard. Supprimer |
@@ -443,7 +443,7 @@ contraintes réelles et les interdictions qui protègent encore contre un échec
 | `verification/SKILL.md:85` | « Swap de modèle : re-lancer dom-truth + une passe gestalt AVANT tout travail nouveau » | la variabilité entre modèles | la CI le fait à chaque poussée : supprimer |
 | `.claude/skills/design-bible/SKILL.md:8-12` | « Mode audit D'ABORD… feuille de charge… PUIS produire » | un mode d'échec du sprint de juillet | chorégraphie imposée pour une tâche de jugement : garder les règles négatives, retirer le script |
 | `.claude/skills/figure-authoring/SKILL.md:14-40` | règles accompagnées de récits datés (« Prouvé le 2026-09-03 — neuf figures… ») | — | garder la règle, retirer l'archéologie |
-| `docs/audits/DECISIONS-EN-ATTENTE.md` (41 sections) | « N questions tranchées par défaut » pour chaque scène (de 8 à 16) | un agent qui ne s'autorisait pas à trancher, alors il documentait chaque défaut | une file d'au plus 10 questions ouvertes, chacune avec son défaut ; le reste est tranché et vit dans le code |
+| `DECISIONS-EN-ATTENTE.md (supprimé le 2026-10-22)` (41 sections) | « N questions tranchées par défaut » pour chaque scène (de 8 à 16) | un agent qui ne s'autorisait pas à trancher, alors il documentait chaque défaut | une file d'au plus 10 questions ouvertes, chacune avec son défaut ; le reste est tranché et vit dans le code |
 
 **À garder absolument** : les non-négociables de production (`CLAUDE.md:204-228`, `RULES.md` §3), le
 principe « deux sortes de travail » (`RULES.md` §0), le rôle du propriétaire comme rédacteur en chef et

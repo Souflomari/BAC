@@ -60,12 +60,12 @@ const PANNEAUX: Record<string, React.ComponentType<{ scene: Scene3DDescriptor; c
   "banc-electrolyse": ElectrolysePanel,
   // Le huitième, et le premier des mathématiques en plan : un point, un coefficient, un
   // centre — le rapport, l'angle comme ÉCART, le centre comme point fixe (spec
-  // docs/pipeline/propositions/maths-nombres-complexes-2-scene-plan.md). Tout y est EXACT.
+  // maths-nombres-complexes-2-scene-plan.md (supprimé le 2026-10-22)). Tout y est EXACT.
   "plan-complexe-transformation": PlanComplexePanel,
   "plan-complexe-rapport": PlanComplexeRapportPanel,
   "champ-des-pentes": ChampPentesPanel,
   // Le seizième : trois bains, cinq crans, un critère — Q_{r,i} face à K, jamais face à 1 (spec
-  // docs/pipeline/propositions/pc-evolution-spontanee-scene-quotient.md).
+  // pc-evolution-spontanee-scene-quotient.md (supprimé le 2026-10-22)).
   "echelle-des-quotients": QuotientPanel,
 };
 

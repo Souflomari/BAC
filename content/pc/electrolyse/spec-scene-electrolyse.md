@@ -1832,7 +1832,7 @@ couvert à 0 %)*
 `faraday-stoechiometrie-electronique: 6 → 7` (E-27 D) ; `faraday-calcul-unites` **inchangé
 à 4** ; les quatre autres **inchangés**. `ramp_coverage` : **R4 : 4 → 7**, **R6 : 3 → 5**,
 les cinq autres inchangés — total $3+4+4+3+7+3+5 = 29$ ✓. `coverage_summary` régénéré par
-`node web/scripts/resume-couverture.mjs`, **jamais à la main**.
+`node resume-couverture.mjs (supprimé le 2026-10-22)`, **jamais à la main**.
 
 ### 8.4 Ce que ce paquet NE referme pas, et il faut le dire
 
@@ -2232,7 +2232,7 @@ pédagogie 9) :
 **Ordre de construction, et ce qui doit être vert avant l'étape suivante :**
 
 1. `items.yaml` — déclarer **les deux** modèles (§8.2) et écrire **ELECTROLYSE-25 à 29**
-   (§8.3) ; régénérer `coverage_summary` (`node web/scripts/resume-couverture.mjs`,
+   (§8.3) ; régénérer `coverage_summary` (`node resume-couverture.mjs (supprimé le 2026-10-22)`,
    `total_items: 29`). **`validate-content --strict` vert avant la suite** (la scène ne
    validera pas sans les deux modèles).
 2. `web/src/lib/scene2d/electrolyse-modele.ts` — $Q$, les deux masses, $n(e^-)$, $F$, le
@@ -2400,7 +2400,7 @@ pédagogie 9) :
 - `node web/scripts/test-electrolyse.mjs` : les tables A, B, C, D et E du §5.7 à
   $10^{-12}$, les deux couples de même charge, l'invariance au câblage, **l'invariance aux
   trois tensions**, et **le septième réglage à $9{,}70\times10^{4}$**.
-- `node web/scripts/resume-couverture.mjs` régénéré : `total_items` passe à **29**,
+- `node resume-couverture.mjs (supprimé le 2026-10-22)` régénéré : `total_items` passe à **29**,
   `tension-decide-la-quantite` à **4**, `faraday-constante-universelle` à **3**,
   `seuil-tension-continu` à **8**, `faraday-stoechiometrie-electronique` à **7**,
   `faraday-calcul-unites` **inchangé à 4**, `ramp_coverage` R4 à **7** et R6 à **5**.

@@ -5,7 +5,7 @@
 > Written 2026-07-16, after the autonomous half landed (client write-path
 > wired at all four surfaces, payload semantics unit-proven, off-mode
 > network silence guarded in dom-truth — see
-> `docs/pipeline/tutor-first-plan.md` Lane E).
+> `tutor-first-plan.md (supprimé le 2026-10-22)` Lane E).
 >
 > **Mode B throughout** (probed + ledgered): this session's container cannot
 > reach Supabase over raw TCP. The owner executes the prepared statements/
@@ -48,7 +48,7 @@
    non-negotiable) → Sitting 2 may proceed. **NO-GO** → findings ledgered,
    engine stays dark, nothing else in this runbook runs.
 4. Dated compte-rendu → the campaign ledger
-   (`docs/audits/remediation-campaign-2026-07.md`, Gate log).
+   (`remediation-campaign-2026-07.md (supprimé le 2026-10-22)`, Gate log).
 
 ## Sitting 2 — staging: migrate, deploy, prove the loop end-to-end (~1–2 h)
 

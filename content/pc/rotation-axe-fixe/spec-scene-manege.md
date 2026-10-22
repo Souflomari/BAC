@@ -737,7 +737,7 @@ sur le banc de fin seul — `coverage_summary.method`).
   · `mecanisme-alternatif…` : 12 → **14**.
 - `ramp_coverage` : R2 : 3 → **5** · R6 : 3 → **4** · `total_items` : 25 → **28**.
 - **`coverage_summary` est un tableau GÉNÉRÉ** : le régénérer par
-  `node web/scripts/resume-couverture.mjs`, ne jamais le retoucher à la main.
+  `node resume-couverture.mjs (supprimé le 2026-10-22)`, ne jamais le retoucher à la main.
 
 ### 8.5 Voie de repli (si le propriétaire refuse un dixième modèle)
 
@@ -968,6 +968,6 @@ taxonomie d'origine sont **fermées aux nouveaux embeds** depuis l'amendement du
   sur un rendu réel, relancé à quatre largeurs d'écran.
 - `node web/scripts/scene-manege.mjs --essai-rouge` : **chaque** famille crie,
   avec le vert qui l'a précédée, même dossier, même commande.
-- `node web/scripts/resume-couverture.mjs` régénéré si §8.3 est appliqué.
+- `node resume-couverture.mjs (supprimé le 2026-10-22)` régénéré si §8.3 est appliqué.
 - `dette-manipulable` recompté : la scène ne compte pour livrée **que** si elle
   est enregistrée dans `scenes.json`.

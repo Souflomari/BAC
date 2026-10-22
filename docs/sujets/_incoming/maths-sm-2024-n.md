@@ -376,7 +376,7 @@ existent tous** — `fonction-logarithme`, `limites-continuite`,
 `fonction-exponentielle` (table ci-dessous), plus `nombres-complexes-2`,
 `arithmetique` et `structures-algebriques` (cartouche d'en-tête). Aucun slug
 inventé, aucun slug manquant. Les deux documents cités plus bas —
-`docs/audits/lesson-completeness-docket.md` et `docs/sujets/maths/README.md` —
+`lesson-completeness-docket.md (supprimé le 2026-10-22)` et `docs/sujets/maths/README.md` —
 existent également.
 
 | Exercice | Barème | Slug proposé |
@@ -388,7 +388,7 @@ existent également.
 
 1. L'exercice 1 **q3-b invoque nommément le théorème des accroissements
    finis**, et l'énoncé le suggère explicitement. Le docket de complétude
-   (`docs/audits/lesson-completeness-docket.md`, catégorie C) note que Rolle et
+   (`lesson-completeness-docket.md (supprimé le 2026-10-22)`, catégorie C) note que Rolle et
    le TAF sont **spécifiques SM** et volontairement non promus au rang de rung
    dans `derivabilite-etude-fonctions`. Ce sujet étant SM, l'usage est
    légitime — il faudra le ponter au point d'usage dans le `reasoning`, comme
@@ -555,7 +555,7 @@ q8 ← q5-d+q7 ; ex. 2 q2-c ← q2-b ← q2-a ← q1-b).
 ### Classement
 
 Contrôlé : les neuf slugs `content/maths/` cités dans ce fichier existent
-tous. Les deux documents référencés (`docs/audits/lesson-completeness-docket.md`,
+tous. Les deux documents référencés (`lesson-completeness-docket.md (supprimé le 2026-10-22)`,
 `docs/sujets/maths/README.md`) existent également. Rien à corriger.
 
 ### Points restés indécidables

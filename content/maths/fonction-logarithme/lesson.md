@@ -590,7 +590,7 @@ Le même squelette, décor renversé : ici la courbe passe **sous** la première
      ainsi dans le produit (ou si le théorème général est en fait
      disponible plus tôt).
 
-     NOTE (dette d'examen, vague B2, 2026-09-27 — docs/audits/DETTE-EXAMEN.md) :
+     NOTE (dette d'examen, vague B2, 2026-09-27 — DETTE-EXAMEN.md (supprimé le 2026-10-22)) :
      R4 gagne « Une autre limite de référence : ln(1+x)/x, lue comme un taux
      d'accroissement » — lue comme la pente de la tangente en 1, ln'(1) = 1,
      après un engagement écrit (cp-r4-taux-accroissement) ; puis

@@ -7,7 +7,7 @@
  * call sites. Pure module: no React, no fetch, no env — unit-tested by
  * `scripts/test-attempt-events.mjs` (jiti-loaded, like learner-model).
  *
- * Locked contract decisions (docs/pipeline/tutor-first-plan.md, Lane E):
+ * Locked contract decisions (tutor-first-plan.md (supprimé le 2026-10-22), Lane E):
  *
  * 1. `item_misconceptions` = the set of non-null `misconception` values on
  *    the item's own choices — EXACTLY the definition

@@ -1,6 +1,6 @@
 /**
  * plan-complexe-rendu.ts — le rendu Canvas 2D du « plan complexe »
- * (spec docs/pipeline/propositions/maths-nombres-complexes-2-scene-plan.md
+ * (spec maths-nombres-complexes-2-scene-plan.md (supprimé le 2026-10-22)
  * §5.1, §6.2).
  *
  * ISOTROPE, FIXE, CARRÉ (§5.1). La fenêtre de données est [−9 ; 9]², et le

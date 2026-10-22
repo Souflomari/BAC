@@ -726,4 +726,4 @@ C'est la même leçon que celle du dictionnaire translation ↔ rotation : la m�
        pourquoi ; la synthèse « un seul mécanisme, plusieurs habillages » est déplacée en fin de chapitre pour
        recevoir la ligne de l'oscillateur composé sans renvoyer l'élève vers une section qu'il n'a pas lue.
      Aucune phrase de filière : le domaine est commun aux filières PC. Critique de fidélité :
-     docs/audits/critiques/cadre-GH-fidelite.md (FIX THEN SHIP, corrections appliquées le 2026-10-20). -->
+     cadre-GH-fidelite.md (supprimé le 2026-10-22) (FIX THEN SHIP, corrections appliquées le 2026-10-20). -->

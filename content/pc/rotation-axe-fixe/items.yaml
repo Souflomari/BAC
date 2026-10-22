@@ -2,7 +2,7 @@ notion: rotation-axe-fixe
 skill_code: pc_rotation_axe_fixe
 
 # Misconception inventory (backfilled in the summit-conversion pass, per
-# docs/pipeline/SUMMIT-CONVERSION-RECIPE.md §6). This end bank was authored
+# SUMMIT-CONVERSION-RECIPE.md (supprimé le 2026-10-22) §6). This end bank was authored
 # BEFORE the inventory existed (misconceptions: []), so every item now
 # carries an item-level `primary_misconception`, and every distractor now
 # carries a `misconception:` tag mapped to the nearest real inventory
@@ -2452,7 +2452,7 @@ items:
 # peut évaluer. Sous cette convention, deux familles seulement restaient sous
 # le plancher : `cinematique-angulaire-derivees-confondues` et
 # `moment-inertie-additivite-erronee`, à 2 items chacune. ROT-25 les vise
-# ensemble. Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
+# ensemble. Tableau GÉNÉRÉ, gardé par resume-couverture.mjs (supprimé le 2026-10-22).
 # RÉGÉNÉRÉ le 2026-09-24 : dixième modèle (`moment-force-direction-vs-axe`,
 # spec-scene-manege §8.2) et ROT-26…28. Recompter a montré que la ligne de
 # `mecanisme-alternatif-…` omettait ROT-2 (12 écrits, 13 réels) — la porte ne
@@ -2464,7 +2464,7 @@ coverage_summary:
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par resume-couverture.mjs (supprimé le 2026-10-22).
   per_misconception:
     mc.physics.pc_rotation_axe_fixe.repartition-masse-mal-comprise:                   { count: 6, items: [ROT-3, ROT-4, ROT-7, ROT-8, ROT-22, ROT-23] }
     mc.physics.pc_rotation_axe_fixe.moment-force-sans-bras-de-levier:                 { count: 6, items: [ROT-1, ROT-2, ROT-12, ROT-22, ROT-26, ROT-27] }

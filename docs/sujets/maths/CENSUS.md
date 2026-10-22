@@ -1,6 +1,6 @@
 # CENSUS — Examens nationaux Mathématiques (2ème Bac), 2008–2025, N + R
 
-> **Phase B1 du plan `docs/pipeline/mastery-push-plan.md` (Lane B).** Carte de
+> **Phase B1 du plan `mastery-push-plan.md (supprimé le 2026-10-22)` (Lane B).** Carte de
 > tout sujet de maths du national trouvable, **deux épreuves jamais fondues**
 > (README §0) : **SM** (Sciences Maths A & B, `NS 24F`, 4 h, coef 9) et
 > **SExp** (Sciences Expérimentales = SVT + Sc. Physiques, même sujet,
@@ -42,7 +42,7 @@
 >    personne n'avait tracée : `web/src/lib/examens.ts` somme tous les
 >    `bareme_total` d'une épreuve et n'a aucune notion d'exercice optionnel.
 >    Cette épreuve est **déjà sur-comptée** dans Examens blancs. Consigné en
->    `docs/grounding/known-issues.md` **K-0**, avec trois issues possibles et
+>    `known-issues.md (supprimé le 2026-10-22)` **K-0**, avec trois issues possibles et
 >    aucune choisie.
 > 2. **SM 2024 N porte un défaut du sujet officiel** : sa page 1 croise les
 >    numéros des exercices 4 et 5 par rapport au corps. Sans effet sur le /20,
@@ -108,8 +108,8 @@ hub SExp : `section/5321` (annonce 2009→2024 N+R, images `course-438`).
 | 2018 | R | — | — | non recherché | |
 | 2019 | N | NS24F | `68482` (`upload-54931`, 5 p.) ; corrigé `106425` | sourcé-confirmé | décomposé v0.2, 4 entrées `vérifié` |
 | 2019 | R | RS25 | `94396` | sourcé-confirmé | code sans F, lu sur scan |
-| 2020 | N | NS25 | `109635` (`upload-80775`, 5 p.) ; corrigé `109637` | **décomposé** (2026-08-27) | **format à CHOIX, confirmé sur la p. 1 lue** : « traiter EXERCICE3 et EXERCICE4 et choisir de traiter EXERCICE1 **ou bien** EXERCICE2 — au total **trois** exercices ». Ex1 arithmétique 3,5 *au choix* · Ex2 structures algébriques 3,5 *au choix* · Ex3 complexes 3,5 obligatoire · **Ex4 analyse 13 pts** obligatoire. Barème d'un candidat = 3,5+3,5+13 = 20. **Conséquence tracée jusqu'au code : voir `docs/grounding/known-issues.md` K-0** — `lib/examens.ts` somme tout et sur-compte déjà cette épreuve |
-| 2020 | R | **RS 25** | `109639` | **page 1 lue** (2026-08-27) | **FORMAT À CHOIX, comme la session normale** — « choisir de traiter EXERCICE1 **ou bien** EXERCICE2 » (la coquille « EXRECICE1 » est dans le sujet officiel) ; répartition 3,5 / 3,5 au choix · 3,5 · 13, barème candidat 20. **Fait neuf du balayage `docs/audits/format-a-choix.md`** : K-0 ne connaissait pas cette seconde épreuve. Zéro entrée en banque — le piège de sur-comptage y est en attente, pas encore payé |
+| 2020 | N | NS25 | `109635` (`upload-80775`, 5 p.) ; corrigé `109637` | **décomposé** (2026-08-27) | **format à CHOIX, confirmé sur la p. 1 lue** : « traiter EXERCICE3 et EXERCICE4 et choisir de traiter EXERCICE1 **ou bien** EXERCICE2 — au total **trois** exercices ». Ex1 arithmétique 3,5 *au choix* · Ex2 structures algébriques 3,5 *au choix* · Ex3 complexes 3,5 obligatoire · **Ex4 analyse 13 pts** obligatoire. Barème d'un candidat = 3,5+3,5+13 = 20. **Conséquence tracée jusqu'au code : voir `known-issues.md (supprimé le 2026-10-22)` K-0** — `lib/examens.ts` somme tout et sur-compte déjà cette épreuve |
+| 2020 | R | **RS 25** | `109639` | **page 1 lue** (2026-08-27) | **FORMAT À CHOIX, comme la session normale** — « choisir de traiter EXERCICE1 **ou bien** EXERCICE2 » (la coquille « EXRECICE1 » est dans le sujet officiel) ; répartition 3,5 / 3,5 au choix · 3,5 · 13, barème candidat 20. **Fait neuf du balayage `format-a-choix.md (supprimé le 2026-10-22)`** : K-0 ne connaissait pas cette seconde épreuve. Zéro entrée en banque — le piège de sur-comptage y est en attente, pas encore payé |
 | 2021 | N | NS24F | `127193` (`upload-84150`, **4 p.**) ; corrigé `136837` | **décomposé** (2026-08-27) | **3 exercices, confirmé au cartouche** (« L'épreuve comporte 3 exercices indépendants ») : **Ex1 analyse 12 pts** (transcrit, NON vérifié, `_incoming/maths-sm-2021-n.md`) · Ex2 complexes 4 · Ex3 arithmétique 4. **Les 12 pts sont LUS, plus inférés** ; les deux notes atypiques (3 exercices, pas de structures algébriques) sont confirmées. 24 questions, toutes à 0,5. Scan **propre** — ni substitution ni mojibake. Métadonnées PDF : `KONICA MINOLTA bizhub 287`, créé le **2021-06-14** (fenêtre de la session). ⚠️ Piège d'OCR consigné : la bande d'en-tête entière rend l'année des p. 2-3 comme « 2024 » — artefact du contexte arabe, cassé dès qu'on recadre sur les 4 chiffres |
 | 2021 | R | — | `127195` | sourcé-listé | |
 | 2022 | N | NS24F | `136604` (`upload-84506`, 5 p.) ; corrigé `136841` | **décomposé** (2026-08-27) | 5 exercices : **Ex1 analyse 10 pts** (transcrit, `_incoming/maths-sm-2022-n.md`) · Ex2 complexes 3,5 · Ex3 arithmétique 3 · Ex4 structures 3,5. **⚠️ Scan à substitution de police MASSIVE** — aucun symbole non alphabétique ne s'y lit pour ce qu'il montre ; table de glyphes dans le fichier `_incoming` ET désormais dans l'en-tête de la banque. **CONVERTI** le 2026-08-27 : `bk-2022-n-x1` (10 pts), épreuve à 20,00/20 |

@@ -1,7 +1,7 @@
 /**
  * test-plan-complexe.mjs — le modèle EXACT du « plan complexe »
  * (web/src/lib/scene2d/plan-complexe-modele.ts ; spec
- * docs/pipeline/propositions/maths-nombres-complexes-2-scene-plan.md §5.3).
+ * maths-nombres-complexes-2-scene-plan.md (supprimé le 2026-10-22) §5.3).
  *
  * Ce que ce test garde, avant tout navigateur :
  *  - la table A : z' = c·z aux 35 couples, centre O — ÉCRITURE exacte, et valeur

@@ -3,7 +3,7 @@
 /**
  * AttemptFirstExercise — the staged-reveal exercise (Day-5, audit C1 fix).
  *
- * THE CONTRACT (template v2, docs/pipeline/NOTION-TEMPLATE-V2.md):
+ * THE CONTRACT (template v2, NOTION-TEMPLATE-V2.md (supprimé le 2026-10-22)):
  *   question → the student COMMITS to an attempt → the expert reasoning
  *   unlocks. Reasoning is NEVER rendered into the DOM before the commit —
  *   "printed solutions at the summit" is a template failure, and dom-truth

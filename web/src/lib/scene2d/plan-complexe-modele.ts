@@ -1,7 +1,7 @@
 /**
  * plan-complexe-modele.ts — le modèle EXACT du « plan complexe » (Maths ·
  * nombres-complexes-2, tête de R5 ; spec
- * docs/pipeline/propositions/maths-nombres-complexes-2-scene-plan.md §5).
+ * maths-nombres-complexes-2-scene-plan.md (supprimé le 2026-10-22) §5).
  *
  * EXACT, OU RIEN (§5.4). Aucune lecture de cette scène n'affiche un décimal :
  * les affixes sont des combinaisons rationnelles de 1, i et √3 ; les modules

@@ -1,7 +1,7 @@
 /**
  * test-plan-complexe-rapport.mjs — le modèle EXACT du « rapport lu depuis un
  * sommet » (web/src/lib/scene2d/plan-complexe-rapport-modele.ts ; spec
- * docs/pipeline/propositions/maths-nombres-complexes-2-scene-w.md §5.3).
+ * maths-nombres-complexes-2-scene-w.md (supprimé le 2026-10-22) §5.3).
  *
  * Ce que ce test garde, avant tout navigateur :
  *  - la table A : les DOUZE valeurs de w (4 formes × 3 sommets), écrites comme la

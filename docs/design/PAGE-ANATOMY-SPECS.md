@@ -7,7 +7,7 @@
 > ci-dessous reste valable pour SessionCard/NextUp, le reste est
 > superseded) et la bande de page (gouttière fluide `--gutter`, bandes
 > `--band-page`/`--band-atelier`). Pour ces surfaces, l'autorité est
-> `docs/design/STUDIO-SPEC.md` §2–§4 ; les specs ci-dessous restent
+> `STUDIO-SPEC.md (supprimé le 2026-10-22)` §2–§4 ; les specs ci-dessous restent
 > exactes pour le masthead de leçon, SiteFooter et LessonEnd.
 
 > **Authority:** DESIGN-BIBLE §11–§13 (Day-4 amendments). **Audience: a model
@@ -15,7 +15,7 @@
 > components after 2026-07-07. Every spec states: purpose, anatomy, tokens,
 > invariants (what dom-truth asserts), and the swap points (what the owner may
 > still override — marked OWNER-REVIEW-PENDING in
-> `docs/audits/fable-day3-ledger.md`).
+> `fable-day3-ledger.md (supprimé le 2026-10-22)`).
 >
 > Ground rules that apply to ALL components here: consume tokens only (no raw
 > hex/px outside the token set); any new custom Tailwind key must be

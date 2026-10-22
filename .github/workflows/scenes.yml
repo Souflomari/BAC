@@ -1,0 +1,60 @@
+# Les portes des scènes manipulables (2D et 3D) : elles lisent les pixels de chaque scène.
+# Lentes (plusieurs minutes chacune), elles ne tournent que si le code d'une scène, ses descripteurs
+# ou le design change, et chaque semaine via hebdo.yml.
+name: scenes
+
+on:
+  pull_request:
+    paths:
+      - "web/src/lib/scene2d/**"
+      - "web/src/lib/scene3d/**"
+      - "web/src/components/notion/scene/**"
+      - "web/src/lib/tokens.ts"
+      - "web/src/app/globals.css"
+      - "web/scripts/scene-*.mjs"
+      - "web/scripts/figures-manipulables.mjs"
+      - "web/scripts/lib/**"
+      - "content/**/media/*.json"
+      - "web/package-lock.json"
+      - ".github/workflows/scenes.yml"
+  workflow_dispatch:
+  workflow_call:
+
+concurrency:
+  group: scenes-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: true
+
+jobs:
+  scenes-3d:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/preparer
+        with: { chromium: "true", build: "true" }
+      - name: Orbite, sphère, produit vectoriel, solide de révolution, manège, champ magnétique
+        run: |
+          for s in orbite sphere vectoriel revolution manege lorentz; do
+            echo "::group::scène $s"; node scripts/scene-$s.mjs --porte || exit 1; echo "::endgroup::"
+          done
+
+  scenes-2d:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/preparer
+        with: { chromium: "true", build: "true" }
+      - name: Cuve, corde, noyaux, diffraction, tremplin, modulation, électrolyse, plan complexe, rapport, quotients, champ des pentes
+        run: |
+          for s in cuve corde noyaux diffraction tremplin modulation electrolyse plan-complexe plan-complexe-rapport quotient champ-pentes; do
+            echo "::group::scène $s"; node scripts/scene-$s.mjs --porte || exit 1; echo "::endgroup::"
+          done
+      - name: Figures manipulables
+        run: node scripts/figures-manipulables.mjs --porte

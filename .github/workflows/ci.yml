@@ -1,0 +1,143 @@
+# CI rapide (refonte 2026-10, allègement validé par le propriétaire le 2026-10-22).
+#
+# Ce qui tourne ici protège ce que l'élève voit, et rien d'autre : quatre jobs parallèles, environ
+# 12 à 15 minutes de bout en bout. Les contrôles lents ou qui n'ont rien attrapé depuis longtemps
+# tournent une fois par semaine (hebdo.yml) ; les portes de scène ne tournent que si le code d'une
+# scène change (scenes.yml). L'ancien gates.yml (104 étapes, 52 à 60 min, essais rouges rejoués à
+# chaque poussée) est lisible dans l'historique : git show d3810007:.github/workflows/gates.yml
+name: ci
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Sans navigateur ni build : la source, les calculs, la sécurité de production.
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/preparer
+      - name: Tests unitaires
+        run: node --test scripts/test-*.mjs
+      - name: Jetons du design (source unique, aucun usage arbitraire)
+        run: |
+          node scripts/generate-tokens.mjs --check
+          node scripts/token-gate.mjs
+      - name: Liens entre fichiers du dépôt
+        run: node scripts/liens-fichiers.mjs --porte
+      - name: validate-content (strict, toutes les notions)
+        run: |
+          dirs=$(find ../content -mindepth 2 -maxdepth 2 -type d -not -path '*_media-test*' | sed 's|^\.\./||' | sort)
+          test -n "$dirs"
+          node scripts/validate-content.mjs --strict $dirs
+      - name: Calculs justes (égalités, nombres affichés, constantes physiques, barème sur 20)
+        run: |
+          node scripts/calculs-numeriques.mjs --porte
+          node scripts/arithmetique-rendue.mjs --strict
+          node scripts/constantes-physiques.mjs --porte
+          node scripts/bareme-ferme.mjs --porte
+      - name: Contenu propre (dollars appariés, ids de figures, doublons, prose répétée)
+        run: |
+          node scripts/dollars-apparies.mjs --porte
+          node scripts/figures-id-divergents.mjs --porte
+          node scripts/enonces-jumeaux.mjs --porte
+          node scripts/prose-jumelle.mjs --porte
+          node scripts/source-en-double.mjs --porte
+      - name: QCM sans indice de forme (longueur, absolus, refus, ruses)
+        run: |
+          node scripts/indice-longueur.mjs --porte
+          node scripts/indice-absolu.mjs --porte
+          node scripts/indice-refus.mjs --porte
+          node scripts/eleve-ruse.mjs --porte
+      - name: Modèle apprenant (entrées à jour)
+        run: node scripts/build-learner-inputs.mjs --verifie
+      - name: Non-négociables des migrations (vérification + RLS à la création)
+        run: node scripts/portes-migrations.mjs --porte
+      - name: Aucun identifiant de modèle dans le produit
+        working-directory: .
+        run: |
+          if grep -rnE 'claude-(opus|sonnet|fable|haiku)' content/ docs/sujets/ web/src/ animations/ 2>/dev/null; then
+            echo "Identifiant de modèle trouvé dans une surface où il ne doit pas apparaître." >&2
+            exit 1
+          fi
+
+  # Le rendu : la page servie, l'hydratation, les figures en clair et en sombre.
+  rendu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/preparer
+        with: { chromium: "true", build: "true" }
+      - name: Syntaxe livrée lisible par les vieux navigateurs (iOS 15)
+        run: node scripts/syntaxe-vieux-moteurs.mjs --porte
+      - name: dom-truth (la vérité rendue)
+        run: npm run dom-truth || { echo "::warning::dom-truth relancé (démarrage à froid)"; npm run dom-truth; }
+      - name: Hydratation sans désaccord
+        run: node scripts/desaccords-hydratation.mjs --porte
+      - name: Étiquettes de figure non coupées
+        run: node scripts/marge-etiquettes.mjs --porte
+      - name: Figures (cadre, panneau, contraste ; thèmes clair et sombre)
+        run: |
+          svgs=$(find ../content -path '*/media/*.svg' -not -name '*.motion.svg' | sed 's|^\.\./||' | sort)
+          test -n "$svgs"
+          node scripts/figure-preview.mjs --porte $svgs
+          node scripts/figure-preview.mjs --dark --porte $svgs
+
+  # Le texte que l'élève lit : liens, formules, typographie.
+  texte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/preparer
+        with: { chromium: "true", build: "true" }
+      - name: Liens internes (aucun 404)
+        run: node scripts/liens-internes.mjs
+      - name: Formules rendues (aucune erreur KaTeX)
+        run: node scripts/formules-rendues.mjs --porte
+      - name: LaTeX nu et typographie française
+        run: |
+          routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
+          examens=$(node scripts/routes-examens.mjs)
+          test -n "$routes" && test -n "$examens"
+          pages="/ /examens /matieres/pc /matieres/maths /matieres/svt /matieres/philo /commencer /connexion"
+          node scripts/latex-nu.mjs --porte $routes $examens $pages
+          node scripts/typo-francaise.mjs --porte $routes $examens $pages
+
+  # Le téléphone : aucun débord, et un QCM répondu juste est dit juste.
+  telephone:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/preparer
+        with: { chromium: "true", build: "true" }
+      - name: Largeur téléphone (320, 360, 390 px)
+        run: |
+          npx next start -p 3433 > /tmp/next-etroit.log 2>&1 &
+          for i in $(seq 1 60); do curl -sf -o /dev/null http://localhost:3433/ && break; sleep 1; done
+          node scripts/etroit-sweep.mjs
+      - name: Verdict des QCM (six leçons, quatre matières)
+        run: |
+          node scripts/verdict-qcm.mjs --porte /notions/maths/suites-numeriques /notions/pc/rlc-serie \
+            /notions/philo/la-liberte /notions/svt/liberation-energie-matiere-organique \
+            /notions/maths/nombres-complexes-1 /notions/pc/ondes-mecaniques-progressives

@@ -25,7 +25,7 @@
 > passage** : un id qui vit dans `items.yaml` mais pas dans le spec est un
 > registre à deux vérités.
 >
-> **Exécution :** `docs/audits/dette-examen/vague-c-retag.md`.
+> **Exécution :** `vague-c-retag.md (supprimé le 2026-10-22)`.
 
 ---
 

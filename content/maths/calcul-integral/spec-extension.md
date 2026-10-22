@@ -375,7 +375,7 @@ Registry format (`items.yaml` → `misconceptions:`), ids `mc.math.maths_calcul_
 - **5 misconception records** (§5), champs `label` / `description` / `contradicts_principle` **en français**, recopiés tels quels.
 - **16 items, CI-35 → CI-50** (§7.2).
 - **Retaguer CI-28, CI-29, CI-30 : `rung: "R9"` → `rung: "R10"`.**
-- **Mettre à jour `coverage_summary` :** `total_items: 50` ; `ramp_coverage` → `R9: 14`, `R10: 5` (les autres inchangés) ; `per_misconception` + les 5 nouvelles lignes ; `floor: 3`, `floor_met: true`. Réécrire `honest_state` (aujourd'hui : « six modèles y siègent EXACTEMENT ») en recomptant — le tableau est **généré** et gardé par `web/scripts/resume-couverture.mjs`, ne pas l'écrire à la main sans relancer le script.
+- **Mettre à jour `coverage_summary` :** `total_items: 50` ; `ramp_coverage` → `R9: 14`, `R10: 5` (les autres inchangés) ; `per_misconception` + les 5 nouvelles lignes ; `floor: 3`, `floor_met: true`. Réécrire `honest_state` (aujourd'hui : « six modèles y siègent EXACTEMENT ») en recomptant — le tableau est **généré** et gardé par `resume-couverture.mjs (supprimé le 2026-10-22)`, ne pas l'écrire à la main sans relancer le script.
 - **`habilete` sur chacun des 16 nouveaux items** (triplet MATHS, §1.3) — c'est le correctif en avant de fid-S5.19. Cible : **8 `application_directe` / 5 `application_non_explicite` / 3 `synthese`**.
 - **Tag par distracteur sur les 16** (les items récents du fichier le font déjà ; ne pas régresser).
 
@@ -705,7 +705,7 @@ en ligne :
 - **Frontière de programme (autoritaire) :** `docs/cadre/curriculum/maths-sexp.yaml` (`calcul_integral/integrale_primitives`, `limites`, `exclusions_transversales`, `habiletes_ratios_examen`, `poids`) ; `docs/cadre/curriculum/maths-sm.yaml` (`calcul_integral/integrale_riemann_ipp`, idem).
 - **Précédent d'examen vérifié :** `docs/sujets/_incoming/maths-sm-2023-r.md:80, 115-122, 140-146` (2023 rattrapage SM, Partie III 2c ; `V = \pi/4` cm³), recoupé avec la version publique du sujet et sa correction.
 - **État de la notion :** `content/maths/calcul-integral/lesson.md` (R0–R9), `items.yaml` (registre + `coverage_summary`), `checkpoints.yaml`, `exercises.yaml`, `REVIEW-2026-09-12.md` (S2.6 ; et les blocages ouverts S1.1–S1.5, fid-S5.19/20, péd-F3/F4).
-- **Standard :** `docs/product/VISION.md` (anatomie de la notion, profil maths), `docs/pipeline/NOTION-TEMPLATE-V2.md` (boxes A/B/C/E), `docs/product/DESIGN-BIBLE.md` (calme), ADR 0017 + son amendement du 2026-07-07 (taxonomie média), **ADR 0041** (scènes 3D : critère spatial, contrat de pari, calme, honnêteté des nombres, porte de pixels), ADR 0008/0009/0011 (schéma de misconception, dual-tag, plancher), ADR 0031/0033/0034 (discipline des portes).
+- **Standard :** `docs/product/VISION.md` (anatomie de la notion, profil maths), `NOTION-TEMPLATE-V2.md (supprimé le 2026-10-22)` (boxes A/B/C/E), `docs/product/DESIGN-BIBLE.md` (calme), ADR 0017 + son amendement du 2026-07-07 (taxonomie média), **ADR 0041** (scènes 3D : critère spatial, contrat de pari, calme, honnêteté des nombres, porte de pixels), ADR 0008/0009/0011 (schéma de misconception, dual-tag, plancher), ADR 0031/0033/0034 (discipline des portes).
 - **Portes d'items :** `web/scripts/indice-longueur.mjs`, `indice-absolu.mjs`, `indice-refus.mjs`, `enonces-jumeaux.mjs`, `eleve-ruse.mjs`.
 - **Modèle de descripteur de scène :** `content/maths/geometrie-espace/media/produit-vectoriel.json`.
 - **Précédent de spec-extension :** `content/pc/aspects-energetiques/spec-extension.md`.

@@ -3,7 +3,7 @@
 > **What this is.** The *experience-layer* addendum to `content/pc/rlc-serie/spec.md` — the first
 > time RLC gets the design pass (motion, figure-driven explanation, in-lesson practice, progressive
 > figures). It is **additive and structural**, not a re-spec of the physics. Source of intent:
-> `docs/design/01-rlc-design-pass-brief.md`. Tooling authority: ADR 0021 (coded motion = exact;
+> `01-rlc-design-pass-brief.md (supprimé le 2026-10-22)`. Tooling authority: ADR 0021 (coded motion = exact;
 > Veo = intuition only; the hard line; PhET POC) extending ADR 0017.
 >
 > **Read this WITH `spec.md`, not instead of it.** Everything in `spec.md` stands — the §0.4
@@ -427,7 +427,7 @@ still applies in full):
 ---
 
 ### Sources consulted (design pass)
-- **Intent:** `docs/design/01-rlc-design-pass-brief.md` (the reviewer's remarks as design targets).
+- **Intent:** `01-rlc-design-pass-brief.md (supprimé le 2026-10-22)` (the reviewer's remarks as design targets).
 - **Tooling authority:** `docs/decisions/0021-motion-generated-video-interactive-poc.md` (coded =
   exact; Veo = intuition; the hard line; PhET POC), extending ADR 0017 (visual-sourcing taxonomy).
 - **Unchanged foundation:** `content/pc/rlc-serie/spec.md` (§0.4 boundary, M1–M8, R0→R9 ramp, coverage

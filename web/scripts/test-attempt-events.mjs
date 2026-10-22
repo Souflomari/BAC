@@ -414,7 +414,7 @@ test("emitter — live mode but no session token: zero network traffic", async (
 // ── Le chemin de PERTE — ce qui arrive quand l'envoi échoue ───────────────
 //
 // POURQUOI CES TESTS EXISTENT. Le point 4 de « ce que RIEN ne mesure encore »
-// (docs/audits/INSTRUMENTS.md) nomme « la reprise d'un enregistrement coupé
+// (INSTRUMENTS.md (supprimé le 2026-10-22)) nomme « la reprise d'un enregistrement coupé
 // en vol ». Les tests ci-dessus couvraient tous le chemin HEUREUX : un envoi
 // qui réussit. Or l'élève visé lit en 3G encombrée, et c'est le chemin
 // MALHEUREUX qui décide de ce que le modèle apprenant saura de lui.

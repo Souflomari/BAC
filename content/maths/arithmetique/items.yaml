@@ -199,7 +199,7 @@ misconceptions:
       alors $p \nmid a^k$ pour tout k.
 
   # Ajouté le 2026-09-27 (dette d'examen, § arithmetique, GAP-A « Inverse modulo
-  # n, solving a·x ≡ b [n], systems of congruences » — docs/audits/dette-examen/maths.md:33-49).
+  # n, solving a·x ≡ b [n], systems of congruences » — maths.md (supprimé le 2026-10-22):33-49).
   # Aucune des seize familles ci-dessus ne couvre honnêtement les erreurs
   # propres à CE geste (l'audit le confirme : « No rung reads a Bézout identity
   # as "u is the inverse of a mod n" ») — famille neuve, portée par les trois
@@ -226,7 +226,7 @@ misconceptions:
       distinctes.
 
   # Ajoutés le 2026-10-20 (rung R7b — les systèmes de numération ; spec
-  # docs/pipeline/propositions/maths-arithmetique-numeration.md §4). Quatre
+  # maths-arithmetique-numeration.md (supprimé le 2026-10-22) §4). Quatre
   # familles neuves ; aucune des dix-sept ci-dessus ne nomme ces erreurs.
   # `numeration-restes-ordre-inverse` n'est pas `reste-non-normalise` : ici
   # chaque reste est JUSTE et normalisé, c'est l'ASSEMBLAGE qui est faux. Les
@@ -2729,10 +2729,10 @@ items:
       \pmod7$. ✓
 
   # ── Rung R7b — les systèmes de numération (ajoutés le 2026-10-20) ──────────
-  # Spec : docs/pipeline/propositions/maths-arithmetique-numeration.md §9,
+  # Spec : maths-arithmetique-numeration.md (supprimé le 2026-10-22) §9,
   # révisée le 2026-10-20 contre deux critiques. Douze items à la livraison,
   # AR-41 à AR-52 ; quatorze depuis la vague 1 des critiques du chapitre
-  # construit (docs/audits/critiques/numeration-build-pedagogie.md et
+  # construit (numeration-build-pedagogie.md (supprimé le 2026-10-22) et
   # numeration-build-fidelite.md, même jour) : AR-53 et AR-54. Tous en R7b.
   # Aucun item hors R7b n'est re-tagué, renuméroté ni déplacé. AR-53 et AR-54
   # sont simplement les deux ids libres suivants — PAS les étiquettes de
@@ -3774,13 +3774,13 @@ items:
 # AR-37 choix D). Aucune famille ne change de statut plancher/exact-3.
 # RÉÉCRIT une quatrième fois le 2026-09-27 (dette d'examen, § arithmetique,
 # GAP-A « Inverse modulo n, solving a·x ≡ b [n], systems of congruences » —
-# docs/audits/dette-examen/maths.md:33-49) : AR-38/39/40 ajoutés à R5, famille
+# maths.md (supprimé le 2026-10-22):33-49) : AR-38/39/40 ajoutés à R5, famille
 # neuve `congruence-lineaire-mal-resolue` déclarée à l'inventaire et portée
 # EXACTEMENT au plancher (3 items, trois contextes distincts — solve direct,
 # variation fraîche, combinaison de deux congruences). Dix-sept familles
 # désormais déclarées ; R5 passe de 3 à 6 items sur le ramp.
 # RÉÉCRIT une cinquième fois le 2026-10-20 (rung R7b, systèmes de numération —
-# docs/pipeline/propositions/maths-arithmetique-numeration.md §9) : AR-41 à
+# maths-arithmetique-numeration.md (supprimé le 2026-10-22) §9) : AR-41 à
 # AR-52 ajoutés, quatre familles neuves (numeration-*), et
 # `critere-divisibilite-mal-applique` élargie à la base générique sans
 # re-tagage. Comptes RÉGÉNÉRÉS par la règle de web/scripts/lib/couverture-compte.mjs
@@ -3791,14 +3791,14 @@ items:
 # mesurerNotion. `honest_state` réordonné, l'état courant d'abord : il s'ouvrait
 # encore sur « dix-sept misconceptions » quand le fichier en déclarait vingt et
 # une.
-# Tableau GÉNÉRÉ, gardé par web/scripts/resume-couverture.mjs.
+# Tableau GÉNÉRÉ, gardé par resume-couverture.mjs (supprimé le 2026-10-22).
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par resume-couverture.mjs (supprimé le 2026-10-22).
   per_misconception:
     mc.math.maths_arithmetique.premier-vs-premiers-entre-eux:             { count: 6, items: [AR-4, AR-7, AR-16, AR-17, AR-19, AR-27] }
     mc.math.maths_arithmetique.pgcd-vs-ppcm:                              { count: 3, items: [AR-3, AR-14, AR-21] }

@@ -2,7 +2,7 @@
 /**
  * scene-champ-pentes — la porte de « ce que l'équation dit en chaque point »
  * (maths/equations-differentielles, R2 ; spec
- * docs/pipeline/propositions/maths-equations-differentielles-scene-pentes.md §11 ; ADR 0041 §8).
+ * maths-equations-differentielles-scene-pentes.md (supprimé le 2026-10-22) §11 ; ADR 0041 §8).
  *
  * Elle lit le RENDU (next start + Chromium), jamais le code du produit, et trouve son panneau par
  * `[data-scene="champ-des-pentes"]`. La scène est ANALYTIQUE : la porte refait chaque NOMBRE par sa

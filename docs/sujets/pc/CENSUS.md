@@ -1,6 +1,6 @@
 # CENSUS — Examens nationaux PC (2ème Bac, SPC/BIOF), 2008–2025, sessions N + R
 
-> **Phase B1 du plan `docs/pipeline/mastery-push-plan.md` (Lane B).** Carte de
+> **Phase B1 du plan `mastery-push-plan.md (supprimé le 2026-10-22)` (Lane B).** Carte de
 > ce qui existe et où, décomposé en exercices mappés sur les 25 slugs de
 > `content/pc/`. Ce document est un **recensement**, pas une transcription
 > (la transcription = B2, protocole `README.md` §3).

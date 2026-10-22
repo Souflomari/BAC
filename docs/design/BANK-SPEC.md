@@ -1,7 +1,7 @@
 # BANK-SPEC — the per-notion « S'entraîner » exercise bank (v1)
 
 > **What.** The product contract for Lane B of
-> `docs/pipeline/mastery-push-plan.md`: every notion carries a bank of
+> `mastery-push-plan.md (supprimé le 2026-10-22)`: every notion carries a bank of
 > real past-bac exercises — the volume layer behind the lesson's summit.
 > Spec-first per RULES; the B0 pilot implements exactly this; waves B2/B3
 > fill it. Authority: VISION (ramp to real bac + anti-memorization),
@@ -121,7 +121,7 @@ resolves back to an exercise MUST use both — `revealKey(notionId, itemId)`
 in `lib/student-state.ts` is the canonical key. Reading `item_id` alone
 lights up exercises the student never opened: that is a fabricated tick, and
 §3.4's honest-state rule forbids it. This bit the « fait » state exactly
-once, on 2026-08-27; see `docs/grounding/known-issues.md` **K-7**.
+once, on 2026-08-27; see `known-issues.md (supprimé le 2026-10-22)` **K-7**.
 
 Do not "fix" this by making ids globally unique. They encode a position on a
 real paper, which is what lets `lib/examens.ts` group an exam; prefixing them

@@ -1,6 +1,6 @@
 /**
  * quotient-modele.ts — le modèle EXACT de « l'échelle des quotients » (PC ·
- * evolution-spontanee ; spec docs/pipeline/propositions/pc-evolution-spontanee-scene-quotient.md
+ * evolution-spontanee ; spec pc-evolution-spontanee-scene-quotient.md (supprimé le 2026-10-22)
  * §5).
  *
  * TROIS BAINS, CINQ CRANS, UN CRITÈRE. Chaque bain porte un couple du corpus et son

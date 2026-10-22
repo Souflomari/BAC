@@ -5,14 +5,14 @@ numérique calculé en direct dans le navigateur, vu de dessus — pour le chapi
 R5 « La diffraction des ondes mécaniques », 2ème Bac PC/SM.
 **Statut :** spec pédagogique, **construite le 2026-09-24** sur les réponses par
 défaut aux questions du §13 (écrites, avec les écarts de la construction, dans
-`docs/audits/DECISIONS-EN-ATTENTE.md` §21) — chacune reste réversible par le propriétaire.
+`DECISIONS-EN-ATTENTE.md (supprimé le 2026-10-22)` §21) — chacune reste réversible par le propriétaire.
 **Date :** 2026-09-24. **Auteur :** pedagogy-architect.
 **Correction (2026-09-24, construction) :** la spec renvoyait la dispersion au
 « chapitre 8 » ; c'est le chapitre 7 (R6 — chapitre 1 = R0, REVIEW-2026-09-19).
 Corrigé ici, dans la légende et dans le `fit_caveat`.
 
 **Ce qu'elle paie.** Une **dette de manipulation écrite**
-(`docs/audits/dette-manipulable-2026-09-20.md`) : la spec d'extension de la
+(`dette-manipulable-2026-09-20.md (supprimé le 2026-10-22)`) : la spec d'extension de la
 notion prescrivait un embed `cuve-a-ondes-diffraction`, « *l'élève réduit la
 largeur de la fente et voit l'étalement croître* » ; la leçon rend une figure
 STATIQUE, dont l'en-tête nomme lui-même ce qui a été perdu (« *cuve à ondes
@@ -882,7 +882,7 @@ sur le banc de fin seul (`coverage_summary.method`).
   question 7) ; et le savoir-faire « **proposer un montage** de diffraction »
   cesse d'être le seul savoir-faire enseigné sans être évalué.
 - **`coverage_summary` est un tableau GÉNÉRÉ** : le régénérer par
-  `node web/scripts/resume-couverture.mjs`, ne jamais le retoucher à la main.
+  `node resume-couverture.mjs (supprimé le 2026-10-22)`, ne jamais le retoucher à la main.
 
 ### 8.5 Voie de repli (si le propriétaire refuse un quatrième modèle)
 
@@ -1267,7 +1267,7 @@ scène 3D.
 - `node web/scripts/scene-cuve.mjs --essai-rouge` : **chaque** famille crie, avec
   le vert qui l'a précédée, même dossier, même commande ; et chaque sabotage ne
   fait rougir que la famille qui le garde (§11.4).
-- `node web/scripts/resume-couverture.mjs` régénéré si §8.3 est appliqué.
+- `node resume-couverture.mjs (supprimé le 2026-10-22)` régénéré si §8.3 est appliqué.
 - `dette-manipulable` recompté : **6 → 5 substitutions écrites**, le cliquet
   redescendu à 5 (ADR 0041 : *un cliquet qu'on ne resserre pas quand une dette
   est payée laisse la place à la suivante, en silence*). La scène ne compte pour

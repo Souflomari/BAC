@@ -10,7 +10,7 @@ import { typeScale, motion } from "./tokens";
  * `tailwind.config.ts` must be registered here, or tailwind-merge misclassifies
  * it and SILENTLY DELETES it when a same-prefix class follows in one cn() call.
  *
- * This was audit finding U1 (docs/audits/fable-ui-content-audit.md §1): with
+ * This was audit finding U1 (fable-ui-content-audit.md (supprimé le 2026-10-22) §1): with
  * the default config, `cn("text-h1", …, "text-primary")`
  * classified `text-h1` as a text COLOR and dropped it — the entire designed
  * type hierarchy rendered at 16px on every page, unnoticed for five audit

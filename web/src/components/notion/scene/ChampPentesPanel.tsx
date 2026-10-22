@@ -3,7 +3,7 @@
 /**
  * ChampPentesPanel — « ce que l'équation dit en chaque point » (Maths ·
  * equations-differentielles, R2 ; spec
- * docs/pipeline/propositions/maths-equations-differentielles-scene-pentes.md).
+ * maths-equations-differentielles-scene-pentes.md (supprimé le 2026-10-22)).
  *
  * Le seizième manipulable sur l'appareillage des scènes (ADR 0041) : opt-in au clic,
  * SIX étapes, pari avant tout. Ni temps ni course : le verdict est immédiat, et c'est

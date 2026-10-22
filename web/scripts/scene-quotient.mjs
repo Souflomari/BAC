@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * scene-quotient — la porte de « l'échelle des quotients » (PC · evolution-spontanee, en tête de
- * R2 ; spec docs/pipeline/propositions/pc-evolution-spontanee-scene-quotient.md §11 ; ADR 0041 §8).
+ * R2 ; spec pc-evolution-spontanee-scene-quotient.md (supprimé le 2026-10-22) §11 ; ADR 0041 §8).
  *
  * Elle lit le RENDU (next start + Chromium), jamais le code du produit, et trouve son panneau par
  * `[data-scene="echelle-des-quotients"]`. La scène est ANALYTIQUE : la porte refait chaque NOMBRE

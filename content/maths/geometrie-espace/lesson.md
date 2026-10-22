@@ -623,7 +623,7 @@ Mêmes gestes, d'autres nombres — de quoi vérifier que c'est la méthode que 
 
      NOTE AJOUTÉE (dette d'examen, vague B — GAP-A "Computing H, the
      orthogonal projection of Ω (centre of the section circle / point of
-     tangency / foot of perpendicular)", docs/audits/dette-examen/maths.md,
+     tangency / foot of perpendicular)", maths.md (supprimé le 2026-10-22),
      § geometrie-espace) :
      (6) [PROSE LIVRÉE, 2026-09-27] R9 gagne une nouvelle sous-section,
      "Calculer $H$ quand il n'y a pas de raccourci" (après l'exemple

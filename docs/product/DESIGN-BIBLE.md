@@ -5,7 +5,7 @@
 >   calme §0, motion §5 (durées/courbes, jamais d'overshoot), une-idée-
 >   par-écran §7, périphérie §8, a11y §9, test du regard §10, codes
 >   jamais visibles §11, honest-state, rendered/deployed-truth §12-13.
-> - **`docs/design/STUDIO-SPEC.md` = l'IDENTITÉ et l'ANATOMIE** — jetons
+> - **`STUDIO-SPEC.md (supprimé le 2026-10-22)` = l'IDENTITÉ et l'ANATOMIE** — jetons
 >   Studio verrouillés (surfaces, encre, 5 triades matière OKLCH, Geist/
 >   mono/sérif-prose, bandes fluides, échelle M3 seule), anatomie exacte
 >   par composant (coquille, panneau, palette ⌘K, accueil, workspace/
@@ -44,12 +44,12 @@
 > surface-container tonal ladder (depth through tone + shadow), formal M3
 > window-size classes (compact/medium/expanded), one `Icon` system, and
 > French-aware content rules. It was graded front-by-front to **18–19/20 on all
-> 13 fronts** against `docs/design/GOOGLE-AUDIT-RUBRIC.md`
-> (scorecard: `docs/design/AUDIT-SCORECARD.md`). **Scorecard-authority note
+> 13 fronts** against `GOOGLE-AUDIT-RUBRIC.md (supprimé le 2026-10-22)`
+> (scorecard: `AUDIT-SCORECARD.md (supprimé le 2026-10-22)`). **Scorecard-authority note
 > (Day-4 amendment #6):** those scores were produced by an instrument that
 > verified class names and token files, never computed styles — it missed the
 > entire type hierarchy rendering at 16px (audit finding U1/U8,
-> `docs/audits/fable-ui-content-audit.md`). Keep the scorecard as a record of
+> `fable-ui-content-audit.md (supprimé le 2026-10-22)`). Keep the scorecard as a record of
 > mechanism adoption; do NOT cite it as evidence of rendered quality. Rendered
 > claims answer to §13 (rendered truth) and `web/scripts/dom-truth.mjs`.
 > The hard line held throughout:

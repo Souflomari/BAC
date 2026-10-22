@@ -272,7 +272,7 @@ const LEXICON = /TODO|FIXME|SLOT D|AMÉLIORATION|[Àà] [Ss]ourcer|À FAIRE|asse
 // migrating them to a .stages.json sidecar is tracked in the ledger migration
 // table, not owed by this validator; they warn distinctly from a plain
 // "migration pending" figure so the two backlogs stay legible at a glance.
-// (docs/audits/fable-day3-ledger.md §11 migration table.)
+// (fable-day3-ledger.md (supprimé le 2026-10-22) §11 migration table.)
 const LEGACY_STEP_SLUGS = new Set([
   "rlc-schema",
   "regimes-uc",
@@ -388,7 +388,7 @@ for (const dir of dirs) {
   // juste — celui de l'interface — est « chapitre ».
   //
   // Mesuré le 2026-09-04 avant la campagne : 1 122 codes et 252 « rung » dans
-  // la prose visible de 56 leçons. La réécriture (scripts/renvois-barreaux.py)
+  // la prose visible de 56 leçons. La réécriture (renvois-barreaux.py (supprimé le 2026-10-22))
   // les a tous portés vers un numéro de chapitre CALCULÉ à partir de la leçon
   // elle-même — jamais deviné. Cette porte est ce qui empêche le retour.
   //
@@ -2593,7 +2593,7 @@ for (const dir of dirs) {
   //  Deux défauts mesurés le 2026-09-19 sur TOUT le corpus, pas sur une matière.
   //
   //  (a) LE CHEMIN QUI NE SE RÉSOUT PAS. Quarante fichiers citaient leur propre
-  //      porte par « scripts/resume-couverture.mjs ». Ce chemin n'existe pas —
+  //      porte par « resume-couverture.mjs (supprimé le 2026-10-22) ». Ce chemin n'existe pas —
   //      le fichier est sous `web/`. Le dépôt a un vrai répertoire `scripts/` à
   //      la racine, donc le chemin n'était pas une abréviation : il était faux.
   //      ADR 0031 : un renvoi est une instruction. Tout chemin `…/*.mjs` cité

@@ -1,7 +1,7 @@
 /**
  * plan-complexe-rapport-modele.ts — le modèle EXACT du « rapport lu depuis un
  * sommet » (Maths · nombres-complexes-2, R6 ; spec
- * docs/pipeline/propositions/maths-nombres-complexes-2-scene-w.md §5).
+ * maths-nombres-complexes-2-scene-w.md (supprimé le 2026-10-22) §5).
  *
  * LE FAIT DE LA SCÈNE (§2.2) : w = (z_C − z_A)/(z_B − z_A) se lit DEPUIS un
  * point, et ce point n'est presque jamais l'origine. Le modèle calcule donc

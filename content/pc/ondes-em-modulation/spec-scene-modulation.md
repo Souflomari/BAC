@@ -1617,7 +1617,7 @@ l'exerce.
 
 ### 8.5 Le solde de couverture, honnête
 
-**Après application** (`node web/scripts/resume-couverture.mjs` régénère) :
+**Après application** (`node resume-couverture.mjs (supprimé le 2026-10-22)` régénère) :
 
 | | avant | après |
 |---|---|---|
@@ -2181,7 +2181,7 @@ et §4.5 l'écrivent en toutes lettres. »
   rougir que la famille qui le garde (§11.5, 21 sabotages).
 - `node web/scripts/test-modulation.mjs` : les 9 couples du §5.4, les 4 crans du §5.5,
   les 5 régimes du §5.7, les zéros et la bosse du §5.6, à $10^{-12}$.
-- `node web/scripts/resume-couverture.mjs` régénéré : `total_items` passe à **28**,
+- `node resume-couverture.mjs (supprimé le 2026-10-22)` régénéré : `total_items` passe à **28**,
   `lecture-oscillogramme` à **3**, `demodulation-detecteur-crete` à **4**.
 - **Aucune forme du §9 n'apparaît dans le panneau rendu**, une sonde par forme, et
   `--essai-rouge` les parcourt toutes. En particulier : **aucun « spectre », aucune

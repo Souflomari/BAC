@@ -2,7 +2,7 @@
  * Balayage DONNÉES — ce que le produit coûte au FORFAIT de l'élève.
  *
  * POURQUOI. C'est le point 1 de « ce que RIEN ne mesure encore »
- * (docs/audits/INSTRUMENTS.md), et il y est resté après que `poids-sweep` a
+ * (INSTRUMENTS.md (supprimé le 2026-10-22)), et il y est resté après que `poids-sweep` a
  * fermé la partie « temps de chargement » : le poids de PEINTURE et la
  * CONSOMMATION de données sont deux questions différentes, et la seconde est
  * la plus grave ici. L'élève visé achète des recharges de données. Ce qu'il

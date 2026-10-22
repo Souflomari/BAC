@@ -88,7 +88,7 @@ misconceptions:
   # ── Ajoutées lors du remboursement de dette d'examen (2026-09-27) : la
   # contraction/IAF, les suites implicites f_n(x_n)=0, déclarées par
   # l'auteur d'items après lecture de la leçon et du banc (voir
-  # docs/audits/dette-examen/maths.md, § suites-numeriques, gap A #4 et #9).
+  # maths.md (supprimé le 2026-10-22), § suites-numeriques, gap A #4 et #9).
   # ──────────────────────────────────────────────────────────────────────
   - id: mc.math.sma_suites_numeriques.iaf-intervalle-instable
     label: "« La borne sur f' se prend sur un intervalle quelconque, ou u_n ∈ I n'est jamais vérifié »"
@@ -115,7 +115,7 @@ misconceptions:
     description: "Pour une suite définie implicitement par $f_n(x_n)=0$, l'élève devine l'ordre de $x_n$ et $x_{n+1}$ depuis la forme de la formule (« $n$ augmente donc ça doit monter »), sans jamais évaluer $f_{n+1}(x_n)$ — ou, l'ayant évalué, applique le sens de la monotonie de $f_{n+1}$ à l'envers pour transformer l'inégalité entre les SORTIES en une inégalité entre les entrées."
     contradicts_principle: "$x_n$ et $x_{n+1}$ sont les zéros de DEUX fonctions différentes : rien ne permet de les comparer directement, ni de deviner leur ordre sur la forme de la définition. La seule voie est d'évaluer $f_{n+1}$ (ou $f_n$) aux deux points et de comparer les sorties obtenues à $0$ ; une fonction strictement CROISSANTE range alors les sorties dans le MÊME sens que les entrées, une fonction strictement DÉCROISSANTE les range dans le sens INVERSE — se tromper de sens inverse la conclusion sur $x_n$ et $x_{n+1}$."
 
-  # ── Ajoutée lors de la vague G8 (2026-10-20, docs/audits/DETTE-CADRE.md) :
+  # ── Ajoutée lors de la vague G8 (2026-10-20, DETTE-CADRE.md (supprimé le 2026-10-22)) :
   # la somme de u_p à u_n n'était posée nulle part. Le distracteur « n termes
   # au lieu de n+1 » de SUITES-13 était porté par arith-geom-confondues, qui
   # ne le décrit pas ; il est rattaché ici.
@@ -2592,7 +2592,7 @@ items:
 # f_n(x_n)=0, et les suites homographiques (auxiliaire géométrique) : trois
 # techniques travaillées dans lesson.md (contraction/implicite ajoutées par
 # le content-author ; homographique déjà présente) et jamais testées avant
-# ce lot — voir docs/audits/dette-examen/maths.md, § suites-numeriques, gaps
+# ce lot — voir maths.md (supprimé le 2026-10-22), § suites-numeriques, gaps
 # #4, #9 et le GAP-B homographique. Fonctions et nombres choisis pour ce lot
 # ne reprennent NI l'exemple travaillé de la leçon (f(x)=(x²+1)/4, k=1/2,
 # α=2−√3 ; f_n(x)=nx+x³−1 ; u_{n+1}=(3u_n+1)/(u_n+3)), NI les sujets du banc
@@ -3786,7 +3786,7 @@ items:
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-27, après SUITES-39 à SUITES-53 (dette d'examen, vague
 # B1 : contraction/IAF, suites implicites f_n(x_n)=0, suites homographiques —
-# docs/audits/dette-examen/maths.md, § suites-numeriques). Quatre nouvelles
+# maths.md (supprimé le 2026-10-22), § suites-numeriques). Quatre nouvelles
 # misconceptions déclarées (iaf-intervalle-instable, contraction-k-pas-strict,
 # tvi-sans-stricte-monotonie, comparaison-xn-sans-evaluation), chacune au
 # plancher ou au-dessus. Onze items ajoutent aussi, en tag secondaire, à des
@@ -3795,9 +3795,9 @@ items:
 # SUITES-52) visaient `preuve-par-termes-calculees` (inexistant) au lieu de
 # `preuve-par-termes-calcules` (déclaré) — corrigé avant ce résumé. Tableau
 # GÉNÉRÉ contre web/scripts/lib/couverture-compte.mjs, gardé par
-# web/scripts/resume-couverture.mjs — CE TABLEAU EST MIS À JOUR À LA MAIN ET
+# resume-couverture.mjs (supprimé le 2026-10-22) — CE TABLEAU EST MIS À JOUR À LA MAIN ET
 # DOIT ÊTRE RE-VÉRIFIÉ PAR CE SCRIPT avant tout passage en base.
-# COMPLÉTÉ le 2026-10-20 (vague G8, docs/audits/DETTE-CADRE.md : sommes de
+# COMPLÉTÉ le 2026-10-20 (vague G8, DETTE-CADRE.md (supprimé le 2026-10-22) : sommes de
 # termes consécutifs). Nouveau modèle bornes-somme-mal-comptees, porté par
 # SUITES-54 à -56 et par le distracteur B de SUITES-13 (« 5 termes au lieu de
 # 6 »), qui était rattaché à arith-geom-confondues sans que sa description le
@@ -3810,7 +3810,7 @@ coverage_summary:
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par resume-couverture.mjs (supprimé le 2026-10-22).
   per_misconception:
     mc.math.sma_suites_numeriques.recurrence-etape-manquante:         { count: 4, items: [SUITES-1, SUITES-10, SUITES-11, SUITES-31] }
     mc.math.sma_suites_numeriques.preuve-par-termes-calcules:         { count: 5, items: [SUITES-1, SUITES-16, SUITES-17, SUITES-46, SUITES-52] }

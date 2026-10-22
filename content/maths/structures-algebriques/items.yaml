@@ -52,7 +52,7 @@ misconceptions:
     contradicts_principle: "Les quatre axiomes du groupe n'impliquent pas la commutativité : il existe des groupes non commutatifs (par exemple, la composition de $f(x)=x+1$ et $g(x)=2x$ n'est pas commutative). La commutativité doit être vérifiée séparément — sur la table (symétrie par rapport à la diagonale) ou par le calcul — et c'est elle qui distingue un groupe quelconque d'un groupe commutatif (R4)."
 
   # Ajoutée le 2026-09-27 (dette d'examen, vague B2 — GAP-B « Transport de
-  # structure by an isomorphism », docs/audits/dette-examen/maths.md ~l.374 ;
+  # structure by an isomorphism », maths.md (supprimé le 2026-10-22) ~l.374 ;
   # proposée par la note d'auteur de contenu, lesson.md:678-696, jamais
   # déclarée jusqu'ici faute d'item pour la porter).
   - id: mc.math.structures_algebriques.neutre-non-transporte
@@ -62,7 +62,7 @@ misconceptions:
 
   # ── Les HUIT ids du chapitre « Espaces vectoriels : sous-espace, base,
   # dimension » (ajoutés le 2026-10-20 ; spec :
-  # docs/pipeline/propositions/maths-structures-espaces-vectoriels.md, §8 —
+  # maths-structures-espaces-vectoriels.md (supprimé le 2026-10-22), §8 —
   # une face chacun, révision (b) comprise). La frontière entre ids voisins
   # est la règle opératoire du §8 de la spec : s'arrêter au test du zéro →
   # sous-espace-zero-suffit ; cocher la liste d'une structure voisine (sous-
@@ -1668,7 +1668,7 @@ items:
   # ── transport de structure par un isomorphisme ──────────────────────────
   # Ajoutés le 2026-09-27 (dette d'examen, vague B2 — GAP-B « Transport de
   # structure by an isomorphism (group, then ring/field with two laws) —
-  # stated, never worked », docs/audits/dette-examen/maths.md ~l.374 : 8 des
+  # stated, never worked », maths.md (supprimé le 2026-10-22) ~l.374 : 8 des
   # 9 entrées du banc dépendent de ce geste, et R7 (lesson.md:539-611) ne
   # portait jusqu'ici que le checkpoint cp-r7-morphisme et cp-r7-transport,
   # tous deux DANS l'exemple travaillé — rien en fin de chapitre.
@@ -2300,7 +2300,7 @@ items:
       propriétés directement sur les matrices.
 
   # ── loi définie par une formule, second passage (dette d'examen, vague
-  # B1, 2026-09-27 — docs/audits/dette-examen/maths.md, § structures-
+  # B1, 2026-09-27 — maths.md (supprimé le 2026-10-22), § structures-
   # algebriques, GAP-B « A law defined by a formula : symbolic
   # associativity, neutral by identification, symmetric by solving ») ──
   # Le geste est déjà servi par SA-13 (associativité, x⋆y=x+y+1), SA-23/-24
@@ -2415,7 +2415,7 @@ items:
   # ── Espaces vectoriels (2026-10-20) — le chapitre « Espaces vectoriels :
   # sous-espace, base, dimension », dernier titre `## ` de lesson.md, barreau
   # R8. Dix-huit items, SA-36 → SA-53, écrits depuis
-  # docs/pipeline/propositions/maths-structures-espaces-vectoriels.md, §11.1
+  # maths-structures-espaces-vectoriels.md (supprimé le 2026-10-22), §11.1
   # (objets, clés, modèles visés) et §11.2 (règles), révisions (a) et (b)
   # comprises : SA-41 porte la question refaite (« la stabilité pour × suffit-
   # elle ? », clé muette sur la loi externe), SA-46 l'objet de dimension 3,
@@ -3873,7 +3873,7 @@ coverage_summary:
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par resume-couverture.mjs (supprimé le 2026-10-22).
   per_misconception:
     mc.math.structures_algebriques.loi-modulaire-mal-calculee: { count: 3, items: [SA-7, SA-25, SA-26] }
     mc.math.structures_algebriques.neutre-vs-symetrique:       { count: 14, items: [SA-1, SA-2, SA-8, SA-12, SA-14, SA-20, SA-23, SA-24, SA-26, SA-30, SA-31, SA-32, SA-34, SA-35] }
@@ -3935,7 +3935,7 @@ coverage_summary:
     État au 2026-09-28, AVANT la vague espaces vectoriels du 2026-10-20 (voir
     le dernier paragraphe) : neuf misconceptions déclarées, toutes au-dessus
     du plancher de 3 — aucune à zéro marge alors. `neutre-non-transporte` (dette d'examen
-    vague B2, GAP-B transport de structure, docs/audits/dette-examen/maths.md
+    vague B2, GAP-B transport de structure, maths.md (supprimé le 2026-10-22)
     ~l.374) est neuve depuis la révision précédente : 4→5 avec SA-34. Wave-1
     (2026-09-27, critique double pédagogie + fidélité) : SA-30 et SA-31,
     jusque-là habillés en $\varphi(x)=e^x$ vers $(\mathbb{R}_+^*,\times)$,
@@ -3956,7 +3956,7 @@ coverage_summary:
     tâche.
 
     Second passage, même jour (2026-09-27, vague B1) : SA-35 paye le GAP-B
-    « loi définie par une formule » (docs/audits/dette-examen/maths.md,
+    « loi définie par une formule » (maths.md (supprimé le 2026-10-22),
     § structures-algebriques, ~l.389) sur sa dernière face non couverte —
     le neutre trouvé PAR IDENTIFICATION, avec le piège nommé par la leçon
     (lesson.md:194, « s'arrêter après une seule valeur de $x$ ») qu'aucun
@@ -3993,7 +3993,7 @@ coverage_summary:
     tivité) était fausse — R2 est le chapitre 3 dans cette notion — corrigée.
 
     VAGUE ESPACES VECTORIELS (2026-10-20 ; spec
-    docs/pipeline/propositions/maths-structures-espaces-vectoriels.md, §8,
+    maths-structures-espaces-vectoriels.md (supprimé le 2026-10-22), §8,
     §11, §14). Le chapitre « Espaces vectoriels : sous-espace, base,
     dimension » (barreau R8) reçoit dix-huit items, SA-36 → SA-53, et le
     registre HUIT ids neufs, chacun au plancher ou au-dessus :
@@ -4037,7 +4037,7 @@ coverage_summary:
     d'arrêt du chapitre vivent dans checkpoints.yaml et ne comptent pas ici.
 
     VAGUE 1 DES CRITIQUES DU CHAPITRE CONSTRUIT (2026-10-20 ; rapports
-    docs/audits/critiques/espaces-vectoriels-build-pedagogie.md, constats
+    espaces-vectoriels-build-pedagogie.md (supprimé le 2026-10-22), constats
     I-5, m-4, m-5, et espaces-vectoriels-build-fidelite.md, constat L5).
     (1) Verdict isolé (I-5) : cinq items reçoivent un distracteur qui
     partage le verdict de la clé avec une raison fausse — SA-37 C, SA-40 C,

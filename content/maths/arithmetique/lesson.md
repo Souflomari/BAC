@@ -850,7 +850,7 @@ Avant cela, un exercice construit pour ce chapitre : engage-toi sur chaque quest
 [[exercise:r-numeration]]
 
 <!-- NOTE D'AUTEUR (chapitre des systèmes de numération, ajouté le 2026-10-20 depuis
-     docs/pipeline/propositions/maths-arithmetique-numeration.md, révision du
+     maths-arithmetique-numeration.md (supprimé le 2026-10-22), révision du
      2026-10-20) :
      - Aucune annale vérifiée de numération (0 des 10 exercices SM de bank.yaml ne
        porte sur une écriture en base). L'exercice r-numeration est NON SOURCÉ par
@@ -908,8 +908,8 @@ Une fois le sujet 2019 compris, voici une **variation fraîche** — un autre no
 [[exercise:r-variation]]
 
 <!-- NOTE AJOUTÉE (dette d'examen, vague B — GAP-B inverse « Petit théorème de
-     Fermat has no rung », docs/audits/dette-examen/maths.md, § arithmetique,
-     et docs/audits/DETTE-EXAMEN.md) :
+     Fermat has no rung », maths.md (supprimé le 2026-10-22), § arithmetique,
+     et DETTE-EXAMEN.md (supprimé le 2026-10-22)) :
 
      (1) [PROSE LIVRÉE, 2026-09-27] Nouvelle rung R6b — Le petit théorème de
      Fermat, insérée entre R6 (nombres premiers, décomposition) et R7

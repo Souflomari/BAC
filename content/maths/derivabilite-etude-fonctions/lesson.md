@@ -736,7 +736,7 @@ Même enchaînement — dérivabilité, Rolle, accroissements finis, point d'inf
 
      NOTE AJOUTÉE (dette d'examen, vague B1, 2026-09-27) :
      (10) [PROSE LIVRÉE] GAP-B (inverse) « Rolle / TAF tested but not taught »
-     (docs/audits/dette-examen/maths.md, § derivabilite-etude-fonctions) :
+     (maths.md (supprimé le 2026-10-22), § derivabilite-etude-fonctions) :
      nouveau sous-rung R4b, entre R4 (signe de f') et R5 (concavité),
      énonçant Rolle, le TAF et l'inégalité des accroissements finis (IAF) —
      les trois admis, comme déjà annoncé par R4 (:278) et par la note (3)

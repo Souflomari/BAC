@@ -1,7 +1,7 @@
 /**
  * test-champ-pentes.mjs — le modèle EXACT de « ce que l'équation dit en chaque point »
  * (web/src/lib/scene2d/champ-pentes-modele.ts ; spec
- * docs/pipeline/propositions/maths-equations-differentielles-scene-pentes.md §5.3, §11.1, §14.2).
+ * maths-equations-differentielles-scene-pentes.md (supprimé le 2026-10-22) §5.3, §11.1, §14.2).
  *
  * Chaque nombre refait par une SECONDE voie (flottants, depuis les crans recopiés de la spec —
  * rien du modèle) sur les 60 états (3 a × 4 b × 5 points), et les tables A, B, C, C′ de la spec

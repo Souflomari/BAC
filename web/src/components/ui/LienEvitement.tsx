@@ -1,7 +1,7 @@
 /**
  * LienEvitement — « Aller au contenu », et il doit être le PREMIER focusable.
  *
- * Mesuré le 2026-09-04 (`web/scripts/annonce-sweep.mjs`) : le site en avait
+ * Mesuré le 2026-09-04 (`annonce-sweep.mjs (supprimé le 2026-10-22)`) : le site en avait
  * un, mais seulement sur les pages de leçon, et APRÈS l'en-tête. Un lecteur
  * d'écran devait traverser le wordmark, la recherche, le sélecteur de
  * filière et le menu Notions avant d'atteindre le lien censé lui épargner

@@ -27,7 +27,7 @@
  * dès que la classe est posée (globals.css) : une seule voix à la fois.
  *
  * Historique : né dans `PageShell` le 2026-09-04 avec un compte à rebours de
- * 12 s (`docs/audits/reseau-malade.md`) ; déplacé ici le 2026-09-11 (§11.29).
+ * 12 s (`reseau-malade.md (supprimé le 2026-10-22)`) ; déplacé ici le 2026-09-11 (§11.29).
  */
 
 export function BandeauHydratation() {

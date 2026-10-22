@@ -3,7 +3,7 @@
  * the masthead option variants (Day-3 set A) render the real page, not a mock.
  *
  * DAY-4 FREEZE (Set A = A3, FABLE-DECIDED / OWNER-REVIEW-PENDING — ledger
- * docs/audits/fable-day3-ledger.md): the DEFAULT masthead is now the A3
+ * fable-day3-ledger.md (supprimé le 2026-10-22)): the DEFAULT masthead is now the A3
  * masthead BAND — text-display-lg (56px) serif title in a full-bleed
  * surface-container-low band with a bottom hairline, breadcrumb + title +
  * metadata aligned to the page SPINE (not the centered prose measure — the

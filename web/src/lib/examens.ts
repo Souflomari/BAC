@@ -116,7 +116,7 @@ function numeroExercice(label?: string): number {
  * complète et servie.
  *
  * L'information manquante existait ailleurs, et de façon garantie : la
- * convention K-7 bis (`docs/grounding/known-issues.md`) veut que l'identifiant
+ * convention K-7 bis (`known-issues.md (supprimé le 2026-10-22)`) veut que l'identifiant
  * d'une entrée dise sa POSITION SUR LA COPIE — `-x<N>` pour le numéro
  * d'exercice, une lettre pour chaque morceau d'un exercice découpé. On la lit
  * donc ici plutôt que d'exiger des libellés qu'ils inventent un numéro que le

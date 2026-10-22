@@ -5,7 +5,7 @@
 > **`skills.code` target:** `rlc_serie` *(the cadre chapitre id; do NOT reuse the legacy old-project skill code `pc_rlc_oscillations` — ADR 0011 / mining report §1. supabase-architect reconciles to the live `skills.id` UUID at encode time, step 7.)*
 > **`subject_code`:** `physics` *(verbatim `subjects.code` per ADR 0008 §2 — NOT `phys`, NOT `pc`)*
 > **Curriculum path:** `domaines → physique → sous_domaines → electricite → chapitres → rlc_serie` (`docs/cadre/curriculum/pc-physique-chimie.yaml`)
-> **Pipeline step:** 1 of 7 (`docs/pipeline/pipeline.md`). This spec is the input to content-author (step 2), item-author (step 3), diagram-author, interactive-author.
+> **Pipeline step:** 1 of 7 (`pipeline.md (supprimé le 2026-10-22)`). This spec is the input to content-author (step 2), item-author (step 3), diagram-author, interactive-author.
 > **Authored by:** pedagogy-architect (Opus), autonomously.
 > **Language policy:** This spec's *meta* is English. **Every student-facing string** — lesson prose, item stems, choices, explanations, hints, and each misconception's `label` / `description` / `contradicts_principle` as stored and shown — **MUST be authored in French.** The French exemplars here are the register and substance the authors copy; they are not English placeholders to be translated.
 >
@@ -89,7 +89,7 @@ counts is the `misconceptions:` block of `content/pc/rlc-serie/items.yaml`; this
 section mirrors it id for id. **M11** (`confond-oscillation-avec-decharge-rc`)
 was added to `items.yaml` in an earlier wave for the R0 hook items
 `RLC-R0-1/2/3` and never back-ported here; the 2026-09-27 re-tag pass
-(`docs/audits/dette-examen/vague-c-retag.md`) flagged the gap instead of
+(`vague-c-retag.md (supprimé le 2026-10-22)`) flagged the gap instead of
 silently closing it, and it is now closed (below, after M10). M9 and M10 were
 added to both files by that re-tag pass, per the house rule that a registry
 with two truths is worse than an admitted gap.
@@ -199,7 +199,7 @@ They trade places every quarter-period; `E_C+E_L` is the conserved total in the 
 
 ### M9 — `mc.physics.rlc_serie.phase-initiale-mal-determinee`
 **Label (FR):** « `cos φ` donne `φ` » : on s'arrête à `±φ`, ou on choisit la branche au hasard
-**Added:** 2026-09-27, vague 1 pédagogie re-tag (`docs/audits/dette-examen/vague-c-retag.md`). Surfaced by the exam-debt item `RLC-M7-6`, whose two wrong-branch distractors had been mistagged onto **M7** (`confusion-roles-C-L-stockage`) and **M3** (`plus-de-R-oscille-plus-vite`) — neither of which the student's actual error touches. The student had not confused what C and L store, and had not attributed anything to R; they had simply stopped after the first initial condition.
+**Added:** 2026-09-27, vague 1 pédagogie re-tag (`vague-c-retag.md (supprimé le 2026-10-22)`). Surfaced by the exam-debt item `RLC-M7-6`, whose two wrong-branch distractors had been mistagged onto **M7** (`confusion-roles-C-L-stockage`) and **M3** (`plus-de-R-oscille-plus-vite`) — neither of which the student's actual error touches. The student had not confused what C and L store, and had not attributed anything to R; they had simply stopped after the first initial condition.
 **The wrong model.** The student determines the phase from a **single** initial value (`i(0)` or `u_C(0)`), computes `cos φ = valeur/amplitude`, and either (a) leaves the result ambiguous (`φ = ±valeur`, "on ne peut pas choisir"), (b) picks the wrong branch outright, or (c) reaches for an irrelevant grandeur (`R`) to try to break the tie.
 **How it manifests.** Given `i(0)` (or `u_C(0)`) and asked for `φ` in `i(t)=I_m·cos(2πt/T₀+φ)`, the student writes `φ = ±arccos(...)` and stops there, or asserts both signs are "equally correct," or asks for `R` to decide (R plays no role in an ideal, undamped circuit).
 **The correct model.** A cosine has **two** free constants (amplitude, phase) once `ω₀` is fixed by `L` and `C` — so it takes **two** initial conditions to pin them down. `cos φ = i(0)/I_m` is only the first; it is genuinely satisfied by two values of `φ`. The **second** condition is the **sign of the derivative at `t=0`**: `di/dt(0) = -I_m·ω₀·sin φ`. That sign fixes the sign of `sin φ`, which — combined with the known `cos φ` — selects the unique branch. `R` enters neither condition (idéal, `R≈0` by construction). This is the *same counting gesture* the student meets for the mechanical oscillator (`systemes-oscillants`) — count the constants, count the conditions.
@@ -211,7 +211,7 @@ They trade places every quarter-period; `E_C+E_L` is the conserved total in the 
 
 ### M10 — `mc.physics.rlc_serie.sans-solution-rien-de-calculable`
 **Label (FR):** « On n'a pas résolu l'équation amortie, donc on ne peut rien calculer » (sauf aux maxima)
-**Added:** 2026-09-27, vague 1 pédagogie re-tag (`docs/audits/dette-examen/vague-c-retag.md`). Surfaced by the exam-debt item `RLC-M7-5`, whose two wrong-answer distractors had been mistagged onto **M2** (`energie-consommee-non-conservee`) and **M6** (`cas-amorti-solution-sinusoidale-fermee`) — the second of which asserts almost the *opposite* belief (that a closed form exists) of what this distractor actually argues (that *nothing* can be computed without one).
+**Added:** 2026-09-27, vague 1 pédagogie re-tag (`vague-c-retag.md (supprimé le 2026-10-22)`). Surfaced by the exam-debt item `RLC-M7-5`, whose two wrong-answer distractors had been mistagged onto **M2** (`energie-consommee-non-conservee`) and **M6** (`cas-amorti-solution-sinusoidale-fermee`) — the second of which asserts almost the *opposite* belief (that a closed form exists) of what this distractor actually argues (that *nothing* can be computed without one).
 **The wrong model.** The student takes the cadre's own boundary — "en régime amorti, on établit l'équation différentielle et on s'arrête là, sans la résoudre" (M6's correct model, R5) — and over-reads it as "so nothing can be calculated at all" at a generic instant. They will only accept computing something at the *special* instants where `i=0` (a maximum of `u_C`), and refuse (or declare impossible) any energy/current calculation at an ordinary instant.
 **How it manifests.** Given `u_C(t)` and `u_R(t)` read off an oscilloscope at some instant that is **not** a maximum of `u_C`, the student says the energy `E_t(t)` "can't be found without `q(t)`," or insists one must "wait for a maximum where `i=0`."
 **The correct model.** Not having `q(t)` costs nothing for the **instantaneous relations**, which hold at every instant independently of any solution: `i = u_R/R` (loi d'Ohm), `q = C·u_C`, `E_t = ½C·u_C² + ½L·i²`, and `dE_t/dt = -R·i²`. The `i=0`-at-a-maximum trick is a **convenience** for that special instant, never a **condition** for the calculation to be possible: at any instant, read `u_C` and `u_R` off the two oscilloscope traces, deduce `i`, and the energy bilan closes.

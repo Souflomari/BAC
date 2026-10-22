@@ -7,7 +7,7 @@
  * one learner-paced **beat** at a time.
  *
  * Authority: ADR 0022 (design tokens + GSAP/Framer motion stack + beat-spec
- * architecture) and `docs/design/MOTION-CHOREOGRAPHY.md` (the authoring
+ * architecture) and `MOTION-CHOREOGRAPHY.md (supprimé le 2026-10-22)` (the authoring
  * contract). The engine plays a paused GSAP timeline; "Suivant" advances one
  * beat; nothing autoplays. See MotionStage.tsx for the playback semantics.
  *

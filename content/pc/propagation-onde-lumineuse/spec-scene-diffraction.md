@@ -102,7 +102,7 @@ chacune.
 
 | notion | poids cadre | entrées de banque (annales) | trou MESURÉ, avec son fichier | manipulation ? |
 |---|---|---|---|---|
-| **`propagation-onde-lumineuse`** | **ondes 11 %** (rang 3 phys.) | **5** — 2012 R, 2015 N, 2021 N, 2023 R, 2025 R (`bank.yaml`), dont **4 lisent une figure** (`docs/audits/lectures-graphiques.md` : 9, 6, 3 et 1 mentions, **3 sur 4 « source rouverte : non »**) | **cinq faits, tous vérifiables en une commande** — (a) **aucun `[[embed:]]` dans `lesson.md`** ; (b) `media/diffraction-fente.svg` porte **zéro valeur numérique** et un angle **exagéré d'un facteur 54**, que **rien à l'écran ne déclare** (l'aveu vit dans un commentaire SVG) ; (c) `exercises.yaml:98` **donne la lecture** que sa propre q6 réclame — idem `bank.yaml:376` ; (d) **`habilete` : 0 occurrence dans `items.yaml`** et les **5** points d'arrêt sont **tous** `utilisation` → application expérimentale **0 %**, cible **15 %** ; (e) le savoir-faire « **proposer un montage** » : le mot *montage* n'apparaît **pas une fois** dans `lesson.md` | **oui, et quatre gestes distincts** : rétrécir la fente, changer de laser, **reculer l'écran**, remplacer la fente par un fil. Aucune figure étagée n'en rend un seul. |
+| **`propagation-onde-lumineuse`** | **ondes 11 %** (rang 3 phys.) | **5** — 2012 R, 2015 N, 2021 N, 2023 R, 2025 R (`bank.yaml`), dont **4 lisent une figure** (`lectures-graphiques.md (supprimé le 2026-10-22)` : 9, 6, 3 et 1 mentions, **3 sur 4 « source rouverte : non »**) | **cinq faits, tous vérifiables en une commande** — (a) **aucun `[[embed:]]` dans `lesson.md`** ; (b) `media/diffraction-fente.svg` porte **zéro valeur numérique** et un angle **exagéré d'un facteur 54**, que **rien à l'écran ne déclare** (l'aveu vit dans un commentaire SVG) ; (c) `exercises.yaml:98` **donne la lecture** que sa propre q6 réclame — idem `bank.yaml:376` ; (d) **`habilete` : 0 occurrence dans `items.yaml`** et les **5** points d'arrêt sont **tous** `utilisation` → application expérimentale **0 %**, cible **15 %** ; (e) le savoir-faire « **proposer un montage** » : le mot *montage* n'apparaît **pas une fois** dans `lesson.md` | **oui, et quatre gestes distincts** : rétrécir la fente, changer de laser, **reculer l'écran**, remplacer la fente par un fil. Aucune figure étagée n'en rend un seul. |
 | `lois-de-newton` | **méca 27 %** (rang 1) | 1 (+1 incertain) | `REVIEW-2026-09-12` : « trois `savoir_faire` du cadre ne sont couverts **nulle part** : la base de **Freinet** (`grep` ⇒ 0), le produit $\vec a\cdot\vec v$, les équations aux dimensions » | oui — **inscrite comme candidate suivante** par `spec-scene-noyaux.md` §13.10 |
 | `ondes-em-modulation` | élec **21 %** | 4 | `REVIEW-2026-09-12` : « aucun des 24 items ne rend de figure, aucun n'exerce la lecture d'oscillogramme — geste exigé par 7 sujets réels sur 7 » | **bloqué** : BLOQUANT propriétaire non tranché ($F_p = 2$ kHz publié contre $1003 \pm 15$ Hz mesuré, « 2 kHz est à 66 σ ») **et** conflit de modèle non arbitré ($m = S_m/U_0$ contre $m = S_m/P_m$) |
 | `dipole-rl` | élec **21 %** | 4 | `REVIEW-2026-09-12` F6 : « la leçon travaille vers l'avant ($R, L \to \tau$), les 10 sujets travaillent en arrière » | la même exponentielle est **déjà manipulée à côté** (`rc-sandbox`, `rlc-sandbox`) ; notation en arbitrage ouvert ($R$ totale contre $R$ conducteur) — chaque étiquette serait en litige |
@@ -1340,7 +1340,7 @@ n'exige pas un dessin.
 `figure-ombre-geometrique: 3` (POL-23, 24, 25 — plancher atteint, **marge
 nulle**) ; `diffraction-formule-theta: 4` (+ POL-26) ; les cinq autres modèles
 inchangés. `ramp_coverage` : R3 passe de 4 à **6**, R6 de 3 à **5**.
-`coverage_summary` régénéré par `node web/scripts/resume-couverture.mjs`.
+`coverage_summary` régénéré par `node resume-couverture.mjs (supprimé le 2026-10-22)`.
 
 **Ce que ce paquet NE referme pas, et il faut le dire.** Le champ `habilete`
 **n'existe sur aucun des 22 items** de cette notion ; ajouter les quatre nouveaux
@@ -1819,7 +1819,7 @@ prose du §4.3 et du §4.5 l'écrivent en toutes lettres. »
 - `node web/scripts/test-diffraction.mjs` : les 28 largeurs du §5.2, les 17
   positions de `distance`, l'invariant $a \times L$ et l'identité fente/fil, à
   $10^{-12}$.
-- `node web/scripts/resume-couverture.mjs` régénéré : `total_items` passe à
+- `node resume-couverture.mjs (supprimé le 2026-10-22)` régénéré : `total_items` passe à
   **26**, `figure-ombre-geometrique` à **3**, `diffraction-formule-theta` à **4**.
 - **Aucune forme du §9 n'apparaît dans le panneau rendu**, une sonde par forme, et
   `--essai-rouge` les parcourt toutes. En particulier : **aucun `°`, aucun

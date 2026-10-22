@@ -108,7 +108,7 @@ misconceptions:
     contradicts_principle: "$v^2=2gh$ donne le CARRÉ de la vitesse ; il reste à extraire $v=\\sqrt{2gh}$ — livrer $v^2$ pour $v$ confond une vitesse au carré avec une vitesse."
 
   # ── Trois misconceptions neuves (2026-09-27), ouvertes par la dette d'examen
-  # G1/G2 (docs/audits/dette-examen/pc-1.md). Chacune est portée par au moins
+  # G1/G2 (pc-1.md (supprimé le 2026-10-22)). Chacune est portée par au moins
   # trois items (AE-37…AE-44) : la déclaration seule ne suffit pas.
   - id: mc.physics.pc_energie.rappel-travail-signe-operateur
     label: "« Le travail de la force (ou du couple) de rappel a le même signe que le travail qu'il faut fournir contre elle »"
@@ -1764,7 +1764,7 @@ items:
   #    travail-oublie-cos (1), confond-ec-et-em (2),
   #    ec-mauvaise-dependance-en-v (2), frottement-restitue-energie (2).
   #    Le résumé en fin de fichier annonçait `floor_met: true` : c'est la plus
-  #    grosse des quatre dérives relevées par web/scripts/resume-couverture.mjs.
+  #    grosse des quatre dérives relevées par resume-couverture.mjs (supprimé le 2026-10-22).
   #    Chaque item porte TROIS familles distinctes sur ses trois distracteurs,
   #    de sorte que quatre items suffisent à combler onze places.
   - id: AE-31
@@ -2168,14 +2168,14 @@ items:
       Attention aux unités d'entrée : $x$ en mètres ($0{,}080$, pas $8{,}0$)
       et $m$ en kilogrammes ($0{,}100$, pas $100$).
 
-  # ── AE-37…AE-44 (2026-09-27) — dette d'examen G1/G2 (docs/audits/dette-examen/pc-1.md).
+  # ── AE-37…AE-44 (2026-09-27) — dette d'examen G1/G2 (pc-1.md (supprimé le 2026-10-22)).
   # G1 : le travail du couple de torsion, signé, de 0 à θ1 (AE-37 ; complété par
   # AE-38, AE-39 pour la misconception neuve du signe). G2 : lire un diagramme
   # d'énergie de torsion pour en tirer C (AE-40 ; complété par AE-41, AE-42 pour
   # la conversion degrés→radians, et par AE-43, AE-44 pour la largeur totale
   # confondue avec l'écart maximal). Trois misconceptions neuves, chacune
   # portée par exactement 3 items — voir coverage_summary.
-  # Révisé le 2026-10-20 (critique docs/audits/critiques/pc-vagues-DE-fidelite.md,
+  # Révisé le 2026-10-20 (critique pc-vagues-DE-fidelite.md (supprimé le 2026-10-22),
   # constats 4 et 8) : AE-42 passe au pendule pesant (R7, angle en degrés dans
   # l'approximation des petites oscillations, le lieu attesté de la conversion) ;
   # AE-43 quitte le tracé E_c(θ̇), que le bac n'imprime pas, pour la lecture du
@@ -2961,7 +2961,7 @@ items:
 
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-05, et c'était la plus grosse des quatre dérives relevées
-# par web/scripts/resume-couverture.mjs : SEPT familles siégeaient sous le plancher
+# par resume-couverture.mjs (supprimé le 2026-10-22) : SEPT familles siégeaient sous le plancher
 # pendant que le fichier déclarait `floor_met: true`.
 #
 # L'ancien résumé disait vrai à l'écriture : son `scope_note` annonçait
@@ -3020,7 +3020,7 @@ coverage_summary:
     mc.physics.pc_energie.em-conservee-malgre-frottement:        { count: 4, items: [AE-6, AE-9, AE-19, AE-20] }
     mc.physics.pc_energie.signe-travail-poids:                   { count: 4, items: [AE-6, AE-16, AE-21, AE-34] }
     mc.physics.pc_energie.confusion-v-et-v-carre:                { count: 4, items: [AE-15, AE-35, AE-36, AE-42] }
-    mc.physics.pc_energie.rappel-travail-signe-operateur:        { count: 3, items: [AE-37, AE-38, AE-39] }   # neuve 2026-09-27 — dette G1 (docs/audits/dette-examen/pc-1.md)
+    mc.physics.pc_energie.rappel-travail-signe-operateur:        { count: 3, items: [AE-37, AE-38, AE-39] }   # neuve 2026-09-27 — dette G1 (pc-1.md (supprimé le 2026-10-22))
     mc.physics.pc_energie.torsion-lecture-angle-non-converti:    { count: 3, items: [AE-40, AE-41, AE-42] }   # neuve 2026-09-27 — dette G2 ; AE-45 retiré le 2026-09-28 (retaggé sur le nouvel id, voir resolution_2026_09_28) ; déclaration élargie au pendule pesant et AE-42 recadré sur lui le 2026-10-20, voir resolution_2026_10_20
     mc.physics.pc_energie.diagramme-largeur-totale-confondue-amplitude: { count: 5, items: [AE-40, AE-44, AE-45, AE-46, AE-47] }   # neuve 2026-09-27 — dette G2 ; plafond (6) atteint le 2026-09-28, quitté le 2026-10-20 (AE-43 retiré, voir resolution_2026_10_20)
   total_items: 44
@@ -3104,7 +3104,7 @@ coverage_summary:
     marge est nulle et tout retrait d'item la casse. Le plafond de spec-extension.md §7 (6 items par
     misconception) n'est atteint nulle part.
   resolution_2026_09_27: >-
-    Dette d'examen G1/G2 comblée (docs/audits/dette-examen/pc-1.md) : huit
+    Dette d'examen G1/G2 comblée (pc-1.md (supprimé le 2026-10-22)) : huit
     items neufs, AE-37…AE-44. G1 (le travail signé du couple de rappel, de
     signe opposé à celui de l'opérateur) ouvre une misconception neuve,
     `rappel-travail-signe-operateur`, portée par AE-37 (torsion, depuis
@@ -3131,7 +3131,7 @@ coverage_summary:
     plafond) — conservées non corrigées pour l'historique, voir ce bloc pour
     l'état courant.
   resolution_2026_09_28: >-
-    Passe vague D-E (docs/audits/DECISIONS-EN-ATTENTE.md §35/§36) sur les
+    Passe vague D-E (DECISIONS-EN-ATTENTE.md (supprimé le 2026-10-22) §35/§36) sur les
     items G1/G2 et ajout du piège de grille R6. (1) AE-43 : le distracteur D
     portait `torsion-ec-formule-translation` sous la forme d'un refus
     (« il faut aussi connaître la masse… »). Cette misconception ne peut PAS
@@ -3267,7 +3267,7 @@ coverage_summary:
     reste à 7, non forcé à la baisse, comme le permet l'arbitrage du
     coordinateur.
   resolution_2026_10_20: >-
-    Passe de fidélité au bac (docs/audits/critiques/pc-vagues-DE-fidelite.md,
+    Passe de fidélité au bac (pc-vagues-DE-fidelite.md (supprimé le 2026-10-22),
     constats 2, 4, 8, 9, 11a). (1) La déclaration de
     `diagramme-largeur-totale-confondue-amplitude` disait « les deux zéros de
     la parabole » $E_{p,torsion}(\theta)$ ou $E_{pe}(x)$ — faux : ces

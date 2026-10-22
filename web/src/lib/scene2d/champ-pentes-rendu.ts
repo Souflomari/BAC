@@ -1,6 +1,6 @@
 /**
  * champ-pentes-rendu.ts — le rendu Canvas 2D de « ce que l'équation dit en chaque point »
- * (spec docs/pipeline/propositions/maths-equations-differentielles-scene-pentes.md §5.1, §6.2).
+ * (spec maths-equations-differentielles-scene-pentes.md (supprimé le 2026-10-22) §5.1, §6.2).
  *
  * LE REPÈRE (§5.1). La fenêtre de données est un CARRÉ, x ∈ [−8 ; 4], y ∈ [−6 ; 6], qui ne change
  * jamais ; le facteur px/unité est le MÊME sur les deux axes — un segment de champ est dessiné à

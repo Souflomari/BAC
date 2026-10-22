@@ -238,7 +238,7 @@ misconceptions:
       se justifie QUE là — substitué dans une équation à racines distinctes, il
       laisse un reste non nul.
 
-  # Ajouté le 2026-10-20 (vague G8 de docs/audits/DETTE-CADRE.md : le cas
+  # Ajouté le 2026-10-20 (vague G8 de DETTE-CADRE.md (supprimé le 2026-10-22) : le cas
   # Δ<0 avec α≠0 n'avait ni exemple travaillé ni item). Aucun id existant ne
   # nomme ce modèle : omega-vs-omega2 et oscillateur-B-sans-omega portent sur
   # l'oscillateur pur (α=0), où justement il n'y a rien à oublier.
@@ -2618,19 +2618,19 @@ items:
 # solutions, la place du coefficient $a$, la condition initiale décalée, la
 # période de l'oscillateur, la constante de temps, et les deux modèles de
 # l'accroche. Tableau GÉNÉRÉ contre web/scripts/lib/couverture-compte.mjs,
-# gardé par web/scripts/resume-couverture.mjs. (« GÉNÉRÉ » voulait dire : compté
+# gardé par resume-couverture.mjs (supprimé le 2026-10-22). (« GÉNÉRÉ » voulait dire : compté
 # selon la convention de ce module ; le tableau lui-même est écrit à la main.)
 # COMPLÉTÉ À LA MAIN le 2026-09-25 — EQDIFF-31 à -33 ajoutent le modèle
 # mc...racine-double-sans-x (cas Δ=0, facteur x oublié ou transporté à tort),
-# cf. docs/pipeline/propositions/maths-equations-differentielles-delta-nul.md
+# cf. maths-equations-differentielles-delta-nul.md (supprimé le 2026-10-22)
 # §3-4. Deltas : total_items 30→33 ; ramp_coverage.R4 4→7 ; nouveau modèle 3 ;
 # solution-fonction-unique 3→5 ; signe-second-membre-second-ordre 4→5 ;
 # nombre-solutions-condition 3→4. Ce bloc n'est PAS généré par une commande —
 # il est écrit à la main (voir l'en-tête de resume-couverture.mjs) et VÉRIFIÉ
 # par `node web/scripts/couverture-diagnostique.mjs --porte` (« cliquet tenu,
-# 62 notions ») et `node web/scripts/resume-couverture.mjs --porte` (« portes
+# 62 notions ») et `node resume-couverture.mjs (supprimé le 2026-10-22) --porte` (« portes
 # tenues, 0 affirmation contredite ») — relancés le 2026-09-25 après l'ajout.
-# COMPLÉTÉ À LA MAIN le 2026-10-20 (vague G8, docs/audits/DETTE-CADRE.md) —
+# COMPLÉTÉ À LA MAIN le 2026-10-20 (vague G8, DETTE-CADRE.md (supprimé le 2026-10-22)) —
 # EQDIFF-34/35 testent le cas Δ>0 (enseigné, jamais testé) ; EQDIFF-36 à -39
 # ouvrent le modèle mc...complexe-alpha-perdu (cas Δ<0 avec α≠0 : facteur
 # e^{αx} perdu, α et β échangés, B=y'(0)/β recopié de l'oscillateur). Trois
@@ -2648,7 +2648,7 @@ coverage_summary:
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau écrit à la main selon
     la convention de web/scripts/lib/couverture-compte.mjs, gardé par
-    web/scripts/resume-couverture.mjs.
+    resume-couverture.mjs (supprimé le 2026-10-22).
   per_misconception:
     mc.math.maths_equations_differentielles.solution-fonction-unique:           { count: 6, items: [EQDIFF-1, EQDIFF-22, EQDIFF-23, EQDIFF-31, EQDIFF-33, EQDIFF-34] }
     mc.math.maths_equations_differentielles.signe-exposant:                     { count: 7, items: [EQDIFF-1, EQDIFF-10, EQDIFF-13, EQDIFF-34, EQDIFF-35, EQDIFF-37, EQDIFF-38] }

@@ -1831,7 +1831,7 @@ items:
 
   # ── modèle neuf : seuil-un-au-lieu-de-k (ES-30 à ES-33) ─────────────────────
   # Ajoutés pour la scène manipulable « échelle des quotients »
-  # (docs/pipeline/propositions/pc-evolution-spontanee-scene-quotient.md, §8.2
+  # (pc-evolution-spontanee-scene-quotient.md (supprimé le 2026-10-22), §8.2
   # et §8.3). Chaque item pose une configuration où 1 et K ne disent PAS la
   # même chose, pour que seuil-un-au-lieu-de-k et critere-inverse produisent
   # des prédictions différentes (spec §8.3, règles de construction 1 et 2).
@@ -2060,14 +2060,14 @@ items:
 
 # ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
 # RÉÉCRIT le 2026-09-27, après ES-30 à ES-33 (item-author, spec §8.3 de
-# docs/pipeline/propositions/pc-evolution-spontanee-scene-quotient.md). Ces
+# pc-evolution-spontanee-scene-quotient.md (supprimé le 2026-10-22)). Ces
 # quatre items servent le modèle NEUF seuil-un-au-lieu-de-k (§8.2 de la même
 # spec), déclaré dans la polarité EMPLOYÉE par la scène : le seuil de
 # comparaison est 1, jamais K. Trois d'entre eux servent aussi
 # critere-inverse (5→8), et un chacun reactivite-metal-fixe (4→6),
 # confond-qr-et-k (6→7), pas-de-critere-predictif (3→4) et solide-dans-qr
 # (3→4) — chiffres recalculés à la main ci-dessous ; à revérifier par
-# web/scripts/resume-couverture.mjs quand le CI tourne (non exécuté ici,
+# resume-couverture.mjs (supprimé le 2026-10-22) quand le CI tourne (non exécuté ici,
 # item-author n'a pas Bash).
 coverage_summary:
   method: >-
@@ -2075,7 +2075,7 @@ coverage_summary:
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par resume-couverture.mjs (supprimé le 2026-10-22).
   per_misconception:
     mc.chemistry.pc_evolution_spontanee.critere-inverse:               { count: 8, items: [ES-1, ES-2, ES-17, ES-19, ES-21, ES-30, ES-31, ES-33] }
     mc.chemistry.pc_evolution_spontanee.confond-qr-et-k:               { count: 7, items: [ES-1, ES-2, ES-8, ES-17, ES-18, ES-19, ES-32] }

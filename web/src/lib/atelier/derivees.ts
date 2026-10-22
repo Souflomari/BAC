@@ -6,7 +6,7 @@
  * n'entre pas dans une figure + deux phrases + une action, c'est qu'elle
  * n'est pas encore assez décomposée.
  *
- * LA RÈGLE (NORTH-STAR-V2 §4), vérifiée par `scripts/regle-atelier.mjs` :
+ * LA RÈGLE (NORTH-STAR-V2 §4), vérifiée par `regle-atelier.mjs (supprimé le 2026-10-22)` :
  *   R1  tout écran a une action
  *   R2  ≤ 2 phrases visibles
  *   R3  toute réponse fausse porte SON feedback (jamais un « faux » sec)

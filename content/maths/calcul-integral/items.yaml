@@ -193,7 +193,7 @@ misconceptions:
       compte les DIRECTIONS.
 
   # ── Dette d'examen, vague B — GAP-A "Primitive of u'/u -> ln|u| (and
-  # u'/u^2 -> -1/u)", docs/audits/dette-examen/maths.md § calcul-integral —
+  # u'/u^2 -> -1/u)", maths.md (supprimé le 2026-10-22) § calcul-integral —
   # 6 sites de banque (fonction-exponentielle/bank.yaml:518-524,2478,2810 ;
   # fonction-logarithme/bank.yaml:792,2740-2799,4570-4591). R1 porte
   # maintenant la prose (lesson.md, "Généraliser : reconnaître u'/u et u'/u²
@@ -3192,7 +3192,7 @@ items:
       que $f^2$ soit une intégrale déjà rencontrée.
 
   # ── Dette d'examen, vague B — GAP-A "u'/u -> ln|u| et u'/u² -> -1/u"
-  # (docs/audits/dette-examen/maths.md § calcul-integral, 6 sites de banque).
+  # (maths.md (supprimé le 2026-10-22) § calcul-integral, 6 sites de banque).
   # CI-51 -> CI-57, rung R1 (là où lesson.md porte désormais la prose).
   # Fonctions et nombres tous originaux : aucun ne reprend une fonction ou
   # des bornes des sites cités (fonction-exponentielle/bank.yaml:518-524,
@@ -4879,7 +4879,7 @@ items:
 # constante l'est ». CI-33 et CI-34 referment la conversion d'unités d'aire.
 # RÉÉCRIT à nouveau le 2026-09-27 (CI-51→CI-58) : dette d'examen, vague B,
 # GAP-A "primitive de u'/u -> ln|u| (et u'/u² -> -1/u)"
-# (docs/audits/dette-examen/maths.md § calcul-integral). Trois misconceptions
+# (maths.md (supprimé le 2026-10-22) § calcul-integral). Trois misconceptions
 # neuves déclarées (une scindée en deux depuis la proposition du
 # content-author, voir le commentaire au-dessus du bloc `misconceptions`),
 # chacune au plancher exact (3 items) sauf `u-sur-u-derivee-au-lieu-de-u`
@@ -4937,7 +4937,7 @@ items:
 # « H(3) > H(1) »). CI-69→CI-72 écrits pour porter les trois ids neufs au plancher (trig, condition,
 # Riemann : 2, 1, 2 → 3, 3, 3). `u-sur-u-absolue-ou-intervalle-oubliee` restait à 2 (dette antérieure) :
 # CI-73 la porte à 3 le même jour — plancher tenu pour les 25 ids.
-# 2026-10-20 (dette de cadre G3, passe pédagogie — docs/audits/critiques/cadre-GH-pedagogie.md) :
+# 2026-10-20 (dette de cadre G3, passe pédagogie — cadre-GH-pedagogie.md (supprimé le 2026-10-22)) :
 #   - `riemann-somme-mal-identifiee` SCINDÉE en quatre ids, un modèle chacun (voir le bloc des
 #     misconceptions) ; l'ancienne chaîne est gardée pour la somme mal IDENTIFIÉE (fonction ou
 #     intervalle). Retags : CI-67 (distracteur « +∞ » → facteur-un-sur-n) ; CI-68 (primaire →
@@ -4955,14 +4955,14 @@ items:
 #   - CI-64 : difficulté 4 → 2 (substitution dans une primitive G DONNÉE).
 #   Total 70 → 73 items, 25 → 28 misconceptions déclarées, toutes au plancher ou au-dessus.
 # Tableau GÉNÉRÉ contre la convention de la chaîne, gardé par
-# web/scripts/resume-couverture.mjs.
+# resume-couverture.mjs (supprimé le 2026-10-22).
 coverage_summary:
   method: >-
     Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par resume-couverture.mjs (supprimé le 2026-10-22).
   per_misconception:
     mc.math.maths_calcul_integral.primitive-vs-derivee:                    { count: 9, items: [CI-11, CI-31, CI-32, CI-54, CI-55, CI-58, CI-64, CI-66, CI-70] }
     mc.math.maths_calcul_integral.constante-et-bornes:                     { count: 12, items: [CI-1, CI-10, CI-13, CI-15, CI-17, CI-51, CI-56, CI-57, CI-59, CI-60, CI-61, CI-63] }

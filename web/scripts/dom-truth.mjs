@@ -3,7 +3,7 @@
  *
  * Asserts COMPUTED styles in the live DOM against the design tokens. Exists
  * because five audit rounds verified class names and token files while the
- * whole type hierarchy rendered at 16px (docs/audits/fable-ui-content-audit.md
+ * whole type hierarchy rendered at 16px (fable-ui-content-audit.md (supprimé le 2026-10-22)
  * §1, finding U1). Standing rule: a visual claim is verified only against the
  * rendered DOM — never against source class names.
  *
@@ -1541,7 +1541,7 @@ try {
 
   // (Interactive-figures wave, 2026-07-07) EmbedPanel — same pre-existing
   // gap as StagedFigure above. Uses `rlc-sandbox` on rlc-serie R3
-  // (chapter 4) — the gold-reference embed (docs/audits/d10-media-layer.md).
+  // (chapter 4) — the gold-reference embed (d10-media-layer.md (supprimé le 2026-10-22)).
   {
     console.log(`\n[${NOTION}?chapitre=4] SWEEP: EmbedPanel — opt-in mount, tab order, sandbox, attribution`);
     const epage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
@@ -3948,11 +3948,11 @@ try {
   //    navigateur trouve dans TOUTE la leçon, l'impression déplie tout, un
   //    lien profond vers n'importe quel titre s'ouvre sans requête, et — on
   //    l'a mesuré le 2026-09-04 — la leçon reste entièrement utilisable
-  //    quand le réseau tombe (`docs/audits/hors-ligne.md`).
+  //    quand le réseau tombe (`hors-ligne.md (supprimé le 2026-10-22)`).
   //
   //    Il a un prix, mesuré lui aussi : 43 000 nœuds et six secondes
   //    d'attente sur un téléphone bon marché
-  //    (`docs/audits/poids-et-reactivite.md`). L'arbitrage entre les deux
+  //    (`poids-et-reactivite.md (supprimé le 2026-10-22)`). L'arbitrage entre les deux
   //    appartient au propriétaire — et c'est PRÉCISÉMENT pourquoi ce
   //    contrôle existe : tant que la décision n'est pas prise, une
   //    « optimisation » qui rendrait les chapitres à la demande casserait
@@ -3991,7 +3991,7 @@ try {
 
   // ── SWEEP: LE LIEN D'ÉVITEMENT EXISTE, EST PREMIER, ET FONCTIONNE.
   //
-  //    Mesuré le 2026-09-04 (`scripts/annonce-sweep.mjs`) : il en existait un,
+  //    Mesuré le 2026-09-04 (`annonce-sweep.mjs (supprimé le 2026-10-22)`) : il en existait un,
   //    mais SEULEMENT sur les pages de leçon et APRÈS l'en-tête. Un lecteur
   //    d'écran traversait donc le wordmark, la recherche, le sélecteur de
   //    filière et le menu Notions avant d'atteindre le lien censé lui
@@ -4067,7 +4067,7 @@ try {
   //    aucun défilement à deux dimensions (ce que la norme demande), et au
   //    moins trois lignes de prose lisibles sous les barres collantes (ce
   //    qu'un être humain demande). Le balayage complet des 70 pages vit
-  //    dans `scripts/zoom400-sweep.mjs` ; ici on garde un échantillon, pour
+  //    dans `zoom400-sweep.mjs (supprimé le 2026-10-22)` ; ici on garde un échantillon, pour
   //    que la CI reste rapide.
   {
     console.log("\n[400 %] SWEEP: reflow à 320 × 256 px (1280 × 1024 zoomé à 400 %)");
@@ -4272,7 +4272,7 @@ try {
     //   — un sujet à défaut de barème imprimé : PC 2014 normale déclare 13
     //     points de physique et ses sous-barèmes en totalisent 13,5, donc il
     //     afficherait 20,5/20 le jour de sa conversion (relevé par le
-    //     balayage docs/audits/format-a-choix.md, 2026-08-27).
+    //     balayage format-a-choix.md (supprimé le 2026-10-22), 2026-08-27).
     // Le cas symétrique — une épreuve SUR-comptée par des exercices « au
     // choix » mutuellement exclusifs — reste hors de portée d'ici : il ne se
     // voit pas au total. Voir known-issues K-0.
@@ -4553,7 +4553,7 @@ try {
   //    (pré-contrôle puis arbre cassé) ; l'ajouter aux 47 essais rendrait la
   //    suite inutilisable. La commande exacte, à rejouer telle quelle :
   //
-  //      node scripts/essai-rouge.mjs \
+  //      node essai-rouge.mjs (supprimé le 2026-10-22) \
   //        --fichier .next/routes-manifest.json \
   //        --de '{"key":"X-Frame-Options","value":"SAMEORIGIN"},' --vers '' \
   //        --porte "node scripts/dom-truth.mjs"

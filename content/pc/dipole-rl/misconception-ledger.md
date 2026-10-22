@@ -14,7 +14,7 @@
 > référence (Box B) pour l'id neuf et pour les délégations prose → items. Un
 > `spec.md` complet reste une dette ouverte, signalée au propriétaire.
 >
-> **Exécution :** `docs/audits/dette-examen/vague-c-retag.md`.
+> **Exécution :** `vague-c-retag.md (supprimé le 2026-10-22)`.
 
 ---
 

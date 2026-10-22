@@ -33,21 +33,21 @@ npm run build        # production build (runs the token --check first)
 npm run dom-truth    # the rendered-truth harness (computed-style assertions)
 npm run token-gate   # the design-token guard (one consumption syntax)
 npm run pw -- <gate> --porte   # any browser gate, with this machine's Chromium
-cd .. && scripts/verif-commit.sh   # the CI battery on a clean copy of HEAD — before every push
+cd .. && scripts/verif-commit.sh   # the CI `source` job on a clean copy of HEAD — before every push
 ```
 
-Content is validated by `web/scripts/validate-content.mjs`; item length-tells by
-`web/scripts/item-stats.mjs`.
+Content is validated by `web/scripts/validate-content.mjs`. CI: `.github/workflows/ci.yml` on every push (about 15 min), `hebdo.yml` weekly for the slow checks.
 
 ## Where things live
 
 - **`.claude/CLAUDE.md`** — the orientation index (read first in any session).
 - **`docs/product/VISION.md`** — the product vision (the north star).
-- **`docs/Rules/RULES.md`** — how we work (build discipline, gates, cadence).
-- **`docs/agents/ROSTER.md`** — the agent roster (who does what, which model).
+- **`docs/Rules/RULES.md`** — how we work, on one page.
+- **`docs/ETAT.md`** — where things stand, and the decisions waiting for the owner.
+- **`docs/bible/`** — the bac, notion by notion: exam demands, prerequisites, traps, representations, history.
+- **`docs/referentiel/`** — the official 2025 exam frameworks, transcribed word for word.
 - **`docs/decisions/`** — the ADR trail (numbered, append-only).
-- **`docs/HANDOFF.md`** — the current handoff / open-gates list.
-- **`docs/design/`** — the design specs (TOKENS, DESIGN-BIBLE, page anatomies…).
+- **`docs/design/`** and **`docs/product/DESIGN-BIBLE.md`** — the design specs (TOKENS, page anatomies…).
 
 ## Production safety (always in force)
 

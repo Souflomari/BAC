@@ -5,7 +5,7 @@
  * Provides the bounded, centered reading column the DESIGN-BIBLE demands.
  *
  * THE SHARED SPINE (Day-3 mechanical batch; ledgered in
- * docs/audits/fable-day3-ledger.md): header, main, and footer all render
+ * fable-day3-ledger.md (supprimé le 2026-10-22)): header, main, and footer all render
  * their inner content inside ONE identical container class — same max-width,
  * same responsive padding — built here and passed down. The wordmark, the
  * content column, and the rail therefore share a left edge BY CONSTRUCTION on

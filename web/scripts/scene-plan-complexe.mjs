@@ -2,7 +2,7 @@
 /**
  * scene-plan-complexe — la porte du « plan complexe »
  * (maths/nombres-complexes-2, en tête de R5 ; spec
- * docs/pipeline/propositions/maths-nombres-complexes-2-scene-plan.md §11 ; ADR 0041 §8).
+ * maths-nombres-complexes-2-scene-plan.md (supprimé le 2026-10-22) §11 ; ADR 0041 §8).
  *
  * Elle lit le RENDU (next start + Chromium), jamais le code du produit, et
  * trouve son panneau par `[data-scene="plan-complexe-transformation"]`. La scène

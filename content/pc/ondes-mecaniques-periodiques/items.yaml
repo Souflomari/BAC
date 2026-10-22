@@ -2032,7 +2032,7 @@ items:
       diamétralement opposés — parce que la condition de diffraction
       compare $a$ à $\lambda$, jamais $a$ à lui seul.
 
-  # Ajouté le 2026-09-27 (docs/audits/dette-examen/pc-2.md §1, B1) : lecture
+  # Ajouté le 2026-09-27 (pc-2.md (supprimé le 2026-10-22) §1, B1) : lecture
   # d'une cote qui couvre PLUSIEURS intervalles crête-à-crête (λ = ℓ/n),
   # jamais testée — OMPP-1/2 ne font lire qu'un espacement DÉJÀ égal à λ, et
   # exercises.yaml r-variation q2 (« 3λ = 24 cm ») n'est qu'une démonstration
@@ -2114,7 +2114,7 @@ items:
 # raisonnement chiffré au lieu de faire lire une distance sur une photographie.
 # Le tableau est désormais GÉNÉRÉ contre la convention de la chaîne
 # (web/scripts/lib/couverture-compte.mjs) et gardé par
-# web/scripts/resume-couverture.mjs.
+# resume-couverture.mjs (supprimé le 2026-10-22).
 coverage_summary:
   # RÉSERVE MESURÉE le 2026-09-19, les deux critiques de vague 1 la soulèvent
   # séparément : OMPP-13 C et OMPP-16 C portent OND-CALC-1 (« inverse ou mélange
@@ -2126,13 +2126,13 @@ coverage_summary:
   # justes CONTRE LES ÉTIQUETTES, et la preuve réelle d'OND-CALC-1 est de SIX
   # items (OMPP-5, 6, 12, 18, 25, 29), pas huit — le plancher de 3 tient dans
   # les deux lectures. Déclaré plutôt que corrigé à la main.
-  # AJOUT le 2026-09-27 (docs/audits/dette-examen/pc-2.md §1, B1) : OMPP-29
+  # AJOUT le 2026-09-27 (pc-2.md (supprimé le 2026-10-22) §1, B1) : OMPP-29
   # comble le seul gap de cette notion (λ = ℓ/n sur une cote à n intervalles),
   # tagué OND-CALC-1 (ses trois distracteurs sont des erreurs de calcul
   # honnêtes, pas des refus de conclure — la réserve ci-dessus ne s'applique
   # pas à cet item).
   # MISE À JOUR 2026-10-20 (critique de fidélité des vagues D-E,
-  # docs/audits/critiques/pc-vagues-DE-fidelite.md, constat 5) : la
+  # pc-vagues-DE-fidelite.md (supprimé le 2026-10-22), constat 5) : la
   # description d'OND-CALC-1 ne nommait aucune erreur de diviseur sur une
   # cote à n intervalles, si bien que les trois distracteurs d'OMPP-29
   # tenaient l'étiquette sans être couverts par elle. La déclaration porte
@@ -2143,7 +2143,7 @@ coverage_summary:
     distracteurs la porte, une seule fois par item même si plusieurs la portent
     (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
     apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
-    web/scripts/lib/couverture-compte.mjs, gardé par web/scripts/resume-couverture.mjs.
+    web/scripts/lib/couverture-compte.mjs, gardé par resume-couverture.mjs (supprimé le 2026-10-22).
   per_misconception:
     OND-DIF-1:  { count: 4, items: [OMPP-19, OMPP-20, OMPP-21, OMPP-28] }
     OND-DIF-2:  { count: 5, items: [OMPP-19, OMPP-20, OMPP-21, OMPP-26, OMPP-27] }

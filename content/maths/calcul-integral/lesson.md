@@ -808,7 +808,7 @@ Une troisième question, toujours dans le registre du bac, sur l'intervalle $[1,
      `maths_fonction_logarithme` déjà présente dans le corpus. À confirmer
      contre une éventuelle convention de préfixe par filière (le corpus
      contient aussi des skill_code préfixés `sma_`) avant intégration en base.
-     (2) [CORRIGÉ, dette d'examen vague B — docs/audits/dette-examen/maths.md,
+     (2) [CORRIGÉ, dette d'examen vague B — maths.md (supprimé le 2026-10-22),
      § calcul-integral] Cette note affirmait qu'un chapitre "Fonctions
      primitives" précède "Calcul intégral" dans la progression, et que le
      dossier `content/maths/primitives/` "n'existe pas encore dans ce
@@ -865,7 +865,7 @@ Une troisième question, toujours dans le registre du bac, sur l'intervalle $[1,
      (validate-content : 0 échec). Rien n'attend plus ici.
 
      NOTE AJOUTÉE (dette d'examen, vague B — GAP-A "Primitive of u'/u ->
-     ln|u| (and u'/u² -> -1/u)", docs/audits/dette-examen/maths.md,
+     ln|u| (and u'/u² -> -1/u)", maths.md (supprimé le 2026-10-22),
      § calcul-integral) :
      (7) [PROSE LIVRÉE, 2026-09-27] R1 gagne "Généraliser : reconnaître u'/u
      et u'/u² dans une primitive", avec deux exemples travaillés originaux
@@ -921,7 +921,7 @@ Une troisième question, toujours dans le registre du bac, sur l'intervalle $[1,
      SExp est un jour vérifié.
 
      NOTE AJOUTÉE (dette de cadre G3, passe pédagogie, 2026-10-20 —
-     docs/audits/critiques/cadre-GH-pedagogie.md, correctifs 2, 3, 10, 15) :
+     cadre-GH-pedagogie.md (supprimé le 2026-10-22), correctifs 2, 3, 10, 15) :
      (10) [CORRIGÉ, correctif 15] Le chapitre 2 s'appuyait sur « la
      convention ∫ₐᵃ = 0, chapitre 4 » — un renvoi vers l'avant. La
      convention est maintenant énoncée là où elle sert pour la première fois

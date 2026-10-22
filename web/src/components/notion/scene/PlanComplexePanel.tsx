@@ -3,7 +3,7 @@
 /**
  * PlanComplexePanel — « le plan complexe » : un point M, un coefficient, un
  * centre, et l'image M' (Maths · nombres-complexes-2, tête de R5 ; spec
- * docs/pipeline/propositions/maths-nombres-complexes-2-scene-plan.md).
+ * maths-nombres-complexes-2-scene-plan.md (supprimé le 2026-10-22)).
  *
  * Le quatorzième manipulable sur l'appareillage des scènes (ADR 0041), le
  * premier des MATHÉMATIQUES en plan : opt-in au clic, étapes, pari avant tout,
