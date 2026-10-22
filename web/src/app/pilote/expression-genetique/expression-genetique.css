@@ -1,0 +1,37 @@
+/* Leçon pilote « Du gène à la protéine » — compléments à pilote.css.
+   Même règle que pilote.css : tout est scopé sous `.pilote`, et les couleurs
+   ne sont QUE des jetons (aucun littéral). Préfixe `eg-` : rien ne doit
+   croiser les classes du moteur logarithme. */
+
+/* scène : la table du code et les chaînes */
+.pilote .eg-cod { font-size: 17px; font-weight: 500; letter-spacing: .06em; font-variant-numeric: tabular-nums; }
+.pilote .eg-aa { font-size: 17px; font-weight: 700; }
+.pilote .eg-hit { fill: transparent; cursor: pointer; }
+.pilote .eg-trna { fill: var(--st-cell); stroke: var(--st-ink); stroke-width: 1.5; }
+.pilote .eg-bd { fill: var(--st-cell); stroke: var(--st-line); stroke-width: 1.5; }
+.pilote .eg-bd-x { fill: var(--st-fa); stroke: var(--st-a); }
+.pilote .eg-bd-stop { fill: var(--st-bg); stroke: var(--st-a); stroke-dasharray: 3 3; }
+
+/* panneau : les contrôles manipulables (cibles ≥ 44 px) */
+.pilote .eg-ctl { gap: 12px; }
+.pilote .eg-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pilote .eg-k { font: 600 0.9375rem var(--font-ui); min-width: 7.5em; color: var(--color-text-secondary); }
+.pilote .eg-grp { display: flex; gap: 8px; flex-wrap: wrap; }
+.pilote .eg-btn {
+  min-width: 44px; min-height: 44px; padding: 0 12px;
+  font: 700 1.125rem/1 var(--font-ui); font-variant-numeric: tabular-nums;
+  background: transparent; color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary); cursor: pointer;
+}
+.pilote .eg-btn:hover:not([disabled]):not([aria-pressed="true"]) { background: var(--color-surface-container-low); }
+.pilote .eg-btn[aria-pressed="true"] { background: var(--color-text-primary); color: var(--color-surface-base); }
+.pilote .eg-btn[disabled] { opacity: .35; cursor: default; }
+.pilote .eg-btn:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+.pilote .eg-wide { font-size: 0.9375rem; font-weight: 600; }
+.pilote .eg-pos { flex: 1; min-width: 0; text-align: center; font: 600 1rem var(--font-ui); font-variant-numeric: tabular-nums; }
+
+/* panneau : la rédaction modèle, et les listes numérotées (le reset de base
+   retire les numéros ; ici, l'ordre EST l'information) */
+.pilote .eg-ans { margin: 0 0 16px; padding-left: 22px; display: grid; gap: 8px; font-size: 1rem; line-height: 1.5; list-style: decimal; }
+.pilote[data-pilote="expression-genetique"] .next ol { list-style: decimal; }
+.pilote .eg-nw { white-space: nowrap; }
