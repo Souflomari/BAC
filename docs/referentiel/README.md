@@ -71,6 +71,11 @@ notes_de_lecture:               # passages illisibles, ambiguïtés, numérotati
   - "…"
 ```
 
+**Les cadres de PC** numérotent domaines, sous-domaines et chapitres, mais pas les capacités : leurs
+fichiers ajoutent un niveau `chapitres:` entre sous-domaine et capacités, et l'identifiant a quatre
+chiffres (exemple : `pc-pc 1.3.1.7` = domaine · sous-domaine · chapitre · rang de la puce). Les cadres
+de SVT ne numérotent pas non plus les capacités : le troisième chiffre y est l'ordre d'apparition.
+
 **Règles.** Rien d'inventé : un champ que le document ne donne pas est absent, pas deviné. Une
 lecture incertaine porte `incertain: true`. Les capacités gardent la numérotation du document ;
 c'est elle qui sert d'identifiant partout ailleurs (exemple : `svt-svt 2.3.1`), dans la bible, les
