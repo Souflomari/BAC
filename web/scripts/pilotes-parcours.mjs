@@ -3,7 +3,7 @@
  * vrai navigateur, comme le ferait un élève pressé.
  *
  *   node scripts/pilotes-parcours.mjs [--base http://localhost:3000]   (sans --base : lance `next start` sur le build)
- *        [--pilote logarithme] [--captures dossier] [--ecran 390x844] [--porte]
+ *        [--pilote logarithme] [--captures dossier] [--ecran 390x844] [--port 3947] [--porte]
  *
  * À chaque étape : répond à la question (première option), déroule les lignes
  * de calcul une à une, fait le geste demandé (bouton du panneau) quand
@@ -36,7 +36,7 @@ const [LARGEUR, HAUTEUR] = opt("--ecran", "1280x800").split("x").map(Number);
 const PILOTES = ["logarithme", "radioactivite", "expression-genetique"].filter((p) => !SEUL || p === SEUL);
 
 if (!BASE) {
-  const PORT = 3947;
+  const PORT = Number(opt("--port", "3947"));
   BASE = `http://127.0.0.1:${PORT}`;
   const { spawn } = await import("node:child_process");
   const WEB = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
