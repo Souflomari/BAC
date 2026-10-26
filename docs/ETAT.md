@@ -36,8 +36,9 @@ la vérification supervisée de la synchronisation (règle 7, `docs/pipeline/pro
 
 ## Décisions attendues du propriétaire
 
-1. **Le format de leçon** : les trois pilotes conviennent-ils ? Ce qui marche, ce qui est trop
-   lent, trop rapide ou trop chargé.
+1. **Le format de leçon** : les trois pilotes conviennent-ils ? Retours sur les maths reçus le
+   2026-10-26 ([`refonte/04-retours-pilotes.md`](refonte/04-retours-pilotes.md)) ; physique et SVT à
+   venir, puis la deuxième version des trois.
 2. **La bible** : les questions de [`docs/bible/QUESTIONS.md`](bible/QUESTIONS.md).
 3. **La production** : quand vérifier la synchronisation et fusionner (voir ci-dessus).
 4. **Les médias générés** (Gemini pour l'image et la vidéo, ElevenLabs pour la voix) : leurs usages
