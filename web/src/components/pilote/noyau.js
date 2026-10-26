@@ -68,7 +68,12 @@ const ctx={root,svg,$,E,defs,lerp,clamp,ease,fr,ty,esc,RM,wait,show,mtext,setMT,
   juste:cle=>{const st=parCle[cle];if(!st||!st.pari||S.first[cle]==null)return null;return !!st.pari.opts[S.first[cle]].ok;},
   renderMath:r=>renderMath(r),
   say:t=>say(t),
-  plain:t=>plain(t)};
+  plain:t=>plain(t),
+  // « Suivant » relu après un geste de l'élève (étapes à `need`)
+  majNav:()=>updateNav(),
+  // une animation de scène annulée par le prochain changement d'étape
+  tween:(sc,target,d)=>tweenTo(sc,target,d,run),
+  voir:el=>voir(el)};
 
 const L=construire(ctx);
 const BEATS=L.BEATS,CTL=L.CTL||{},MOTS=L.mots||{};
@@ -119,7 +124,7 @@ function go(i){
 
 /* ---------- le panneau ---------- */
 function phrases(st){const v=typeof st.text==='function'?st.text():st.text;return (Array.isArray(v)?v:[v]).filter(x=>x!=null&&x!=='').map(x=>typeof x==='string'?{t:x}:x);}
-const motsHTML=h=>String(h).replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g,(m,c,t)=>MOTS[c]?`<button type="button" class="mot" data-mot="${esc(c)}" aria-expanded="false">${t||c}</button>`:(t||c));
+const motsHTML=h=>String(h).replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]((?:\u202F|\u00A0)?[:;.,!?»)]+)?/g,(m,c,t,ponct)=>MOTS[c]?`<span class="nw"><button type="button" class="mot" data-mot="${esc(c)}" aria-expanded="false">${t||c}</button>${ponct||''}</span>`:(t||c)+(ponct||''));
 const texHTML=t=>`<div class="formula">${t.map(([x,alt])=>`<span class="m" data-display="1" data-tex="${esc(x)}">${esc(alt)}</span>`).join('')}</div>`;
 function apresHTML(P){return P.apres?`${P.apres.tex?texHTML(P.apres.tex):''}${P.apres.html?motsHTML(ty(P.apres.html)):''}`:'';}
 function derivHTML(st){const n=lignesVues(st);
@@ -143,6 +148,7 @@ function renderPanel(st){
   if(st.ctl)CTL[st.ctl].init(st);
   renderMath(body);updateNav();
 }
+function voir(el){if(el&&el.scrollIntoView)el.scrollIntoView({block:'nearest',behavior:RM.matches?'auto':'smooth'});}
 function isQuiz(P){return P.opts.some(o=>o.ok);}
 function pariHTML(st){const P=st.pari,a=S.ans[st.k],q=isQuiz(P);
   return `<div class="pari${P.kind==='verifie'?' verifie':''}"><div class="pari-k">${P.label||(q?'Réponds':'Ton pari')}</div><div class="opts">${P.opts.map((o,j)=>{let c='opt';if(a!=null){if(q){if(o.ok)c+=' ok';else if(a===j)c+=' ko';}else if(a===j)c+=' sel';}
@@ -155,7 +161,7 @@ function choose(st,j){
   root.querySelector('.pari').outerHTML=pariHTML(st);wireOpts(st);
   const btn=root.querySelector(`.opt[data-j="${j}"]`);if(btn&&!btn.disabled)btn.focus();else $('#next').focus();
   const fb=$('#fb');fb.innerHTML=motsHTML(ty(P.opts[j].fb||''));renderMath(fb);
-  if(first&&P.apres){const ap=$('#apres');ap.innerHTML=apresHTML(P);renderMath(ap);}
+  if(first&&P.apres){const ap=$('#apres');ap.innerHTML=apresHTML(P);renderMath(ap);voir(ap);}else voir(fb);
   if(first&&P.reveal){const my=++run,sc=scenes[st.scene];(async()=>{const fr0=[{p:{...st.pre,...P.reveal[0].p},d:P.reveal[0].d},...P.reveal.slice(1)];for(const f of fr0){if(my!==run)return;await tweenTo(sc,f.p,f.d||900,my);}})();}
   updateNav();say(plain(P.opts[j].fb||''));
 }
@@ -167,7 +173,7 @@ function updateNav(){const st=STEPS[cur],n=$('#next'),bet=!!(st.pari&&S.ans[st.k
 function ligneSuivante(st){
   const j=lignesVues(st);if(j>=st.deriv.length)return false;
   S.lignes[st.k]=j+1;
-  const li=root.querySelector(`.deriv li[data-l="${j}"]`);if(li){li.classList.remove('cache');li.scrollIntoView({block:'nearest',behavior:RM.matches?'auto':'smooth'});}
+  const li=root.querySelector(`.deriv li[data-l="${j}"]`);if(li){li.classList.remove('cache');voir(li);}
   const x=st.deriv[j];if(x.p){const my=++run;tweenTo(scenes[st.scene],x.p,x.d||700,my);}
   say(plain((x.alt||x.tex)+'. '+(x.r||'')));
   updateNav();return true;
@@ -183,7 +189,7 @@ function ouvrirMot(btn){
   if(ouvert){z.innerHTML='';return;}
   btn.setAttribute('aria-expanded','true');
   z.innerHTML=`<div class="mot-carte" role="note" aria-label="${esc('Le mot : '+(m.t||c))}"><div class="mot-k">Le mot</div><b>${m.t||c}</b><p>${ty(m.d)}</p>${m.fig||''}<button type="button" class="mot-x">Fermer</button></div>`;
-  renderMath(z);z.querySelector('.mot-x').addEventListener('click',()=>{z.innerHTML='';btn.setAttribute('aria-expanded','false');btn.focus();});
+  renderMath(z);voir(z.firstElementChild);z.querySelector('.mot-x').addEventListener('click',()=>{z.innerHTML='';btn.setAttribute('aria-expanded','false');btn.focus();});
   say(plain((m.t||c)+'. '+m.d));
 }
 const surClic=e=>{const b=e.target.closest&&e.target.closest('.mot');if(b&&root.contains(b)){e.preventDefault();ouvrirMot(b);}};

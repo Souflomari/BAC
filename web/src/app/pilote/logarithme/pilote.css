@@ -68,6 +68,10 @@
 .pilote .script.texte-seul > .kicker { margin-top: auto; }
 /* la navigation reste visible quand le panneau défile (longue dérivation) */
 .pilote .script > .nav { position: sticky; bottom: 0; background: var(--color-surface-base); }
+/* ce qui défile vers la vue (ligne de calcul, explication, fiche) s'arrête au-dessus de la barre */
+.pilote .script { scroll-padding-bottom: 104px; }
+/* un mot à fiche et sa ponctuation ne se séparent pas en fin de ligne */
+.pilote .nw { white-space: nowrap; }
 .pilote .dit .say { margin: 0; transition: opacity .5s ease, transform .5s ease; }
 .pilote .dit .say.later { opacity: 0; transform: translateY(6px); }
 .pilote .dit .say.fort { font-weight: 700; }

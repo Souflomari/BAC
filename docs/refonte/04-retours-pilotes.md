@@ -103,3 +103,9 @@ le pilote maths passe de 34 à 51 étapes, en huit parties finies chacune par «
 de ln (produit, inverse, quotient, puissance) sont enseignées avant le quiz ; un rappel en images de
 la dérivée précède A′(x) = 1/x ; ln est en rouge, 1/x en noir. La physique et la SVT gardent leur
 moteur, dans la coquille commune (carrés entiers déjà appliqués), en attendant le point 3.
+
+Point 3, physique, fait le 2026-10-26 : 56 étapes en dix parties, chacune finie par « Vérifie »
+(sauf le quiz final). Les barres « 100 → 83 → 69… » montrent le sixième qui part de ce qui reste ;
+les deux dés ont des faces différentes et l'histoire du survivant (10 lancers, aucun 6) est affichée ;
+les 6 rougissent puis quittent la grille ; N₀/2ⁿ, le passage des dés à N₀(5/6)ᵏ puis à N₀e^(−λt),
+t½, τ, A = λN et l'âge au carbone 14 sont développés ligne par ligne ; 18 fiches de mots.

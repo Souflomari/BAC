@@ -646,7 +646,7 @@ scene('end',{
 // Prendre la main : arrêter toute animation du noyau, poser la scène à l'état de l'étape, garder les clés tenues par l'élève.
 function prendre(sc,keys){ctx.stop();const keep={};keys.forEach(k=>keep[k]=sc.p[k]);Object.assign(sc.p,ctx.etape().pre,keep);}
 // « Suivant » reste fermé tant que le geste n'est pas fait ; le noyau lit `need` à l'arrivée sur l'étape, pas après le geste.
-function majSuivant(){const st=ctx.etape(),n=$('#next');if(!st||!st.need||!n)return;const ok=st.need();n.disabled=!ok;n.textContent=ok?'Suivant →':(st.needLabel||'Fais-le d’abord');}
+function majSuivant(){ctx.majNav();}
 function tw(sc,key,to,d,vivant){return new Promise(res=>{const a=sc.p[key];
   if(RM.matches||!d){sc.p[key]=to;sc.render();res();return;}
   const t0=performance.now();
@@ -1075,28 +1075,13 @@ const CTL={
       hooks.frame=sync;sync();}}
 };
 
-// Ce que l'élève vient de demander (l'explication d'une réponse, la fiche d'un mot) s'affiche en bas du panneau, sous
-// la barre « Suivant » collée : on le fait remonter pour qu'il se voie sans défiler. `fin` est le bas à montrer,
-// `haut` l'élément dont le début ne doit pas sortir du panneau.
-function voir(fin,haut){const sc=$('#script'),nv=sc.querySelector('.nav'),cont=sc.scrollHeight>sc.clientHeight+2?sc:null;
-  const a=fin.getBoundingClientRect(),h=(haut||fin).getBoundingClientRect(),b=nv.getBoundingClientRect(),top=cont?cont.getBoundingClientRect().top:0;
-  const dy=Math.min(a.bottom-(b.top-10),h.top-(top+10));
-  if(dy>2)(cont||window).scrollBy({top:dy,behavior:RM.matches?'auto':'smooth'});}
-let dernierFb='',dernierMot='';
-const obsFb=new MutationObserver(()=>{
-  const fb=$('#fb'),ap=$('#apres'),tf=(fb?fb.textContent.trim():'')+(ap?ap.textContent.trim():'');
-  if(fb&&fb.textContent.trim()&&tf!==dernierFb)voir(ap&&ap.textContent.trim()?ap:fb,fb);
-  dernierFb=tf;
-  const ca=$('#motz .mot-carte'),tm=ca?ca.textContent:'';
-  if(ca&&tm!==dernierMot)voir(ca);
-  dernierMot=tm;});
-obsFb.observe($('#body'),{childList:true,subtree:true});
+// (le noyau fait défiler l'explication, la ligne de calcul et la fiche de mot au-dessus de la barre)
 
 return {BEATS,STEPS,CTL,mots,
   reset(){S.moveN0=S.moveF=S.ageMoved=false;S.kmax=0;},
   plain:s=>s.replace(/λ/g,' lambda ').replace(/τ/g,' tau ').replace(/ %/g,' pour cent').replace(/\bln\b/g,'l n').replace(/N₀/g,'N zéro'),
   // la touche L lance les dés, sur les étapes à geste
   touche(e,st){if(st&&st.ctl==='tic'&&(e.key==='l'||e.key==='L')&&hooks.lancer){e.preventDefault();hooks.lancer();return true;}return false;},
-  demonter(){ep++;rolling=false;obsFb.disconnect();}};
+  demonter(){ep++;rolling=false;}};
 });
 }
