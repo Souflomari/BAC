@@ -109,3 +109,11 @@ Point 3, physique, fait le 2026-10-26 : 56 étapes en dix parties, chacune finie
 les deux dés ont des faces différentes et l'histoire du survivant (10 lancers, aucun 6) est affichée ;
 les 6 rougissent puis quittent la grille ; N₀/2ⁿ, le passage des dés à N₀(5/6)ᵏ puis à N₀e^(−λt),
 t½, τ, A = λN et l'âge au carbone 14 sont développés ligne par ligne ; 18 fiches de mots.
+
+Point 3, SVT, fait le 2026-10-26 : 58 étapes en neuf parties, chacune finie par « Vérifie ». La leçon
+s'ouvre sur « Ce qu'il faut savoir » (la protéine comme collier d'acides aminés et ses 20 sortes,
+l'hémoglobine et ses 4 chaînes dans le globule rouge, le zoom cellule → noyau → chromosome → ADN, le
+gène) avant l'énigme ; le cytoplasme et les ribosomes sont légendés ; l'ARN polymérase agit en trois
+gestes (ouvrir, lire, assembler) ; 5′ et 3′ sont des flèches ; les bases sont nommées ; l'ARNt, la
+méthionine et l'anticodon sont légendés et dérivés ligne par ligne ; 38 fiches de mots. Les trois
+manipulations (tableau du code, ribosome, atelier de mutation) sont gardées.
