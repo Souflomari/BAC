@@ -30,8 +30,22 @@
 .pilote .eg-wide { font-size: 0.9375rem; font-weight: 600; }
 .pilote .eg-pos { flex: 1; min-width: 0; text-align: center; font: 600 1rem var(--font-ui); font-variant-numeric: tabular-nums; }
 
-/* panneau : la rédaction modèle, et les listes numérotées (le reset de base
-   retire les numéros ; ici, l'ordre EST l'information) */
-.pilote .eg-ans { margin: 0 0 16px; padding-left: 22px; display: grid; gap: 8px; font-size: 1rem; line-height: 1.5; list-style: decimal; }
+/* scène : l'enzyme (un objet à part entière, pas une vitre), et le texte sur fond rouge */
+.pilote .eg-enz { fill: var(--st-fa); stroke: var(--st-a); stroke-width: 2.5; }
+.pilote .s-onsig { fill: var(--color-on-signal); }
+
+/* fiches de mots : le texte des petites figures suit la police de l'interface, et la fiche
+   qui s'ouvre sous un long texte se ramène à l'écran au-dessus de la navigation collante */
+.pilote .mot-carte svg text { font-family: var(--font-ui); }
+.pilote .mot-zone { scroll-margin-bottom: 96px; }
+
+/* panneau : les listes numérotées du bilan (le reset de base retire les numéros ; ici,
+   l'ordre EST l'information) */
 .pilote[data-pilote="expression-genetique"] .next ol { list-style: decimal; }
 .pilote .eg-nw { white-space: nowrap; }
+
+/* panneau : une étape qui porte une question, un geste ou un calcul a moins de place pour son
+   texte (retour du 2026-10-26 : le panneau ne doit pas déborder) — le texte y passe un cran
+   plus petit. */
+.pilote[data-pilote="expression-genetique"] #body:has(.pari, .ctl, .deriv) .dit { gap: .7em; margin-bottom: 14px; }
+.pilote[data-pilote="expression-genetique"] #body:has(.pari, .ctl, .deriv) .dit .say { font-size: clamp(1.1rem, 1.4vw, 1.35rem); }

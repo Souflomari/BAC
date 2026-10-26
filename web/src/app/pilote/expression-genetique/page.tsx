@@ -21,7 +21,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Du gène à la protéine — leçon pilote",
   description:
-    "L’expression de l’information génétique en 36 étapes : de la drépanocytose au raisonnement de l’exercice du bac.",
+    "L’expression de l’information génétique en 58 étapes : ce qu’il faut savoir (protéine, chromosome, gène), puis de la drépanocytose au raisonnement de l’exercice du bac.",
 };
 
 export default function PiloteExpressionGenetiquePage() {

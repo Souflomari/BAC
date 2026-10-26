@@ -2,8 +2,10 @@
 
 /**
  * ExpressionGenetiquePilote — la leçon pilote SVT « Du gène à la protéine »
- * (refonte 2026-10), sur le squelette commun.
- * Le moteur vit dans `expression-genetique-moteur.js`.
+ * (refonte 2026-10, deuxième version), sur le squelette commun.
+ * Le moteur vit dans `expression-genetique-moteur.js`, sur `noyau.js` ; les scènes dans
+ * `expression-genetique-scenes-*.js`, la donnée génétique dans `expression-genetique-code.js`,
+ * les fiches de mots dans `expression-genetique-mots.js`.
  */
 
 import { PiloteCoquille } from "./PiloteCoquille";
@@ -16,7 +18,6 @@ export function ExpressionGenetiquePilote() {
       matiere="SVT · 2ᵉ Bac"
       titre="Du gène à la protéine"
       monter={monterPilote}
-      format2={false}
       pourquoi={
         <>
           <li>
