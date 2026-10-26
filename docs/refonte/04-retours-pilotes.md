@@ -46,15 +46,54 @@ détails. Beaucoup d'améliorations à faire. Aimé : l'animation des règles à
 | 28 | ln = la primitive de 1/x qui s'annule en 1 | les deux courbes ont la même couleur ; montrer comment on passe de 1/x à ln x, et pourquoi ln 1 = 0 | couleurs distinctes (G8) ; ln 1 = 0 parce que l'aire de 1 à 1 est nulle (la bande se réduit à rien) ; la hauteur de 1/x devient la pente de ln x |
 | 33 | quiz : ln(1/8) | les règles de ln n'ont pas été expliquées | enseigner ln(ab), ln(1/a), ln(aⁿ) avant le quiz, chacune avec les aires (G6) |
 
-### C. Questions ouvertes (tour 1)
+### C. Questions ouvertes (tour 1), tranchées le 2026-10-26
 
-1. **G2** : carrés entiers seulement, ou fond blanc ?
-2. **« Les top 5 points sur les tapis »** : de quoi s'agit-il ?
-3. **Étapes 13 → 14** : la remarque sur le passage soudain tient-elle ?
-4. **Étape 2** : centrer le calcul posé ?
+1. **G2** : on garde les carrés, **seulement des carrés entiers**.
+2. « Les top 5 points sur les tapis » : oublié par le propriétaire, remarque abandonnée.
+3. Étapes 13 → 14 : la remarque ne tient pas, le passage reste tel quel.
+4. Étape 2 : **oui**, centrer le calcul posé.
 
-### D. Suite
+## Tour 2 — 2026-10-26 — pilotes SVT et physique
 
-Proposition : recueillir d'abord les retours sur la physique et la SVT, puisque la moitié des
-remarques porte sur le format commun (G1 à G8) ; faire ces changements une fois, puis la deuxième
-version des trois pilotes.
+**Consigne d'ensemble.** « Mes remarques pour les maths s'appliquent aux autres, et vice versa » :
+les remarques générales G1 à G11 valent pour les trois pilotes.
+
+### A. Nouvelles remarques générales
+
+| # | Remarque | Proposition |
+|---|---|---|
+| G9 | Chaque mot technique doit être expliqué quand il apparaît. Le propriétaire ne vient pas de la SVT et a été « très confus » au début (globule, drépanocytose, hémoglobine, acide aminé, chaîne β, chromosome, cytoplasme, ribosome, ARN polymérase, 3′ et 5′, bases, méthionine, anticodon) ; un élève en difficulté est dans la même situation. | Deux outils : (1) un court départ « ce qu'il faut savoir » qui montre les prérequis en images avant l'énigme ; (2) chaque mot technique, à sa première apparition, s'ouvre en une petite fiche illustrée sans quitter l'étape. |
+| G10 | « Tout ce qui est formule » : développer étape par étape (physique 16, 20, 21 ; maths 27, 28). | Une dérivation s'écrit ligne par ligne, chaque ligne avec sa raison (« on prend le ln des deux côtés, parce que… »), et apparaît au rythme de l'explication. |
+| G11 | Aimé : les manipulations et les simulations (les dés, le tableau du code génétique, le ribosome qu'on fait avancer) ; « avec les schémas et les petits graphiques, j'ai bien compris la transcription ». | Garder ; c'est la partie validée du format. |
+
+### B. SVT (`/pilote/expression-genetique`, 36 étapes)
+
+| Étape | Ce qu'elle montre | Remarque | Proposition |
+|---|---|---|---|
+| 1-3 | le globule en faucille, Pauling et Ingram, le gène sur le chromosome 11 | très confus au départ : globule, drépanocytose, hémoglobine, acide aminé, chaîne β, chromosome | G9 : commencer par ce qu'il faut savoir — la protéine comme chaîne d'acides aminés, l'hémoglobine et ses chaînes, le chromosome comme long ADN rangé dans le noyau — puis l'énigme ; « peut-être une petite restructuration » |
+| 4-6 | le noyau, le cytoplasme, les ribosomes ; transcription et traduction | aimé : que l'ADN ne quitte pas le noyau « arrive vraiment bien » ; mais expliquer sur la figure ce que sont le cytoplasme et les ribosomes | légender la figure et ouvrir une fiche pour chaque mot (G9) |
+| 8-11 | l'ARN polymérase, la copie lettre par lettre, 3′ → 5′ | qu'est-ce que l'ARN polymérase ? que veulent dire 3′ et 5′ ? les bases ne sont pas expliquées [transcription déformée : « les tapkins », « la cytidaminée »] | montrer l'enzyme en action (elle ouvre, lit, assemble) ; expliquer 3′ et 5′ par l'orientation du brin, comme le sens d'une flèche ; nommer les bases (adénine, thymine, guanine, cytosine, uracile) |
+| 18 | le tableau du code, à manipuler | « j'aime vraiment bien » | garder |
+| 19-20 | le ribosome, l'ARNt, l'anticodon | on ne sait pas ce qu'est une méthionine, un anticodon ; « mais les visuels sont bien » | G9 |
+
+### C. Physique (`/pilote/radioactivite`, 36 étapes)
+
+| Étape | Ce qu'elle montre | Remarque | Proposition |
+|---|---|---|---|
+| 5-10 | la simulation des dés | « j'aime vraiment bien » : elle aide à comprendre « et c'est plus joli » | garder |
+| 7 | le pari : combien de dés au bout de 10 tics ? | bon pari, contre-intuitif (l'intuition dit 10 × 1/6) ; mais expliquer davantage pourquoi c'est 1/6 **de ce qui reste** | après le pari, compter tic par tic : 100 → 83 → 69…, en montrant que chaque tic enlève un sixième des dés encore là, pas un sixième des 100 du départ |
+| 9 | le dé qui a survécu à 10 lancers et le dé neuf | **bogue** : les deux affichent souvent la face 3 (le dé neuf montre toujours 3), on croit voir le même dé | deux faces différentes, et l'histoire du survivant (ses 10 lancers sans 6) affichée |
+| 5-10 | les 6 en rouge | bien, mais ajouter une petite animation rapide où l'on voit les 6 sortir | les dés tombés sur 6 rougissent puis quittent la grille |
+| 16 | après *n* demi-vies, il reste *N*₀/2ⁿ | expliquer pourquoi | G10 : *N*₀ → *N*₀/2 → *N*₀/4 → *N*₀/8, une demi-vie à la fois, puis la règle |
+| 20 | de la réalité (les dés) à la formule | pas clair | G10 : écrire le premier tic, le deuxième, le troisième, puis généraliser |
+| 21 | de (5/6)ᵏ à l'exponentielle et à λ | développer comment on arrive à la formule et comment on passe de l'une à l'autre | G10 : chaque réécriture sur sa ligne, avec sa raison (5/6 = e^(−ln(6/5)), donc (5/6)ᵏ = e^(−k ln(6/5))) |
+
+### D. La deuxième version : le plan
+
+1. **Un noyau commun aux trois pilotes.** Les trois moteurs ont aujourd'hui chacun leur copie du
+   même mécanisme (déroulé des étapes, paris, panneau, voix, clavier). On le met en commun, puis on
+   y fait les changements de format **une seule fois** : texte en phrases courtes qui apparaissent
+   au rythme de l'animation (G1, G3, G4), carrés entiers (G2), questions de compréhension « Vérifie »
+   distinctes des paris (G5), fiches de mots (G9), dérivations ligne par ligne (G10).
+2. **Le pilote maths en deuxième version**, sur ce noyau, avec toutes les remarques du tour 1.
+3. **Puis la physique et la SVT**, de la même façon.
