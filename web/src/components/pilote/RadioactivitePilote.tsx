@@ -1,101 +1,29 @@
 "use client";
 
 /**
- * RadioactivitePilote — la leçon pilote « décroissance radioactive » au
- * nouveau format (refonte 2026-10), habillée Grille.
- *
- * Même squelette que `LogarithmePilote` : une scène pleine largeur (à
- * gauche), un script court (à droite), avancés étape par étape par l'élève ;
- * un pari avant chaque révélation. Ici l'élève lance lui-même les dés. Le
- * moteur impératif vit dans `radioactivite-moteur.js` ; ce composant ne fait
- * que poser le squelette et le monter / démonter.
+ * RadioactivitePilote — la leçon pilote « décroissance radioactive »
+ * (refonte 2026-10), sur le squelette commun. L'élève lance lui-même les dés.
+ * Le moteur vit dans `radioactivite-moteur.js`.
  */
 
-import { useEffect, useRef } from "react";
-import { useHydrated } from "@/lib/useHydrated";
+import { PiloteCoquille } from "./PiloteCoquille";
 import { monterPilote } from "./radioactivite-moteur";
 
 export function RadioactivitePilote() {
-  const racine = useRef<HTMLDivElement>(null);
-  // ADR 0032 : servies par le serveur, les commandes restent `disabled` +
-  // `aria-busy` jusqu'à ce que React ait la main. Le moteur ne se monte
-  // qu'APRÈS ce rendu : c'est lui qui pose ensuite l'état réel des boutons
-  // (« Retour » inerte à l'étape 1), et React ne repasse plus dessus.
-  const pret = useHydrated();
-
-  useEffect(() => {
-    const el = racine.current;
-    if (!el || !pret) return;
-    const demonter = monterPilote(el);
-    return () => demonter?.();
-  }, [pret]);
-
-  const attente = pret ? {} : { disabled: true, "aria-busy": true as const };
-
   return (
-    <div ref={racine} className="pilote" data-pilote="radioactivite" aria-busy={pret ? undefined : true}>
-      <div className="pilote-barre">
-        <div className="pilote-titre">
-          <span className="pilote-matiere">Physique-chimie · 2ᵉ Bac</span>
-          <strong className="font-display">Décroissance radioactive</strong>
-          <span className="pilote-badge">pilote</span>
-        </div>
-        <nav className="beats" id="beats" aria-label="Parties de la leçon" />
-        <div className="pilote-outils">
-          <button type="button" className="tbtn" id="voice" aria-pressed="false" {...attente}>
-            Voix
-          </button>
-          <button type="button" className="tbtn" id="why" {...attente}>
-            Pourquoi ce format&#8239;?
-          </button>
-        </div>
-      </div>
-      <div className="pilote-main">
-        <section className="stage-wrap" aria-label="Scène animée">
-          <div className="plaque" id="plaque" />
-          <svg
-            data-pilote-scene=""
-            viewBox="0 0 1000 720"
-            preserveAspectRatio="xMidYMid meet"
-            role="img"
-            aria-label="Animation de la leçon"
-          />
-          <div className="stage-foot">
-            <span id="count" />
-            <span className="keys">← → pour avancer · 1 2 3 pour répondre · L pour lancer</span>
-          </div>
-        </section>
-        <aside className="script" id="script">
-          <div className="kicker" id="kicker" />
-          <div className="body" id="body" aria-live="polite" />
-          <div className="nav">
-            <button type="button" id="prev" className="ghost" {...attente}>
-              ← Retour
-            </button>
-            <button type="button" id="next" className="primary" {...attente}>
-              Suivant →
-            </button>
-          </div>
-        </aside>
-      </div>
-      <dialog id="whyd">
-        <h2>Pourquoi ce format</h2>
-        <ul>
-          <li>
-            <b>Une idée par écran.</b> Le chapitre devient 36 étapes courtes. On ne lit jamais plus de trois
-            phrases d’affilée.
-          </li>
+    <PiloteCoquille
+      nom="radioactivite"
+      matiere="Physique-chimie · 2ᵉ Bac"
+      titre="Décroissance radioactive"
+      monter={monterPilote}
+      touches="← → pour avancer · 1 2 3 pour répondre · L pour lancer"
+      format2={false}
+      pourquoi={
+        <>
           <li>
             <b>Le hasard d’abord, la formule ensuite.</b> C’est toi qui lances les dés&#8239;: la loi{" "}
             <i>N</i>(<i>t</i>)&#8239;=&#8239;<i>N</i>₀e<sup>−λ<i>t</i></sup> arrive comme le résumé de ce que tes dés
             ont fait.
-          </li>
-          <li>
-            <b>À ton rythme.</b> Rien ne bouge sans toi&#8239;: chaque animation est une étape que tu déclenches
-            (→ ou espace).
-          </li>
-          <li>
-            <b>Un pari avant chaque révélation.</b> Tu t’engages avant de voir&#8239;: c’est ce qui fait retenir.
           </li>
           <li>
             <b>L’histoire comme moteur.</b> Chaque idée arrive parce que quelqu’un en a eu besoin — Becquerel,
@@ -105,16 +33,8 @@ export function RadioactivitePilote() {
             <b>Le bac en ligne de mire.</b> Un raisonnement rédigé comme le correcteur l’attend, puis trois
             questions tirées des pièges des sujets.
           </li>
-        </ul>
-        <p className="small">
-          Leçon pilote&#8239;: elle sert à juger le même format sur une deuxième matière avant de l’étendre.
-        </p>
-        <form method="dialog">
-          <button type="submit" className="tbtn" {...attente}>
-            Fermer
-          </button>
-        </form>
-      </dialog>
-    </div>
+        </>
+      }
+    />
   );
 }

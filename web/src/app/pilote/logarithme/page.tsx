@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Logarithme — leçon pilote",
-  description: "La fonction logarithme en 34 étapes : de Napier (1614) à la définition du bac.",
+  description: "La fonction logarithme pas à pas : de Napier (1614) à la définition du bac et aux règles de calcul.",
 };
 
 export default function PiloteLogarithmePage() {

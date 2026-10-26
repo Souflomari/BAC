@@ -97,3 +97,9 @@ les remarques générales G1 à G11 valent pour les trois pilotes.
    distinctes des paris (G5), fiches de mots (G9), dérivations ligne par ligne (G10).
 2. **Le pilote maths en deuxième version**, sur ce noyau, avec toutes les remarques du tour 1.
 3. **Puis la physique et la SVT**, de la même façon.
+
+**Avancement.** Points 1 et 2 faits le 2026-10-26 ([ADR 0043](../decisions/0043-noyau-des-pilotes.md)) :
+le pilote maths passe de 34 à 51 étapes, en huit parties finies chacune par « Vérifie » ; les règles
+de ln (produit, inverse, quotient, puissance) sont enseignées avant le quiz ; un rappel en images de
+la dérivée précède A′(x) = 1/x ; ln est en rouge, 1/x en noir. La physique et la SVT gardent leur
+moteur, dans la coquille commune (carrés entiers déjà appliqués), en attendant le point 3.

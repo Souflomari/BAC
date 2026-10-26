@@ -88,6 +88,8 @@ jobs:
         run: node scripts/source-en-double.mjs --porte
       - name: Hydratation sans désaccord
         run: node scripts/desaccords-hydratation.mjs --porte
+      - name: Leçons pilotes parcourues de bout en bout
+        run: node scripts/pilotes-parcours.mjs --porte
       - name: Étiquettes de figure non coupées
         run: node scripts/marge-etiquettes.mjs --porte
       - name: Figures (cadre, panneau, contraste ; thèmes clair et sombre)
