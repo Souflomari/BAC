@@ -2,8 +2,8 @@
 
 /**
  * RadioactivitePilote — la leçon pilote « décroissance radioactive »
- * (refonte 2026-10), sur le squelette commun. L'élève lance lui-même les dés.
- * Le moteur vit dans `radioactivite-moteur.js`.
+ * (refonte 2026-10, deuxième version), sur le squelette commun. L'élève lance
+ * lui-même les dés. Le moteur vit dans `radioactivite-moteur.js`, sur `noyau.js`.
  */
 
 import { PiloteCoquille } from "./PiloteCoquille";
@@ -17,7 +17,6 @@ export function RadioactivitePilote() {
       titre="Décroissance radioactive"
       monter={monterPilote}
       touches="← → pour avancer · 1 2 3 pour répondre · L pour lancer"
-      format2={false}
       pourquoi={
         <>
           <li>

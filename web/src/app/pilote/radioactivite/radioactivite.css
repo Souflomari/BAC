@@ -31,6 +31,10 @@
 .pilote .die-six .die { fill: var(--st-fa); stroke: var(--st-a); stroke-width: 2.5; }
 .pilote .die-six .pip { fill: var(--st-a); }
 .pilote .die-out { opacity: .14; }
+/* l'atome : protons pleins, neutrons creux, électrons gris ; le rouge est réservé à ce qui part */
+.pilote .prot { fill: var(--st-ink); stroke: var(--st-ink); }
+.pilote .neut { fill: var(--st-cell); stroke: var(--st-ink); }
+.pilote .elec { fill: var(--st-c); }
 /* La plaque de Becquerel est un OBJET : son papier est noir et ses silhouettes
    sont noires dans les deux thèmes (le texte le dit). Aucun jeton n'est
    invariant au thème ; on croise donc deux jetons qui s'inversent l'un l'autre. */
@@ -46,3 +50,11 @@
 .pilote .band { fill: var(--st-fa); }
 /* une étiquette qui croise un trait reste lisible : un liseré couleur de fond */
 .pilote .halo { paint-order: stroke; stroke: var(--st-bg); stroke-width: 6px; stroke-linejoin: round; }
+
+/* dix parties dans la barre du haut : des noms courts, un peu plus petits, pour qu'ils tiennent sans ellipse */
+.pilote[data-pilote="radioactivite"] .beats { gap: 4px; }
+.pilote[data-pilote="radioactivite"] .beat { font-size: 0.6875rem; min-width: 3.9em; flex: calc(var(--n) + 4) 1 0; }
+/* « Mémoire » et « Mesures » : un peu plus de place que les autres */
+.pilote[data-pilote="radioactivite"] .beat:nth-child(3), .pilote[data-pilote="radioactivite"] .beat:nth-child(7) { min-width: 4.7em; }
+/* un mot à fiche et la ponctuation qui le suit ne se séparent pas à la ligne */
+.pilote .nw { white-space: nowrap; }

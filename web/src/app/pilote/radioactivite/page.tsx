@@ -1,6 +1,6 @@
 /**
- * /pilote/radioactivite — la leçon pilote de physique au nouveau format
- * (refonte 2026-10), sur le modèle de /pilote/logarithme.
+ * /pilote/radioactivite — la leçon pilote de physique, deuxième version
+ * (refonte 2026-10), sur le noyau commun des pilotes comme /pilote/logarithme.
  *
  * Plein écran sous l'en-tête : la scène prend la largeur, le script se lit
  * à droite. Pas de pied de page : la leçon occupe la hauteur de la fenêtre.
@@ -22,7 +22,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Décroissance radioactive — leçon pilote",
   description:
-    "La décroissance radioactive en 36 étapes : de Becquerel (1896) à la datation au carbone 14, en lançant soi-même les dés.",
+    "La décroissance radioactive en 56 étapes : de Becquerel (1896) à la datation au carbone 14, en lançant soi-même les dés.",
 };
 
 export default function PiloteRadioactivitePage() {
