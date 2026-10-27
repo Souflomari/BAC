@@ -48,7 +48,7 @@ const ty=s=>String(s).replace(/ ([?!;:»])/g,' $1').replace(/« /g,'« ');
 // pas une ligne, « ln 2 » reste soudé. Hors des balises et des [[fiches]].
 const typo=h=>String(h).split(/(<[^>]+>|\[\[[^\]]*\]\])/).map((p,i)=>i%2?p:p
   .replace(/([A-Za-zÀ-ÖØ-öø-ÿ\u0370-\u03FF’']+(?:-[A-Za-zÀ-ÖØ-öø-ÿ\u0370-\u03FF]+)+)/g,'<span class="nw">$1</span>')
-  .replace(/ ([×÷=+−→≈≤≥])/g,'\u00A0$1')
+  .replace(/ ([×÷=+−→≈≤≥]|&lt;|&gt;)/g,'\u00A0$1')
   .replace(/\b(ln|log|exp) (?=\S)/g,'$1\u00A0')).join('');
 const tyP=s=>typo(ty(s));
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -191,8 +191,9 @@ function messagePari(st,j){const P=st.pari,o=P.opts[j];
   if(!isQuiz(P))return motsHTML(tyP(o.fb||''));
   if(o.ok)return motsHTML(tyP(o.fb||'Oui.'));
   if(!resolu(st))return `<b class="fb-lead">Pas tout à fait.</b> ${motsHTML(tyP(o.indice||o.fb||''))} <span class="fb-encore">Choisis une autre réponse.</span>`;
-  const bon=P.opts.find(x=>x.ok);
-  return `${motsHTML(tyP(o.fb||''))}<span class="fb-bon"><b>La réponse : ${tyP(bon.t)}.</b> ${motsHTML(tyP(bon.fb||''))}</span>`;}
+  // après deux erreurs, l'explication de la bonne option suit « La réponse : … » : son « Oui : » initial tombe
+  const bon=P.opts.find(x=>x.ok),expl=String(bon.fb||'').replace(/^(Oui|Exactement|Bien vu|Juste|Bravo|C’est ça|C'est ça)\s*[:.,!—–-]?\s*/i,'');
+  return `${motsHTML(tyP(o.fb||''))}<span class="fb-bon"><b>La réponse : ${tyP(bon.t)}.</b> ${motsHTML(tyP(/^(ln|log|exp|[a-z]\b)/.test(expl)?expl:expl.charAt(0).toUpperCase()+expl.slice(1)))}</span>`;}
 function choose(st,j){
   const P=st.pari,q=isQuiz(P),k=st.k,fb=$('#fb');
   if(!q&&S.ans[k]!=null)return;

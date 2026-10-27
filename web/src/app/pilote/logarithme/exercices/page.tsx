@@ -16,7 +16,7 @@ import { manifestePourHeader } from "@/lib/palette-notions";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Logarithme — exercices du pilote",
+  title: "Fonction logarithme — exercices",
   description: "Des exercices générés sur le logarithme népérien, du calcul aux équations du bac.",
 };
 

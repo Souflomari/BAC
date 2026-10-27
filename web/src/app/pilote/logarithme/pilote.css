@@ -93,7 +93,7 @@
 .pilote .deriv li.ancien { padding: 4px 12px; cursor: pointer; animation: none; }
 .pilote .deriv li.ancien .m { font-size: 0.9375rem; }
 .pilote .deriv li.ancien:not(.ouvert) .raison { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
-.pilote .deriv .m { font-size: 1.0625rem; overflow-x: auto; overflow-y: hidden; }
+.pilote .deriv .m { font-size: 1.0625rem; overflow-x: auto; overflow-y: hidden; padding-bottom: 4px; }
 .pilote .deriv .m .katex-display { margin: 0; text-align: left; }
 .pilote .deriv .raison { font-size: 0.9375rem; line-height: 1.4; color: var(--color-text-secondary); }
 /* un mot technique : il ouvre sa fiche sans quitter l'étape */
@@ -216,8 +216,18 @@
 .dark .pilote .primary { background: var(--color-text-secondary); border-color: var(--color-text-secondary); }
 .dark .pilote .deriv li, .dark .pilote .formula { background: var(--color-surface-container-high); }
 
-@media (max-width: 1100px) and (min-width: 900px) {
+/* entre 900 et 1279 px, les noms entiers des parties (jusqu'à onze) ne tiennent à côté du titre
+   que sans la matière ni les filières */
+@media (max-width: 1279px) and (min-width: 900px) {
   .pilote .pilote-matiere, .pilote .pilote-filieres { display: none; }
+}
+/* écrans bas (1366 × 768) : le panneau regagne sa marge haute */
+@media (max-height: 780px) and (min-width: 900px) {
+  .pilote .script { padding-top: 22px; }
+  .pilote .kicker { margin-bottom: 14px; }
+  .pilote .dit { gap: .8em; margin-bottom: 16px; }
+  .pilote .opt { padding-top: 12px; padding-bottom: 12px; }
+  .pilote .opt kbd { font-size: 1.5rem; }
 }
 @media (max-width: 899px) {
   .pilote { height: auto; }

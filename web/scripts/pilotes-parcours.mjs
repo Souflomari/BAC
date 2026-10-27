@@ -132,6 +132,20 @@ for (const nom of PILOTES) {
     if (st.longues.length) infos.push(`${nom} : six étapes de suite sans pari, question ni geste, jusqu'aux étapes ${st.longues.join(", ")}`);
   }
 
+  // une capture attend la fin de l'animation de l'étape (le noyau note l'étape « vue » à la dernière image)
+  const finAnimation = () =>
+    page
+      .waitForFunction(
+        () => {
+          const L = document.querySelector("[data-pilote]").__lecon;
+          const i = Number(document.querySelector("#count").textContent.match(/étape (\d+)/)[1]) - 1;
+          return !L || !!L.S.vu[L.STEPS[i].k];
+        },
+        null,
+        { timeout: 8000 },
+      )
+      .catch(() => {});
+
   const vues = new Set();
   const debordent = [];
   const vides = [];
@@ -179,7 +193,7 @@ for (const nom of PILOTES) {
     if (e.lab.startsWith("Recommencer")) {
       if (e.deborde) debordent.push(e.i);
       await transcrire(e.i);
-      if (CAPTURES) await page.screenshot({ path: path.join(CAPTURES, nom, `etape-${String(e.i).padStart(2, "0")}.png`) });
+      if (CAPTURES) await finAnimation(), await page.screenshot({ path: path.join(CAPTURES, nom, `etape-${String(e.i).padStart(2, "0")}.png`) });
       break;
     }
     if (e.dis) {
@@ -218,7 +232,7 @@ for (const nom of PILOTES) {
     // l'étape est complète : on la mesure, on la capture, on avance
     if (e.deborde) debordent.push(e.i);
     if (e.rempli < 0.34) vides.push(e.i);
-    if (CAPTURES) await page.screenshot({ path: path.join(CAPTURES, nom, `etape-${String(e.i).padStart(2, "0")}.png`) });
+    if (CAPTURES) await finAnimation(), await page.screenshot({ path: path.join(CAPTURES, nom, `etape-${String(e.i).padStart(2, "0")}.png`) });
     await transcrire(e.i);
     await page.click("#next");
   }

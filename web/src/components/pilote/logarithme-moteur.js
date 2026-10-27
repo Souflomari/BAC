@@ -831,7 +831,7 @@ const STEPS=[
 {cle:'demi',beat:7,scene:'courbe',set:{cp:1,csx:1,csy:1,cLab:0},seq:[{p:{csx:2},d:2200,w:700},{p:{csy:.5},d:2200,w:300},{p:{cLab:1},d:600}],
   text:['Combien vaut ln 0,5 ? Prends l’aire grise, de 0,5 à 1.',
     {t:'Étire-la par 2 et écrase-la par 2 : elle devient l’aire de 1 à 2, qui vaut 0,69.',a:1},
-    {t:'Mais en allant de 1 vers 0,5, on recule : ln perd cette aire au lieu de la gagner. ln 0,5 = −0,69 = −ln 2.',a:2,fort:true},
+    {t:'Mais en allant de 1 vers 0,5, on recule : ln perd cette aire au lieu de la gagner. Donc ln 0,5 = −ln 2 ≈ −0,69.',a:2,fort:true},
     {t:'Pour tout <i>a</i> > 0, c’est la règle de l’[[inverse]] :',a:2}],
   tex:[['\\ln\\dfrac{1}{a} = -\\ln a','ln(1/a) = −ln a']]},
 {cle:'domaine',beat:7,scene:'courbe',set:{half:0,cp:0,cLab:0,dot5:0,dom:0,near:1,xd:.5},seq:[{p:{xd:.12},d:3000,w:600},{p:{dom:1},d:900,w:400}],

@@ -10,8 +10,8 @@
  * fausse, valeur piège) reçoit son explication et note l'erreur classique
  * qu'elle trahit. La fin récapitule ce qui est acquis et les erreurs vues.
  *
- * Rien n'est enregistré : c'est un pilote (le modèle apprenant viendra après
- * la validation du format).
+ * Rien n'est encore enregistré (le modèle apprenant viendra après la
+ * validation du format).
  */
 
 import Link from "next/link";
@@ -226,8 +226,8 @@ export function ExercicesPilote({
                 ))}
               </ul>
               <p className="exos-petit">
-                Dans l’application, ces erreurs choisiront tes prochains exercices. Ici, c’est un pilote : rien
-                n’est enregistré.
+                Dans l’application, ces erreurs choisiront tes prochains exercices. Ici, rien n’est encore
+                enregistré.
               </p>
             </>
           )}
