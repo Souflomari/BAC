@@ -167,3 +167,40 @@ séance enseigne ; ceux de la séance 2 des maths sont rangés à part et annonc
   jetons sombres globaux est une décision qui dépasse les pilotes.
 - **Le mode concentration** (masquer l'en-tête du site pendant une leçon) : à décider avec le
   reste de la navigation.
+
+## 5. Avancement — V3 faite le 2026-10-27
+
+| Pilote | Étapes | Parties | Exercices |
+|---|---|---|---|
+| Maths `/pilote/logarithme` | 55 | Savoir · Énigme · Table · Trous · Règle · Aire · Dérivée · Courbe · Règles · Au bac · Bilan | 14 (9 de la séance 1, 5 rangés en séance 2) |
+| Physique `/pilote/radioactivite` | 56 | Savoir · Énigme · Écrire · Cent dés · Demi-vie · Formule · Grandeurs · Datation · Retour · Au bac · Bilan | 11 |
+| SVT `/pilote/expression-genetique` | 54 | Savoir · Énigme · Messager · Copier · Code · Traduire · Mutation · Retour · Au bac · Bilan | 10 |
+
+Tous les constats de la §3 sont traités. Contrôles : le parcours automatique répond toujours au
+pire cas (mauvaises réponses d'abord, explications les plus longues) et ne trouve ni défaut ni
+débordement à 1280 × 800, 1366 × 768, sur téléphone et en sombre ; les exercices passent 300 tirages
+par gabarit ; batterie verte. J'ai relu les trois textes intégraux et refait les calculs.
+
+**À regarder en priorité** (le reste a peu changé depuis la v2) :
+
+- partout : une erreur dans un « Vérifie » (l'indice, puis le second essai) ; le bilan ; la page
+  d'exercices ;
+- maths : « Ce qu'il faut savoir » (1-2), les pas et les aires (26), à gauche de 1 (36-38),
+  e pour tous (34-35), les règles par les aires (41-46), « Au bac » (48-51) ;
+- physique : « Écrire la désintégration » (7-12), la formule sans exp supposé connu (28-34),
+  la tangente et τ (39-40), le choix du radioélément (45-47), « Au bac » (49-52) ;
+- SVT : ADN et ARN comparés (21), les trois lignes (22), la traduction avec les sites P et A
+  (30-34), le schéma à légender (35), l'insertion (43).
+
+**Ce qui manque encore, en clair :**
+
+- maths : la séance 2 (limites, (ln u)′, étude complète) — §4.4 ;
+- physique : le diagramme (N, Z) (capacités 1.2.1.3-4) n'est ni dans la leçon ni dans les
+  exercices ; il tient en 2 ou 3 étapes à ajouter si le format est validé ;
+- téléphone : les étiquettes des scènes restent petites (§4.4).
+
+**Faits à confirmer** (repris de la v2 ou tranchés par prudence, non revérifiés à la source) :
+« vingt ans » de travail de Napier ; Sarasa « élève » de Saint-Vincent ; la demi-vie du thoron
+prise à 56 s ; « une valeur seule, sans expression littérale, perd des points » (usage des
+correcteurs, pas une ligne de barème) ; le découpage 0,25 + 0,25 de l'explication dans le barème
+SVT de 2026 (indiqué « indicatif ») ; les demi-vies des tables d'exercices de physique.
