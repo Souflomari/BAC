@@ -542,7 +542,7 @@ scene('bandes',{
     this.setR('r4',1,8,p.r4*(1-p.b3),'f-b');this.lab('r4',1,8,'ln 8 ?',p.r4*(1-p.b3));
     this.setR('b1',1,2,p.b3,'f-b');this.setR('b2',2,4,p.b3,'f-a');this.setR('b3',4,8,p.b3,'f-b');
     ['b1','b2','b3'].forEach((k,i)=>this.lab(k,2**i,2**(i+1),'≈ 0,69',p.b3));
-    this.brace('b8',1,8,'ln 8 ≈ 3 × 0,69 ≈ 2,08',p.b3);
+    this.brace('b8',1,8,'ln 8 = 3 ln 2 ≈ 2,08',p.b3);
     // la racine carrée : deux bandes égales
     this.setR('h1',1,2,p.h4,'f-b');this.setR('h2',2,4,p.h4,'f-a');
     this.lab('h1',1,2,'≈ 0,69',p.h4);this.lab('h2',2,4,'≈ 0,69',p.h4);this.brace('b4',1,4,'ln 4 ≈ 1,39',p.h4);
@@ -562,8 +562,8 @@ scene('retour',{
     E('text',{x:500,y:182,class:'mono t-big s-ink','text-anchor':'middle',text:'2718281 × 3141592'},g);
     const R=780;
     this.g1=E('g',{},g);T(this.g1,R-190,278,'ln 2718281 ≈','t-lab s-dim','end');E('text',{x:R,y:278,class:'mono t-big s-ink','text-anchor':'end',text:'14,8155'},this.g1);
-    this.g2=E('g',{},g);T(this.g2,R-190,326,'ln 3141592 ≈','t-lab s-dim','end');E('text',{x:R,y:326,class:'mono t-big s-ink','text-anchor':'end',text:'+ 14,9603'},this.g2);
-    this.g3=E('g',{},g);E('line',{x1:R-170,x2:R,y1:344,y2:344,class:'k-dim','stroke-width':2},this.g3);T(this.g3,R-190,386,'une addition :','t-lab s-dim','end');E('text',{x:R,y:386,class:'mono t-big s-ink','text-anchor':'end',text:'29,7758'},this.g3);
+    this.g2=E('g',{},g);T(this.g2,R-190,326,'ln 3141592 ≈','t-lab s-dim','end');E('text',{x:R,y:326,class:'mono t-big s-ink','text-anchor':'end',text:'+ 14,9602'},this.g2);
+    this.g3=E('g',{},g);E('line',{x1:R-170,x2:R,y1:344,y2:344,class:'k-dim','stroke-width':2},this.g3);T(this.g3,R-190,386,'une addition :','t-lab s-dim','end');E('text',{x:R,y:386,class:'mono t-big s-ink','text-anchor':'end',text:'29,7757'},this.g3);
     this.g4=E('g',{},g);T(this.g4,R-230,462,'la table, lue à l’envers :','t-lab s-dim','end');RT(this.g4,R,462,'8,54 × 10^{12}','t-big s-a','end',18);
     this.g5=E('g',{},g);T(this.g5,300,570,'2,718281… = e','t-titre s-ink','middle');T(this.g5,700,570,'3,141592… = π','t-titre s-ink','middle');
   },
@@ -891,7 +891,7 @@ const STEPS=[
     ['(ln 2)<sup>3</sup> − ln 3',false,'L’exposant descend devant : ln(2<sup>3</sup>) = 3 ln 2, pas (ln 2)<sup>3</sup>. Donc 3 ln 2 − ln 3.','Dans 2<sup>3</sup>, l’exposant descend-il devant ln, ou reste-t-il en puissance ?']]),reveal:[{p:{q38:1},d:900}]}},
 {cle:'retour',beat:8,scene:'retour',set:{l1:0,l2:0,sum:0,res:0,wink:0},seq:[{p:{l1:1},d:600,w:600},{p:{l2:1},d:600,w:300},{p:{sum:1},d:700,w:500},{p:{res:1},d:700,w:700}],
   text:['Retour à l’énigme : 2\u202F718\u202F281 × 3\u202F141\u202F592.',
-    {t:'Avec une table de ln, on additionne : 14,8155 + 14,9603 = 29,7758.',a:0},
+    {t:'Avec une table de ln, on additionne : 14,8155 + 14,9602 = 29,7757.',a:0},
     {t:'Lue à l’envers, la table donne 8,54 × 10<sup>12</sup>. Une addition au lieu de 49 produits.',a:3,fort:true},
     {t:'Et ces deux nombres : tu les reconnais ?',a:3}],
   pari:{reveal:[{p:{wink:1},d:800}],opts:[
