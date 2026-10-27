@@ -118,7 +118,7 @@ for (const nom of PILOTES) {
       ),
       sansRetour: L.STEPS.flatMap((x, i) => (x.pari ? x.pari.opts.filter((o) => !o.fb).map(() => i + 1) : [])),
       plusieursJustes: L.STEPS.flatMap((x, i) => (x.pari && x.pari.opts.filter((o) => o.ok).length > 1 ? [i + 1] : [])),
-      nomsLongs: L.BEATS.map((b) => b.court || b.name).filter((n) => n.length > 10),
+      nomsLongs: L.BEATS.map((b) => b.court || b.name).filter((n) => n.length > 9),
       longues,
     };
   });
@@ -183,9 +183,22 @@ for (const nom of PILOTES) {
       break;
     }
     if (e.dis) {
-      // un pari, une question, ou le second essai d'une question
+      // un pari, une question, ou le second essai d'une question — toujours le pire cas pour le
+      // panneau (déterministe) : les mauvaises réponses d'abord, et le retour le plus long
       if (e.opts && (!e.repondu || e.lab.startsWith("Essaie"))) {
-        await page.click("#body .opt:not([disabled])");
+        const j = await page.evaluate(() => {
+          const L = document.querySelector("[data-pilote]").__lecon;
+          const i = Number(document.querySelector("#count").textContent.match(/étape (\d+)/)[1]) - 1;
+          const P = L && L.STEPS[i].pari;
+          const libres = [...document.querySelectorAll("#body .opt:not([disabled])")].map((b) => +b.dataset.j);
+          if (!P) return libres[0];
+          const q = P.opts.some((o) => o.ok);
+          const faux = libres.filter((k) => (q ? !P.opts[k].ok : true));
+          const pool = faux.length ? faux : libres;
+          const poids = (k) => (P.opts[k].fb || "").length + (P.opts[k].indice || "").length;
+          return pool.sort((x, y) => poids(y) - poids(x))[0];
+        });
+        await page.click(`#body .opt[data-j="${j}"]`);
         continue;
       }
       if (e.gestes) {

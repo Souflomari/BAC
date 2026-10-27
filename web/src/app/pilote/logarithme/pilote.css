@@ -139,6 +139,8 @@
 .pilote .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .pilote .fb { font-size: 1rem; line-height: 1.5; margin-top: 14px; padding-left: 14px; border-left: 3px solid var(--color-border-soft); }
 .pilote .fb:empty { display: none; }
+/* ce qui suit la réponse à un pari (une formule, une précision) */
+.pilote .apres:not(:empty) { margin-top: 12px; font-size: 1rem; line-height: 1.5; }
 .pilote .ctl { display: grid; gap: 16px; margin: 6px 0 12px; }
 .pilote .sl { display: grid; gap: 8px; font-size: 1rem; }
 .pilote .sl output { font-weight: 700; font-variant-numeric: tabular-nums; }
