@@ -202,7 +202,7 @@ function choose(st,j){
   if(q){const ess=S.essais[k]||(S.essais[k]=[]);if(ess.includes(j))return;ess.push(j);}
   if(S.first[k]==null)S.first[k]=j;S.ans[k]=j;
   const fini=resolu(st);
-  root.querySelector('.pari').outerHTML=pariHTML(st);wireOpts(st);
+  root.querySelector('.pari').outerHTML=pariHTML(st);wireOpts(st);renderMath(root.querySelector('.pari'));
   const btn=root.querySelector(`.opt[data-j="${j}"]`);if(btn&&!btn.disabled)btn.focus();else if(fini)$('#next').focus();else{const autre=root.querySelector('.opt:not([disabled])');autre&&autre.focus();}
   fb.innerHTML=messagePari(st,j);renderMath(fb);
   if(fini&&P.apres){const ap=$('#apres');ap.innerHTML=apresHTML(P);renderMath(ap);voir(ap);}else voir(fb);

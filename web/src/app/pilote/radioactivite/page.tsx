@@ -20,9 +20,9 @@ import { manifestePourHeader } from "@/lib/palette-notions";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Décroissance radioactive — leçon pilote",
+  title: "Décroissance radioactive — la leçon",
   description:
-    "La décroissance radioactive en 56 étapes : de Becquerel (1896) à la datation au carbone 14, en lançant soi-même les dés.",
+    "La décroissance radioactive pas à pas : de Becquerel (1896) à la datation au carbone 14, en lançant soi-même les dés.",
 };
 
 export default function PiloteRadioactivitePage() {

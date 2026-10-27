@@ -115,7 +115,7 @@ function relancer(){
 const BEATS=[
   {name:'Ce qu’il faut savoir',court:'Savoir'},{name:'L’énigme',court:'Énigme'},{name:'Écrire la désintégration',court:'Écrire'},
   {name:'Cent dés',court:'Cent dés'},{name:'La demi-vie',court:'Demi-vie'},{name:'La formule',court:'Formule'},
-  {name:'Les grandeurs',court:'Grandeurs'},{name:'La datation',court:'Datation'},{name:'La réponse à l’énigme',court:'Réponse'},
+  {name:'Les grandeurs',court:'Grandeurs'},{name:'La datation',court:'Datation'},{name:'Retour à l’énigme',court:'Retour'},
   {name:'Au bac',court:'Au bac'},{name:'Bilan',court:'Bilan'}];
 // un pari : neutre à l'écran ; `juste` (3ᵉ case) ne sert qu'au profil de fin
 const BET=t=>({opts:t.map(([x,fb,j])=>({t:x,fb,juste:!!j}))});
@@ -539,10 +539,10 @@ Object.values(mots).forEach(m=>{m.d=pct(m.d);});
 const bet=k=>{const st=STEPS.find(s=>s.cle===k),j=S.first[k];return (!st||j==null)?null:!!st.pari.opts[j].juste;};
 function profileHTML(){
   const V=STEPS.filter(s=>s.verifie),vu=V.filter(s=>ctx.juste(s.k)!=null),vok=V.filter(s=>ctx.juste(s.k)===true),vko=V.filter(s=>ctx.juste(s.k)===false);
-  const P=STEPS.filter(s=>s.pari&&!s.verifie&&!s.pari.opts.some(o=>o.ok)),pv=P.filter(s=>bet(s.cle)!=null),pj=P.filter(s=>bet(s.cle)===true);
+  const P=STEPS.filter(s=>s.pari&&!s.verifie&&!s.pari.opts.some(o=>o.ok)),pv=P.filter(s=>bet(s.cle)!=null);
   const Q=[['q1','désintégrés ou restants'],['q2','λ en s⁻¹ avant N₀ = a₀/λ'],['q3','activité et nombre de noyaux']];
   const res=Q.map(([k])=>ctx.juste(k));
-  const ligne=`« Vérifie » réussies du premier coup : <b>${vok.length} sur ${vu.length||V.length}</b> ; paris justes : ${pj.length} sur ${pv.length}.`;
+  const ligne=`« Vérifie » réussies du premier coup : <b>${vok.length} sur ${vu.length||V.length}</b> . Tes paris : ${pv.length} faits.`;
   const rows=res.map((ok,i)=>`<li class="${ok===true?'ok':ok===false?'ko':''}">${ok===true?'✓':ok===false?'✗':'·'} ${Q[i][1]}</li>`).join('');
   const bets=[];
   const d=bet('duel');if(d!=null)bets.push(d?'tu savais déjà qu’un noyau ne vieillit pas':'l’idée du noyau qui « s’use » t’a tenté au départ');
