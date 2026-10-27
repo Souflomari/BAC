@@ -58,15 +58,29 @@ export function analyser(m){
 export const CONNUS={'s:19:T':'C’est l’allèle βS : celui de la drépanocytose.','s:18:A':'C’est l’allèle βC, celui de l’hémoglobine C.','d:19':'Cet allèle existe : FSC 6 (−A), l’une des principales mutations de β-thalassémie au Maroc.'};
 export const ORD=n=>n===1?'1ʳᵉ':n+'ᵉ';
 
+/* NUMÉROTATION — une seule règle, celle des sujets : on compte les triplets depuis le premier
+   triplet MONTRÉ. L'indice j d'un codon dans CDS (AUG = 0) est donc le numéro du triplet dans
+   l'atelier, qui commence au triplet de Val (j = 1) ; c'est aussi la numérotation des médecins
+   pour la chaîne β, qui ne compte pas la méthionine retirée (Glu n° 6 = codon j = 6). */
+
 // les mutations scénarisées (indices calculés depuis le codon 6, GAG)
 export const C6=18, HBS='s:'+(C6+1)+':T', SIL='s:'+(C6+2)+':A', FS6='d:'+(C6+1), NS6='s:'+C6+':T';
 export const A_HBS=analyser(HBS),A_SIL=analyser(SIL),A_FS6=analyser(FS6),A_NS6=analyser(NS6);
-// l'exercice type bac : codons 37 à 41, substitution C → T au codon 39
-export const BK=37,BN=5,B39=39,BMUT='s:'+(3*B39)+':T',A_B=analyser(BMUT);
+// l'insertion de l'atelier : un G ajouté au début du triplet 3 (décalage du cadre de lecture)
+export const C3=9, INS3='i:'+C3+':G', A_INS=analyser(INS3);
+// l'exercice type bac : codons 37 à 41 de la chaîne β (substitution C → T au codon 39), montrés
+// au bac comme un fragment de 5 triplets : le triplet muté est le 3ᵉ du document
+export const BK=37,BN=5,B39=39,BMUT='s:'+(3*B39)+':T',A_B=analyser(BMUT),B_TRIPLET=B39-BK+1;
 export const BAC_N=CDS.slice(3*BK,3*(BK+BN)),BAC_M=A_B.seq.slice(3*BK,3*(BK+BN));
 
 // la transcription du tout début du gène (21 bases) : scène, pari, règle
 export const TR_COD=CDS.slice(0,21),TR_TPL=compl(TR_COD),TR_ARN=toARN(TR_COD);
-// la lecture du ribosome : l'ARNm du début, et les quatre derniers codons (stop compris)
-export const TL_ARN=toARN(CDS.slice(0,21)),NB=7;
+// la lecture du ribosome : l'ARNm du début (8 codons : le site A dépasse le 7ᵉ), et les quatre
+// derniers codons (stop compris)
+export const TL_ARN=toARN(CDS.slice(0,24)),NB=7;
 export const FIN=toARN(CDS.slice(-12));
+// un ARNm lu de bout en bout : codon d'initiation, deux codons, codon stop (le début de HBB)
+export const DECODE=toARN(CDS.slice(0,9))+'UAA';
+// la question « codon d'initiation et codon stop » du bilan : deux nucléotides avant AUG, un
+// codon après le stop
+export const Q_AUG='CU'+toARN(CDS.slice(0,12))+'UGA'+'GCC';
