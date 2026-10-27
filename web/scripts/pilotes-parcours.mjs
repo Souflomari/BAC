@@ -4,6 +4,7 @@
  *
  *   node scripts/pilotes-parcours.mjs [--base http://localhost:3000]   (sans --base : lance `next start` sur le build)
  *        [--pilote logarithme] [--captures dossier] [--ecran 390x844] [--port 3947] [--porte]
+ *        [--sombre] [--texte dossier]   (thème sombre ; texte intégral de chaque étape, pour relecture)
  *
  * À chaque étape : répond à la question (première option), déroule les lignes
  * de calcul une à une, fait le geste demandé (bouton du panneau) quand
@@ -32,6 +33,8 @@ let BASE = opt("--base", null);
 const CAPTURES = opt("--captures", null);
 const SEUL = opt("--pilote", null);
 const PORTE = args.includes("--porte");
+const SOMBRE = args.includes("--sombre");
+const TEXTE = opt("--texte", null);
 const [LARGEUR, HAUTEUR] = opt("--ecran", "1280x800").split("x").map(Number);
 const PILOTES = ["logarithme", "radioactivite", "expression-genetique"].filter((p) => !SEUL || p === SEUL);
 
@@ -74,7 +77,20 @@ const defauts = [];
 const infos = [];
 
 for (const nom of PILOTES) {
-  const page = await navigateur.newPage({ viewport: { width: LARGEUR, height: HAUTEUR }, reducedMotion: "reduce" });
+  const page = await navigateur.newPage({ viewport: { width: LARGEUR, height: HAUTEUR }, reducedMotion: "reduce", colorScheme: SOMBRE ? "dark" : "light" });
+  const transcription = [];
+  const transcrire = async (i) => {
+    if (!TEXTE) return;
+    const t = await page.evaluate(() => {
+      const vu = new Set();
+      const scene = [...document.querySelectorAll("[data-pilote-scene] .scene.on text")]
+        .filter((n) => Number(getComputedStyle(n).opacity) > 0.05 && n.closest("g")?.style.opacity !== "0")
+        .map((n) => n.textContent.trim())
+        .filter((x) => x && !vu.has(x) && vu.add(x));
+      return { k: document.querySelector("#kicker").textContent, b: document.querySelector("#body").innerText.trim(), scene };
+    });
+    transcription.push(`## Étape ${i} — ${t.k}\n\n${t.b}\n\n*Scène :* ${t.scene.join(" · ")}\n`);
+  };
   const erreurs = [];
   page.on("pageerror", (e) => erreurs.push(e.message));
   page.on("console", (m) => {
@@ -131,6 +147,7 @@ for (const nom of PILOTES) {
     }
     if (e.lab.startsWith("Recommencer")) {
       if (e.deborde) debordent.push(e.i);
+      await transcrire(e.i);
       if (CAPTURES) await page.screenshot({ path: path.join(CAPTURES, nom, `etape-${String(e.i).padStart(2, "0")}.png`) });
       break;
     }
@@ -157,13 +174,62 @@ for (const nom of PILOTES) {
     if (e.deborde) debordent.push(e.i);
     if (e.rempli < 0.34) vides.push(e.i);
     if (CAPTURES) await page.screenshot({ path: path.join(CAPTURES, nom, `etape-${String(e.i).padStart(2, "0")}.png`) });
+    await transcrire(e.i);
     await page.click("#next");
   }
-  for (const m of erreurs) defauts.push(`${nom} : erreur de la page — ${m}`);
+  if (TEXTE) {
+    fs.mkdirSync(TEXTE, { recursive: true });
+    fs.writeFileSync(path.join(TEXTE, `${nom}.md`), `# ${nom} — texte intégral, étape par étape\n\n${transcription.join("\n")}`);
+  }
+  for (const m of erreurs.splice(0)) defauts.push(`${nom} : erreur de la page — ${m}`);
   if (vues.size !== total) defauts.push(`${nom} : ${vues.size} étape(s) vue(s) sur ${total}`);
   console.log(`${nom} : ${vues.size} / ${total} étapes parcourues, ${erreurs.length} erreur(s)`);
   if (debordent.length) infos.push(`${nom} : le texte déborde du panneau aux étapes ${debordent.join(", ")}`);
   if (vides.length) infos.push(`${nom} : plus des deux tiers du panneau vides aux étapes ${vides.join(", ")}`);
+
+  // la page d'exercices du pilote, si elle existe : chaque exercice s'affiche, chaque QCM se
+  // résout en essayant les options, une saisie fausse reçoit un retour, la correction se
+  // déroule jusqu'au bout, le bilan s'affiche
+  const rep = await page.goto(`${BASE}/pilote/${nom}/exercices`, { waitUntil: "networkidle" });
+  if (rep && rep.ok()) {
+    await page.waitForSelector(".exos-q", { timeout: 15000 });
+    const n = await page.$$eval(".exos-suivi .exos-pastille:not(.fin)", (b) => b.length);
+    for (let x = 0; x < n; x++) {
+      await page.waitForSelector(".exos-q");
+      const katex = await page.$$eval(".exos .katex-error", (k) => k.length);
+      if (katex) defauts.push(`${nom} exercice ${x + 1} : ${katex} formule(s) non rendue(s)`);
+      const nq = await page.$$eval(".exos-questions > li", (l) => l.length);
+      for (let j = 0; j < nq; j++) {
+        const li = `.exos-questions > li:nth-child(${j + 1})`;
+        const opts = await page.$$(`${li} .exos-opt input`);
+        if (opts.length) {
+          let ok = false;
+          for (let m = 0; m < opts.length && !ok; m++) {
+            await page.check(`${li} .exos-opt:nth-child(${m + 1}) input`);
+            await page.click(`${li} .exos-q-actions button:first-child`);
+            ok = await page.$eval(li, (e) => e.classList.contains("juste"));
+          }
+          if (!ok) defauts.push(`${nom} exercice ${x + 1} question ${j + 1} : aucune option n'est acceptée`);
+        } else {
+          await page.fill(`${li} input[type=text]`, "123456,789");
+          await page.click(`${li} .exos-q-actions button:first-child`);
+          const msg = await page.$eval(`${li} .exos-retour`, (e) => e.textContent.trim());
+          if (!msg) defauts.push(`${nom} exercice ${x + 1} question ${j + 1} : une saisie fausse ne reçoit aucun retour`);
+        }
+      }
+      await page.click(".exos-correction button");
+      for (let g = 0; g < 20 && (await page.$(".exos-correction button")); g++) await page.click(".exos-correction button");
+      if (CAPTURES) {
+        fs.mkdirSync(path.join(CAPTURES, nom, "exercices"), { recursive: true });
+        await page.screenshot({ path: path.join(CAPTURES, nom, "exercices", `exercice-${String(x + 1).padStart(2, "0")}.png`), fullPage: true });
+      }
+      await page.click(".exos-actions .exos-btn:last-child");
+    }
+    const bilan = await page.$(".exos-bilan");
+    if (!bilan) defauts.push(`${nom} : le bilan des exercices ne s'affiche pas`);
+    console.log(`${nom} : ${n} exercice(s) parcourus`);
+  }
+  for (const m of erreurs.splice(0)) defauts.push(`${nom} (exercices) : erreur de la page — ${m}`);
   await page.close();
 }
 await navigateur.close();

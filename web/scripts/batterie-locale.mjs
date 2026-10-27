@@ -38,6 +38,7 @@ const ETAPES = [
   ["QCM : ruses", ["node", "scripts/eleve-ruse.mjs", "--porte"]],
   ["modèle apprenant", ["node", "scripts/build-learner-inputs.mjs", "--verifie"]],
   ["migrations", ["node", "scripts/portes-migrations.mjs", "--porte"]],
+  ["exercices des pilotes", ["node", "--no-warnings", "scripts/pilotes-exercices.mjs", "--porte"]],
 ];
 
 let rouges = 0;
