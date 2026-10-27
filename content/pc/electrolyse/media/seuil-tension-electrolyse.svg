@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Axe conceptuel de la tension imposée U, de 0 à environ 6 volts : la force électromotrice propre de la cellule E, environ 1,1 volt, sépare deux zones. En dessous de E — par exemple U = 0,9 V —, le sens spontané l’emporte, seulement freiné : le zinc continue de se dissoudre, le cuivre de se déposer, plus lentement. Au-dessus de E — par exemple U = 6 V —, le sens forcé l’emporte : le zinc se dépose, le cuivre se dissout. La frontière en E est un seuil net à franchir, pas un curseur continu.">
+  <title>La tension minimale à dépasser : U face à E</title>
+  <!--
+    seuil-tension-electrolyse.svg — STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md
+    §2), 3 étapes, R3 (électrolyse — la tension minimale).
+
+    Ce que la figure montre (reprend le geste d'enseignement du rung R3 :
+    poser le seuil E, puis les deux cas de comparaison U < E / U > E, dans
+    le même ordre que la leçon) :
+      step-1 : E, la force électromotrice propre de la cellule (≈ 1,1 V,
+               valeur de la pile Daniell de l'exemple travaillé), posée
+               comme seuil vertical sur l'axe des tensions imposées U.
+      step-2 : la zone U < E se révèle — sens spontané, seulement freiné
+               (le zinc se dissout encore, le cuivre se dépose encore,
+               plus lentement) — avec le point de l'exemple travaillé
+               U = 0,9 V.
+      step-3 : la zone U > E se révèle — sens forcé, qui l'emporte
+               totalement (le zinc se dépose, le cuivre se dissout) —
+               avec le point de l'exemple travaillé U = 6 V, et une
+               emphase visuelle sur E comme un mur/seuil (pas un simple
+               trait), avec la légende « un seuil à franchir, pas un
+               curseur continu » (citation directe du rung R3).
+
+    Choix schématique déclaré (pas une donnée physique) : comme
+    critere-qr-k.svg, cet axe est CONCEPTUEL, pas tracé à une échelle
+    linéaire stricte. Les positions de E (≈1,1 V), du point U = 0,9 V et
+    du point U = 6 V sont espacées pour la lisibilité des étiquettes (les
+    valeurs réelles 0,9 et 1,1 sont proches — un espacement à échelle
+    stricte collerait les deux étiquettes). L'ORDRE gauche→droite reste
+    fidèle aux vraies valeurs : 0 < 0,9 < E(≈1,1) < 6. Aucune autre
+    exagération : les deux zones (U < E, U > E) sont qualitativement
+    correctes, seule leur largeur relative sur la figure ne reflète pas
+    le rapport réel des tensions.
+
+    Rôle des couleurs (contrat de rendu) :
+      E (ligne pointillée + segment plein + étiquette + le renforcement
+      « mur » du seuil en step-3) : --figure-accent — le seul foyer de la
+      figure, le seuil lui-même.
+      Axe, ticks, bandes de zone, points U = 0,9 V / U = 6 V et leurs
+      étiquettes : --figure-ink / --figure-ink-soft / --figure-grid,
+      jamais en accent (ce ne sont pas LE sujet, seulement les deux cas
+      illustrant le seuil).
+
+    Géométrie (choisie pour la lisibilité, cf. disclosure ci-dessus) :
+      axe : y = 220, de x = 80 (origine, U = 0) à x = 606 (flèche ouverte).
+      E (seuil)      : x = 300.
+      U = 0,9 V (step-2) : x = 190, dans la zone gauche [80, 300].
+      U = 6 V   (step-3) : x = 520, dans la zone droite [300, 590].
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="22" text-anchor="middle"
+        font-size="12.5" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">La tension minimale : <tspan
+        font-style="italic">U</tspan><tspan> face à </tspan><tspan
+        font-style="italic">E</tspan>
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="44" width="600" height="240" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ── Axe des tensions U — chrome permanent, ink-soft ──────────────── -->
+  <line x1="80" y1="220" x2="594" y2="220"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="606,220 594,215.5 594,224.5" fill="var(--figure-ink-soft)"/>
+  <line x1="80" y1="217" x2="80" y2="223"
+        stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+  <text x="80" y="236" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">0</text>
+  <text x="612" y="224" font-size="12" font-style="italic"
+        fill="var(--figure-ink-soft)">U</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — Le seuil E posé sur l'axe
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="300" y1="66" x2="300" y2="216"
+          stroke="var(--figure-accent)" stroke-width="1.3" stroke-dasharray="5,3"/>
+    <line x1="300" y1="216" x2="300" y2="228"
+          stroke="var(--figure-accent)" stroke-width="2.2"/>
+
+    <text x="300" y="58" text-anchor="middle" font-style="italic" font-weight="600"
+          font-size="15" fill="var(--figure-accent)">E</text>
+    <text x="300" y="246" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)"><tspan font-style="italic">E</tspan><tspan> ≈ 1,1 V</tspan></text>
+    <text x="300" y="260" text-anchor="middle" font-size="9.5" font-style="italic"
+          fill="var(--figure-ink-soft)">(f.é.m. propre de la cellule)</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — La zone U < E se révèle : sens spontané, freiné
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <text x="190" y="94" text-anchor="middle" font-size="12.5" font-weight="600"
+          fill="var(--figure-ink)">sens spontané</text>
+    <text x="190" y="110" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink)">seulement freiné</text>
+    <text x="190" y="124" text-anchor="middle" font-size="8.8" font-style="italic"
+          fill="var(--figure-ink-soft)">(Zn se dissout, Cu se dépose,</text>
+    <text x="190" y="136" text-anchor="middle" font-size="8.8" font-style="italic"
+          fill="var(--figure-ink-soft)">plus lentement)</text>
+
+    <rect x="80" y="142" width="220" height="64" rx="4"
+          fill="var(--figure-grid)" fill-opacity="0.55"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-opacity="0.5"/>
+
+    <line x1="190" y1="206" x2="190" y2="217"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="2,2"/>
+    <circle cx="190" cy="175" r="3.5" fill="var(--figure-ink)"
+            stroke="var(--figure-surface)" stroke-width="1.2"/>
+    <text x="190" y="162" text-anchor="middle" font-size="10.5"
+          fill="var(--figure-ink)"><tspan font-style="italic">U</tspan><tspan> = 0,9 V</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — La zone U > E se révèle : sens forcé, l'emporte ;
+       emphase du seuil E comme un mur, pas un curseur
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <text x="445" y="94" text-anchor="middle" font-size="12.5" font-weight="600"
+          fill="var(--figure-ink)">sens forcé</text>
+    <text x="445" y="110" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink)">l’emporte</text>
+    <text x="445" y="124" text-anchor="middle" font-size="8.8" font-style="italic"
+          fill="var(--figure-ink-soft)">(Zn se dépose,</text>
+    <text x="445" y="136" text-anchor="middle" font-size="8.8" font-style="italic"
+          fill="var(--figure-ink-soft)">Cu se dissout)</text>
+
+    <rect x="300" y="142" width="290" height="64" rx="4"
+          fill="var(--figure-grid)" fill-opacity="0.55"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-opacity="0.5"/>
+
+    <line x1="520" y1="206" x2="520" y2="217"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="2,2"/>
+    <circle cx="520" cy="175" r="3.5" fill="var(--figure-ink)"
+            stroke="var(--figure-surface)" stroke-width="1.2"/>
+    <text x="520" y="162" text-anchor="middle" font-size="10.5"
+          fill="var(--figure-ink)"><tspan font-style="italic">U</tspan><tspan> = 6 V</tspan></text>
+
+    <!-- Renforcement du seuil : un mur, pas un simple trait -->
+    <rect x="294" y="130" width="12" height="98" rx="2"
+          fill="var(--figure-accent)" fill-opacity="0.16"/>
+    <text x="300" y="272" text-anchor="middle" font-size="10" font-style="italic"
+          fill="var(--figure-accent)">un seuil à franchir, pas un curseur continu</text>
+  </g><!-- /step-3 -->
+
+</svg>

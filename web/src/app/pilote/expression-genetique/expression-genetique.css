@@ -1,0 +1,81 @@
+/* Leçon « Du gène à la protéine » — compléments à pilote.css.
+   Même règle que pilote.css : tout est scopé sous `.pilote`, et les couleurs ne sont QUE des
+   jetons (aucun littéral). Préfixe `eg-` : rien ne doit croiser les classes des autres leçons ;
+   ce qui touche une classe commune est scopé à cette leçon (`[data-pilote="expression-genetique"]`). */
+
+/* scène : la table du code et les chaînes */
+.pilote .eg-cod { font-size: 16px; font-weight: 500; letter-spacing: .06em; font-variant-numeric: tabular-nums; }
+.pilote .eg-aa { font-size: 16px; font-weight: 700; }
+.pilote .eg-hit { fill: transparent; cursor: pointer; }
+.pilote .eg-trna { fill: var(--st-cell); stroke: var(--st-ink); stroke-width: 1.5; }
+.pilote .eg-bd { fill: var(--st-cell); stroke: var(--st-line); stroke-width: 1.5; }
+.pilote .eg-bd-x { fill: var(--st-fa); stroke: var(--st-a); }
+.pilote .eg-bd-stop { fill: var(--st-bg); stroke: var(--st-a); stroke-dasharray: 3 3; }
+/* le repère actif du schéma de synthèse */
+.pilote .eg-rep-on { fill: var(--st-cell); stroke: var(--st-a); stroke-width: 3; }
+/* tailles de texte de scène sans couleur imposée (la couleur vient d'une classe s-…) */
+.pilote .eg-l16 { font-size: 16px; }
+.pilote .eg-l20 { font-size: 20px; }
+.pilote .eg-l40 { font-size: 40px; font-weight: 600; }
+/* les lettres de la scène : condensées, espacées, chiffres tabulaires */
+.pilote[data-pilote="expression-genetique"] [data-pilote-scene] .mono { font-variation-settings: "wdth" 82; letter-spacing: .02em; }
+
+/* panneau : une séquence s'écrit comme les lettres de la scène, sans coupure */
+.pilote .eg-seq { font-family: var(--font-ui); font-variation-settings: "wdth" 80; font-variant-numeric: tabular-nums; letter-spacing: .07em; font-weight: 600; white-space: nowrap; }
+/* ce qui suit la réponse d'un pari (le pourquoi, le mot suivant) : un paragraphe à part */
+.pilote[data-pilote="expression-genetique"] .apres:not(:empty) { margin-top: 12px; font-size: 1rem; line-height: 1.5; }
+/* la ligne de résultat de la fin */
+.pilote .eg-res { font-size: 1.0625rem; line-height: 1.5; margin: 0 0 8px; }
+/* une ligne de rédaction (Au bac) : la police de l'interface, pas celle des maths */
+.pilote .deriv .m.eg-ligne { font-family: var(--font-ui); font-size: 1.0625rem; line-height: 1.4; overflow: visible; white-space: normal; }
+.pilote .deriv li.ancien .m.eg-ligne { font-size: 0.9375rem; }
+
+/* le saut vers l'énigme, offert à qui réussit la première question */
+.pilote .eg-saut { display: inline-block; margin-top: 10px; font: 700 1rem var(--font-ui); padding: 10px 14px; background: transparent; color: var(--color-text-primary); border: 2px solid var(--color-text-primary); cursor: pointer; }
+.pilote .eg-saut:hover { background: var(--color-surface-container-low); }
+.pilote .eg-saut:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+/* après deux erreurs, la réponse est donnée : le saut n'est plus offert */
+.pilote .fb-bon .eg-saut-z { display: none; }
+
+/* panneau : les contrôles manipulables (cibles ≥ 44 px), allégés : des groupes segmentés,
+   des flèches et des liens plutôt qu'une grille de boîtes */
+.pilote .eg-ctl { gap: 12px; }
+.pilote .eg-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pilote .eg-k { font: 600 0.9375rem var(--font-ui); min-width: 7.5em; color: var(--color-text-secondary); }
+.pilote .eg-grp { display: flex; gap: 8px; flex-wrap: wrap; }
+.pilote .eg-seg { display: inline-flex; border: 1px solid var(--color-text-primary); }
+.pilote .eg-seg .eg-btn { border: 0; border-left: 1px solid var(--color-border-soft); }
+.pilote .eg-seg .eg-btn:first-child { border-left: 0; }
+.pilote .eg-btn {
+  min-width: 44px; min-height: 44px; padding: 0 12px;
+  font: 700 1.125rem/1 var(--font-ui); font-variant-numeric: tabular-nums;
+  background: transparent; color: var(--color-text-primary);
+  border: 1px solid var(--color-text-primary); cursor: pointer;
+}
+.pilote .eg-btn:hover:not([disabled]):not([aria-pressed="true"]) { background: var(--color-surface-container-low); }
+.pilote .eg-btn[aria-pressed="true"] { background: var(--color-text-primary); color: var(--color-surface-base); }
+.pilote .eg-btn[disabled] { opacity: .35; cursor: default; }
+.pilote .eg-btn:focus-visible, .pilote .eg-fl:focus-visible, .pilote .eg-lien:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+.pilote .eg-wide { font-size: 0.9375rem; font-weight: 600; }
+.pilote .eg-fl { min-width: 44px; min-height: 44px; font: 700 1.25rem/1 var(--font-ui); background: transparent; color: var(--color-text-primary); border: 0; cursor: pointer; }
+.pilote .eg-fl:hover:not([disabled]) { background: var(--color-surface-container-low); }
+.pilote .eg-fl[disabled] { opacity: .3; cursor: default; }
+.pilote .eg-lien { min-height: 44px; padding: 0 4px; font: 600 0.9375rem var(--font-ui); background: transparent; color: var(--color-text-primary); border: 0; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.pilote .eg-lien[disabled] { opacity: .35; cursor: default; }
+.pilote .eg-liens { gap: 20px; }
+.pilote .eg-pos { flex: 1; min-width: 0; text-align: center; font: 600 1rem var(--font-ui); font-variant-numeric: tabular-nums; }
+/* les légendes du schéma : des étiquettes à choisir */
+.pilote .eg-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.pilote .eg-chip { font-size: 1rem; font-weight: 600; }
+.pilote .eg-chip.eg-place { text-decoration: line-through; }
+
+/* scène : l'enzyme (un objet à part entière, pas une vitre), et le texte sur fond rouge */
+.pilote .eg-enz { fill: var(--st-fa); stroke: var(--st-a); stroke-width: 2.5; }
+.pilote .s-onsig { fill: var(--color-on-signal); }
+
+/* fiches de mots : le texte des petites figures suit la police de l'interface, et la fiche
+   qui s'ouvre sous un long texte se ramène à l'écran au-dessus de la navigation collante */
+.pilote .mot-carte svg text { font-family: var(--font-ui); }
+.pilote .mot-zone { scroll-margin-bottom: 96px; }
+
+.pilote .eg-nw { white-space: nowrap; }

@@ -1,0 +1,20 @@
+{
+  "slug": "suite-escalier",
+  "control": {
+    "kind": "drag-point",
+    "axis": "u0",
+    "domain": [10, 100],
+    "step": 1,
+    "initial": 100
+  },
+  "bindings": [
+    { "target": "#point-u0", "recompute": "point" },
+    { "target": "#point-u0-halo", "recompute": "pointHalo" },
+    { "target": "#cobweb-path", "recompute": "cobwebPath" },
+    { "target": "#tick-u0", "recompute": "tickU0Line" },
+    { "target": "#label-u0", "recompute": "labelU0Pos" },
+    { "target": "#label-u0", "recompute": "labelU0Text" }
+  ],
+  "unlockAfterStage": 2,
+  "readoutTemplate": "u₀ = {value} → converge vers ℓ = 20"
+}

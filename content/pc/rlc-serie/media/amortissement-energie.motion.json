@@ -1,0 +1,148 @@
+{
+  "slug": "amortissement-energie",
+  "viewBox": "0 0 680 520",
+  "label": "Bilan énergétique dans un circuit RLC : l'échange E_C ↔ E_L continue mais l'énergie totale diminue, dissipée en chaleur dans R",
+  "layout": "replace",
+  "regions": {
+    "chrome":             { "x":   0, "y":   0, "w": 680, "h":  54 },
+    "circuit":             { "x":  30, "y":  54, "w": 300, "h": 284 },
+    "bars":                { "x": 360, "y":  54, "w": 300, "h": 284 },
+    "circuit-state-slot": { "x": 104, "y": 168, "w": 142, "h":  42 },
+    "bars-slot":           { "x": 398, "y": 108, "w": 222, "h": 190 },
+    "heat-zone":           { "x": 250, "y": 118, "w":  70, "h":  50 },
+    "annot-slot":         { "x":  32, "y": 344, "w": 616, "h":  88 },
+    "footer":             { "x":   0, "y": 434, "w": 680, "h":  86 }
+  },
+  "replaces": [
+    { "beat": "beat-1", "slot": "bars-slot",           "enter": "bar-fill-1",       "exit": "bar-fill-0"       },
+    { "beat": "beat-1", "slot": "circuit-state-slot",  "enter": "circuit-state-1", "exit": "circuit-state-0"  },
+    { "beat": "beat-1", "slot": "annot-slot",           "enter": "annot-1",          "exit": "annot-0"          },
+    { "beat": "beat-2", "slot": "bars-slot",           "enter": "bar-fill-2",       "exit": "bar-fill-1"       },
+    { "beat": "beat-2", "slot": "circuit-state-slot",  "enter": "circuit-state-2", "exit": "circuit-state-1"  },
+    { "beat": "beat-2", "slot": "annot-slot",           "enter": "annot-2",          "exit": "annot-1"          },
+    { "beat": "beat-3", "slot": "bars-slot",           "enter": "bar-fill-3",       "exit": "bar-fill-2"       },
+    { "beat": "beat-3", "slot": "circuit-state-slot",  "enter": "circuit-state-3", "exit": "circuit-state-2"  },
+    { "beat": "beat-3", "slot": "annot-slot",           "enter": "annot-3",          "exit": "annot-2"          }
+  ],
+  "beats": [
+    {
+      "id": "beat-0",
+      "caption": "R en série — l'échange E_C ↔ E_L va continuer, mais…",
+      "tweens": []
+    },
+    {
+      "id": "beat-1",
+      "caption": "À chaque passage du courant, R dissipe un peu d'énergie par effet Joule : la réserve totale E_C + E_L est déjà plus petite qu'au départ.",
+      "tweens": [
+        {
+          "target": "#bar-fill-1",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.55,
+          "ease": "power3.out",
+          "at": 0
+        },
+        {
+          "target": "#circuit-state-1",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.4,
+          "ease": "power3.out",
+          "at": 0.1
+        },
+        {
+          "target": "#annot-1",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.4,
+          "ease": "power3.out",
+          "at": 0.15
+        },
+        {
+          "target": "#heat-set-a",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.45,
+          "ease": "power2.out",
+          "at": 0.35
+        }
+      ]
+    },
+    {
+      "id": "beat-2",
+      "caption": "À chaque cycle, R prélève — l'amplitude décroît.",
+      "tweens": [
+        {
+          "target": "#bar-fill-2",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.55,
+          "ease": "power3.out",
+          "at": 0
+        },
+        {
+          "target": "#circuit-state-2",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.4,
+          "ease": "power3.out",
+          "at": 0.1
+        },
+        {
+          "target": "#annot-2",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.4,
+          "ease": "power3.out",
+          "at": 0.15
+        },
+        {
+          "target": "#heat-set-b",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.45,
+          "ease": "power2.out",
+          "at": 0.35
+        }
+      ]
+    },
+    {
+      "id": "beat-3",
+      "caption": "L'énergie n'a pas disparu — elle est partie en chaleur dans R.",
+      "tweens": [
+        {
+          "target": "#bar-fill-3",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.55,
+          "ease": "power3.out",
+          "at": 0
+        },
+        {
+          "target": "#circuit-state-3",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.4,
+          "ease": "power3.out",
+          "at": 0.1
+        },
+        {
+          "target": "#annot-3",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.4,
+          "ease": "power3.out",
+          "at": 0.15
+        },
+        {
+          "target": "#heat-set-c",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.45,
+          "ease": "power2.out",
+          "at": 0.35
+        }
+      ]
+    }
+  ]
+}

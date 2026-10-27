@@ -1,0 +1,360 @@
+notion: reactions-acido-basiques
+skill_code: pc_reactions_acido_basiques
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — reactions-acido-basiques)
+#
+# FORMATIVE, calm-core probes placed inside the R12 summit — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong MODEL (the misconception), not just the fact of being
+# wrong. The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md, R12):
+#   cp-r0-predict     (before r-bac) — COMMIT gate: turns "prends position"
+#                                      into a real MCQ commit before the reveal.
+#                                      Probes AB-TIT-1 (équivalence = pH 7) and
+#                                      the reading of VE.
+#   cp-r9-dosage      (after r-bac)  — rupture gate: la relation d'équivalence
+#                                      CaVa = CbVE, contre VE = Va (AB-TIT-2).
+#   cp-r10-equivalence(after r-bac)  — rupture gate: lire VE au MAXIMUM de la
+#                                      dérivée, pas à un zéro (AB-EQU-2).
+#   cp-r11-indicateur (after r-bac)  — rupture gate: la zone de virage doit
+#                                      encadrer pHE (AB-IND-1).
+#   cp-r8-distribution(after r-bac)  — rupture gate: croisement à pH = pKA, pas
+#                                      à pH = 7 (AB-DIST-3).
+#
+# Clone note: cp-r9-dosage clones RAB-32's C_a-determination theme,
+# cp-r10-equivalence clones RAB-35's dérivée stem, cp-r11-indicateur clones
+# RAB-37's stem, cp-r8-distribution clones RAB-30's crossing stem. Distractors
+# are curated so EVERY distractor carries a named AB-* misconception tag, and the
+# correct choice is never the longest. cp-r0-predict is an original commit item
+# (not in the end bank). No end-bank tally is adjusted — inline surfacing does
+# not double-count.
+#
+# Boundary guard (2ème Bac PC, cadre de Brønsted) : dosage acide faible / base
+# forte (et son miroir base faible / acide forte), équivalence lue au saut,
+# indicateur choisi par encadrement de pHE, distribution/prédominance via pKA.
+# Pas de dosage conductimétrique ici, pas de calcul de teinte intermédiaire.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R12, BEFORE r-bac
+  #        Turns "prends position avant de lire la courbe" into a real
+  #        MCQ commit before exploiting the dosage curve.
+  #        Probes AB-TIT-1 (équivalence assimilée à pH = 7).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R12"
+    habilete: utilisation
+    skill_code: pc_reactions_acido_basiques
+    tags: [checkpoint, formative, misconception_driven, pc_reactions_acido_basiques, hook_commit]
+    primary_misconception: AB-TIT-1
+    item_source: original
+    lesson_placement: in_R12_before_exercise
+
+    stem: |-
+      On s'apprête à exploiter la courbe de dosage d'un **acide faible** (l'acide
+      carboxylique du flacon) par une **base forte** (la soude). Avant de lire la
+      courbe, prends position : comment repère-t-on l'équivalence, et quel pH
+      y attend-on ? Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          Au **milieu du saut** de pH (le point d'inflexion) ; et comme on dose un acide faible par une base forte, $\text{pH}_E > 7$.
+        correct: true
+        feedback: |-
+          Exact — et c'est le double réflexe attendu. L'équivalence est un fait
+          de géométrie (le milieu du saut, repéré par tangentes ou dérivée), pas
+          une valeur de pH fixée d'avance. Et l'espèce restante à l'équivalence
+          est la base conjuguée $\text{A}^-$, qui rend le milieu basique :
+          $\text{pH}_E > 7$. L'exercice va confirmer $\text{pH}_E \approx 8{,}5$.
+      - id: B
+        text: |-
+          À l'abscisse où $\text{pH} = 7$ : c'est là que se lit le volume équivalent $V_{bE}$.
+        correct: false
+        misconception: AB-EQU-1
+        feedback: |-
+          Modèle détecté : $V_E$ lu à $\text{pH} = 7$. Le volume équivalent se lit
+          au saut (le point d'inflexion), pas à une valeur de pH choisie d'avance.
+          Ici $\text{pH} = 7$ est franchi *avant* le milieu du saut : le lire là
+          donnerait un volume trop petit.
+      - id: C
+        text: |-
+          Peu importe l'allure de la courbe : à l'équivalence de n'importe quel dosage acido-basique, le pH vaut toujours exactement $7$, la valeur de la neutralité.
+        correct: false
+        misconception: AB-TIT-1
+        feedback: |-
+          Modèle détecté : « équivalence $=$ pH $7$ ». Vrai seulement pour un
+          acide fort dosé par une base forte. Ici l'espèce restante à
+          l'équivalence est la base $\text{A}^-$ : le milieu est basique,
+          $\text{pH}_E > 7$.
+      - id: D
+        text: |-
+          Au volume $V_{bE} = V_a = 20\ \text{mL}$ forcément, puisque c'est ce volume d'acide qu'on neutralise.
+        correct: false
+        misconception: AB-TIT-2
+        feedback: |-
+          Modèle détecté : $V_E = V_a$. La relation d'équivalence est
+          $C_a V_a = C_b V_{bE}$ ; elle ne donne $V_{bE} = V_a$ que si
+          $C_a = C_b$, ce que rien ne garantit ($C_a$ est justement l'inconnue).
+          Et attention au piège inverse : dans l'exercice qui suit, $C_a$ se
+          trouvera justement égale à $C_b$, donc $V_{bE} = V_a$ y sera vrai —
+          par **coïncidence des nombres**, jamais par règle. Vérifie toujours
+          avec la relation, jamais avec le souvenir d'un exercice.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r9-dosage | placed AFTER r-bac
+  #        Rupture gate: la relation d'équivalence CaVa = CbVE, contre le
+  #        réflexe VE = Va / Ca = Cb. Clone de RAB-32. Probes AB-TIT-2.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r9-dosage
+    rung: "R9"
+    habilete: application_experimentale
+    skill_code: pc_reactions_acido_basiques
+    tags: [checkpoint, formative, misconception_driven, pc_reactions_acido_basiques, application_experimentale]
+    primary_misconception: AB-TIT-2
+    item_source: clone_of_RAB-32
+    lesson_placement: after_r-bac
+
+    stem: |-
+      On dose $V_a = 20{,}0\ \text{mL}$ d'un acide faible de concentration $C_a$
+      inconnue par une soude de concentration $C_b = 0{,}10\ \text{mol/L}$. La
+      courbe donne un volume équivalent $V_{bE} = 12{,}0\ \text{mL}$. Quelle
+      affirmation est correcte ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          $C_a = C_b = 0{,}10\ \text{mol/L}$ : à l'équivalence, les concentrations d'acide et de base sont nécessairement égales.
+        correct: false
+        misconception: AB-TIT-2
+        feedback: |-
+          Modèle détecté : $C_a = C_b$ à l'équivalence. La relation est
+          $C_a V_a = C_b V_{bE}$ : elle relie les concentrations *aux volumes
+          correspondants*, elle ne les rend pas égales. Ici $V_a \neq V_{bE}$,
+          donc $C_a \neq C_b$.
+      - id: B
+        text: |-
+          $C_a = \dfrac{C_b V_{bE}}{V_a} = 6{,}0 \times 10^{-2}\ \text{mol/L}$, par la relation d'équivalence entre l'acide et la base.
+        correct: true
+        feedback: |-
+          Exact : $C_a = \dfrac{0{,}10 \times 12{,}0}{20{,}0} = 6{,}0 \times 10^{-2}\ \text{mol/L}$.
+          La relation d'équivalence est une égalité de quantités de matière, rien
+          d'autre.
+      - id: C
+        text: |-
+          On ne peut pas conclure : la relation $C_a V_a = C_b V_{bE}$ n'est valable que si $\text{pH}_E = 7$, ce qui n'est pas garanti pour un acide faible.
+        correct: false
+        misconception: AB-TIT-1
+        feedback: |-
+          Modèle détecté : la relation dépendrait du pH. $C_a V_a = C_b V_{bE}$
+          est une égalité de quantités de matière, tirée de la seule
+          stœchiométrie : elle ne mentionne le pH nulle part et reste vraie même
+          quand $\text{pH}_E \neq 7$ (le cas ici).
+      - id: D
+        text: |-
+          Le calcul serait identique même si la réaction de dosage n'était pas totale : la relation $C_a V_a = C_b V_{bE}$ tiendrait pour une réaction limitée.
+        correct: false
+        misconception: AB-TIT-3
+        feedback: |-
+          Modèle détecté : une réaction limitée conviendrait. C'est justement la
+          totalité ($K \gg 1$) qui rend $V_{bE}$ net et exploitable ; une réaction
+          limitée ne donne aucune équivalence tranchée à lire sur la courbe.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r10-equivalence | placed AFTER r-bac
+  #        Rupture gate: lire VE au MAXIMUM de dpH/dV, jamais à un zéro.
+  #        Clone de RAB-35. Probes AB-EQU-2.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r10-equivalence
+    rung: "R10"
+    habilete: application_experimentale
+    skill_code: pc_reactions_acido_basiques
+    tags: [checkpoint, formative, misconception_driven, pc_reactions_acido_basiques, lecture-graphique]
+    primary_misconception: AB-EQU-2
+    item_source: clone_of_RAB-35
+    lesson_placement: after_r-bac
+
+    stem: |-
+      Sur la courbe dérivée $d\text{pH}/dV = f(V_b)$ du dosage précédent, à quel
+      endroit lit-on le volume équivalent $V_{bE}$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          Là où $d\text{pH}/dV = 0$, comme pour n'importe quel extremum de courbe.
+        correct: false
+        misconception: AB-EQU-2
+        feedback: |-
+          Modèle détecté : un zéro de la dérivée. C'est un réflexe appliqué au
+          mauvais niveau : ici on maximise la dérivée du pH, pas le pH.
+          $d\text{pH}/dV$ vaut à peu près $0$ sur les paliers (loin de $V_{bE}$) et
+          culmine en un pic au milieu du saut — c'est ce pic qui marque $V_{bE}$.
+      - id: B
+        text: |-
+          À l'abscisse où le pH de la solution vaut $7$, la neutralité.
+        correct: false
+        misconception: AB-EQU-1
+        feedback: |-
+          Modèle détecté : $V_E$ lu à $\text{pH} = 7$. La lecture se fait au saut
+          (pente maximale), jamais à une valeur de pH fixée d'avance — d'autant
+          qu'ici $\text{pH}_E \approx 8{,}5 \neq 7$.
+      - id: C
+        text: |-
+          Au **maximum** de $d\text{pH}/dV$, là où le pH varie le plus vite.
+        correct: true
+        feedback: |-
+          Exact. Le pH varie le plus vite au saut : c'est là que $d\text{pH}/dV$
+          atteint son maximum, et cette abscisse coïncide avec le $V_{bE}$ trouvé
+          par la méthode des tangentes.
+      - id: D
+        text: |-
+          À la demi-équivalence, à l'abscisse où l'on peut lire $pK_A$ du couple titré.
+        correct: false
+        misconception: AB-EQU-3
+        feedback: |-
+          Modèle détecté : demi-équivalence confondue avec équivalence. À la
+          demi-équivalence ($V_{bE}/2$, où $\text{pH} \approx pK_A$), la dérivée
+          n'est pas à son maximum : elle est encore en train de monter. Les deux
+          points sont géométriquement distincts.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r11-indicateur | placed AFTER r-bac
+  #        Rupture gate: la zone de virage doit ENCADRER pHE.
+  #        Clone de RAB-37. Probes AB-IND-1.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r11-indicateur
+    rung: "R11"
+    habilete: application_experimentale
+    skill_code: pc_reactions_acido_basiques
+    tags: [checkpoint, formative, misconception_driven, pc_reactions_acido_basiques, lecture-graphique]
+    primary_misconception: AB-IND-1
+    item_source: clone_of_RAB-37
+    lesson_placement: after_r-bac
+
+    stem: |-
+      Pour repérer l'équivalence de ce dosage par un indicateur coloré
+      ($\text{pH}_E \approx 8{,}5$ lu sur la courbe), on dispose de l'hélianthine
+      ($3{,}1$–$4{,}4$), du bleu de bromothymol ($6{,}0$–$7{,}6$) et de la
+      phénolphtaléine ($8{,}2$–$10{,}0$). Lequel choisir ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          La phénolphtaléine : seule sa zone de virage ($8{,}2$–$10{,}0$) contient $\text{pH}_E = 8{,}5$.
+        correct: true
+        feedback: |-
+          Exact. La zone de virage doit encadrer $\text{pH}_E$ pour que le virage
+          se produise au voisinage du saut. Hélianthine et BBT sont écartés
+          (leurs zones ne contiennent pas $8{,}5$) ; seule la phénolphtaléine
+          convient.
+      - id: B
+        text: |-
+          N'importe lequel des trois convient : le choix de l'indicateur est sans importance pour repérer $V_{bE}$.
+        correct: false
+        misconception: AB-IND-1
+        feedback: |-
+          Modèle détecté : l'indicateur serait indifférent. Un indicateur dont la
+          zone ne contient pas $\text{pH}_E$ vire trop tôt ou trop tard, à un
+          volume qui n'a rien à voir avec l'équivalence. Ici, seule la
+          phénolphtaléine convient.
+      - id: C
+        text: |-
+          Le bleu de bromothymol, car un indicateur doit toujours virer au voisinage de $\text{pH} = 7$.
+        correct: false
+        misconception: AB-IND-2
+        feedback: |-
+          Modèle détecté : virage à $\text{pH} = 7$. Chaque indicateur vire dans
+          SA propre zone, fixée par son $pK_A$, sans rapport avec $7$. Le critère
+          est de contenir $\text{pH}_E$ de CE dosage — ici $8{,}5$, que le BBT
+          ($6{,}0$–$7{,}6$) ne contient pas.
+      - id: D
+        text: |-
+          L'hélianthine convient aussi : son changement de couleur donnera de toute façon le volume exact à l'équivalence.
+        correct: false
+        misconception: AB-IND-3
+        feedback: |-
+          Modèle détecté : le virage donnerait le volume exact. Il n'approche
+          $V_{bE}$ que si la zone encadre $\text{pH}_E$. La zone de l'hélianthine
+          ($3{,}1$–$4{,}4$) est très loin de $8{,}5$ : elle virerait bien avant
+          l'équivalence, à un volume beaucoup trop petit.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r8-distribution | placed AFTER r-bac
+  #        Rupture gate: le croisement 50/50 des courbes de distribution
+  #        est à pH = pKA, jamais à pH = 7. Clone de RAB-30. Probes AB-DIST-3.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r8-distribution
+    rung: "R8"
+    habilete: utilisation
+    skill_code: pc_reactions_acido_basiques
+    tags: [checkpoint, formative, misconception_driven, pc_reactions_acido_basiques, lecture-graphique]
+    primary_misconception: AB-DIST-3
+    item_source: clone_of_RAB-30
+    lesson_placement: after_r-bac
+
+    stem: |-
+      L'acide identifié dans l'exercice est l'acide éthanoïque, couple
+      $\text{CH}_3\text{COOH}/\text{CH}_3\text{COO}^-$ ($pK_A = 4{,}75$). Sur son
+      diagramme de distribution, à quel pH les deux courbes
+      ($\%\,\text{CH}_3\text{COOH}$ et $\%\,\text{CH}_3\text{COO}^-$) se
+      croisent-elles à $50\,\%$ chacune ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          À $\text{pH} = 7{,}0$, la neutralité, comme pour tout couple acide/base.
+        correct: false
+        misconception: AB-DIST-3
+        feedback: |-
+          Modèle détecté : croisement à $\text{pH} = 7$. La neutralité
+          ($\text{pH} = 7$) est une propriété de l'eau ($K_e$), indépendante du
+          couple. Le croisement des courbes de distribution, lui, est à
+          $\text{pH} = pK_A$ du couple — ici $4{,}75$.
+      - id: B
+        text: |-
+          À $\text{pH} = pK_A = 4{,}75$, une propriété du couple, sans rapport avec la neutralité.
+        correct: true
+        feedback: |-
+          Exact. $\%\text{CH}_3\text{COO}^- = 100/(1+10^{pK_A-\text{pH}})$ vaut
+          $50$ quand l'exposant s'annule, soit $\text{pH} = pK_A = 4{,}75$ — une
+          propriété du couple, pas de l'eau.
+      - id: C
+        text: |-
+          À $\text{pH} = 4{,}75$, mais $\text{CH}_3\text{COO}^-$ y est déjà présent à la quasi-totalité, $\text{CH}_3\text{COOH}$ ayant quasiment disparu.
+        correct: false
+        misconception: AB-DIST-1
+        feedback: |-
+          Modèle détecté : frontière lue comme bascule totale. À $\text{pH} = pK_A$
+          pile, l'exposant est nul : $\%\text{CH}_3\text{COO}^- = 100/(1+10^0) = 50$.
+          Rien n'a disparu — c'est au contraire le point d'égalité parfaite entre
+          les deux formes.
+      - id: D
+        text: |-
+          Cette question revient à demander où $\text{CH}_3\text{COO}^-$ prédomine ; on ne peut pas chiffrer davantage qu'un verdict de prédominance.
+        correct: false
+        misconception: AB-DIST-2
+        feedback: |-
+          Modèle détecté : prédominance et distribution confondues. On peut
+          chiffrer bien plus qu'« au-dessus de $pK_A$, $\text{CH}_3\text{COO}^-$
+          prédomine » : le diagramme de distribution donne le pourcentage exact,
+          ici $50\,\%$ pile au croisement.

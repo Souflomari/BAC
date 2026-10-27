@@ -1,0 +1,978 @@
+notion: structures-algebriques
+skill_code: maths_structures_alg
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — maths structures alg.)
+#
+# Sondes FORMATIVES, calmes, placées DANS la leçon — PAS la banque de fin
+# (items.yaml). Même schéma d'item, mais NI score, NI streak, NI comptage. Le
+# feedback d'une mauvaise réponse nomme le MODÈLE algébrique erroné, pas
+# seulement le fait de s'être trompé. Le plancher ≥3-par-misconception de la
+# banque de fin vit dans items.yaml et n'est PAS modifié par ces checkpoints
+# (les clones sont surfacés en ligne, jamais recomptés).
+#
+# Placement (les ids correspondent aux marqueurs [[checkpoint:…]] de lesson.md) :
+#   cp-r0-predict           (dans R0)       — GATE d'engagement : transforme le
+#                                             « prends position » de l'horloge en
+#                                             un vrai QCM avant la révélation.
+#                                             Sonde generalisation-hative.
+#   cp-r1-stabilite         (après R1)      — rupture-gate : loi interne &
+#                                             stabilité — UN seul couple qui
+#                                             s'échappe hors de E casse la
+#                                             propriété. Sonde cloture-non-verifiee.
+#   cp-r2-neutre-symetrique (après R2)      — rupture-gate : neutre vs symétrique
+#                                             — le neutre est un élément fixe,
+#                                             le symétrique dépend de l'élément.
+#                                             Sonde neutre-vs-symetrique. Clone SA-2.
+#   cp-r6-structures        (après R6)      — rupture-gate : groupe / anneau /
+#                                             corps — on coche TOUS les axiomes,
+#                                             sans en sauter aucun. Sonde
+#                                             axiome-oublie.
+#   cp-r7-morphisme         (avant r-bac)   — rupture-gate : isomorphisme —
+#                                             bijectif ET morphisme, il transporte
+#                                             la structure sans re-vérifier les
+#                                             axiomes. Sonde axiome-oublie.
+#   cp-r7-transport         (dans l'exemple — rupture-gate : ajouté dette d'examen
+#                            travaillé de R7,   vague B (GAP-B "transport de
+#                            après la preuve    structure", docs/audits/
+#                            du morphisme,      dette-examen/maths.md). Place le
+#                            avant celle de     pari juste après la preuve du
+#                            la bijectivité)    morphisme sur φ(t)=t+1, avant celle
+#                                               de la bijectivité : conclure au
+#                                               groupe transporté sans bijectivité
+#                                               est le piège cité par l'audit.
+#                                               Sonde axiome-oublie.
+#   cp-r8-pari-scalaire     (dans R8, à     — pari n°1 du chapitre 11 « Espaces
+#                            l'accroche,       vectoriels », AVANT toute
+#                            avant toute       définition : l'ensemble F du
+#                            définition)       chapitre 5 est-il un sous-espace ?
+#                                               Sonde sous-espace-vs-sous-groupe.
+#   cp-r8-pari-stabilite    (dans R8, après — pari n°2 : X = {xy = 0} passe deux
+#                            la droite         conditions sur trois. Sonde
+#                            décalée)          sous-espace-zero-suffit.
+#   cp-r8-pari-notation     (dans R8, après — pari n°3 : dim M2(ℝ) ? Sonde
+#                            la base de V)     dimension-lue-sur-la-notation.
+#   cp-r8-pari-dimension    (dans R8, après — pari n°4 : dim Vect(u,v,w) avec
+#                            dim M2(ℝ) = 4)    w = u + v. Sonde
+#                                               dimension-compte-parametres.
+#   cp-r8-pari-noyau        (dans R8, bloc  — pari n°5 : que contient ker f,
+#                            E, après la       pour f(x,y,z) = (x − y, y − z) ?
+#                            définition du     Sonde noyau-toujours-nul. AJOUTÉ
+#                            noyau, avant      le 2026-10-20 (critique
+#                            noyau-f)          pédagogique du chapitre construit,
+#                                               I-1).
+#   Les cinq sont posés AVANT la révélation qu'ils engagent ; les quatre
+#   premiers viennent de
+#   maths-structures-espaces-vectoriels.md (supprimé le 2026-10-22) §7
+#   (révision (b) du 2026-10-20), le cinquième de la critique pédagogique
+#   (espaces-vectoriels-build-pedagogie.md (supprimé le 2026-10-22), I-1). Les
+#   huit ids de misconception du chapitre 11 (M1…M8 de la spec §8) sont
+#   déclarés dans items.yaml avec les items SA-36…SA-53 ; ces checkpoints en
+#   portent sept (M1, M2, M3, M4, M5, M6, M8) plus generalisation-hative.
+#   Correctif I-5 de la même critique : dans les QCM à verdict, la clé n'est
+#   jamais le seul verdict contre trois — pari-stabilite et pari-dimension
+#   donnent désormais à un distracteur le verdict de la clé avec une raison
+#   fausse, sur le modèle de pari-scalaire.
+#
+# CHAQUE distracteur porte un id de misconception nommé de l'inventaire de cette
+# notion (items.yaml, namespace mc.math.structures_algebriques.*). Les longueurs
+# d'options sont équilibrées pour que la bonne réponse ne soit jamais la plus
+# longue.
+#
+# Boundary guard : 2ème Bac Sciences Mathématiques (SM) — lois de composition
+# interne, propriétés (commutativité, associativité, neutre, symétrique),
+# groupe, groupe commutatif, sous-groupe, anneau, anneau intègre, corps,
+# morphisme / isomorphisme, noyau d'un morphisme de groupes ; et, depuis le
+# chapitre 11 (2026-10-20), espace vectoriel réel, sous-espace vectoriel,
+# combinaison linéaire, sous-espace engendré, famille libre / génératrice,
+# base, dimension (en dimension finie), application linéaire, noyau, image.
+# HORS périmètre, par les limites du cadre (maths-sm.yaml) et les défauts de la
+# spec §15 : réduction d'endomorphismes (valeurs / vecteurs propres,
+# diagonalisation), produit scalaire abstrait, dimension infinie, espaces de
+# polynômes, somme et somme directe de sous-espaces, théorème du rang, matrice
+# d'une application linéaire, rang d'une famille. Chapitre SM uniquement
+# (absent de SVT / Sc. Physiques).
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placé DANS R0 (l'engagement de l'horloge)
+  #        Transforme « prends position sur ⊕ » en un vrai QCM d'engagement
+  #        avant la révélation « oui à tout ». Sonde generalisation-hative :
+  #        conclure d'une ressemblance, sans vérifier.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, hook_commit]
+    primary_misconception: mc.math.structures_algebriques.generalisation-hative
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Sur l'horloge à 12 heures, $\oplus$ additionne deux heures puis garde le
+      reste modulo $12$. **Avant de lire la suite, engage-toi :** $\oplus$
+      a-t-elle les mêmes bonnes propriétés que l'addition usuelle
+      (commutativité, associativité, neutre, opposé de chaque heure), et
+      comment peut-on en être certain ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Oui, forcément : $\oplus$ n'est qu'une addition déguisée, elle hérite
+          donc automatiquement de toutes les propriétés de l'addition, sans
+          qu'on ait quoi que ce soit à vérifier.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : « ça ressemble à l'addition, donc ça se comporte
+          comme elle ». La ressemblance ne prouve rien : $\oplus$ boucle
+          (modulo $12$), ce que l'addition ordinaire ne fait pas. Chaque
+          propriété doit être **vérifiée** pour cette loi précise — c'est même
+          tout le métier du chapitre. (Le résultat, obtenu ensuite : oui, elle
+          les a toutes — mais on ne le sait qu'après vérification.)
+
+      - id: B
+        text: |
+          Oui, elle a bien ces quatre propriétés — mais on ne peut l'affirmer
+          qu'après les avoir vérifiées une par une, pas par simple ressemblance.
+        correct: true
+        feedback: |
+          Exact, et c'est l'esprit du chapitre. Sur l'horloge, $\oplus$ est
+          commutative, associative, admet un neutre ($0$h) et un opposé pour
+          chaque heure — mais la seule façon honnête de le savoir est de le
+          **vérifier**, propriété par propriété, pas de le supposer parce que
+          « c'est comme une addition ».
+
+      - id: C
+        text: |
+          Non : dès que la somme dépasse $12$, le résultat s'échappe du cadran,
+          donc $\oplus$ ne peut pas avoir de neutre ni d'opposé.
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: |
+          Modèle détecté : « le résultat sort de l'ensemble ». Justement non :
+          après avoir dépassé $12$, on **réduit modulo $12$**, et le résultat
+          retombe toujours dans $\{0,1,\ldots,11\}$. La loi est bien interne —
+          rien ne s'échappe.
+
+      - id: D
+        text: |
+          Oui pour la commutativité, et comme toute loi commutative est
+          automatiquement associative, ces deux propriétés sont acquises d'un
+          coup, sans calcul.
+        correct: false
+        misconception: mc.math.structures_algebriques.assoc-commut-confusion
+        feedback: |
+          Modèle détecté : commutativité $\Rightarrow$ associativité. Ce sont
+          deux propriétés **indépendantes** : l'une échange deux termes, l'autre
+          déplace les parenthèses entre trois. Une loi peut avoir l'une sans
+          l'autre — chacune se vérifie séparément.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-stabilite | placé APRÈS R1
+  #        Rupture-gate : loi interne & stabilité. UN seul couple qui sort de
+  #        E suffit à casser la propriété ; il n'y a pas de « loi interne avec
+  #        exceptions ». Sonde cloture-non-verifiee.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-stabilite
+    rung: "R1"
+    habilete: utilisation
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, lci, cloture]
+    primary_misconception: mc.math.structures_algebriques.cloture-non-verifiee
+    item_source: clone_of_SA-11
+    lesson_placement: after_R1
+
+    stem: |
+      On munit $E=\{0,1,2,3\}$ de la loi $x \mathbin{\triangle} y = x+y$
+      (addition usuelle, **sans** réduction modulo $4$). Est-ce une loi de
+      composition interne sur $E$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Non : par exemple $2 \mathbin{\triangle} 3 = 5$, qui n'appartient pas à $E=\{0,1,2,3\}$ — un seul contre-exemple suffit.
+        correct: true
+        feedback: |
+          Exact. Une loi est interne seulement si le résultat reste dans $E$
+          pour **tous** les couples. Ici $2 \mathbin{\triangle} 3 = 5 \notin E$ :
+          un seul couple qui s'échappe suffit à casser la propriété. (Avec
+          réduction modulo $4$, en revanche, $\triangle$ redeviendrait interne.)
+
+      - id: B
+        text: |
+          Oui : on additionne deux éléments de $E$, donc le résultat est
+          nécessairement encore un élément de $E$.
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: |
+          Modèle détecté : « le résultat reste forcément dans $E$ ». Partir de
+          deux éléments de $E$ ne garantit pas d'y rester : $2 \mathbin{\triangle} 3 = 5$
+          sort de $E$. Le caractère interne se **vérifie** sur chaque couple, il
+          ne se suppose pas.
+
+      - id: C
+        text: |
+          Oui : on vérifie sur $0 \mathbin{\triangle} 1 = 1$ et $1 \mathbin{\triangle} 2 = 3$
+          que le résultat reste dans $E$, donc la loi est interne.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : « quelques exemples marchent, donc c'est vrai
+          partout ». Deux couples favorables ne prouvent rien : il aurait fallu
+          les examiner **tous**, et $2 \mathbin{\triangle} 3 = 5$ montre que ça
+          échoue. Un contre-exemple pèse plus que dix exemples réussis.
+
+      - id: D
+        text: |
+          Oui, à quelques exceptions près comme $2 \mathbin{\triangle} 3$ : dans
+          la grande majorité des cas le résultat reste dans $E$, ce qui suffit.
+        correct: false
+        misconception: mc.math.structures_algebriques.cloture-non-verifiee
+        feedback: |
+          Modèle détecté : « une loi interne, mais avec des exceptions ». Il
+          n'existe pas de « presque interne » : dès qu'**un** couple sort de
+          $E$, la loi n'est pas interne du tout. $2 \mathbin{\triangle} 3 = 5$
+          suffit à conclure que non.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-neutre-symetrique | placé APRÈS R2 | clone de SA-2
+  #        Rupture-gate : neutre vs symétrique. Le neutre est UN élément fixe
+  #        pour tout E ; le symétrique de a dépend de a et le ramène au neutre.
+  #        Sonde neutre-vs-symetrique.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-neutre-symetrique
+    rung: "R2"
+    habilete: utilisation
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, symetrique]
+    primary_misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+    item_source: clone_of_SA-2
+    lesson_placement: after_R2
+
+    stem: |
+      On munit $E=\{e,a,b\}$ d'une loi $\star$ de neutre $e$, dont voici la
+      table :
+
+      | $\star$ | $e$ | $a$ | $b$ |
+      |---|---|---|---|
+      | $e$ | $e$ | $a$ | $b$ |
+      | $a$ | $a$ | $b$ | $e$ |
+      | $b$ | $b$ | $e$ | $a$ |
+
+      Quel est le symétrique de $a$ pour cette loi ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $b$
+        correct: true
+        feedback: |
+          Exact : sur la ligne de $a$, c'est à la colonne $b$ qu'apparaît le
+          neutre, $a \star b = e$ (et $b \star a = e$ par symétrie de la table).
+          Le symétrique de $a$ est $b$ — un élément qui **dépend de $a$**, pas le
+          neutre.
+
+      - id: B
+        text: |
+          $e$, l'élément neutre.
+        correct: false
+        misconception: mc.math.structures_algebriques.neutre-vs-symetrique
+        feedback: |
+          Modèle détecté : « le symétrique, c'est le neutre ». Deux rôles
+          distincts : le neutre $e$ ne change rien ($a \star e = a \neq e$),
+          alors que le symétrique de $a$ est l'élément qui, combiné à $a$,
+          **ramène** au neutre. Ici c'est $b$, car $a \star b = e$.
+
+      - id: C
+        text: |
+          $a$ lui-même.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Tu as supposé que $a$ est son propre symétrique sans lire sa ligne :
+          or $a \star a = b \neq e$. On ne devine pas le symétrique, on le
+          **lit** dans la table en cherchant où apparaît le neutre $e$.
+
+      - id: D
+        text: |
+          Aucun : $a$ n'a pas de symétrique pour cette loi.
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: |
+          Conclure trop vite que le symétrique n'existe pas, c'est abandonner le
+          quatrième axiome sans avoir fini de lire la ligne de $a$ : elle
+          contient bien $e$, à la colonne $b$. Donc $a \star b = e$ — le
+          symétrique existe, c'est $b$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r6-structures | placé APRÈS R6 (après [[figure:echelle-structures]])
+  #        Rupture-gate : groupe / anneau / corps. On coche TOUS les axiomes ;
+  #        passer de l'anneau au corps exige de vérifier que TOUT élément non
+  #        nul est inversible. Sonde axiome-oublie.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-structures
+    rung: "R6"
+    habilete: raisonnement
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, corps, synthese]
+    primary_misconception: mc.math.structures_algebriques.axiome-oublie
+    item_source: clone_of_SA-21
+    lesson_placement: after_R6
+
+    stem: |
+      Un élève veut montrer que $(\mathbb{Z}/6\mathbb{Z},+,\times)$ est un
+      **corps**. Il vérifie que c'est un anneau, puis que $\times$ y est
+      commutative, et conclut : « c'est donc un corps ». Son raisonnement
+      est-il complet ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Non : il reste à vérifier que **tout** élément non nul est inversible
+          pour $\times$, et $2$ ne l'est pas ($2\times k$ ne vaut jamais $1$
+          modulo $6$).
+        correct: true
+        feedback: |
+          Exact. Le pas anneau $\to$ corps exige une condition en plus : chaque
+          élément non nul doit avoir un symétrique pour $\times$. Or
+          $2\times k \in \{0,2,4\}$ modulo $6$, jamais $1$ : $2$ n'est pas
+          inversible. Donc $(\mathbb{Z}/6\mathbb{Z},+,\times)$ n'est **pas** un
+          corps.
+
+      - id: B
+        text: |
+          Oui : c'est un anneau, et la multiplication y est commutative ; ces deux points suffisent à définir un corps.
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: |
+          Modèle détecté : un axiome sauté. Le corps réclame une troisième
+          condition, la plus décisive : **tout élément non nul inversible** pour
+          $\times$. Sans elle, on n'a qu'un anneau commutatif. Ici $2$ n'est pas
+          inversible modulo $6$ : la condition manquante échoue.
+
+      - id: C
+        text: |
+          Oui : puisque la structure est déjà un anneau, c'en est automatiquement un corps dès que la multiplication est commutative.
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-anneau
+        feedback: |
+          Modèle détecté : « un anneau est déjà un corps ». Le corps est
+          strictement plus exigeant. $(\mathbb{Z},+,\times)$ est un anneau mais
+          pas un corps ($2$ n'y est pas inversible) ; de même
+          $(\mathbb{Z}/6\mathbb{Z},+,\times)$ est un anneau qui n'est pas un
+          corps.
+
+      - id: D
+        text: |
+          Oui : il a vérifié que $1$ et $5$ sont inversibles ($1\times1=1$, $5\times5=25\equiv1$), donc tous les autres éléments le sont aussi.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : deux éléments inversibles, donc tous. Non : la
+          condition du corps porte sur **chaque** élément non nul. $2$, $3$ et
+          $4$ n'ont, eux, aucun inverse modulo $6$ — vérifier $1$ et $5$ ne dit
+          rien d'eux.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r7-morphisme | placé AVANT [[exercise:r-bac]]
+  #        Rupture-gate : isomorphisme. Bijectif ET morphisme ; il transporte
+  #        la structure du groupe connu sans re-vérifier les axiomes. La
+  #        condition « morphisme » est l'axiome à ne pas oublier. Amorce la
+  #        question 4 de r-bac. Sonde axiome-oublie.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7-morphisme
+    rung: "R7"
+    habilete: raisonnement
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, morphisme, bac_style]
+    primary_misconception: mc.math.structures_algebriques.axiome-oublie
+    item_source: original
+    lesson_placement: before_bac
+
+    stem: |
+      On veut montrer que $(F,\times)$ est un groupe commutatif à l'aide d'une
+      application $\varphi : E \to F$ **bijective**, où $(E,\ast)$ est déjà connu
+      comme groupe commutatif. Quelle condition sur $\varphi$ rend la déduction
+      valide et dispense de re-vérifier les axiomes sur $F$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $\varphi$ doit aussi être un **morphisme** :
+          $\varphi(x\ast y)=\varphi(x)\times\varphi(y)$. Bijective et morphisme,
+          c'est un isomorphisme.
+        correct: true
+        feedback: |
+          Exact. Un isomorphisme, c'est bijectif **et** morphisme : la condition
+          $\varphi(x\ast y)=\varphi(x)\times\varphi(y)$ fait passer la loi $\ast$
+          sur la loi $\times$. La structure de $(E,\ast)$ se transporte alors
+          intégralement sur $(F,\times)$ — c'est exactement la stratégie de la
+          dernière question du sujet.
+
+      - id: B
+        text: |
+          Aucune condition de plus : dès que $\varphi$ est bijective,
+          $(F,\times)$ hérite automatiquement de la structure de $(E,\ast)$.
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: |
+          Modèle détecté : la condition « morphisme » oubliée. Une bijection
+          quelconque ne respecte pas les lois : sans
+          $\varphi(x\ast y)=\varphi(x)\times\varphi(y)$, rien ne se transporte.
+          C'est précisément cet axiome-là qui fait l'isomorphisme.
+
+      - id: C
+        text: |
+          Il suffit de vérifier l'égalité $\varphi(x\ast y)=\varphi(x)\times\varphi(y)$
+          sur un couple $(x,y)$ bien choisi.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : un couple pour toute une loi. La propriété de
+          morphisme doit tenir pour **tous** les couples $(x,y)$ ; on l'établit
+          par un calcul général, pas sur un exemple. Un cas favorable ne prouve
+          rien pour les autres.
+
+      - id: D
+        text: |
+          La bijectivité seule donne déjà le groupe ; quant à la commutativité
+          de $(F,\times)$, elle est automatique, puisque tout groupe est
+          commutatif.
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-implique-commutatif
+        feedback: |
+          Modèle détecté : « tout groupe est commutatif ». Faux : la
+          commutativité est une propriété en plus (chapitre 6), et il existe des groupes
+          non commutatifs. Ici, elle ne peut venir sur $(F,\times)$ que
+          transportée depuis $(E,\ast)$ par un vrai isomorphisme.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r7-transport | placé DANS l'exemple travaillé de R7, entre la
+  #        preuve du morphisme et celle de la bijectivité
+  #        Rupture-gate : conclure au groupe transporté dès le morphisme
+  #        établi, sans avoir encore prouvé la bijectivité — le piège cité
+  #        par l'audit de dette d'examen (vague B, GAP-B transport de
+  #        structure). Sonde axiome-oublie.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7-transport
+    rung: "R7"
+    habilete: raisonnement
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, morphisme, isomorphisme, transport]
+    primary_misconception: mc.math.structures_algebriques.axiome-oublie
+    item_source: original
+    lesson_placement: in_R7_exemple_transport
+
+    stem: |
+      Dans l'exemple travaillé, on vient d'établir que $\varphi(t)=t+1$
+      vérifie $\varphi(t_1 t_2) = \varphi(t_1) \star \varphi(t_2)$ pour tous
+      $t_1,t_2 \in \mathbb{R}^*_+$ — $\varphi$ est un morphisme de
+      $(\mathbb{R}^*_+,\times)$ vers $(F,\star)$. **Avant de continuer :
+      peut-on déjà conclure que $(F,\star)$ est un groupe commutatif ?**
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Pas encore : il manque la bijectivité de $\varphi$. Sans elle, rien
+          ne garantit qu'on transporte bien toute la structure de
+          $(\mathbb{R}^*_+,\times)$ vers $(F,\star)$, élément par élément.
+        correct: true
+        feedback: |
+          Exact. Un isomorphisme est bijectif **et** morphisme — les deux
+          ensemble, jamais l'un sans l'autre. On vient d'établir le second ; il
+          reste à établir le premier avant de pouvoir transporter quoi que ce
+          soit.
+
+      - id: B
+        text: |
+          Oui : un morphisme entre deux structures suffit à transporter le
+          groupe, la bijectivité n'est qu'un détail technique en plus.
+        correct: false
+        misconception: mc.math.structures_algebriques.axiome-oublie
+        feedback: |
+          Modèle détecté : une condition oubliée. Sans bijectivité, $\varphi$
+          pourrait écraser deux éléments distincts de $\mathbb{R}^*_+$ sur la
+          même image de $F$, ou ne jamais atteindre certains éléments de $F$
+          — la structure ne se transporterait qu'à moitié, ou pas du tout.
+          Bijectif et morphisme sont deux conditions non négociables, jamais
+          l'une sans l'autre.
+
+      - id: C
+        text: |
+          Oui : il suffit de vérifier que $\varphi$ envoie le neutre sur le
+          neutre, ça confirme que $\varphi$ est bijective.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : un cas particulier généralisé. Que $\varphi$
+          envoie effectivement le neutre sur le neutre est cohérent, mais ça
+          ne dit rien de **tous** les autres éléments de $F$ : la
+          bijectivité se prouve pour l'application entière, elle ne se
+          confirme pas sur un seul point remarquable.
+
+      - id: D
+        text: |
+          Oui, on peut conclure : dès qu'un morphisme relie deux structures,
+          le groupe qui en résulte est automatiquement commutatif, que
+          $\varphi$ soit bijective ou non.
+        correct: false
+        misconception: mc.math.structures_algebriques.groupe-implique-commutatif
+        feedback: |
+          Modèle détecté : « tout groupe est commutatif ». Faux, et de toute
+          façon hors sujet ici : sans bijectivité, on n'a même pas encore de
+          groupe transporté du tout — la question de sa commutativité ne se
+          pose pas avant que le transport lui-même soit valide.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-6 | id: cp-r8-pari-scalaire | placé DANS R8 (chapitre 11), à l'accroche,
+  #        AVANT toute définition — pari n°1 de la spec §7.1. L'élève tranche
+  #        sur l'ensemble F du chapitre 5 (sous-groupe sur ℤ) : sous-espace ?
+  #        Sonde sous-espace-vs-sous-groupe (M2). La clé B et le distracteur D
+  #        partagent le verdict « Non » avec deux raisons différentes : c'est
+  #        voulu (spec §11.2, B′.1) — les options sont des énoncés complets.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r8-pari-scalaire
+    rung: "R8"
+    habilete: raisonnement
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, sous-espace, hook_commit]
+    primary_misconception: mc.math.structures_algebriques.sous-espace-vs-sous-groupe
+    item_source: original
+    lesson_placement: in_R8
+
+    stem: |
+      Au chapitre 5, on a démontré que
+      $F = \left\{ M(a,b) = \left(\begin{smallmatrix} a & -b \\ b & a \end{smallmatrix}\right) \ /\ (a,b) \in \mathbb{Z}^2 \right\}$
+      est un sous-groupe de $(M_2(\mathbb{R}),+)$. L'énoncé rappelle maintenant
+      que $(M_2(\mathbb{R}),+,\cdot)$ est un espace vectoriel réel, et demande :
+      **$F$ en est-il un sous-espace vectoriel ?** Prends position avant de
+      lire la suite.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Oui : $F$ est déjà un sous-groupe pour $+$, et c'est précisément ce
+          qu'on demande à un sous-espace vectoriel.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-vs-sous-groupe
+        feedback: |
+          Modèle détecté : « sous-espace, c'est la question du sous-groupe ».
+          Le sous-groupe ne parle que de $+$. Un sous-espace demande en plus la
+          stabilité pour la multiplication par un **réel** — et ce réel n'est
+          pas dans $F$. Ici elle échoue : $M(1,0) = I$ est dans $F$, mais
+          $\tfrac12 \cdot M(1,0)$ demanderait $a = \tfrac12$, qui n'est pas
+          entier. $F$ est un sous-groupe, pas un sous-espace.
+
+      - id: B
+        text: |
+          Non : $M(1,0)$ est dans $F$, mais $\tfrac12 \cdot M(1,0)$ demanderait
+          $a = \tfrac12$, qui n'est pas entier.
+        correct: true
+        feedback: |
+          Exact. $M(1,0)$ est l'identité, et
+          $\tfrac12 \cdot M(1,0) = \left(\begin{smallmatrix} \frac12 & 0 \\ 0 & \frac12 \end{smallmatrix}\right)$
+          ne peut s'écrire $M(a,b)$ qu'avec $a = \tfrac12$, hors de $\mathbb{Z}$.
+          Un seul couple — un réel et une matrice — suffit : $F$ n'est pas
+          stable pour la loi externe. Sous-groupe, oui ; sous-espace, non.
+
+      - id: C
+        text: |
+          Oui : $F$ contient la matrice nulle $M(0,0)$, la condition d'un
+          sous-espace est donc remplie.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-zero-suffit
+        feedback: |
+          Modèle détecté : « la matrice nulle y est, donc c'est un
+          sous-espace ». Contenir $O$ est nécessaire, pas suffisant : il faut
+          aussi rester dans l'ensemble quand on additionne et quand on
+          multiplie par un réel. Ici la multiplication par un réel fait
+          sortir de $F$ : $\tfrac12 \cdot M(1,0)$ demanderait
+          $a = \tfrac12 \notin \mathbb{Z}$. $F$ n'est pas un sous-espace.
+
+      - id: D
+        text: |
+          Non : $F$ n'est pas stable pour le produit de deux de ses matrices,
+          et un sous-espace doit l'être.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-vs-sous-groupe
+        feedback: |
+          Modèle détecté : on réclame d'un sous-espace la liste d'une autre
+          structure — ici la stabilité pour $\times$, celle d'un anneau. Le
+          produit de deux matrices n'intervient pas dans un sous-espace : seuls
+          comptent $+$ et la multiplication par un réel. Et $F$ est d'ailleurs
+          stable pour ce produit :
+          $M(a,b) \times M(c,d) = M(ac - bd,\ ad + bc)$, à coefficients
+          entiers. Le verdict « non » est juste, mais pour une autre raison :
+          $\tfrac12 \cdot M(1,0)$ sort de $F$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-7 | id: cp-r8-pari-stabilite | placé DANS R8 (chapitre 11), après le
+  #        critère à trois conditions et la droite décalée, AVANT la réponse
+  #        sur X = {xy = 0} — pari n°2 de la spec §7.2. Deux conditions sur
+  #        trois passent ; l'élève doit atteindre la troisième. Sonde
+  #        sous-espace-zero-suffit (M1). C → generalisation-hative, D → M2
+  #        (étiquettes de la révision du 2026-10-20, correctif I6). D partage
+  #        le verdict « Non » de la clé avec une raison fausse (l'opposé qui
+  #        sortirait de X) : deux « Oui », deux « Non » — correctif I-5 de la
+  #        critique du chapitre construit, 2026-10-20.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r8-pari-stabilite
+    rung: "R8"
+    habilete: raisonnement
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, sous-espace]
+    primary_misconception: mc.math.structures_algebriques.sous-espace-zero-suffit
+    item_source: original
+    lesson_placement: in_R8
+
+    stem: |
+      Dans $\mathbb{R}^2$, on pose $X = \{(x,y) \in \mathbb{R}^2 \ /\ xy = 0\}$
+      — les points qui sont sur au moins un des deux axes. Deux des trois
+      conditions se vérifient en une ligne : $(0,0) \in X$ (non vide) ; et pour
+      tout réel $\lambda$, $(\lambda x)(\lambda y) = \lambda^2 xy = 0$, donc
+      $\lambda(x,y)$ reste dans $X$ (stable pour la loi externe).
+      **$X$ est-il un sous-espace vectoriel de $\mathbb{R}^2$ ?** Prends
+      position avant de lire la suite.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Oui : le vecteur nul y est, et la multiplication par un réel n'en fait
+          pas sortir — le critère est rempli.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-zero-suffit
+        feedback: |
+          Modèle détecté : « le vecteur nul y est (et une autre condition
+          passe), donc c'est un sous-espace ». Le critère demande les trois
+          conditions ensemble, et la stabilité pour $+$ n'a pas été vérifiée.
+          Elle échoue : $(1,0)$ et $(0,1)$ sont dans $X$, mais
+          $(1,0) + (0,1) = (1,1)$, et $1 \times 1 = 1 \neq 0$. $X$ n'est pas un
+          sous-espace.
+
+      - id: B
+        text: |
+          Non : $(1,0)$ et $(0,1)$ sont dans $X$, mais leur somme $(1,1)$ n'y
+          est pas, car $1 \times 1 = 1 \neq 0$.
+        correct: true
+        feedback: |
+          Exact. Deux conditions sur trois passent, et la troisième tombe : $X$
+          n'est pas stable pour $+$. Un seul couple suffit, et il faut le
+          chercher sur deux axes **différents** : $(1,0) + (0,1) = (1,1)$ sort
+          des deux axes. $X$ n'est pas un sous-espace de $\mathbb{R}^2$.
+
+      - id: C
+        text: |
+          Oui : la somme de deux points d'un même axe reste sur cet axe, donc
+          $X$ est stable pour l'addition.
+        correct: false
+        misconception: mc.math.structures_algebriques.generalisation-hative
+        feedback: |
+          Modèle détecté : un cas particulier généralisé. La prémisse est vraie
+          — deux points d'un même axe s'additionnent sur cet axe — mais deux
+          points de $X$ peuvent vivre sur des axes **différents** :
+          $(1,0) + (0,1) = (1,1)$, et $1 \times 1 \neq 0$. $X$ n'est pas stable
+          pour $+$, donc ce n'est pas un sous-espace.
+
+      - id: D
+        text: |
+          Non : l'opposé d'un point de $X$ peut sortir de $X$, et un
+          sous-espace doit contenir l'opposé de chacun de ses vecteurs.
+        correct: false
+        misconception: mc.math.structures_algebriques.sous-espace-vs-sous-groupe
+        feedback: |
+          Modèle détecté : la liste du sous-groupe, cochée à la place du
+          critère. Le verdict « non » est juste, mais la raison ne l'est
+          pas : l'opposé de $(x,y)$ est $(-x,-y)$, et $(-x)(-y) = xy = 0$ —
+          il reste dans $X$. C'est d'ailleurs $(-1) \cdot (x,y)$, déjà
+          couvert par la stabilité pour la loi externe. Ce qui tombe, c'est
+          la stabilité pour $+$ : $(1,0) + (0,1) = (1,1)$, et
+          $1 \times 1 = 1 \neq 0$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-8 | id: cp-r8-pari-notation | placé DANS R8 (chapitre 11), après la
+  #        base de V (dim V = 2), AVANT la réponse « dim M2(ℝ) = 4 » — pari
+  #        n°3 de la spec §7.3 (NEUF, correctif B2). Sonde
+  #        dimension-lue-sur-la-notation (M5) ; D → famille-generatrice-non-
+  #        verifiee (M8). La clé confesse une BASE (génératrice ET libre),
+  #        jamais « quatre coefficients ». Résidu accepté et écrit en spec
+  #        §7.3 : M4 (compter les lettres) atteint aussi la clé, muet sur cet
+  #        objet ; le checkpoint ne porte pas M4, rompu au pari suivant.
+  #        Clé réécrite sans le mot « aucune » de la spec (indice-absolu).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r8-pari-notation
+    rung: "R8"
+    habilete: utilisation
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, base-dimension]
+    primary_misconception: mc.math.structures_algebriques.dimension-lue-sur-la-notation
+    item_source: original
+    lesson_placement: in_R8
+
+    stem: |
+      Tu viens de compter une base de $V$ : deux matrices, donc $\dim V = 2$.
+      La question porte maintenant sur l'espace tout entier, qui contient
+      $V$. **Quelle est la dimension de $M_2(\mathbb{R})$ ?** Prends position
+      avant de lire la suite.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $2$ : c'est l'indice écrit dans $M_2$, c'est-à-dire l'ordre des
+          matrices de cet espace.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-lue-sur-la-notation
+        feedback: |
+          Modèle détecté : la dimension lue sur la notation. Le « 2 » de $M_2$
+          est l'ordre des matrices — deux lignes, deux colonnes —, pas la
+          dimension de l'espace. Une base de $M_2(\mathbb{R})$ compte quatre
+          matrices, celles qui n'ont qu'un coefficient égal à $1$ : donc
+          $\dim M_2(\mathbb{R}) = 4$.
+
+      - id: B
+        text: |
+          $4$ : quatre matrices fixes écrivent
+          $\left(\begin{smallmatrix} x & y \\ z & t \end{smallmatrix}\right)$,
+          et chacune porte une case que les trois autres ne peuvent pas fournir.
+        correct: true
+        feedback: |
+          Exact. Les quatre matrices qui n'ont qu'un coefficient égal à $1$
+          engendrent toute matrice — chaque coefficient devient un poids — et
+          elles sont libres : leur combinaison n'est nulle que si les quatre
+          poids le sont. C'est une base de quatre vecteurs :
+          $\dim M_2(\mathbb{R}) = 4$. Le « 2 » de $M_2$ est l'ordre des
+          matrices, pas la dimension.
+
+      - id: C
+        text: |
+          $2$ : $V$ est de dimension $2$ et $V \subset M_2(\mathbb{R})$ ; un
+          sous-espace et son espace ont la même dimension.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-lue-sur-la-notation
+        feedback: |
+          Modèle détecté : un sous-espace aurait la dimension de l'espace qui
+          le contient. L'espace ambiant ne donne qu'une **borne** : $V$ est de
+          dimension $2$ à l'intérieur de $M_2(\mathbb{R})$, qui est de
+          dimension $4$ — une base de $M_2(\mathbb{R})$ compte quatre
+          matrices, celles qui n'ont qu'un coefficient égal à $1$.
+
+      - id: D
+        text: |
+          $3$ : les trois matrices $I$,
+          $\left(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}\right)$ et
+          $\left(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}\right)$
+          suffisent à tout écrire.
+        correct: false
+        misconception: mc.math.structures_algebriques.famille-generatrice-non-verifiee
+        feedback: |
+          Modèle détecté : une famille qui « a l'air de couvrir » prise pour
+          génératrice. Écris la combinaison :
+          $\alpha I + \beta \left(\begin{smallmatrix} 0 & 1 \\ 0 & 0 \end{smallmatrix}\right) + \gamma \left(\begin{smallmatrix} 0 & 0 \\ 1 & 0 \end{smallmatrix}\right) = \left(\begin{smallmatrix} \alpha & \beta \\ \gamma & \alpha \end{smallmatrix}\right)$.
+          Ses deux coefficients diagonaux sont égaux, donc
+          $\left(\begin{smallmatrix} 1 & 0 \\ 0 & 2 \end{smallmatrix}\right)$
+          n'est pas atteinte : ces trois matrices n'engendrent pas
+          $M_2(\mathbb{R})$, qui est de dimension $4$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-9 | id: cp-r8-pari-dimension | placé DANS R8 (chapitre 11), après la
+  #        réponse « dim M2(ℝ) = 4 », AVANT la réponse sur G = Vect(u,v,w) —
+  #        pari n°4 de la spec §7.4. Sonde dimension-compte-parametres (M4) ;
+  #        C → famille-libre-mal-testee (M3), D → dimension-lue-sur-la-
+  #        notation (M5). Prémisse de C vraie (trois couples non colinéaires).
+  #        Option C réécrite sans le mot « aucun » de la spec (indice-absolu).
+  #        D donne désormais le verdict de la clé, « 2 », avec une règle fausse
+  #        lue sur l'espace ambiant (« dimension 3 − 1 ») : deux « 3 », deux
+  #        « 2 » — correctif I-5 de la critique du chapitre construit,
+  #        2026-10-20. Le modèle reste M5 : la dimension lue sur l'habillage.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r8-pari-dimension
+    rung: "R8"
+    habilete: raisonnement
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, base-dimension]
+    primary_misconception: mc.math.structures_algebriques.dimension-compte-parametres
+    item_source: original
+    lesson_placement: in_R8
+
+    stem: |
+      Dans $\mathbb{R}^3$, on pose $u = (1,2,-1)$, $v = (2,1,1)$,
+      $w = (3,3,0)$, et $G = \mathrm{Vect}(u,v,w)$, l'ensemble de toutes les
+      combinaisons $\alpha u + \beta v + \gamma w$. Trois vecteurs, trois
+      coefficients. **Quelle est la dimension de $G$ ?** Prends position
+      avant de lire la suite.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          $3$ : la famille $(u,v,w)$ engendre $G$, et elle compte trois
+          vecteurs.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-compte-parametres
+        feedback: |
+          Modèle détecté : la dimension prise pour le nombre de vecteurs
+          écrits. Une famille génératrice ne donne la dimension que si elle
+          est aussi **libre**. Ici $u + v = (3,3,0) = w$ : le troisième vecteur
+          n'apporte rien, $G = \mathrm{Vect}(u,v)$ avec $(u,v)$ libre, donc
+          $\dim G = 2$.
+
+      - id: B
+        text: |
+          $2$ : $w = u + v$, donc $w$ n'ajoute rien ; $(u,v)$ engendre $G$ et
+          est libre.
+        correct: true
+        feedback: |
+          Exact. $u + v = (3,3,0)$, c'est $w$ : toute combinaison des trois
+          s'écrit avec $u$ et $v$ seuls. Et $(u,v)$ est libre : la combinaison
+          $\alpha u + \beta v$ n'est nulle que pour $\alpha = \beta = 0$.
+          $(u,v)$ est une base de $G$, et $\dim G = 2$ — trois générateurs,
+          deux dimensions.
+
+      - id: C
+        text: |
+          $3$ : les trois vecteurs sont non nuls et deux à deux non
+          colinéaires, la famille est donc libre.
+        correct: false
+        misconception: mc.math.structures_algebriques.famille-libre-mal-testee
+        feedback: |
+          Modèle détecté : la liberté testée deux par deux. Les prémisses sont
+          vraies — pas de vecteur nul, pas de couple colinéaire — et pourtant
+          $1 \cdot u + 1 \cdot v + (-1) \cdot w = (0,0,0)$ : la famille est
+          liée. La liberté porte sur la famille entière, pas sur ses paires.
+          Ici $w = u + v$, et $\dim G = 2$.
+
+      - id: D
+        text: |
+          $2$ : $G$ est un sous-espace de $\mathbb{R}^3$ autre que
+          $\mathbb{R}^3$, et un tel sous-espace a pour dimension $3 - 1$.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-lue-sur-la-notation
+        feedback: |
+          Modèle détecté : la dimension lue sur l'espace qui contient $G$,
+          au lieu d'être comptée sur une base. Le verdict « 2 » est juste,
+          mais la règle ne l'est pas : une droite qui passe par l'origine,
+          comme $\mathrm{Vect}\big((1,0,0)\big)$, est un sous-espace de
+          $\mathbb{R}^3$ autre que $\mathbb{R}^3$, et elle est de
+          dimension $1$. L'espace ambiant ne donne qu'une borne. Ici, c'est
+          une base qui décide : $w = u + v$, et $(u,v)$ est libre et engendre
+          $G$, donc $\dim G = 2$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-10 | id: cp-r8-pari-noyau | placé DANS R8 (chapitre 11), bloc E, après
+  #        la définition du noyau et de l'image, AVANT la dérivation noyau-f
+  #        qui calcule ker f — pari n°5, AJOUTÉ le 2026-10-20 sur la critique
+  #        pédagogique du chapitre construit (I-1 : le dernier tiers du
+  #        chapitre, où arrivent application linéaire, noyau et image,
+  #        n'avait aucun engagement). Il lève, pour UN pari, la décision
+  #        « M6 : délégation au banc d'items » de la spec §7.5 — sur l'objet
+  #        que la leçon calcule aussitôt, aucun objet d'item ni de sommet.
+  #        Sonde noyau-toujours-nul (M6) sous ses deux faces : la linéaire
+  #        (A : f(0) = 0, donc 0 est seul) et la calculatoire (C : chaque
+  #        équation lue comme si elle fixait une lettre). D →
+  #        dimension-compte-parametres (M4 : compter au lieu de résoudre,
+  #        x = y = z lu comme UNE équation). Verdicts équilibrés (I-5) : deux
+  #        options « réduit au vecteur nul », deux « pas réduit » ; D partage
+  #        le verdict de la clé avec un compte faux.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r8-pari-noyau
+    rung: "R8"
+    habilete: raisonnement
+    skill_code: maths_structures_alg
+    tags: [checkpoint, formative, misconception_driven, maths_structures_alg, application-lineaire]
+    primary_misconception: mc.math.structures_algebriques.noyau-toujours-nul
+    item_source: original
+    lesson_placement: in_R8
+
+    stem: |
+      On vient de vérifier que $f(x,y,z) = (x - y,\ y - z)$ est une
+      application linéaire de $\mathbb{R}^3$ dans $\mathbb{R}^2$ ; en
+      particulier, $f(0,0,0) = (0,0)$. **Que contient $\ker f$ ?** Prends
+      position avant de lire la suite.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Le vecteur nul et lui seul : $f$ est linéaire, elle envoie
+          $(0,0,0)$ sur $(0,0)$, et c'est le seul vecteur envoyé là.
+        correct: false
+        misconception: mc.math.structures_algebriques.noyau-toujours-nul
+        feedback: |
+          Modèle détecté : « le noyau se réduit au vecteur nul, puisque
+          $f(0) = 0$ ». La linéarité dit que $(0,0,0)$ est **dans** le
+          noyau, pas qu'il y est seul — cela, c'est le calcul qui le dit.
+          Ici $f(1,1,1) = (1 - 1,\ 1 - 1) = (0,0)$ : le noyau contient aussi
+          $(1,1,1)$, et tous les $(t,t,t)$ avec lui. C'est une droite.
+
+      - id: B
+        text: |
+          Une droite, celle des $(t,t,t)$ : $x - y = 0$ et $y - z = 0$
+          imposent $x = y = z$ sans fixer leur valeur commune.
+        correct: true
+        feedback: |
+          Exact. Deux équations pour trois inconnues laissent une lettre
+          libre : $x = y = z = t$, avec $t$ réel quelconque. Le noyau est
+          $\{(t,t,t)\ /\ t \in \mathbb{R}\} = \mathrm{Vect}\big((1,1,1)\big)$,
+          une droite — et $f$ n'est pas injective, puisque $f(1,1,1)$ et
+          $f(0,0,0)$ valent tous deux $(0,0)$.
+
+      - id: C
+        text: |
+          Le vecteur nul et lui seul : la première équation donne $x = y$,
+          la seconde $y = z$, et ces deux égalités forcent $x = y = z = 0$.
+        correct: false
+        misconception: mc.math.structures_algebriques.noyau-toujours-nul
+        feedback: |
+          Modèle détecté : chaque équation lue comme si elle fixait une
+          lettre. $x = y$ et $y = z$ disent que les trois coordonnées sont
+          égales, pas qu'elles sont nulles : $(1,1,1)$ les vérifie, et
+          $(2,2,2)$ aussi. Deux équations, trois inconnues — une lettre reste
+          libre, et le noyau est la droite des $(t,t,t)$.
+
+      - id: D
+        text: |
+          Un plan : $x = y = z$ est une seule équation pour trois lettres,
+          et il reste donc deux paramètres libres.
+        correct: false
+        misconception: mc.math.structures_algebriques.dimension-compte-parametres
+        feedback: |
+          Modèle détecté : la dimension comptée au lieu d'être lue sur la
+          solution. Le verdict « pas réduit au vecteur nul » est juste, mais
+          le compte ne l'est pas : $x = y = z$ abrège **deux** équations,
+          $x = y$ et $y = z$. Résous-les : $x = y = z = t$, un seul
+          paramètre. Le noyau est la droite $\mathrm{Vect}\big((1,1,1)\big)$,
+          de dimension $1$.

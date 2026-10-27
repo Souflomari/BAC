@@ -1,0 +1,462 @@
+notion: le-bonheur
+skill_code: philo_bonheur
+
+# ──────────────────────────────────────────────────────────────────────────────
+# POINTS D'ARRÊT DANS LA LEÇON (campagne de conversion du sommet — philo)
+#
+# Sondes formatives posées DANS la leçon, pas le banc de fin. Aucun score,
+# aucune série, aucun décompte ; le plancher du banc n'est pas modifié.
+#
+# Ce fichier ne convertit PAS le sommet. La leçon garde son chapitre de
+# méthode (dissertation) et son « À toi de continuer » : `exercises.yaml`
+# exigerait une annale nationale, et docs/sujets/philo/le-bonheur.md établit
+# qu'il ne peut pas en exister en filière scientifique — السعادة n'est pas au
+# programme de la مجزوءة الأخلاق pour ces filières. Ce point est un ARBITRAGE
+# DE PÉRIMÈTRE remonté au décideur, pas un manque de recherche ; il reste
+# ouvert. Les points d'arrêt, eux, ne dépendent d'aucune source d'annale : ils
+# sont écrits à partir de la leçon et de son propre inventaire d'erreurs.
+#
+# Placement (identifiants = marqueurs [[checkpoint:…]] de lesson.md) :
+#   cp-r0-predict   (DANS le chapitre 1) — la leçon posait déjà « prends
+#                   position avant de continuer » et donnait les deux réponses
+#                   d'élèves juste après ; l'engagement devient réel.
+#   cp-r1-aristote  (après le chapitre 2) — les deux critères, et ce
+#                   qu'Aristote ne dit pas.
+#   cp-r2-epicure   (après le chapitre 3) — hédonisme n'est pas jouissance.
+#   cp-r3-stoiciens (après le chapitre 4) — maîtriser n'est pas renoncer.
+#   cp-r4-kant      (après le chapitre 5) — le bonheur n'est pas la
+#                   récompense de la vertu.
+#   cp-r5-accessible (après le chapitre 6) — Schopenhauer, Freud, et l'arc.
+#   cp-r6-methode   (après le chapitre 7) — ce qu'est une problématique.
+#
+# CHAQUE distracteur porte un identifiant réel de l'inventaire de items.yaml.
+# Aucune erreur nouvelle n'est déclarée.
+#
+# ÉQUILIBRE DES LONGUEURS — non négociable en philo (voir la recette,
+# addendum philo) : la clé n'est ni la plus longue ni la plus courte de façon
+# repérable. Vérifié par `node web/scripts/indice-longueur.mjs --porte`, jamais à
+# l'œil.
+#
+# Garde de périmètre : 2ème Bac — Aristote, Épicure, les stoïciens, Kant,
+# Schopenhauer, Freud, et la méthode de la dissertation. Aucun auteur hors de
+# la leçon n'est convoqué dans les choix.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: raisonnement
+    skill_code: philo_bonheur
+    tags: [checkpoint, formative, misconception_driven, philo_le_bonheur, hook_commit]
+    primary_misconception: mc.philo.bonheur.plaisir-reduit-a-lintensite
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Une note excellente, une joie intense, et le lendemain qui déçoit.
+      **Engage-toi avant de lire la suite :** que faut-il en conclure sur le
+      bonheur ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Que le bonheur est bien la somme des plaisirs obtenus, et qu'il suffit d'en accumuler davantage : plus la joie est intense, plus elle pèse dans ce total."
+        correct: false
+        misconception: mc.philo.bonheur.plaisir-reduit-a-lintensite
+        feedback: |
+          Modèle détecté : mesurer le bonheur à l'intensité de ce qu'on
+          éprouve. C'est la première des deux réponses que donnent la plupart
+          des élèves, et elle bute aussitôt sur le fait rapporté : si chaque
+          plaisir comptait durablement dans un total, celui-là n'aurait pas pu
+          se dissoudre en une nuit. Épicure, au chapitre 3, tirera de cette
+          objection une distinction, pas un abandon de l'hédonisme.
+
+      - id: B
+        text: "Que la joie ressentie était réelle, mais qu'elle ne suffit pas à définir le bonheur — reste à dire en quoi consisterait un bonheur plus stable, et s'il dépend de nous."
+        correct: true
+        feedback: |
+          C'est l'état exact de la question au seuil de cette leçon, et le
+          mérite de cette réponse est de ne pas se refermer trop vite. Dire
+          « ce n'était qu'un plaisir passager » ne suffit pas : il faut encore
+          dire ce que serait le vrai bonheur. Quatre doctrines vont s'y
+          essayer, avec quatre critères différents.
+
+      - id: C
+        text: "Que le bonheur ne dépend pas de nous : une note est décidée par un correcteur, et tout ce qui vient du dehors peut nous être repris à tout instant."
+        correct: false
+        misconception: mc.philo.bonheur.bonheur-suspendu-aux-circonstances
+        feedback: |
+          Modèle détecté : conclure trop vite du dehors à l'impuissance. La
+          thèse stoïcienne (chapitre 4) part bien de cette distinction, mais
+          pour en tirer l'inverse : c'est parce qu'une partie des choses ne
+          dépend pas de nous qu'il faut fonder le bonheur sur celles qui en
+          dépendent. Ici, le raisonnement s'arrête à mi-chemin.
+
+      - id: D
+        text: "Que cette expérience prouve à elle seule qu'aucun bonheur durable n'est accessible à l'être humain, quelle que soit la vie qu'il mène."
+        correct: false
+        misconception: mc.philo.bonheur.accroche-lue-comme-une-preuve
+        feedback: |
+          Modèle détecté : traiter l'accroche comme une démonstration. Un
+          exemple ne prouve pas une thèse générale : il ouvre un problème. Cette
+          anecdote sert à faire apparaître une difficulté — le plaisir intense
+          ne dure pas — sans rien décider de ce qui pourrait durer. La thèse de
+          l'inaccessibilité existe (Schopenhauer, chapitre 6), mais elle demande
+          des arguments, pas une note oubliée.
+
+  - id: cp-r1-aristote
+    rung: "R1"
+    habilete: comprehension
+    skill_code: philo_bonheur
+    tags: [checkpoint, formative, misconception_driven, philo_le_bonheur]
+    primary_misconception: mc.philo.bonheur.doctrines-echangees
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |
+      Aristote écarte la richesse, l'honneur et le plaisir comme candidats au
+      souverain bien. Quel usage fait-il de ses deux critères pour cela ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "La richesse échoue à la finalité, l'honneur à l'auto-suffisance, et le plaisir parce qu'il ne met en jeu rien de proprement humain."
+        correct: true
+        feedback: |
+          Oui, et le détail compte : chacun échoue pour une raison différente.
+          On ne veut jamais l'argent pour lui-même ; la gloire dépend de ceux
+          qui l'accordent ; le plaisir est commun à l'homme et aux bêtes. C'est
+          ce troisième échec qui ouvre l'argument de la fonction propre — le
+          bien de l'homme doit tenir à ce qui le distingue.
+
+      - id: B
+        text: "Il les écarte tous les trois au même titre : aucun ne dépend entièrement de nous, et le souverain bien doit être entièrement en notre pouvoir."
+        correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
+        feedback: |
+          Modèle détecté : prêter à Aristote le critère des stoïciens. « Ce qui
+          dépend de nous » est la distinction du chapitre 4, pas la sienne.
+          Aristote juge sur la finalité et l'auto-suffisance — et il admet
+          d'ailleurs que le bonheur demande des biens extérieurs, qui ne
+          dépendent pas entièrement de nous.
+
+      - id: C
+        text: "Il les écarte parce qu'ils procurent du plaisir, et que le sage doit vivre sans éprouver aucun plaisir s'il veut atteindre le souverain bien."
+        correct: false
+        misconception: mc.philo.bonheur.renoncement-radical-prete-aux-sages
+        feedback: |
+          Modèle détecté : faire du sage un ascète qui ne jouit de rien. Ce
+          n'est pas la position d'Aristote : l'activité vertueuse s'accompagne
+          selon lui du plaisir le plus vrai qui soit. Ce qu'il refuse, c'est de
+          faire du plaisir le CRITÈRE du bonheur — le plaisir en est une
+          conséquence, pas la définition.
+
+      - id: D
+        text: "Il les écarte comme des fins intermédiaires, or toute fin intermédiaire est mauvaise et doit être rejetée par qui recherche le souverain bien."
+        correct: false
+        misconception: mc.philo.bonheur.finalite-de-la-chaine-mal-comprise
+        feedback: |
+          Modèle détecté : condamner les fins intermédiaires. Aristote ne dit
+          nulle part qu'elles sont mauvaises — la richesse est même « un moyen
+          parfait ». Son argument porte sur leur place dans la chaîne : une fin
+          qu'on recherche en vue d'autre chose ne peut pas être la fin
+          DERNIÈRE. C'est une question de rang, pas de valeur.
+
+  - id: cp-r2-epicure
+    rung: "R2"
+    habilete: application
+    skill_code: philo_bonheur
+    tags: [checkpoint, formative, misconception_driven, philo_le_bonheur]
+    primary_misconception: mc.philo.bonheur.plaisir-reduit-a-lintensite
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |
+      Vouloir, dès le lendemain d'une excellente note, une note encore
+      meilleure, puis une autre après, sans qu'aucun seuil ne satisfasse
+      jamais ce désir. Comment Épicure qualifierait-il ce désir, et que
+      recommanderait-il ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Un désir naturel et nécessaire, qu'il faut donc satisfaire en priorité, puisque sa satisfaction est indispensable au bien-être et ne coûte presque rien."
+        correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
+        feedback: |
+          Modèle détecté : ranger dans la mauvaise catégorie du tri épicurien.
+          Les désirs naturels et nécessaires sont ceux dont l'insatisfaction
+          fait souffrir réellement — manger, se loger, se reposer. Une note
+          meilleure ne répond à aucun besoin de ce genre : elle naît d'une
+          opinion sur ce qui fait la valeur d'un élève.
+
+      - id: B
+        text: "Un désir vain : né d'une opinion et sans limite naturelle, il ne peut jamais être comblé — il faut donc le reconnaître comme tel plutôt que le poursuivre."
+        correct: true
+        feedback: |
+          Oui, et c'est précisément l'utilité du tri : il permet de repérer
+          AVANT d'agir les désirs qui ne peuvent pas s'éteindre. Un désir
+          naturel a une limite — on cesse d'avoir faim ; un désir né de la
+          comparaison aux autres n'en a aucune, et c'est ce qui le rend source
+          de trouble, non de bonheur.
+
+      - id: C
+        text: "Un désir légitime à poursuivre sans réserve : puisque le bonheur est le plaisir, ce qui en procure doit toujours être recherché avec la plus grande intensité possible."
+        correct: false
+        misconception: mc.philo.bonheur.plaisir-reduit-a-lintensite
+        feedback: |
+          Modèle détecté : confondre l'hédonisme d'Épicure avec un
+          encouragement à la jouissance sans limite. C'est même l'inverse : il
+          recommande une vie simple et mesurée, du pain, de l'eau, des amis —
+          parce que c'est cette vie-là, et non la multiplication des plaisirs
+          intenses, qui produit l'ataraxie.
+
+      - id: D
+        text: "Un désir dont il faut se débarrasser en cessant de désirer quoi que ce soit, le sage épicurien renonçant par principe à tout plaisir comme à toute attente."
+        correct: false
+        misconception: mc.philo.bonheur.renoncement-radical-prete-aux-sages
+        feedback: |
+          Modèle détecté : le sage qui ne désire plus rien. Épicure ne demande
+          pas de supprimer le désir mais de le TRIER : les désirs naturels et
+          nécessaires doivent être satisfaits, et ils le sont facilement. Ce
+          qu'il écarte, ce sont les désirs vains — pas le désir en général.
+
+  - id: cp-r3-stoiciens
+    rung: "R3"
+    habilete: raisonnement
+    skill_code: philo_bonheur
+    tags: [checkpoint, formative, misconception_driven, philo_le_bonheur]
+    primary_misconception: mc.philo.bonheur.renoncement-radical-prete-aux-sages
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |
+      Un élève angoissé avant un examen se réclame des stoïciens et cesse de
+      réviser, au motif que le résultat ne dépend pas de lui. A-t-il bien
+      compris la doctrine ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Non : la distinction porte sur ce dont il faut faire dépendre son bonheur, pas sur ce qu'il faut faire. Réviser dépend de lui, donc lui revient pleinement."
+        correct: true
+        feedback: |
+          Exactement. La doctrine stoïcienne est une discipline de l'action
+          autant que du désir : le stoïcien agit de toutes ses forces sur ce qui
+          dépend de lui — réviser, travailler, soigner ses relations — et
+          renonce seulement à faire dépendre sa sérénité du résultat. Confondre
+          les deux, c'est manquer le cœur de la doctrine.
+
+      - id: B
+        text: "Oui : puisque le résultat ne dépend pas de lui, s'en occuper serait une agitation vaine, et le sage stoïcien s'abstient d'agir sur ce qu'il ne maîtrise pas."
+        correct: false
+        misconception: mc.philo.bonheur.renoncement-radical-prete-aux-sages
+        feedback: |
+          Modèle détecté : lire la maîtrise stoïcienne comme une passivité
+          résignée. La révision, elle, dépend entièrement de lui — c'est le
+          type même de ce sur quoi le stoïcien doit agir. Ce qui ne dépend pas
+          de lui, c'est le sujet tombé et la note obtenue : là seulement, il
+          renonce à faire reposer son bonheur.
+
+      - id: C
+        text: "Oui, mais pour une autre raison : réviser est un plaisir en mouvement, et le sage ne recherche que les plaisirs en repos, seuls capables de durer."
+        correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
+        feedback: |
+          Modèle détecté : appliquer aux stoïciens le vocabulaire d'Épicure.
+          Plaisir en repos et plaisir en mouvement sont des catégories
+          épicuriennes (chapitre 3), et elles ne servent pas à décider s'il faut
+          réviser. Chaque doctrine a ses propres outils : ne les échange pas
+          d'un chapitre à l'autre.
+
+      - id: D
+        text: "Non : les stoïciens soutiennent au contraire que le bonheur dépend entièrement des circonstances, et qu'il faut donc tout faire pour les maîtriser."
+        correct: false
+        misconception: mc.philo.bonheur.bonheur-suspendu-aux-circonstances
+        feedback: |
+          Modèle détecté : renverser la thèse. Les stoïciens disent exactement
+          le contraire : les circonstances échappent en partie à notre
+          maîtrise, et c'est pourquoi y suspendre son bonheur, c'est le rendre
+          fragile. Le seul bien véritable, pour eux, est la vertu — qui dépend
+          de nous.
+
+  - id: cp-r4-kant
+    rung: "R4"
+    habilete: comprehension
+    skill_code: philo_bonheur
+    tags: [checkpoint, formative, misconception_driven, philo_le_bonheur]
+    primary_misconception: mc.philo.bonheur.kant-mal-lu
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |
+      Quel rapport Kant établit-il entre le bonheur et la moralité d'une
+      action ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Le bonheur ne fonde jamais la moralité : une action est morale par sa conformité à l'impératif catégorique, et le bonheur mérité n'en est qu'une conséquence espérée."
+        correct: true
+        feedback: |
+          Oui, et l'ordre est ce qui compte. Kant ne méprise pas le bonheur — il
+          parle même d'être « digne d'être heureux ». Mais la dignité vient
+          d'abord, comme critère, et le bonheur ensuite, comme espérance. Faire
+          du bonheur le fondement reviendrait à fonder la morale sur un intérêt.
+
+      - id: B
+        text: "Le bonheur est le but ultime de la morale, à condition de l'avoir d'abord mérité par la vertu : c'est la vertu qui donne droit au bonheur, et la morale qui l'organise."
+        correct: false
+        misconception: mc.philo.bonheur.kant-mal-lu
+        feedback: |
+          Modèle détecté : la confusion la plus fréquente sur Kant, et elle
+          inverse exactement sa position. Si le bonheur était le but, la morale
+          deviendrait un moyen d'y accéder — donc un calcul d'intérêt, ce que
+          Kant refuse absolument. Le mérite n'ouvre aucun droit : il rend digne,
+          ce qui n'est pas la même chose.
+
+      - id: C
+        text: "La vertu produit mécaniquement le bonheur : agir moralement rend heureux, et c'est cette conséquence agréable qui donne à l'action morale sa valeur."
+        correct: false
+        misconception: mc.philo.bonheur.kant-mal-lu
+        feedback: |
+          Modèle détecté : faire dépendre la valeur morale de son effet
+          agréable. Une action ne vaut pas moralement par ce qu'elle produit —
+          ni bonheur pour soi ni bonheur pour autrui — mais par le principe
+          qui la détermine. Une action juste qui rendrait malheureux resterait
+          morale.
+
+      - id: D
+        text: "Le bonheur est le critère universel de la morale : ce qui rend heureux le plus grand nombre est bon, et cette règle vaut pour tous les êtres raisonnables."
+        correct: false
+        misconception: mc.philo.bonheur.critere-etranger-a-la-question
+        feedback: |
+          Modèle détecté : substituer à Kant un critère qui n'est pas le sien.
+          Son second argument porte précisément là-dessus : le bonheur est une
+          notion trop indéterminée, chacun y mettant autre chose, pour fournir
+          une loi universelle. C'est pourquoi il faut chercher le critère
+          ailleurs — dans la forme de la maxime.
+
+  - id: cp-r5-accessible
+    rung: "R5"
+    habilete: raisonnement
+    skill_code: philo_bonheur
+    tags: [checkpoint, formative, misconception_driven, philo_le_bonheur]
+    primary_misconception: mc.philo.bonheur.bonheur-suspendu-aux-circonstances
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |
+      Selon Schopenhauer, le désir est un manque : le satisfaire ne procure
+      qu'un répit, aussitôt suivi d'un nouveau manque ou de l'ennui. Que
+      conclure de cette analyse ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Qu'un bonheur conçu comme satisfaction des désirs est structurellement hors d'atteinte : le désir renaît, et c'est le mécanisme lui-même qui l'interdit."
+        correct: true
+        feedback: |
+          Oui, et remarque la portée exacte de la thèse : elle vise le bonheur
+          COMME satisfaction. Elle rejoint sur ce point l'objection du premier
+          chapitre — la joie qui se dissout — et elle explique pourquoi Épicure
+          et les stoïciens cherchaient, chacun à sa façon, à déplacer le
+          bonheur hors de la satisfaction des désirs.
+
+      - id: B
+        text: "Qu'il suffit de mieux organiser les circonstances de sa vie pour que la satisfaction dure : le problème vient du désordre extérieur, non du désir lui-même."
+        correct: false
+        misconception: mc.philo.bonheur.bonheur-suspendu-aux-circonstances
+        feedback: |
+          Modèle détecté : chercher dehors la cause d'une difficulté que
+          Schopenhauer situe dans la structure du désir. Aucune organisation des
+          circonstances n'y change rien, selon lui : le désir satisfait laisse
+          place à un autre, ou à l'ennui. C'est bien le mécanisme qui est en
+          cause, pas son environnement.
+
+      - id: C
+        text: "Que les doctrines antiques sont réfutées : ni Aristote, ni Épicure, ni les stoïciens n'avaient vu que le désir est un manque, ce que Schopenhauer démontre pour la première fois."
+        correct: false
+        misconception: mc.philo.bonheur.doctrines-echangees
+        feedback: |
+          Modèle détecté : opposer les doctrines sans voir ce qu'elles
+          partagent. Épicure trie les désirs précisément parce que certains sont
+          sans limite ; les stoïciens déplacent le bonheur hors de ce qui ne
+          dépend pas de nous. Les trois répondent à une difficulté voisine, avec
+          des solutions différentes.
+
+      - id: D
+        text: "Que tout désir doit être supprimé, et que le seul sage est celui qui ne veut plus rien et n'attend plus rien de sa propre existence."
+        correct: false
+        misconception: mc.philo.bonheur.renoncement-radical-prete-aux-sages
+        feedback: |
+          Modèle détecté : conclure d'un diagnostic à un renoncement total. La
+          thèse dit qu'un bonheur conçu comme satisfaction est hors d'atteinte ;
+          elle ne prescrit pas d'abolir le désir. Et ce n'est pas la seule sortie
+          possible : la leçon en a présenté trois autres avant.
+
+  - id: cp-r6-methode
+    rung: "R6"
+    habilete: application
+    skill_code: philo_bonheur
+    tags: [checkpoint, formative, misconception_driven, philo_le_bonheur]
+    primary_misconception: mc.philo.bonheur.methode-de-dissertation-mal-comprise
+    item_source: original
+    lesson_placement: after_R6
+
+    stem: |
+      Sur un sujet de dissertation, laquelle de ces formulations constitue une
+      problématique recevable ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "« Le bonheur est-il accessible ? » — la question du sujet reprise telle quelle, ce qui garantit toujours de ne jamais s'écarter de ce qui est demandé."
+        correct: false
+        misconception: mc.philo.bonheur.methode-de-dissertation-mal-comprise
+        feedback: |
+          Modèle détecté : confondre problématiser et recopier. Reprendre le
+          sujet ne fait apparaître aucune tension : une problématique doit
+          montrer POURQUOI la question se pose, en opposant deux réponses
+          également défendables. Sans cette tension, le devoir n'a rien à
+          construire.
+
+      - id: B
+        text: "« Si le bonheur consiste à satisfaire nos désirs, comment expliquer qu'aucune satisfaction ne l'installe durablement — et faut-il alors le chercher ailleurs ? »"
+        correct: true
+        feedback: |
+          Oui : une difficulté est nommée, et elle naît du choc entre une
+          définition courante et un fait tenace. C'est ce qui donne au devoir
+          quelque chose à faire — examiner la définition, puis chercher si un
+          autre critère tient mieux. Une problématique ouvre un travail, elle ne
+          le résume pas.
+
+      - id: C
+        text: "« Nous allons montrer que le bonheur véritable réside dans la vertu, comme l'ont établi Aristote puis les stoïciens dans leurs doctrines respectives. »"
+        correct: false
+        misconception: mc.philo.bonheur.methode-de-dissertation-mal-comprise
+        feedback: |
+          Modèle détecté : annoncer la conclusion en guise de problématique. Une
+          introduction annonce le PROBLÈME et le chemin, pas la réponse : si
+          elle donne la thèse d'emblée, le développement n'a plus qu'à
+          l'illustrer. Et Aristote et les stoïciens ne disent d'ailleurs pas la
+          même chose sur ce point.
+
+      - id: D
+        text: "« Le bonheur est-il accessible aux personnes en bonne santé et disposant de moyens suffisants pour vivre confortablement au quotidien ? »"
+        correct: false
+        misconception: mc.philo.bonheur.critere-etranger-a-la-question
+        feedback: |
+          Modèle détecté : déplacer la question vers un critère qui n'est pas
+          celui du sujet. La santé et les moyens sont des conditions
+          matérielles ; la question philosophique porte sur ce en quoi consiste
+          le bonheur et sur ce dont il dépend. Une problématique doit rester
+          dans le problème posé.

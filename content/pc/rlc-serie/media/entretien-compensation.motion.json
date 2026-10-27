@@ -1,0 +1,75 @@
+{
+  "slug": "entretien-compensation",
+  "viewBox": "0 0 680 480",
+  "label": "Entretien des oscillations : un générateur compense la perte Joule sans imposer la fréquence",
+  "layout": "replace",
+  "regions": {
+    "chrome":       { "x":   0, "y":   0, "w": 680, "h":  52 },
+    "circuit":      { "x":  40, "y":  54, "w": 600, "h": 112 },
+    "status-slot":  { "x": 210, "y": 180, "w": 320, "h":  32 },
+    "graph":        { "x":   0, "y": 212, "w": 680, "h": 208 },
+    "footer":       { "x":   0, "y": 420, "w": 680, "h":  60 }
+  },
+  "replaces": [
+    { "beat": "beat-1", "slot": "status-slot", "enter": "status-1", "exit": "status-0" },
+    { "beat": "beat-2", "slot": "status-slot", "enter": "status-2", "exit": "status-1" }
+  ],
+  "beats": [
+    {
+      "id": "beat-0",
+      "caption": "Sans entretien, la résistance R dissipe de l'énergie à chaque cycle : la tension u_C(t) oscille avec une amplitude qui décroît progressivement.",
+      "tweens": []
+    },
+    {
+      "id": "beat-1",
+      "caption": "Le générateur d'entretien rejoint le circuit et délivre u_G = k·i, une tension proportionnelle au courant : il rembourse exactement la perte Joule à chaque cycle.",
+      "tweens": [
+        {
+          "target": "#generator-glyph",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.5,
+          "ease": "power3.out",
+          "at": 0
+        },
+        {
+          "target": "#engage-marker",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.45,
+          "ease": "power3.out",
+          "at": 0.15
+        },
+        {
+          "target": "#status-1",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.4,
+          "ease": "power3.out",
+          "at": 0.25
+        }
+      ]
+    },
+    {
+      "id": "beat-2",
+      "caption": "Avec k = R, la perte est exactement compensée : les oscillations reprennent une amplitude constante, à la période propre T₀ — le générateur ne fixe pas la fréquence, il ne fait que compenser.",
+      "tweens": [
+        {
+          "target": "#steady-curve",
+          "verb": "trace",
+          "duration": 0.85,
+          "ease": "power2.out",
+          "at": 0
+        },
+        {
+          "target": "#status-2",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.4,
+          "ease": "power3.out",
+          "at": 0.5
+        }
+      ]
+    }
+  ]
+}

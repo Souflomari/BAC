@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 290" width="680" height="290"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Oscillogramme de l’exercice de type bac : u_C (V) en fonction de t (ms), courbe montant vers l’asymptote E = 6 V, tangente à l’origine coupant l’asymptote en τ = 20 ms, et point à 63 % (u_C ≈ 3,8 V) confirmant la même valeur de τ.">
+  <title>Oscillogramme u_C(t) — exercice</title>
+  <!--
+    exo-oscillogramme.svg — graphe de l'exercice de type bac de R5
+    (content/pc/rc-charge/lesson.md) : E = 6 V, τ = 20 ms, C = 10 µF (donc
+    R = 2,0 kΩ, non lu sur ce graphe). u_C(t) = E(1 - e^(-t/tau)).
+
+    STAGED (LESSON-EXPERIENCE-SPEC §2.5) en 3 étapes — staging fourni par le
+    pedagogy-architect, calé sur les questions de l'énoncé plutôt que sur le
+    triptyque générique axes/données/lecture (ici "axes" ET "données" sont
+    déjà réunis à l'étape 1, parce que Q1 — lire E — a besoin des deux à la
+    fois) :
+      step-1 : les axes + les données de l'énoncé — la courbe u_C(t) et
+               l'asymptote E = 6 V (Q1)
+      step-2 : la lecture par la tangente à l'origine — τ = 20 ms (Q2)
+      step-3 : la vérification par les 63 % — confirme le même τ (Q4)
+
+    GÉOMÉTRIE (calculée, jamais devinée) — dérivée pour que τ = 20 ms tombe
+    exactement sur la première graduation verticale, un choix d'échelle
+    "propre" :
+      origine (t=0, u_C=0)  : (x0,y0) = (100, 224)
+      échelle temporelle     : 5 px/ms    → t = 20,40,60,80,100 ms en
+                                             x = 200,300,400,500,600
+      échelle de tension      : 24 px/V    → E = 6 V en y = 80 (hauteur 144px)
+      τ = 20 ms               → x = 100 + 20×5 = 200 (= la 1ʳᵉ graduation)
+
+    La courbe est une polyligne calculée exactement via
+    u_C(t) = 6×(1 - e^(-t/20)) à des pas réguliers de τ/6 ≈ 3,333 ms
+    (Δx = 16,667 px), de t=0 à t=100 ms (5τ) — jamais une bézier devinée.
+    Parce que la hauteur totale (144 px) et le pas fractionnaire (k/6 de τ)
+    sont IDENTIQUES à ceux de content/pc/dipole-rl/media/oscillogramme-
+    exercice.svg, les coordonnées (x,y) de cette polyligne sont NUMÉRIQUEMENT
+    IDENTIQUES à celles de cette figure sœur — seule l'échelle t (5 px/ms
+    au lieu de 25) et la grandeur portée (u_C en V au lieu de i en mA)
+    changent. Vérifié analytiquement : à x=200 (t=τ), y=133,0, soit une
+    fraction (224-133,0)/144 = 0,632 ≈ 1 - e^-1.
+
+    Propriété vérifiée par construction : la tangente à l'origine, de pente
+    hauteur/τ_px = 144/100, part de (100,224) et atteint EXACTEMENT
+    (100+100, 224-144) = (200,80) — le point où l'asymptote est croisée à
+    t = τ = 20 ms, conforme à l'énoncé (R5, Q2 : "la tangente... coupe cette
+    asymptote à l'instant t = 20 ms").
+
+    Au même x=200, la courbe réelle vaut u_C=133,0 px = 3,8 V (arrondi),
+    cohérent avec le corrigé de Q4 : u_C(τ) ≈ 0,63 × 6 ≈ 3,8 V.
+
+    Rôle des couleurs :
+      courbe u_C(t)                    : --figure-energy-C (cohérent avec
+                                          uc-charge.svg / uc-decharge.svg,
+                                          même leçon)
+      tangente à l'origine + repère τ  : --figure-accent (mise en évidence
+                                          neutre — même convention que
+                                          uc-charge.svg : τ = RC mêle R et C)
+      asymptote / axes / quadrillage / repère 63 % : --figure-ink-soft
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les axes + les données de l'énoncé (Q1 : lire E)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+
+    <!-- Titre -->
+    <text x="340" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Oscillogramme u<tspan dy="3" font-size="8.5">C</tspan><tspan dy="-3">(t) — exercice</tspan>
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="30" y="32" width="600" height="224" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Quadrillage horizontal (u_C = 2, 4 V) -->
+    <line x1="100" y1="176" x2="608" y2="176" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="100" y1="128" x2="608" y2="128" stroke="var(--figure-grid)" stroke-width="0.75"/>
+
+    <!-- Quadrillage vertical (t = 20, 40, 60, 80, 100 ms) -->
+    <line x1="200" y1="60" x2="200" y2="224" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="300" y1="60" x2="300" y2="224" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="400" y1="60" x2="400" y2="224" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="500" y1="60" x2="500" y2="224" stroke="var(--figure-grid)" stroke-width="0.75"/>
+    <line x1="600" y1="60" x2="600" y2="224" stroke="var(--figure-grid)" stroke-width="0.75"/>
+
+    <!-- Axes -->
+    <line x1="100" y1="224" x2="604" y2="224" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="616,224 604,219.5 604,228.5" fill="var(--figure-ink-soft)"/>
+    <line x1="100" y1="224" x2="100" y2="60" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="100,48 95.5,59 104.5,59" fill="var(--figure-ink-soft)"/>
+
+    <text x="624" y="228" font-size="11" fill="var(--figure-ink-soft)">
+      <tspan font-style="italic">t</tspan><tspan font-size="9"> (ms)</tspan>
+    </text>
+    <text x="92" y="56" text-anchor="end" font-size="11" fill="var(--figure-ink-soft)">
+      <tspan font-style="italic">u</tspan><tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3" font-size="9"> (V)</tspan>
+    </text>
+    <text x="92" y="228" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Graduations t -->
+    <text x="200" y="240" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">20</text>
+    <text x="300" y="240" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">40</text>
+    <text x="400" y="240" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">60</text>
+    <text x="500" y="240" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">80</text>
+    <text x="600" y="240" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">100</text>
+
+    <!-- Graduations u_C -->
+    <text x="92" y="180" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">2</text>
+    <text x="92" y="132" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">4</text>
+
+    <!-- Asymptote horizontale E = 6 V (donnée de l'énoncé, Q1) -->
+    <line x1="100" y1="80" x2="608" y2="80" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <text x="92" y="72" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">6 V</text>
+
+    <!--
+      Courbe u_C(t) — polyligne calculée, pas = τ/6 ≈ 3,333 ms (Δx = 16,667 px),
+      de t=0 à t=100 ms. u_C(t) = 6×(1 - e^(-t/20)) ; y = 224 - 24×u_C.
+    -->
+    <path d="
+      M100,224
+      L116.7,201.9 L133.3,183.2 L150,167.3 L166.7,153.9 L183.3,142.6
+      L200,133.0  L216.7,124.8 L233.3,118.0 L250,112.1  L266.7,107.2
+      L283.3,103.0 L300,99.5  L316.7,96.5  L333.3,94.0  L350,91.8
+      L366.7,90.0 L383.3,88.5 L400,87.2   L416.7,86.1  L433.3,85.1
+      L450,84.3   L466.7,83.7 L483.3,83.1 L500,82.6   L516.7,82.2
+      L533.3,81.9 L550,81.6   L566.7,81.4 L583.3,81.1 L600,81.0
+    " fill="none" stroke="var(--figure-energy-C)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la lecture par la tangente à l'origine (Q2 : τ)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+
+    <!--
+      Tangente à l'origine — droite exacte de (100,224) [pente = hauteur/τ_px]
+      jusqu'à (200,80), où elle rencontre l'asymptote pile à t = τ = 20 ms.
+    -->
+    <line x1="100" y1="224" x2="200" y2="80"
+          stroke="var(--figure-accent)" stroke-width="1.8"
+          stroke-dasharray="6,4" stroke-linecap="round"/>
+
+    <!-- Repère vertical à t = τ -->
+    <line x1="200" y1="80" x2="200" y2="224"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="200" y1="220" x2="200" y2="228"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="200" y="252" text-anchor="middle" font-size="10.5" fill="var(--figure-accent)">
+      <tspan font-style="italic">τ</tspan><tspan> = 20 ms</tspan>
+    </text>
+
+    <!-- Point : intersection tangente/asymptote, à t = τ -->
+    <circle cx="200" cy="80" r="3.2" fill="var(--figure-accent)"/>
+
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la vérification par les 63 % (Q4 : même τ)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+
+    <!-- Nom E, complétant la donnée numérique du step-1 -->
+    <text x="60" y="72" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">E =</text>
+
+    <!-- Repère horizontal : 0,63 × E ≈ 3,8 V, atteint à t = τ -->
+    <line x1="100" y1="133.0" x2="200" y2="133.0"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+
+    <!-- Point : valeur réelle de la courbe à t = τ (méthode des 63 %) -->
+    <circle cx="200" cy="133.0" r="3.2" fill="var(--figure-energy-C)"/>
+    <line x1="204" y1="136" x2="290" y2="168" stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="296" y="171" font-size="9.5" fill="var(--figure-ink)">u<tspan
+          dy="3" font-size="7">C</tspan><tspan dy="-3">(τ) ≈ 0,63 × 6 ≈ 3,8 V</tspan>
+    </text>
+    <text x="296" y="184" font-size="9" fill="var(--figure-ink-soft)">(méthode des 63 % — même τ = 20 ms)</text>
+
+  </g><!-- /step-3 -->
+
+</svg>

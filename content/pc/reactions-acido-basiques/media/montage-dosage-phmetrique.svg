@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 520"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Montage d’un dosage pH-métrique : burette graduée contenant le titrant (la soude) au-dessus d’un bécher contenant le titré (l’acide éthanoïque) sous agitation magnétique, une sonde pH plongée dans le bécher et reliée à un pH-mètre qui affiche la mesure.">
+  <title>Montage d&#8217;un dosage pH-métrique</title>
+  <!--
+    montage-dosage-phmetrique.svg — schéma du montage, figure STAGED (3
+    étapes, LESSON-EXPERIENCE-SPEC §2.5 : reprend l'ordre littéral du texte
+    R9 « le titrant... est placé dans une burette graduée, au-dessus du
+    bécher qui contient une prise d'essai... maintenue sous agitation. Une
+    sonde pH, reliée à un pH-mètre, plonge dans le bécher » — même grammaire
+    de révélation par couches que pile-daniell.svg).
+
+    Layout :
+      Burette   : tube x=228..262, y=34..214 (support/pince en haut, robinet
+                  en bas, goutte qui tombe vers le bécher)
+      Bécher    : corps x=170..330, y=300..434, sur l'agitateur magnétique
+                  (plaque x=150..350, y=434..460)
+      Sonde pH  : tige x=299..311, y=132..~401 (bulbe plongé dans le bécher)
+      pH-mètre  : boîtier x=400..520, y=150..240, relié à la sonde par un fil
+
+    Aucune valeur de pH n'est affichée sur l'écran du pH-mètre (elle varie
+    tout au long du dosage — l'afficher figerait une valeur arbitraire) :
+    seul le mot « pH » marque la fonction de mesure.
+
+    Rôle des couleurs (une seule idée en accent : LA MESURE elle-même — la
+    goutte de titrant qui tombe, le fil du signal, et l'affichage) :
+      goutte + trajectoire + fil signal + affichage "pH"   : --figure-accent
+      verrerie, sonde, pH-mètre, agitateur (structure)      : --figure-ink / --figure-ink-soft
+      liquides / gel                                        : --figure-grid
+  -->
+
+  <!-- Titre -->
+  <text x="280" y="22" text-anchor="middle"
+        font-size="13" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">Montage d&#8217;un dosage pH-métrique</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — la burette (titrant)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Pince de support -->
+    <rect x="195" y="40" width="100" height="10" rx="2" fill="var(--figure-ink-soft)" opacity="0.5"/>
+
+    <!-- Tube gradué -->
+    <rect x="228" y="34" width="34" height="180" rx="3"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2"/>
+    <!-- Niveau de titrant -->
+    <rect x="230" y="55" width="30" height="155" fill="var(--figure-grid)" opacity="0.7"/>
+
+    <!-- Graduations -->
+    <line x1="256" y1="60"  x2="262" y2="60"  stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="256" y1="80"  x2="262" y2="80"  stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="256" y1="100" x2="262" y2="100" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="256" y1="120" x2="262" y2="120" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="256" y1="140" x2="262" y2="140" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="256" y1="160" x2="262" y2="160" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="256" y1="180" x2="262" y2="180" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="256" y1="200" x2="262" y2="200" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+
+    <!-- Robinet / nozzle -->
+    <path d="M228,214 L262,214 L249,234 L241,234 Z"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.5" stroke-linejoin="round"/>
+    <rect x="233" y="212" width="24" height="8" rx="2" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1"/>
+
+    <!-- Goutte (accent — la mesure commence par ce geste) -->
+    <ellipse cx="245" cy="250" rx="3" ry="4.5" fill="var(--figure-accent)"/>
+
+    <text x="300" y="90"  font-size="12.5" font-weight="600" fill="var(--figure-ink)">burette graduée</text>
+    <text x="300" y="106" font-size="10.5" fill="var(--figure-ink-soft)">titrant : soude (C<tspan dy="3" font-size="7.5">B</tspan><tspan dy="-3">)</tspan></text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — le bécher (titré) et l'agitateur magnétique
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Trajectoire de la goutte vers le bécher (accent, pointillé) -->
+    <line x1="245" y1="256" x2="245" y2="298" stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="3,3"/>
+
+    <!-- Corps du bécher -->
+    <path d="M170,300 L170,420 Q170,434 184,434 L316,434 Q330,434 330,420 L330,300"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="170" y1="300" x2="330" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <!-- Bec verseur -->
+    <path d="M330,300 L338,292 L330,308" fill="none" stroke="var(--figure-ink)" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Solution titrée -->
+    <path d="M172,360 L172,420 Q172,432 184,432 L316,432 Q328,432 328,420 L328,360 Z"
+          fill="var(--figure-grid)" opacity="0.6"/>
+
+    <!-- Barreau aimanté -->
+    <ellipse cx="250" cy="422" rx="20" ry="6" fill="var(--figure-ink-soft)" transform="rotate(12 250 422)"/>
+
+    <text x="345" y="350" font-size="12.5" font-weight="600" fill="var(--figure-ink)">bécher</text>
+    <text x="345" y="366" font-size="10.5" fill="var(--figure-ink-soft)">titré : acide éthanoïque</text>
+    <text x="345" y="382" font-size="10" font-style="italic" fill="var(--figure-ink-soft)">(prise d&#8217;essai V<tspan dy="3" font-size="7">A</tspan><tspan dy="-3">)</tspan></text>
+
+    <!-- Agitateur magnétique -->
+    <rect x="150" y="434" width="200" height="26" rx="4" fill="var(--figure-grid)" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <circle cx="335" cy="447" r="6" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1"/>
+    <text x="250" y="478" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">agitateur magnétique</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la sonde pH et le pH-mètre
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Tige de la sonde, plongée dans la solution -->
+    <rect x="299" y="132" width="12" height="263" rx="4"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <rect x="297" y="122" width="16" height="12" rx="2" fill="var(--figure-ink-soft)"/>
+    <circle cx="305" cy="395" r="6" fill="var(--figure-ink-soft)" stroke="var(--figure-ink)" stroke-width="1.2"/>
+    <text x="318" y="150" font-size="10.5" fill="var(--figure-ink-soft)">sonde pH</text>
+
+    <!-- Fil de signal (accent) -->
+    <path d="M313,128 C360,110 400,110 420,148" fill="none"
+          stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- pH-mètre -->
+    <rect x="400" y="150" width="120" height="90" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <rect x="412" y="164" width="96" height="34" rx="3" fill="var(--figure-grid)"/>
+    <text x="460" y="187" text-anchor="middle" font-size="16" font-weight="700"
+          fill="var(--figure-accent)">pH</text>
+    <text x="460" y="258" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--figure-ink)">pH-mètre</text>
+  </g><!-- /step-3 -->
+
+</svg>

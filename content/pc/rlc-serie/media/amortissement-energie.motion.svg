@@ -1,0 +1,305 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 520"
+     font-family="'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif"
+     aria-label="Bilan énergétique dans un circuit RLC : l’échange E_C ↔ E_L continue mais l’énergie totale diminue, dissipée en chaleur dans R">
+
+  <!--
+    amortissement-energie.motion.svg  (v1 — MotionStage engine, ADR 0022)
+    ─────────────────────────────────────────────────────────────────────────
+    For R3 ("R est le frein, pas le moteur"). Teaches: with R present, the
+    E_C ↔ E_L exchange CONTINUES, but the TOTAL shrinks cycle after cycle —
+    energy leaves as heat in R, it is not "used up by the oscillation."
+
+    Engine: MotionStage.tsx (fade verb only; replace layout model for the
+    bars / circuit-state / annotation slots; two cumulative "heat mark"
+    groups that fade in and STAY — they are not replaced, they accumulate).
+
+    LAYOUT MODEL: replace
+      Slots:
+        bars-slot           — one bar-pair (E_C + E_L rects) visible at a time.
+                               beat-0: bar-fill-0 (visible on load)
+                               beat-1: bar-fill-1 replaces bar-fill-0
+                               beat-2: bar-fill-2 replaces bar-fill-1
+                               beat-3: bar-fill-3 replaces bar-fill-2
+        circuit-state-slot  — one status badge inside the loop at a time.
+                               circuit-state-0 → 1 → 2 → 3, same replace chain.
+        annot-slot          — one annotation row at a time (bottom panel).
+                               annot-0 → 1 → 2 → 3, same replace chain.
+
+      Heat marks (#heat-set-a/b/c) are NOT a replace slot: each fades in once
+      at its beat and is never exited, so they visually ACCUMULATE next to R
+      — 2 strokes at beat-1, 4 by beat-2, 6 by beat-3.
+
+    BAR HEIGHTS (authored directly per beat — no `fill` verb; two sequential
+    `fill` tweens on the SAME rect id would corrupt the engine's stashed
+    fillGeom, see MotionStage.tsx `setPre` — so each beat's bar state is its
+    OWN pair of rects, cross-faded via `replace`, exactly like
+    circuit-state/annot in energy-pendulum.motion.svg):
+      beat-0 (t=0):      E_C = 190px (100%, full)   E_L = 0px    (0%)   total 100%
+      beat-1 (cycle 1):  E_C =  14px (~7%)           E_L = 132px (~69%)  total ~77%
+      beat-2 (cycle 2):  E_C = 100px (~53%)          E_L =   8px (~4%)   total ~57%
+      beat-3 (later):    E_C =  18px (~9%)           E_L =  22px (~12%)  total ~21%
+    Monotonically decreasing total while C/L keep swapping dominance —
+    exactly "the exchange continues, the total shrinks."
+
+    BOUNDARY §0.4: no damping coefficient, no e^{-αt} envelope, no exact
+    numeric fractions spoken in the copy — bar heights are qualitative.
+
+    PALETTE: var(--figure-*) tokens throughout. Heat marks use
+    var(--figure-accent) (short strokes, NOT flames/emoji).
+
+    NO-FLASH CONTRACT: beat-0 elements authored visible; every beat ≥ 1
+    element authored opacity="0" (fade pre-state). Beat-0 tweens: [].
+  -->
+
+  <!-- ── Background ────────────────────────────────────────────────────── -->
+  <rect width="680" height="520" rx="8" fill="var(--figure-surface)"/>
+
+  <!-- Title -->
+  <text x="340" y="26" text-anchor="middle"
+        font-size="13" font-weight="600" fill="var(--figure-ink)">
+    R en série : l’échange continue, l’énergie totale diminue
+  </text>
+  <text x="340" y="44" text-anchor="middle"
+        font-size="10.5" fill="var(--figure-ink-soft)">
+    Circuit RLC — l’effet Joule dissipe une partie de l’énergie à chaque cycle
+  </text>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       LEFT PANEL — Circuit (always visible chrome)
+       LC loop with R in series, permanently tinted (R is the subject here).
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <rect x="32" y="56" width="296" height="278" rx="6"
+        fill="var(--figure-grid)" opacity="0.22"/>
+
+  <text x="180" y="78" text-anchor="middle"
+        font-size="11.5" font-weight="600" fill="var(--figure-ink)">
+    Circuit RLC série (R présente)
+  </text>
+
+  <!-- Loop wires -->
+  <line x1="78" y1="120" x2="270" y2="120" stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <line x1="78" y1="258" x2="270" y2="258" stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <!-- Left wire, capacitor gap -->
+  <line x1="78" y1="120" x2="78" y2="170" stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <line x1="78" y1="196" x2="78" y2="258" stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <!-- Right wire, resistor gap -->
+  <line x1="270" y1="120" x2="270" y2="168" stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <line x1="270" y1="214" x2="270" y2="258" stroke="var(--figure-ink-soft)" stroke-width="2"/>
+
+  <!-- Corner nodes -->
+  <circle cx="78"  cy="120" r="3" fill="var(--figure-ink-soft)"/>
+  <circle cx="270" cy="120" r="3" fill="var(--figure-ink-soft)"/>
+  <circle cx="270" cy="258" r="3" fill="var(--figure-ink-soft)"/>
+  <circle cx="78"  cy="258" r="3" fill="var(--figure-ink-soft)"/>
+
+  <!-- Capacitor C (left wire) -->
+  <line x1="55" y1="170" x2="101" y2="170" stroke="var(--figure-energy-C)" stroke-width="3" stroke-linecap="round"/>
+  <line x1="55" y1="196" x2="101" y2="196" stroke="var(--figure-energy-C)" stroke-width="3" stroke-linecap="round"/>
+  <text x="48" y="187" text-anchor="middle"
+        font-size="14" font-style="italic" font-weight="600" fill="var(--figure-energy-C)">C</text>
+
+  <!-- Inductor L (bottom wire, coil arcs) -->
+  <path d="M130,258 a12,12 0 0,0 24,0" fill="none" stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+  <path d="M154,258 a12,12 0 0,0 24,0" fill="none" stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+  <path d="M178,258 a12,12 0 0,0 24,0" fill="none" stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+  <text x="204" y="272" font-size="14" font-style="italic" font-weight="600" fill="var(--figure-energy-L)">L</text>
+
+  <!-- Resistor R halo (always visible — "R highlighted" from t=0, no tween needed) -->
+  <rect x="250" y="160" width="40" height="62" rx="6" fill="var(--figure-ink-soft)" opacity="0.10"/>
+  <!-- Resistor R box (right wire) -->
+  <rect x="258" y="168" width="24" height="46" rx="4"
+        fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <text x="270" y="196" text-anchor="middle"
+        font-size="13" font-style="italic" fill="var(--figure-ink)">R</text>
+
+  <!-- Current arrow on top wire -->
+  <line x1="150" y1="120" x2="190" y2="120" stroke="var(--figure-ink-soft)" stroke-width="2"/>
+  <polygon points="190,120 178,115 178,125" fill="var(--figure-ink-soft)"/>
+  <text x="170" y="111" text-anchor="middle"
+        font-size="13" font-style="italic" fill="var(--figure-ink-soft)">i</text>
+
+  <!--
+    HEAT MARKS near R — cumulative, NOT replaced. Short diagonal strokes
+    fanning above/right of the resistor box. NOT flames/emoji.
+    beat-1 fades in heat-set-a (2 strokes); beat-2 ADDS heat-set-b (2 more,
+    set-a stays); beat-3 ADDS heat-set-c (2 more) — 6 strokes by the end.
+  -->
+  <g id="heat-set-a" opacity="0">
+    <line x1="280" y1="158" x2="288" y2="146" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round" opacity="0.65"/>
+    <line x1="286" y1="164" x2="296" y2="156" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round" opacity="0.65"/>
+  </g>
+  <g id="heat-set-b" opacity="0">
+    <line x1="272" y1="148" x2="278" y2="134" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+    <line x1="296" y1="150" x2="308" y2="140" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  </g>
+  <g id="heat-set-c" opacity="0">
+    <line x1="264" y1="138" x2="268" y2="124" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+    <line x1="302" y1="160" x2="314" y2="152" stroke="var(--figure-accent)" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+  </g>
+
+  <!--
+    CIRCUIT-STATE SLOT — exactly ONE status badge visible at a time, inside
+    the loop interior (clear of the capacitor plates, the R box, and the
+    coil arcs).
+  -->
+  <g id="circuit-state-0">
+    <rect x="104" y="168" width="142" height="42" rx="5" fill="var(--figure-energy-C)" opacity="0.12"/>
+    <text x="175" y="184" text-anchor="middle" font-size="10" font-weight="600" fill="var(--figure-energy-C)">t = 0</text>
+    <text x="175" y="198" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">condensateur chargé — R en attente</text>
+  </g>
+
+  <g id="circuit-state-1" opacity="0">
+    <rect x="104" y="168" width="142" height="42" rx="5" fill="var(--figure-energy-L)" opacity="0.12"/>
+    <text x="175" y="184" text-anchor="middle" font-size="10" font-weight="600" fill="var(--figure-energy-L)">cycle 1</text>
+    <text x="175" y="198" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">un peu de chaleur part dans R</text>
+  </g>
+
+  <g id="circuit-state-2" opacity="0">
+    <rect x="104" y="168" width="142" height="42" rx="5" fill="var(--figure-energy-C)" opacity="0.12"/>
+    <text x="175" y="184" text-anchor="middle" font-size="10" font-weight="600" fill="var(--figure-energy-C)">cycle 2</text>
+    <text x="175" y="198" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">l’amplitude a déjà diminué</text>
+  </g>
+
+  <g id="circuit-state-3" opacity="0">
+    <rect x="104" y="168" width="142" height="42" rx="5" fill="var(--figure-ink-soft)" opacity="0.10"/>
+    <text x="175" y="184" text-anchor="middle" font-size="10" font-weight="600" fill="var(--figure-ink)">cycles suivants</text>
+    <text x="175" y="198" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">la réserve continue de s’épuiser</text>
+  </g>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       RIGHT PANEL — Energy bars (total visibly shrinking)
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <rect x="362" y="56" width="286" height="278" rx="6" fill="var(--figure-grid)" opacity="0.22"/>
+  <text x="505" y="78" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)">
+    Réserves d’énergie (total ↓)
+  </text>
+
+  <!-- E_max reference line -->
+  <line x1="378" y1="108" x2="632" y2="108" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+  <text x="638" y="112" font-size="9" fill="var(--figure-ink-soft)">E<tspan dy="3" font-size="7">max</tspan></text>
+
+  <!-- Bar container outlines (chrome, always visible) -->
+  <rect x="398" y="108" width="100" height="190" rx="5" fill="none" stroke="var(--figure-energy-C)" stroke-width="1.5" opacity="0.30"/>
+  <rect x="520" y="108" width="100" height="190" rx="5" fill="none" stroke="var(--figure-energy-L)" stroke-width="1.5" opacity="0.30"/>
+
+  <!--
+    BARS-SLOT — exactly ONE bar-pair visible at a time. Each group is
+    authored with its OWN, already-final rect geometry for that beat (no
+    `fill` verb — see header note). replace cross-fades between groups.
+  -->
+  <g id="bar-fill-0">
+    <rect id="bar-ec-0" x="398" y="108" width="100" height="190" rx="5" fill="var(--figure-energy-C)" opacity="0.72"/>
+    <rect id="bar-el-0" x="520" y="298" width="100" height="0"   rx="5" fill="var(--figure-energy-L)" opacity="0.72"/>
+  </g>
+
+  <g id="bar-fill-1" opacity="0">
+    <rect x="398" y="284" width="100" height="14"  rx="5" fill="var(--figure-energy-C)" opacity="0.72"/>
+    <rect x="520" y="166" width="100" height="132" rx="5" fill="var(--figure-energy-L)" opacity="0.72"/>
+  </g>
+
+  <g id="bar-fill-2" opacity="0">
+    <rect x="398" y="198" width="100" height="100" rx="5" fill="var(--figure-energy-C)" opacity="0.72"/>
+    <rect x="520" y="290" width="100" height="8"   rx="5" fill="var(--figure-energy-L)" opacity="0.72"/>
+  </g>
+
+  <g id="bar-fill-3" opacity="0">
+    <rect x="398" y="280" width="100" height="18" rx="5" fill="var(--figure-energy-C)" opacity="0.72"/>
+    <rect x="520" y="276" width="100" height="22" rx="5" fill="var(--figure-energy-L)" opacity="0.72"/>
+  </g>
+
+  <!-- Column labels (chrome, always visible) -->
+  <text x="448" y="316" text-anchor="middle" font-size="11" font-style="italic" fill="var(--figure-energy-C)">
+    E<tspan dy="3" font-size="8">C</tspan>
+  </text>
+  <text x="448" y="330" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">condensateur</text>
+
+  <text x="570" y="316" text-anchor="middle" font-size="11" font-style="italic" fill="var(--figure-energy-L)">
+    E<tspan dy="3" font-size="8">L</tspan>
+  </text>
+  <text x="570" y="330" text-anchor="middle" font-size="9" fill="var(--figure-ink-soft)">bobine</text>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       ANNOTATION SLOT — exactly ONE annotation group visible at a time.
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <rect x="32" y="344" width="616" height="88" rx="6" fill="var(--figure-grid)" opacity="0.16"/>
+
+  <g id="annot-0">
+    <text x="340" y="368" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">
+      R est en série : le mécanisme d’échange n’est pas supprimé
+    </text>
+    <text x="340" y="386" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
+      Le condensateur va se décharger vers la bobine, exactement comme dans le cas idéal — R n’empêche pas l’échange.
+    </text>
+    <text x="340" y="410" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--figure-ink-soft)">
+      P = R·i² (puissance dissipée par effet Joule, dès que i ≠ 0)
+    </text>
+  </g>
+
+  <g id="annot-1" opacity="0">
+    <text x="340" y="368" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-energy-L)">
+      Le transfert C → L a eu lieu — mais pas en totalité
+    </text>
+    <text x="340" y="386" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
+      Une partie de l’énergie est passée en chaleur dans R au passage : la réserve totale est déjà plus petite qu’au départ.
+    </text>
+    <text x="340" y="410" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--figure-ink)">
+      E<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="7.5">L</tspan><tspan dy="-3"> &lt; E</tspan><tspan dy="3" font-size="7.5">max</tspan>
+    </text>
+  </g>
+
+  <g id="annot-2" opacity="0">
+    <text x="340" y="368" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-energy-C)">
+      À chaque cycle, R prélève un peu plus
+    </text>
+    <text x="340" y="386" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
+      L’échange E<tspan dy="2" font-size="7.5">C</tspan><tspan dy="-2"> ↔ E</tspan><tspan dy="2" font-size="7.5">L</tspan><tspan dy="-2"> continue — mais la réserve totale rétrécit visiblement d’un cycle à l’autre.</tspan>
+    </text>
+    <text x="340" y="410" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--figure-ink)">
+      (E<tspan dy="3" font-size="7.5">C</tspan><tspan dy="-3"> + E</tspan><tspan dy="3" font-size="7.5">L</tspan><tspan dy="-3">) décroît, cycle après cycle</tspan>
+    </text>
+  </g>
+
+  <g id="annot-3" opacity="0">
+    <text x="340" y="368" text-anchor="middle" font-size="12" font-weight="600" fill="var(--figure-ink)">
+      L’énergie n’a pas disparu — elle est partie en chaleur dans R
+    </text>
+    <text x="340" y="386" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">
+      R ne « consomme » pas l’oscillation : elle la freine, en convertissant l’énergie en chaleur, cycle après cycle.
+    </text>
+    <text x="340" y="410" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--figure-ink-soft)">
+      Aucune énergie perdue « dans le vide » — tout est dissipé par effet Joule
+    </text>
+  </g>
+
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       FOOTER — Legend + boundary note
+       ══════════════════════════════════════════════════════════════════════ -->
+
+  <line x1="36" y1="452" x2="66" y2="452" stroke="var(--figure-energy-C)" stroke-width="2.5"/>
+  <text x="71" y="456" font-size="10.5" fill="var(--figure-energy-C)">
+    E<tspan dy="3" font-size="8">C</tspan><tspan dy="-3" fill="var(--figure-ink)"> condensateur</tspan>
+  </text>
+
+  <line x1="216" y1="452" x2="246" y2="452" stroke="var(--figure-energy-L)" stroke-width="2.5"/>
+  <text x="251" y="456" font-size="10.5" fill="var(--figure-energy-L)">
+    E<tspan dy="3" font-size="8">L</tspan><tspan dy="-3" fill="var(--figure-ink)"> bobine</tspan>
+  </text>
+
+  <line x1="396" y1="446" x2="404" y2="434" stroke="var(--figure-accent)" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="410" y="456" font-size="10.5" fill="var(--figure-accent)">chaleur dissipée (R)</text>
+
+  <text x="340" y="480" text-anchor="middle" font-size="9" font-style="italic" fill="var(--figure-ink-soft)">
+    Hauteurs qualitatives — aucun coefficient d’amortissement ni terme exponentiel affiché.
+  </text>
+  <text x="340" y="494" text-anchor="middle" font-size="9" font-style="italic" fill="var(--figure-ink-soft)">
+    L’échange E<tspan dy="3" font-size="7">C</tspan><tspan dy="-3"> ↔ E</tspan><tspan dy="3" font-size="7">L</tspan><tspan dy="-3"> se poursuit ; seule l’énergie totale diminue, cycle après cycle.</tspan>
+  </text>
+
+</svg>

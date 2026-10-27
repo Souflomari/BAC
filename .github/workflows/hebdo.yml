@@ -1,0 +1,96 @@
+# Le balayage hebdomadaire : les contrôles lents ou rares, qui protègent l'élève mais n'ont pas besoin
+# de tourner à chaque poussée. Lancé chaque lundi, et à la main (Actions → hebdo → Run workflow).
+name: hebdo
+
+on:
+  schedule:
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+
+jobs:
+  navigateur:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/preparer
+        with: { chromium: "true", build: "true" }
+      - name: Préférences après un rendu de secours
+        if: always()
+        run: node scripts/preferences-secours.mjs
+      - name: Stockage refusé (navigation privée)
+        if: always()
+        run: node scripts/stockage-refuse.mjs --porte
+      - name: Réduire les animations
+        if: always()
+        run: node scripts/mouvement-reduit.mjs --porte
+      - name: Glyphes confondus (ω contre Ω)
+        if: always()
+        run: node scripts/glyphes-confondus.mjs
+      - name: En-tête du site sur chaque type de page
+        if: always()
+        run: node scripts/header-manifestes.mjs
+      - name: Ancres uniques et coût réseau
+        if: always()
+        run: |
+          node scripts/ancres-uniques.mjs --porte
+          node scripts/donnees-sweep.mjs --porte
+      - name: Texte agrandi à 200 % sur 320 px
+        if: always()
+        run: node scripts/zoom-sweep.mjs --porte --largeurs=320
+      - name: Accents
+        if: always()
+        run: |
+          python3 ../scripts/accents-francais.py --verifier scripts/accents.mots.json
+          routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
+          node scripts/accents-manquants.mjs --porte $routes $(node scripts/routes-examens.mjs) / /examens
+
+  papier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/preparer
+        with: { chromium: "true", build: "true" }
+      - name: Copier-coller des formules et impression
+        run: |
+          routes=$(cd .. && ls -d content/*/*/ | sed 's|content/\(.*\)/\(.*\)/|/notions/\1/\2|' | sort)
+          examens=$(node scripts/routes-examens.mjs)
+          node scripts/copie-maths.mjs --porte $routes $examens
+          node scripts/impression.mjs --porte $routes $examens / /examens /matieres/pc
+
+  qcm-corpus:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/preparer
+        with: { chromium: "true", build: "true" }
+      - name: Verdict des QCM sur tout le corpus
+        run: node scripts/verdict-qcm.mjs --porte
+
+  rapports:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/preparer
+      - name: Couverture diagnostique et champs morts
+        run: |
+          node scripts/couverture-diagnostique.mjs --porte
+          node scripts/champs-morts.mjs --porte
+
+  scenes:
+    uses: ./.github/workflows/scenes.yml

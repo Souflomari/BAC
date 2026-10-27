@@ -1,0 +1,328 @@
+# bank.yaml — la banque « S'entraîner » de controle-catalyse (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, exercises.yaml), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). L'entrée ci-dessous est une transcription FIDÈLE de l'unique
+# entrée « vérifié » de docs/sujets/pc/controle-catalyse.md (re-fetch AlloSchool
+# + diff OK par un agent-vérificateur, 2026-07-14). Raisonnement rédigé à la
+# voix experte de la maison sur 100 % des questions, en citant les rungs de
+# lesson.md là où c'est naturel, et en nommant explicitement les deux notions
+# voisines mobilisées mais non enseignées ici (voir SCOPE NOTES ci-dessous) ;
+# barème transcrit tel quel dans les énoncés ; conventions KaTeX (block
+# scalars pour la prose, KaTeX brut entre apostrophes simples dans
+# steps[].math, notes sans backslash ni accent — même discipline ASCII que
+# lois-de-newton/bank.yaml).
+#
+# NOTE ÉDITORIALE — CE FICHIER EST NEUF (2026-08-27). `controle-catalyse`
+# était jusqu'ici l'une des notions PC SANS banque : leçon, items, checkpoints
+# et exercices embarqués existaient (r-bac, r-variation), mais aucune annale
+# dans la couche « S'entraîner ». bk-2025-n-x1b en est la PREMIÈRE et, pour
+# l'instant, l'UNIQUE entrée — docs/sujets/pc/controle-catalyse.md ne recense
+# qu'une seule entrée « vérifié » pour cette notion (les deux autres sujets
+# cités en bas du même fichier, 2018 N et 2023 N, portent sur le thème
+# « facteurs cinétiques » mais sont classés et transcrits ailleurs, sous
+# esterification-hydrolyse.md, pas comme entrées « vérifié » de CE fichier).
+# Quatre autres notions PC restent sans banque — aspects-energetiques,
+# atome-mecanique-newton, transformations-deux-sens et
+# transformations-lentes-rapides — plus une notion maths,
+# derivabilite-etude-fonctions ; l'état est consigné tel quel : la page
+# « S'entraîner » de ces notions n'affiche rien plutôt que d'afficher du
+# remplissage.#
+# MISE À JOUR (revue vague 1, 2026-09-19) : la liste de notions « sans
+# banque » ci-dessus est PÉRIMÉE — recomptée sur le dépôt, elle est fausse.
+# État vrai au 2026-09-19, en PC : une seule notion sans `bank.yaml`,
+# `atome-mecanique-newton` ; aucune en maths. À l'échelle du corpus, 24
+# notions sur 62 n'ont pas de banque (1 PC + les 12 de philo + les 11 de
+# SVT) et 13 n'ont pas d'`exercises.yaml` (2 philo + les 11 de SVT).
+# La commande qui produit ces chiffres, à relancer plutôt qu'à recopier :
+#   for d in content/*/*/; do [ -f "$d/bank.yaml" ] || echo "${d#content/}"; done
+# Le principe, lui, n'a pas bougé : la page « S'entraîner » d'une notion sans
+# banque n'affiche rien plutôt que du remplissage.
+
+#
+# PAS DE DOUBLE COMPTAGE — la Partie 1 du même exercice réel (dosage
+# acido-basique de l'hydrogénosulfite de sodium, 3,75 pt) est DÉJÀ en banque
+# sous content/pc/reactions-acido-basiques/bank.yaml, entrée bk-2025-n-x1,
+# exercise_label "Exercice 1 — Partie 1 (Chimie)". L'entrée ci-dessous ne
+# reprend QUE la Partie 2 (suivi cinétique d'une estérification, 3,25 pt) ;
+# 3,75 + 3,25 = 7,0 pt, le barème complet de l'exercice. Le contexte de cette
+# Partie 2 est une estérification : le domaine est nommé et la notion
+# « Estérification et hydrolyse » renvoyée par son nom lisible au point
+# d'usage (questions 2-1 et 2-3), mais AUCUNE entrée n'est créée là-bas — le
+# barème ne se compte qu'une fois, ici, sous controle-catalyse.
+#
+# RECOUPEMENT ASSUMÉ AVEC LE SOMMET DE LEÇON (r-bac). Ce même sujet réel est
+# déjà le sommet r-bac de exercises.yaml (marqueur [[exercise:r-bac]] au
+# rung R5, « Exercice de type bac ») — mêmes questions, même énoncé. Même
+# disposition que suivi-temporel-vitesse bk-2021-n-x1 / r-bac, dipole-rl
+# bk-2020-n-x4 / r-bac, chute-mouvements-plans bk-2020-n-x5 / r-bac : le
+# raisonnement est rédigé à nouveau ici (voix maison, pas copié de
+# exercises.yaml), et les VALEURS NUMÉRIQUES qui dépendent d'une lecture
+# graphique non transcrite pixel par pixel dans la source (voir la note de
+# contre-calcul de l'entrée) sont reprises À L'IDENTIQUE de r-bac, pour qu'un
+# même sujet réel n'affiche jamais deux réponses différentes selon qu'un
+# élève le rencontre au sommet de la leçon ou dans la banque. À l'arbitrage de
+# l'owner si l'on préfère écarter cette entrée de la banque pour éviter le
+# recoupement sur la même page.
+#
+# SCOPE NOTES (résultats mobilisés au-delà de ce que lesson.md de
+# controle-catalyse enseigne explicitement — pontés au point d'usage dans le
+# raisonnement de la question concernée, PAS corrigés ni simplifiés ici ;
+# DRAPEAU reporté à l'orchestrateur/pédagogue, pas résolu ici) :
+#   - q2-4 : la définition et la méthode de lecture graphique de t_{1/2} (le
+#     temps de demi-réaction) ne sont enseignées NULLE PART dans lesson.md de
+#     controle-catalyse — c'est le rung R4 de la notion « Suivi temporel d'une
+#     transformation — vitesse de réaction » qui les construit. Le
+#     raisonnement de q2-4 réénonce la définition et la méthode au point
+#     d'usage, en nommant explicitement cette notion. À remonter à
+#     pedagogy-architect : ajouter la définition de t_{1/2} à ce chapitre-ci
+#     (il l'utilise, en q2-4, sans jamais la construire), ou assumer que le
+#     chapitre « Suivi temporel » est un prérequis strict et l'indiquer
+#     comme tel.
+#   - q2-3 : la démonstration s'appuie sur le fait que l'estérification est
+#     une réaction QUASI ATHERMIQUE (sa constante d'équilibre K varie à peine
+#     avec la température) pour établir que x_f est, en pratique, inchangé
+#     entre les expériences (1) et (2) (mêmes réactifs, températures
+#     différentes). Ce fait n'est établi NULLE PART dans lesson.md de
+#     controle-catalyse (son rung R2 ne traite que l'effet du CATALYSEUR sur
+#     K, jamais l'effet de la température) — il vient du rung R4 de la
+#     notion « Estérification et hydrolyse » (« Accélérer sans déplacer :
+#     cinétique et thermodynamique »), nommée et renvoyée au point d'usage.
+#     Sans ce fait, l'affirmation « VRAI » de q2-3 ne serait démontrable que
+#     pour le couple (2)/(3) [même température, catalyseur seul] et
+#     resterait ouverte pour le couple (1)/(2) [températures différentes] —
+#     un vrai trou de ce chapitre-ci pris isolément. À remonter à
+#     pedagogy-architect : ce chapitre gagnerait à établir lui-même, ou à
+#     citer explicitement, que l'estérification est quasi athermique,
+#     puisque son propre rung R2 laisse ouverte la question de l'effet de la
+#     température sur K (il ne traite que le catalyseur).
+#
+# CONTRE-CALCUL / RECOUPEMENT NUMÉRIQUE — voir le détail complet dans
+# sourcing.note de l'entrée : la transcription vérifiée de la figure ne donne
+# que le calibrage des deux axes (26,6 et 53,2 mmol ; 30 et 60 min), pas de
+# coordonnée de croisement de courbe. Les valeurs numériques utilisées pour
+# q2-4 et q2-5 (x_f ~ 133 mmol, t_{1/2}(2) ~ 20 min, eta(3) ~ 67 %) sont
+# reprises de r-bac (déjà déployé) pour cohérence, et recoupées ici
+# indépendamment par deux voies convergentes : (a) 133 = 26,6 x 5 — cohérent
+# avec une grille dont seules les deux premières divisions sont chiffrées
+# dans la transcription (motif déjà documenté ailleurs dans ce corpus, ex.
+# lois-de-newton bk-2024-r-x5) ; (b) x_f ~ (2/3) x 200 ~ 133 mmol, la valeur
+# canonique de l'estérification simple rappelée au rung R0 de ce chapitre ET
+# au rung R4 de « Estérification et hydrolyse » (K = 4, tau ~ 0,667). La
+# lecture littérale des seules graduations d'axe transmises (x_f = 53,2 mmol)
+# aurait donné un rendement de 26,6 %, fortement divergent : cette lecture
+# est explicitement écartée ici, au profit du recoupement ci-dessus.
+
+notion: pc/controle-catalyse
+
+entries:
+  # ── bk-2025-n-x1b — 2025 N, Exercice 1 (Partie 2) : suivi cinetique d'une
+  #    esterification dans trois conditions (temperature, puis catalyseur) ──
+  # Sa Partie 1, independante, vit sous content/pc/reactions-acido-basiques,
+  # entree bk-2025-n-x1. Voir la note "PAS DE DOUBLE COMPTAGE" en tete de
+  # fichier pour le detail du partage de bareme.
+  - id: bk-2025-n-x1b
+    title: "Suivi cinétique d'une estérification dans trois conditions : isoler l'effet de la température, isoler l'effet du catalyseur, et ce qu'aucun des deux ne change jamais"
+    source:
+      year: 2025
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Partie 2 (Chimie) : suivi cinétique d'une estérification"
+    bareme_total: 3.25
+    duration_min: 20
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS28F, AlloSchool
+        https://www.alloschool.com/element/145796, images
+        .../course-422/upload-87489/0002-big.jpg (intro Partie 2) et
+        0003-big.jpg (expériences + questions), pages 2 et 3 sur 6
+        (Exercice 1, Partie 2 — suivi cinétique d'une estérification). Barème
+        de la Partie 2 recompté question par question sur l'énoncé source :
+        0,75 (2-1) + 0,5 (2-2) + 0,75 (2-3) + 0,75 (2-4) + 0,5 (2-5) =
+        3,25 pt exactement, sur les 7 pt de l'exercice complet ; la Partie 1
+        — dosage acido-basique de l'hydrogénosulfite de sodium, 3,75 pt —
+        est DÉJÀ transcrite sous content/pc/reactions-acido-basiques/bank.yaml,
+        entrée bk-2025-n-x1 ; 3,75 + 3,25 = 7,0 pt, cohérent avec le recompte
+        annoncé en tête du fichier source. AUCUNE entrée créée dans
+        esterification-hydrolyse/bank.yaml pour cette Partie 2 : le domaine
+        (une estérification) y est nommé et la leçon renvoyée par son nom
+        lisible, au point d'usage, dans le raisonnement des questions 2-1 et
+        2-3, mais le barème ne se compte qu'une fois, ici, sous
+        controle-catalyse. Source : docs/sujets/pc/controle-catalyse.md,
+        section « 2025 — session normale — Exercice 1 (Chimie), Partie 2 »,
+        statut « vérifié — re-fetch indépendant AlloSchool + diff OK
+        (agent-vérificateur, 2026-07-14) ». La description de la figure (les
+        trois courbes x(t) des trois expériences) est reprise ici AU MOT
+        PRÈS de cette transcription vérifiée, sans réécriture ni résumé.
+
+        CONTRE-CALCUL ET RECOUPEMENT NUMÉRIQUE (fait indépendamment ici,
+        pour q2-4 et q2-5). La transcription vérifiée de la figure ne donne
+        que le calibrage des deux axes (ordonnée graduée à 26,6 et 53,2
+        mmol ; abscisse graduée à 30 et 60 min) et un classement qualitatif
+        des trois courbes (a la plus rapide, b intermédiaire, c la plus
+        lente, paliers de a et b confondus, celui de c « semble légèrement
+        inférieur — lecture d'échelle à confirmer sur le corrigé ») —
+        aucune coordonnée de croisement de courbe n'y est transcrite. Faute
+        de cette donnée, cette entrée reprend les valeurs déjà utilisées par
+        l'exercice-sommet r-bac de exercises.yaml (marqueur
+        [[exercise:r-bac]], même sujet réel) : x_f ≈ 133 mmol pour les
+        courbes (a) et (b) [expériences (3) et (2)], t_{1/2}(exp2) ≈ 20 min,
+        rendement(exp3) ≈ 67 %. Choix justifié par cohérence : un même sujet
+        réel ne doit pas afficher deux réponses numériques différentes
+        selon qu'un élève le rencontre au sommet de la leçon (r-bac) ou dans
+        cette banque. Ce choix est recoupé ici, indépendamment, par deux
+        voies convergentes : (a) 133 = 26,6 x 5 exactement — cohérent avec
+        une grille dont seules les deux premières divisions (26,6 et 53,2
+        mmol) sont chiffrées dans la transcription, le palier se situant,
+        non chiffré, à la 5e division ; c'est le même motif de grille
+        éparsement chiffrée que documenté ailleurs dans ce corpus
+        (lois-de-newton bk-2024-r-x5, figure 2 : seuls 0,1 et 0,2 sont
+        chiffrés sur un cadre qui va jusqu'à 0,6 s) ; (b) x_f ≈ (2/3) x 200
+        = 133,3 ≈ 133 mmol, la valeur canonique τ ≈ 2/3 de l'estérification
+        simple, rappelée au rung R0 de ce chapitre-ci ET au rung R4 de
+        « Estérification et hydrolyse » (K = 4, τ ≈ 0,667, même ordre de
+        grandeur), pour ce même type de couple acide carboxylique / alcool
+        primaire. La lecture littérale des seules graduations transmises
+        (x_f = 53,2 mmol) aurait donné un rendement de 26,6 %, fortement
+        divergent des deux recoupements ci-dessus : cette lecture est
+        explicitement écartée ici, et le motif de l'écart est documenté
+        pour qu'une future passe ne la reproduise pas par erreur. Le temps
+        de demi-réaction t_{1/2}(exp2) ≈ 20 min reste, lui, une lecture
+        graphique directe non re-dérivable indépendamment de cette
+        transcription sommaire (aucune divergence relevée avec r-bac, mais
+        aucune re-vérification indépendante possible sans le scan
+        original) : à vérifier en priorité si une re-vérification de cette
+        entrée est un jour engagée.
+    intro: |-
+      **Suivi cinétique d'une réaction d'estérification (examen national, session normale 2025 — Exercice 1, Partie 2, 3,25 points).**
+
+      *Cet exercice de 7 points comporte aussi une Partie 1 — un dosage acido-basique de l'hydrogénosulfite de sodium — traitée à part, sous la notion « Réactions acido-basiques ». Les deux parties sont indépendantes ; rien de ce qui suit n'en dépend.*
+
+      On étudie la cinétique de la réaction entre l'acide éthanoïque $CH_3COOH$ et le propan-1-ol $C_2H_5CH_2OH$. On réalise cette estérification dans différentes conditions expérimentales :
+
+      - **Expérience (1) :** On mélange $0{,}200\ \text{mol}$ d'acide éthanoïque avec $0{,}200\ \text{mol}$ du propan-1-ol à la température $\theta_1$.
+      - **Expérience (2) :** On mélange $0{,}200\ \text{mol}$ d'acide éthanoïque avec $0{,}200\ \text{mol}$ du propan-1-ol à la température $\theta_2$ avec $\theta_2 > \theta_1$.
+      - **Expérience (3) :** On mélange $0{,}200\ \text{mol}$ d'acide éthanoïque avec $0{,}200\ \text{mol}$ du propan-1-ol à la température $\theta_2$ avec ajout de quelques gouttes d'acide sulfurique concentré.
+
+      Les courbes de la figure ci-contre représentent l'évolution temporelle de l'avancement $x$ de la réaction qui se produit pour chaque condition expérimentale.
+
+      *Figure (courbes) :* axe des ordonnées $x\ (\text{mmol})$ gradué à $26{,}6$ et $53{,}2$ ; axe des abscisses $t\ (\text{min})$ gradué à $30$ et $60$. Trois courbes croissantes partant de l'origine vers un palier : **Courbe (a)** la plus rapide (atteint son palier le plus tôt), **Courbe (b)** intermédiaire, **Courbe (c)** la plus lente. Les paliers de $(a)$ et $(b)$ sont au même niveau haut ; celui de $(c)$ semble légèrement inférieur *(lecture d'échelle à confirmer sur le corrigé)*. Interprétation attendue : l'expérience $(3)$ (catalyseur, $\theta_2$) correspond à la courbe la plus rapide.
+    questions:
+      - id: q1
+        part: "2-1 — Écrire et nommer la réaction étudiée"
+        stem: |-
+          **2-1.** (0,75 pt) Écrire, en utilisant les formules semi-développées, l'équation modélisant la réaction d'estérification qui se produit. Donner le nom de l'ester $(E)$ formé.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Deux réactifs sont donnés : un acide carboxylique, l'acide éthanoïque $CH_3COOH$, et un alcool, le propan-1-ol $C_2H_5CH_2OH$ (soit $CH_3-CH_2-CH_2-OH$ : trois carbones, groupe $-OH$ sur le premier). C'est une réaction d'**estérification**, dans sa version ordinaire — acide + alcool, sans passer par un anhydride — présentée au chapitre 1 de ce chapitre (le parfumeur) et construite en détail dans la notion **« Estérification et hydrolyse »** (chapitre 2) : l'équation générale s'écrit $R-COOH + R'-OH \rightleftharpoons R-COO-R' + H_2O$, avec une **double flèche**, parce que cette réaction est **lente et limitée** — pas totale.
+
+          Ce détail de la flèche est le premier piège de la question, et il pèse sur tout le reste de l'exercice : si on écrivait une flèche simple, comme au chapitre 2 de CE chapitre-ci (celui de l'anhydride d'acide), on changerait silencieusement la nature de la réaction étudiée. Or les trois expériences de l'énoncé n'ont de sens QUE parce que la réaction est limitée : c'est précisément parce qu'un équilibre s'installe, à une vitesse qui dépend des conditions, que la comparaison entre température et catalyseur (questions suivantes) devient intéressante.
+
+          **L'équation, en formules semi-développées.**
+
+          $$CH_3-COOH + CH_3-CH_2-CH_2-OH \rightleftharpoons CH_3-CO-O-CH_2-CH_2-CH_3 + H_2O$$
+
+          **Nommer l'ester, groupe par groupe (règle établie dans « Estérification et hydrolyse », chapitre 2).** Le nom d'un ester recopie, dans l'ordre, le radical de l'acide (terminaison « -oïque » remplacée par « -oate ») puis « de » suivi du radical de l'alcool (terminaison « -yle »). Ici : l'acide éthanoïque donne « éthanoate » ; le propan-1-ol, une chaîne carbonée linéaire à trois carbones fixée par son extrémité, donne « propyle ». L'ester $(E)$, $CH_3-CO-O-CH_2-CH_2-CH_3$, s'appelle donc :
+
+          $$\boxed{(E) = \text{éthanoate de propyle}}$$
+
+          **Le piège nommé de cette question.** Écrire une flèche simple au lieu d'une double flèche — en confondant cette estérification ordinaire (acide éthanoïque + alcool, limitée) avec la voie de l'anhydride du chapitre 2 de ce chapitre (rapide et totale, elle). Rien dans cet énoncé ne mentionne un anhydride : les trois expériences utilisent bien l'acide éthanoïque lui-même.
+      - id: q2
+        part: "2-2 — Isoler l'effet de chaque facteur cinétique sur les courbes"
+        stem: |-
+          **2-2.** (0,5 pt) Indiquer, en justifiant, la courbe correspondant à l'expérience $(3)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Trois courbes, trois expériences — mais on ne compare jamais les trois d'un bloc : on isole un facteur à la fois, **toutes choses égales par ailleurs**, exactement comme au chapitre 3 de ce chapitre.
+
+          **Premier couple isolé : expériences (1) et (2).** Elles partent des mêmes quantités ($0{,}200\ \text{mol}$ de chaque réactif), sans catalyseur dans les deux cas — la SEULE différence est la température : $\theta_2 > \theta_1$. La température est un facteur cinétique (chapitre 3, qui la cite explicitement aux côtés du catalyseur) : l'expérience (2), plus chaude, est donc **plus rapide** que l'expérience (1).
+
+          **Second couple isolé : expériences (2) et (3).** Elles partent des mêmes quantités, à la MÊME température $\theta_2$ — la seule différence est l'ajout, en (3), de quelques gouttes d'acide sulfurique concentré, un **catalyseur** (chapitre 3 : rôle accélérateur). L'expérience (3) est donc **plus rapide** que l'expérience (2).
+
+          **Le classement complet.** En chaînant les deux comparaisons, chacune n'isolant qu'un seul facteur : $(3)$ cumule les deux leviers accélérateurs (température $\theta_2$ ET catalyseur) — elle est la plus rapide des trois. $(2)$ ne bénéficie que de la température — vitesse intermédiaire. $(1)$ ne bénéficie d'aucun des deux — la plus lente.
+
+          $$\text{vitesse\,: } (3) > (2) > (1)$$
+
+          Sur la figure, la courbe la plus rapide est celle qui atteint son palier le plus tôt : c'est la **courbe (a)**.
+
+          $$\boxed{\text{Expérience } (3) \longleftrightarrow \text{courbe (a)}}$$
+
+          (Par la même logique, la courbe (b), intermédiaire, correspond à l'expérience (2), et la courbe (c), la plus lente, à l'expérience (1) — un classement qu'on réutilise aux questions suivantes.)
+
+          **Le piège nommé de cette question.** Ne pas comparer les trois expériences d'un bloc, sur la seule impression que « il y a un catalyseur donc c'est forcément la courbe la plus rapide ». C'est vrai ICI, mais seulement parce que le raisonnement toutes-choses-égales-par-ailleurs, mené sur les DEUX paires d'expériences qui ne diffèrent chacune que par un seul facteur, le confirme — pas parce qu'un catalyseur serait visuellement reconnaissable sur un graphe.
+      - id: q3
+        part: "2-3 — Ce qu'un facteur cinétique ne change jamais"
+        stem: |-
+          **2-3.** (0,75 pt) Répondre, en justifiant, par vrai ou faux à l'affirmation suivante : « La valeur de l'avancement final $x_f$ de la réaction sera la même pour les trois conditions expérimentales ».
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est le résultat le plus contre-intuitif du chapitre (chapitre 3) : un facteur qui accélère une réaction ne la fait pas nécessairement finir ailleurs. Il faut le vérifier séparément pour CHACUN des deux facteurs en jeu ici — le catalyseur, et la température — parce que rien ne garantit a priori qu'ils se comportent de la même façon vis-à-vis de l'état final.
+
+          **Le catalyseur (expériences (2) et (3), même température $\theta_2$).** Le chapitre 3 le démontre : un catalyseur multiplie la vitesse directe ET la vitesse inverse par le **même facteur** $\alpha$. La condition d'équilibre $v_{directe} = v_{inverse}$ devient $\alpha\,v_{directe} = \alpha\,v_{inverse}$ — la même égalité, vérifiée pour le même rapport de concentrations, donc pour le même $K$. Le catalyseur ne fait que faire converger le système plus vite vers ce même état : $x_f(2) = x_f(3)$.
+
+          **La température (expériences (1) et (2), même absence de catalyseur, $\theta_1 \ne \theta_2$).** Ici, l'argument du catalyseur ne suffit plus — la température change en général la constante d'équilibre $K$ d'une réaction (notion **« État d'équilibre d'un système chimique »**). Mais l'estérification a une propriété particulière, établie dans la notion **« Estérification et hydrolyse »** (chapitre 5, « Accélérer sans déplacer ») : c'est une réaction **quasi athermique**, dont l'effet thermique est presque négligeable. Une réaction quasi athermique a une constante d'équilibre $K$ qui varie à peine avec la température : chauffer accélère les deux sens à la fois (comme le ferait un catalyseur, mais par un mécanisme différent), sans quasiment déplacer où l'équilibre se situe. Donc $x_f(1) \approx x_f(2)$ également.
+
+          **Conclusion.**
+
+          $$\boxed{\text{VRAI}}$$
+
+          $x_f$ est, à très bonne approximation, la même pour les trois conditions : le catalyseur ne la change jamais (argument général, chapitre 3), et la température ne la change quasiment pas ici parce que l'estérification est quasi athermique (argument propre à cette famille de réactions). C'est cohérent avec la figure : les paliers des courbes (a) et (b) coïncident, exactement ce que prédit l'argument du catalyseur. Le palier de la courbe (c) « semble légèrement inférieur » d'après la description du graphe — mais avec l'argument de l'athermicité, l'attendu est plutôt un palier quasi identique aux deux autres : cet écart visible est donc plus probablement un artefact de lecture ou de tracé qu'un véritable déplacement d'équilibre, exactement ce que suggère la mention « lecture d'échelle à confirmer » qui accompagne cette observation sur la figure.
+
+          **Le piège nommé de cette question.** Confondre « la température et le catalyseur accélèrent la réaction » avec « ils changent forcément où elle finit ». Ce sont deux affirmations indépendantes : un facteur cinétique peut très bien accélérer sans jamais déplacer l'état final — c'est exactement le cas ici, pour les deux facteurs en jeu, et c'est ce résultat qu'il faut savoir démontrer, pas seulement réciter.
+      - id: q4
+        part: "2-4 — Lire un temps de demi-réaction sur la bonne courbe"
+        stem: |-
+          **2-4.** (0,75 pt) Déterminer graphiquement $t_{1/2}$ le temps de demi-réaction correspondant à l'expérience $(2)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Ce chapitre-ci ne construit pas la méthode de lecture du temps de demi-réaction ; elle appartient à la notion **« Suivi temporel d'une transformation — vitesse de réaction »** (chapitre 5), qu'on mobilise ici telle quelle. $t_{1/2}$ est l'instant où l'avancement atteint la **moitié** de sa valeur finale :
+
+          $$x(t_{1/2}) = \frac{x_f}{2}$$
+
+          et comme $x(t)$ ne fait que croître, cet instant existe et est unique, quelle que soit l'allure de la courbe.
+
+          **La courbe à utiliser.** L'expérience (2), établie à la question 2-2, correspond à la **courbe (b)** — pas la courbe (a) (celle de l'expérience (3)), un piège facile puisque les deux partagent le même palier.
+
+          **La valeur de $x_f$ pour cette courbe.** Les courbes (a) et (b) partagent le même palier haut (question 2-3), $x_f \approx 133\ \text{mmol}$ — la valeur canonique $\tau \approx 2/3$ de l'estérification simple, rappelée au chapitre 1 de ce chapitre, appliquée au mélange équimolaire de $0{,}200\ \text{mol} = 200\ \text{mmol}$ de chaque réactif.
+
+          **La lecture.** On trace, sur le graphe, la droite horizontale $x = 66{,}5\ \text{mmol}$ ; son intersection avec la courbe (b) donne, en abscisse, le temps de demi-réaction cherché.
+
+          **Le piège nommé de cette question.** Lire l'intersection sur la courbe (a) au lieu de la courbe (b) — les deux courbes ont le MÊME palier, donc la même valeur cible $66{,}5\ \text{mmol}$, mais ce n'est pas la même courbe : la courbe (a), plus rapide (expérience (3)), atteint cette hauteur plus tôt que la courbe (b). Utiliser la mauvaise courbe donnerait un $t_{1/2}$ trop court pour l'expérience demandée.
+        steps:
+          - math: 'x_f \approx \frac{2}{3}\times200 \approx 133\ \text{mmol}'
+            note: "Palier commun aux courbes (a) et (b) [expériences (3) et (2)], valeur canonique tau=2/3 du chapitre 1."
+          - math: '\frac{x_f}{2} \approx 66{,}5\ \text{mmol}'
+            note: "Cible pour le temps de demi-reaction (chapitre 5 de Suivi temporel d'une transformation)."
+          - math: '\boxed{t_{1/2}(2) \approx 20\ \text{min}}'
+            note: "Abscisse, lue sur la courbe (b), du point d'ordonnée 66,5 mmol."
+      - id: q5
+        part: "2-5 — Rendement : rien à recalculer"
+        stem: |-
+          **2-5.** (0,5 pt) Calculer le rendement de la réaction pour le cas de l'expérience $(3)$.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** C'est la définition du rendement établie au chapitre 2 de ce chapitre : $\eta = \dfrac{n_{obtenu}}{n_{max}}$, où $n_{max}$ est la quantité qu'on obtiendrait si la réaction était **totale**.
+
+          **$n_{max}$, le mélange étant équimolaire.** Les deux réactifs sont introduits en quantités égales, $0{,}200\ \text{mol}$ chacun (mélange équimolaire, comme dans l'exemple travaillé du chapitre 2) : si la réaction allait jusqu'au bout, les deux réactifs s'épuiseraient exactement ensemble, à $x_{max} = 200\ \text{mmol}$.
+
+          **$n_{obtenu}$, l'avancement réellement atteint par l'expérience (3).** C'est $x_f$ — et la question 2-3 vient de démontrer que le catalyseur **ne change pas** l'état final : $x_f(3) = x_f(2) \approx 133\ \text{mmol}$ (question 2-4). Aucun nouveau calcul n'est nécessaire ici : c'est exactement la même valeur, pas une nouvelle lecture graphique.
+
+          **Le calcul.**
+
+          $$\eta = \frac{x_f}{x_{max}} = \frac{133}{200} = 0{,}665$$
+
+          $$\boxed{\eta \approx 66{,}5\,\% \approx 67\,\%}$$
+
+          **Ce que ce nombre confirme.** Compare avec l'exemple du chapitre 2 : changer l'acide pour son anhydride faisait passer le rendement de $67\,\%$ à $100\,\%$ — un vrai gain, parce que ce levier change l'état final lui-même. Ici, ajouter un catalyseur laisse le rendement **inchangé** par rapport à l'expérience (2) sans catalyseur (qui donnerait, par le même calcul, exactement le même $67\,\%$) : le catalyseur fait gagner du temps, jamais du rendement. Les deux leviers du chapitre ne se ressemblent pas, et cette question le vérifie sur des nombres, pas seulement sur une phrase apprise.
+
+          **Le piège nommé de cette question.** Chercher à recalculer $x_f(3)$ comme s'il fallait une nouvelle lecture graphique propre à l'expérience (3) : c'est inutile, puisque la question 2-3 a établi que $x_f$ est commun aux trois expériences — on réutilise directement la valeur déjà lue en 2-4, on ne relit pas le graphe une seconde fois.
+        steps:
+          - math: 'x_{max} = 200\ \text{mmol}'
+            note: "Mélange équimolaire (0,200 mol de chaque réactif) : réaction totale hypothétique."
+          - math: 'x_f(3) = x_f(2) \approx 133\ \text{mmol}'
+            note: "Le catalyseur ne change pas l'état final (question 2-3) : même valeur qu'en 2-4."
+          - math: '\eta = \frac{133}{200} = 0{,}665'
+            note: "Rapport avancement atteint / avancement maximal théorique (chapitre 2)."
+          - math: '\boxed{\eta \approx 67\ \%}'
+            note: "Identique au rendement de l'expérience (2) sans catalyseur : le catalyseur ne change jamais le rendement."

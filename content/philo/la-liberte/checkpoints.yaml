@@ -1,0 +1,479 @@
+# In-lesson checkpoint items (summit-conversion campaign — PHILO PILOT).
+# Formative, calm-core probes placed inside the lesson via [[checkpoint:<id>]]
+# markers — NOT the end bank (items.yaml). Same item schema, but NO
+# score/streak/tally. Wrong-answer feedback names the wrong PHILOSOPHICAL
+# model, not just the fact of being wrong. The end-bank ≥3-per-misconception
+# floor lives in items.yaml's coverage_summary and is NOT altered by these
+# checkpoints (a clone or a fresh item here is surfaced inline, never
+# re-counted toward that floor — house convention, see rlc-serie/
+# probabilites-conditionnelles/analyse-de-texte's checkpoints.yaml headers).
+#
+# EVERY distractor carries a real `misconception:` id (no null tags) — the
+# task's stricter-than-house-default instruction, matched here to items.yaml.
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict  (in R0)      — commit-gate. Probes the master model:
+#                                 faux-dilemme-libre-arbitre-determinisme.
+#   cp-r1-rupture  (after R1)   — rupture gate: contrainte ≠ détermination
+#                                 (primary), libre-arbitre-sans-cause (dual).
+#   cp-r2-spinoza  (after R2)   — rupture gate: le sentiment de liberté ne
+#                                 prouve rien (primary), echapper-a-la-liberte
+#                                 (dual, the R2 "erreur classique à éviter").
+#   cp-r3-pouvoir  (after R3, Sartre subsection) — rupture gate: liberté
+#                                 confondue avec pouvoir — 4/18 in items.yaml
+#                                 (RE-MESURÉ 2026-09-19 ; « 2/15, under-floor »
+#                                 décrivait le banc d'avant LIB-16..18),
+#                                 reinforced here.
+#   cp-r3-loi      (after R3, Rousseau/Montesquieu subsection) — rupture
+#                                 gate: loi-liberte-mal-articulees — 3/18 in
+#                                 items.yaml (RE-MESURÉ 2026-09-19 ; « le plus
+#                                 mince, 1/15 » a vieilli avec LIB-16..18).
+#   cp-bac-autrui  (before [[exercise:r-bac]]) — rupture gate: autrui n'est
+#                                 pas par nature une limite — 3/18 in
+#                                 items.yaml (RE-MESURÉ 2026-09-19 ; « ZERO
+#                                 coverage » a vieilli avec LIB-16..18). Le
+#                                 renvoi « items.yaml's coverage_summary notes »
+#                                 est MORT : ce champ `notes` n'existe pas ;
+#                                 lire `honest_state` à la place ;
+#                                 primes the misconception right before the
+#                                 Bakounine text that turns on it.
+#
+# Length rebalance (recipe's philo addendum, mandatory): every stem below was
+# authored with a deliberately varied correct-answer length — never
+# systematically longest, and checked not to be systematically shortest
+# either. See the length table in the closing comment.
+
+notion: la-liberte
+skill_code: philo_liberte
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the téléphone hook's commit)
+  #        Turns "prends position... réponds en une phrase" into a real
+  #        MCQ commit, right after the two spontaneous answers are named
+  #        and before the reveal ("les deux réponses semblent
+  #        raisonnables..."). Probes the master model.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    skill_code: philo_liberte
+    tags: [checkpoint, formative, misconception_driven, philo_liberte, hook_commit]
+    primary_misconception: mc.philo.liberte.faux-dilemme-libre-arbitre-determinisme
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |-
+      Avant de lire la suite : engage-toi. Laquelle de ces quatre façons de
+      répondre te semble la meilleure ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, je suis libre : si je voulais vraiment éteindre, je le ferais — personne ne me tient la main, et rien à l'extérieur ne m'oblige jamais à quoi que ce soit."
+        correct: false
+        misconception: mc.philo.liberte.faux-dilemme-libre-arbitre-determinisme
+        feedback: |-
+          Modèle détecté : choisir le camp du libre arbitre total pour
+          clore la question. Mais alors pourquoi n'arrêtes-tu pas ? Cette
+          réponse ne rend pas compte de ce qui se passe réellement une heure
+          durant devant l'écran.
+
+      - id: B
+        text: "Non, je ne suis pas libre : l'algorithme a décidé à ma place, je n'ai pas vraiment le choix — c'est lui, et non moi, qui pousse mon pouce sur l'écran."
+        correct: false
+        misconception: mc.philo.liberte.faux-dilemme-libre-arbitre-determinisme
+        feedback: |-
+          Modèle détecté : choisir le camp du déterminisme total pour clore
+          la question. Mais un algorithme propose une vidéo ; il ne referme
+          pas ta main sur l'écran à ta place — et si vraiment tu n'y étais
+          pour rien, pourrais-tu encore te reprocher d'avoir raté ton réveil ?
+
+      - id: C
+        text: "Aucune des deux, prise seule, ne suffit : chacune pose un problème dès qu'on l'examine — c'est cette tension, non résolue pour l'instant, que la leçon va construire."
+        correct: true
+        feedback: |-
+          Exact — et c'est le réflexe à garder pour toute la leçon : ni le
+          pur libre arbitre indéterminé ni le déterminisme intégral ne
+          suffisent à rendre compte de ce qui se passe à 23h05. Les
+          positions qui suivent ne trancheront pas en piochant un camp —
+          elles déplaceront le problème.
+
+      - id: D
+        text: "Les deux réponses sont également vraies : tout dépend de comment chacun définit personnellement le mot « liberté », qui n'a de toute façon aucun sens objectif partagé entre deux personnes."
+        correct: false
+        misconception: mc.philo.liberte.faux-dilemme-libre-arbitre-determinisme
+        feedback: |-
+          Modèle détecté : dissoudre la tension dans un relativisme de
+          vocabulaire plutôt que l'affronter. Le problème que pose la scène
+          n'est pas un désaccord sur les mots — il est réel, précis, et la
+          leçon va le construire pièce par pièce, pas le déclarer sans objet.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-rupture | placed AFTER R1
+  #        Probes: contrainte-egale-determination (primary),
+  #        libre-arbitre-exige-absence-de-cause (dual, choice C)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-rupture
+    rung: "R1"
+    skill_code: philo_liberte
+    tags: [checkpoint, formative, misconception_driven, philo_liberte]
+    primary_misconception: mc.philo.liberte.contrainte-egale-determination
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |-
+      Une amie te dit : « Rien ne m'oblige à réviser ce soir — aucune
+      contrainte visible, donc si je ne le fais pas, ce n'est déterminé par
+      rien : c'est un pur choix libre. » Que répondre, à la lumière du chapitre 2 ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Elle confond deux choses : l'absence d'obstacle extérieur visible ne veut pas dire l'absence de cause."
+        correct: true
+        feedback: |-
+          Exact. Son choix peut très bien être déterminé — par la fatigue,
+          l'habitude, l'envie du moment — sans qu'aucun obstacle extérieur ne
+          soit en cause. C'est précisément la distinction que le chapitre 2 pose :
+          être contraint suppose un obstacle visible, être déterminé
+          suppose seulement une cause, visible ou non.
+
+      - id: B
+        text: "Elle a raison : sans contrainte extérieure, un choix est nécessairement libre et sans cause."
+        correct: false
+        misconception: mc.philo.liberte.contrainte-egale-determination
+        feedback: |-
+          Modèle détecté : « pas d'obstacle visible = pas de cause ». Le chapitre 2 est
+          explicite : le problème du déterminisme ne porte pas sur les
+          contraintes visibles, il porte sur la présence même d'une cause —
+          qui peut très bien exister sans aucun obstacle extérieur.
+
+      - id: C
+        text: "Elle a tort, mais pour une autre raison : un choix vraiment libre devrait au contraire n'avoir aucune cause du tout, contrainte ou pas."
+        correct: false
+        misconception: mc.philo.liberte.libre-arbitre-exige-absence-de-cause
+        feedback: |-
+          Modèle détecté : définir la liberté par l'absence totale de cause.
+          Le chapitre 2 le dit pourtant explicitement : un choix absolument sans cause
+          ressemble à un dé qui tombe « pour rien » — un pur hasard, pas un
+          choix voulu.
+
+      - id: D
+        text: "Elle a raison en partie : rien d'extérieur ne la détermine, mais son choix reste influencé par son humeur du moment — cela ne change rien à l'affaire."
+        correct: false
+        misconception: mc.philo.liberte.contrainte-egale-determination
+        feedback: |-
+          Modèle détecté, sous une forme plus discrète : traiter la
+          distinction contrainte/détermination comme sans conséquence.
+          C'est l'inverse — c'est exactement ce cas-là, sans obstacle
+          visible mais avec une cause réelle (l'humeur), qui rend la
+          distinction utile plutôt qu'accessoire.
+
+    correct_feedback: |-
+      Le problème du déterminisme ne porte pas sur les contraintes
+      visibles ; il porte sur la question de savoir si nos décisions
+      elles-mêmes ont toujours des causes, contraintes visibles ou non.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-spinoza | placed AFTER R2
+  #        Probes: sentiment-de-liberte-suffit (primary),
+  #        echapper-a-la-liberte (dual, choice C — the R2 "erreur classique
+  #        à éviter" box: Spinoza ne nie pas la liberté, il la redéfinit)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-spinoza
+    rung: "R2"
+    skill_code: philo_liberte
+    tags: [checkpoint, formative, misconception_driven, philo_liberte, spinoza]
+    primary_misconception: mc.philo.liberte.sentiment-de-liberte-suffit
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |-
+      Un élève résume ainsi Spinoza : « Puisque je RESSENS que je choisis
+      librement de rester devant mon écran, c'est que je suis réellement
+      libre — le sentiment ne trompe pas. » Que répondrait Spinoza ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Que ce sentiment ne prouve rien : on peut avoir conscience de vouloir sans avoir conscience de ce qui nous y pousse — exactement la situation de la pierre qui vole."
+        correct: true
+        feedback: |-
+          Exact. Nous avons conscience de nos décisions sans avoir
+          conscience de tout ce qui les cause. Le sentiment d'être libre,
+          pris seul, ne prouve donc rien — c'est tout le sens de l'image de
+          la pierre lancée qui se sent voler « librement ».
+
+      - id: B
+        text: "Que Spinoza serait d'accord : le sentiment de liberté est, pour lui, le seul critère fiable pour juger si un acte est réellement libre, sans qu'il soit besoin d'aller chercher plus loin du côté des causes."
+        correct: false
+        misconception: mc.philo.liberte.sentiment-de-liberte-suffit
+        feedback: |-
+          Modèle détecté : prendre le sentiment pour une preuve. C'est
+          l'inverse de la thèse de Spinoza — le sentiment de liberté, sans
+          la compréhension des causes, est justement ce qui piège la pierre
+          qui vole.
+
+      - id: C
+        text: "Que Spinoza en conclurait qu'aucune liberté n'existe jamais, puisque tout sentiment est trompeur et qu'aucune connaissance rationnelle ne pourrait jamais venir corriger cette illusion permanente."
+        correct: false
+        misconception: mc.philo.liberte.echapper-a-la-liberte
+        feedback: |-
+          Modèle détecté : « Spinoza pense qu'on n'est jamais libres. » Ce
+          n'est pas sa thèse — il redéfinit la liberté (être cause adéquate
+          et rationnelle de ses actes) plutôt que de la nier purement et
+          simplement.
+
+      - id: D
+        text: "Que le sentiment de liberté est un indice fiable, mais seulement pour les décisions importantes — pas pour une simple habitude comme rester devant un écran."
+        correct: false
+        misconception: mc.philo.liberte.sentiment-de-liberte-suffit
+        feedback: |-
+          Modèle détecté, avec une nuance ajoutée qui ne change rien au
+          fond : accorder au sentiment une valeur de preuve, même
+          partielle. Pour Spinoza, ce n'est jamais le sentiment qui compte,
+          quel que soit l'enjeu — c'est la compréhension des causes.
+
+    correct_feedback: |-
+      Le sentiment d'être libre, pris seul, ne prouve rien : il peut être
+      celui de la pierre qui vole. Toute la leçon sert à construire l'outil
+      — comprendre les causes — qui, lui, fait la différence.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-pouvoir | placed AFTER R3 (Sartre subsection)
+  #        Probes: liberte-confondue-avec-pouvoir (primary — an
+  #        under-floor model in items.yaml, 2/15, reinforced here),
+  #        echapper-a-la-liberte (dual, choice D)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-pouvoir
+    rung: "R3"
+    skill_code: philo_liberte
+    tags: [checkpoint, formative, misconception_driven, philo_liberte, sartre]
+    primary_misconception: mc.philo.liberte.liberte-confondue-avec-pouvoir
+    item_source: original
+    lesson_placement: after_R3_sartre
+
+    stem: |-
+      « L'homme est condamné à être libre », dit Sartre. Un élève en
+      conclut : « Donc je peux littéralement tout faire, rien ne me limite
+      jamais. » Quelle est l'erreur ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Sartre parle de l'absence de nature qui déterminerait mes actes à l'avance — pas d'un pouvoir sans limites sur le monde."
+        correct: true
+        feedback: |-
+          Exact. « Condamné à être libre » signifie qu'aucune nature ne me
+          dispense de choisir et d'en porter la responsabilité — pas que je
+          peux voler comme un oiseau ou changer le monde par la seule force
+          de ma volonté. Les limites concrètes de ce que je peux
+          accomplir n'ont rien à voir avec cette liberté-là.
+
+      - id: B
+        text: "Aucune erreur : « condamné à être libre » signifie précisément un pouvoir d'action illimité sur toute chose."
+        correct: false
+        misconception: mc.philo.liberte.liberte-confondue-avec-pouvoir
+        feedback: |-
+          Modèle détecté : confondre liberté (au sens sartrien) et pouvoir
+          d'action. Rien, chez Sartre, ne garantit que je peux tout faire —
+          seulement que rien ne me dispense de choisir dans les limites
+          bien réelles de ma situation.
+
+      - id: C
+        text: "Aucune erreur non plus : si rien ne détermine mes actes à l'avance, alors je peux effectivement transformer n'importe quelle situation extérieure par la seule force de ma volonté."
+        correct: false
+        misconception: mc.philo.liberte.liberte-confondue-avec-pouvoir
+        feedback: |-
+          Même modèle sous une autre forme : déduire, de l'absence de nature
+          préalable, un pouvoir sur le monde extérieur. L'absence de nature
+          ne dit rien de ce que je peux concrètement accomplir — seulement
+          que je ne peux pas m'en excuser.
+
+      - id: D
+        text: "L'erreur est de croire que Sartre affirme cela : en réalité, il pense que la société détermine entièrement nos actes, et que « liberté » est un abus de langage."
+        correct: false
+        misconception: mc.philo.liberte.echapper-a-la-liberte
+        feedback: |-
+          Modèle détecté : attribuer à Sartre l'exact inverse de sa
+          position. Il rejette précisément l'idée qu'une cause extérieure —
+          la société, le milieu — détermine d'avance ce que je deviens ;
+          c'est ce refus qu'il nomme mauvaise foi quand on s'en sert comme
+          excuse.
+
+    correct_feedback: |-
+      Sartre parle de l'absence d'excuse par une nature donnée d'avance —
+      pas d'un pouvoir sans limites sur les circonstances. Rien ne dispense
+      de choisir ; cela ne veut pas dire que tout devient possible.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r3-loi | placed AFTER R3 (Rousseau/Montesquieu subsection,
+  #        end of R3, before R4) — Probes: loi-liberte-mal-articulees
+  #        (primary — the thinnest model in items.yaml, 1/15),
+  #        licence-est-liberte-achevee (dual, choice B)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-loi
+    rung: "R3"
+    skill_code: philo_liberte
+    tags: [checkpoint, formative, misconception_driven, philo_liberte, rousseau, montesquieu]
+    primary_misconception: mc.philo.liberte.loi-liberte-mal-articulees
+    item_source: original
+    lesson_placement: after_R3_rousseau
+
+    stem: |-
+      Un élève écrit : « Toute loi limite forcément ma liberté ; donc moins
+      il y a de lois, plus je suis libre — une société sans aucune loi
+      serait la liberté parfaite. » Que répondent Montesquieu et Rousseau ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Qu'une société sans règle commune ne protège aucun de ses membres — le plus fort y impose sa volonté ; et qu'obéir à une loi qu'on s'est soi-même prescrite (Rousseau) n'est pas subir un autre, mais s'obéir à soi-même."
+        correct: true
+        feedback: |-
+          Exact. Montesquieu : une liberté sans aucune borne commune ne
+          protège que les plus puissants. Rousseau va plus loin : la loi
+          qui exprime la volonté générale n'oppose pas loi et liberté —
+          y obéir, c'est obéir à sa propre volonté rationnelle telle
+          qu'elle s'exprime collectivement.
+
+      - id: B
+        text: "Ils seraient d'accord : la liberté est maximale quand aucune loi ne s'applique à personne, dans n'importe quelle société et à n'importe quelle époque."
+        correct: false
+        misconception: mc.philo.liberte.licence-est-liberte-achevee
+        feedback: |-
+          Modèle détecté : la licence prise pour la liberté la plus
+          achevée. C'est l'inverse de leur position : sans aucune règle
+          commune, le plus fort écrase les autres — ce n'est pas la
+          liberté qui triomphe, c'est le rapport de force.
+
+      - id: C
+        text: "Ils répondraient que n'importe quelle loi, même imposée par un seul homme sans le consentement de personne, rend déjà libre du seul fait qu'on lui obéit, du moment qu'elle est appliquée strictement à tous sans aucune exception."
+        correct: false
+        misconception: mc.philo.liberte.loi-liberte-mal-articulees
+        feedback: |-
+          Modèle détecté : légitimer toute loi sans condition. Le chapitre 4 le
+          précise explicitement : une loi imposée par un tyran, sans que
+          les citoyens y aient part, est l'exact inverse de ce dont parle
+          Rousseau — la volonté générale, pas l'obéissance en soi.
+
+      - id: D
+        text: "Ils répondraient que la loi et la liberté n'ont, l'une comme l'autre, strictement aucun rapport, et qu'il serait vain de chercher à les articuler."
+        correct: false
+        misconception: mc.philo.liberte.loi-liberte-mal-articulees
+        feedback: |-
+          Modèle détecté, sous sa forme la plus radicale : nier tout
+          rapport entre les deux notions. Montesquieu et Rousseau
+          construisent au contraire, chacun à sa façon, un rapport précis
+          — sous condition — entre loi et liberté ; ils ne les déclarent
+          jamais étrangères l'une à l'autre.
+
+    correct_feedback: |-
+      L'absence totale de règle livre la liberté de chacun à la loi du
+      plus fort (Montesquieu) ; et une loi qu'on s'est soi-même prescrite
+      n'est pas une contrainte étrangère, mais une auto-limitation qui peut
+      au contraire exercer la liberté (Rousseau) — à condition qu'elle
+      exprime réellement la volonté générale.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-bac-autrui | placed BEFORE [[exercise:r-bac]]
+  #        Probes: autrui-limite-par-nature — the ONE model with ZERO
+  #        items.yaml coverage (see coverage_summary notes); primes it
+  #        right before the Bakounine text that turns on this exact point.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-bac-autrui
+    rung: "R4"
+    skill_code: philo_liberte
+    tags: [checkpoint, formative, misconception_driven, philo_liberte, bac_style, autrui]
+    primary_misconception: mc.philo.liberte.autrui-limite-par-nature
+    item_source: original
+    lesson_placement: before_bac
+
+    stem: |-
+      Un élève affirme : « Plus il y a de gens libres autour de moi, moins
+      j'ai de place pour être moi-même libre — c'est presque mécanique,
+      chaque liberté d'autrui mange un peu de la mienne. » Le texte que tu
+      vas lire prend le contre-pied exact de cette idée. Laquelle des
+      formulations suivantes correspond à sa position réelle ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "La liberté d'autrui n'est pas une limite à la mienne : elle en est la condition nécessaire."
+        correct: true
+        feedback: |-
+          Exact. C'est très exactement la thèse que tu vas lire : « je ne
+          suis réellement libre que par la liberté des autres » — l'inverse
+          du modèle « mécanique » de l'élève.
+
+      - id: B
+        text: "Chaque personne libre autour de moi limite mécaniquement ma liberté, comme le suggère l'élève — c'est presque une loi physique."
+        correct: false
+        misconception: mc.philo.liberte.autrui-limite-par-nature
+        feedback: |-
+          Modèle détecté : autrui comme limite par nature. Le texte que tu
+          vas lire renverse exactement cette idée — ce n'est pas la
+          liberté d'autrui qui menace la mienne.
+
+      - id: C
+        text: "Le texte affirme bien un lien, mais un lien de limitation partielle : les libertés se limitent un peu l'une l'autre, comme un compromis."
+        correct: false
+        misconception: mc.philo.liberte.autrui-limite-par-nature
+        feedback: |-
+          Modèle détecté, sous une forme adoucie : garder l'idée de
+          limitation, même réduite, comme relation par défaut entre les
+          libertés. Le texte ne parle d'aucun compromis : il affirme que la
+          liberté d'autrui est une CONDITION, pas une limite même légère.
+
+      - id: D
+        text: "Le texte affirme l'inverse : c'est ma propre liberté, en s'étendant, qui finit par limiter celle des autres."
+        correct: false
+        misconception: mc.philo.liberte.autrui-limite-par-nature
+        feedback: |-
+          Modèle détecté, en sens inverse : garder l'idée d'un rapport
+          nécessairement limitant entre les libertés, en inversant
+          seulement qui limite qui. Le texte décrit un rapport qui
+          RENFORCE dans les deux sens, jamais un rapport à somme nulle.
+
+    correct_feedback: |-
+      Retiens cette thèse avant de lire le texte en entier : pour cet
+      auteur, la liberté d'autrui n'est pas par nature une limite — elle
+      peut être une condition. Vérifie, en le lisant, comment il construit
+      cette affirmation qui va à l'encontre de l'intuition la plus répandue.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# CHECKPOINT COVERAGE NOTE
+#
+# These 6 items do NOT alter the end-bank coverage floor in items.yaml (house
+# convention — see rlc-serie/probabilites-conditionnelles/analyse-de-texte).
+# They exist to give every student, including the 3 under-floor models,
+# in-lesson exposure regardless of the item-bank gap flagged in
+# items.yaml's coverage_summary:
+# ⚠ RE-MESURÉ le 2026-09-19 : ces trois lignes décrivaient le banc de 15 items
+# d'avant LIB-16..18. Le banc en compte 18 et les trois familles sont au-dessus
+# du plancher. Le placement des sondes tient ; sa justification a vieilli.
+#   liberte-confondue-avec-pouvoir  — 4/18 in items.yaml (était 2/15), +1 here (cp-r3-pouvoir)
+#   loi-liberte-mal-articulees      — 3/18 in items.yaml (était 1/15), +1 here (cp-r3-loi)
+#   autrui-limite-par-nature        — 3/18 in items.yaml (était 0/15), +1 here (cp-bac-autrui)
+#
+# LENGTH REBALANCE (recipe's philo addendum, mandatory — cited 97% tell):
+# correct-answer character length vs. the three distractors, per item
+# (verified programmatically, not eyeballed):
+#   cp-r0-predict  — correct (C) 165 chars vs. 150/159/188 → middle.
+#   cp-r1-rupture  — correct (A) 102 chars vs. 92/135/150 → middle.
+#   cp-r2-spinoza  — correct (A) 164 chars vs. 156/195/205 → middle.
+#   cp-r3-pouvoir  — correct (A) 120 chars vs. 108/160/179 → middle.
+#   cp-r3-loi      — correct (A) 205 chars vs. 146/150/201 → LONGEST (kept:
+#     it is the one item that has to state BOTH authors' conditions
+#     precisely; distractors are intentionally terser wrong claims).
+#   cp-bac-autrui  — correct (A) 91 chars vs. 108/127/136 → SHORTEST.
+# Net: 4/6 middle, 1/6 longest, 1/6 shortest — genuinely varied, not a
+# monotonic "correct = longest" pattern, and not a suspicious flip to
+# "always shortest" either.
+# ──────────────────────────────────────────────────────────────────────────────

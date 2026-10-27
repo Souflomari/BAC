@@ -1,0 +1,255 @@
+/* Leçon pilote « logarithme » — habillage Grille (refonte 2026-10).
+   Tout est scopé sous `.pilote` : le moteur pose des classes courtes
+   (opt, pari, fb, say…) qui ne doivent fuir nulle part ailleurs.
+   Couleurs : uniquement les jetons de tokens.ts. Le rouge signal marque
+   l'étape et ce qui compte ; l'encre fait le reste. */
+
+.pilote {
+  --st-bg: var(--color-surface-base);
+  --st-grid: color-mix(in srgb, var(--color-text-primary) 5%, transparent);
+  --st-ink: var(--color-text-primary);
+  --st-dim: var(--color-text-tertiary);
+  --st-a: var(--color-signal);
+  --st-b: var(--color-text-primary);
+  --st-c: var(--color-text-secondary);
+  --st-fa: color-mix(in srgb, var(--color-signal) 16%, transparent);
+  --st-fb: color-mix(in srgb, var(--color-text-primary) 12%, transparent);
+  --st-fc: color-mix(in srgb, var(--color-text-secondary) 18%, transparent);
+  --st-rule: var(--color-surface-container-low);
+  --st-line: var(--color-border-soft);
+  --st-cell: var(--color-surface-raised);
+  --st-glass: color-mix(in srgb, var(--color-signal) 6%, transparent);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: calc(100dvh - 3.5rem);
+  min-height: 560px;
+  background: var(--color-surface-base);
+  color: var(--color-text-primary);
+}
+
+/* barre de leçon */
+.pilote .pilote-barre { display: flex; align-items: center; gap: 22px; padding: 10px var(--gutter); border-bottom: 1px solid var(--color-border-subtle); min-width: 0; }
+.pilote .pilote-titre { display: flex; align-items: baseline; gap: 10px; white-space: nowrap; }
+.pilote .pilote-titre strong { font-size: 1.375rem; font-weight: 700; }
+.pilote .pilote-matiere { font-size: 0.875rem; color: var(--color-text-secondary); }
+/* les filières concernées, sous le titre (V3) */
+.pilote .pilote-filieres { font-size: 0.8125rem; color: var(--color-text-secondary); }
+/* V3 : le nom d'une partie n'est jamais tronqué — chaque segment fait au moins la largeur de son
+   nom (noms courts, ≤ 9 lettres) et grandit avec son nombre d'étapes */
+.pilote .beats { flex: 1; display: flex; gap: 8px; min-width: 0; }
+.pilote .beat { flex: var(--n) 1 auto; min-width: max-content; background: none; border: 0; padding: 4px 0; cursor: pointer; text-align: left; color: var(--color-text-secondary); font: 500 0.75rem/1.2 var(--font-ui); }
+.pilote .beat span { display: block; white-space: nowrap; margin-bottom: 6px; }
+.pilote .beat i { display: block; height: 3px; background: var(--color-border-subtle); overflow: hidden; }
+.pilote .beat i b { display: block; height: 100%; width: 0; background: var(--color-text-primary); transition: width .4s ease; }
+.pilote .beat.on { color: var(--color-signal); font-weight: 700; }
+.pilote .beat.on i b { background: var(--color-signal); }
+.pilote .pilote-outils { display: flex; gap: 8px; }
+.pilote .tbtn { font: 500 0.8125rem var(--font-ui); background: transparent; color: var(--color-text-primary); border: 1px solid var(--color-border-soft); padding: 8px 12px; cursor: pointer; white-space: nowrap; text-decoration: none; display: inline-flex; align-items: center; }
+.pilote .tbtn[aria-pressed="true"] { background: var(--color-text-primary); color: var(--color-surface-base); border-color: var(--color-text-primary); }
+
+/* scène + script */
+/* V3 : une colonne de texte plus large (≈ 40 caractères par ligne au lieu de 30) */
+.pilote .pilote-main { display: grid; grid-template-columns: minmax(0, 1fr) clamp(400px, 36vw, 540px); min-height: 0; }
+.pilote .stage-wrap { position: relative; min-height: 0; background-color: var(--st-bg); overflow: hidden; display: flex; }
+/* Le quadrillé : seulement des carrés entiers (PiloteCoquille calcule la zone, centrée). */
+.pilote .quadrille { position: absolute; z-index: 0; pointer-events: none; background-image: linear-gradient(var(--st-grid) 1px, transparent 1px), linear-gradient(90deg, var(--st-grid) 1px, transparent 1px); background-size: 40px 40px; }
+.pilote [data-pilote-scene] { position: relative; z-index: 1; flex: 1; width: 100%; height: 100%; display: block; touch-action: none; user-select: none; }
+/* l'étiquette de date ou de lieu : un contour d'encre, pas un aplat rouge (le rouge marque ce qui compte) */
+.pilote .plaque { z-index: 2; position: absolute; top: 18px; left: 20px; font: 700 0.75rem/1 var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--color-text-primary); background: var(--st-bg); border: 1px solid var(--color-text-primary); padding: 6px 9px; opacity: 0; transition: opacity .4s; }
+.pilote .plaque.on { opacity: 1; }
+.pilote .stage-foot { z-index: 2; position: absolute; left: 20px; right: 20px; bottom: 14px; display: flex; justify-content: space-between; font: 0.75rem var(--font-ui); font-variant-numeric: tabular-nums; color: var(--st-dim); pointer-events: none; }
+.pilote .script { background: var(--color-surface-base); border-left: 1px solid var(--color-text-primary); display: flex; flex-direction: column; padding: 36px 32px 20px; overflow: auto; min-height: 0;
+  /* le texte qui défile s'efface en haut au lieu d'être tranché net */
+  mask-image: linear-gradient(to bottom, transparent 0, var(--color-text-primary) 22px); }
+.pilote .kicker { font: 700 0.8125rem/1 var(--font-ui); color: var(--color-signal); margin-bottom: 20px; }
+.pilote .body.in { animation: pilote-rise .45s ease both; }
+@keyframes pilote-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+/* V3 : UNE taille de texte pour toutes les étapes (jamais réduite sur une étape chargée) */
+.pilote .say { font-size: clamp(1.0625rem, 1.45vw, 1.25rem); line-height: 1.42; font-weight: 500; font-variation-settings: "wdth" 88; margin: 0 0 20px; text-wrap: pretty; }
+/* Deuxième version : le texte d'une étape est une suite de phrases courtes, espacées ;
+   une phrase liée à l'animation n'apparaît qu'au moment où la scène la montre. */
+.pilote .dit { display: grid; gap: 1em; margin: 0 0 22px; }
+.pilote .dit .say { font-size: clamp(1.0625rem, 1.45vw, 1.25rem); }
+/* « trop d'espace en dessous » (retour du 2026-10-26) : le panneau est une colonne ; une étape
+   faite seulement de texte se pose au milieu de la hauteur libre, le vide se répartit en haut
+   et en bas au lieu de s'accumuler sous la dernière phrase. */
+/* V3 : posée à une hauteur fixe (le début du texte ne saute plus d'une étape à l'autre) */
+.pilote .script.texte-seul > .kicker { margin-top: clamp(16px, 13vh, 120px); }
+/* la navigation reste visible quand le panneau défile (longue dérivation) */
+.pilote .script > .nav { position: sticky; bottom: 0; background: var(--color-surface-base); }
+/* ce qui défile vers la vue (ligne de calcul, explication, fiche) s'arrête au-dessus de la barre */
+.pilote .script { scroll-padding-bottom: 104px; }
+/* un mot à fiche et sa ponctuation ne se séparent pas en fin de ligne */
+.pilote .nw { white-space: nowrap; }
+.pilote .dit .say { margin: 0; transition: opacity .5s ease, transform .5s ease; }
+.pilote .dit .say.later { opacity: 0; transform: translateY(6px); }
+.pilote .dit .say.fort { font-weight: 700; }
+/* une ligne de calcul à la fois, chacune avec sa raison */
+.pilote .deriv { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 8px; counter-reset: ligne; }
+.pilote .deriv li { counter-increment: ligne; display: grid; gap: 2px; padding: 8px 12px; border-left: 3px solid var(--color-text-primary); background: var(--color-surface-container-low); animation: pilote-rise .4s ease both; }
+.pilote .deriv li.cache { display: none; }
+/* la ligne qu'on vient d'écrire porte le rouge ; les plus anciennes se compactent (un clic les rouvre) */
+.pilote .deriv li.der { border-left-color: var(--color-signal); }
+.pilote .deriv li.ancien { padding: 4px 12px; cursor: pointer; animation: none; }
+.pilote .deriv li.ancien .m { font-size: 0.9375rem; }
+.pilote .deriv li.ancien:not(.ouvert) .raison { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+.pilote .deriv .m { font-size: 1.0625rem; overflow-x: auto; overflow-y: hidden; padding-bottom: 4px; }
+.pilote .deriv .m .katex-display { margin: 0; text-align: left; }
+.pilote .deriv .raison { font-size: 0.9375rem; line-height: 1.4; color: var(--color-text-secondary); }
+/* un mot technique : il ouvre sa fiche sans quitter l'étape */
+/* soulignement d'encre (V3) : le rouge seulement au survol, au focus et fiche ouverte */
+.pilote .mot { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline dotted; text-decoration-thickness: 2px; text-underline-offset: 4px; text-decoration-color: var(--color-text-secondary); }
+.pilote .mot:hover, .pilote .mot[aria-expanded="true"] { text-decoration-color: var(--color-signal); }
+.pilote .mot[aria-expanded="true"] { background: var(--st-glass); }
+.pilote .mot:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+.pilote .mot-carte { margin: 4px 0 14px; padding: 14px 16px 12px; border: 1px solid var(--color-text-primary); display: grid; gap: 6px; animation: pilote-rise .3s ease both; }
+.pilote .mot-carte .mot-k { font: 700 0.75rem/1 var(--font-ui); text-transform: uppercase; letter-spacing: .06em; color: var(--color-signal); }
+.pilote .mot-carte b { font-size: 1.125rem; }
+.pilote .mot-carte p { margin: 0; font-size: 1rem; line-height: 1.5; }
+.pilote .mot-carte svg { width: 100%; max-height: 150px; }
+.pilote .mot-x { justify-self: end; font: 600 0.875rem var(--font-ui); background: none; border: 1px solid var(--color-border-soft); padding: 6px 10px; cursor: pointer; color: var(--color-text-primary); }
+/* Une variable en italique (« une fonction f qui… ») : Archivo n'a pas d'italique
+   chargé, l'oblique synthétique penche le f par-dessus l'espace qui suit — il
+   collait au mot d'après. Le sérif de lecture porte un vrai italique ; un filet
+   d'air à droite rend l'espace. */
+.pilote .say i, .pilote .fb i { font-family: var(--font-reading-serif), Georgia, serif; padding-right: .08em; }
+.pilote .formula { margin: 4px 0 18px; padding: 12px 16px; border-left: 3px solid var(--color-signal); background: var(--color-surface-container-low); font-size: 1.25rem; overflow-x: auto; }
+.pilote .formula .m { display: block; margin: 6px 0; }
+.pilote .pari { margin-top: 6px; border-top: 2px solid var(--color-text-primary); }
+.pilote .pari.verifie { border-top-style: double; border-top-width: 4px; }
+.pilote .pari-k { display: flex; justify-content: space-between; font: 700 0.8125rem/1 var(--font-ui); margin: 12px 0 4px; }
+.pilote .pari-essai { font-weight: 500; color: var(--color-text-secondary); }
+.pilote .opts { display: grid; }
+.pilote .opt { display: flex; gap: 16px; align-items: baseline; text-align: left; font: 1.0625rem/1.35 var(--font-ui); color: var(--color-text-primary); background: transparent; border: 0; border-bottom: 1px solid var(--color-border-soft); padding: 16px 12px 16px 16px; cursor: pointer; }
+.pilote .opt kbd { font: 700 1.75rem/1 var(--font-ui); font-variation-settings: "wdth" 62; color: var(--color-text-primary); min-width: 1ch; }
+/* V3, états d'un choix : un pari choisi = encre (un pari n'est jamais noté) ; une question :
+   juste = vert + ✓, faux = rouge + ✗ ; les options non choisies restent lisibles (texte secondaire) */
+.pilote .opt:hover:not([disabled]) { background: var(--color-surface-container-low); }
+.pilote .opt.sel { box-shadow: inset 3px 0 0 var(--color-text-primary); font-weight: 600; }
+.pilote .opt.ok kbd, .pilote .opt.ok .marque { color: var(--color-success); }
+.pilote .opt.ok { box-shadow: inset 3px 0 0 var(--color-success); }
+.pilote .opt.ko kbd, .pilote .opt.ko .marque { color: var(--color-signal); }
+.pilote .opt.ko { box-shadow: inset 3px 0 0 var(--color-signal); }
+.pilote .opt.off, .pilote .opt.off kbd { color: var(--color-text-secondary); }
+.pilote .opt[disabled] { cursor: default; }
+.pilote .opt .marque { margin-left: auto; font: 700 1.25rem/1 var(--font-ui); }
+.pilote .fb-lead { font-weight: 700; }
+.pilote .fb-encore { color: var(--color-text-secondary); }
+.pilote .fb-bon { display: block; margin-top: 8px; }
+.pilote .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.pilote .fb { font-size: 1rem; line-height: 1.5; margin-top: 14px; padding-left: 14px; border-left: 3px solid var(--color-border-soft); }
+.pilote .fb:empty { display: none; }
+/* ce qui suit la réponse à un pari (une formule, une précision) */
+.pilote .apres:not(:empty) { margin-top: 12px; font-size: 1rem; line-height: 1.5; }
+.pilote .ctl { display: grid; gap: 16px; margin: 6px 0 12px; }
+.pilote .sl { display: grid; gap: 8px; font-size: 1rem; }
+.pilote .sl output { font-weight: 700; font-variant-numeric: tabular-nums; }
+.pilote .sl input { width: 100%; accent-color: var(--color-text-primary); height: 28px; margin: 0; }
+.pilote .ctl-note { font-size: 1rem; line-height: 1.5; margin: 6px 0 0; padding-left: 14px; border-left: 3px solid var(--color-text-primary); }
+.pilote .nav { margin-top: auto; padding-top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.pilote .nav button { font: 700 1rem var(--font-ui); cursor: pointer; padding: 14px 20px; }
+.pilote .ghost { background: transparent; border: 1px solid var(--color-text-primary); color: var(--color-text-primary); }
+.pilote .primary { background: var(--color-text-primary); color: var(--color-surface-base); border: 1px solid var(--color-text-primary); min-width: 170px; }
+.pilote .nav button:disabled { opacity: .3; cursor: default; }
+.pilote .prof { list-style: none; padding: 0; margin: 0 0 12px; display: grid; gap: 6px; font-size: 1.0625rem; }
+.pilote .prof .ok { color: var(--color-success); }
+.pilote .prof .ko { color: var(--color-signal); }
+.pilote .small { font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.5; }
+.pilote .next { margin-top: 16px; padding: 14px 0; border-top: 2px solid var(--color-text-primary); }
+.pilote .next ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1rem; line-height: 1.45; list-style: decimal; }
+/* la fin d'une leçon (V3) : une ligne de résultat, une action — le détail se déplie */
+.pilote .lien-exos { display: inline-block; margin: 8px 0 4px; font: 700 1rem var(--font-ui); padding: 12px 16px; border: 2px solid var(--color-text-primary); color: var(--color-text-primary); text-decoration: none; }
+.pilote .lien-exos:hover { background: var(--color-surface-container-low); }
+.pilote .lien-exos:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+.pilote details.detail { margin-top: 14px; font-size: 1rem; line-height: 1.5; }
+.pilote details.detail summary { cursor: pointer; font-weight: 600; color: var(--color-text-secondary); }
+.pilote details.detail[open] summary { margin-bottom: 8px; }
+.pilote dialog { max-width: 660px; border: 2px solid var(--color-text-primary); background: var(--color-surface-base); color: var(--color-text-primary); padding: 28px 32px; font-size: 1.0625rem; line-height: 1.55; }
+.pilote dialog::backdrop { background: color-mix(in srgb, var(--color-text-primary) 45%, transparent); }
+.pilote dialog h2 { margin: 0 0 12px; font-size: 1.5rem; font-weight: 700; font-variation-settings: "wdth" 75; }
+.pilote dialog ul { padding-left: 20px; display: grid; gap: 8px; }
+.pilote dialog form { text-align: right; margin-top: 8px; }
+
+/* scène SVG */
+.pilote [data-pilote-scene] text { font-family: var(--font-ui); }
+.pilote [data-pilote-scene] .mono { font-family: var(--font-ui); font-variant-numeric: tabular-nums; }
+.pilote .scene { transition: opacity .45s ease; pointer-events: none; }
+/* V3 : un halo du fond sous le texte des scènes, pour qu'une étiquette reste lisible sur une courbe
+   (spécificité basse : une classe de trait explicite l'emporte) */
+.pilote :where([data-pilote-scene] text) { paint-order: stroke fill; stroke: var(--st-bg); stroke-width: 4px; stroke-linejoin: round; }
+.pilote :where([data-pilote-scene] text.s-onsig, [data-pilote-scene] text.sans-halo) { stroke: none; }
+.pilote .scene.on { pointer-events: auto; }
+.pilote .s-ink { fill: var(--st-ink); } .pilote .s-dim { fill: var(--st-dim); } .pilote .s-a { fill: var(--st-a); }
+.pilote .s-b { fill: var(--st-b); } .pilote .s-c { fill: var(--st-c); } .pilote .s-bg { fill: var(--st-bg); }
+.pilote .k-ink { stroke: var(--st-ink); } .pilote .k-dim { stroke: var(--st-dim); } .pilote .k-a { stroke: var(--st-a); }
+.pilote .k-b { stroke: var(--st-b); } .pilote .k-c { stroke: var(--st-c); } .pilote .k-line { stroke: var(--st-line); }
+.pilote .nofill { fill: none; }
+.pilote .reg { stroke: none; } .pilote .f-a { fill: var(--st-fa); } .pilote .f-b { fill: var(--st-fb); } .pilote .f-c { fill: var(--st-fc); }
+.pilote .cell { fill: var(--st-cell); stroke: var(--st-line); stroke-width: 1.5; }
+.pilote .cell.hl-log { stroke: var(--st-a); }
+.pilote .cell.hl-a { fill: var(--st-fa); stroke: var(--st-a); } .pilote .cell.hl-b { fill: var(--st-fb); stroke: var(--st-b); }
+.pilote .rulebody { fill: var(--st-rule); stroke: var(--st-line); stroke-width: 1.5; }
+.pilote .grab { cursor: grab; }
+.pilote .glass { fill: var(--st-glass); stroke: var(--st-line); }
+.pilote .t-cap { font-size: 17px; } .pilote .t-lab { font-size: 18px; } .pilote .t-lab2 { font-size: 20px; font-weight: 700; }
+/* V3 : le titre de scène commun aux trois pilotes (au plus trois tailles par scène :
+   titre, étiquette, résultat-clé) */
+.pilote .t-titre { font-size: 18px; font-weight: 700; } .pilote .t-sous { font-size: 16px; fill: var(--st-c); } .pilote .t-cle { font-size: 26px; font-weight: 700; }
+.pilote .t-tiny { font-size: 15px; } .pilote .t-tick { font-size: 15px; } .pilote .t-tickb { font-size: 19px; font-weight: 500; }
+.pilote .t-mid { font-size: 26px; } .pilote .t-big { font-size: 30px; } .pilote .t-big2 { font-size: 30px; font-weight: 700; }
+.pilote .t-huge { font-size: 60px; font-weight: 700; font-variation-settings: "wdth" 75; }
+.pilote .t-num { font-size: 64px; font-weight: 700; font-variation-settings: "wdth" 62; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pilote .scene, .pilote .plaque, .pilote .beat i b, .pilote .dit .say { transition: none; }
+  .pilote .body.in, .pilote .deriv li, .pilote .mot-carte { animation: none; }
+}
+/* Thème sombre (V3) : dans les pilotes, l'encre est adoucie et les aplats renforcés — du blanc
+   pur sur du noir éblouit sur une longue séance. Seulement des mélanges de jetons existants. */
+.dark .pilote {
+  --st-ink: color-mix(in srgb, var(--color-text-primary) 88%, var(--color-surface-base));
+  --st-fa: color-mix(in srgb, var(--color-signal) 34%, transparent);
+  --st-fb: color-mix(in srgb, var(--color-text-primary) 24%, transparent);
+  --st-fc: color-mix(in srgb, var(--color-text-secondary) 30%, transparent);
+  color: color-mix(in srgb, var(--color-text-primary) 90%, var(--color-surface-base));
+}
+.dark .pilote .primary { background: var(--color-text-secondary); border-color: var(--color-text-secondary); }
+.dark .pilote .deriv li, .dark .pilote .formula { background: var(--color-surface-container-high); }
+
+/* entre 900 et 1279 px, les noms entiers des parties (jusqu'à onze) ne tiennent à côté du titre
+   que sans la matière ni les filières */
+@media (max-width: 1279px) and (min-width: 900px) {
+  .pilote .pilote-matiere, .pilote .pilote-filieres { display: none; }
+}
+@media (max-width: 1500px) and (min-width: 1280px) {
+  .pilote .pilote-matiere { display: none; }
+}
+/* écrans bas (1366 × 768) : le panneau regagne sa marge haute */
+@media (max-height: 780px) and (min-width: 900px) {
+  .pilote .script { padding-top: 22px; }
+  .pilote .kicker { margin-bottom: 14px; }
+  .pilote .dit { gap: .8em; margin-bottom: 16px; }
+  .pilote .opt { padding-top: 12px; padding-bottom: 12px; }
+  .pilote .opt kbd { font-size: 1.5rem; }
+}
+@media (max-width: 899px) {
+  .pilote { height: auto; }
+  .pilote .pilote-barre { flex-wrap: wrap; gap: 10px; }
+  .pilote .beats { order: 3; flex-basis: 100%; }
+  .pilote .beat { min-width: 0; flex: var(--n) 1 0; }
+  .pilote .beat span { display: none; }
+  .pilote .pilote-matiere, .pilote .pilote-filieres { display: none; }
+  .pilote .tbtn { min-height: 44px; }
+  /* téléphone (V3) : la scène reste en haut pendant la lecture, Retour / Suivant restent en bas */
+  .pilote .pilote-main { grid-template-columns: minmax(0, 1fr); grid-template-rows: 42vh auto; }
+  .pilote .stage-wrap { position: sticky; top: 0; z-index: 3; border-bottom: 1px solid var(--color-text-primary); }
+  .pilote .script { border-left: 0; padding: 20px 16px 0; overflow: visible; mask-image: none; }
+  .pilote .script.texte-seul > .kicker { margin-top: 0; }
+  .pilote .script > .nav { margin: 0 -16px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); border-top: 1px solid var(--color-border-subtle); }
+  .pilote .nav button { min-height: 48px; }
+  /* ce qui défile vers la vue (ligne de calcul, explication, fiche) s'arrête entre la scène collée
+     en haut et la navigation collée en bas : la page défile, pas le panneau */
+  .pilote .deriv li, .pilote .fb, .pilote .apres, .pilote .mot-zone > *, .pilote .ctl { scroll-margin: calc(42vh + 12px) 0 88px; }
+  .pilote .primary { min-width: 0; flex: 1; }
+  .pilote .stage-foot .keys { display: none; }
+}

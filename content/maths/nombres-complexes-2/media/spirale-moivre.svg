@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 560" width="640" height="560"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img"
+     aria-label="Dans le plan complexe, la spirale des puissances successives de z = 1+i : z, de module racine de 2 et d’argument π/4 ; z² = 2i, de module 2 et d’argument π/2 ; z³ = −2+2i, de module 2 racine de 2 et d’argument 3π/4 ; z⁴ = −4, de module 4 et d’argument π, sur l’axe réel négatif. Chaque puissance ajoute π/4 à l’argument et multiplie le module par racine de 2.">
+  <title>La spirale des puissances de z = 1 + i (formule de Moivre)</title>
+  <!--
+    spirale-moivre.svg — figure STAGED (LESSON-EXPERIENCE-SPEC.md §2.5 :
+    graphe, toujours stagé) pour le R3, l'exemple travaillé z=1+i élevé aux
+    puissances 1 à 4 (mêmes valeurs que le texte : z²=2i, z³=-2+2i, z⁴=-4).
+
+    Repère écran : O = (480,380), échelle 80 px/unité.
+      z  = 1+i    -> (560,300)
+      z² = 2i     -> (480,220)
+      z³ = -2+2i  -> (320,220)
+      z⁴ = -4     -> (160,380)
+
+    Les trois arcs reliant z^n à z^(n+1) sont des courbes de Bézier
+    quadratiques dont le point de contrôle est au rayon géométrique moyen
+    √(r_n·r_{n+1}) et à l'angle moyen (θ_n+θ_{n+1})/2 — une approximation
+    visuelle de la spirale logarithmique réelle (le module croît en
+    géométrique, pas en arithmétique ; cette approximation par arc de
+    cercle bombé, même esprit que moment-force.svg, est délibérément
+    disclosée ici : elle n'a pas vocation à être une spirale exacte, mais
+    à montrer "tourne ET s'éloigne" d'un coup d'œil).
+      z->z²   contrôle (531.5,255.7)
+      z²->z³  contrôle (407.2,204.2)
+      z³->z⁴  contrôle (231.4,277.0)
+
+    Mise en étapes (le geste : le point de départ, puis chaque puissance
+    suivante, une rotation-et-agrandissement de plus à chaque fois) :
+      step-1 : z=1+i, vecteur Oz.
+      step-2 : z², arc montrant +π/4 (rotation) et ×√2 (module).
+      step-3 : z³, arc qui continue vers l'extérieur.
+      step-4 : z⁴, arc qui complète la spirale + l'annotation :
+               l'argument se multiplie PAR n, jamais élevé à la puissance n.
+
+    Rôle des couleurs :
+      axes, O                                    : --figure-ink-soft
+      points z^n et leurs affixes                 : --figure-ink
+      vecteur Oz, les arcs de la spirale, la
+      boîte d'annotation                          : --figure-accent
+      (le mouvement — tourner et s'éloigner — l'idée de ce rung)
+  -->
+
+  <rect x="20" y="34" width="600" height="460" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <text x="320" y="14" text-anchor="middle" font-size="12.5" font-weight="600"
+        fill="var(--figure-ink)">La spirale des puissances de z = 1 + i</text>
+  <text x="320" y="28" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">formule de Moivre — l’argument × n, le module à la puissance n</text>
+
+  <!-- Axe Re -->
+  <line x1="100" y1="380" x2="600" y2="380" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <polygon points="600,380 588,375.5 588,384.5" fill="var(--figure-ink-soft)"/>
+  <text x="585" y="398" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">Re</text>
+
+  <!-- Axe Im -->
+  <line x1="480" y1="410" x2="480" y2="60" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <polygon points="480,60 475.5,71 484.5,71" fill="var(--figure-ink-soft)"/>
+  <text x="490" y="70" text-anchor="start" font-size="11" fill="var(--figure-ink-soft)">Im</text>
+
+  <!-- Origine -->
+  <circle cx="480" cy="380" r="2.5" fill="var(--figure-ink-soft)"/>
+  <text x="466" y="397" text-anchor="middle" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">O</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — z = 1+i, vecteur Oz
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="480" y1="380" x2="551.5" y2="308.5" stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="560,300 554.7,311.7 548.3,305.3" fill="var(--figure-accent)"/>
+    <circle cx="560" cy="300" r="4" fill="var(--figure-ink)"/>
+    <text x="572" y="292" font-size="13" fill="var(--figure-ink)"><tspan
+          font-style="italic">z</tspan><tspan> = 1 + </tspan><tspan font-style="italic">i</tspan></text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — z², arc +π/4, ×√2
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="M560,300 Q531.5,255.7 480,220" fill="none" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <polygon points="480,220 490.5,222.4 485.9,229.0" fill="var(--figure-accent)"/>
+    <text x="538" y="252" text-anchor="start" font-size="11" fill="var(--figure-accent)">+π/4, ×√2</text>
+
+    <circle cx="480" cy="220" r="4" fill="var(--figure-ink)"/>
+    <text x="490" y="214" font-size="13" fill="var(--figure-ink)"><tspan
+          font-style="italic">z</tspan><tspan dy="-4" font-size="9">2</tspan><tspan dy="4"> = 2</tspan><tspan font-style="italic">i</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — z³, arc qui continue vers l'extérieur
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <path d="M480,220 Q407.2,204.2 320,220" fill="none" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <polygon points="320,220 329.1,214.3 330.6,222.2" fill="var(--figure-accent)"/>
+
+    <circle cx="320" cy="220" r="4" fill="var(--figure-ink)"/>
+    <text x="305" y="205" text-anchor="end" font-size="13" fill="var(--figure-ink)"><tspan
+          font-style="italic">z</tspan><tspan dy="-4" font-size="9">3</tspan><tspan dy="4"> = −2 + 2</tspan><tspan font-style="italic">i</tspan></text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — z⁴, arc qui complète la spirale + annotation
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <path d="M320,220 Q231.4,277.0 160,380" fill="none" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <polygon points="160,380 162.4,369.5 169.0,374.1" fill="var(--figure-accent)"/>
+
+    <circle cx="160" cy="380" r="4" fill="var(--figure-ink)"/>
+    <text x="145" y="405" text-anchor="end" font-size="13" fill="var(--figure-ink)"><tspan
+          font-style="italic">z</tspan><tspan dy="-4" font-size="9">4</tspan><tspan dy="4"> = −4</tspan></text>
+
+    <rect x="270" y="428" width="280" height="56" rx="6" fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="410" y="450" text-anchor="middle" font-size="12.5" fill="var(--figure-accent)">l’argument est multiplié par n,</text>
+    <text x="410" y="470" text-anchor="middle" font-size="12.5" fill="var(--figure-accent)">jamais élevé à la puissance n</text>
+  </g><!-- /step-4 -->
+
+</svg>

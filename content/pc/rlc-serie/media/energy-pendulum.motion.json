@@ -1,0 +1,114 @@
+{
+  "slug": "energy-pendulum",
+  "viewBox": "0 0 680 520",
+  "label": "Échanges d'énergie entre le condensateur et la bobine, en antiphase",
+  "layout": "replace",
+  "regions": {
+    "chrome":             { "x":   0, "y":   0, "w": 680, "h":  54 },
+    "circuit":            { "x":  30, "y":  54, "w": 300, "h": 284 },
+    "bars":               { "x": 360, "y":  54, "w": 300, "h": 284 },
+    "circuit-state-slot": { "x":  92, "y": 150, "w": 176, "h":  50 },
+    "annot-slot":         { "x":  32, "y": 344, "w": 616, "h":  88 },
+    "ec-label-slot":      { "x": 398, "y": 190, "w": 100, "h":  40 },
+    "el-label-slot":      { "x": 520, "y": 190, "w": 100, "h":  40 },
+    "footer":             { "x":   0, "y": 438, "w": 680, "h":  60 }
+  },
+  "replaces": [
+    { "beat": "beat-1", "slot": "circuit-state-slot", "enter": "circuit-state-1", "exit": "circuit-state-0" },
+    { "beat": "beat-1", "slot": "annot-slot",          "enter": "annot-1",          "exit": "annot-0"          },
+    { "beat": "beat-1", "slot": "ec-label-slot",       "enter": "label-ec-zero",    "exit": "label-ec-max"     },
+    { "beat": "beat-1", "slot": "el-label-slot",       "enter": "label-el-max",     "exit": "label-el-zero"    },
+    { "beat": "beat-2", "slot": "circuit-state-slot", "enter": "circuit-state-2", "exit": "circuit-state-1" },
+    { "beat": "beat-2", "slot": "annot-slot",          "enter": "annot-2",          "exit": "annot-1"          }
+  ],
+  "beats": [
+    {
+      "id": "beat-0",
+      "caption": "t = 0 : condensateur chargé à U₀. Toute l'énergie est dans le condensateur — la bobine ne stocke rien.",
+      "tweens": []
+    },
+    {
+      "id": "beat-1",
+      "caption": "t = T/4 : l'énergie a traversé entièrement vers la bobine. E_C = 0, E_L = E_max. Courant à son maximum.",
+      "tweens": [
+        {
+          "target": "#bar-ec-cover",
+          "verb": "fill",
+          "from": "up",
+          "duration": 0.65,
+          "ease": "power2.out",
+          "at": 0
+        },
+        {
+          "target": "#bar-el",
+          "verb": "fill",
+          "duration": 0.65,
+          "ease": "power2.out",
+          "at": 0
+        },
+        {
+          "target": "#circuit-state-1",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.4,
+          "ease": "power3.out",
+          "at": 0.35
+        },
+        {
+          "target": "#annot-1",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.4,
+          "ease": "power3.out",
+          "at": 0.35
+        },
+        {
+          "target": "#label-ec-zero",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.35,
+          "ease": "power2.out",
+          "at": 0.5
+        },
+        {
+          "target": "#label-el-max",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.35,
+          "ease": "power2.out",
+          "at": 0.5
+        }
+      ]
+    },
+    {
+      "id": "beat-2",
+      "caption": "E_C + E_L = constante : l'énergie oscille entre les deux sans se perdre. En opposition de phase — quand l'une est maximale, l'autre est nulle.",
+      "tweens": [
+        {
+          "target": "#circuit-state-2",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.4,
+          "ease": "power3.out",
+          "at": 0
+        },
+        {
+          "target": "#annot-2",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.4,
+          "ease": "power3.out",
+          "at": 0
+        },
+        {
+          "target": "#etotal-group",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.55,
+          "ease": "power3.out",
+          "at": 0.2
+        }
+      ]
+    }
+  ]
+}

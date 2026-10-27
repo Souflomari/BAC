@@ -1,0 +1,3908 @@
+notion: arithmetique
+skill_code: maths_arithmetique
+misconceptions:
+  # Rétro-inventaire (summit-conversion / floor backfill). La banque a été
+  # rédigée AVANT le tag par distracteur (misconceptions: [] à l'origine) ;
+  # chaque distracteur a été relu et rattaché au modèle d'erreur qu'il teste.
+  # Namespace : mc.math.maths_arithmetique.<slug>. Comptages honnêtes en bas de
+  # fichier (coverage_summary, §6). Le modèle fermat-condition-ou-exposant
+  # était déclaré « à 0 item » et « sans rung dans la leçon » — c'était vrai
+  # jusqu'au 2026-09-05 pour le premier point (avant l'ajout d'AR-28/30/32) et
+  # jusqu'au 2026-09-27 pour le second (avant la rung R6b, lesson.md). Les deux
+  # sont désormais faux : 6 items le couvrent (AR-28, AR-30, AR-32, AR-33,
+  # AR-34, AR-35) et la rung R6b existe (dette d'examen, vague B2).
+
+  - id: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
+    label: "Confondre « être premier » (un nombre) et « être premiers entre eux » (une paire)"
+    description: >-
+      L'élève traite « premier » et « premiers entre eux » comme la même
+      propriété : il conclut que deux nombres non premiers ne peuvent pas être
+      premiers entre eux, ou justifie une coprimalité par la primauté, ou par un
+      faux critère (parité).
+    contradicts_principle: >-
+      « Être premier » qualifie UN entier (deux diviseurs) ; « être premiers
+      entre eux » qualifie une PAIRE (PGCD = 1). Les deux notions sont
+      indépendantes : 8 et 9, aucun premier, sont premiers entre eux.
+
+  - id: mc.math.maths_arithmetique.pgcd-vs-ppcm
+    label: "Rendre le PPCM (ou le produit a×b) là où le PGCD est demandé"
+    description: >-
+      L'élève donne le plus petit multiple commun, ou le produit des deux
+      nombres, en croyant répondre pour le PGCD ; ou, en factorisation, garde
+      des facteurs non communs (comportement PPCM).
+    contradicts_principle: >-
+      Le PGCD est un DIVISEUR commun : il ne dépasse jamais le plus petit des
+      deux nombres. Le PPCM est un MULTIPLE commun. On a a×b = PGCD×PPCM ; les
+      deux ne se confondent pas.
+
+  - id: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
+    label: "Rendre un diviseur commun qui n'est pas le PLUS GRAND (ou mal identifier la sortie de l'algorithme)"
+    description: >-
+      L'élève propose un diviseur commun trop petit (6 au lieu de 12), un nombre
+      qui n'est même pas un diviseur commun, ou confond la sortie de l'algorithme
+      d'Euclide (dernier reste NON NUL) avec 0, un quotient, ou le premier reste.
+    contradicts_principle: >-
+      Le PGCD est le PLUS GRAND des diviseurs communs, et se lit comme le dernier
+      reste NON NUL de l'algorithme d'Euclide (pas 0, pas un quotient). En
+      factorisation, on prend chaque facteur commun à son plus PETIT exposant.
+
+  - id: mc.math.maths_arithmetique.gauss-condition-ignoree
+    label: "Appliquer Gauss (a|bc ⟹ a|b ou a|c) sans vérifier PGCD(a,b)=1"
+    description: >-
+      L'élève déduit d'un $a \mid bc$ que $a$ divise un des facteurs, ou d'une
+      double divisibilité que le produit divise, sans contrôler la coprimalité
+      exigée ; parfois en répartissant les facteurs de a entre b et c.
+    contradicts_principle: >-
+      Le théorème de Gauss requiert $\mathrm{PGCD}(a,b)=1$. Sans cette condition,
+      $a \mid bc$ n'entraîne ni $a \mid b$ ni $a \mid c$ (ex. $6 \mid 4\times9$
+      sans que $6$ divise $4$ ou $9$).
+
+  - id: mc.math.maths_arithmetique.reste-non-normalise
+    label: "Reste mal déterminé ou non ramené dans [0, n["
+    description: >-
+      L'élève rend un reste négatif, un résidu ≥ n (non réduit), le quotient à la
+      place du reste, ou traite la division d'un négatif comme l'opposé de celle
+      du positif.
+    contradicts_principle: >-
+      Le reste est l'unique entier de $\{0,\dots,n-1\}$ rendant $a = nq + r$ vraie.
+      Il est toujours positif ou nul et strictement inférieur à n — ni négatif, ni
+      ≥ n, ni le quotient.
+
+  - id: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
+    label: "Réduire une puissance dans une congruence de façon fautive"
+    description: >-
+      L'élève oublie le facteur résiduel après avoir réduit l'exposant modulo la
+      période, se trompe de reste d'exposant, ou traite un signe de puissance à
+      tort ($(-1)^{\text{impair}} = 1$).
+    contradicts_principle: >-
+      $a^k \bmod n$ se calcule via un cycle : si $a^d \equiv 1$, on écrit
+      $k = dq + s$ et $a^k \equiv a^s$ — sans oublier le reste $s$. Et
+      $(-1)^k = -1$ pour k impair.
+
+  - id: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+    label: "Mal appliquer un critère de divisibilité (ou le lien reste-nul ⟺ divisible)"
+    description: >-
+      L'élève confond « somme des chiffres » (mod 9) et « chiffre des unités »
+      (mod 10), croit qu'une somme des chiffres non multiple de 9 donne un reste
+      nul, ou affirme une divisibilité (reste 0) qui n'a pas lieu. Dans une base
+      $b$ quelconque, il applique un critère de chiffres sans re-dériver la
+      congruence que la base satisfait : il confond la somme des chiffres et la
+      somme ALTERNÉE (l'une employée là où c'est l'autre, dans un sens ou dans
+      l'autre), rattache la somme des chiffres au module $b$ alors qu'elle donne
+      le reste modulo $b-1$, ou prend le chiffre des unités pour le reste modulo
+      autre chose que $b$.
+    contradicts_principle: >-
+      Le critère par somme des chiffres vient de $10 \equiv 1 \pmod 9$ (pas mod
+      10) — et, dans une base $b$, de $b \equiv 1 \pmod{b-1}$ ; modulo $b+1$,
+      c'est $b \equiv -1$, donc la somme ALTERNÉE ; le chiffre des unités, lui,
+      donne le reste modulo $b$. Un reste nul équivaut exactement à la
+      divisibilité ; il ne se décrète pas.
+
+  - id: mc.math.maths_arithmetique.diophantienne-critere-existence
+    label: "Critère d'existence de ax+by=c mal posé (ou reachability des bidons)"
+    description: >-
+      L'élève juge l'existence de solutions par la parité, la taille des
+      coefficients, la positivité de c, ou par « a et b non premiers entre eux »,
+      au lieu du seul critère $\mathrm{PGCD}(a,b) \mid c$ ; côté bidons, il ignore
+      que l'atteignable est l'ensemble des multiples du PGCD.
+    contradicts_principle: >-
+      $ax+by=c$ a des solutions entières SSI $\mathrm{PGCD}(a,b) \mid c$. Toute
+      combinaison $au+bv$ est un multiple du PGCD : c'est aussi la quantité
+      atteignable avec deux bidons.
+
+  - id: mc.math.maths_arithmetique.bezout-portee
+    label: "Mal cerner la portée de l'identité de Bézout"
+    description: >-
+      L'élève croit qu'il existe toujours u,v avec $au+bv=1$ (au lieu de
+      $=\mathrm{PGCD}$), déduit une divisibilité d'une combinaison de Bézout, ou
+      ne voit pas que $au+bv=1$ exhibé prouve directement la coprimalité.
+    contradicts_principle: >-
+      Bézout garantit $au+bv=\mathrm{PGCD}(a,b)$, pas $=1$ en général ; et
+      RÉCIPROQUEMENT, exhiber des entiers avec $au+bv=1$ prouve
+      $\mathrm{PGCD}(a,b)=1$ sans recalcul.
+
+  - id: mc.math.maths_arithmetique.solution-unique-vs-infinie
+    label: "Croire une équation diophantienne résoluble à solution unique (ou en nombre fini)"
+    description: >-
+      L'élève annonce « exactement une » solution, ou un nombre fini de solutions
+      (souvent égal au second membre), pour une équation $ax+by=c$ qui en admet.
+    contradicts_principle: >-
+      Dès qu'une solution existe ($\mathrm{PGCD}(a,b) \mid c$), il y en a une
+      INFINITÉ, paramétrées par $t \in \mathbb{Z}$ :
+      $x=x_0+\frac{b}{d}t,\ y=y_0-\frac{a}{d}t$.
+
+  - id: mc.math.maths_arithmetique.solution-generale-mal-parametree
+    label: "Forme générale des solutions mal paramétrée (coefficients intervertis ou mauvais signe)"
+    description: >-
+      L'élève écrit la solution générale en intervertissant les coefficients
+      ($+a t$ sur x au lieu de $+b t$) ou en se trompant de signe entre les deux
+      composantes.
+    contradicts_principle: >-
+      La solution générale est $x=x_0+\frac{b}{d}t,\ y=y_0-\frac{a}{d}t$ : c'est
+      le coefficient de $y$ (soit $b/d$) qui accompagne $x$, celui de $x$ (soit
+      $a/d$) qui accompagne $y$, avec des signes opposés pour que $ax+by$ reste
+      constant.
+
+  - id: mc.math.maths_arithmetique.primalite-test-incomplet
+    label: "Test de primalité incomplet ou faux critère de primalité"
+    description: >-
+      L'élève déclare un nombre premier après n'avoir testé que quelques petits
+      diviseurs (arrêt avant $\sqrt{p}$), invoque une fausse règle (« impair >
+      100 ⟹ composé »), ou affirme qu'un nombre composé est premier.
+    contradicts_principle: >-
+      $p$ est premier si aucun entier de 2 à $\lfloor\sqrt{p}\rfloor$ ne le
+      divise — il faut aller jusqu'à $\sqrt{p}$, ni s'arrêter avant, ni invoquer
+      une règle de taille.
+
+  - id: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    label: "Petit théorème de Fermat : condition p∤a oubliée ou exposant confondu"
+    description: >-
+      L'élève applique Fermat sans la condition $p \nmid a$, confond l'exposant
+      $p-1$ (forme $a^{p-1}\equiv 1$) avec $p$ (forme $a^p \equiv a$), ou retient
+      la valeur $-1$ (celle d'AVANT Fermat) au lieu de $1$.
+    contradicts_principle: >-
+      Petit théorème de Fermat : $p$ premier et $p \nmid a \Rightarrow a^{p-1}
+      \equiv 1 \pmod p$. La condition $p \nmid a$ est essentielle ; l'exposant est
+      $p-1$ ; la valeur est $1$ (et non $a$, ni $-1$, ni $0$).
+
+  - id: mc.math.maths_arithmetique.solution-mise-a-echelle
+    label: "Mise à l'échelle d'une solution de Bézout mal conduite"
+    description: >-
+      Pour passer d'une identité valant $d$ à un second membre $c$, l'élève ne
+      multiplie pas (garde la solution de $d$), multiplie une seule coordonnée,
+      ou multiplie par $c$ au lieu de $c/d$.
+    contradicts_principle: >-
+      Si $ax_0+by_0=d$ et $d \mid c$, une solution de $ax+by=c$ est
+      $(\frac{c}{d}x_0,\ \frac{c}{d}y_0)$ : on multiplie les DEUX coordonnées par
+      le même facteur $c/d$ (pas par $c$, pas une seule).
+
+  - id: mc.math.maths_arithmetique.diviser-relation-inversee
+    label: "Relation de divisibilité b|a inversée ou confondue (avec une inégalité, une égalité, une congruence)"
+    description: >-
+      L'élève écrit $b = ak$ pour « $b \mid a$ », lit la divisibilité comme une
+      inégalité de taille, la confond avec « même reste » (congruence), ou avec
+      l'égalité (« divise » = « égale »).
+    contradicts_principle: >-
+      $b \mid a$ signifie $\exists k,\ a = bk$ ($a$ multiple de $b$). Ce n'est ni
+      $b=ak$, ni $b<a$, ni « même reste », ni « $b=a$ » : c'est une relation
+      orientée, distincte de la congruence.
+
+  - id: mc.math.maths_arithmetique.prime-divise-produit
+    label: "Mal juger quand un nombre premier divise un produit / une puissance"
+    description: >-
+      L'élève croit qu'un premier peut diviser une puissance d'un nombre qu'il ne
+      divise pas (reste 0 pour $2^k$ mod 3), ou conclut d'un $p \mid ab$ que $p$
+      divise les DEUX facteurs, ou qu'il est ÉGAL à un facteur.
+    contradicts_principle: >-
+      Lemme d'Euclide : $p$ premier et $p \mid ab \Rightarrow p \mid a$ ou
+      $p \mid b$ (au moins l'un, pas les deux, pas « égal »). Donc si $p \nmid a$,
+      alors $p \nmid a^k$ pour tout k.
+
+  # Ajouté le 2026-09-27 (dette d'examen, § arithmetique, GAP-A « Inverse modulo
+  # n, solving a·x ≡ b [n], systems of congruences » — maths.md (supprimé le 2026-10-22):33-49).
+  # Aucune des seize familles ci-dessus ne couvre honnêtement les erreurs
+  # propres à CE geste (l'audit le confirme : « No rung reads a Bézout identity
+  # as "u is the inverse of a mod n" ») — famille neuve, portée par les trois
+  # items AR-38/39/40 (plancher atteint exactement, comme demandé pour un id
+  # neuf : trois contextes distincts, pas trois copies — solve direct, solve
+  # avec une variation fraîche, puis combinaison de deux congruences).
+  - id: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+    label: "Mal résoudre une congruence linéaire a·x ≡ b [n] ou un système de congruences"
+    description: >-
+      Pour résoudre $ax\equiv b\pmod n$ à partir d'une relation de Bézout
+      $au+nv=1$, l'élève ne multiplie pas par le bon inverse : il traite
+      l'équation comme dans $\mathbb{Z}$ (produit ou quotient direct de $b$ par
+      $a$), ou prend $v$ (l'inverse de $n$ modulo $a$) pour l'inverse de $a$
+      modulo $n$. Face à un système de deux congruences à modules premiers
+      entre eux, il garde les deux classes séparées au lieu de les fondre en
+      une seule, ou attache une valeur par ailleurs correcte à un modulus
+      erroné (souvent $a$, ou $n+m$ au lieu de $n\times m$).
+    contradicts_principle: >-
+      Lire $au+nv=1$ modulo $n$ donne $au\equiv1\pmod n$ : $u$, et lui seul, est
+      l'inverse de $a$ modulo $n$ ; résoudre $ax\equiv b\pmod n$ donne
+      $x\equiv ub\pmod n$. Deux congruences $x\equiv r\pmod n$ et $x\equiv s\pmod m$,
+      à modules premiers entre eux, se combinent par Gauss en UNE SEULE classe
+      modulo $n\times m$ — jamais modulo $n+m$, jamais comme deux classes
+      distinctes.
+
+  # Ajoutés le 2026-10-20 (rung R7b — les systèmes de numération ; spec
+  # maths-arithmetique-numeration.md (supprimé le 2026-10-22) §4). Quatre
+  # familles neuves ; aucune des dix-sept ci-dessus ne nomme ces erreurs.
+  # `numeration-restes-ordre-inverse` n'est pas `reste-non-normalise` : ici
+  # chaque reste est JUSTE et normalisé, c'est l'ASSEMBLAGE qui est faux. Les
+  # faces de N3 (borne haute / chiffre de tête non nul) et de N4 (seuil à 10 /
+  # retenue non reportée) restent réunies, un mécanisme chacune (question
+  # owner Q3 de la spec). Le critère par b−1 / b+1 n'a PAS de famille neuve :
+  # `critere-divisibilite-mal-applique` est élargie à la base générique plus
+  # haut, sans re-tagage. Les descriptions de N2, N3 et N4 portent chacune une
+  # clause de plus que la spec, pour couvrir mot pour mot un distracteur que
+  # la spec leur rattache (voir le commentaire au-dessus d'AR-41).
+  - id: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+    label: "Chiffres d'une écriture en base b assemblés dans l'ordre où les restes sortent"
+    description: >-
+      L'élève enchaîne correctement les divisions euclidiennes par $b$, mais lit
+      les restes de haut en bas : le PREMIER reste devient le chiffre de tête. Le
+      réflexe « on lit de gauche à droite » l'emporte sur le poids que porte
+      chaque reste, et le lien « premier reste = chiffre des unités » n'est jamais
+      établi. Variante à demi corrigée : le dernier reste est bien mis en tête,
+      puis les autres sont laissés dans l'ordre de sortie. Même mécanisme au
+      retour vers la base 10 : le chiffre de gauche se voit affecter $b^0$, les
+      exposants sont décalés d'un cran, ou deux écritures sont comparées en
+      partant des unités.
+    contradicts_principle: >-
+      Dans $N = b q_0 + r_0$, le reste $r_0$ est le SEUL terme qui n'est pas
+      multiplié par $b$ : c'est le chiffre des unités, $a_0$. Chaque division
+      suivante extrait le chiffre du poids immédiatement supérieur. Les restes
+      sortent donc du poids le plus FAIBLE au plus fort, et l'écriture se lit de
+      bas en haut.
+
+  - id: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+    label: "L'écriture confondue avec le nombre (lue en base 10, ou comparée comme une chaîne)"
+    description: >-
+      Pour l'élève, la suite de chiffres EST le nombre, et la base n'est qu'une
+      étiquette posée à côté. Il lit $\overline{123}_{(5)}$ comme cent vingt-trois,
+      conclut de « la même suite de chiffres » à « le même nombre », croit que
+      plus la base est grande (ou plus l'écriture est longue) plus le nombre est
+      grand, et compare deux écritures SANS repasser par la valeur — chiffre à
+      chiffre, par leur nombre de chiffres, ou par leur somme de chiffres. Cette
+      comparaison fautive existe aussi DANS UNE MÊME BASE : comparer les chiffres
+      de tête sans aligner d'abord le nombre de chiffres donne un ordre faux
+      ($\overline{412}_{(5)} = 107 < \overline{1203}_{(5)} = 178$, et pourtant
+      $4 > 1$). Pour la même raison, il attribue au nombre lui-même un nombre de
+      chiffres, et juge impossible qu'un entier ait quatre chiffres dans une base
+      et trois dans une autre.
+    contradicts_principle: >-
+      Une écriture est une liste de COEFFICIENTS :
+      $\overline{a_p\cdots a_0}_{(b)} = \sum_i a_i b^i$. Le même entier a une
+      écriture différente dans chaque base ($17 = \overline{23}_{(7)} =
+      \overline{32}_{(5)}$), et la même suite de chiffres désigne des entiers
+      différents selon la base ($\overline{201}_{(3)} = 19$,
+      $\overline{201}_{(5)} = 51$). Dans une même base, c'est le nombre de
+      chiffres qui décide d'abord, et les chiffres de gauche à droite ensuite ;
+      entre deux bases, rien ne se compare avant d'avoir calculé les valeurs.
+
+  - id: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+    label: "Un chiffre traité comme un entier libre (borne a_i ≤ b−1, ou chiffre de tête non nul, oubliée)"
+    description: >-
+      L'élève manipule un chiffre comme un entier quelconque. Il accepte une
+      écriture dont un chiffre atteint ou dépasse la base ($\overline{1206}_{(6)}$),
+      décale la borne d'un cran (croire que la base 8 s'arrête à 6), retient comme
+      solution d'une équation une racine dont un chiffre sort de
+      $\{0,\dots,b-1\}$, ou garde une écriture à chiffre de tête nul. Quand le
+      même nombre est écrit dans DEUX bases, il n'intersecte pas les deux
+      contraintes et garde la plus large. À l'inverse, il croit qu'une base qui
+      n'a que peu de chiffres ne peut pas écrire les entiers qui « demandent »
+      des chiffres plus grands.
+    contradicts_principle: >-
+      En base $b$ il y a exactement $b$ chiffres, $0$ à $b-1$ ; un « chiffre » égal
+      à $b$ est une retenue qui n'a pas été faite. Le chiffre de tête d'une
+      écriture est non nul, sinon le nombre n'a pas ce nombre de chiffres — d'où
+      l'encadrement $b^{p} \le N \le b^{p+1}-1$ pour une écriture à $p+1$ chiffres.
+      Dans une équation portant sur des chiffres, ces bornes sont des CONTRAINTES
+      de l'énoncé : une racine qui les viole n'est pas une solution.
+
+  - id: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    label: "Report de colonne non conduit en base b (seuil resté à 10, ou retenue non reportée)"
+    description: >-
+      L'élève pose l'opération en colonnes correctement, mais ne re-dérive pas la
+      règle de report à partir de la base : ou bien le seuil reste celui de la base
+      10 (rien ne déborde avant $10$, et la retenue retranche $10$ au lieu de $b$) ;
+      ou bien le débordement est bien vu et ramené dans $\{0,\dots,b-1\}$, mais la
+      retenue n'est pas ajoutée à la colonne voisine, chaque colonne étant traitée
+      indépendamment ; ou encore aucun report n'est fait du tout, et chaque
+      résultat de colonne est écrit tel quel, en entier.
+    contradicts_principle: >-
+      Une colonne déborde quand elle atteint $b$, parce que la colonne voisine à
+      gauche pèse exactement $b$ fois plus. La règle est la division euclidienne
+      par $b$ : $c = qb + r$ avec $0 \le r < b$ — on écrit $r$, on reporte $q$. Le
+      nombre $10$ n'a aucun rôle : c'est la base qui fixe le seuil, et la retenue
+      n'est pas facultative.
+
+items:
+  - id: AR-1
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_arithmetique
+    tags: [division_euclidienne, reste]
+    primary_misconception: mc.math.maths_arithmetique.reste-non-normalise
+    stem: >
+      Dans la division euclidienne de $250$ par $7$, quel est le reste ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$5$"
+        correct: true
+      - id: B
+        text: "$35$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.reste-non-normalise
+        feedback: >
+          $35$ est le quotient, pas le reste. Tu as trouve le bon nombre de
+          fois que $7$ tient dans $250$, mais la question demande ce qui
+          reste après : $250 = 7 \times 35 + 5$.
+      - id: C
+        text: "$6$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.reste-non-normalise
+        feedback: >
+          Presque : recompte. $7 \times 35 = 245$, et $250 - 245 = 5$, pas $6$.
+      - id: D
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          Le reste ne serait $0$ que si $7$ divisait exactement $250$. Or
+          $250 = 7 \times 35 + 5$ : il reste $5$, donc $7 \nmid 250$.
+    correct_feedback: >
+      Exact : $250 = 7 \times 35 + 5$ avec $0 \le 5 < 7$. Le reste est bien
+      l'unique entier de $\{0,\dots,6\}$ qui rend l'égalité vraie.
+    solution: |
+      On cherche le plus grand multiple de $7$ inférieur ou égal à $250$.
+      $$7 \times 35 = 245$$
+      $$250 - 245 = 5$$
+      Comme $0 \le 5 < 7$, la division euclidienne s'écrit $250 = 7 \times 35 + 5$ :
+      quotient $35$, reste $5$.
+
+  - id: AR-2
+    rung: "R2"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [congruences, puissance, reste]
+    primary_misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
+    stem: >
+      Quel est le reste de la division de $2^{2023}$ par $3$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2$"
+        correct: true
+      - id: B
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
+        feedback: >
+          Tu as sans doute pris $(-1)^{2023} = 1$. Mais $2023$ est impair,
+          donc $(-1)^{2023} = -1 \equiv 2 \pmod 3$, pas $1$.
+      - id: C
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.prime-divise-produit
+        feedback: >
+          $3$ ne divise jamais une puissance de $2$ (ils n'ont aucun facteur
+          premier commun), donc le reste ne peut pas être $0$.
+      - id: D
+        text: "$3$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.reste-non-normalise
+        feedback: >
+          Un reste modulo $3$ est toujours dans $\{0,1,2\}$ : il ne peut pas
+          valoir $3$.
+    correct_feedback: >
+      Bien vu : $2 \equiv -1 \pmod 3$, donc $2^{2023} \equiv (-1)^{2023} = -1
+      \equiv 2 \pmod 3$. La congruence transforme une grosse puissance en un
+      calcul immédiat.
+    solution: |
+      On remplace $2$ par un representant plus commode modulo $3$ :
+      $$2 \equiv -1 \pmod 3$$
+      $$2^{2023} \equiv (-1)^{2023} \pmod 3$$
+      $$(-1)^{2023} = -1 \equiv 2 \pmod 3$$
+      Le reste est donc $2$.
+
+  - id: AR-3
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: maths_arithmetique
+    tags: [pgcd, euclide]
+    primary_misconception: mc.math.maths_arithmetique.pgcd-vs-ppcm
+    stem: >
+      Quel est $\mathrm{PGCD}(48, 36)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$12$"
+        correct: true
+      - id: B
+        text: "$144$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-vs-ppcm
+        feedback: >
+          $144$ est le PPCM (plus petit multiple commun), pas le PGCD. Le PGCD
+          est un DIVISEUR commun : il ne peut pas être plus grand que $36$.
+      - id: C
+        text: "$6$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
+        feedback: >
+          $6$ divise bien $48$ et $36$, mais ce n'est pas le PLUS GRAND :
+          $12$ les divise aussi ($48 = 12 \times 4$, $36 = 12 \times 3$).
+      - id: D
+        text: "$4$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
+        feedback: >
+          $4$ divise $48$ et $36$, mais pas le plus grand : $12$ marche encore.
+    correct_feedback: >
+      Exact. Par l'algorithme d'Euclide : $48 = 36 \times 1 + 12$, puis
+      $36 = 12 \times 3 + 0$. Le dernier reste non nul, $12$, est le PGCD.
+    solution: |
+      Algorithme d'Euclide :
+      $$48 = 36 \times 1 + 12$$
+      $$36 = 12 \times 3 + 0$$
+      Le dernier reste non nul est $12$, donc $\mathrm{PGCD}(48,36) = 12$.
+
+  - id: AR-4
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [premiers_entre_eux, nombres_premiers]
+    primary_misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
+    stem: >
+      Les entiers $8$ et $15$ sont-ils premiers, premiers entre eux, les deux,
+      ou aucun des deux ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Premiers entre eux, mais aucun des deux n'est un nombre premier"
+        correct: true
+      - id: B
+        text: "Tous les deux sont des nombres premiers"
+        correct: false
+        misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
+        feedback: >
+          Ni $8$ ni $15$ n'est premier : $8 = 2^3$ et $15 = 3 \times 5$. Être
+          premier (un seul entier, deux diviseurs) n'a rien a voir avec être
+          premiers ENTRE EUX (une paire, PGCD $= 1$).
+      - id: C
+        text: "Ni premiers, ni premiers entre eux"
+        correct: false
+        misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
+        feedback: >
+          Ils ne sont pas premiers, d'accord. Mais $\mathrm{PGCD}(8,15) = 1$
+          (aucun facteur commun : $2^3$ contre $3 \times 5$), donc ils SONT
+          premiers entre eux.
+      - id: D
+        text: "Premiers entre eux, et tous les deux premiers"
+        correct: false
+        misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
+        feedback: >
+          Ils sont premiers entre eux, mais $8 = 2^3$ n'est pas un nombre
+          premier (il a plus de deux diviseurs).
+    correct_feedback: >
+      Exactement le piege a éviter : "premier" qualifie UN entier (deux
+      diviseurs), "premiers entre eux" qualifie une PAIRE (PGCD $= 1$). Ici
+      $8 = 2^3$ et $15 = 3\times5$ n'ont aucun facteur commun.
+    solution: |
+      Deux notions distinctes :
+      - $8 = 2^3$ n'est pas premier ; $15 = 3 \times 5$ non plus.
+      - Leurs decompositions n'ont aucun facteur premier commun, donc
+      $$\mathrm{PGCD}(8, 15) = 1$$
+      ce qui signifie qu'ils sont premiers ENTRE EUX. Les deux propriétés
+      sont indépendantes.
+
+  - id: AR-5
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [gauss, divisibilite]
+    primary_misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
+    stem: >
+      On sait que $7 \mid 5n$ (l'entier $7$ divise $5n$). Quel théorème permet
+      de conclure directement que $7 \mid n$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Le théorème de Gauss, car $\\mathrm{PGCD}(7, 5) = 1$"
+        correct: true
+      - id: B
+        text: "Rien : on ne peut pas conclure"
+        correct: false
+        misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
+        feedback: >
+          On peut conclure. Comme $7 \mid 5n$ et que $7$ est premier avec $5$,
+          le théorème de Gauss donne exactement $7 \mid n$.
+      - id: C
+        text: "Le théorème de Bezout, car il existe $u, v$ tels que $7u + 5v = 1$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.bezout-portee
+        feedback: >
+          Bezout garantit l'existence de $u, v$ avec $7u + 5v = 1$ (c'est
+          l'ingredient), mais c'est le théorème de GAUSS qui énoncé la
+          conclusion "$a \mid bc$ et $a \wedge b = 1 \Rightarrow a \mid c$".
+      - id: D
+        text: "Parce que $5$ est un nombre premier"
+        correct: false
+        misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
+        feedback: >
+          Ce qui compte n'est pas que $5$ soit premier, mais que $7$ et $5$
+          soient premiers ENTRE EUX. Gauss s'applique des que
+          $\mathrm{PGCD}(7,5) = 1$, même si les nombres n'étaient pas premiers.
+    correct_feedback: >
+      C'est précisément le théorème de Gauss : si $a \mid bc$ et
+      $\mathrm{PGCD}(a,b) = 1$, alors $a \mid c$. Ici $a = 7$, $b = 5$,
+      $c = n$, et $7 \wedge 5 = 1$.
+    solution: |
+      Théorème de Gauss : si $a \mid bc$ et $\mathrm{PGCD}(a, b) = 1$, alors
+      $a \mid c$. Ici $a = 7$, $b = 5$, $c = n$. Comme $\mathrm{PGCD}(7, 5) = 1$,
+      de $7 \mid 5n$ on déduit $7 \mid n$.
+
+  - id: AR-6
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [diophantienne, existence]
+    primary_misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+    stem: >
+      L'équation $6x + 4y = 5$ admet-elle des solutions dans $\mathbb{Z}^2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non, car $\\mathrm{PGCD}(6, 4) = 2$ ne divise pas $5$"
+        correct: true
+      - id: B
+        text: "Oui, car $6$ et $4$ sont tous les deux pairs"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: >
+          Justement : $6x + 4y$ est toujours PAIR (multiple de $2$), alors que
+          $5$ est impair. L'égalité est donc impossible dans $\mathbb{Z}$.
+      - id: C
+        text: "Oui, il suffit de prendre $x$ et $y$ assez grands"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: >
+          La taille de $x, y$ n'y change rien : le membre de gauche reste un
+          multiple de $\mathrm{PGCD}(6,4) = 2$, donc toujours pair, jamais
+          égal à $5$.
+      - id: D
+        text: "Non, car $6$ et $4$ ne sont pas premiers entre eux"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: >
+          Le fait qu'ils ne soient pas premiers entre eux n'interdit pas a lui
+          seul les solutions. Le critère exact est : il y a des solutions
+          si et seulement si $\mathrm{PGCD}(6,4) = 2$ DIVISE le second membre
+          $5$. Ici $2 \nmid 5$, d'ou l'impossibilité.
+    correct_feedback: >
+      Exact. L'équation $ax + by = c$ a des solutions entières si et seulement
+      si $\mathrm{PGCD}(a,b) \mid c$. Ici $\mathrm{PGCD}(6,4) = 2$ et
+      $2 \nmid 5$, donc aucune solution.
+    solution: |
+      Critère d'existence : $ax + by = c$ a des solutions dans $\mathbb{Z}^2$
+      si et seulement si $\mathrm{PGCD}(a, b) \mid c$.
+      $$\mathrm{PGCD}(6, 4) = 2$$
+      Or $2$ ne divise pas $5$ (qui est impair). Donc l'équation n'a aucune
+      solution entière : tout $6x + 4y$ est pair, jamais égal à $5$.
+
+  - id: AR-7
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_arithmetique
+    tags: [accroche, bidons, pgcd]
+    primary_misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+    stem: >
+      Avec un bidon de $4$ L et un bidon de $6$ L (mêmes règles que dans
+      l'histoire), peux-tu mesurer exactement $1$ L ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : toute quantité obtenue est un multiple de $2$, jamais $1$ L"
+        correct: true
+      - id: B
+        text: "Oui, il suffit de trouver la bonne suite d'opérations"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: >
+          Il ne suffit pas d'essayer plus fort : toute quantité mesurable
+          avec ces deux bidons est de la forme $4u + 6v$ (avec $u, v$
+          entiers relatifs), donc un multiple du PGCD de $4$ et $6$, qui
+          vaut $2$. Comme $1$ n'est pas un multiple de $2$, aucune suite
+          d'opérations ne donnera $1$ L.
+      - id: C
+        text: "Non, parce que les bidons sont trop grands pour $1$ L"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: >
+          La taille des bidons n'est pas en cause : avec des bidons de
+          $400$ L et $600$ L, le problème serait identique. Ce qui bloque,
+          c'est que $4$ et $6$ partagent le facteur $2$ : toute quantité
+          obtenue est un multiple de $2$.
+      - id: D
+        text: "Non, parce que $4$ et $6$ ne sont pas des nombres premiers"
+        correct: false
+        misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
+        feedback: >
+          $4$ et $6$ ne sont en effet pas premiers, mais ce n'est pas la
+          vraie raison : deux nombres non premiers peuvent très bien être
+          premiers ENTRE EUX (par exemple $4$ et $9$). Le blocage réel ici,
+          c'est que $\mathrm{PGCD}(4,6) = 2 \neq 1$.
+    correct_feedback: >
+      Exact. Toute quantité atteignable avec des bidons de $4$ L et $6$ L
+      est un multiple de $\mathrm{PGCD}(4,6) = 2$. Comme $1$ n'est pas un
+      multiple de $2$, mesurer $1$ L est impossible, quelle que soit la
+      strategie suivie.
+    solution: |
+      Les quantités atteignables avec deux bidons de capacités $4$ et $6$
+      sont exactement les entiers de la forme $4u + 6v$, avec $u, v \in
+      \mathbb{Z}$. Par l'algorithme d'Euclide :
+      $$6 = 4 \times 1 + 2$$
+      $$4 = 2 \times 2 + 0$$
+      donc $\mathrm{PGCD}(4,6) = 2$. Tout $4u + 6v$ est donc un multiple de
+      $2$ : on ne peut jamais obtenir $1$ L, qui n'est pas un multiple de
+      $2$.
+
+  - id: AR-8
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_arithmetique
+    tags: [accroche, bidons, premiers_entre_eux]
+    primary_misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+    stem: >
+      Avec quelle paire de bidons peux-tu mesurer exactement $1$ L ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$(2, 4)$, car il suffit que les deux contenances soient paires pour tout mesurer"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: >
+          $2$ et $4$ sont tous les deux pairs : $\mathrm{PGCD}(2,4) = 2$.
+          Toute quantité obtenue avec cette paire est donc un multiple de
+          $2$, jamais $1$ L.
+      - id: B
+        text: "$(4, 9)$, car $\\mathrm{PGCD}(4,9) = 1$ : on peut donc atteindre $1$ L"
+        correct: true
+      - id: C
+        text: "$(3, 9)$, car $9$ est un multiple de $3$, ce qui permet de descendre à $1$ L"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: >
+          $9$ est un multiple de $3$ : $\mathrm{PGCD}(3,9) = 3$. Avec cette
+          paire "emboitee", on ne mesure jamais que des multiples de $3$.
+      - id: D
+        text: "$(6, 8)$, car $8 - 6 = 2$, puis on retire encore $1$ L par différences"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: >
+          $6$ et $8$ sont tous les deux pairs : $\mathrm{PGCD}(6,8) = 2$.
+          Deux capacités paires ne donneront jamais une quantité impaire
+          comme $1$ L.
+    correct_feedback: >
+      Exact. $4$ et $9$ n'ont aucun facteur premier commun :
+      $\mathrm{PGCD}(4,9) = 1$. C'est la condition exacte pour pouvoir
+      mesurer $1$ L (et, par Bezout, toute quantité entière).
+    solution: |
+      On mesure exactement $1$ L avec deux bidons de capacités $a$ et $b$
+      si et seulement si $\mathrm{PGCD}(a,b) = 1$ (Bezout garantit alors
+      l'existence d'entiers $u,v$ avec $au+bv=1$).
+      - $\mathrm{PGCD}(2,4) = 2$, $\mathrm{PGCD}(3,9) = 3$,
+      $\mathrm{PGCD}(6,8) = 2$ : aucune de ces paires ne convient.
+      - $\mathrm{PGCD}(4,9) = 1$ (aucun facteur premier commun : $4 = 2^2$,
+      $9 = 3^2$) : cette paire convient.
+
+  - id: AR-9
+    rung: "R0"
+    difficulty_level: 1
+    skill_code: maths_arithmetique
+    tags: [accroche, bidons, pgcd]
+    primary_misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+    stem: >
+      Avec un bidon de $6$ L et un bidon de $8$ L, quelle est la plus
+      petite quantité (en litres entiers strictement positifs) que tu
+      peux mesurer ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1$ L, car deux bidons de contenances entières permettent toujours de mesurer $1$ L"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: >
+          $1$ L n'est pas atteignable ici : $6$ et $8$ ne sont pas premiers
+          entre eux, $\mathrm{PGCD}(6,8) = 2$. Toute quantité mesurable est
+          un multiple de $2$, jamais $1$.
+      - id: B
+        text: "$6$ L, car c'est la contenance du plus petit des deux bidons disponibles"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: >
+          $6$ L est bien mesurable (le bidon plein), mais ce n'est pas la
+          plus petite quantité possible : en versant $6$ L dans le bidon de
+          $8$ L puis en le remplissant, on isole $8 - 6 = 2$ L, plus petit
+          que $6$.
+      - id: C
+        text: "$2$ L, car c'est $\\mathrm{PGCD}(6,8)$, obtenu par $8-6$, et toute quantité mesurable en est un multiple"
+        correct: true
+      - id: D
+        text: "$14$ L, car $6+8 = 14$ est la seule quantité que l'on puisse mesurer exactement"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: >
+          $14 = 6 + 8$ est bien une quantité atteignable (les deux bidons
+          pleins reunis), mais la question demande la plus PETITE
+          quantité, pas la plus grande.
+    correct_feedback: >
+      Exact. La plus petite quantité entière strictement positive qu'on
+      peut isoler avec deux bidons de capacités $a$ et $b$ est
+      $\mathrm{PGCD}(a,b)$. Ici $\mathrm{PGCD}(6,8) = 2$, obtenu directement
+      par $8 - 6$.
+    solution: |
+      Par l'algorithme d'Euclide :
+      $$8 = 6 \times 1 + 2$$
+      $$6 = 2 \times 3 + 0$$
+      donc $\mathrm{PGCD}(6,8) = 2$. La plus petite quantité strictement
+      positive qu'on peut isoler avec des bidons de $6$ L et $8$ L est
+      exactement ce PGCD, soit $2$ L (obtenu en versant le contenu du
+      bidon de $6$ L dans celui de $8$ L, puis en completant : il reste
+      $8 - 6 = 2$ L).
+
+  - id: AR-10
+    rung: "R1"
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [division_euclidienne, reste, negatif]
+    primary_misconception: mc.math.maths_arithmetique.reste-non-normalise
+    stem: >
+      Quel est le reste de la division euclidienne de $-50$ par $7$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$-1$, car $-50 = 7\\times(-7) - 1$ est une écriture possible"
+        correct: false
+        misconception: mc.math.maths_arithmetique.reste-non-normalise
+        feedback: >
+          Le reste d'une division euclidienne doit être POSITIF ou nul
+          (entre $0$ et $6$ ici). Tu as garde le quotient $-7$ (car
+          $-50 = 7\times(-7) - 1$), mais $-1$ n'est pas un reste valide.
+      - id: B
+        text: "$1$, car le reste de la division de $50$ par $7$ vaut $1$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.reste-non-normalise
+        feedback: >
+          Tu as sans doute divise $50$ par $7$ (reste $1$) en ignorant le
+          signe. Mais la division euclidienne de $-50$ n'est pas
+          simplement l'oppose de celle de $50$ : il faut $-50 = 7q + r$
+          avec $0 \le r < 7$, ce qui donne $q = -8$ et $r = 6$, pas $1$.
+      - id: C
+        text: "$-8$, car $-50$ divisé par $7$ vaut environ $-8$ à l'unité près"
+        correct: false
+        misconception: mc.math.maths_arithmetique.reste-non-normalise
+        feedback: >
+          $-8$ est le QUOTIENT de la division ($-50 = 7\times(-8)+6$), pas
+          le reste. Le reste est ce qui reste après avoir retire
+          $7\times(-8)$, soit $6$.
+      - id: D
+        text: "$6$, car $-50 = 7\\times(-8) + 6$ avec $0 \\le 6 < 7$"
+        correct: true
+    correct_feedback: >
+      Exact. On cherche l'entier $q$ tel que $0 \le -50 - 7q < 7$. C'est
+      $q = -8$, et alors $-50 - 7\times(-8) = -50+56 = 6$. Le reste est
+      bien $6$, un entier de $\{0,\dots,6\}$.
+    solution: |
+      On cherche $q, r$ entiers avec $-50 = 7q + r$ et $0 \le r < 7$. Le
+      multiple de $7$ juste en dessous ou égal à $-50$ est $7 \times (-8)
+      = -56$ :
+      $$-50 = 7 \times (-8) + 6$$
+      Comme $0 \le 6 < 7$, le quotient est $-8$ et le reste est $6$.
+      Attention : ce n'est ni l'oppose du reste de $50$ par $7$ (qui vaut
+      $1$), ni un nombre négatif.
+
+  - id: AR-11
+    rung: "R1"
+    difficulty_level: 2
+    skill_code: maths_arithmetique
+    tags: [divisibilite, definition]
+    primary_misconception: mc.math.maths_arithmetique.diviser-relation-inversee
+    stem: >
+      Que signifie exactement la notation $b \mid a$ ($b$ divise $a$) ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il existe un entier $k$ tel que $a = bk$"
+        correct: true
+      - id: B
+        text: "Il existe un entier $k$ tel que $b = ak$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diviser-relation-inversee
+        feedback: >
+          C'est la relation inversée : cette égalité dit "$a$ divise $b$",
+          pas "$b$ divise $a$". Dans $b \mid a$, c'est $a$ qui s'écrit
+          comme un multiple de $b$, pas l'inverse.
+      - id: C
+        text: "$b < a$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diviser-relation-inversee
+        feedback: >
+          La divisibilite n'est pas une comparaison de taille. Par exemple
+          $5 \mid 5$ (avec $b=a$), et le fait que $-3 \mid 6$ n'a rien a
+          voir avec une inégalité entre $-3$ et $6$.
+      - id: D
+        text: "$a$ et $b$ ont le même reste dans une division"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diviser-relation-inversee
+        feedback: >
+          Tu confonds "diviser" et "être congrus". $a \equiv c \pmod{n}$
+          signifie que $a$ et $c$ ont le même reste modulo $n$ ; "$b$
+          divise $a$" est une tout autre relation, ou $a$ est un multiple
+          exact de $b$ (reste $0$ dans la division de $a$ par $b$).
+    correct_feedback: >
+      Exact. $b \mid a$ signifie qu'il existe $k \in \mathbb{Z}$ tel que
+      $a = bk$ : $a$ est un multiple de $b$, ou encore la division de $a$
+      par $b$ a un reste nul.
+    solution: |
+      Par définition, $b$ divise $a$ (note $b \mid a$) lorsqu'il existe un
+      entier $k$ tel que
+      $$a = bk$$
+      Autrement dit, $a$ est un multiple de $b$ ; de façon équivalente, le
+      reste de la division euclidienne de $a$ par $b$ (si $b \neq 0$) est
+      $0$.
+
+  - id: AR-12
+    rung: "R2"
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [congruences, puissance, reste]
+    primary_misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
+    stem: >
+      Quel est le reste de la division de $2^{100}$ par $7$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$1$, car $2^{100}$ est pair alors que $7$ est impair"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
+        feedback: >
+          Tu as sans doute reduit $100$ modulo $3$ correctement
+          ($100 = 3\times33+1$) mais oublie le "+1" a la fin :
+          $2^{100} \equiv 2^{3\times33} \times 2^1$, et il reste ce
+          facteur $2^1 = 2$, pas $1$.
+      - id: B
+        text: "$2$, car $2^3 \\equiv 1 \\pmod 7$, $100 = 3\\times33+1$, donc $2^{100} \\equiv 2^1 \\equiv 2$"
+        correct: true
+      - id: C
+        text: "$4$, en réduisant mal l'exposant : reste $2$ au lieu de $1$, d'où $2^2 = 4$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
+        feedback: >
+          Tu as du te tromper dans le reste de $100$ par $3$ :
+          $100 = 3\times33+1$, donc le reste est $1$ (pas $2$). Avec un
+          reste de $2$ on trouverait $2^2=4$, mais ici c'est bien $2^1=2$.
+      - id: D
+        text: "$0$, car $2^{100}$ est un multiple de $7$ dès que l'exposant dépasse $7$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.prime-divise-produit
+        feedback: >
+          $7$ est premier et ne divise aucune puissance de $2$ (ils n'ont
+          pas de facteur premier commun) : le reste ne peut jamais être
+          $0$.
+    correct_feedback: >
+      Exact. Comme $2^3 = 8 \equiv 1 \pmod 7$, les puissances de $2$
+      modulo $7$ sont périodiques de période $3$. Puisque
+      $100 = 3\times 33 + 1$, $2^{100} \equiv (2^3)^{33} \times 2^1 \equiv
+      1^{33}\times 2 \equiv 2 \pmod 7$.
+    solution: |
+      On cherche une périodicité : $2^3 = 8 = 7\times1+1$, donc
+      $$2^3 \equiv 1 \pmod 7$$
+      On écrit $100$ sous la forme $3q+r$ :
+      $$100 = 3 \times 33 + 1$$
+      Alors $2^{100} = (2^3)^{33} \times 2^1 \equiv 1^{33} \times 2 \equiv
+      2 \pmod 7$. Le reste est $2$.
+
+  - id: AR-13
+    rung: "R2"
+    difficulty_level: 2
+    skill_code: maths_arithmetique
+    tags: [congruences, critere_divisibilite]
+    primary_misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+    stem: >
+      Quel est le reste de la division de $3725$ par $9$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$17$, car la somme des chiffres vaut $3+7+2+5 = 17$, qui est le reste"
+        correct: false
+        misconception: mc.math.maths_arithmetique.reste-non-normalise
+        feedback: >
+          $17$ est la somme des chiffres ($3+7+2+5$), une étape
+          intermédiaire. Comme $17 \ge 9$, il faut encore réduire :
+          $17 = 9\times1+8$, donc le reste final est $8$, pas $17$.
+      - id: B
+        text: "$0$, car $3725$ est divisible par $9$ comme tout nombre à quatre chiffres"
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          Le critère "somme des chiffres" sert a tester la DIVISIBILITE
+          par $9$ (reste $0$ si la somme des chiffres est un multiple de
+          $9$), mais ici $17$ n'est pas un multiple de $9$ : $3725$ n'est
+          pas divisible par $9$.
+      - id: C
+        text: "$8$, car la somme des chiffres $3+7+2+5 = 17$, et $17 \\equiv 8 \\pmod 9$"
+        correct: true
+      - id: D
+        text: "$5$, car $5$ est le dernier chiffre de $3725$, donc le reste cherché"
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          $5$ est le chiffre des unités de $3725$, ce qui donnerait le
+          reste modulo $10$, pas modulo $9$. Les deux tests (chiffre des
+          unités, somme des chiffres) ne servent pas au même modulo.
+    correct_feedback: >
+      Exact. Comme $10 \equiv 1 \pmod 9$, tout nombre est congru a la
+      somme de ses chiffres modulo $9$. Ici $3+7+2+5=17$, et
+      $17 = 9\times1+8$, donc $3725 \equiv 8 \pmod 9$.
+    solution: |
+      Propriété : un entier est congru, modulo $9$, a la somme de ses
+      chiffres (car $10 \equiv 1 \pmod 9$). Ici :
+      $$3+7+2+5 = 17$$
+      Comme $17 \ge 9$, on reduit encore :
+      $$17 = 9 \times 1 + 8$$
+      Le reste de $3725$ par $9$ est donc $8$.
+
+  - id: AR-14
+    rung: "R3"
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [pgcd, euclide]
+    primary_misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
+    stem: >
+      Quel est $\mathrm{PGCD}(210, 45)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$5$, car $5$ divise à la fois $210$ et $45$, et c'est le plus grand qui saute aux yeux"
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
+        feedback: >
+          $5$ divise bien $210$ et $45$, mais ce n'est pas le PLUS GRAND
+          diviseur commun : $15$ divise aussi les deux nombres
+          ($210 = 15\times14$, $45 = 15\times3$).
+      - id: B
+        text: "$45$, car $45$ divise $210$, donc c'est le plus grand diviseur commun des deux"
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
+        feedback: >
+          $45$ ne serait le PGCD que si $45$ divisait $210$. Or
+          $210 = 45\times4 + 30$ : $45$ ne divise pas exactement $210$,
+          donc $45$ n'est pas un diviseur commun.
+      - id: C
+        text: "$630$, car c'est le plus petit multiple commun à $210$ et à $45$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-vs-ppcm
+        feedback: >
+          $630$ est le PPCM (plus petit multiple commun) de $210$ et
+          $45$, pas leur PGCD. Le PGCD est un DIVISEUR commun, donc il ne
+          peut pas dépasser $45$, le plus petit des deux nombres.
+      - id: D
+        text: "$15$, obtenu par $210 = 45\\times4+30$, $45 = 30\\times1+15$, $30 = 15\\times2+0$"
+        correct: true
+    correct_feedback: >
+      Exact. L'algorithme d'Euclide donne bien $15$ comme dernier reste
+      non nul : $210=45\times4+30$, $45=30\times1+15$, $30=15\times2+0$.
+    solution: |
+      Algorithme d'Euclide :
+      $$210 = 45 \times 4 + 30$$
+      $$45 = 30 \times 1 + 15$$
+      $$30 = 15 \times 2 + 0$$
+      Le dernier reste non nul est $15$, donc $\mathrm{PGCD}(210,45) =
+      15$.
+
+  - id: AR-15
+    rung: "R3"
+    difficulty_level: 2
+    skill_code: maths_arithmetique
+    tags: [pgcd, euclide, methode]
+    primary_misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
+    stem: >
+      Dans le calcul de $\mathrm{PGCD}(a,b)$ par l'algorithme d'Euclide,
+      le résultat final est :
+    type: mcq
+    choices:
+      - id: A
+        text: "le dernier reste non nul de la suite des divisions"
+        correct: true
+      - id: B
+        text: "le dernier reste obtenu (c'est-a-dire $0$)"
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
+        feedback: >
+          $0$ est le signal d'ARRÊT de l'algorithme (on s'arrete quand le
+          reste devient nul), mais ce n'est pas le résultat. Le PGCD est
+          le reste non nul juste AVANT, a l'étape précédente.
+      - id: C
+        text: "le dernier quotient obtenu"
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
+        feedback: >
+          Tu regardes la mauvaise colonne : l'algorithme d'Euclide
+          produit une suite de quotients ET de restes à chaque division,
+          mais c'est le dernier RESTE non nul qui est le PGCD, pas le
+          quotient.
+      - id: D
+        text: "le premier reste non nul"
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
+        feedback: >
+          S'arrêter des la première division est premature : il faut
+          répéter la division (diviseur précédent par reste précédent)
+          jusqu'a obtenir un reste nul. C'est le DERNIER reste non nul,
+          pas le premier, qui est le PGCD.
+    correct_feedback: >
+      Exact. On divise, on remplace le couple (dividende, diviseur) par
+      (diviseur, reste), et on repete jusqu'a un reste nul : le PGCD est
+      le dernier reste non nul rencontre.
+    solution: |
+      L'algorithme d'Euclide repose sur la propriété $\mathrm{PGCD}(a,b)
+      = \mathrm{PGCD}(b, r)$ ou $r$ est le reste de $a$ par $b$. On
+      repete : diviser, garder (diviseur, reste), jusqu'a tomber sur un
+      reste nul. Le PGCD cherche est alors le dernier reste NON NUL
+      obtenu, pas $0$ lui-même et pas un quotient.
+
+  - id: AR-16
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [bezout, premiers_entre_eux]
+    primary_misconception: mc.math.maths_arithmetique.bezout-portee
+    stem: >
+      On constate que $8\times(-1) + 9\times 1 = 1$. Que peut-on en
+      déduire ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$8$ et $9$ sont des nombres premiers"
+        correct: false
+        misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
+        feedback: >
+          $8 = 2^3$ n'est pas premier (il a plus de deux diviseurs).
+          L'identité $8u+9v=1$ ne dit rien sur le fait que $8$ ou $9$
+          soient premiers : elle parle de la paire $(8,9)$, pas de chaque
+          nombre séparément.
+      - id: B
+        text: "$8$ et $9$ sont premiers entre eux ($\\mathrm{PGCD}(8,9)=1$)"
+        correct: true
+      - id: C
+        text: "$8$ divise $9$, ou $9$ divise $8$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.bezout-portee
+        feedback: >
+          L'égalité $8\times(-1)+9\times1=1$ est une combinaison linéaire,
+          pas une relation de divisibilite directe. Ni $8$ ne divise $9$
+          (car $9=8\times1+1$), ni $9$ ne divise $8$.
+      - id: D
+        text: "On ne peut rien conclure sans calculer $\\mathrm{PGCD}(8,9)$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.bezout-portee
+        feedback: >
+          C'est justement la réciproque de Bezout qui permet de conclure
+          directement : des qu'on exhibe des entiers $u,v$ avec
+          $au+bv=1$, on sait que $\mathrm{PGCD}(a,b)=1$, sans avoir
+          besoin de refaire l'algorithme d'Euclide.
+    correct_feedback: >
+      Exact. Des qu'on trouve des entiers $u,v$ avec $au+bv=1$, le
+      théorème de Bezout (sa réciproque) garantit que
+      $\mathrm{PGCD}(a,b)=1$ : ici $8$ et $9$ sont premiers entre eux.
+    solution: |
+      L'égalité donnée, $8\times(-1)+9\times1=1$, est une relation de
+      Bezout pour $(8,9)$ : elle exhibe des entiers $u=-1$, $v=1$ tels
+      que $8u+9v=1$. Or tout diviseur commun de $8$ et $9$ divise aussi
+      $8u+9v=1$, donc ce diviseur commun vaut $1$. Ainsi
+      $\mathrm{PGCD}(8,9)=1$ : $8$ et $9$ sont premiers entre eux (bien
+      qu'aucun des deux, $8=2^3$, ne soit premier).
+
+  - id: AR-17
+    rung: "R4"
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [bezout, premiers_entre_eux]
+    primary_misconception: mc.math.maths_arithmetique.bezout-portee
+    stem: >
+      Existe-t-il des entiers $u, v$ tels que $6u + 4v = 1$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, de tels entiers $u$ et $v$ existent toujours, quels que soient les coefficients"
+        correct: false
+        misconception: mc.math.maths_arithmetique.bezout-portee
+        feedback: >
+          Le théorème de Bezout garantit l'existence de $u,v$ avec
+          $au+bv=\mathrm{PGCD}(a,b)$, pas avec $au+bv=1$ en général. Ici
+          $\mathrm{PGCD}(6,4)=2 \neq 1$, donc $6u+4v=1$ n'a pas de
+          solution.
+      - id: B
+        text: "Oui, en prenant $u$ et $v$ assez grands en valeur absolue et de signes opposés"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: >
+          La taille de $u$ et $v$ ne change rien : quelle que soit leur
+          valeur, $6u+4v$ reste un multiple de $\mathrm{PGCD}(6,4)=2$,
+          donc toujours pair. $1$ est impair : impossible d'y arriver.
+      - id: C
+        text: "Non : toute valeur de $6u+4v$ est un multiple de $2$, or $1$ n'en est pas un"
+        correct: true
+      - id: D
+        text: "Non, car $6$ et $4$ ne sont ni premiers ni premiers entre eux dans cette équation"
+        correct: false
+        misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
+        feedback: >
+          Ce n'est pas parce que $6$ et $4$ ne sont pas premiers que
+          $6u+4v=1$ est impossible : c'est parce qu'ils ne sont pas
+          premiers ENTRE EUX ($\mathrm{PGCD}(6,4)=2$). Deux nombres non
+          premiers peuvent très bien vérifier $au+bv=1$ (par exemple $4$
+          et $9$).
+    correct_feedback: >
+      Exact. Toute combinaison $6u+4v$ (avec $u,v \in \mathbb{Z}$) est un
+      multiple de $\mathrm{PGCD}(6,4)=2$. Comme $1$ n'est pas un multiple
+      de $2$, l'équation $6u+4v=1$ n'a aucune solution entière.
+    solution: |
+      Toute combinaison $6u+4v$ est un multiple de $\mathrm{PGCD}(6,4)$.
+      Par l'algorithme d'Euclide :
+      $$6 = 4 \times 1 + 2$$
+      $$4 = 2 \times 2 + 0$$
+      donc $\mathrm{PGCD}(6,4)=2$. Ainsi $6u+4v$ est toujours pair, et ne
+      peut jamais valoir $1$, qui est impair.
+
+  - id: AR-18
+    rung: "R5"
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [gauss, divisibilite_produit]
+    primary_misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
+    stem: >
+      On a $6 \mid 4 \times 9$ (car $4\times9 = 36 = 6\times6$). Peut-on
+      en conclure que $6 \mid 4$ ou $6 \mid 9$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, nécessairement : $6$ divise le produit, donc il divise l'un des deux facteurs"
+        correct: false
+        misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
+        feedback: >
+          Le théorème de Gauss ("$a\mid bc$ et $\mathrm{PGCD}(a,b)=1$
+          entrainent $a\mid c$") a une HYPOTHÈSE : $a$ premier avec $b$.
+          Ici $\mathrm{PGCD}(6,4)=2$ et $\mathrm{PGCD}(6,9)=3$, aucune des
+          deux hypothèses n'est vérifiée : Gauss ne s'applique pas, et de
+          fait ni $6\mid4$ ni $6\mid9$.
+      - id: B
+        text: "Oui, car $6 = 2\\times3$, avec $2\\mid 4$ et $3\\mid 9$, ce qui suffit à conclure"
+        correct: false
+        misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
+        feedback: >
+          Repartir les facteurs de $6$ entre $4$ et $9$ ne prouve pas que
+          $6$ divise l'un des deux. $2\mid4$ et $3\mid9$ sont vrais, mais
+          il faudrait TOUT le facteur $6$ dans un seul des deux nombres
+          pour que $6\mid4$ ou $6\mid9$ ; ce n'est le cas ni pour $4$
+          ($6\nmid4$) ni pour $9$ ($6\nmid9$).
+      - id: C
+        text: "On ne peut pas savoir sans calculer $4\\times9$ et en chercher tous les diviseurs"
+        correct: false
+        misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
+        feedback: >
+          Le produit $4\times9=36$ est déjà donne dans l'énoncé, et on
+          sait même que $6\mid36$. La question n'est pas de calculer le
+          produit mais de savoir si un diviseur du produit doit diviser
+          l'un des facteurs : la réponse dépend des PGCD, pas d'un calcul
+          supplémentaire.
+      - id: D
+        text: "Non : $\\mathrm{PGCD}(6,4) \\neq 1$ et $\\mathrm{PGCD}(6,9) \\neq 1$, donc le théorème de Gauss ne s'applique pas"
+        correct: true
+    correct_feedback: >
+      Exact. Le théorème de Gauss exige $\mathrm{PGCD}(a,b)=1$. Ici
+      $\mathrm{PGCD}(6,4)=2$ et $\mathrm{PGCD}(6,9)=3$ : aucune des deux
+      hypothèses n'est satisfaite, donc on ne peut rien déduire par Gauss
+      - et en effet $6$ ne divise ni $4$ ni $9$.
+    solution: |
+      Le théorème de Gauss dit : si $a\mid bc$ ET $\mathrm{PGCD}(a,b)=1$,
+      alors $a\mid c$. Ici $a=6$, et on veut tester $b=4$ ou $b=9$ :
+      $$\mathrm{PGCD}(6,4) = 2 \neq 1 \qquad \mathrm{PGCD}(6,9) = 3 \neq 1$$
+      L'hypothèse de Gauss echoue dans les deux cas : le théorème ne
+      s'applique pas. Et de fait, $6\nmid4$ (car $4<6$) et $6\nmid9$ (car
+      $9=6\times1+3$) : le produit $4\times9=36$ est divisible par $6$
+      sans qu'aucun des facteurs ne le soit.
+
+  - id: AR-19
+    rung: "R5"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [gauss, ppcm, divisibilite]
+    primary_misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
+    stem: >
+      Un entier $c$ est divisible par $4$ et par $6$. Est-il
+      nécessairement divisible par $24$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Non : $\\mathrm{PGCD}(4,6)=2 \\neq 1$, donc on ne peut pas conclure — contre-exemple : $12$"
+        correct: true
+      - id: B
+        text: "Oui, car $4\\times 6 = 24$, et un nombre divisible par les deux l'est par leur produit"
+        correct: false
+        misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
+        feedback: >
+          Multiplier les deux diviseurs ne fonctionne que s'ils sont
+          premiers entre eux. Ici $\mathrm{PGCD}(4,6)=2\neq1$ : le produit
+          $4\times6=24$ compte le facteur $2$ deux fois de trop. Le vrai
+          plus petit multiple commun est $\mathrm{PPCM}(4,6)=12$, pas
+          $24$.
+      - id: C
+        text: "Oui : dès qu'un entier est divisible par deux nombres, il l'est par leur produit"
+        correct: false
+        misconception: mc.math.maths_arithmetique.gauss-condition-ignoree
+        feedback: >
+          Cette règle est fausse en général : elle n'est valable que si
+          les deux nombres sont premiers entre eux. Contre-exemple : $12$
+          est divisible par $4$ et par $6$, mais pas par $4\times6=24$.
+      - id: D
+        text: "Non, car $4$ et $6$ ne sont pas des nombres premiers, condition ici indispensable"
+        correct: false
+        misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
+        feedback: >
+          La conclusion (Non) est correcte, mais la raison invoquée ne
+          l'est pas : ce n'est pas parce que $4$ et $6$ ne sont pas
+          premiers, mais parce qu'ils ne sont pas premiers ENTRE EUX
+          ($\mathrm{PGCD}(4,6)=2$). Deux nombres non premiers mais
+          premiers entre eux (comme $4$ et $9$) donneraient, eux, une
+          conclusion valide.
+    correct_feedback: >
+      Exact. La règle "divisible par $a$ et par $b$ implique divisible
+      par $ab$" exige $\mathrm{PGCD}(a,b)=1$. Ici $\mathrm{PGCD}(4,6)=2$,
+      donc on ne peut rien conclure : $12$ est un contre-exemple
+      (divisible par $4$ et $6$, pas par $24$).
+    solution: |
+      Si $\mathrm{PGCD}(a,b)=1$, alors "divisible par $a$ et par $b$"
+      entraine "divisible par $ab$" (conséquence de Gauss). Mais ici :
+      $$\mathrm{PGCD}(4,6) = 2 \neq 1$$
+      l'hypothèse manque, et la conclusion peut être fausse.
+      Contre-exemple : $c=12$ est divisible par $4$ ($12=4\times3$) et
+      par $6$ ($12=6\times2$), mais pas par $24$. En réalité, "divisible
+      par $4$ et $6$" entraine seulement "divisible par
+      $\mathrm{PPCM}(4,6)=12$", pas par $24$.
+
+  - id: AR-20
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [nombres_premiers, primalite]
+    primary_misconception: mc.math.maths_arithmetique.primalite-test-incomplet
+    stem: >
+      Le nombre $143$ est-il premier ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, $143$ est premier"
+        correct: false
+        misconception: mc.math.maths_arithmetique.primalite-test-incomplet
+        feedback: >
+          Il ne suffit pas de tester $2, 3, 5, 7$ : $143$ n'est divisible
+          par aucun d'eux, mais il faut continuer jusqu'a
+          $\sqrt{143}\approx12$. Or $143 = 11\times13$, et $11 \le 12$ :
+          le test s'est arrete trop tot.
+      - id: B
+        text: "Non : $143 = 11 \\times 13$"
+        correct: true
+      - id: C
+        text: "Non, car tout nombre impair supérieur à $100$ est compose"
+        correct: false
+        misconception: mc.math.maths_arithmetique.primalite-test-incomplet
+        feedback: >
+          Cette règle est fausse : il existe des nombres premiers
+          impairs supérieurs a $100$ (par exemple $101$, $103$...). La
+          bonne conclusion "$143$ n'est pas premier" vient de la
+          factorisation $143=11\times13$, pas d'une règle générale sur
+          la taille.
+      - id: D
+        text: "On ne peut pas savoir sans tester tous les entiers jusqu'a $142$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.primalite-test-incomplet
+        feedback: >
+          Il suffit de tester les diviseurs jusqu'a
+          $\sqrt{143}\approx12$ : si aucun entier de $2$ a $12$ ne divise
+          $143$, alors $143$ est premier. Ici $11$ divise $143$, donc il
+          n'est pas nécessaire (ni utile) d'aller jusqu'a $142$.
+    correct_feedback: >
+      Exact. $143 = 11\times13$ : $143$ admet un diviseur autre que $1$
+      et lui-même, il n'est donc pas premier.
+    solution: |
+      Pour tester si $143$ est premier, il suffit d'essayer les
+      diviseurs premiers jusqu'a $\sqrt{143} \approx 11{,}96$, donc
+      jusqu'a $11$ inclus : $2, 3, 5, 7, 11$. On trouve
+      $$143 = 11 \times 13$$
+      $143$ admet un diviseur autre que $1$ et $143$ : il n'est pas
+      premier.
+
+  - id: AR-21
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [pgcd, factorisation]
+    primary_misconception: mc.math.maths_arithmetique.pgcd-vs-ppcm
+    stem: >
+      Sachant que $360 = 2^3\times3^2\times5$ et $84 = 2^2\times3\times7$,
+      quel est $\mathrm{PGCD}(360, 84)$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$2520 = 2^3\\times3^2\\times5\\times7$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-vs-ppcm
+        feedback: >
+          C'est le PPCM, pas le PGCD : tu as pris pour chaque facteur
+          premier l'exposant le plus GRAND (et garde tous les facteurs,
+          même ceux qui n'apparaissent que dans un seul nombre). Le PGCD,
+          lui, ne garde que les facteurs COMMUNS, avec l'exposant le plus
+          PETIT.
+      - id: B
+        text: "$6 = 2\\times3$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-plus-grand-oublie
+        feedback: >
+          Tu as garde chaque facteur premier commun une seule fois
+          (exposant $1$), sans prendre le plus PETIT exposant present
+          dans les deux decompositions. Pour $2$, le plus petit exposant
+          est $\min(3,2)=2$, pas $1$ : il faut $2^2$, pas $2^1$.
+      - id: C
+        text: "$12 = 2^2 \\times 3$"
+        correct: true
+      - id: D
+        text: "$420 = 2^2\\times3\\times5\\times7$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.pgcd-vs-ppcm
+        feedback: >
+          Tu as garde les bons exposants pour $2$ et $3$, mais aussi $5$
+          et $7$, qui n'apparaissent chacun que dans UN SEUL des deux
+          nombres. Le PGCD ne retient que les facteurs premiers communs
+          aux deux decompositions.
+    correct_feedback: >
+      Exact. Le PGCD se lit en gardant chaque facteur premier COMMUN,
+      avec le plus PETIT exposant : $2^{\min(3,2)} \times 3^{\min(2,1)}
+      = 2^2\times3 = 12$. Le facteur $5$ (absent de $84$) et $7$ (absent
+      de $360$) ne sont pas retenus.
+    solution: |
+      à partir des decompositions
+      $$360 = 2^3\times3^2\times5 \qquad 84 = 2^2\times3\times7$$
+      le PGCD garde les facteurs premiers COMMUNS avec le plus PETIT
+      exposant :
+      - facteur $2$ : $\min(3,2) = 2$
+      - facteur $3$ : $\min(2,1) = 1$
+      - facteur $5$ : absent de $84$, non retenu
+      - facteur $7$ : absent de $360$, non retenu
+      Donc $\mathrm{PGCD}(360,84) = 2^2\times3 = 12$.
+
+  - id: AR-22
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [nombres_premiers, lemme_euclide]
+    primary_misconception: mc.math.maths_arithmetique.prime-divise-produit
+    stem: >
+      Le nombre premier $7$ divise le produit $a\times b$. Que peut-on
+      affirmer avec certitude ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$7 \\mid a$ et $7 \\mid b$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.prime-divise-produit
+        feedback: >
+          C'est plus fort que ce que garantit le théorème : il assure que
+          $7$ divise AU MOINS UN des deux facteurs (un "ou"), pas
+          forcément les deux. Par exemple $7 \mid 7\times2$ mais
+          $7\nmid2$.
+      - id: B
+        text: "On ne peut rien conclure"
+        correct: false
+        misconception: mc.math.maths_arithmetique.prime-divise-produit
+        feedback: >
+          C'est justement le cas particulier ou $a$ est PREMIER qui
+          permet de conclure sans hypothèse supplémentaire : si $7$ est
+          premier et $7\mid ab$, alors nécessairement $7\mid a$ ou
+          $7\mid b$ (conséquence du théorème de Gauss, car un nombre
+          premier est automatiquement premier avec tout nombre qu'il ne
+          divise pas).
+      - id: C
+        text: "$7 = a$ ou $7 = b$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diviser-relation-inversee
+        feedback: >
+          "Diviser" n'est pas "être égal a". Par exemple $7 \mid
+          14\times3$ (car $14\times3=42=7\times6$) et $7\mid14$, sans que
+          $7$ soit égal à $14$ ni a $3$.
+      - id: D
+        text: "$7 \\mid a$ ou $7 \\mid b$"
+        correct: true
+    correct_feedback: >
+      Exact. C'est le lemme d'Euclide (cas particulier du théorème de
+      Gauss quand $a$ est premier) : si un nombre premier $p$ divise un
+      produit $ab$, alors $p$ divise $a$ ou $p$ divise $b$.
+    solution: |
+      Supposons $7 \nmid a$. Comme $7$ est premier, ses seuls diviseurs
+      sont $1$ et $7$ ; si $7\nmid a$, alors $\mathrm{PGCD}(7,a)=1$. Le
+      théorème de Gauss s'applique alors a $7 \mid ab$ avec
+      $\mathrm{PGCD}(7,a)=1$, donc $7 \mid b$. On a donc toujours $7\mid
+      a$ ou $7 \mid b$ (au moins l'un des deux, pas forcément les deux).
+
+  - id: AR-23
+    rung: "R7"
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [diophantienne, existence]
+    primary_misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+    stem: >
+      L'équation $15x + 6y = 9$ admet-elle des solutions dans
+      $\mathbb{Z}^2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui : $\\mathrm{PGCD}(15,6)=3$ et $3 \\mid 9$"
+        correct: true
+      - id: B
+        text: "Non, car $15$ et $6$ ne sont pas premiers entre eux"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: >
+          $15$ et $6$ ne sont en effet pas premiers entre eux
+          ($\mathrm{PGCD}(15,6)=3$), mais cela n'empeche pas les
+          solutions d'exister. Le critère exact est : $ax+by=c$ a des
+          solutions si et seulement si $\mathrm{PGCD}(a,b)$ DIVISE $c$.
+          Ici $3\mid9$, donc il y a bien des solutions.
+      - id: C
+        text: "Non, car $9$ n'est un multiple ni de $15$ ni de $6$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: >
+          Ce n'est pas le bon test : il ne faut pas que $9$ soit un
+          multiple de $15$ ou de $6$ individuellement, mais que $9$ soit
+          un multiple de leur PGCD. Ici $\mathrm{PGCD}(15,6)=3$, et
+          $9=3\times3$ est bien un multiple de $3$ : l'équation a des
+          solutions.
+      - id: D
+        text: "Oui, car $9 > 0$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: >
+          Le signe ou la positivité de $9$ n'a rien a voir avec
+          l'existence de solutions entières. Le critère est
+          arithmetique : $\mathrm{PGCD}(15,6)=3$ doit diviser $9$, ce qui
+          est vrai ici, mais pas parce que $9$ est positif.
+    correct_feedback: >
+      Exact. $ax+by=c$ a des solutions entières si et seulement si
+      $\mathrm{PGCD}(a,b) \mid c$. Ici $\mathrm{PGCD}(15,6)=3$ et
+      $3\mid9$ (puisque $9=3\times3$), donc l'équation a une infinite de
+      solutions.
+    solution: |
+      Critère d'existence : $ax+by=c$ a des solutions dans
+      $\mathbb{Z}^2$ si et seulement si $\mathrm{PGCD}(a,b) \mid c$.
+      $$\mathrm{PGCD}(15,6) = 3$$
+      Or $3 \mid 9$ (car $9 = 3\times3$), donc l'équation $15x+6y=9$
+      admet bien des solutions entières (une infinite, obtenues à partir
+      d'une solution particulière).
+
+  - id: AR-24
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [diophantienne, solution_generale]
+    primary_misconception: mc.math.maths_arithmetique.solution-unique-vs-infinie
+    stem: >
+      L'équation $5x + 3y = 1$ a pour solution particulière $(2, -3)$.
+      Quelle est la forme générale de ses solutions dans $\mathbb{Z}^2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$x = 2 + 5t,\\quad y = -3 - 3t$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-generale-mal-parametree
+        feedback: >
+          Tu as interverti les coefficients : dans la formule générale
+          $x=x_0+bt$, $y=y_0-at$, c'est le coefficient de $y$ (soit $3$)
+          qui accompagne $x$, et celui de $x$ (soit $5$) qui accompagne
+          $y$. Ici $x=2+3t$, $y=-3-5t$.
+      - id: B
+        text: "$x = 2 + 3t,\\quad y = -3 - 5t,\\quad t\\in\\mathbb{Z}$"
+        correct: true
+      - id: C
+        text: "$x = 2 + 3t,\\quad y = -3 + 5t$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-generale-mal-parametree
+        feedback: >
+          Le coefficient de $x$ est correct, mais il y a une erreur de
+          signe sur $y$ : pour que $5x+3y$ reste constant quand $x$
+          augmente de $3t$, $y$ doit DIMINUER de $5t$ (pas augmenter),
+          car $5\times3t = 3\times5t$ doit être compense par un signe
+          oppose.
+      - id: D
+        text: "$x = 2,\\quad y = -3$ (solution unique)"
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-unique-vs-infinie
+        feedback: >
+          Une équation $ax+by=c$ avec $\mathrm{PGCD}(a,b)=1$ (ici $=1$) a
+          une INFINITE de solutions entières, pas une seule : $(2,-3)$
+          n'est qu'UNE solution particulière parmi toute une famille
+          parametree par $t\in\mathbb{Z}$.
+    correct_feedback: >
+      Exact. Si $(x_0,y_0)=(2,-3)$ est une solution de $5x+3y=1$, la
+      solution générale s'obtient en ajoutant a $x_0$ un multiple de $3$
+      (le coefficient de $y$) et en retranchant a $y_0$ le même multiple
+      de $5$ (le coefficient de $x$) : $x=2+3t$, $y=-3-5t$.
+    solution: |
+      On soustrait la solution particulière a l'équation générale :
+      $$5x+3y = 1 = 5\times2+3\times(-3)$$
+      $$5(x-2) + 3(y+3) = 0 \quad\Longrightarrow\quad 5(x-2) = -3(y+3)$$
+      Comme $\mathrm{PGCD}(5,3)=1$, le théorème de Gauss donne
+      $5 \mid (y+3)$, donc $y+3 = -5t$ pour un entier $t$, d'ou
+      $y=-3-5t$, puis $x-2 = 3t$, soit $x=2+3t$. La solution générale
+      est
+      $$x = 2+3t, \quad y = -3-5t, \quad t \in \mathbb{Z}$$
+
+  - id: AR-25
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [diophantienne, solution_generale]
+    primary_misconception: mc.math.maths_arithmetique.solution-unique-vs-infinie
+    stem: >
+      On a établi $\mathrm{PGCD}(112, 76) = 4$. Que peut-on dire des
+      solutions de $112x + 76y = 8$ dans $\mathbb{Z}^2$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Il y en a exactement une"
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-unique-vs-infinie
+        feedback: >
+          Des qu'une équation $ax+by=c$ a UNE solution (avec
+          $\mathrm{PGCD}(a,b) \mid c$), elle en a une INFINITE : à partir
+          d'une solution particulière $(x_0,y_0)$, on obtient toutes les
+          autres par $x=x_0+\frac{b}{d}t$, $y=y_0-\frac{a}{d}t$,
+          $t\in\mathbb{Z}$.
+      - id: B
+        text: "Il n'y en a aucune"
+        correct: false
+        misconception: mc.math.maths_arithmetique.diophantienne-critere-existence
+        feedback: >
+          Le critère d'existence est $\mathrm{PGCD}(a,b)\mid c$. Ici
+          $\mathrm{PGCD}(112,76)=4$ et $4\mid8$ (car $8=4\times2$) :
+          l'équation a bien des solutions.
+      - id: C
+        text: "Il y en a une infinite, car $4 \\mid 8$"
+        correct: true
+      - id: D
+        text: "Il y en a exactement $8$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-unique-vs-infinie
+        feedback: >
+          Le nombre $8$ qui apparaît ici est le second membre de
+          l'équation, pas un compte de solutions. Des que
+          $\mathrm{PGCD}(a,b)$ divise $c$, l'ensemble des solutions
+          entières est infini, pas un nombre fini égal à $c$.
+    correct_feedback: >
+      Exact. Comme $\mathrm{PGCD}(112,76)=4$ et $4\mid8$, l'équation
+      $112x+76y=8$ admet des solutions, et comme pour toute équation de
+      ce type, elle en admet une infinite (parametrees par $t\in
+      \mathbb{Z}$).
+    solution: |
+      Critère d'existence : $ax+by=c$ a des solutions dans
+      $\mathbb{Z}^2$ si et seulement si $\mathrm{PGCD}(a,b)\mid c$. Ici
+      $$\mathrm{PGCD}(112,76) = 4$$
+      et $4 \mid 8$ (car $8 = 4\times2$), donc l'équation admet des
+      solutions. Comme pour toute équation linéaire diophantienne
+      resoluble, l'ensemble des solutions n'est jamais réduit a un
+      point : il y en a une infinite, parametrees par $t \in \mathbb{Z}$.
+
+  - id: AR-26
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [diophantienne, solution_particuliere, bezout]
+    primary_misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
+    stem: >
+      Sachant que $112\times(-2) + 76\times 3 = 4$, quelle est une
+      solution particulière de $112x + 76y = 8$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$(-2, 3)$, la solution que donne directement l'identité de départ"
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
+        feedback: >
+          $(-2,3)$ verifie $112x+76y=4$, pas $8$ : c'est la relation de
+          départ, non mise à l'échelle. Il faut multiplier toute
+          l'identité par $8/4=2$ pour atteindre le second membre voulu.
+      - id: B
+        text: "$(-2, 6)$, obtenue en doublant seulement la seconde coordonnée de l'identité"
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
+        feedback: >
+          Tu as multiplie seulement $y$ par $2$, en oubliant $x$. Pour
+          passer de $112x+76y=4$ a $112x+76y=8$, il faut multiplier LES
+          DEUX coordonnées par le même facteur $2$.
+      - id: C
+        text: "$(-8, 12)$, obtenue en multipliant l'identité de départ par $k = 4$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
+        feedback: >
+          Tu as multiplie par $c=8$ au lieu de $c/d = 8/4 = 2$.
+          L'identité de départ vaut déjà $4$ ; il suffit de la
+          multiplier par $2$ (pas par $8$) pour obtenir $8$.
+      - id: D
+        text: "$(-4, 6)$, obtenue en multipliant l'identité par $k = 8/4 = 2$"
+        correct: true
+    correct_feedback: >
+      Exact. L'identité $112\times(-2)+76\times3=4$ multipliée par
+      $k=8/4=2$ donne $112\times(-4)+76\times6=8$ : la solution
+      particulière est $(-4,6)$.
+    solution: |
+      On part de l'identité connue :
+      $$112\times(-2) + 76\times3 = 4$$
+      Comme le second membre voulu est $8 = 4\times2$, on multiplie
+      toute l'identité par $2$ :
+      $$112\times(-4) + 76\times6 = 8$$
+      La solution particulière est donc $(x_0,y_0) = (-4,6)$.
+
+  - id: AR-27
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [premiers_entre_eux, nombres_premiers]
+    primary_misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
+    stem: >
+      Que peut-on dire des entiers $35$ et $18$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "Aucun des deux n'est un nombre premier, mais ils sont premiers entre eux ($\\mathrm{PGCD}(35,18)=1$)"
+        correct: true
+      - id: B
+        text: "Ils ne sont pas premiers entre eux, puisqu'aucun des deux n'est premier"
+        correct: false
+        misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
+        feedback: >
+          "Être premier" (une propriété d'UN nombre) et "être premiers
+          entre eux" (une propriété d'une PAIRE, $\mathrm{PGCD}=1$) sont
+          deux notions indépendantes. Ici $35=5\times7$ et $18=2\times3^2$
+          n'ont aucun facteur premier commun : $\mathrm{PGCD}(35,18)=1$,
+          ils SONT premiers entre eux, bien que ni $35$ ni $18$ ne soit
+          premier.
+      - id: C
+        text: "$35$ est premier, $18$ ne l'est pas"
+        correct: false
+        misconception: mc.math.maths_arithmetique.primalite-test-incomplet
+        feedback: >
+          $35$ n'est pas premier : $35 = 5\times7$, il admet des
+          diviseurs autres que $1$ et $35$.
+      - id: D
+        text: "Ils sont premiers entre eux car ils sont tous les deux impairs"
+        correct: false
+        misconception: mc.math.maths_arithmetique.premier-vs-premiers-entre-eux
+        feedback: >
+          D'abord, $18$ est PAIR, pas impair. Ensuite, même deux nombres
+          impairs ne sont pas automatiquement premiers entre eux (par
+          exemple $9$ et $15$, tous deux impairs, ont
+          $\mathrm{PGCD}=3$). La parité n'est pas le bon critère.
+    correct_feedback: >
+      Exact. $35=5\times7$ et $18=2\times3^2$ : ni l'un ni l'autre n'est
+      premier, mais ils n'ont aucun facteur premier commun, donc
+      $\mathrm{PGCD}(35,18)=1$ : ils sont premiers entre eux.
+    solution: |
+      Decomposons en facteurs premiers :
+      $$35 = 5 \times 7 \qquad 18 = 2 \times 3^2$$
+      Ni $35$ (deux facteurs premiers distincts) ni $18$ (facteurs $2$
+      et $3$) n'est premier. Mais ces deux decompositions n'ont aucun
+      facteur premier commun, donc
+      $$\mathrm{PGCD}(35, 18) = 1$$
+      $35$ et $18$ sont premiers entre eux, bien qu'aucun des deux ne
+      soit premier : les deux notions sont indépendantes.
+
+  # Ajoutés le 2026-09-05 : huit familles sous le plancher de 3 items du banc,
+  # dont `fermat-condition-ou-exposant` sans AUCUN item AVANT cet ajout — elle n'était sondée
+  # que par un checkpoint, ce qui ne compte pas dans le modèle apprenant.
+  # Quatre items, douze places : trois sur le petit théorème de Fermat et les
+  # équations diophantiennes, un sur divisibilité et primalité.
+  - id: AR-28
+    rung: "R6b"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [fermat, congruences, puissance]
+    primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    stem: >
+      Soit $p = 7$, premier. Que peut-on affirmer de $a^{6} \bmod 7$ pour un
+      entier $a$ quelconque ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $a^{6} \equiv 1 \pmod 7$ dès que $7 \nmid a$ ; si $7 \mid a$, alors
+          $a^{6} \equiv 0$
+        correct: true
+      - id: B
+        text: >-
+          $a^{6} \equiv 1 \pmod 7$ pour tout entier $a$, sans aucune condition
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          La condition $p \nmid a$ n'est pas décorative : pour $a = 7$, on a
+          $a^{6} = 7^{6} \equiv 0 \pmod 7$, et non $1$. Le petit théorème de
+          Fermat s'énonce $a^{p-1} \equiv 1 \pmod p$ SI $p \nmid a$. La variante
+          sans condition existe, mais elle s'écrit autrement :
+          $a^{p} \equiv a \pmod p$, vraie pour tout $a$.
+      - id: C
+        text: >-
+          $a^{7} \equiv 1 \pmod 7$, l'exposant du théorème étant $p$ lui-même
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          Les deux formes du théorème se distinguent par leur exposant ET leur
+          membre de droite : $a^{p-1} \equiv 1$ (avec la condition $p \nmid a$)
+          ou $a^{p} \equiv a$ (sans condition). Mélanger l'exposant $p$ avec le
+          résultat $1$ donne un énoncé faux : $2^{7} = 128 = 18\times 7 + 2
+          \equiv 2 \pmod 7$, pas $1$.
+      - id: D
+        text: >-
+          $a^{6} \equiv -1 \pmod 7$, ce qui se vérifie sur $a = 2$ :
+          $2^{6} = 64$
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
+        feedback: >
+          La vérification est mal conduite : $64 = 9 \times 7 + 1$, donc
+          $2^{6} \equiv 1 \pmod 7$, et non $-1$. La valeur $-1$ apparaît une
+          étape plus tôt, pour l'exposant moitié —
+          $2^{3} = 8 \equiv 1$ ici, mais $3^{3} = 27 \equiv -1 \pmod 7$ —, ce qui
+          en fait un piège récurrent.
+    correct_feedback: >
+      Petit théorème de Fermat : si $p$ est premier et $p \nmid a$, alors
+      $a^{p-1} \equiv 1 \pmod p$. Pour $p = 7$ : $a^{6} \equiv 1 \pmod 7$ dès
+      que $7$ ne divise pas $a$. Si $7 \mid a$, toutes les puissances de $a$
+      sont congrues à $0$.
+    solution: |
+      **L'énoncé exact.** Pour $p$ premier :
+      $$p \nmid a \quad\Longrightarrow\quad a^{p-1} \equiv 1 \pmod p$$
+
+      **La forme sans condition**, souvent plus commode :
+      $$a^{p} \equiv a \pmod p \quad \text{pour TOUT entier } a$$
+      Les deux sont équivalentes quand $p \nmid a$ ; la seconde reste vraie
+      quand $p \mid a$, puisque les deux membres sont alors nuls modulo $p$.
+
+      **Vérification sur $p = 7$.**
+      $$
+      2^{6} = 64 = 9\times 7 + 1 \equiv 1
+      \qquad 3^{6} = 729 = 104\times 7 + 1 \equiv 1
+      $$
+      mais $7^{6} \equiv 0$, ce qui montre que la condition est indispensable.
+
+  - id: AR-29
+    rung: "R7"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [diophantienne, solution_generale, fermat]
+    primary_misconception: mc.math.maths_arithmetique.solution-generale-mal-parametree
+    stem: >
+      L'équation $5x + 3y = 1$ admet la solution particulière $(x_0, y_0) =
+      (2, -3)$. Quelle est la forme générale de ses solutions entières ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $x = 2 + 3t$, $y = -3 - 5t$, avec $t \in \mathbb{Z}$
+        correct: true
+      - id: B
+        text: >-
+          $x = 2 + 5t$, $y = -3 - 3t$, avec $t \in \mathbb{Z}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-generale-mal-parametree
+        feedback: >
+          Les coefficients sont croisés à l'envers. Le paramètre porte sur $x$ le
+          coefficient de $y$, et sur $y$ celui de $x$ : $x = x_0 + bt$,
+          $y = y_0 - at$. La vérification tranche :
+          $5(2+5t) + 3(-3-3t) = 1 + 16t$, qui ne vaut $1$ que pour $t = 0$.
+      - id: C
+        text: >-
+          $x = 2 + 3t$, $y = -3 + 5t$, avec $t \in \mathbb{Z}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-generale-mal-parametree
+        feedback: >
+          Les coefficients sont bien croisés, mais le signe manque : les deux
+          termes doivent se compenser. $5(2+3t) + 3(-3+5t) = 1 + 30t$, qui ne
+          vaut $1$ que pour $t = 0$. Avec $y = -3 - 5t$, en revanche,
+          $15t - 15t = 0$ et l'équation est satisfaite pour tout $t$.
+      - id: D
+        text: >-
+          $(2, -3)$ seulement : une équation diophantienne à second membre $1$
+          admet exactement une solution
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-unique-vs-infinie
+        feedback: >
+          Dès qu'une équation $ax + by = c$ admet une solution, elle en admet une
+          INFINITÉ : on passe de l'une à l'autre en ajoutant $b$ à $x$ et en
+          retranchant $a$ à $y$, ce qui laisse le total inchangé. Ici $(5, -8)$
+          et $(-1, 2)$ conviennent aussi.
+    correct_feedback: >
+      $x = 2 + 3t$, $y = -3 - 5t$. Le paramètre reçoit les coefficients CROISÉS
+      et de signes opposés : $5(3t) + 3(-5t) = 15t - 15t = 0$, donc la somme
+      reste égale à $1$ pour tout entier $t$.
+    solution: |
+      **La structure des solutions.** Si $(x_0, y_0)$ est une solution
+      particulière de $ax + by = c$ avec $a$ et $b$ premiers entre eux, alors
+      l'ensemble des solutions est
+      $$x = x_0 + bt, \qquad y = y_0 - at, \qquad t \in \mathbb{Z}$$
+
+      **Pourquoi les coefficients sont croisés.** Il faut que la variation
+      s'annule :
+      $$a(bt) + b(-at) = abt - abt = 0$$
+      Toute autre répartition laisse un reste en $t$, comme le montrent les
+      vérifications des deux autres répartitions proposées.
+
+      **Ici** : $a = 5$, $b = 3$, $(x_0,y_0) = (2,-3)$, d'où
+      $x = 2 + 3t$ et $y = -3 - 5t$. Contrôle pour $t = 1$ :
+      $5\times 5 + 3\times(-8) = 25 - 24 = 1$. ✓
+
+  - id: AR-30
+    rung: "R4"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [bezout, mise_a_echelle, fermat]
+    primary_misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
+    stem: >
+      On sait que $7 \times 3 - 4 \times 5 = 1$, c'est-à-dire que
+      $\mathrm{PGCD}(7,4) = 1$ avec le couple de Bézout $(3, -5)$. Comment en
+      déduire une solution de $7x + 4y = 6$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          En multipliant les DEUX coordonnées du couple par $6$, ce qui donne
+          $(x, y) = (18, -30)$
+        correct: true
+      - id: B
+        text: >-
+          En gardant le couple tel quel : $(x, y) = (3, -5)$, puisqu'il vérifie
+          déjà l'identité de Bézout
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
+        feedback: >
+          Ce couple donne $7\times 3 + 4\times(-5) = 1$, pas $6$. L'identité de
+          Bézout fournit une solution pour le second membre $d = \mathrm{PGCD}$ ;
+          pour un second membre $c$ multiple de $d$, il faut multiplier les deux
+          coordonnées par $c/d$ — ici par $6/1 = 6$.
+      - id: C
+        text: >-
+          En multipliant seulement la première coordonnée par $6$ :
+          $(x, y) = (18, -5)$
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
+        feedback: >
+          La mise à l'échelle doit porter sur les DEUX coordonnées, sans quoi
+          l'égalité se casse : $7\times 18 + 4\times(-5) = 126 - 20 = 106$. On
+          multiplie l'identité tout entière par $6$, ce qui multiplie chacun de
+          ses termes.
+      - id: D
+        text: >-
+          On ne peut pas : $6$ n'étant pas premier, le petit théorème de Fermat
+          ne s'applique pas à cette équation
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          Le petit théorème de Fermat n'a rien à faire ici : il porte sur les
+          congruences de puissances, pas sur les équations diophantiennes. Ce qui
+          décide de l'existence d'une solution de $ax + by = c$, c'est un autre
+          critère : $c$ doit être un multiple de $\mathrm{PGCD}(a,b)$ — ici
+          $\mathrm{PGCD}(7,4) = 1$ divise $6$, donc les solutions existent.
+    correct_feedback: >
+      On multiplie l'identité entière par $6$ :
+      $7\times 18 + 4\times(-30) = 126 - 120 = 6$. Règle générale : pour passer
+      d'un second membre $d = \mathrm{PGCD}(a,b)$ à un second membre $c$, on
+      multiplie les DEUX coordonnées par $c/d$.
+    solution: |
+      **L'identité de départ.**
+      $$7 \times 3 + 4 \times (-5) = 21 - 20 = 1$$
+
+      **La mise à l'échelle.** Multiplier l'égalité entière par $6$ :
+      $$7 \times 18 + 4 \times (-30) = 126 - 120 = 6$$
+      d'où la solution particulière $(x_0, y_0) = (18, -30)$.
+
+      **La règle générale.** Si $d = \mathrm{PGCD}(a,b)$ et si $d \mid c$, une
+      solution de $ax + by = c$ s'obtient en multipliant un couple de Bézout par
+      le facteur $\dfrac{c}{d}$ — jamais par $c$ tout seul quand $d \neq 1$, et
+      jamais sur une seule coordonnée.
+
+      **Puis la forme générale**, comme toujours :
+      $x = 18 + 4t$, $y = -30 - 7t$.
+
+  - id: AR-31
+    rung: "R6"
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [primalite, divisibilite, criteres]
+    primary_misconception: mc.math.maths_arithmetique.primalite-test-incomplet
+    stem: >
+      Le nombre $221$ est-il premier ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Non : $221 = 13 \times 17$, ce que l'on trouve en testant les premiers
+          jusqu'à $\sqrt{221} \approx 14{,}9$
+        correct: true
+      - id: B
+        text: >-
+          Oui : il n'est divisible ni par $2$, ni par $3$, ni par $5$, ni par
+          $7$, donc il est premier
+        correct: false
+        misconception: mc.math.maths_arithmetique.primalite-test-incomplet
+        feedback: >
+          Le test doit se poursuivre jusqu'à $\sqrt{n}$, soit environ $14{,}9$ :
+          il restait à essayer $11$ et $13$. Et $221 = 13 \times 17$. S'arrêter
+          trop tôt est l'erreur la plus fréquente sur ce type de question ;
+          l'arrêt à $\sqrt{n}$, lui, est justifié — au-delà, un diviseur aurait
+          déjà un complément plus petit, donc déjà rencontré.
+      - id: C
+        text: >-
+          Oui : la somme de ses chiffres vaut $5$, qui n'est pas un multiple de
+          $9$, donc $221$ n'a pas de diviseur
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          Le critère par la somme des chiffres ne teste QUE la divisibilité par
+          $3$ et par $9$. Il ne dit rien des autres diviseurs, et une somme non
+          multiple de $9$ ne signifie certainement pas « aucun diviseur ». Un
+          critère de divisibilité répond à une question précise ; il ne remplace
+          pas un test de primalité.
+      - id: D
+        text: >-
+          Non : $221$ divise $13$, comme le montre l'écriture
+          $13 = 221 \times k$
+        correct: false
+        misconception: mc.math.maths_arithmetique.diviser-relation-inversee
+        feedback: >
+          La relation est écrite à l'envers. « $b$ divise $a$ » signifie
+          $a = b \times k$ : le diviseur est le plus PETIT des deux, le multiple
+          le plus grand. Ici c'est $13$ qui divise $221$, puisque
+          $221 = 13 \times 17$. Écrire $13 = 221 k$ imposerait $k = 1/17$, qui
+          n'est pas entier.
+    correct_feedback: >
+      $221$ n'est pas premier : $221 = 13 \times 17$. Le test s'arrête à
+      $\sqrt{221} \approx 14{,}9$, donc il faut essayer $2, 3, 5, 7, 11, 13$ —
+      et c'est le dernier qui répond.
+    solution: |
+      **Pourquoi on s'arrête à $\sqrt{n}$.** Si $n = ab$ avec $a \leqslant b$,
+      alors $a \leqslant \sqrt{n}$. Tout diviseur non trivial admet donc un
+      complice inférieur ou égal à $\sqrt{n}$ : le tester suffit.
+
+      **Le test complet pour $221$.** $\sqrt{221} \approx 14{,}9$, donc les
+      premiers à essayer sont $2, 3, 5, 7, 11, 13$.
+      $$
+      221 \ \text{impair} \quad 2+2+1 = 5 \ \text{non multiple de } 3 \quad
+      \text{ne finit ni par } 0 \text{ ni par } 5
+      $$
+      $$
+      221 = 31\times 7 + 4 \qquad 221 = 20\times 11 + 1 \qquad
+      221 = 17 \times 13
+      $$
+      Le dernier essai répond : $221$ est composé.
+
+      **La leçon de méthode.** S'arrêter avant $\sqrt{n}$ ne prouve rien ; et un
+      critère de divisibilité (par $3$, par $9$, par $11$) répond à une question
+      précise, jamais à la question de la primalité.
+
+  - id: AR-32
+    rung: "R8"
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [diophantienne, bezout, critique_de_raisonnement]
+    primary_misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
+    stem: >
+      Un élève résout $11x + 4y = 3$ ainsi : « $\mathrm{PGCD}(11,4) = 1$ et
+      $11\times(-1) + 4\times 3 = 1$, donc $(-1,\,3)$ est une solution, et la
+      forme générale est $x = -1 + 11t$, $y = 3 - 4t$. » Que contient ce
+      raisonnement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Deux erreurs : le couple n'a pas été multiplié par $3$, et les
+          coefficients sont placés du mauvais côté du paramètre
+        correct: true
+      - id: B
+        text: >-
+          Une seule erreur : la mise à l'échelle manque, mais la forme générale
+          est correctement paramétrée
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-generale-mal-parametree
+        feedback: >
+          Le paramétrage est faux lui aussi : il faut $x = x_0 + bt$ et
+          $y = y_0 - at$, donc $x = x_0 + 4t$ et $y = y_0 - 11t$. Avec la version
+          de l'élève, $11(11t) + 4(-4t) = 121t - 16t = 105t$, qui ne s'annule que
+          pour $t = 0$ — la « famille » ne contient qu'un seul élément.
+      - id: C
+        text: >-
+          Une seule erreur : les coefficients sont mal placés, mais le couple
+          $(-1,\,3)$ convient tel quel pour un second membre égal à $3$
+        correct: false
+        misconception: mc.math.maths_arithmetique.solution-mise-a-echelle
+        feedback: >
+          $11\times(-1) + 4\times 3 = 1$, pas $3$. L'identité de Bézout donne une
+          solution pour le second membre $\mathrm{PGCD}(a,b)$ ; pour un second
+          membre $c$, il faut multiplier les deux coordonnées par $c/d$ — ici
+          par $3$, ce qui donne $(-3,\,9)$.
+      - id: D
+        text: >-
+          Aucune erreur, à condition de préciser que $11$ étant premier, le petit
+          théorème de Fermat garantit l'existence des solutions
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          Le petit théorème de Fermat porte sur les congruences de puissances
+          ($a^{p-1} \equiv 1 \pmod p$ si $p \nmid a$) et n'a rien à voir avec
+          l'existence de solutions d'une équation diophantienne. Le critère
+          pertinent est tout autre : $ax + by = c$ admet des solutions si et
+          seulement si $\mathrm{PGCD}(a,b)$ divise $c$.
+    correct_feedback: >
+      Deux erreurs. La solution particulière n'a pas été mise à l'échelle : il
+      fallait multiplier $(-1,\,3)$ par $3$, ce qui donne $(-3,\,9)$. Et les
+      coefficients du paramètre sont échangés : la forme générale est
+      $x = -3 + 4t$, $y = 9 - 11t$.
+    solution: |
+      **Erreur 1 — la mise à l'échelle.** L'identité de Bézout donne
+      $$11\times(-1) + 4\times 3 = 1$$
+      Pour un second membre $3$, on multiplie l'égalité entière par $3$ :
+      $$11\times(-3) + 4\times 9 = 3$$
+      d'où la solution particulière $(-3,\,9)$.
+
+      **Erreur 2 — le paramétrage.** La forme générale est
+      $x = x_0 + bt$, $y = y_0 - at$, avec les coefficients CROISÉS :
+      $$x = -3 + 4t, \qquad y = 9 - 11t, \qquad t \in \mathbb{Z}$$
+      Contrôle : $11(4t) + 4(-11t) = 44t - 44t = 0$. Avec la version de l'élève,
+      la variation vaut $105t$ et ne s'annule pas.
+
+      **Vérification finale**, pour $t = 1$ :
+      $11\times 1 + 4\times(-2) = 11 - 8 = 3$. ✓
+
+  # ── Ajoutés le 2026-09-27 (dette d'examen, vague B2 — R6b prend chair) ─────
+  # AR-28 est RETAGUÉ (R7 → R6b) : il teste directement le théorème que R6b
+  # enseigne (a^(p-1) mod p, condition p∤a), pas les équations diophantiennes
+  # — ses anciens tags [fermat, diophantienne, solution_generale] étaient un
+  # reliquat de lot, corrigés en [fermat, congruences, puissance]. AR-30 et
+  # AR-32, eux, RESTENT où ils étaient (R4, R8, inchangé) : Fermat n'y sert que
+  # de distracteur hors-sujet pour un item de Bézout/paramétrage — ils ne
+  # testent PAS le théorème lui-même, seulement la reconnaissance de son
+  # inapplicabilité à un problème différent (mise à l'échelle / paramétrage
+  # diophantien). Trois items neufs complètent le ramp de R6b, avec des
+  # nombres jamais vus ailleurs dans cette notion pour Fermat (ni ceux de la
+  # leçon — 7/143/11, p=17, p=11/a=22 — ni ceux du banc historique — 2969, 43,
+  # 47, 13) : AR-33 (p=19, réduction directe de l'exposant modulo p-1),
+  # AR-34 (p=29, choix de la bonne justification entre les deux formes du
+  # théorème et un critère hors-sujet), AR-35 (p=37, cas p∣a où la forme
+  # conditionnée échoue). `habilete` suit le triplet MATHS
+  # (application_directe / _non_explicite / synthese) tel qu'utilisé dans
+  # calcul-integral/items.yaml — absent des items AR-1..AR-32 (jamais
+  # rétrofité), introduit ici seulement pour les items neufs.
+  - id: AR-33
+    rung: "R6b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [fermat, congruences, puissance]
+    primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    stem: >
+      Quel est le reste de la division de $3^{200}$ par $19$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$9$"
+        correct: true
+      - id: B
+        text: "$16$, en réduisant l'exposant $200$ modulo $19$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          Le petit théorème de Fermat donne un cycle de longueur $p-1=18$, pas
+          $p=19$. En réduisant $200$ modulo $19$ (reste $10$), tu calcules
+          $3^{10} \equiv 16 \pmod{19}$ — un nombre qui n'a pas de raison de
+          coïncider avec $3^{200}$, puisque ce n'est pas la bonne période.
+      - id: C
+        text: "$1$, car $3^{18} \\equiv 1 \\pmod{19}$ et $200$ est un multiple de $18$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
+        feedback: >
+          $200$ n'est PAS un multiple de $18$ : $200 = 18 \times 11 + 2$,
+          reste $2$, pas $0$. Le facteur résiduel $3^2$ ne disparaît pas : il
+          reste $3^{200} \equiv 3^2 \pmod{19}$, pas $3^0=1$.
+      - id: D
+        text: "$18$ (c'est-à-dire $-1$)"
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          $18 \equiv -1 \pmod{19}$ n'est la conclusion d'aucune étape correcte
+          ici : ce n'est ni la valeur que donne Fermat ($1$, pas $-1$), ni un
+          reste intermédiaire de ce calcul.
+    correct_feedback: >
+      Exact. $19$ est premier et $19 \nmid 3$, donc $3^{18} \equiv 1 \pmod{19}$
+      (Fermat). Comme $200 = 18\times 11+2$, $3^{200} \equiv (3^{18})^{11}
+      \times 3^2 \equiv 1 \times 9 \equiv 9 \pmod{19}$.
+    solution: |
+      **L'outil.** $19$ est premier et $19 \nmid 3$ : le petit théorème de
+      Fermat donne $3^{18} \equiv 1 \pmod{19}$.
+
+      **Réduire l'exposant modulo $p-1=18$**, pas modulo $p=19$ :
+      $$200 = 18 \times 11 + 2$$
+
+      **Conclure.**
+      $$3^{200} = \left(3^{18}\right)^{11} \times 3^2 \equiv 1^{11}\times 3^2
+      \equiv 9 \pmod{19}$$
+      Le reste est $9$.
+
+  - id: AR-34
+    rung: "R6b"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [fermat, congruences, divisibilite]
+    primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    stem: >
+      On veut justifier que, pour tout entier $n$ — y compris ceux que $29$
+      divise —, $29$ divise $n^{29} - n$. Quelle affirmation le justifie
+      correctement ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          La forme sans condition du petit théorème de Fermat,
+          $a^{p} \equiv a \pmod p$ pour tout entier $a$, appliquée avec
+          $p=29$ et $a=n$, donne directement $n^{29} \equiv n \pmod{29}$
+        correct: true
+      - id: B
+        text: >-
+          La forme $a^{p-1} \equiv 1 \pmod p$, avec $p=29$, s'applique à
+          tout entier $n$ y compris ceux que $29$ divise, et donne
+          $n^{28} \equiv 1 \pmod{29}$, donc $n^{29} \equiv n$
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          Cette forme exige $p \nmid a$ : ce n'est pas un détail. Pour les $n$
+          que $29$ divise (exactement le cas que l'énoncé veut couvrir),
+          $n^{28} \equiv 0 \pmod{29}$, pas $1$. C'est précisément pour ce cas
+          que la forme sans condition existe.
+      - id: C
+        text: >-
+          Le petit théorème de Fermat s'écrit ici
+          $n^{p-1} \equiv n \pmod p$ avec $p=29$, soit $n^{28} \equiv n
+          \pmod{29}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          Les deux formes sont mélangées : c'est la forme SANS condition qui
+          conclut « $\equiv a$ », et elle porte l'exposant $p$, pas $p-1$.
+          L'écriture correcte est $n^{p} \equiv n \pmod p$, donc
+          $n^{29} \equiv n \pmod{29}$ — pas $n^{28} \equiv n$.
+      - id: D
+        text: >-
+          Il suffit de vérifier que la somme des chiffres de $n^{29}-n$ est un
+          multiple de $29$, comme le critère de divisibilité par $9$ le
+          ferait pour $9$
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          Le critère par somme des chiffres teste UNIQUEMENT la divisibilité
+          par $3$ ou par $9$ (conséquence de $10 \equiv 1 \pmod 9$) : il ne
+          dit rien de la divisibilité par $29$.
+    correct_feedback: >
+      Exact. $29$ est premier, et la forme sans condition du petit théorème
+      de Fermat, $a^p \equiv a \pmod p$ pour TOUT entier $a$ (y compris les
+      multiples de $p$), donne directement $n^{29} \equiv n \pmod{29}$, donc
+      $29 \mid (n^{29}-n)$, sans distinguer de cas.
+    solution: |
+      **Pourquoi la forme conditionnée ne suffit pas.** L'énoncé porte sur
+      TOUT entier $n$, y compris ceux que $29$ divise — exactement les $n$
+      que la forme $a^{p-1}\equiv1$ (qui exige $p\nmid a$) exclut par
+      hypothèse.
+
+      **La forme sans condition, seule adaptée ici.** Pour $p=29$ premier :
+      $$n^{29} \equiv n \pmod{29} \qquad \text{pour TOUT entier } n$$
+
+      **Conclusion.** $n^{29} \equiv n \pmod{29}$ signifie
+      $29 \mid (n^{29}-n)$, pour tout entier $n$, sans exception.
+
+  - id: AR-35
+    rung: "R6b"
+    habilete: application_non_explicite
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [fermat, congruences, condition]
+    primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    stem: >
+      Quel est le reste de la division de $111^{36}$ par $37$, sachant que
+      $111 = 3 \times 37$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$0$"
+        correct: true
+      - id: B
+        text: "$1$, par application directe du petit théorème de Fermat, $a^{p-1} \\equiv 1 \\pmod p$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          La forme $a^{p-1}\equiv1 \pmod p$ exige $p \nmid a$. Ici
+          $37 \mid 111$ : la condition échoue, et cette forme du théorème ne
+          s'applique tout simplement pas. Toute puissance de $111$ est
+          congrue à $0$ modulo $37$, jamais à $1$.
+      - id: C
+        text: "$36$ (c'est-à-dire $-1$)"
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          $-1$ est la valeur qu'on rencontre dans certains sujets juste AVANT
+          d'invoquer Fermat (une contradiction à exhiber), pas une conclusion
+          du théorème — et sans rapport ici, où $37 \mid 111$ rend la forme
+          $a^{p-1}\equiv1$ inapplicable de toute façon.
+      - id: D
+        text: "$37$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.reste-non-normalise
+        feedback: >
+          Un reste modulo $37$ appartient toujours à $\{0,1,\dots,36\}$ : il
+          ne peut jamais valoir $37$ lui-même.
+    correct_feedback: >
+      Exact. $111 = 3\times37$ est un multiple de $37$, donc
+      $111 \equiv 0 \pmod{37}$, et $111^{36} \equiv 0^{36} \equiv 0
+      \pmod{37}$. La condition $p\nmid a$ du petit théorème de Fermat échoue
+      ici : on n'a ni besoin, ni le droit, d'invoquer $a^{p-1}\equiv1$.
+    solution: |
+      **Le piège.** $37$ est bien premier, mais la condition $p \nmid a$ du
+      petit théorème de Fermat échoue : $111 = 3\times37$ est un multiple de
+      $37$.
+
+      **Le calcul direct, sans Fermat.** $111 \equiv 0 \pmod{37}$, donc
+      $$111^{36} \equiv 0^{36} \equiv 0 \pmod{37}$$
+
+      **La leçon.** La forme $a^{p-1}\equiv1\pmod p$ ne s'applique QUE quand
+      $p\nmid a$ ; ici $p\mid a$, et c'est la forme sans condition,
+      $a^p\equiv a$, qui s'appliquerait si l'exposant demandé était $37$ (elle
+      donnerait alors, sans surprise, $111^{37}\equiv111\equiv0\pmod{37}$).
+
+  # ── Wave-1 fix (pédagogie I-6), ajoutés le 2026-09-27 ───────────────────────
+  # AR-28/33/34/35 s'arrêtaient à réduire une puissance ou choisir la bonne
+  # forme du théorème — aucun n'utilisait Fermat comme UNE ÉTAPE À L'INTÉRIEUR
+  # D'UNE CONTRADICTION ou D'UNE EXTRACTION, alors que 9 des 10 sujets du banc
+  # le font (bank.yaml:299, la confrontation à deux valeurs de $x^{12}$ ;
+  # bank.yaml:678, l'extraction d'un inverse depuis $x^{42}\equiv1$ combiné à
+  # $x^{41}\equiv4$ ; bank.yaml:515, la version à deux modules). Deux items
+  # neufs referment cet écart, avec des nombres jamais vus ailleurs dans cette
+  # notion pour Fermat (ni $13$, $43$, $47$, $2969$ du banc, ni $11$, $17$,
+  # $19$, $29$, $37$ des items AR-28..35) : AR-36 prend $p=23$, AR-37 prend
+  # $p=41$.
+  #
+  # AR-36 (`habilete: synthese`, conformément à la consigne : une preuve par
+  # l'absurde à deux valeurs indépendantes du même $x^{22}$ combine la
+  # structure logique de la contradiction ET le théorème, ce qui dépasse
+  # l'application, directe ou non, du théorème seul) couvre les trois modèles
+  # d'erreur demandés — exposant $p$ au lieu de $p-1$ (choix A), condition
+  # $p\nmid a$ rejouée à tort comme manquante alors qu'elle est déjà donnée
+  # (choix B), et confusion sur ce qu'une SEULE congruence de Fermat prouve à
+  # elle seule (choix D — la lecture retenue de « conclure "pas de solution"
+  # depuis une seule congruence, sans la contradiction »). Les trois sont
+  # honnêtement rattachés à `fermat-condition-ou-exposant`, la seule famille
+  # de l'inventaire qui couvre les usages fautifs du théorème dans ce type de
+  # preuve ; aucune des 16 familles déclarées ne nomme spécifiquement l'erreur
+  # de structure logique « une seule valeur suffit » — à signaler à l'architecte
+  # pédagogique si ce distracteur se répète ailleurs.
+  #
+  # AR-37 (`habilete: application_non_explicite` : le geste — écrire
+  # $x^{p-1}=x^{k}\times x^{p-1-k}$ pour faire apparaître Fermat, PUIS inverser
+  # modulo $p$ — n'est démontré nulle part dans R6b, contrairement à la
+  # réduction d'exposant d'AR-33 ; classer en `application_directe` aurait
+  # sous-compté l'écart avec l'exemple travaillé de la leçon) ajoute un
+  # quatrième distracteur `congruence-puissance-mal-reduite` (élever les deux
+  # membres à une puissance au lieu de multiplier).
+  #
+  # Mix `habilete` sur les 5 items R6b tagués (AR-33..37) : 1 `application_
+  # directe` / 3 `application_non_explicite` / 1 `synthese`, soit 20/60/20 —
+  # ne colle pas à la cible SM 40/40/20 (`calcul-integral/spec-extension.md`
+  # §1.3) ; échantillon de 5 items trop petit pour forcer ce ratio sans
+  # fausser un tag. Noté honnêtement plutôt que corrigé en douce.
+  - id: AR-36
+    rung: "R6b"
+    habilete: synthese
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [fermat, congruences, contradiction]
+    primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    stem: >
+      On suppose qu'un couple $(x,y) \in \mathbb{Z}^2$ vérifie une équation
+      $(D)$, où $23$ est premier et où l'on a par ailleurs établi que
+      $23 \nmid x$. Le petit théorème de Fermat donne alors
+      $x^{22} \equiv 1 \pmod{23}$. En réduisant $(D)$ modulo $23$, on obtient
+      de son côté directement $x^{22} \equiv 6 \pmod{23}$. Que peut-on en
+      conclure ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          Impossible à comparer : Fermat donne $x^{23} \equiv 1 \pmod{23}$
+          (exposant $p$), pas $x^{22}$, donc les deux résultats ne portent pas
+          sur le même nombre
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          L'exposant du petit théorème de Fermat est $p-1$, pas $p$ : ici
+          $p-1=22$, exactement l'exposant qui apparaît des deux côtés. Les
+          deux congruences portent bien sur le même nombre $x^{22}$, et
+          peuvent donc être confrontées.
+      - id: B
+        text: >-
+          On ne peut rien conclure : il faudrait d'abord vérifier que
+          $23 \nmid x$, ce qui n'a pas été fait ici
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          Cette vérification est déjà donnée dans l'énoncé ($23 \nmid x$) :
+          ce n'est pas ce qui manque. La condition est satisfaite ; le
+          blocage vient d'ailleurs, de la confrontation des deux valeurs
+          trouvées pour $x^{22}$.
+      - id: C
+        text: >-
+          Ces deux congruences visent le même nombre $x^{22}$ : on aurait
+          $1 \equiv 6 \pmod{23}$, soit $23 \mid 5$, ce qui est faux — donc
+          $(D)$ n'a aucune solution dans $\mathbb{Z}^2$
+        correct: true
+      - id: D
+        text: >-
+          Oui, l'absence de solution découle déjà de $x^{22} \equiv 1
+          \pmod{23}$ seul (Fermat), sans qu'il soit besoin de la confronter à
+          $(D)$
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          $x^{22} \equiv 1 \pmod{23}$, prise seule, n'a rien d'impossible :
+          c'est une congruence tout à fait ordinaire. La contradiction
+          n'apparaît qu'en la confrontant à la SECONDE valeur, $6$, tirée
+          indépendamment de $(D)$ : c'est leur désaccord qui est impossible,
+          pas l'une des deux congruences isolément.
+    correct_feedback: >
+      Exact. Fermat et $(D)$ donnent chacun une valeur pour le même nombre
+      $x^{22}$ modulo $23$ : $1$ et $6$. Si un couple $(x,y)$ solution
+      existait, on aurait $1 \equiv 6 \pmod{23}$, donc $23 \mid 5$ —
+      impossible. L'hypothèse de départ (l'existence d'une solution) est
+      donc fausse.
+    solution: |
+      **La structure d'une preuve par l'absurde.** On suppose qu'un couple
+      $(x,y)$ solution de $(D)$ existe, et on en tire DEUX valeurs
+      indépendantes pour le même nombre $x^{22}$ modulo $23$ :
+
+      - Fermat ($23$ premier, $23\nmid x$) : $x^{22} \equiv 1 \pmod{23}$.
+      - $(D)$ elle-même, réduite modulo $23$ : $x^{22} \equiv 6 \pmod{23}$.
+
+      **Confronter les deux.** Ces deux congruences portent sur LE MÊME
+      nombre : elles doivent donc être compatibles.
+      $$1 \equiv 6 \pmod{23} \quad\Longrightarrow\quad 23 \mid (6-1) = 5$$
+
+      **La contradiction.** $23 > 5$ ne peut pas diviser $5$ : c'est
+      impossible. L'hypothèse de départ — l'existence d'un couple $(x,y)$
+      solution de $(D)$ — est donc fausse. $(D)$ n'admet aucune solution dans
+      $\mathbb{Z}^2$.
+
+      **Ce qui fait tenir la preuve.** Une seule des deux congruences, prise
+      isolément, ne prouve rien : $x^{22}\equiv1$ et $x^{22}\equiv6$ sont
+      chacune, séparément, des congruences banales. C'est leur confrontation
+      — deux valeurs distinctes pour le même nombre — qui produit
+      l'impossibilité.
+
+  - id: AR-37
+    rung: "R6b"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [fermat, congruences, inverse]
+    primary_misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+    stem: >
+      On sait que $41$ est premier, que $41 \nmid x$, et que
+      $x^{39} \equiv 7 \pmod{41}$. En combinant cette congruence avec le
+      petit théorème de Fermat, que peut-on en déduire pour $x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          On ne peut isoler $x$ : Fermat donne $x^{41}\equiv1\pmod{41}$
+          (exposant $p$), ce qui, combiné à $x^{39}\equiv7$, isole $x^{2}$,
+          pas $x$ seul
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          L'exposant de Fermat est $p-1=40$, pas $p=41$. Avec le bon
+          exposant, $x^{40}=x^{39}\times x$ isole directement $x$, pas $x^2$ :
+          c'est précisément pour cette raison que le petit théorème de Fermat
+          s'écrit avec l'exposant $p-1$.
+      - id: B
+        text: >-
+          $x \equiv 6 \pmod{41}$ : $x^{40}=x\times x^{39}\equiv 7x \pmod{41}$,
+          et Fermat donne $x^{40}\equiv1\pmod{41}$, d'où $7x\equiv1$ ; comme
+          $7\times6=42\equiv1\pmod{41}$, $x\equiv6\pmod{41}$
+        correct: true
+      - id: C
+        text: >-
+          $x^{40}\equiv1\pmod{41}$ reste vraie que $41$ divise $x$ ou non ;
+          il n'était donc pas utile de s'assurer que $41\nmid x$
+        correct: false
+        misconception: mc.math.maths_arithmetique.fermat-condition-ou-exposant
+        feedback: >
+          Si $41 \mid x$, on aurait $x^{40}\equiv0$, pas $1$ : la condition
+          $41\nmid x$ est indispensable à cette forme du théorème. Elle est
+          de toute façon vérifiée ici : $x^{39}\equiv7\not\equiv0$ montre
+          déjà que $41\nmid x$.
+      - id: D
+        text: >-
+          $x \equiv 7^{39} \pmod{41}$, obtenue en élevant les deux membres de
+          $x^{39}\equiv7$ à la puissance $39$ pour isoler $x$
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-puissance-mal-reduite
+        feedback: >
+          Élever les deux membres à la puissance $39$ donne
+          $x^{39\times39} \equiv 7^{39} \pmod{41}$, pas $x$ : cette opération
+          n'isole rien. C'est en multipliant par $x$ (pour atteindre
+          l'exposant $40$ de Fermat) qu'on isole $x$, pas en élevant à une
+          puissance supplémentaire.
+    correct_feedback: >
+      Exact. $x^{40} = x \times x^{39} \equiv 7x \pmod{41}$, et Fermat donne
+      $x^{40}\equiv1\pmod{41}$ (car $41$ premier, $41\nmid x$), donc
+      $7x\equiv1\pmod{41}$. Comme $7\times6=42\equiv1\pmod{41}$, $6$ est
+      l'inverse de $7$ modulo $41$, d'où $x\equiv6\pmod{41}$.
+    solution: |
+      **Le pont vers Fermat.** On connaît $x^{39} \equiv 7 \pmod{41}$, et
+      Fermat porte sur l'exposant $p-1=40$. Comme $40 = 39+1$ :
+      $$x^{40} = x^{39} \times x \equiv 7x \pmod{41}$$
+
+      **Fermat.** $41$ est premier et $41\nmid x$ (déjà garanti : si
+      $41\mid x$, on aurait $x^{39}\equiv0$, pas $7$), donc :
+      $$x^{40} \equiv 1 \pmod{41}$$
+
+      **Combiner.** Les deux expressions de $x^{40}$ donnent :
+      $$7x \equiv 1 \pmod{41}$$
+
+      **Isoler $x$ : trouver l'inverse de $7$ modulo $41$.** On cherche $k$
+      avec $7k\equiv1\pmod{41}$ :
+      $$7\times 6 = 42 = 41+1 \equiv 1 \pmod{41}$$
+      donc $6$ est cet inverse.
+
+      **Conclure.** En multipliant $7x\equiv1$ par $6$ :
+      $$6\times7x \equiv 6 \pmod{41} \quad\Longrightarrow\quad x \equiv 6
+      \pmod{41}$$
+
+  # ── Dette d'examen, § arithmetique (2026-09-27) — GAP-A « Inverse modulo n,
+  # solving a·x ≡ b [n], systems of congruences » (docs/audits/dette-examen/
+  # maths.md:33-49). Aucun item n'existait pour ce geste ; aucune des seize
+  # familles déclarées ne nomme honnêtement ses erreurs propres (l'audit le dit
+  # lui-même : aucune rung ne lit une identité de Bézout comme « u est
+  # l'inverse de a modulo n »), d'où la famille neuve
+  # `congruence-lineaire-mal-resolue` déclarée plus haut dans l'inventaire.
+  # Trois items, nombres propres à ce lot (ni 2969, 43, 47, 13 du banc, ni
+  # 7/26 de l'exemple de l'audit, ni aucun nombre déjà utilisé ailleurs dans ce
+  # fichier pour Bézout/Gauss) : AR-38 (application directe), AR-39
+  # (variation fraîche — mêmes gestes, autre couple), AR-40 (combinaison de
+  # deux congruences à modules premiers entre eux, 18 et 7, via Gauss — le
+  # second sous-geste du même GAP-A, « systems of congruences »). Plancher
+  # de 3 items atteint exactement, sur trois contextes distincts plutôt que
+  # trois copies, comme demandé pour tout id neuf.
+  #
+  # WAVE F, relecture du 2026-09-28 (§35/§36 de DECISIONS-EN-ATTENTE.md) :
+  # trois défauts corrigés, sans toucher au plancher (toujours 3 items).
+  # (1) AR-38 utilisait $a=5$, $n=18$ et concluait $x\equiv5$ — exactement
+  # le couple ET la valeur de l'exemple travaillé que le content-author
+  # ajoute à la leçon ($5x\equiv8\pmod{17}$, inverse $7$, $x\equiv5$) : un
+  # élève qui reconnaît juste « $a=5$ donne $5$ » répondait juste sans
+  # comprendre le geste. Couple changé pour $11\times2-7\times3=1$,
+  # $11x\equiv4\pmod7$ (clé $x\equiv1\pmod7$) — un calcul entièrement
+  # différent, qui réutilise le modulus $7$ déjà présent dans AR-40 (un
+  # CONTEXTE frais : une congruence simple, pas une copie du système
+  # combiné). (2) AR-38/39/40 se laissaient tous les trois retrouver par
+  # substitution directe (tester chaque option dans la congruence de
+  # départ). AR-39 ne demande plus la classe solution mais LE GESTE : par
+  # quel entier multiplier les deux membres — une question dont les quatre
+  # réponses sont des ENTIERS BRUTS ($7$, $3$, $13$, $11$), non vérifiable
+  # en substituant une classe candidate dans $7x\equiv11\pmod{30}$. (3) La
+  # stem d'AR-40 nommait « modulo $126$ » avant la question, ce qui
+  # écartait à vue les options B (deux classes séparées) et D (modulus
+  # $25=18+7$) sans qu'aucun calcul ne soit nécessaire ; la mention est
+  # retirée, et le distracteur D redevient un choix vivant.
+  - id: AR-38
+    rung: "R5"
+    habilete: application_directe
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [bezout, congruences, inverse]
+    primary_misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+    stem: >
+      On sait que $11 \times 2 - 7 \times 3 = 1$. Quelle est la classe
+      solution de $11x \equiv 4 \pmod{7}$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$x \\equiv 2 \\pmod{7}$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          $2$ vient de multiplier $4$ par $-3$, le coefficient de $7$
+          dans la relation ($-3\times4=-12\equiv2\pmod7$) — mais $-3$
+          est l'inverse de $7$ modulo $11$, pas celui de $11$ modulo $7$.
+          C'est le coefficient de $11$, soit $2$ (au sens propre, pas
+          $-3$), qu'il fallait utiliser.
+      - id: B
+        text: "$x \\equiv 1 \\pmod{7}$"
+        correct: true
+      - id: C
+        text: "$x \\equiv 1 \\pmod{11}$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          La valeur $1$ est la bonne, mais le modulus ne l'est pas : la
+          congruence de départ est modulo $7$, pas modulo $11$ (le
+          coefficient de $x$). La classe solution garde toujours le
+          modulus de la congruence résolue.
+      - id: D
+        text: "$x \\equiv 5 \\pmod{7}$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          $5$ vient de multiplier $4$ par $3$ (le coefficient de $7$
+          dans la relation, sans son signe) : $3\times4=12\equiv5\pmod7$.
+          Ce $3$, avec ou sans signe, reste le coefficient de $7$ — ce
+          n'est jamais lui qui isole $x$ dans une congruence modulo $7$ ;
+          il faut le coefficient de $11$, soit $2$.
+    correct_feedback: >
+      Exact. En lisant $11\times2-7\times3=1$ modulo $7$, il reste
+      $11\times2\equiv1\pmod7$ : $2$ est l'inverse de $11$ modulo $7$.
+      En multipliant $11x\equiv4\pmod7$ par $2$ : $x\equiv2\times4=8
+      \equiv1\pmod7$.
+    solution: |
+      **Lire la relation modulo $7$.** $11\times2-7\times3=1$, et
+      $7\times3\equiv0\pmod7$, donc $11\times2\equiv1\pmod7$ : $2$
+      est l'inverse de $11$ modulo $7$ (pas $-3$, qui est l'inverse de $7$
+      modulo $11$).
+
+      **Multiplier les deux membres de $11x\equiv4\pmod7$ par cet
+      inverse.**
+      $$2\times11x \equiv 2\times4 \pmod7$$
+      $$x \equiv 8 \pmod7$$
+
+      **Réduire $8$ modulo $7$.** $8 = 7\times1+1$, donc
+      $$x \equiv 1 \pmod7$$
+
+      **Vérification directe :** $11\times1=11=7+4\equiv4\pmod7$. ✓
+
+  - id: AR-39
+    rung: "R5"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [bezout, congruences, inverse]
+    primary_misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+    stem: >
+      Pour résoudre $7x \equiv 11 \pmod{30}$ à partir de
+      $7 \times 13 - 30 \times 3 = 1$, par quel entier faut-il multiplier
+      les deux membres de la congruence ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$7$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          Multiplier par $7$ (le coefficient de $x$ lui-même) donne
+          $7\times7=49\equiv19\pmod{30}$ à gauche — pas $1$. Ce n'est pas
+          ainsi qu'on isole $x$ : il faut multiplier par l'INVERSE de $7$
+          modulo $30$, qui est $13$, pas par $7$ lui-même.
+      - id: B
+        text: "$3$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          $3$ est le coefficient de $30$ dans la relation
+          $7\times13-30\times3=1$ : lu modulo $7$, il donnerait l'inverse
+          de $30$ modulo $7$, pas celui de $7$ modulo $30$. C'est le
+          coefficient de $7$, soit $13$, qu'il faut utiliser.
+      - id: C
+        text: "$13$"
+        correct: true
+      - id: D
+        text: "$11$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          $11$ est la constante du membre de droite de la congruence, pas
+          un multiplicateur à appliquer : $7\times11=77\equiv17\pmod{30}$,
+          différent de $1$, donc multiplier par $11$ ne fait rien pour
+          isoler $x$.
+    correct_feedback: >
+      Exact. Modulo $30$, $7\times13-30\times3=1$ donne
+      $7\times13\equiv1\pmod{30}$ : multiplier les deux membres par $13$
+      élimine le $7$ à gauche, quelle que soit la valeur de $x$.
+    solution: |
+      **Lire la relation modulo $30$.** $7\times13-30\times3=1$, et
+      $30\times3\equiv0\pmod{30}$, donc $7\times13\equiv1\pmod{30}$ :
+      $13$ est l'inverse de $7$ modulo $30$.
+
+      **Pourquoi multiplier par cet inverse règle la congruence.** En
+      multipliant les deux membres de $7x\equiv11\pmod{30}$ par $13$, le
+      coefficient $7$ devient $7\times13\equiv1\pmod{30}$ à gauche : $x$
+      se retrouve seul, quelle que soit sa valeur. C'est ce rôle — annuler
+      le coefficient de $x$ — qui définit le bon multiplicateur, pas sa
+      taille ni sa position dans la relation.
+
+      **Pourquoi pas les trois autres.** Multiplier par $7$ (lui-même) ne
+      fait qu'élever le coefficient au carré modulo $30$
+      ($7\times7=49\equiv19$), qui ne vaut pas $1$. Multiplier par $3$ (le
+      coefficient de $30$ dans la relation) revient à utiliser l'inverse
+      de $30$ modulo $7$, pas celui de $7$ modulo $30$. Multiplier par
+      $11$ (la constante du membre de droite) ne joue aucun rôle dans
+      l'isolation de $x$ : c'est une donnée du problème, pas un outil pour
+      le résoudre.
+
+      **Une fois le multiplicateur trouvé, la classe suit** :
+      $x\equiv13\times11=143\equiv23\pmod{30}$ (vérification :
+      $7\times23=161=30\times5+11\equiv11\pmod{30}$) — mais c'est le choix
+      du multiplicateur $13$, pas ce calcul final, que cet item mesure.
+
+  - id: AR-40
+    rung: "R5"
+    habilete: synthese
+    difficulty_level: 5
+    skill_code: maths_arithmetique
+    tags: [bezout, congruences, gauss, systemes_congruences]
+    primary_misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+    stem: >
+      On sait que $x \equiv 5 \pmod{18}$ et $x \equiv 2 \pmod{7}$. Comme $18$
+      et $7$ sont premiers entre eux, quelle est la classe de $x$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$x \\equiv 59 \\pmod{126}$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          Le modulus $126$ est le bon, mais pas la valeur : $59$ vient
+          d'une inversion manquée pendant la combinaison (le mauvais
+          coefficient de Bézout de $4$ et $7$ utilisé pour isoler le
+          paramètre). Vérifie : $59\equiv5\pmod{18}$ convient, mais
+          $59=56+3\equiv3\pmod7$, pas $2$.
+      - id: B
+        text: "$x \\equiv 5 \\pmod{18}$ et $x \\equiv 2 \\pmod{7}$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          Une classe unique existe : puisque $18$ et $7$ sont premiers
+          entre eux, le théorème de Gauss garantit qu'une seule classe
+          modulo $18\times7=126$ vérifie les deux congruences à la fois —
+          ce n'est pas deux réponses séparées qu'il faut donner, mais une
+          seule, plus fine.
+      - id: C
+        text: "$x \\equiv 23 \\pmod{126}$"
+        correct: true
+      - id: D
+        text: "$x \\equiv 23 \\pmod{25}$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.congruence-lineaire-mal-resolue
+        feedback: >
+          La valeur $23$ est la bonne, mais $25=18+7$ n'est pas le modulus
+          qui convient : deux congruences à modules premiers entre eux se
+          combinent en une classe modulo leur PRODUIT $18\times7=126$,
+          jamais modulo leur somme.
+    correct_feedback: >
+      Exact. En écrivant $x=5+18k$ et en reportant dans $x\equiv2\pmod7$,
+      on trouve $k\equiv1\pmod7$, d'où $x=5+18=23$ : la classe
+      $x\equiv23\pmod{126}$ vérifie bien les deux congruences de départ.
+    solution: |
+      **Poser le paramètre.** $x\equiv5\pmod{18}$ s'écrit $x=5+18k$, pour
+      un entier $k$.
+
+      **Reporter dans la seconde congruence.** $5+18k\equiv2\pmod7$. Comme
+      $18\equiv4\pmod7$ :
+      $$4k \equiv -3 \equiv 4 \pmod 7$$
+      L'inverse de $4$ modulo $7$ est $2$ (car $4\times2=8\equiv1\pmod7$).
+      En multipliant par $2$ :
+      $$k \equiv 8 \equiv 1 \pmod 7$$
+
+      **Reconstituer $x$.** Avec $k=1$ (le plus petit représentant) :
+      $$x = 5 + 18\times1 = 23$$
+
+      **Pourquoi la classe est modulo $126$, pas modulo $18$ ni modulo $7$
+      séparément.** $18$ et $7$ étant premiers entre eux, le théorème de
+      Gauss assure que la classe combinée est déterminée de façon unique
+      modulo leur produit $18\times7=126$ — jamais modulo leur somme $25$,
+      et jamais comme deux classes distinctes.
+
+      **Vérification :** $23=18+5\equiv5\pmod{18}$, et $23=21+2\equiv2
+      \pmod7$. ✓
+
+  # ── Rung R7b — les systèmes de numération (ajoutés le 2026-10-20) ──────────
+  # Spec : maths-arithmetique-numeration.md (supprimé le 2026-10-22) §9,
+  # révisée le 2026-10-20 contre deux critiques. Douze items à la livraison,
+  # AR-41 à AR-52 ; quatorze depuis la vague 1 des critiques du chapitre
+  # construit (numeration-build-pedagogie.md (supprimé le 2026-10-22) et
+  # numeration-build-fidelite.md, même jour) : AR-53 et AR-54. Tous en R7b.
+  # Aucun item hors R7b n'est re-tagué, renuméroté ni déplacé. AR-53 et AR-54
+  # sont simplement les deux ids libres suivants — PAS les étiquettes de
+  # brouillon homonymes du tableau de traçabilité de la spec (où « AR-53 » est
+  # l'ancien nom d'AR-51, et « AR-54 » un item coupé).
+  #
+  # TAILLE : 12 à la livraison, pas 15 — défaut du propriétaire
+  # (DECISIONS-EN-ATTENTE.md §37, « un lot au plancher ») : 0 des 10 sujets SM
+  # vérifiés de bank.yaml ne porte sur une écriture en base. L'effort libéré est
+  # allé à la capacité « utiliser les écritures en base », sous la forme que le
+  # cadre décrit : trois QCM (AR-50, AR-51, AR-52) et l'exercice attempt-first
+  # r-numeration (exercises.yaml), quatre questions dont une conceptuelle
+  # terminale. La vague 1 ajoute deux items, chacun pour une raison nommée :
+  #   - AR-53 (pédagogie 13) : AR-48 est RETIRÉ de l'affichage par la règle du
+  #     clone (voir PLANCHER), si bien que `numeration-retenue-a-dix` n'avait
+  #     que deux items RENDUS. AR-53 est une ADDITION en base 8 dont l'erreur de
+  #     seuil donne une écriture légale, 601 en base 8 — le cas que la leçon
+  #     affirme sans le montrer (« l'erreur devient invisible »).
+  #   - AR-54 (fidélité S1) : une opération ENTRE bases — deux opérandes dans
+  #     deux bases, résultat demandé dans une troisième, par la base 10 —, la
+  #     forme que la source D de
+  #     verification-numeration-2026-09-28.md (supprimé le 2026-10-22) atteste
+  #     littéralement. Leurre principal : l'addition chiffre à chiffre
+  #     par-dessus deux bases (`numeration-ecriture-prise-pour-le-nombre`).
+  #
+  # VAGUE 1, LES AUTRES RETOUCHES (2026-10-20) :
+  #   - AR-51 RE-HABILLÉ (pédagogie 8). Aucune CLÉ du banc n'exigeait le
+  #     critère par b+1 : il n'apparaissait qu'en leurre. La clé d'AR-51
+  #     l'exige désormais — reste modulo 10 = b+1 de 581 en base 9 (= 478). La
+  #     base 9 est gardée, ce qui punit encore le transport de la table de la
+  #     base 7 de la leçon ; la somme simple reste un leurre. Trois chiffres
+  #     exprès : la somme alternée y vaut la même chose qu'on parte des unités
+  #     ou de la tête, donc le leurre « départ par la tête » n'existe pas, et
+  #     chaque leurre a UN modèle de l'inventaire — somme simple (4), chiffre
+  #     des unités (1), reste négatif rendu par son opposé (2,
+  #     `reste-non-normalise`). Un chemin rare atteint aussi 2 : la somme
+  #     alternée commencée par un signe moins aux unités (−1+8−5) ; il n'est
+  #     pas tagué, aucune famille déclarée ne le décrit. Les chemins « bon
+  #     critère, module de la base 9 »
+  #     (somme 14, soit 6 modulo 8 ; alternée −2, soit 6 modulo 8 ou 7 modulo
+  #     9) ne tombent sur aucune option. Familles visées inchangées (critère,
+  #     reste non normalisé) ; `habilete` et niveau inchangés
+  #     (application_directe, 3) : c'est le geste de la version b−1, sur
+  #     l'autre module. AR-52 garde la clé par b−1 et le leurre alterné : les
+  #     deux critères sont désormais chacun une clé et chacun un leurre.
+  #   - AR-47, AR-48 (pédagogie 9) : le retour du leurre « restes lus dans
+  #     l'ordre de sortie » imprime l'écriture juste à côté de la fausse, comme
+  #     le fait le point d'arrêt cp-r7b-retenue.
+  #   - AR-52 (pédagogie 10) : chaîne symbolique sans espace fine, 3x4 en base
+  #     9 écrit \overline{3x4}_{(9)} — convention commune avec la leçon et avec
+  #     r-numeration (\overline{xyx}_{(7)}).
+  #
+  # MIX `habilete`, le réel imprimé à côté de la cible SM (40/40/20) :
+  #   LOT R7b (14 items) : application_directe 9/14 ≈ 64 % ·
+  #   application_non_explicite 4/14 ≈ 29 % · synthese 1/14 ≈ 7 %. NON forcé.
+  #   Raison structurelle : onze des quatorze items servent « écrire » et
+  #   « opérer / comparer », gestes de niveau 1 une fois la prose faite ; seule
+  #   la capacité « utiliser » porte naturellement les niveaux 2-3, et la charge
+  #   de niveau 3 est portée par r-numeration et par les trois points d'arrêt en
+  #   `raisonnement`. Forcer 40/40/20 sur quatorze items serait refaire le geste
+  #   que ce fichier s'est déjà reproché plus haut (« échantillon trop petit
+  #   pour forcer ce ratio sans fausser un tag »).
+  #   NOTION : `habilete` n'existe que sur AR-33 et suivants (champ opt-in).
+  #   Deux chiffres se calculent donc, et aucun n'est « le mix de la notion »
+  #   (ADR 0036 : un total opt-in est un plancher, pas une somme) :
+  #     • la SOMME sur l'ensemble tagué, 22 items (AR-33 à AR-54) :
+  #       11/8/3 ≈ 50/36/14 % — AR-33…AR-40 : 2/4/2 ; AR-41…AR-54 : 9/4/1 ;
+  #     • le PLANCHER sur les 54 items : au moins 11 application_directe, au
+  #       moins 8 application_non_explicite, au moins 3 synthese — les 32
+  #       items AR-1 à AR-32, sans tag, peuvent relever de n'importe lequel.
+  #   Commande : grep -c '^    habilete: synthese' items.yaml (et de même
+  #   pour les deux autres valeurs). Le déficit en non_explicite et en
+  #   synthese se rembourse dans un PROCHAIN lot d'items neufs, jamais en
+  #   re-taguant ceux-ci.
+  #
+  # PLANCHER : `numeration-retenue-a-dix` compte QUATRE items de banc (AR-47,
+  # AR-48, AR-49, AR-53), marge 1 au banc. Mais le point d'arrêt cp-r7b-retenue
+  # déclare `item_source: clone_of_AR-48`, ce qui RETIRE AR-48 du bloc d'items
+  # du chapitre à l'affichage (NotionPageView.tsx, par buildCheckpointCloneIds
+  # d'ItemsSection.tsx) : l'élève en rencontre TROIS — AR-47, AR-49, AR-53 —,
+  # et le modèle apprenant ne recevra jamais de réponse à AR-48. Le compte
+  # RENDU est donc exactement au plancher ; avant AR-53, il était à deux, sous
+  # un compte de banc qui affichait 3.
+  #
+  # ORDRE : ChapterQuestions.tsx rend les items d'une rung DANS L'ORDRE DU
+  # FICHIER — aucun tri par `difficulty_level` n'existe à l'affichage (la
+  # version précédente de ce commentaire en promettait un, qui n'a jamais été
+  # écrit). L'ordre se règle donc ici, en déplaçant les items sans les
+  # renuméroter : les ids ne se suivent plus. Trois blocs, un par capacité du
+  # cadre, chacun en difficulté croissante et clos sur son item le plus dur ;
+  # à niveau égal, l'ordre de la leçon (opérer avant comparer) :
+  #   2.1.4 écrire / revenir    AR-41 (2) · AR-42 (3) · AR-43 (3)
+  #   2.1.5 opérer / comparer   AR-47 (2) · AR-48 (3, retiré à l'affichage) ·
+  #                             AR-53 (3) · AR-44 (3) · AR-49 (4) · AR-54 (4) ·
+  #                             AR-45 (4) · AR-46 (5)
+  #   2.1.6 utiliser            AR-51 (3) · AR-52 (4) · AR-50 (5)
+  # Série rendue : 2,3,3 | 2,3,3,4,4,4,5 | 3,4,5 — la difficulté ne redescend
+  # qu'au changement de capacité.
+  #
+  # CHIFFRE HORS BASE (spec §9.1) : jamais dans un distracteur dont le modèle
+  # est autre chose que le report ou la borne des chiffres. AR-48 (et le point
+  # d'arrêt) sont des MULTIPLICATIONS exprès : l'erreur de seuil y donne une
+  # écriture bien formée, donc non barrable à vue. AR-53 fait de même pour
+  # l'ADDITION : ses colonnes atteignent 11 et 10, et l'erreur de seuil y écrit
+  # des chiffres légaux. AR-47 garde, une seule fois et volontairement, la
+  # version barrable (476 en base 5) : la barrer suppose de tenir la borne
+  # a_i ≤ 4, ce qui est du savoir et non une fuite. Les racines hors base
+  # d'AR-50 et d'AR-52 SONT le modèle visé (borne oubliée). AR-54 : aucune
+  # option ne porte de chiffre hors de la base 8, la somme chiffre à chiffre
+  # comprise (ses colonnes restent sous 8).
+  #
+  # NON-DUPLICATION : aucun item ne rejoue un exemple travaillé de la rung
+  # (2025 en base 7, 100 en base 6, 3204 en base 5, 356+243 et 34×5 en base 7,
+  # la paire xy en bases 7 et 5, 5622 et 3405 en base 7) ; aucun nombre n'est
+  # repris d'une annale de bank.yaml. AR-53, AR-54 et le nouvel habillage
+  # d'AR-51 ont été tirés à la machine contre tous les entiers de la prose
+  # R7b, de ses trois points d'arrêt, d'AR-41…AR-52, de r-numeration et de
+  # bank.yaml : aucun opérande, aucune valeur, aucune option n'y figure. Les
+  # seules rencontres sont des poids de base (64, 81), de petites sommes de
+  # colonne et trois quotients intermédiaires (17, 47, 53), sans chemin de
+  # mémorisation. AR-54 évite aussi, jusque dans ses divisions, les nombres
+  # réservés le 2026-10-20 à l'exemple travaillé d'opération entre bases de la
+  # leçon (213 en base 5, 36 en base 8, 58, 30, 88, 154 en base 7).
+  #
+  # TROIS PRÉCISIONS de rédaction par rapport aux tableaux de la spec, sans
+  # changer aucune clé ni aucun nombre : (1) AR-42, le distracteur « 1 » est
+  # rattaché à la variante à DEMI corrigée de N1 (dernier reste en tête, puis
+  # ordre de sortie : 6, 5, 1), qui le produit exactement ; (2) AR-46, les
+  # options sont réduites à leurs conclusions (aucune ne confesse son
+  # raisonnement, aucun mot absolu), et le tronc ne présuppose plus
+  # l'existence de N ; (3) AR-50, « N = 31 » passe de l'option clé au retour,
+  # pour que la clé ne soit pas la seule à porter une information de plus.
+  # ── Capacité 2.1.4 — écrire un entier dans une base, revenir à la base 10 ──
+  - id: AR-41
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_arithmetique
+    tags: [numeration, base, division_euclidienne]
+    primary_misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+    stem: >
+      On écrit $N = 234$ en base $8$ par divisions successives :
+      $234 = 8\times29+2$, puis $29 = 8\times3+5$, puis $3 = 8\times0+3$.
+      Quelle est l'écriture de $234$ en base $8$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\overline{253}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Tu as écrit les restes dans l'ordre où ils sont sortis. Mais le premier
+          reste, $2$, est le chiffre des unités : il se lit en dernier.
+          Recalcule : $\overline{253}_{(8)}$ vaut $2\times64+5\times8+3 = 171$,
+          pas $234$.
+      - id: B
+        text: >-
+          $\overline{352}_{(8)}$
+        correct: true
+      - id: C
+        text: >-
+          $\overline{234}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as gardé les chiffres de l'écriture décimale en changeant seulement
+          l'étiquette de base. Une même suite de chiffres ne désigne pas le même
+          nombre dans deux bases : $\overline{234}_{(8)}$ vaut
+          $2\times64+3\times8+4 = 156$, pas $234$.
+      - id: D
+        text: >-
+          $\overline{0352}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: >
+          La valeur est juste, mais ce n'est pas une écriture : le quotient final
+          $0$ a été gardé comme un chiffre. Le chiffre de tête d'une écriture
+          n'est jamais nul — avec quatre chiffres en base $8$, un nombre vaudrait
+          au moins $8^3 = 512$.
+    correct_feedback: >
+      Exact. Les restes sortent des unités vers la tête : $2$, puis $5$, puis
+      $3$, qu'on lit de bas en haut. Contrôle : $3\times64+5\times8+2 = 234$.
+    solution: |
+      Le premier reste est le chiffre des unités, le dernier le chiffre de tête :
+      on lit les restes de bas en haut, ce qui donne $\overline{352}_{(8)}$.
+
+      **Contrôle, en recalculant la valeur :**
+      $$\overline{352}_{(8)} = 3\times8^2 + 5\times8 + 2$$
+      $$\overline{352}_{(8)} = 192 + 40 + 2$$
+      $$\overline{352}_{(8)} = 234$$
+
+  - id: AR-42
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [numeration, base, division_euclidienne]
+    primary_misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+    stem: >
+      Dans l'écriture de $N = 500$ en base $9$, quel est le **chiffre des
+      unités** ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$6$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Tu as pris le dernier reste pour le chiffre des unités, comme si le
+          premier reste était le chiffre de tête. Les divisions donnent
+          $500 = 9\times55+5$, $55 = 9\times6+1$, $6 = 9\times0+6$ : le dernier
+          reste, $6$, est le chiffre de TÊTE de $\overline{615}_{(9)}$.
+      - id: B
+        text: "$0$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as transporté l'écriture décimale : $500$ finit par $0$, mais cela
+          dit seulement que $10$ divise $500$. Un chiffre des unités nul en base
+          $9$ voudrait dire que $9$ divise $500$ — or $500 = 9\times55+5$.
+      - id: C
+        text: "$5$"
+        correct: true
+      - id: D
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Tu as bien mis le dernier reste, $6$, en tête, mais laissé les deux
+          autres dans l'ordre de sortie : $6$, $5$, $1$, ce qui met $1$ aux
+          unités. Or le premier reste, $5$, est celui des unités : l'écriture est
+          $\overline{615}_{(9)}$.
+    correct_feedback: >
+      Exact. Le chiffre des unités est le reste de la PREMIÈRE division par
+      $9$ : $500 = 9\times55+5$. Pas besoin des autres divisions pour le
+      connaître.
+    solution: |
+      **Le chiffre des unités, c'est le premier reste** : dans
+      $N = 9q + r$, $r$ est le seul terme qui n'est pas multiplié par $9$.
+      $$500 = 9\times55 + 5$$
+      Le chiffre des unités est donc $5$.
+
+      **Pour aller jusqu'au bout**, les deux divisions suivantes :
+      $$55 = 9\times6 + 1$$
+      $$6 = 9\times0 + 6$$
+      Lus de bas en haut, les restes donnent $500 = \overline{615}_{(9)}$, et
+      en effet $6\times81 + 1\times9 + 5 = 500$.
+
+  - id: AR-43
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [numeration, base, poids]
+    primary_misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+    stem: >
+      Que vaut $\overline{203}_{(5)}$ en base $10$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$203$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as lu l'écriture comme si elle était en base $10$. En base $5$, les
+          positions pèsent $25$, $5$ et $1$ : $\overline{203}_{(5)}$ vaut
+          $2\times25+0\times5+3 = 53$.
+      - id: B
+        text: "$77$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Tu as lu les poids à l'envers, en donnant le poids $1$ au chiffre de
+          gauche : $2\times1+0\times5+3\times25 = 77$. C'est le chiffre de DROITE
+          qui porte le poids $1$.
+      - id: C
+        text: "$265$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Tu as décalé les exposants d'un cran, en commençant à $5^1$ pour les
+          unités : $2\times125+0\times25+3\times5 = 265$. Le chiffre des unités
+          porte $5^0 = 1$.
+      - id: D
+        text: "$53$"
+        correct: true
+    correct_feedback: >
+      Exact : $2\times25+0\times5+3 = 53$. Le $0$ compte — il occupe la
+      position des cinq, et le sauter ferait glisser le $2$ d'un cran.
+    solution: |
+      Chaque chiffre est multiplié par le poids de sa position, de gauche à
+      droite $5^2$, $5$ et $1$ :
+      $$\overline{203}_{(5)} = 2\times5^2 + 0\times5 + 3$$
+      $$\overline{203}_{(5)} = 50 + 0 + 3$$
+      $$\overline{203}_{(5)} = 53$$
+
+  # ── Capacité 2.1.5 — opérer et comparer dans une base ──
+  - id: AR-47
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 2
+    skill_code: maths_arithmetique
+    tags: [numeration, base, addition, retenue]
+    primary_misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    stem: >
+      Effectue $\overline{342}_{(5)} + \overline{134}_{(5)}$, résultat en
+      base $5$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\overline{476}_{(5)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as gardé le seuil de la base $10$ : $2+4 = 6$ et $4+3 = 7$ restent
+          sous $10$, donc tu n'as rien reporté. Mais en base $5$, une colonne
+          déborde dès qu'elle atteint $5$ — et $6$, $7$ ne sont même pas des
+          chiffres de la base $5$ : ton écriture n'en est pas une.
+      - id: B
+        text: >-
+          $\overline{1301}_{(5)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Le passage par la base $10$ est juste : $97+44 = 141$. Mais en
+          reconvertissant, tu as lu les restes dans l'ordre de sortie :
+          $141 = 5\times28+1$, $28 = 5\times5+3$, $5 = 5\times1+0$,
+          $1 = 5\times0+1$ donnent $1$, $3$, $0$, $1$. Le premier reste est le
+          chiffre des unités : il fallait lire $1, 0, 3, 1$, pas $1, 3, 0, 1$.
+          Ton écriture vaut $201$.
+      - id: C
+        text: >-
+          $\overline{1031}_{(5)}$
+        correct: true
+      - id: D
+        text: >-
+          $\overline{421}_{(5)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as bien ramené chaque colonne dans $\{0,\dots,4\}$ — $6$ donne $1$,
+          $7$ donne $2$ — mais sans reporter la retenue sur la colonne de gauche.
+          Ton écriture vaut $111$ ; la somme vaut $141$.
+    correct_feedback: >
+      Exact. Unités : $2+4 = 6 = 5+1$, on écrit $1$, on retient $1$. Puis
+      $4+3+1 = 8 = 5+3$, on écrit $3$, on retient $1$. Puis $3+1+1 = 5$, on
+      écrit $0$, on retient $1$, qui devient le chiffre de tête.
+    solution: |
+      **En colonnes, de droite à gauche ; une colonne déborde dès qu'elle
+      atteint $5$.**
+
+      Unités : $2+4 = 6 = 5+1$ — on écrit $1$, on retient $1$.
+
+      Paquets de $5$ : $4+3+1 = 8 = 5+3$ — on écrit $3$, on retient $1$.
+
+      Paquets de $25$ : $3+1+1 = 5 = 5+0$ — on écrit $0$, on retient $1$.
+
+      La dernière retenue devient le chiffre de tête :
+      $\overline{342}_{(5)} + \overline{134}_{(5)} = \overline{1031}_{(5)}$.
+
+      **Contrôle en base $10$ :** $\overline{342}_{(5)} = 97$,
+      $\overline{134}_{(5)} = 44$, et
+      $$97 + 44 = 141$$
+      $$\overline{1031}_{(5)} = 125 + 0 + 3\times5 + 1 = 141$$
+
+  - id: AR-48
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [numeration, base, multiplication, retenue]
+    primary_misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    stem: >
+      Effectue $\overline{45}_{(6)} \times \overline{3}_{(6)}$, résultat en
+      base $6$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\overline{135}_{(6)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as gardé le seuil de la base $10$ : $5\times3 = 15$, tu as écrit $5$
+          et retenu $1$ ; puis $4\times3+1 = 13$, écrit $3$, retenu $1$. Tous ces
+          chiffres existent en base $6$ : l'erreur ne se voit pas, il faut
+          recalculer. $\overline{135}_{(6)}$ vaut $59$, alors que le produit vaut
+          $29\times3 = 87$.
+      - id: B
+        text: >-
+          $\overline{322}_{(6)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Le passage par la base $10$ est juste : $29\times3 = 87$. Mais en
+          reconvertissant, tu as lu les restes dans l'ordre de sortie :
+          $87 = 6\times14+3$, $14 = 6\times2+2$, $2 = 6\times0+2$ donnent $3$,
+          $2$, $2$. Le premier reste est le chiffre des unités : il fallait lire
+          $2, 2, 3$, pas $3, 2, 2$. Ton écriture vaut $122$.
+      - id: C
+        text: >-
+          $\overline{1215}_{(6)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as écrit chaque produit de colonne tel quel, en entier —
+          $4\times3 = 12$ et $5\times3 = 15$, mis côte à côte — sans rien
+          reporter. Un produit de colonne qui atteint $6$ doit être rangé en
+          paquets de $6$. Ton écriture vaut $299$.
+      - id: D
+        text: >-
+          $\overline{223}_{(6)}$
+        correct: true
+    correct_feedback: >
+      Exact. $5\times3 = 15 = 2\times6+3$ : on écrit $3$, on retient $2$. Puis
+      $4\times3+2 = 14 = 2\times6+2$ : on écrit $2$, on retient $2$, qui devient
+      le chiffre de tête. Contrôle : $\overline{223}_{(6)}$ vaut
+      $72+12+3 = 87 = 29\times3$.
+    solution: |
+      **En colonnes, en partant des unités ; chaque produit se range en paquets
+      de $6$.**
+
+      Unités : $5\times3 = 15 = 2\times6+3$ — on écrit $3$, on retient $2$.
+
+      Paquets de $6$ : $4\times3+2 = 14 = 2\times6+2$ — on écrit $2$, on
+      retient $2$, qui devient le chiffre de tête.
+
+      Donc $\overline{45}_{(6)} \times \overline{3}_{(6)} = \overline{223}_{(6)}$.
+
+      **Contrôle en base $10$ :** $\overline{45}_{(6)} = 29$, et
+      $$29 \times 3 = 87$$
+      $$\overline{223}_{(6)} = 2\times36 + 2\times6 + 3 = 87$$
+
+  - id: AR-53
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [numeration, base, addition, retenue]
+    primary_misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    stem: >
+      Calcule $\overline{237}_{(8)} + \overline{364}_{(8)}$ et écris le
+      résultat en base $8$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\overline{623}_{(8)}$
+        correct: true
+      - id: B
+        text: >-
+          $\overline{601}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as gardé le seuil de la base $10$ : $7+4 = 11$, tu as écrit $1$ et
+          retenu $1$ ; puis $3+6+1 = 10$, tu as écrit $0$ et retenu $1$. Tous
+          ces chiffres existent en base $8$ : l'erreur ne se voit pas, il faut
+          recalculer. $\overline{601}_{(8)}$ vaut $385$, alors que la somme vaut
+          $159+244 = 403$.
+      - id: C
+        text: >-
+          $\overline{513}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as bien ramené chaque colonne dans $\{0,\dots,7\}$ — $11$ donne
+          $3$, $9$ donne $1$ — mais sans reporter les retenues sur la colonne de
+          gauche. Ton écriture vaut $331$ ; la somme vaut $403$.
+      - id: D
+        text: >-
+          $\overline{403}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Le passage par la base $10$ est juste : $159+244 = 403$. Mais tu as
+          gardé les chiffres de l'écriture décimale en changeant seulement
+          l'étiquette de base. $\overline{403}_{(8)}$ vaut $4\times64+3 = 259$,
+          pas $403$ : il restait à écrire $403$ en base $8$.
+    correct_feedback: >
+      Exact. Unités : $7+4 = 11 = 8+3$, on écrit $3$, on retient $1$. Puis
+      $3+6+1 = 10 = 8+2$, on écrit $2$, on retient $1$. Puis $2+3+1 = 6$.
+      Contrôle : $\overline{623}_{(8)}$ vaut $384+16+3 = 403$, et
+      $159+244 = 403$.
+    solution: |
+      **En colonnes, de droite à gauche ; une colonne déborde dès qu'elle
+      atteint $8$.**
+
+      Unités : $7+4 = 11 = 8+3$ — on écrit $3$, on retient $1$.
+
+      Paquets de $8$ : $3+6+1 = 10 = 8+2$ — on écrit $2$, on retient $1$.
+
+      Paquets de $64$ : $2+3+1 = 6$ — on écrit $6$.
+
+      Donc $\overline{237}_{(8)} + \overline{364}_{(8)} = \overline{623}_{(8)}$.
+
+      **Contrôle en base $10$ :** $\overline{237}_{(8)} = 159$,
+      $\overline{364}_{(8)} = 244$, et
+      $$159 + 244 = 403$$
+      $$\overline{623}_{(8)} = 6\times64 + 2\times8 + 3 = 403$$
+
+  - id: AR-44
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [numeration, base, comparaison]
+    primary_misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+    stem: >
+      Range dans l'ordre croissant ces trois écritures de la base $5$ :
+      $\overline{344}_{(5)}$, $\overline{412}_{(5)}$, $\overline{1203}_{(5)}$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\overline{1203}_{(5)} < \overline{344}_{(5)} < \overline{412}_{(5)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as comparé les chiffres de tête — $1 < 3 < 4$ — sans d'abord compter
+          les chiffres. Or $\overline{1203}_{(5)}$ a quatre chiffres : il vaut au
+          moins $5^3 = 125$, alors qu'une écriture à trois chiffres vaut au plus
+          $5^3-1 = 124$. Les valeurs sont $99$, $107$ et $178$.
+      - id: B
+        text: >-
+          $\overline{1203}_{(5)} < \overline{412}_{(5)} < \overline{344}_{(5)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as comparé les sommes des chiffres — $6 < 7 < 11$. Mais une somme de
+          chiffres ignore les poids : elle ne dit rien de l'ordre. Les valeurs
+          sont $\overline{344}_{(5)} = 99$, $\overline{412}_{(5)} = 107$ et
+          $\overline{1203}_{(5)} = 178$.
+      - id: C
+        text: >-
+          $\overline{344}_{(5)} < \overline{412}_{(5)} < \overline{1203}_{(5)}$
+        correct: true
+      - id: D
+        text: >-
+          $\overline{412}_{(5)} < \overline{344}_{(5)} < \overline{1203}_{(5)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Tu as comparé en partant des unités, comme si le chiffre de droite
+          pesait le plus : lues ainsi, les trois écritures vaudraient $123$, $59$
+          et $386$. Mais c'est le chiffre de GAUCHE qui pèse le plus, et les
+          vraies valeurs, $99$, $107$ et $178$, donnent un autre ordre.
+    correct_feedback: >
+      Exact. D'abord le nombre de chiffres : $\overline{1203}_{(5)}$, seul à
+      quatre chiffres, est le plus grand. Puis, à trois chiffres, on compare de
+      gauche à droite : $3 < 4$, donc $\overline{344}_{(5)} <
+      \overline{412}_{(5)}$. Contrôle : $99 < 107 < 178$.
+    solution: |
+      **Le nombre de chiffres décide d'abord.** Une écriture à quatre chiffres
+      en base $5$ vaut au moins $5^3 = 125$ ; une écriture à trois chiffres vaut
+      au plus $5^3 - 1 = 124$. Donc $\overline{1203}_{(5)}$ est le plus grand.
+
+      **À nombre de chiffres égal, de gauche à droite.** Entre
+      $\overline{344}_{(5)}$ et $\overline{412}_{(5)}$, les chiffres de tête
+      diffèrent déjà : $3 < 4$, donc $\overline{344}_{(5)} < \overline{412}_{(5)}$.
+
+      **Contrôle par les valeurs :**
+      $$\overline{344}_{(5)} = 3\times25 + 4\times5 + 4 = 99$$
+      $$\overline{412}_{(5)} = 4\times25 + 1\times5 + 2 = 107$$
+      $$\overline{1203}_{(5)} = 125 + 2\times25 + 0\times5 + 3 = 178$$
+
+  - id: AR-49
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [numeration, base, retenue, mecanisme]
+    primary_misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+    stem: >
+      Dans une addition posée en base $b$, une colonne donne la somme $c$, avec
+      $c \ge b$. Quelle règle faut-il appliquer à cette colonne ?
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          On écrit le reste de $c$ dans la division par $10$, et on reporte le
+          quotient sur la colonne de gauche.
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          Tu as gardé le seuil de la base $10$ par automatisme. Le report vient
+          de ce que la colonne de gauche pèse exactement $b$ fois plus : c'est
+          par $b$ qu'on divise, et $10$ n'a aucun rôle en base $b$.
+      - id: B
+        text: >-
+          On écrit $c - b$ dès que $c > b$, avec une retenue de $1$ ; pour
+          $c = b$, on écrit $b$.
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: >
+          Le seuil est décalé d'un cran : à $c = b$ exactement, la colonne
+          déborde déjà — on écrit $0$ et on retient $1$. Écrire $b$ ferait de $b$
+          un chiffre, alors que les chiffres de la base $b$ s'arrêtent à $b-1$.
+      - id: C
+        text: >-
+          On écrit le reste de $c$ dans la division par $b$, et on reporte le
+          quotient sur la colonne de gauche.
+        correct: true
+      - id: D
+        text: >-
+          On écrit $c$ si $c < 10$, et sinon $c - 10$ avec une retenue de $1$.
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-retenue-a-dix
+        feedback: >
+          C'est la règle apprise à l'école primaire, valable en base $10$
+          seulement. En base $b$, une colonne déborde dès qu'elle atteint $b$, et
+          c'est $b$ qu'on retranche, pas $10$.
+    correct_feedback: >
+      Exact. La colonne de gauche pèse exactement $b$ fois plus : on écrit
+      $c = qb + r$ avec $0 \le r < b$, on note $r$ et on reporte $q$. C'est la
+      division euclidienne par la base, quelle que soit la base.
+    solution: |
+      **Pourquoi le seuil est $b$.** Dans une écriture en base $b$, chaque
+      colonne pèse exactement $b$ fois plus que sa voisine de droite : $b$
+      unités d'une colonne valent exactement une unité de la suivante.
+
+      **La règle.** Si une colonne donne $c$, on fait la division euclidienne
+      par $b$ :
+      $$c = qb + r \qquad \text{avec} \qquad 0 \le r < b$$
+      On écrit $r$ dans la colonne, et on reporte $q$ sur la colonne de gauche.
+      À $c = b$ exactement, cela donne $r = 0$ et $q = 1$ : la colonne déborde
+      déjà. Le nombre $10$ n'intervient nulle part.
+
+  - id: AR-54
+    rung: "R7b"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [numeration, base, addition, conversion]
+    primary_misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+    stem: >
+      Calcule $\overline{204}_{(6)} + \overline{73}_{(9)}$ et donne le
+      résultat en base $8$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $\overline{277}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as additionné les chiffres colonne par colonne — $4+3 = 7$,
+          $0+7 = 7$, puis $2$ — comme si les deux écritures étaient dans la même
+          base. Or la deuxième colonne compte des paquets de $6$ dans
+          $\overline{204}_{(6)}$, et des paquets de $9$ dans
+          $\overline{73}_{(9)}$ : leurs chiffres ne s'ajoutent pas. Entre deux
+          bases, on calcule d'abord les valeurs, $76+66 = 142$. Ton écriture
+          vaut $191$.
+      - id: B
+        text: >-
+          $\overline{612}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Le passage par la base $10$ est juste : $76+66 = 142$. Mais en
+          écrivant $142$ en base $8$, tu as lu les restes dans l'ordre de
+          sortie : $142 = 8\times17+6$, $17 = 8\times2+1$, $2 = 8\times0+2$
+          donnent $6$, $1$, $2$. Le premier reste est le chiffre des unités :
+          il fallait lire $2, 1, 6$, pas $6, 1, 2$. Ton écriture vaut $394$.
+      - id: C
+        text: >-
+          $\overline{216}_{(8)}$
+        correct: true
+      - id: D
+        text: >-
+          $\overline{142}_{(8)}$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Les deux conversions sont justes, $\overline{204}_{(6)} = 76$ et
+          $\overline{73}_{(9)} = 66$, et la somme vaut bien $142$. Mais tu t'es
+          arrêté là, en gardant les chiffres de l'écriture décimale sous
+          l'étiquette de la base $8$. $\overline{142}_{(8)}$ vaut
+          $64+4\times8+2 = 98$ : il restait à écrire $142$ en base $8$.
+    correct_feedback: >
+      Exact. Entre deux bases, on passe par les valeurs :
+      $\overline{204}_{(6)} = 72+0+4 = 76$ et $\overline{73}_{(9)} = 63+3 = 66$,
+      donc la somme vaut $142$. On écrit ensuite $142$ en base $8$ par
+      divisions successives, restes lus de bas en haut. Contrôle :
+      $2\times64+1\times8+6 = 142$.
+    solution: |
+      **Deux bases différentes : on ne pose pas l'addition en colonnes.** Une
+      même colonne ne compte pas les mêmes paquets dans les deux écritures —
+      des paquets de $6$ d'un côté, de $9$ de l'autre. On passe par les
+      valeurs.
+
+      **Chaque écriture avec sa propre base :**
+      $$\overline{204}_{(6)} = 2\times6^2 + 0\times6 + 4 = 76$$
+      $$\overline{73}_{(9)} = 7\times9 + 3 = 66$$
+      $$76 + 66 = 142$$
+
+      **Écrire $142$ en base $8$**, par divisions successives :
+      $$142 = 8\times17 + 6$$
+      $$17 = 8\times2 + 1$$
+      $$2 = 8\times0 + 2$$
+      Lus de bas en haut, les restes donnent $\overline{216}_{(8)}$.
+
+      **Contrôle :** $\overline{216}_{(8)} = 2\times64 + 1\times8 + 6 = 142$.
+
+  - id: AR-45
+    rung: "R7b"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [numeration, base, comparaison]
+    primary_misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+    stem: >
+      Range dans l'ordre croissant : $A = \overline{11011}_{(2)}$,
+      $B = \overline{34}_{(5)}$, $C = \overline{23}_{(9)}$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$C < B < A$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as lu les trois chaînes comme des nombres décimaux, $23 < 34 <
+          11011$ — c'est aussi l'ordre que donne « plus de chiffres gagne »,
+          une règle qui ne vaut que dans UNE MÊME base. Chaque écriture doit
+          d'abord être convertie avec sa propre base : $A = 27$, $B = 19$,
+          $C = 21$.
+      - id: B
+        text: "$A < B < C$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as rangé les nombres selon leur base, comme si une base plus grande
+          donnait un nombre plus grand. La base fixe la longueur de l'écriture,
+          pas la taille du nombre : $A = 27$, $B = 19$, $C = 21$.
+      - id: C
+        text: "$A < C < B$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as comparé les sommes des chiffres : $4$ pour $A$, $5$ pour $C$,
+          $7$ pour $B$. Une somme de chiffres ignore les poids comme les bases.
+          Les valeurs sont $A = 27$, $B = 19$, $C = 21$.
+      - id: D
+        text: "$B < C < A$"
+        correct: true
+    correct_feedback: >
+      Exact. Entre bases différentes, on convertit d'abord :
+      $A = 16+8+0+2+1 = 27$, $B = 3\times5+4 = 19$, $C = 2\times9+3 = 21$.
+      Donc $B < C < A$.
+    solution: |
+      **Entre deux bases, rien ne se compare avant d'avoir calculé les
+      valeurs.** Chaque écriture se convertit avec sa propre base :
+      $$A = \overline{11011}_{(2)} = 16 + 8 + 0 + 2 + 1 = 27$$
+      $$B = \overline{34}_{(5)} = 3\times5 + 4 = 19$$
+      $$C = \overline{23}_{(9)} = 2\times9 + 3 = 21$$
+      Comme $19 < 21 < 27$, l'ordre croissant est $B < C < A$.
+
+  - id: AR-46
+    rung: "R7b"
+    habilete: synthese
+    difficulty_level: 5
+    skill_code: maths_arithmetique
+    tags: [numeration, base, encadrement]
+    primary_misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+    stem: >
+      On cherche les entiers naturels $N$ qui s'écrivent avec exactement $4$
+      chiffres en base $5$ et avec exactement $3$ chiffres en base $8$. Que
+      peut-on dire de ces entiers ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$64 \\le N \\le 624$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: >
+          Tu as réuni les deux encadrements au lieu de les croiser, en gardant le
+          plus large de chaque côté. Or $N$ doit vérifier les DEUX conditions :
+          $125 \le N \le 624$ et $64 \le N \le 511$, donc $125 \le N \le 511$.
+      - id: B
+        text: "$125 \\le N \\le 511$"
+        correct: true
+      - id: C
+        text: "Il n'en existe pas."
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as traité le nombre de chiffres comme une propriété du nombre. C'en
+          est une du couple (nombre, base) : un même entier a d'autant plus de
+          chiffres que la base est petite. Ici, les deux encadrements
+          $125 \le N \le 624$ et $64 \le N \le 511$ se recouvrent.
+      - id: D
+        text: "$N \\ge 1000$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre
+        feedback: >
+          Tu as lu $\overline{1000}_{(5)}$, la plus petite écriture à quatre
+          chiffres en base $5$, comme « mille ». Elle vaut $5^3 = 125$. Et un
+          entier à trois chiffres en base $8$ ne dépasse pas $8^3-1 = 511$.
+    correct_feedback: >
+      Exact. Quatre chiffres en base $5$ : $5^3 \le N \le 5^4-1$, soit
+      $125 \le N \le 624$. Trois chiffres en base $8$ : $8^2 \le N \le 8^3-1$,
+      soit $64 \le N \le 511$. Les deux à la fois : l'intersection,
+      $125 \le N \le 511$.
+    solution: |
+      **Une écriture à $p+1$ chiffres encadre le nombre** : le chiffre de tête
+      n'est pas nul, et le plus grand nombre à $p+1$ chiffres est $b^{p+1}-1$.
+
+      **Quatre chiffres en base $5$** ($p = 3$) :
+      $$125 \le N \le 624$$
+
+      **Trois chiffres en base $8$** ($p = 2$) :
+      $$64 \le N \le 511$$
+
+      **Les deux conditions à la fois** : on garde le plus contraignant de
+      chaque côté — le plus grand des minimums, le plus petit des maximums.
+      $$125 \le N \le 511$$
+      Le nombre de chiffres n'est pas une propriété de l'entier seul : $125$,
+      par exemple, s'écrit $\overline{1000}_{(5)}$ et $\overline{175}_{(8)}$.
+
+  # ── Capacité 2.1.6 — utiliser une écriture en base (divisibilité, chiffres) ──
+  - id: AR-51
+    rung: "R7b"
+    habilete: application_directe
+    difficulty_level: 3
+    skill_code: maths_arithmetique
+    tags: [numeration, base, divisibilite, congruences]
+    primary_misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+    stem: >
+      Soit $N = \overline{581}_{(9)}$. Quel est le reste de la division
+      euclidienne de $N$ par $10$ ?
+    type: mcq
+    choices:
+      - id: A
+        text: "$4$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          Tu as pris la somme des chiffres, $5+8+1 = 14$, qui laisse $4$ modulo
+          $10$. Mais la somme des chiffres vient de $9 \equiv 1 \pmod 8$ : en
+          base $9$, elle donne le reste modulo $b-1 = 8$. Modulo $b+1 = 10$, la
+          base vérifie $9 \equiv -1 \pmod{10}$, et c'est la somme ALTERNÉE des
+          chiffres qui compte.
+      - id: B
+        text: "$8$"
+        correct: true
+      - id: C
+        text: "$2$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.reste-non-normalise
+        feedback: >
+          Le critère est le bon : la somme alternée, $1-8+5 = -2$. Mais tu as
+          rendu $2$, comme si le reste d'un nombre négatif était l'opposé de
+          celui du positif. Un reste modulo $10$ est compris entre $0$ et $9$ :
+          il faut ajouter $10$, car $-2 = 10\times(-1)+8$.
+      - id: D
+        text: "$1$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          Tu as lu le chiffre des unités, comme en base $10$. En base $9$, il
+          donne le reste modulo la base, $9$ — et en effet
+          $N = 478 = 9\times53+1$ —, pas le reste modulo $10$.
+    correct_feedback: >
+      Exact. En base $9$, $9 \equiv -1 \pmod{10}$ : modulo $10$, $N$ est congru
+      à la somme alternée de ses chiffres, en partant des unités :
+      $1-8+5 = -2$, et $-2 \equiv 8 \pmod{10}$. Contrôle direct :
+      $N = 478 = 10\times47+8$.
+    solution: |
+      **À quoi la base est-elle congrue ?** Ici $b = 9$ et le module est
+      $10 = b+1$ :
+      $$9 \equiv -1 \pmod{10}$$
+      Les puissances de $9$ valent donc alternativement $1$ et $-1$ modulo
+      $10$, en partant des unités, et $N$ est congru à la somme alternée de ses
+      chiffres :
+      $$N \equiv 1 - 8 + 5 \pmod{10}$$
+      $$N \equiv -2 \pmod{10}$$
+      $$N \equiv 8 \pmod{10}$$
+      Le dernier pas ramène le résultat entre $0$ et $9$ :
+      $-2 = 10\times(-1) + 8$.
+
+      **Contrôle direct :** $N = 5\times81 + 8\times9 + 1 = 478$, et
+      $478 = 10\times47 + 8$.
+
+  - id: AR-52
+    rung: "R7b"
+    habilete: application_non_explicite
+    difficulty_level: 4
+    skill_code: maths_arithmetique
+    tags: [numeration, base, divisibilite, chiffres]
+    primary_misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+    stem: >
+      Déterminer tous les chiffres $x$ de la base $9$ tels que
+      $N = \overline{3x4}_{(9)}$ soit divisible par $8$.
+    type: mcq
+    choices:
+      - id: A
+        text: "$x = 1$"
+        correct: true
+      - id: B
+        text: "$x = 2$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          Tu as pris le bon critère, la somme des chiffres, mais au mauvais
+          module : $x + 7 \equiv 0 \pmod 9$ au lieu de $\pmod 8$. En base $9$, la
+          somme des chiffres donne le reste modulo $b-1 = 8$, pas modulo $9$.
+          Contrôle : $\overline{324}_{(9)}$ vaut $265 = 8\times33+1$.
+      - id: C
+        text: "$x = 1$ ou $x = 9$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: >
+          Tu as gardé la seconde solution de $x \equiv 1 \pmod 8$, $x = 9$. Mais
+          $9$ n'est pas un chiffre de la base $9$, dont les chiffres vont de $0$
+          à $8$ : la borne $0 \le x \le 8$ fait partie de l'énoncé.
+      - id: D
+        text: "$x = 7$"
+        correct: false
+        misconception: mc.math.maths_arithmetique.critere-divisibilite-mal-applique
+        feedback: >
+          Tu as utilisé la somme alternée, $4 - x + 3 = 7 - x$ : c'est le
+          critère du module $b+1 = 10$, pas de $8$. Contrôle :
+          $\overline{374}_{(9)}$ vaut $310 = 8\times38+6$, qui n'est pas
+          divisible par $8$.
+    correct_feedback: >
+      Exact. Modulo $b-1 = 8$, $N$ est congru à la somme de ses chiffres :
+      $3 + x + 4 = x + 7 \equiv 0 \pmod 8$, donc $x \equiv 1 \pmod 8$. Avec
+      $0 \le x \le 8$, seul $x = 1$ convient. Contrôle : $\overline{314}_{(9)}$
+      vaut $243+9+4 = 256 = 8\times32$.
+    solution: |
+      **Le bon critère.** En base $9$, $9 \equiv 1 \pmod 8$ : modulo $8$, $N$
+      est congru à la somme de ses chiffres.
+      $$N \equiv 3 + x + 4 \pmod 8$$
+      $$N \equiv x + 7 \pmod 8$$
+
+      **La condition.** $8 \mid N$ équivaut à $x + 7 \equiv 0 \pmod 8$,
+      c'est-à-dire :
+      $$x \equiv 1 \pmod 8$$
+
+      **Les bornes.** $x$ est un chiffre de la base $9$, donc
+      $0 \le x \le 8$ : seul $x = 1$ convient ($9$ n'est pas un chiffre de la
+      base $9$).
+
+      **Contrôle :** $\overline{314}_{(9)} = 3\times81 + 1\times9 + 4 = 256$,
+      et $256 = 8\times32$.
+
+  - id: AR-50
+    rung: "R7b"
+    habilete: application_non_explicite
+    difficulty_level: 5
+    skill_code: maths_arithmetique
+    tags: [numeration, base, gauss, chiffres]
+    primary_misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+    stem: >
+      Déterminer tous les couples de chiffres $(x,y)$ tels que
+      $\overline{xy}_{(9)} = \overline{yx}_{(7)}$.
+    type: mcq
+    choices:
+      - id: A
+        text: >-
+          $(x,y) = (3,4)$ et $(x,y) = (6,8)$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: >
+          Tu as gardé la racine $x = 6$, $y = 8$ : elle vérifie bien $4x = 3y$,
+          mais $8$ n'est pas un chiffre de la base $7$, et $\overline{86}_{(7)}$
+          n'existe pas. $x$ et $y$ sont chiffres des DEUX écritures : il fallait
+          les borner par $\{0,\dots,6\}$ avant de résoudre.
+      - id: B
+        text: >-
+          $(x,y) = (3,4)$ seulement
+        correct: true
+      - id: C
+        text: >-
+          $(x,y) = (4,3)$ seulement
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-restes-ordre-inverse
+        feedback: >
+          Tu as interverti les poids en mettant en équation : $\overline{xy}_{(9)}$
+          lu $9y + x$ au lieu de $9x + y$. On obtient alors $4y = 3x$, d'où
+          $(4,3)$. Contrôle : $\overline{43}_{(9)} = 39$ et
+          $\overline{34}_{(7)} = 25$ ne sont pas égaux.
+      - id: D
+        text: >-
+          $(x,y) = (0,0)$ et $(x,y) = (3,4)$
+        correct: false
+        misconception: mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres
+        feedback: >
+          $(0,0)$ vérifie bien $4x = 3y$, mais $x$ et $y$ sont chacun en tête
+          d'une écriture, $\overline{xy}_{(9)}$ pour l'un et
+          $\overline{yx}_{(7)}$ pour l'autre : ni l'un ni l'autre ne peut être
+          nul. C'est la condition « chiffre de tête non nul » qui l'écarte, et
+          elle n'a pas été posée.
+    correct_feedback: >
+      Exact. $9x + y = 7y + x$ donne $8x = 6y$, soit $4x = 3y$. Comme
+      $3 \mid 4x$ et $\mathrm{PGCD}(3,4) = 1$, le théorème de Gauss donne
+      $3 \mid x$. Les bornes — chiffres des deux bases, en tête d'une
+      écriture, donc entre $1$ et $6$ — ne laissent que $x = 3$, $y = 4$, et
+      le nombre vaut $\overline{34}_{(9)} = 31 = \overline{43}_{(7)}$.
+    solution: |
+      **Les bornes d'abord.** $x$ et $y$ sont des chiffres des deux écritures,
+      donc dans $\{0,\dots,8\} \cap \{0,\dots,6\} = \{0,\dots,6\}$ ; chacun est
+      en tête d'une écriture, donc aucun n'est nul.
+
+      **L'équation.**
+      $$9x + y = 7y + x$$
+      $$8x = 6y$$
+      $$4x = 3y$$
+
+      **Gauss, pas une division « pour voir ».** $3$ divise $4x$ et
+      $\mathrm{PGCD}(3,4) = 1$, donc $3 \mid x$ : avec $1 \le x \le 6$,
+      $x \in \{3, 6\}$.
+
+      **Le tri par les bornes.** $x = 3$ donne $y = 4$, un chiffre valable.
+      $x = 6$ donne $y = 8$, qui n'est pas un chiffre de la base $7$ : rejeté.
+
+      **Contrôle :** $\overline{34}_{(9)} = 27 + 4 = 31$ et
+      $\overline{43}_{(7)} = 28 + 3 = 31$.
+
+# ── RÉSUMÉ DE COUVERTURE ────────────────────────────────────────────────────
+# RÉÉCRIT le 2026-09-05, après AR-28 à AR-32. Huit familles sous le plancher,
+# dont `fermat-condition-ou-exposant` sans AUCUN item de banc — elle n'était
+# sondée que par un checkpoint, ce qui ne compte pas dans le modèle apprenant.
+# Les quatre autres pièges des équations diophantiennes (mise à l'échelle du
+# couple de Bézout, croisement des coefficients, unicité supposée, réduction
+# d'une puissance) et les trois de la divisibilité sont refermés du même geste.
+# RÉÉCRIT à nouveau le 2026-09-27 (dette d'examen, vague B2) : AR-28 retagué
+# R7→R6b (rung désormais réelle) ; AR-33/34/35 ajoutés à R6b. `fermat-
+# condition-ou-exposant` quitte le plancher exact (3→6) ; `congruence-
+# puissance-mal-reduite` (AR-33) et `critere-divisibilite-mal-applique`
+# (AR-34) montent chacun à 4 ; `reste-non-normalise` (AR-35) monte à 5.
+# RÉÉCRIT une troisième fois le 2026-09-27 (wave-1 fix, pédagogie I-6) :
+# AR-36/AR-37 ajoutés à R6b — Fermat comme étape À L'INTÉRIEUR d'une
+# contradiction (AR-36) ou d'une extraction d'inverse (AR-37), pas seulement
+# réduction d'exposant ou choix de forme. `fermat-condition-ou-exposant`
+# monte à 8 (6→8) ; `congruence-puissance-mal-reduite` monte à 5 (4→5, via
+# AR-37 choix D). Aucune famille ne change de statut plancher/exact-3.
+# RÉÉCRIT une quatrième fois le 2026-09-27 (dette d'examen, § arithmetique,
+# GAP-A « Inverse modulo n, solving a·x ≡ b [n], systems of congruences » —
+# maths.md (supprimé le 2026-10-22):33-49) : AR-38/39/40 ajoutés à R5, famille
+# neuve `congruence-lineaire-mal-resolue` déclarée à l'inventaire et portée
+# EXACTEMENT au plancher (3 items, trois contextes distincts — solve direct,
+# variation fraîche, combinaison de deux congruences). Dix-sept familles
+# désormais déclarées ; R5 passe de 3 à 6 items sur le ramp.
+# RÉÉCRIT une cinquième fois le 2026-10-20 (rung R7b, systèmes de numération —
+# maths-arithmetique-numeration.md (supprimé le 2026-10-22) §9) : AR-41 à
+# AR-52 ajoutés, quatre familles neuves (numeration-*), et
+# `critere-divisibilite-mal-applique` élargie à la base générique sans
+# re-tagage. Comptes RÉGÉNÉRÉS par la règle de web/scripts/lib/couverture-compte.mjs
+# (mesurerNotion), pas édités à la main. Vingt et une familles déclarées.
+# RÉÉCRIT une sixième fois le 2026-10-20 (vague 1 des critiques du chapitre de
+# numération construit) : AR-53 et AR-54 ajoutés, AR-51 re-habillé ; N1 7 → 8,
+# N2 6 → 8, N4 3 → 4 ; `total_items` 52 → 54. Comptes régénérés par
+# mesurerNotion. `honest_state` réordonné, l'état courant d'abord : il s'ouvrait
+# encore sur « dix-sept misconceptions » quand le fichier en déclarait vingt et
+# une.
+# Tableau GÉNÉRÉ, gardé par resume-couverture.mjs (supprimé le 2026-10-22).
+coverage_summary:
+  method: >-
+    Niveau ITEM : une misconception compte un item dès qu'au moins un de ses
+    distracteurs la porte, une seule fois par item même si plusieurs la portent
+    (l'élève n'en coche qu'un). Les checkpoints ne comptent pas — le modèle
+    apprenant est bâti sur le banc de fin seul. Tableau GÉNÉRÉ contre
+    web/scripts/lib/couverture-compte.mjs, gardé par resume-couverture.mjs (supprimé le 2026-10-22).
+  per_misconception:
+    mc.math.maths_arithmetique.premier-vs-premiers-entre-eux:             { count: 6, items: [AR-4, AR-7, AR-16, AR-17, AR-19, AR-27] }
+    mc.math.maths_arithmetique.pgcd-vs-ppcm:                              { count: 3, items: [AR-3, AR-14, AR-21] }
+    mc.math.maths_arithmetique.pgcd-plus-grand-oublie:                    { count: 4, items: [AR-3, AR-14, AR-15, AR-21] }
+    mc.math.maths_arithmetique.gauss-condition-ignoree:                   { count: 3, items: [AR-5, AR-18, AR-19] }
+    mc.math.maths_arithmetique.reste-non-normalise:                       { count: 6, items: [AR-1, AR-2, AR-10, AR-13, AR-35, AR-51] }
+    mc.math.maths_arithmetique.congruence-puissance-mal-reduite:          { count: 5, items: [AR-2, AR-12, AR-28, AR-33, AR-37] }
+    mc.math.maths_arithmetique.critere-divisibilite-mal-applique:         { count: 6, items: [AR-1, AR-13, AR-31, AR-34, AR-51, AR-52] }
+    mc.math.maths_arithmetique.diophantienne-critere-existence:           { count: 7, items: [AR-6, AR-7, AR-8, AR-9, AR-17, AR-23, AR-25] }
+    mc.math.maths_arithmetique.bezout-portee:                             { count: 3, items: [AR-5, AR-16, AR-17] }
+    mc.math.maths_arithmetique.solution-unique-vs-infinie:                { count: 3, items: [AR-24, AR-25, AR-29] }
+    mc.math.maths_arithmetique.solution-generale-mal-parametree:          { count: 3, items: [AR-24, AR-29, AR-32] }
+    mc.math.maths_arithmetique.primalite-test-incomplet:                  { count: 3, items: [AR-20, AR-27, AR-31] }
+    mc.math.maths_arithmetique.fermat-condition-ou-exposant:              { count: 8, items: [AR-28, AR-30, AR-32, AR-33, AR-34, AR-35, AR-36, AR-37] }
+    mc.math.maths_arithmetique.solution-mise-a-echelle:                   { count: 3, items: [AR-26, AR-30, AR-32] }
+    mc.math.maths_arithmetique.diviser-relation-inversee:                 { count: 3, items: [AR-11, AR-22, AR-31] }
+    mc.math.maths_arithmetique.prime-divise-produit:                      { count: 3, items: [AR-2, AR-12, AR-22] }
+    mc.math.maths_arithmetique.congruence-lineaire-mal-resolue:           { count: 3, items: [AR-38, AR-39, AR-40] }
+    mc.math.maths_arithmetique.numeration-restes-ordre-inverse:           { count: 8, items: [AR-41, AR-42, AR-43, AR-44, AR-47, AR-48, AR-50, AR-54] }
+    mc.math.maths_arithmetique.numeration-ecriture-prise-pour-le-nombre:  { count: 8, items: [AR-41, AR-42, AR-43, AR-44, AR-45, AR-46, AR-53, AR-54] }
+    mc.math.maths_arithmetique.numeration-contraintes-sur-les-chiffres:   { count: 5, items: [AR-41, AR-46, AR-49, AR-50, AR-52] }
+    mc.math.maths_arithmetique.numeration-retenue-a-dix:                  { count: 4, items: [AR-47, AR-48, AR-49, AR-53] }
+  total_items: 54
+  floor: 3
+  floor_met: true
+  ramp_coverage:
+    R0: 3
+    R1: 3
+    R2: 3
+    R3: 3
+    R4: 4
+    R5: 6
+    R6: 4
+    R6b: 6
+    R7: 4
+    R7b: 14
+    R8: 4
+  honest_state: >-
+    ÉTAT COURANT (2026-10-20, après la vague 1 du chapitre de numération) :
+    les vingt et une misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Dix y siègent EXACTEMENT (3 items) — pgcd-vs-ppcm,
+    gauss-condition-ignoree, bezout-portee, solution-unique-vs-infinie,
+    solution-generale-mal-parametree, primalite-test-incomplet,
+    solution-mise-a-echelle, diviser-relation-inversee, prime-divise-produit,
+    congruence-lineaire-mal-resolue : la marge y est nulle et tout retrait
+    d'item la casse. `numeration-retenue-a-dix` a quitté ce lot (3 → 4,
+    AR-53) — au BANC ; à l'affichage, AR-48 est retiré par la règle du clone
+    (cp-r7b-retenue), si bien que l'élève en rencontre trois.
+
+    HISTORIQUE, chaque compte vrai à sa date (l'état courant est au
+    paragraphe précédent). Après la première édition du 2026-09-27, neuf
+    familles siégeaient EXACTEMENT au plancher — pgcd-vs-ppcm,
+    gauss-condition-ignoree, bezout-portee, solution-unique-vs-infinie,
+    solution-generale-mal-parametree, primalite-test-incomplet,
+    solution-mise-a-echelle, diviser-relation-inversee,
+    prime-divise-produit. Recompté le 2026-09-27 après AR-33/34/35 (dette d'examen, vague
+    B2) : `fermat-condition-ou-exposant` quitte ce lot exact (3→6), avec
+    `congruence-puissance-mal-reduite` et `critere-divisibilite-mal-applique`
+    (3→4 chacune) et `reste-non-normalise` (4→5) — neuf familles à la marge
+    nulle, contre douze avant cette édition. Recompté une seconde fois le
+    2026-09-27 (wave-1 fix, pédagogie I-6, AR-36/AR-37) : `fermat-condition-
+    ou-exposant` monte à 8 (6→8) et `congruence-puissance-mal-reduite` à 5
+    (4→5) ; les neuf familles à marge nulle sont inchangées. R6b passe de 4 à
+    6 items sur le ramp — la rung couvre désormais explicitement la
+    contradiction à deux valeurs (AR-36) et l'extraction d'un inverse
+    combinée à une congruence donnée (AR-37), pas seulement la réduction
+    d'exposant ou le choix de forme (AR-28/33/34/35).
+    Recompté une troisième fois le 2026-09-27 (dette d'examen, § arithmetique,
+    GAP-A) : `congruence-lineaire-mal-resolue` entre à l'inventaire et rejoint
+    d'emblée le lot à marge nulle (count: 3, AR-38/39/40) — dixième famille à
+    ce statut. Aucune autre famille n'est touchée par cette édition ; R5 passe
+    de 3 à 6 items sur le ramp.
+
+    WAVE F (audit §35/§36, DECISIONS-EN-ATTENTE.md, 2026-09-28) : les trois
+    items AR-38/39/40 sont recomposés (couple neuf pour AR-38, question
+    reformulée pour AR-39, stem allégée pour AR-40 — voir le commentaire
+    au-dessus des items), sans effet sur les comptes : `congruence-lineaire-
+    mal-resolue` reste à **3** items (AR-38/39/40), `total_items` et
+    `ramp_coverage` inchangés. Les trois anciens défauts (clone de l'exemple
+    de leçon, vulnérabilité à la substitution directe, modulus donné dans la
+    stem) sont corrigés sans toucher au plancher ni à la marge.
+
+    RUNG R7b, SYSTÈMES DE NUMÉRATION (2026-10-20) : douze items AR-41 à AR-52,
+    `total_items` 40 → 52, `ramp_coverage.R7b` = 12. Quatre familles neuves,
+    toutes au plancher ou au-dessus : `numeration-restes-ordre-inverse`
+    7, `numeration-ecriture-prise-pour-le-nombre` 6,
+    `numeration-contraintes-sur-les-chiffres` 5, et `numeration-retenue-a-dix`
+    EXACTEMENT 3 (AR-47/48/49) — onzième famille à marge nulle ; tout retrait
+    d'item la casse. Deux familles existantes montent sans qu'aucun item ancien
+    ne change de tag : `critere-divisibilite-mal-applique` 4 → 6 (AR-51, AR-52)
+    et `reste-non-normalise` 5 → 6 (AR-51). Aucun compte ne baisse. Les
+    vingt et une misconceptions déclarées sont couvertes, aucune sous le
+    plancher. Ce plancher est un plancher de CONSTRUCTION : les quatre modèles
+    de numération sont une lecture didactique adossée à zéro donnée d'usage, et
+    aucune annale vérifiée de numération n'existe dans bank.yaml.
+
+    VAGUE 1 DU CHAPITRE CONSTRUIT (2026-10-20, critiques
+    numeration-build-pedagogie et numeration-build-fidelite) : AR-53 et AR-54
+    ajoutés, AR-51 re-habillé (sa clé exige désormais le critère par b+1),
+    `total_items` 52 → 54, `ramp_coverage.R7b` 12 → 14.
+    `numeration-retenue-a-dix` 3 → 4 (AR-53) : elle quitte la marge nulle au
+    banc, et passe de deux à trois items RENDUS. `numeration-restes-ordre-
+    inverse` 7 → 8 (AR-54) ; `numeration-ecriture-prise-pour-le-nombre` 6 → 8
+    (AR-53, AR-54). AR-51 garde ses deux familles
+    (`critere-divisibilite-mal-applique`, `reste-non-normalise`) sous un
+    habillage neuf : leurs comptes ne bougent pas. Aucun compte ne baisse ; dix
+    familles à marge nulle, contre onze.

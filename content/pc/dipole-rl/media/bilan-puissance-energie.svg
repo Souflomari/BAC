@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 390" width="660" height="390"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Bilan de puissance du dipôle RL : la puissance fournie P = Ei se partage en une part dissipée Ri² en chaleur par effet Joule, définitivement perdue, et une part stockée L i di/dt = d/dt(½Li²) dans la bobine, récupérable tant que le courant circule.">
+  <title>Bilan de puissance et d’énergie de la bobine</title>
+  <!--
+    bilan-puissance-energie.svg — 3 progressive steps (LESSON-EXPERIENCE-SPEC
+    §2.5 — geste d'enseignement : un bilan se construit, terme par terme) :
+      step-1 : la source — une seule flèche entrante, P_fournie = Ei
+      step-2 : la part dissipée — la branche vers le puits "chaleur (effet
+               Joule)", étiquetée Ri², "définitivement perdue"
+      step-3 : la part stockée — la branche vers le réservoir magnétique,
+               étiquetée L·i·di/dt = d/dt(½Li²), E_L = ½Li², "non dissipée
+               — récupérable tant que le courant circule"
+
+    Géométrie : la flèche source part de (40,190) et s'arrête en (150,190) ;
+    au même point (150,190), deux branches en courbe de Bézier partent vers
+    deux réservoirs à droite (x=480..620) : l'une monte vers y=110 (perdue),
+    l'autre descend vers y=280 (stockée) — lecture en Y, symétrique.
+
+    Rôle des couleurs (cohérent avec bobine-modele-rl.svg / rl-schema.svg) :
+      P_fournie (source, avant partage) : --figure-accent
+      part dissipée (Ri², liée à r/R)   : --figure-ink-soft
+      part stockée (liée à L)           : --figure-energy-L
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — la source : une seule flèche entrante
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+
+    <!-- Titre -->
+    <text x="330" y="24" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Bilan de puissance : où va l’énergie fournie ?
+    </text>
+
+    <!-- Flèche entrante -->
+    <line x1="40" y1="190" x2="146" y2="190" stroke="var(--figure-accent)" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="150,190 136,183 136,197" fill="var(--figure-accent)"/>
+
+    <text x="93" y="172" text-anchor="middle" font-size="13" font-style="italic" fill="var(--figure-accent)">
+      P<tspan dy="4" font-size="9">fournie</tspan><tspan dy="-4"> = Ei</tspan>
+    </text>
+
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la part dissipée : Ri² → chaleur (effet Joule)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+
+    <!-- Nœud de partage -->
+    <circle cx="150" cy="190" r="3.5" fill="var(--figure-ink)"/>
+
+    <!-- Branche montante vers le puits de chaleur -->
+    <path d="M150,190 C230,190 230,110 320,110 L476,110"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="480,110 468,104 468,116" fill="var(--figure-ink-soft)"/>
+
+    <text x="300" y="100" text-anchor="middle" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">
+      Ri<tspan dy="-5" font-size="9">2</tspan>
+    </text>
+
+    <!-- Puits : chaleur / effet Joule -->
+    <rect x="480" y="70" width="140" height="80" rx="8"
+          fill="var(--figure-ink-soft)" fill-opacity="0.10" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="550" y="104" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-ink-soft)">chaleur</text>
+    <text x="550" y="119" text-anchor="middle" font-size="10" fill="var(--figure-ink-soft)">(effet Joule)</text>
+
+    <text x="550" y="168" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--figure-ink-soft)">
+      définitivement perdue
+    </text>
+
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la part stockée : L·i·di/dt → réservoir magnétique
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+
+    <!-- Branche descendante vers le réservoir magnétique -->
+    <path d="M150,190 C230,190 230,280 320,280 L476,280"
+          fill="none" stroke="var(--figure-energy-L)" stroke-width="3" stroke-linecap="round"/>
+    <polygon points="480,280 468,274 468,286" fill="var(--figure-energy-L)"/>
+
+    <text x="400" y="246" text-anchor="middle" font-size="9.5" font-style="italic" fill="var(--figure-energy-L)">
+      = d/dt(½Li<tspan dy="-4" font-size="7">2</tspan><tspan dy="4">)</tspan>
+    </text>
+    <text x="400" y="262" text-anchor="middle" font-size="12" font-style="italic" fill="var(--figure-energy-L)">
+      L·i·di/dt
+    </text>
+
+    <!-- Réservoir : bobine, énergie magnétique -->
+    <rect x="480" y="240" width="140" height="80" rx="8"
+          fill="var(--figure-energy-L)" fill-opacity="0.10" stroke="var(--figure-energy-L)" stroke-width="1.4"/>
+
+    <!-- Petit symbole de bobine à l'intérieur -->
+    <path d="M508,258 a9,7 0 0,1 18,0" fill="none" stroke="var(--figure-energy-L)" stroke-width="1.8"/>
+    <path d="M526,258 a9,7 0 0,1 18,0" fill="none" stroke="var(--figure-energy-L)" stroke-width="1.8"/>
+    <path d="M544,258 a9,7 0 0,1 18,0" fill="none" stroke="var(--figure-energy-L)" stroke-width="1.8"/>
+
+    <text x="550" y="292" text-anchor="middle" font-size="13" font-style="italic" fill="var(--figure-energy-L)">
+      E<tspan dy="4" font-size="9">L</tspan><tspan dy="-4"> = ½Li</tspan><tspan dy="-5" font-size="9">2</tspan>
+    </text>
+
+    <text x="550" y="338" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--figure-energy-L)">
+      non dissipée — récupérable
+    </text>
+    <text x="550" y="352" text-anchor="middle" font-size="10.5" font-style="italic" fill="var(--figure-energy-L)">
+      tant que le courant circule
+    </text>
+
+  </g><!-- /step-3 -->
+
+</svg>

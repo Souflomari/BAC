@@ -1,0 +1,98 @@
+/* Les exercices des leçons pilotes (refonte 2026-10, V3) — habillage Grille.
+   Tout est scopé sous `.exos`. Couleurs : uniquement les jetons de tokens.ts. */
+
+.exos { min-height: calc(100dvh - 3.5rem); background: var(--color-surface-base); color: var(--color-text-primary); }
+.exos-attente { padding: 48px var(--gutter); color: var(--color-text-secondary); }
+
+/* la barre : titre et suivi des exercices */
+.exos-barre { display: flex; align-items: center; gap: 24px; padding: 10px var(--gutter); border-bottom: 1px solid var(--color-border-subtle); flex-wrap: wrap; }
+.exos-titre { display: flex; align-items: baseline; gap: 10px; white-space: nowrap; }
+.exos-titre strong { font-size: 1.375rem; font-weight: 700; }
+.exos-matiere { font-size: 0.875rem; color: var(--color-text-secondary); }
+.exos-badge { font-size: 0.6875rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; border: 1px solid var(--color-text-primary); color: var(--color-text-primary); padding: 2px 6px; align-self: center; }
+.exos-suivi { list-style: none; margin: 0; padding: 0; display: flex; gap: 6px; flex-wrap: wrap; }
+.exos-pastille { width: 34px; height: 34px; font: 700 0.875rem var(--font-ui); background: transparent; color: var(--color-text-secondary); border: 1px solid var(--color-border-soft); cursor: pointer; }
+.exos-pastille.b-premier { background: var(--color-text-primary); color: var(--color-surface-base); border-color: var(--color-text-primary); }
+.exos-pastille.b-apres { border-color: var(--color-text-primary); color: var(--color-text-primary); }
+.exos-pastille.b-corrige { border-style: dashed; border-color: var(--color-text-primary); color: var(--color-text-primary); }
+.exos-pastille.on { box-shadow: inset 0 -3px 0 var(--color-signal); color: var(--color-signal); }
+.exos-pastille.b-premier.on { color: var(--color-surface-base); }
+.exos-sep { display: flex; align-items: center; gap: 6px; }
+.exos-sep::before { content: attr(data-seance); font-size: 0.75rem; color: var(--color-text-secondary); padding: 0 4px 0 10px; border-left: 1px solid var(--color-border-soft); }
+.exos-pastille:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+
+/* la colonne de lecture */
+.exos-col { max-width: 46rem; margin: 0 auto; padding: 36px var(--gutter) 64px; }
+.exos-kicker { font: 700 0.8125rem/1 var(--font-ui); color: var(--color-signal); margin: 0 0 12px; }
+.exos-h { font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 700; line-height: 1.15; margin: 0 0 8px; font-variation-settings: "wdth" 88; }
+.exos-h3 { font-size: 1.125rem; font-weight: 700; margin: 0 0 10px; }
+.exos-cadre { font-size: 0.875rem; color: var(--color-text-secondary); margin: 0 0 22px; line-height: 1.45; }
+.exos-cadre span + span::before { content: " · "; }
+.exos-seance { font-size: 0.9375rem; line-height: 1.5; margin: 0 0 14px; padding: 8px 12px; border: 1px dashed var(--color-text-secondary); color: var(--color-text-secondary); }
+.exos-enonce { font-size: 1.125rem; line-height: 1.6; margin: 0 0 18px; padding: 16px 18px; border-left: 3px solid var(--color-text-primary); background: var(--color-surface-container-low); }
+.exos-enonce p { margin: 0 0 8px; }
+.exos-figure { margin: 0 0 18px; }
+.exos-figure svg { width: 100%; height: auto; max-height: 320px; }
+.exos-texte { font-size: 1.0625rem; line-height: 1.55; }
+.exos-petit { font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.5; }
+.exos-niveau { color: var(--color-text-secondary); font-size: 0.875rem; }
+
+/* les questions */
+.exos-questions { list-style: none; margin: 0 0 22px; padding: 0; display: grid; gap: 18px; }
+.exos-questions > li { padding: 14px 0 6px; border-top: 1px solid var(--color-border-soft); }
+.exos-questions > li.juste { border-top-color: var(--color-success); }
+.exos-q { display: flex; gap: 10px; font-size: 1.0625rem; line-height: 1.55; margin-bottom: 10px; }
+.exos-lettre { font-weight: 700; }
+.exos-opts { display: grid; gap: 6px; margin-bottom: 10px; }
+.exos-opt { display: flex; gap: 12px; align-items: baseline; padding: 10px 12px; border: 1px solid var(--color-border-soft); cursor: pointer; font-size: 1.0625rem; }
+.exos-opt:hover { background: var(--color-surface-container-low); }
+.exos-opt.sel { border-color: var(--color-text-primary); }
+.exos-opt.ok { border-color: var(--color-success); box-shadow: inset 3px 0 0 var(--color-success); }
+.exos-opt input { accent-color: var(--color-signal); }
+.exos-saisie { display: flex; align-items: baseline; gap: 8px; margin-bottom: 10px; }
+.exos-saisie.texte input { width: min(30rem, 100%); letter-spacing: .06em; font-variant-numeric: tabular-nums; }
+.exos-saisie input { font: 1.125rem var(--font-ui); padding: 10px 12px; border: 1px solid var(--color-text-primary); background: var(--color-surface-base); color: var(--color-text-primary); width: min(16rem, 100%); }
+.exos-saisie input:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 1px; }
+.exos-unite { font-size: 1.0625rem; }
+.exos-q-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.exos-indice { font-size: 1rem; line-height: 1.5; margin: 10px 0 0; padding-left: 12px; border-left: 3px solid var(--color-border-soft); color: var(--color-text-secondary); }
+.exos-retour { font-size: 1rem; line-height: 1.5; margin: 10px 0 0; padding-left: 12px; border-left: 3px solid transparent; }
+.exos-retour:empty { display: none; }
+.exos-retour.ok { border-left-color: var(--color-success); }
+.exos-retour.ko { border-left-color: var(--color-signal); }
+
+/* la correction, ligne par ligne */
+.exos-correction { margin: 8px 0 26px; padding-top: 16px; border-top: 2px solid var(--color-text-primary); }
+.exos-lignes { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 8px; }
+.exos-lignes li { display: grid; gap: 2px; padding: 8px 12px; border-left: 3px solid var(--color-text-primary); background: var(--color-surface-container-low); animation: exos-rise .35s ease both; }
+/* comme dans les leçons : seule la dernière ligne montrée porte le rouge */
+.exos-lignes li:last-child { border-left-color: var(--color-signal); }
+.exos-f { overflow-x: auto; }
+.exos-f .katex-display { margin: 0; text-align: left; }
+.exos-t { font-size: 1.0625rem; line-height: 1.5; }
+.exos-r { font-size: 0.9375rem; line-height: 1.45; color: var(--color-text-secondary); }
+
+/* les boutons */
+.exos-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.exos-actions .exos-btn:last-child { margin-left: auto; }
+.exos-btn { font: 700 1rem var(--font-ui); padding: 12px 18px; cursor: pointer; background: var(--color-text-primary); color: var(--color-surface-base); border: 1px solid var(--color-text-primary); text-decoration: none; display: inline-block; }
+.exos-btn.ghost { background: transparent; color: var(--color-text-primary); }
+.exos-btn.petit { font-size: 0.9375rem; padding: 8px 14px; }
+.exos-btn:disabled { opacity: .35; cursor: default; }
+.exos-btn:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+.exos-graine { font-size: 0.8125rem; color: var(--color-text-tertiary); font-variant-numeric: tabular-nums; }
+
+/* le bilan */
+.exos-bilan { list-style: none; margin: 0 0 16px; padding: 0; display: grid; gap: 4px; }
+.exos-bilan li { display: grid; grid-template-columns: 2rem 1fr auto; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--color-border-soft); font-size: 1rem; }
+.exos-bilan-n { font-weight: 700; }
+.exos-bilan-r { color: var(--color-text-secondary); font-size: 0.9375rem; }
+.exos-bilan li.b-premier .exos-bilan-r { color: var(--color-success); }
+.exos-liste { margin: 0 0 12px; padding-left: 20px; display: grid; gap: 6px; font-size: 1rem; line-height: 1.5; }
+
+@keyframes exos-rise { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .exos-lignes li { animation: none; } }
+@media (max-width: 899px) {
+  .exos-matiere { display: none; }
+  .exos-actions .exos-btn:last-child { margin-left: 0; }
+}

@@ -1,0 +1,237 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" width="900" height="380"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Trois scènes comparant la longueur d’onde à la taille d’antenne nécessaire : 1) une règle montrant qu’une antenne efficace mesure environ le quart de la longueur d’onde ; 2) un signal audio à 1 kHz exigerait une antenne de 75 km, absurdement plus haute que des montagnes ; 3) une porteuse à 900 kHz n’exige qu’une antenne réaliste d’environ 83 m, comparable à un immeuble — soit 900 fois plus petite que le cas audio.">
+  <title>Pourquoi il faut une porteuse : l’échelle d’une antenne</title>
+  <!--
+    antenne-quart-onde.svg — figure STAGED (3 étapes), R1 (ondes-em-modulation).
+    Diagramme STRUCTUREL (pas un graphe d'axes) : 3 scènes indépendantes,
+    juxtaposées, chacune sa propre étape — même grammaire que
+    bonne-surmodulation.svg (2 panneaux, chacun son step) ou pile-daniell.svg
+    (couches cumulatives), adaptée ici à 3 scènes séparées plutôt qu'à des
+    couches qui se superposent dans le même espace.
+
+    Le geste d'enseignement (LESSON-EXPERIENCE-SPEC §2.5 : l'ordre des
+    couches EST le propos) suit exactement le texte de R1 :
+      step-1 : la règle — une longueur d'onde tracée le long d'un axe
+               gradué, avec une antenne quart-d'onde dessinée À CÔTÉ, à la
+               MÊME échelle (55 px = λ/4 à l'horizontale ET à la verticale) —
+               le lecteur VOIT que « taille antenne ≈ λ/4 » avant même de
+               lire le texte.
+      step-2 : le cas audio — f=1kHz → λ/4=75km, mis en scène à l'échelle
+               humaine/paysage : l'antenne sort du cadre (trait interrompu
+               par un symbole de coupure), largement plus haute que le
+               paysage de montagnes — visuellement impossible.
+      step-3 : le cas porteuse — f_p=900kHz → λ/4≈83m, un mât réaliste à
+               côté d'un immeuble, plus la flèche-bilan « ÷ 900 » qui relie
+               le nombre du step-2 (75 km) au nombre du step-3 (83 m).
+
+    IMPORTANT — proportions : seule l'échelle À L'INTÉRIEUR de chaque
+    panneau est cohérente (panneau 1 : le rapport horizontal/vertical
+    λ/4 = 55px est EXACT, dessiné puis mesuré, pas deviné). Il n'y a AUCUNE
+    échelle commune entre les 3 panneaux — un panneau montre des mètres,
+    un autre des dizaines de kilomètres, un troisième des dizaines de
+    mètres réels. C'est déclaré explicitement en note de bas de figure
+    (chrome, toujours visible) pour ne jamais laisser croire à une figure
+    "à l'échelle" globale.
+
+    ── Géométrie panneau 1 (la règle), calculée ──
+    Onde : une sinusoïde complète, crête-creux-crête, tracée par 2 arcs
+    cubiques par demi-période (même recette que modulation-amplitude.svg /
+    double-periodicite.svg : contrôle proche d'un EXTREMUM à y=extremum
+    (tangente plate), contrôle proche d'un ZÉRO à
+    y = 0,3125*axis + 0,6875*y_extremum (tangente raide), décalage x = ±20).
+      axis y=140, amplitude=22 → crête y=118, creux y=162
+      demi-période = 110px (donc λ = 220px, quart de λ = 55px)
+      crêtes en x=50 (k=0) et x=270 (k=2, soit λ) ; creux en x=160 (k=1)
+      zéros (croisements) en x=105 et x=215
+      y_ctrl_zéro (venant d'une crête) = 0,3125*140+0,6875*118 = 124,875
+      y_ctrl_zéro (venant d'un creux)  = 0,3125*140+0,6875*162 = 155,125
+    Bracket λ/4 : x=50..105 (exactement 55px, EXACTEMENT le quart de λ=220).
+    Mât (antenne quart-d'onde) : hauteur verticale de 55px EXACTS
+    (y=240→295), reprenant le MÊME nombre de pixels que le bracket λ/4 —
+    aucune conversion d'échelle, la même mesure horizontale est simplement
+    reportée à la verticale. C'est tout l'argument du panneau 1.
+
+    ── Géométrie panneau 2 (cas audio) ──
+    Schématique et volontairement disproportionnée (c'est le point : montrer
+    l'absurdité). Montagnes ~25-40px de haut, silhouette humaine ~11px de
+    haut (donnée comme repère d'échelle très petit), et un trait d'antenne
+    qui sort du cadre : segment bas (sol→y=190), symbole de coupure
+    (double hachure oblique, convention "axe interrompu"), segment haut
+    court (y=172→90) + trois points de suspension indiquant qu'il continue
+    bien au-delà de la figure — 75 km ne peut, par construction, tenir dans
+    aucun panneau à une échelle qui garderait les montagnes visibles.
+
+    ── Géométrie panneau 3 (cas porteuse) ──
+    Immeuble : rectangle 70×80px, 6 fenêtres (2×3), repère d'échelle
+    réaliste. Mât : silhouette de pylône simplifiée (2 montants qui se
+    resserrent + 4 traverses horizontales, sans treillis diagonal — trait
+    retenu volontairement pour rester dans le principe de cohérence, pas de
+    détail décoratif superflu), hauteur 213px soit ≈2,7× l'immeuble —
+    "réaliste, comparable aux vrais mâts", ni minuscule ni absurde.
+
+    Couleurs (5 tokens seulement) :
+      structure neutre (règle, montagnes, immeuble, mât, sol) : --figure-ink / --figure-ink-soft
+      fond des panneaux : --figure-surface / --figure-grid
+      SEULE emphase : le bracket λ/4 (panneau 1), le chiffre "75 km"
+        (panneau 2) et la flèche "÷ 900" (panneau 3) — les 3 nombres qui
+        portent l'argument — en --figure-accent.
+  -->
+
+  <!-- Titre (chrome, non-stagé) -->
+  <text x="450" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Pourquoi il faut une porteuse : l’échelle d’une antenne
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — la règle : λ tracée, antenne quart-d'onde à la même échelle
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text x="150" y="50" text-anchor="middle" font-size="12" font-weight="600"
+          fill="var(--figure-accent)">1. La règle : λ et λ/4</text>
+
+    <rect x="20" y="62" width="260" height="270" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Une longueur d'onde complète -->
+    <path d="
+      M50,118
+      C70,118 85,124.875 105,140
+      C125,155.125 140,162 160,162
+      C180,162 195,155.125 215,140
+      C235,124.875 250,118 270,118
+    " fill="none" stroke="var(--figure-ink)" stroke-width="2.2"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Graduations 0 / λ sur la ligne de base -->
+    <line x1="50" y1="135" x2="50" y2="145" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <line x1="270" y1="135" x2="270" y2="145" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="50" y="176" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Bracket λ/4 — accent, l'argument du panneau -->
+    <line x1="50" y1="172" x2="50" y2="178" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <line x1="105" y1="172" x2="105" y2="178" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <line x1="50" y1="178" x2="105" y2="178" stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <text x="77.5" y="192" text-anchor="middle" font-size="11.5" font-weight="600"
+          fill="var(--figure-accent)">λ/4</text>
+
+    <!-- Bracket λ (complet) — neutre, pour référence -->
+    <line x1="50" y1="199" x2="50" y2="205" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="270" y1="199" x2="270" y2="205" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="50" y1="205" x2="270" y2="205" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="160" y="219" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">λ</text>
+
+    <!-- Antenne quart-d'onde : hauteur EXACTEMENT 55px, comme le bracket λ/4 ci-dessus -->
+    <circle cx="77.5" cy="240" r="3" fill="var(--figure-ink)"/>
+    <line x1="77.5" y1="240" x2="77.5" y2="295" stroke="var(--figure-ink)" stroke-width="2.4" stroke-linecap="round"/>
+    <!-- Sol -->
+    <line x1="62" y1="295" x2="93" y2="295" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <line x1="66" y1="299" x2="60" y2="304" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="76" y1="299" x2="70" y2="304" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="86" y1="299" x2="80" y2="304" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+
+    <line x1="85" y1="265" x2="98" y2="265" stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-dasharray="2,2"/>
+    <text x="101" y="255" font-size="10" fill="var(--figure-ink)">taille antenne</text>
+    <text x="101" y="268" font-size="10" fill="var(--figure-ink)">≈ λ/4</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — le cas audio : λ/4 = 75 km, absurde à l'échelle humaine
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <text x="440" y="50" text-anchor="middle" font-size="12" font-weight="600"
+          fill="var(--figure-accent)">2. Cas audio : λ/4 = 75 km — impossible</text>
+
+    <rect x="300" y="62" width="280" height="270" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Sol -->
+    <line x1="315" y1="308" x2="565" y2="308" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+
+    <!-- Montagnes (repère de paysage) -->
+    <polygon points="330,308 350,278 370,308" fill="var(--figure-grid)" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <polygon points="355,308 380,268 405,308" fill="var(--figure-grid)" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <polygon points="390,308 407,285 424,308" fill="var(--figure-grid)" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+
+    <!-- Silhouette humaine (repère d'échelle, minuscule à dessein) -->
+    <circle cx="450" cy="297" r="2.5" fill="var(--figure-ink-soft)"/>
+    <line x1="450" y1="299.5" x2="450" y2="306" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <line x1="450" y1="301" x2="445" y2="304" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="450" y1="301" x2="455" y2="304" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="450" y1="306" x2="446" y2="308" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <line x1="450" y1="306" x2="454" y2="308" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <!-- Les deux lignes remontent au-dessus du sol (y=308), qui traversait
+         « (1,80 m) » (mesuré 99 %). -->
+    <text x="461" y="288" font-size="8.5" fill="var(--figure-ink-soft)">être humain</text>
+    <text x="461" y="298" font-size="8.5" fill="var(--figure-ink-soft)">(1,80 m)</text>
+
+    <!-- L'antenne impossible : sort du cadre, coupée par un symbole de rupture -->
+    <line x1="520" y1="308" x2="520" y2="190" stroke="var(--figure-ink)" stroke-width="2.4" stroke-linecap="round"/>
+    <line x1="512" y1="196" x2="528" y2="184" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <line x1="512" y1="184" x2="528" y2="172" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <line x1="520" y1="172" x2="520" y2="90" stroke="var(--figure-ink)" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="520" cy="82" r="1.3" fill="var(--figure-ink-soft)"/>
+    <circle cx="520" cy="76" r="1.3" fill="var(--figure-ink-soft)"/>
+    <circle cx="520" cy="70" r="1.3" fill="var(--figure-ink-soft)"/>
+
+    <line x1="528" y1="178" x2="535" y2="175" stroke="var(--figure-accent)" stroke-width="0.9"/>
+    <!-- ANCRÉES À DROITE, RENTRÉES DANS LEUR PANNEAU (2026-09-04) : ancrées à
+         gauche en x=538, les deux lignes s'étendaient jusqu'à x≈621 et
+         sortaient de 41 px du panneau 2 (qui s'arrête à 580) pour se poser
+         SUR le panneau 3. Un chiffre du cas audio écrit dans le cadre du cas
+         porteuse : la mesure était juste, et le défaut est d'attribution, pas
+         de place. Ancrées à droite avant le mât, elles restent chez elles. -->
+    <text x="520" y="176" text-anchor="end" font-size="12.5" font-weight="600" fill="var(--figure-accent)">λ/4 = 75 km</text>
+    <text x="520" y="191" text-anchor="end" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">(impossible à construire)</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — le cas porteuse : λ/4 ≈ 83 m, réaliste — et le bilan ÷ 900
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <text x="730" y="50" text-anchor="middle" font-size="12" font-weight="600"
+          fill="var(--figure-accent)">3. Cas porteuse : λ/4 ≈ 83 m — réaliste</text>
+
+    <rect x="600" y="62" width="260" height="270" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Sol -->
+    <line x1="615" y1="308" x2="845" y2="308" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+
+    <!-- Immeuble (repère d'échelle réaliste) -->
+    <rect x="630" y="228" width="70" height="80" fill="var(--figure-grid)" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <rect x="645" y="240" width="10" height="10" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="0.8"/>
+    <rect x="675" y="240" width="10" height="10" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="0.8"/>
+    <rect x="645" y="262" width="10" height="10" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="0.8"/>
+    <rect x="675" y="262" width="10" height="10" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="0.8"/>
+    <rect x="645" y="284" width="10" height="10" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="0.8"/>
+    <rect x="675" y="284" width="10" height="10" fill="var(--figure-surface)" stroke="var(--figure-ink-soft)" stroke-width="0.8"/>
+    <text x="665" y="322" text-anchor="middle" font-size="8.5" fill="var(--figure-ink-soft)">immeuble (repère)</text>
+
+    <!-- Mât radio réaliste -->
+    <line x1="770" y1="308" x2="778" y2="95" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="790" y1="308" x2="782" y2="95" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="772" y1="260" x2="788" y2="260" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <line x1="774" y1="215" x2="786" y2="215" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <line x1="776" y1="170" x2="784" y2="170" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <line x1="778" y1="125" x2="782" y2="125" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <circle cx="780" cy="95" r="2.5" fill="var(--figure-ink)"/>
+    <line x1="780" y1="95" x2="780" y2="85" stroke="var(--figure-ink)" stroke-width="1.4" stroke-linecap="round"/>
+    <line x1="795" y1="140" x2="783" y2="130" stroke="var(--figure-ink-soft)" stroke-width="0.9"/>
+    <text x="798" y="138" font-size="10.5" fill="var(--figure-ink)">mât ≈ 83 m</text>
+
+    <!-- Flèche-bilan reliant le "75 km" du panneau 2 au "83 m" de ce panneau -->
+    <line x1="585" y1="175" x2="596" y2="175" stroke="var(--figure-accent)" stroke-width="2"/>
+    <polygon points="596,175 588,171 588,179" fill="var(--figure-accent)"/>
+    <text x="591" y="163" text-anchor="middle" font-size="12.5" font-weight="700"
+          fill="var(--figure-accent)">÷ 900</text>
+  </g><!-- /step-3 -->
+
+  <!-- Note de bas de figure : proportions par panneau, jamais communes (chrome, permanent) -->
+  <text x="450" y="360" text-anchor="middle" font-size="9" font-style="italic"
+        fill="var(--figure-ink-soft)">(3 panneaux schématiques, indépendants : les proportions ne valent qu’à l’intérieur de chaque panneau — aucune échelle commune entre eux)</text>
+
+</svg>

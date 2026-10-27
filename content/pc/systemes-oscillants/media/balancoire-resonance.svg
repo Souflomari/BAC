@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" width="640" height="320"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Illustration d’ambiance : un pendule poussé par petites poussées répétées, au bon rythme, balaie une amplitude de plus en plus grande.">
+  <title>De petites poussées, au bon rythme, pour un grand balancement</title>
+
+  <!--
+    balancoire-resonance.svg — R7, C-RES-3 (OPTIONAL hook). Type
+    atmospheric-illustration selon ADR 0017/spec-extension §4, mais
+    construit ICI en SVG codé (token palette) plutôt que généré — décision
+    explicite de la passe de couverture 2026-07 (le sujet — un motif
+    "petites poussées répétées, au bon rythme" — se prête à une géométrie
+    abstraite simple, sans le risque d'un rendu Gemini approximatif pour
+    une scène somme toute très épurée).
+
+    AUCUNE mise en étapes : ce n'est pas un graphe, aucun geste
+    d'enseignement séquentiel ne s'applique ici (refus documenté légitime,
+    ledger 11.6) — une scène d'ambiance se lit d'un coup, comme
+    montage-diffraction-ultrasons.svg pour un schéma d'appareil.
+
+    Zéro graphe, zéro nombre, zéro étiquette, zéro équation, zéro
+    structure de montage (spec-extension §4, C-RES-3) : le motif choisi
+    est le pendule abstrait "petites poussées qui font grandir
+    l'amplitude" (alternative explicitement proposée dans la spec à la
+    scène "enfant sur une balançoire") — trois arcs concentriques, de
+    même pivot, d'amplitude angulaire croissante (±15°, ±30°, ±45°),
+    balayés depuis un même point d'ancrage, chacun se terminant sur un
+    petit disque (le "poussé" suivant). Aucun texte visible dans l'image.
+
+    Géométrie : pivot en (320,50) ; longueur de bras R=220 ; arcs centrés
+    sur le pivot, chacun un arc de cercle entre −θ et +θ (mesuré depuis la
+    verticale), passant par le point bas (320,270).
+
+    Couleurs : bras de référence (vertical, pointillé) et arcs internes →
+    --figure-ink-soft, discrets, à l'opacité réduite (le passé — les
+    poussées précédentes, plus petites) ; arc et disque extérieurs →
+    --figure-accent (l'UNE idée : LA poussée d'aujourd'hui, la plus
+    grande) ; sol → --figure-grid, trait fin.
+  -->
+
+  <!-- Sol, discret -->
+  <line x1="70" y1="300" x2="570" y2="300" stroke="var(--figure-grid)" stroke-width="1.4"/>
+
+  <!-- Pivot -->
+  <circle cx="320" cy="50" r="4" fill="var(--figure-ink)"/>
+
+  <!-- Bras de référence, vertical (position de repos) -->
+  <line x1="320" y1="50" x2="320" y2="270" stroke="var(--figure-ink-soft)" stroke-width="1"
+        stroke-dasharray="3,4" opacity="0.5"/>
+
+  <!-- Arc 1 — la première (petite) poussée, ±15° -->
+  <path d="M263.1,262.5 A220,220 0 0,1 376.9,262.5"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6" opacity="0.4"/>
+  <circle cx="263.1" cy="262.5" r="5" fill="var(--figure-ink-soft)" opacity="0.4"/>
+  <circle cx="376.9" cy="262.5" r="5" fill="var(--figure-ink-soft)" opacity="0.4"/>
+
+  <!-- Arc 2 — la deuxième poussée, plus ample, ±30° -->
+  <path d="M210,240.5 A220,220 0 0,1 430,240.5"
+        fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.8" opacity="0.65"/>
+  <circle cx="210" cy="240.5" r="6" fill="var(--figure-ink-soft)" opacity="0.65"/>
+  <circle cx="430" cy="240.5" r="6" fill="var(--figure-ink-soft)" opacity="0.65"/>
+
+  <!-- Arc 3 — la poussée d'aujourd'hui, la plus ample, ±45° -->
+  <path d="M164.4,205.6 A220,220 0 0,1 475.6,205.6"
+        fill="none" stroke="var(--figure-accent)" stroke-width="2.4"/>
+  <circle cx="164.4" cy="205.6" r="8" fill="var(--figure-accent)"/>
+  <circle cx="475.6" cy="205.6" r="8" fill="var(--figure-accent)"/>
+
+  <!-- Bras courant, incliné vers l'extrémité accentuée -->
+  <line x1="320" y1="50" x2="475.6" y2="205.6" stroke="var(--figure-accent)" stroke-width="1.6"
+        opacity="0.55"/>
+
+</svg>

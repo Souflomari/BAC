@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 470"
+     font-family="'IBM Plex Sans', system-ui, sans-serif" role="img"
+     aria-label="Le refroidissement d’une tasse de café : quatre mesures réelles (90 °C à t = 0, 62,5 °C à t = 5, 45,8 °C à t = 10, 29,5 °C à t = 20 minutes), confrontées à deux modèles — le modèle A, une droite à rythme constant qui atteint 20 °C vers t ≈ 12,7 minutes puis s’arrête net et manque les mesures suivantes, contre le modèle B, une courbe qui ralentit à mesure qu’elle approche les 20 °C de la pièce, marqués en pointillés, sans jamais les atteindre, et qui passe exactement par les quatre points mesurés.">
+  <title>La tasse de café refroidit-elle à rythme constant ?</title>
+  <!--
+    refroidissement-modeles.svg — graphe STATIQUE de l'accroche du R0
+    (content/maths/equations-differentielles/lesson.md, lignes 5-33) :
+    predict-then-reveal entre deux modèles de refroidissement, AVANT que le
+    texte n'introduise l'équation différentielle T' = -k(T-20).
+
+    Modèle A (FAUX, réfuté par les données) : rythme constant, la pente
+    initiale observée entre t=0 et t=5, soit (90-62,5)/5 = 5,5 °C/min :
+        T_A(t) = 90 - 5,5 t     pour t <= (90-20)/5,5 = 70/5,5 ≈ 12,73 min
+    au-delà, le modèle prédit un arrêt nét à 20 °C — mais rien ne justifie
+    cet arrêt physiquement, et les données continuent bien au-delà.
+
+    Modèle B (VRAI, la solution établie au R3 pour T0=90, cf.
+    famille-solutions.svg) :
+        T_B(t) = 70 e^(-0,1t) + 20
+    C'est EXACTEMENT la même fonction que la courbe accent de
+    famille-solutions.svg (même a=-0,1, b=2, T0=90) — cohérence voulue
+    entre les deux figures de cette leçon.
+
+    VÉRIFICATION contre le tableau du R0 (lesson.md ligne 19) :
+      T_B(5)  = 70e^-0,5 + 20 ≈ 62,46   (table : 62,5)
+      T_B(10) = 70e^-1  + 20 ≈ 45,75   (table : 45,8)
+      T_B(20) = 70e^-2  + 20 ≈ 29,47   (table : 29,5)
+    Concorde aux arrondis du tableau près.
+
+    Point de croisement Modèle A / donnée à t=5 : PAR CONSTRUCTION,
+    T_A(5) = 90 - 5,5×5 = 62,5, exactement la mesure à t=5 (c'est ainsi que
+    le rythme 5,5 °C/min est dérivé dans le texte, ligne 21) — le modèle A
+    n'est pas absurde, il colle même au premier intervalle ; c'est en
+    CONTINUANT à rythme constant au-delà qu'il diverge et finit par
+    manquer les mesures suivantes (t=10 : modèle 35 °C contre 45,8 °C
+    réels ; t=20 : le modèle s'est déjà arrêté, aucune prédiction).
+
+    GÉOMÉTRIE (calculée, jamais devinée) — MÊME ÉCHELLE que
+    famille-solutions.svg, pour que les deux figures de la leçon se lisent
+    l'une par rapport à l'autre :
+      origine (t=0, T=0)     : (x0,y0) = (110, 380)
+      échelle temporelle      : 10 px / minute        → x(t) = 110 + 10t
+      échelle de température  : 3 px / °C (T croît vers le haut)
+                                                        → y(T) = 380 - 3T
+      palier ambiant T=20°C   : y = 380 - 60 = 320 (ligne pointillée)
+      point de départ T0=90   : y = 380 - 270 = 110
+
+    Courbe modèle B : polyligne échantillonnée à CHAQUE minute entière,
+    t = 0..20 (21 points), via T_B(t) = 70e^(-0,1t)+20 — jamais une bézier
+    devinée à la main. Droite modèle A : segment exact de (t=0,T=90) à
+    (t≈12,73, T=20), calculé algébriquement, pas au jugé.
+
+    Couleurs (tokens uniquement, --figure-*) :
+      les quatre points mesurés (données brutes)   : --figure-ink
+      modèle A (la prédiction réfutée)              : --figure-ink-soft
+      modèle B (la lecture correcte, LE sujet)       : --figure-accent
+      palier ambiant / axes / ticks                  : --figure-ink-soft
+
+    MISE EN ÉTAPES (LESSON-EXPERIENCE-SPEC §2.5 : graphe, toujours staged,
+    axes → données → lecture — ici affiné en 4 temps pour porter le
+    predict-then-reveal du texte) :
+      step-1 (axes)    : repère t/T, palier ambiant T=20°C en pointillés,
+                         et le point de départ (0, 90) déjà marqué — comme
+                         le lecteur le sait avant de choisir un modèle.
+      step-2 (données) : les trois autres mesures du tableau (t=5,10,20).
+      step-3 (modèle A): la prédiction fausse — droite à rythme constant,
+                         qui s'arrête net à t≈12,7 min et manque la suite.
+      step-4 (modèle B): la lecture — la courbe qui ralentit et ne
+                         franchit jamais le palier, avec les deux rythmes
+                         annotés (5,5 puis 3,3 °C/min).
+  -->
+
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="330" y="22" text-anchor="middle" font-size="13.5" font-weight="600"
+          letter-spacing="0.01em" fill="var(--figure-ink)">La tasse de café refroidit-elle à rythme constant ?</text>
+    <text x="330" y="39" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">T en °C, t en minutes — modèle A (rythme constant) contre modèle B (ralentissement)</text>
+
+    <!-- Fond du panneau -->
+    <rect x="40" y="54" width="590" height="356" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Axes ──────────────────────────────────────────────── -->
+    <line x1="110" y1="380" x2="622" y2="380" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="622,380 610,375.5 610,384.5" fill="var(--figure-ink-soft)"/>
+    <line x1="110" y1="380" x2="110" y2="64" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="110,64 105.5,76 114.5,76" fill="var(--figure-ink-soft)"/>
+    <text x="628" y="384" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">t</text>
+    <text x="102" y="70" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">T</text>
+
+    <!-- Ticks de l'axe t (minutes) -->
+    <g stroke="var(--figure-ink-soft)" stroke-width="1">
+      <line x1="160" y1="380" x2="160" y2="386"/>
+      <line x1="210" y1="380" x2="210" y2="386"/>
+      <line x1="260" y1="380" x2="260" y2="386"/>
+      <line x1="310" y1="380" x2="310" y2="386"/>
+    </g>
+    <g font-size="9.5" fill="var(--figure-ink-soft)" text-anchor="middle">
+      <text x="160" y="398">5</text>
+      <text x="210" y="398">10</text>
+      <text x="260" y="398">15</text>
+      <text x="310" y="398">20</text>
+    </g>
+
+    <!-- Ticks de l'axe T (repère d'échelle) -->
+    <line x1="104" y1="140" x2="116" y2="140" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="98" y="144" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">80</text>
+    <line x1="104" y1="200" x2="116" y2="200" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="98" y="204" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">60</text>
+    <line x1="104" y1="260" x2="116" y2="260" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="98" y="264" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">40</text>
+
+    <!-- Origine -->
+    <text x="98" y="384" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Palier ambiant : la température de la pièce, T = 20 °C -->
+    <line x1="104" y1="320" x2="116" y2="320" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="98" y="324" text-anchor="end" font-size="11" font-weight="600" fill="var(--figure-ink)">20</text>
+    <line x1="110" y1="320" x2="610" y2="320" stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-dasharray="6,4"/>
+    <text x="606" y="306" text-anchor="end" font-size="11" fill="var(--figure-ink-soft)">T = 20 °C (température de la pièce)</text>
+
+    <!-- Point de départ (0, 90) -->
+    <circle cx="110" cy="110" r="3.6" fill="var(--figure-ink)"/>
+    <line x1="104" y1="110" x2="116" y2="110" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="98" y="114" text-anchor="end" font-size="11" font-weight="600" fill="var(--figure-ink)">90</text>
+    <text x="128" y="104" font-size="10.5" fill="var(--figure-ink)">T(0) = 90 °C</text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- Les trois autres mesures du tableau (R0, ligne 19) -->
+    <circle cx="160" cy="192.5" r="3.6" fill="var(--figure-ink)"/>
+    <text x="170" y="189" font-size="9.5" fill="var(--figure-ink)">62,5 °C</text>
+
+    <circle cx="210" cy="242.6" r="3.6" fill="var(--figure-ink)"/>
+    <text x="220" y="239" font-size="9.5" fill="var(--figure-ink)">45,8 °C</text>
+
+    <circle cx="310" cy="291.5" r="3.6" fill="var(--figure-ink)"/>
+    <!-- REMONTÉE au-dessus de la courbe (2026-09-04) : à y=283 l'étiquette
+         était posée sur le modèle B, qui la rayait sur 58 % de sa largeur —
+         la mesure barrée par le modèle censé la vérifier. Les trois autres
+         valeurs sont déjà au-dessus de leur point ; celle-ci ne l'était pas. -->
+    <text x="330" y="286" text-anchor="end" font-size="9.5" fill="var(--figure-ink)">29,5 °C</text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- Modèle A (réfuté) : droite à rythme constant, T_A(t) = 90 - 5,5t,
+         de (110,110) à l'intersection avec le palier T=20 à t≈12,73 min. -->
+    <line x1="110" y1="110" x2="237.3" y2="320" stroke="var(--figure-ink-soft)"
+          stroke-width="2" stroke-dasharray="5,4" stroke-linecap="round"/>
+    <circle cx="237.3" cy="320" r="3.2" fill="var(--figure-ink-soft)"/>
+
+    <text x="250" y="301" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">Modèle A — rythme constant</text>
+    <text x="250" y="314" font-size="9.5" font-style="italic" fill="var(--figure-ink-soft)">T(t) = 90 − 5,5 t</text>
+    <text x="250" y="327" font-size="9" fill="var(--figure-ink-soft)">s’arrête à 20 °C (t ≈ 12,7 min)</text>
+  </g><!-- /step-3 -->
+
+  <g id="step-4">
+    <!-- Modèle B (la lecture) : T_B(t) = 70e^(-0,1t) + 20, échantillonnée
+         chaque minute entière de t=0 à t=20. -->
+    <path d="M110,110.0 L120,130.0 L130,148.1 L140,164.4 L150,179.2 L160,192.6 L170,204.7 L180,215.7 L190,225.6 L200,234.6 L210,242.7 L220,250.1 L230,256.7 L240,262.8 L250,268.2 L260,273.1 L270,277.6 L280,281.6 L290,285.3 L300,288.6 L310,291.6"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.6"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Boîte : nom du modèle + formule -->
+    <rect x="356" y="64" width="254" height="50" rx="8" fill="var(--figure-accent)" fill-opacity="0.08"/>
+    <text x="483" y="82" text-anchor="middle" font-size="11" font-weight="600" fill="var(--figure-accent)">Modèle B — ne franchit jamais 20 °C</text>
+    <text x="483" y="101" text-anchor="middle" font-size="12.5" font-style="italic" fill="var(--figure-accent)">T(t) = 70 e<tspan
+          dy="-5" font-size="9">-0,1t</tspan><tspan dy="5"> + 20</tspan></text>
+
+    <!-- Boîte : les deux rythmes, reliés à la courbe par des repères pointillés -->
+    <rect x="356" y="122" width="254" height="56" rx="8" fill="var(--figure-accent)" fill-opacity="0.06"/>
+    <text x="368" y="140" font-size="9.5" fill="var(--figure-accent)">0–5 min : ≈ −5,5 °C/min (le plus raide)</text>
+    <text x="368" y="156" font-size="9.5" fill="var(--figure-accent)">5–10 min : ≈ −3,3 °C/min (déjà plus doux)</text>
+
+    <line x1="135" y1="156.3" x2="356" y2="140" stroke="var(--figure-accent)" stroke-width="0.9" stroke-dasharray="3,2" opacity="0.8"/>
+    <line x1="185" y1="220.7" x2="356" y2="156" stroke="var(--figure-accent)" stroke-width="0.9" stroke-dasharray="3,2" opacity="0.8"/>
+  </g><!-- /step-4 -->
+
+</svg>

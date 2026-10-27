@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 340"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Axe de composition, sans échelle temporelle : à gauche l’état pur acide + alcool, à droite l’état pur ester + eau, au centre une zone accent, l’état stabilisé où les quatre espèces coexistent. Expérience A part de l’extrémité acide + alcool ; une flèche accent, sens direct, la mène vers la zone de coexistence, étiquetée sens direct — estérification. Expérience B part de l’extrémité ester + eau ; une flèche ink-soft, sens inverse, la mène vers la même zone, étiquetée sens inverse — hydrolyse. Les deux flèches convergent vers la zone sans jamais viser un point unique commun ; l’annotation finale rappelle que c’est la composition initiale, et non la réaction elle-même, qui décide du sens qui domine au départ.">
+  <title>Composition initiale et sens dominant — deux expériences miroir</title>
+  <!--
+    experiences-miroir.svg — figure SCHÉMATIQUE, un AXE DE COMPOSITION (pas
+    un graphe x(t)). Illustre R3 (« Deux expériences miroir », lesson.md
+    lignes 88-98) : deux départs opposés sur le MÊME axe de composition, deux
+    sens dominants opposés, tous deux évoluant vers la même zone de
+    coexistence — sans jamais prétendre que les deux expériences finissent
+    au même point exact.
+
+    Contraintes dures respectées :
+      - AUCUN nombre, AUCUNE concentration, AUCUN K/Qr — l'axe ne porte ni
+        graduation ni unité, seulement des étiquettes qualitatives.
+      - CE N'EST PAS un axe du temps : c'est un axe de COMPOSITION, un trait
+        épais sans flèche directionnelle (contrairement à un axe t), sans
+        aucune graduation temporelle — la seule chose qui varie le long de
+        cet axe est la proportion réactifs/produits, pas un instant.
+      - Les deux flèches (expérience A, expérience B) convergent vers
+        l'INTÉRIEUR de la zone de coexistence, chacune vers un point DIFFÉRENT
+        de cette zone (250,145) et (390,195) — jamais vers un même point
+        unique : la figure ne revendique PAS une composition finale identique
+        pour A et B, seulement qu'elles atteignent la même ZONE stabilisée.
+
+    Géométrie (calculée, pas devinée) :
+      panneau                    : x=20 y=32 w=600 h=270 (bas=302)
+      axe de composition (trait) : y=170, x=80..560
+      repères d'extrémité        : x=80 et x=560, hachures verticales
+      zone de coexistence        : x=230 y=120 w=180 h=100 (centre x=320)
+      expérience A — départ      : (80,170) ; flèche courbe vers (250,145),
+        à l'intérieur de la zone, dans son coin supérieur gauche
+      expérience B — départ      : (560,170) ; flèche courbe vers (390,195),
+        à l'intérieur de la zone, dans son coin inférieur droit
+      bandeau de conclusion      : x=140 y=262 w=360 h=32
+
+    Rôle des couleurs (même convention que sens-direct-inverse.svg) :
+      expérience A — sens direct (marqueur, flèche, étiquette) : --figure-accent
+      expérience B — sens inverse (marqueur, flèche, étiquette) : --figure-ink-soft
+      axe, hachures, étiquettes d'extrémité                      : --figure-ink / --figure-ink-soft
+      zone de coexistence, son étiquette, le re-contour final,
+        le bandeau de conclusion                                 : --figure-accent
+        (le foyer : LA zone, pas l'un ou l'autre sens)
+
+    STAGED (LESSON-EXPERIENCE-SPEC §2.5, geste d'enseignement : la
+    destination — la zone stabilisée — est montrée EN PREMIER, avant les deux
+    expériences, exactement comme le pivot K de critere-qr-k.svg est posé
+    avant les comparaisons qui lui donnent son sens) :
+      step-1 : l'axe de composition, ses deux extrémités, et la zone de
+               coexistence (la destination, montrée d'emblée).
+      step-2 : Expérience A — départ acide + alcool purs, flèche accent
+               vers la zone.
+      step-3 : Expérience B — départ ester + eau purs, flèche ink-soft
+               vers la zone.
+      step-4 : les deux flèches ensemble (adoucies, comme il est standard
+               pour les étapes antérieures) + re-contour net de la zone +
+               bandeau de conclusion : c'est la composition initiale, pas la
+               réaction, qui décide du sens dominant au départ.
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Deux expériences miroir — la composition de départ décide du sens
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="32" width="600" height="270" rx="8"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — l'axe de composition et la zone de coexistence
+       (la destination, montrée d'emblée)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Axe de composition — un trait épais, PAS un axe fléché de graphe -->
+    <line x1="80" y1="170" x2="560" y2="170"
+          stroke="var(--figure-ink-soft)" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Hachures d'extrémité -->
+    <line x1="80" y1="163" x2="80" y2="177" stroke="var(--figure-ink-soft)" stroke-width="2"/>
+    <line x1="560" y1="163" x2="560" y2="177" stroke="var(--figure-ink-soft)" stroke-width="2"/>
+
+    <!-- Étiquettes d'extrémité -->
+    <text x="80" y="205" text-anchor="middle" font-size="12" fill="var(--figure-ink)">tout acide</text>
+    <text x="80" y="223" text-anchor="middle" font-size="12" fill="var(--figure-ink)">+ alcool</text>
+    <text x="560" y="205" text-anchor="middle" font-size="12" fill="var(--figure-ink)">tout ester</text>
+    <text x="560" y="223" text-anchor="middle" font-size="12" fill="var(--figure-ink)">+ eau</text>
+
+    <!-- Zone de coexistence — la destination, en accent à faible opacité -->
+    <rect x="230" y="120" width="180" height="100" rx="16"
+          fill="var(--figure-accent)" fill-opacity="0.08"
+          stroke="var(--figure-accent)" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="320" y="140" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)">état stabilisé —</text>
+    <text x="320" y="156" text-anchor="middle" font-size="9.5" font-weight="600"
+          fill="var(--figure-accent)">les quatre espèces coexistent</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — Expérience A : départ acide + alcool purs, sens direct
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <circle cx="80" cy="170" r="5" fill="var(--figure-accent)"/>
+    <path d="M100,170 Q180,105 250,145" fill="none"
+          stroke="var(--figure-accent)" stroke-width="2.2" marker-end="url(#arrow-exp-a)"/>
+    <text x="175" y="88" text-anchor="middle" font-size="10" font-weight="600"
+          fill="var(--figure-accent)">sens direct — estérification</text>
+    <defs>
+      <marker id="arrow-exp-a" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 Z" fill="var(--figure-accent)"/>
+      </marker>
+    </defs>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — Expérience B : départ ester + eau purs, sens inverse
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <circle cx="560" cy="170" r="5" fill="var(--figure-ink-soft)"/>
+    <path d="M540,170 Q460,235 390,195" fill="none"
+          stroke="var(--figure-ink-soft)" stroke-width="2.2" marker-end="url(#arrow-exp-b)"/>
+    <text x="450" y="247" text-anchor="middle" font-size="10" font-weight="600"
+          fill="var(--figure-ink-soft)">sens inverse — hydrolyse</text>
+    <defs>
+      <marker id="arrow-exp-b" viewBox="0 0 10 10" refX="8" refY="5"
+              markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 Z" fill="var(--figure-ink-soft)"/>
+      </marker>
+    </defs>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 4 — les deux sens convergent vers la zone : la composition
+       initiale décide, pas la réaction elle-même
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-4">
+    <!-- Re-contour net de la zone (les deux flèches, désormais adoucies,
+         convergent bien ici — sans jamais viser un point unique commun) -->
+    <rect x="230" y="120" width="180" height="100" rx="16"
+          fill="none" stroke="var(--figure-accent)" stroke-width="1.8"/>
+
+    <!-- Bandeau de conclusion -->
+    <rect x="140" y="262" width="360" height="32" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="320" y="283" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-accent)">composition initiale &#8658; sens qui domine au départ</text>
+  </g><!-- /step-4 -->
+
+</svg>
