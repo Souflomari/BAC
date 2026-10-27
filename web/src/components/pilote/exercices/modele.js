@@ -11,6 +11,8 @@
  *     id: 'ln-produit',                 // unique dans la notion
  *     titre: 'Le logarithme d’un produit',
  *     niveau: 1,                        // 1 application · 2 entraînement · 3 niveau bac
+ *     seance: 1,                        // facultatif : la séance de la leçon qui l'enseigne (défaut 1)
+ *     filieres: ['PC', 'SVT'],          // facultatif : seulement ces filières (défaut : toutes celles de la leçon)
  *     capacites: ['maths-sexp 1.2.15'], // identifiants du référentiel officiel (docs/referentiel/)
  *     erreurs: ['ln(ab) = ln a × ln b'],// les erreurs classiques que l'exercice attaque
  *     gen(h) {                          // h : hasard(graine) — int, pick, melange, dec, r
@@ -21,6 +23,9 @@
  *           { type: 'qcm', q: '…', options: [{ t: '…', ok: true }, { t: '…', fb: '…', erreur: '…' }] },
  *           { type: 'nombre', q: '…', reponse: 0.693, tol: { abs: 0.005 }, unite: 's',
  *             indice: '…', pieges: [{ v: 0.48, fb: '…', erreur: '…' }] },
+ *           { type: 'texte', q: '…', reponse: 'AUG GUG CAC', aide: 'les codons, séparés par des espaces',
+ *             pieges: [{ v: 'TAC CAC GTG', fb: '…', erreur: '…' }] },
+ *             // comparés sans espaces, tirets ni accents, en majuscules (normaliser)
  *         ],
  *         correction: [{ tex: '\\ln 6 = \\ln 2 + \\ln 3', r: 'la raison de la ligne' }, { t: 'une phrase' }],
  *       };
@@ -32,6 +37,15 @@
  */
 
 export const NIVEAUX = { 1: "Application", 2: "Entraînement", 3: "Niveau bac" };
+
+/** Une réponse écrite, ramenée à ses lettres : « aug-GUG cac » → « AUGGUGCAC », « Met–Val » → « METVAL ». */
+export function normaliser(s) {
+  return String(s ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toUpperCase()
+    .replace(/[^A-Z0-9]/g, "");
+}
 
 /**
  * Les défauts d'un tirage, en clair (liste vide = tirage sain).
@@ -78,6 +92,18 @@ export function defautsTirage(ex, t, { capacitesConnues, rendre, formule }) {
         if (ecart <= seuil) d.push(`${n} piège ${j + 1} : se confond avec la bonne réponse`);
         essai(`${n} piège ${j + 1}`, () => rendre(p.fb, true));
       });
+    } else if (q.type === "texte") {
+      const r = normaliser(q.reponse);
+      if (!r) d.push(`${n} : réponse écrite vide`);
+      (q.variantes || []).forEach((v, j) => {
+        if (!normaliser(v)) d.push(`${n} variante ${j + 1} : vide`);
+      });
+      (q.pieges || []).forEach((p, j) => {
+        const v = normaliser(p.v);
+        if (!v) d.push(`${n} piège ${j + 1} : vide`);
+        if (v === r || (q.variantes || []).some((x) => normaliser(x) === v)) d.push(`${n} piège ${j + 1} : se confond avec la bonne réponse`);
+        essai(`${n} piège ${j + 1}`, () => rendre(p.fb, true));
+      });
     } else d.push(`${n} : type inconnu (${q.type})`);
   });
   if (!Array.isArray(t.correction) || !t.correction.length) d.push("correction vide");
@@ -96,6 +122,9 @@ export function defautsGabarit(ex, capacitesConnues) {
   if (!ex.id) d.push("sans identifiant");
   if (!ex.titre) d.push("sans titre");
   if (![1, 2, 3].includes(ex.niveau)) d.push(`niveau invalide (${ex.niveau})`);
+  if (ex.seance != null && ![1, 2].includes(ex.seance)) d.push(`séance invalide (${ex.seance})`);
+  if (ex.filieres != null && (!Array.isArray(ex.filieres) || ex.filieres.some((f) => !["SM", "PC", "SVT"].includes(f))))
+    d.push(`filières invalides (${ex.filieres})`);
   if (!Array.isArray(ex.capacites) || !ex.capacites.length) d.push("aucune capacité du référentiel");
   (ex.capacites || []).forEach((c) => {
     if (!capacitesConnues.has(c)) d.push(`capacité inconnue du référentiel : ${c}`);

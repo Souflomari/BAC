@@ -2,8 +2,8 @@
 
 /**
  * PiloteCoquille — le squelette commun des leçons pilotes (refonte 2026-10),
- * habillé Grille : la barre (titre, parties, voix, « pourquoi ce format »),
- * la scène à gauche, le script à droite.
+ * habillé Grille : la barre (titre, filières, parties, exercices, voix, mode
+ * d'emploi), la scène à gauche, le script à droite.
  *
  * Le moteur impératif de chaque leçon (`*-moteur.js`, sur `noyau.js`) se
  * monte dans ce squelette après l'hydratation et rend son démontage.
@@ -13,6 +13,7 @@
  * de carrés, centrée, recalculée quand la scène change de taille.
  */
 
+import Link from "next/link";
 import { useEffect, useRef, type ReactNode } from "react";
 import { useHydrated } from "@/lib/useHydrated";
 
@@ -46,6 +47,8 @@ export function PiloteCoquille({
   nom,
   matiere,
   titre,
+  filieres,
+  exercices,
   monter,
   touches = "← → pour avancer · 1 2 3 pour répondre",
   sceneLabel = "Animation de la leçon : la scène illustre l’étape décrite à droite",
@@ -55,6 +58,10 @@ export function PiloteCoquille({
   nom: string;
   matiere: string;
   titre: string;
+  /** les filières qui étudient cette notion, telles que l'élève les nomme (« SM · PC · SVT ») */
+  filieres?: string;
+  /** la page d'exercices de la leçon */
+  exercices?: string;
   monter: (racine: HTMLElement) => (() => void) | void;
   touches?: string;
   sceneLabel?: string;
@@ -85,15 +92,20 @@ export function PiloteCoquille({
         <div className="pilote-titre">
           <span className="pilote-matiere">{matiere}</span>
           <strong className="font-display">{titre}</strong>
-          <span className="pilote-badge">pilote</span>
+          {filieres && <span className="pilote-filieres">{filieres}</span>}
         </div>
         <nav className="beats" id="beats" aria-label="Parties de la leçon" />
         <div className="pilote-outils">
+          {exercices && (
+            <Link className="tbtn" href={exercices}>
+              Exercices
+            </Link>
+          )}
           <button type="button" className="tbtn" id="voice" aria-pressed="false" {...attente}>
             Voix
           </button>
           <button type="button" className="tbtn" id="why" {...attente}>
-            Pourquoi ce format&#8239;?
+            Mode d’emploi
           </button>
         </div>
       </div>
@@ -127,7 +139,7 @@ export function PiloteCoquille({
         </aside>
       </div>
       <dialog id="whyd">
-        <h2>Pourquoi ce format</h2>
+        <h2>Mode d’emploi</h2>
         <ul>
           <li>
             <b>Une idée par écran.</b> Le chapitre est découpé en étapes courtes, de deux à quatre phrases chacune.
@@ -147,7 +159,7 @@ export function PiloteCoquille({
             <>
               <li>
                 <b>« Vérifie » à la fin de chaque partie.</b> Une question pour t’assurer que tu as compris
-                avant d’aller plus loin.
+                avant d’aller plus loin. Une erreur ? Un indice, et tu as un second essai.
               </li>
               <li>
                 <b>Chaque mot technique s’explique.</b> Un mot souligné en pointillés ouvre sa fiche, sans
@@ -157,7 +169,6 @@ export function PiloteCoquille({
           )}
           {pourquoi}
         </ul>
-        <p className="small">Leçon pilote : elle sert à valider le format avant de l’étendre aux autres notions.</p>
         <form method="dialog">
           <button type="submit" className="tbtn" {...attente}>
             Fermer

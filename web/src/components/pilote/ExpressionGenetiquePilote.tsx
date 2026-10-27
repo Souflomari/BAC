@@ -17,6 +17,8 @@ export function ExpressionGenetiquePilote() {
       nom="expression-genetique"
       matiere="SVT · 2ᵉ Bac"
       titre="Du gène à la protéine"
+      filieres="SVT · PC"
+      exercices="/pilote/expression-genetique/exercices"
       monter={monterPilote}
       pourquoi={
         <>

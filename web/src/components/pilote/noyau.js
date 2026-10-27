@@ -20,9 +20,14 @@
  *     tex,       // [[tex, texte de repli]] : formules affichées
  *     deriv,     // [{ tex, alt, r, p }] : une ligne de calcul à la fois,
  *                // chacune avec sa raison ; « Suivant » révèle la suivante
- *     pari,      // { opts: [{ t, fb, ok? }], reveal, apres, label }
+ *     pari,      // { opts: [{ t, fb, ok?, indice? }], reveal, apres, label, fixe? }
  *     verifie,   // comme un pari avec une bonne réponse : la question de
  *                // compréhension de fin de partie
+ *                // Une question (une option `ok`) : ses options sont mélangées à
+ *                // chaque séance, sauf `fixe: true` (options ordonnées : des
+ *                // durées, des pourcentages). Une première erreur donne l'`indice`
+ *                // de l'option choisie (l'erreur nommée, sans la réponse) et un
+ *                // second essai ; la réponse vient après. Un pari n'est jamais noté.
  *     ctl, need, html, say }
  * Dans le texte, [[cle|mot affiché]] ouvre la fiche du mot `cle`.
  */
@@ -39,6 +44,13 @@ const lerp=(a,b,t)=>a+(b-a)*t, clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
 function fr(x,d=2){const s=Math.abs(x).toFixed(d);return (x<0&&Number(s)!==0?'−':'')+s.replace('.',',');}
 const ty=s=>String(s).replace(/ ([?!;:»])/g,' $1').replace(/« /g,'« ');
+// panneau seulement (HTML) : un mot à trait d'union ne se coupe pas, un opérateur ne commence
+// pas une ligne, « ln 2 » reste soudé. Hors des balises et des [[fiches]].
+const typo=h=>String(h).split(/(<[^>]+>|\[\[[^\]]*\]\])/).map((p,i)=>i%2?p:p
+  .replace(/([A-Za-zÀ-ÖØ-öø-ÿ\u0370-\u03FF’']+(?:-[A-Za-zÀ-ÖØ-öø-ÿ\u0370-\u03FF]+)+)/g,'<span class="nw">$1</span>')
+  .replace(/ ([×÷=+−→≈≤≥])/g,'\u00A0$1')
+  .replace(/\b(ln|log|exp) (?=\S)/g,'$1\u00A0')).join('');
+const tyP=s=>typo(ty(s));
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const RM=matchMedia('(prefers-reduced-motion: reduce)');
 const wait=ms=>new Promise(r=>setTimeout(r,RM.matches?0:ms));
@@ -57,7 +69,7 @@ const scenes={};
 function scene(id,def){const g=E('g',{class:'scene'});g.style.opacity=0;const s=Object.assign({id,g},def);s.defaults={...def.p};s.p={...def.p};s.build(g);s.render();scenes[id]=s;return s;}
 
 /* état de l'élève : réponses (par clé d'étape), lignes vues, étapes vues */
-const S={ans:{},first:{},lignes:{},vu:{}};
+const S={ans:{},first:{},lignes:{},vu:{},essais:{}};
 let STEPS=[],cur=-1;
 const parCle={};
 const ctx={root,svg,$,E,defs,lerp,clamp,ease,fr,ty,esc,RM,wait,show,mtext,setMT,svgPt,scene,scenes,hooks,S,
@@ -83,7 +95,12 @@ STEPS=L.STEPS;
 STEPS.forEach((st,i)=>{
   st.id=i;st.k=st.cle!=null?String(st.cle):String(i);parCle[st.k]=st;
   if(st.verifie)st.pari={label:'Vérifie',...st.verifie,kind:'verifie'};
+  if(st.pari)melanger(st.pari);
 });
+// l'ordre d'affichage des options : mélangé pour une question, celui de l'auteur pour un pari
+function melanger(P){const o=P.opts.map((_,j)=>j);if(isQuiz(P)&&!P.fixe)for(let i=o.length-1;i>0;i--){const r=Math.floor(Math.random()*(i+1));[o[i],o[r]]=[o[r],o[i]];}P.ordre=o;}
+// pour les contrôles automatiques (scripts/pilotes-parcours.mjs)
+root.__lecon={STEPS,BEATS,S};
 {const last={};STEPS.forEach(st=>{const sc=scenes[st.scene];const prev=last[st.scene]||{...sc.defaults};st.base={...prev,...(st.set||{})};const f={...st.base};(st.seq||[]).forEach(x=>Object.assign(f,x.p));st.pre={...f};(st.deriv||[]).forEach(x=>x.p&&Object.assign(f,x.p));if(st.pari&&st.pari.reveal)st.pari.reveal.forEach(x=>Object.assign(f,x.p));last[st.scene]=f;});}
 
 /* ---------- animation ---------- */
@@ -109,7 +126,7 @@ async function animate(sc,st,my,fresh){
   if(my!==run)return;
   montrerPhrases(Infinity);
   if(st.deriv){const n=lignesVues(st);for(let j=0;j<n;j++){const x=st.deriv[j];if(x.p){if(my!==run)return;await tweenTo(sc,x.p,x.d||700,my);}}}
-  if(st.pari&&st.pari.reveal&&S.ans[st.k]!=null)for(const f of st.pari.reveal){if(my!==run)return;await tweenTo(sc,f.p,f.d||900,my);}
+  if(st.pari&&st.pari.reveal&&S.ans[st.k]!=null&&resolu(st))for(const f of st.pari.reveal){if(my!==run)return;await tweenTo(sc,f.p,f.d||900,my);}
   if(my===run)S.vu[st.k]=true;
 }
 function montrerPhrases(k){root.querySelectorAll('#body .say.later').forEach(p=>{if(+p.dataset.a<=k)p.classList.remove('later');});}
@@ -126,59 +143,82 @@ function go(i){
 function phrases(st){const v=typeof st.text==='function'?st.text():st.text;return (Array.isArray(v)?v:[v]).filter(x=>x!=null&&x!=='').map(x=>typeof x==='string'?{t:x}:x);}
 const motsHTML=h=>String(h).replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]((?:\u202F|\u00A0)?[:;.,!?»)]+)?/g,(m,c,t,ponct)=>MOTS[c]?`<span class="nw"><button type="button" class="mot" data-mot="${esc(c)}" aria-expanded="false">${t||c}</button>${ponct||''}</span>`:(t||c)+(ponct||''));
 const texHTML=t=>`<div class="formula">${t.map(([x,alt])=>`<span class="m" data-display="1" data-tex="${esc(x)}">${esc(alt)}</span>`).join('')}</div>`;
-function apresHTML(P){return P.apres?`${P.apres.tex?texHTML(P.apres.tex):''}${P.apres.html?motsHTML(ty(P.apres.html)):''}`:'';}
+function apresHTML(P){return P.apres?`${P.apres.tex?texHTML(P.apres.tex):''}${P.apres.html?motsHTML(tyP(P.apres.html)):''}`:'';}
+// une ligne de calcul : la dernière montrée porte le trait rouge ; les plus anciennes se compactent
+// (formule + une ligne de raison, un clic les rouvre) pour que la question reste à l'écran
+function classeLigne(j,n){return j>=n?'cache':`${j<n-2?'ancien':''}${j===n-1?' der':''}`;}
 function derivHTML(st){const n=lignesVues(st);
-  return `<ol class="deriv">${st.deriv.map((x,j)=>`<li class="${j<n?'':'cache'}" data-l="${j}"><span class="m" data-display="1" data-tex="${esc(x.tex)}">${esc(x.alt||x.tex)}</span>${x.r?`<span class="raison">${motsHTML(ty(x.r))}</span>`:''}</li>`).join('')}</ol>`;}
+  return `<ol class="deriv">${st.deriv.map((x,j)=>`<li class="${classeLigne(j,n)}" data-l="${j}"><span class="m" data-display="1" data-tex="${esc(x.tex)}">${esc(x.alt||x.tex)}</span>${x.r?`<span class="raison">${motsHTML(tyP(x.r))}</span>`:''}</li>`).join('')}</ol>`;}
 function renderPanel(st){
   $('#kicker').textContent=`${String(st.beat+1).padStart(2,'0')} — ${BEATS[st.beat].name}`;
   const revoir=S.vu[st.k]||RM.matches;
-  let h=`<div class="dit">${phrases(st).map(p=>`<p class="say${p.a!=null&&!revoir?' later':''}${p.fort?' fort':''}" data-a="${p.a!=null?p.a:-1}">${motsHTML(ty(p.t))}</p>`).join('')}</div>`;
+  let h=`<div class="dit">${phrases(st).map(p=>`<p class="say${p.a!=null&&!revoir?' later':''}${p.fort?' fort':''}" data-a="${p.a!=null?p.a:-1}">${motsHTML(tyP(p.t))}</p>`).join('')}</div>`;
   if(st.tex)h+=texHTML(st.tex);
   if(st.deriv){if(S.lignes[st.k]==null)S.lignes[st.k]=1;h+=derivHTML(st);}
   if(st.html)h+=st.html();
-  if(st.pari)h+=pariHTML(st)+`<div class="fb" id="fb"></div><div class="apres" id="apres">${S.ans[st.k]!=null?apresHTML(st.pari):''}</div>`;
+  if(st.pari)h+=pariHTML(st)+`<div class="fb" id="fb"></div><div class="apres" id="apres">${S.ans[st.k]!=null&&resolu(st)?apresHTML(st.pari):''}</div>`;
   if(st.ctl)h+=CTL[st.ctl].html(st);
   if(!st.pari)h+='<div class="fb" id="fb"></div>';
   h+='<div class="mot-zone" id="motz"></div>';
   const body=$('#body');body.innerHTML=h;body.classList.remove('in');void body.offsetWidth;body.classList.add('in');
   // une étape faite seulement de texte se centre dans la hauteur du panneau (pilote.css)
   $('#script').classList.toggle('texte-seul',!(st.pari||st.deriv||st.ctl||st.tex||st.html));
+  $('#script').classList.toggle('calcul',!!(st.deriv&&st.deriv.length>=4));
   $('#script').scrollTop=0;
-  if(st.pari){wireOpts(st);if(S.ans[st.k]!=null)$('#fb').innerHTML=motsHTML(ty(st.pari.opts[S.ans[st.k]].fb||''));}
+  if(st.pari){wireOpts(st);if(S.ans[st.k]!=null)$('#fb').innerHTML=messagePari(st,S.ans[st.k]);}
   if(st.ctl)CTL[st.ctl].init(st);
   renderMath(body);updateNav();
 }
 function voir(el){if(el&&el.scrollIntoView)el.scrollIntoView({block:'nearest',behavior:RM.matches?'auto':'smooth'});}
 function isQuiz(P){return P.opts.some(o=>o.ok);}
-function pariHTML(st){const P=st.pari,a=S.ans[st.k],q=isQuiz(P);
-  return `<div class="pari${P.kind==='verifie'?' verifie':''}"><div class="pari-k">${P.label||(q?'Réponds':'Ton pari')}</div><div class="opts">${P.opts.map((o,j)=>{let c='opt';if(a!=null){if(q){if(o.ok)c+=' ok';else if(a===j)c+=' ko';}else if(a===j)c+=' sel';}
-    return `<button type="button" class="${c}" data-j="${j}"${a!=null&&!q?' disabled':''}><kbd>${j+1}</kbd><span>${ty(o.t)}</span></button>`;}).join('')}</div></div>`;}
+// une question est résolue quand la bonne réponse est trouvée, ou après deux essais ; un pari dès le choix
+function resolu(st){const P=st.pari;if(!P)return true;const a=S.ans[st.k];if(a==null)return false;if(!isQuiz(P))return true;return !!P.opts[a].ok||(S.essais[st.k]||[]).length>=2;}
+function pariHTML(st){const P=st.pari,a=S.ans[st.k],q=isQuiz(P),ess=S.essais[st.k]||[],fini=resolu(st);
+  const essai=q&&!fini&&ess.length===1?'<span class="pari-essai">second essai</span>':'';
+  return `<div class="pari${P.kind==='verifie'?' verifie':''}${fini&&a!=null?' fini':''}"><div class="pari-k">${P.label||(q?'Réponds':'Ton pari')}${essai}</div><div class="opts">${P.ordre.map((j,pos)=>{const o=P.opts[j];let c='opt',m='',dit='';
+    if(q){if(fini&&o.ok){c+=' ok';m='✓';dit='bonne réponse';}else if(ess.includes(j)){c+=' ko';m='✗';dit='ta réponse, fausse';}else if(fini)c+=' off';}
+    else if(a!=null){if(a===j){c+=' sel';dit='ton choix';}else c+=' off';}
+    const inerte=(!q&&a!=null)||(q&&!fini&&ess.includes(j));
+    return `<button type="button" class="${c}" data-j="${j}"${inerte?' disabled':''}><kbd>${pos+1}</kbd><span>${tyP(o.t)}</span>${m?`<b class="marque" aria-hidden="true">${m}</b>`:''}${dit?`<span class="vh"> (${dit})</span>`:''}</button>`;}).join('')}</div></div>`;}
 function wireOpts(st){root.querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>choose(st,+b.dataset.j)));}
+// le retour sous les options : l'explication d'un pari ; pour une question, l'indice après une
+// première erreur, puis l'explication (et la bonne réponse si elle n'a pas été trouvée)
+function messagePari(st,j){const P=st.pari,o=P.opts[j];
+  if(!isQuiz(P))return motsHTML(tyP(o.fb||''));
+  if(o.ok)return motsHTML(tyP(o.fb||'Oui.'));
+  if(!resolu(st))return `<b class="fb-lead">Pas tout à fait.</b> ${motsHTML(tyP(o.indice||o.fb||''))} <span class="fb-encore">Choisis une autre réponse.</span>`;
+  const bon=P.opts.find(x=>x.ok);
+  return `${motsHTML(tyP(o.fb||''))}<span class="fb-bon"><b>La réponse : ${tyP(bon.t)}.</b> ${motsHTML(tyP(bon.fb||''))}</span>`;}
 function choose(st,j){
-  const P=st.pari,q=isQuiz(P),first=S.ans[st.k]==null;
-  if(!first&&!q)return;
-  if(first)S.first[st.k]=j;S.ans[st.k]=j;
+  const P=st.pari,q=isQuiz(P),k=st.k,fb=$('#fb');
+  if(!q&&S.ans[k]!=null)return;
+  // une question résolue : un clic relit l'explication d'une option, sans rien changer
+  if(q&&resolu(st)){fb.innerHTML=P.opts[j].ok?messagePari(st,j):motsHTML(tyP(P.opts[j].fb||''));renderMath(fb);voir(fb);say(plain(P.opts[j].fb||''));return;}
+  if(q){const ess=S.essais[k]||(S.essais[k]=[]);if(ess.includes(j))return;ess.push(j);}
+  if(S.first[k]==null)S.first[k]=j;S.ans[k]=j;
+  const fini=resolu(st);
   root.querySelector('.pari').outerHTML=pariHTML(st);wireOpts(st);
-  const btn=root.querySelector(`.opt[data-j="${j}"]`);if(btn&&!btn.disabled)btn.focus();else $('#next').focus();
-  const fb=$('#fb');fb.innerHTML=motsHTML(ty(P.opts[j].fb||''));renderMath(fb);
-  if(first&&P.apres){const ap=$('#apres');ap.innerHTML=apresHTML(P);renderMath(ap);voir(ap);}else voir(fb);
-  if(first&&P.reveal){const my=++run,sc=scenes[st.scene];(async()=>{const fr0=[{p:{...st.pre,...P.reveal[0].p},d:P.reveal[0].d},...P.reveal.slice(1)];for(const f of fr0){if(my!==run)return;await tweenTo(sc,f.p,f.d||900,my);}})();}
-  updateNav();say(plain(P.opts[j].fb||''));
+  const btn=root.querySelector(`.opt[data-j="${j}"]`);if(btn&&!btn.disabled)btn.focus();else if(fini)$('#next').focus();else{const autre=root.querySelector('.opt:not([disabled])');autre&&autre.focus();}
+  fb.innerHTML=messagePari(st,j);renderMath(fb);
+  if(fini&&P.apres){const ap=$('#apres');ap.innerHTML=apresHTML(P);renderMath(ap);voir(ap);}else voir(fb);
+  if(fini&&P.reveal){const my=++run,sc=scenes[st.scene];(async()=>{const fr0=[{p:{...st.pre,...P.reveal[0].p},d:P.reveal[0].d},...P.reveal.slice(1)];for(const f of fr0){if(my!==run)return;await tweenTo(sc,f.p,f.d||900,my);}})();}
+  updateNav();say(plain(fb.textContent||''));
 }
-function updateNav(){const st=STEPS[cur],n=$('#next'),bet=!!(st.pari&&S.ans[st.k]==null),need=!!(st.need&&!st.need());
-  const reste=st.deriv&&lignesVues(st)<st.deriv.length;
+function updateNav(){const st=STEPS[cur],n=$('#next'),bet=!!(st.pari&&!resolu(st)),need=!!(st.need&&!st.need());
+  const reste=st.deriv&&lignesVues(st)<st.deriv.length,encore=bet&&S.ans[st.k]!=null;
   n.disabled=bet||need;
-  n.textContent=cur===STEPS.length-1?'Recommencer':bet?'Choisis d’abord':need?(st.needLabel||'Fais-le d’abord'):reste?'Ligne suivante ↓':'Suivant →';
+  n.textContent=cur===STEPS.length-1?'Recommencer':encore?'Essaie encore':bet?'Choisis d’abord':need?(st.needLabel||'Fais-le d’abord'):reste?'Ligne suivante ↓':'Suivant →';
   $('#prev').disabled=cur===0;$('#count').textContent=`étape ${cur+1} / ${STEPS.length}`;}
 function ligneSuivante(st){
   const j=lignesVues(st);if(j>=st.deriv.length)return false;
   S.lignes[st.k]=j+1;
-  const li=root.querySelector(`.deriv li[data-l="${j}"]`);if(li){li.classList.remove('cache');voir(li);}
+  root.querySelectorAll('.deriv li').forEach(x=>{const i=+x.dataset.l;x.className=classeLigne(i,j+1)+(x.classList.contains('ouvert')?' ouvert':'');});
+  const li=root.querySelector(`.deriv li[data-l="${j}"]`);if(li)voir(li);
   const x=st.deriv[j];if(x.p){const my=++run;tweenTo(scenes[st.scene],x.p,x.d||700,my);}
   say(plain((x.alt||x.tex)+'. '+(x.r||'')));
   updateNav();return true;
 }
-function reset(){S.ans={};S.first={};S.lignes={};S.vu={};L.reset&&L.reset();}
+function reset(){S.ans={};S.first={};S.lignes={};S.vu={};S.essais={};STEPS.forEach(st=>st.pari&&melanger(st.pari));L.reset&&L.reset();}
 function next(){if($('#next').disabled)return;const st=STEPS[cur];if(st.deriv&&ligneSuivante(st))return;if(cur===STEPS.length-1){reset();go(0);}else go(cur+1);}
 
 /* ---------- fiches de mots ---------- */
@@ -188,11 +228,13 @@ function ouvrirMot(btn){
   root.querySelectorAll('.mot[aria-expanded="true"]').forEach(b=>b.setAttribute('aria-expanded','false'));
   if(ouvert){z.innerHTML='';return;}
   btn.setAttribute('aria-expanded','true');
-  z.innerHTML=`<div class="mot-carte" role="note" aria-label="${esc('Le mot : '+(m.t||c))}"><div class="mot-k">Le mot</div><b>${m.t||c}</b><p>${ty(m.d)}</p>${m.fig||''}<button type="button" class="mot-x">Fermer</button></div>`;
+  z.innerHTML=`<div class="mot-carte" role="note" aria-label="${esc('Le mot : '+(m.t||c))}"><div class="mot-k">Le mot</div><b>${m.t||c}</b><p>${tyP(m.d)}</p>${m.fig||''}<button type="button" class="mot-x">Fermer</button></div>`;
   renderMath(z);voir(z.firstElementChild);z.querySelector('.mot-x').addEventListener('click',()=>{z.innerHTML='';btn.setAttribute('aria-expanded','false');btn.focus();});
   say(plain((m.t||c)+'. '+m.d));
 }
-const surClic=e=>{const b=e.target.closest&&e.target.closest('.mot');if(b&&root.contains(b)){e.preventDefault();ouvrirMot(b);}};
+const surClic=e=>{if(!e.target.closest)return;const b=e.target.closest('.mot');if(b&&root.contains(b)){e.preventDefault();ouvrirMot(b);return;}
+  // une ligne de calcul compactée se rouvre d'un clic
+  const li=e.target.closest('.deriv li.ancien');if(li&&root.contains(li))li.classList.toggle('ouvert');};
 root.addEventListener('click',surClic);
 
 /* chapitres */
@@ -223,7 +265,7 @@ const surTouche=e=>{
   const st=STEPS[cur];
   if(e.key==='Escape'){const z=$('#motz');if(z&&z.innerHTML){z.innerHTML='';root.querySelectorAll('.mot[aria-expanded="true"]').forEach(b=>b.setAttribute('aria-expanded','false'));}return;}
   if(L.touche&&L.touche(e,st))return;
-  if(st&&st.pari&&/^[1-4]$/.test(e.key)&&+e.key<=st.pari.opts.length){e.preventDefault();choose(st,+e.key-1);return;}
+  if(st&&st.pari&&/^[1-4]$/.test(e.key)&&+e.key<=st.pari.opts.length){e.preventDefault();choose(st,st.pari.ordre[+e.key-1]);return;}
   if(e.key==='ArrowRight'||e.key==='PageDown'||(e.key===' '&&t.tagName!=='BUTTON')){e.preventDefault();next();}
   else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(cur-1);}
 };

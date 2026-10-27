@@ -17,9 +17,9 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useHydrated } from "@/lib/useHydrated";
-import { CATALOGUE } from "./exercices/catalogue";
+import { CATALOGUE, SEANCES } from "./exercices/catalogue";
 import { hasard, nouvelleGraine } from "./exercices/hasard";
-import { NIVEAUX } from "./exercices/modele";
+import { NIVEAUX, normaliser } from "./exercices/modele";
 import { lireNombre, proche } from "./exercices/nombre";
 import { formule, rendre } from "./exercices/texte";
 
@@ -108,6 +108,19 @@ export function ExercicesPilote({
       juste = !!o.ok;
       message = juste ? "Juste." : o.fb || "Ce n’est pas ça.";
       if (!juste && o.erreur) erreur = o.erreur;
+    } else if (q.type === "texte") {
+      const v = normaliser(s.saisie);
+      if (!v) {
+        maj((x) => ({ ...x, q: x.q.map((y, i) => (i === j ? { ...y, message: "Écris ta réponse avec des lettres (par exemple AUG GUG CAC)." } : y)) }));
+        return;
+      }
+      juste = [q.reponse, ...(q.variantes || [])].some((r: string) => normaliser(r) === v);
+      if (juste) message = "Juste.";
+      else {
+        const p = (q.pieges || []).find((x: any) => normaliser(x.v) === v);
+        message = p ? p.fb : "Ce n’est pas ça. Reprends lettre par lettre, ou demande un indice.";
+        if (p?.erreur) erreur = p.erreur;
+      }
     } else {
       const v = lireNombre(s.saisie);
       if (!Number.isFinite(v)) {
@@ -147,8 +160,9 @@ export function ExercicesPilote({
       <ol className="exos-suivi" aria-label="Les exercices">
         {exercices.map((x, i) => {
           const b = bilan(etats[i], etats[i]?.q.length ?? 0);
+          const sep = (x.seance ?? 1) > 1 && (exercices[i - 1]?.seance ?? 1) !== x.seance;
           return (
-            <li key={x.id}>
+            <li key={x.id} className={sep ? "exos-sep" : undefined} data-seance={sep ? `séance ${x.seance}` : undefined}>
               <button
                 type="button"
                 className={`exos-pastille b-${b}${i === k ? " on" : ""}`}
@@ -245,10 +259,17 @@ export function ExercicesPilote({
         <p className="exos-kicker">
           Exercice {k + 1} sur {N} · {NIVEAUX[ex.niveau as 1 | 2 | 3]}
         </p>
+        {(ex.seance ?? 1) > 1 && (
+          <p className="exos-seance">
+            Séance {ex.seance} : {(SEANCES as Record<string, Record<number, string>>)[nom]?.[ex.seance] ?? ""}. Cette
+            leçon n’est pas encore écrite : l’exercice est là pour la suite.
+          </p>
+        )}
         <h2 className="exos-h">{ex.titre}</h2>
         <p className="exos-cadre">
           Au programme :{" "}
           <span title={ex.capacites.join(" · ")}>{libelles[ex.capacites[0]] ?? ex.capacites[0]}</span>
+          {ex.filieres && <span>filières {ex.filieres.join(", ")} seulement</span>}
         </p>
         <div className="exos-enonce" dangerouslySetInnerHTML={{ __html: rendre(tirage.enonce) }} />
         {tirage.figure && <div className="exos-figure" dangerouslySetInnerHTML={{ __html: tirage.figure }} />}
@@ -280,16 +301,18 @@ export function ExercicesPilote({
                     ))}
                   </div>
                 ) : (
-                  <div className="exos-saisie">
+                  <div className={`exos-saisie${q.type === "texte" ? " texte" : ""}`}>
                     <input
                       id={id}
                       type="text"
-                      inputMode="decimal"
+                      inputMode={q.type === "texte" ? "text" : "decimal"}
+                      autoCapitalize={q.type === "texte" ? "characters" : undefined}
+                      spellCheck={false}
                       autoComplete="off"
                       aria-labelledby={`${id}-l`}
                       value={s.saisie}
                       disabled={s.juste}
-                      placeholder="ta réponse"
+                      placeholder={q.aide ?? "ta réponse"}
                       onChange={(ev) => {
                         const v = ev.target.value;
                         maj((x) => ({ ...x, q: x.q.map((y, i) => (i === j ? { ...y, saisie: v, message: null } : y)) }));

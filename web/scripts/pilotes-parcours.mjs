@@ -101,6 +101,37 @@ for (const nom of PILOTES) {
   const total = Number((await page.textContent("#count")).match(/\/ (\d+)/)[1]);
   if (CAPTURES) fs.mkdirSync(path.join(CAPTURES, nom), { recursive: true });
 
+  // la structure de la leçon (V3), lue dans le script monté par le noyau
+  const st = await page.evaluate(() => {
+    const L = document.querySelector("[data-pilote]").__lecon;
+    if (!L) return null;
+    const geste = (x) => !!(x.pari || x.ctl || x.need);
+    let suite = 0;
+    const longues = [];
+    L.STEPS.forEach((x, i) => {
+      suite = geste(x) ? 0 : suite + 1;
+      if (suite === 6) longues.push(i + 1);
+    });
+    return {
+      sansIndice: L.STEPS.flatMap((x, i) =>
+        x.pari && x.pari.opts.some((o) => o.ok) ? x.pari.opts.filter((o) => !o.ok && !o.indice).map(() => i + 1) : [],
+      ),
+      sansRetour: L.STEPS.flatMap((x, i) => (x.pari ? x.pari.opts.filter((o) => !o.fb).map(() => i + 1) : [])),
+      plusieursJustes: L.STEPS.flatMap((x, i) => (x.pari && x.pari.opts.filter((o) => o.ok).length > 1 ? [i + 1] : [])),
+      nomsLongs: L.BEATS.map((b) => b.court || b.name).filter((n) => n.length > 10),
+      longues,
+    };
+  });
+  if (!st) defauts.push(`${nom} : le noyau n'expose pas la leçon (root.__lecon)`);
+  else {
+    const uniq = (a) => [...new Set(a)];
+    if (st.sansIndice.length) defauts.push(`${nom} : option fausse sans indice (second essai) aux étapes ${uniq(st.sansIndice).join(", ")}`);
+    if (st.sansRetour.length) defauts.push(`${nom} : option sans explication aux étapes ${uniq(st.sansRetour).join(", ")}`);
+    if (st.plusieursJustes.length) defauts.push(`${nom} : plusieurs bonnes réponses aux étapes ${st.plusieursJustes.join(", ")}`);
+    if (st.nomsLongs.length) defauts.push(`${nom} : nom de partie trop long pour la barre (${st.nomsLongs.join(", ")})`);
+    if (st.longues.length) infos.push(`${nom} : six étapes de suite sans pari, question ni geste, jusqu'aux étapes ${st.longues.join(", ")}`);
+  }
+
   const vues = new Set();
   const debordent = [];
   const vides = [];
@@ -152,8 +183,9 @@ for (const nom of PILOTES) {
       break;
     }
     if (e.dis) {
-      if (e.opts && !e.repondu) {
-        await page.click("#body .opt");
+      // un pari, une question, ou le second essai d'une question
+      if (e.opts && (!e.repondu || e.lab.startsWith("Essaie"))) {
+        await page.click("#body .opt:not([disabled])");
         continue;
       }
       if (e.gestes) {

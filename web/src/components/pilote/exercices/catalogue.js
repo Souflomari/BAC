@@ -6,9 +6,16 @@
  * identifiants de capacités, pour afficher leur libellé officiel.
  */
 import { EXERCICES as logarithme } from "./logarithme.js";
+import { EXERCICES as radioactivite } from "./radioactivite.js";
+import { EXERCICES as expressionGenetique } from "./expression-genetique.js";
 
 export const CATALOGUE = {
   logarithme,
-  radioactivite: [],
-  "expression-genetique": [],
+  radioactivite,
+  "expression-genetique": expressionGenetique,
+};
+
+/** Les séances au-delà de la première, quand une notion en a plusieurs : leur titre. */
+export const SEANCES = {
+  logarithme: { 2: "ln comme fonction" },
 };

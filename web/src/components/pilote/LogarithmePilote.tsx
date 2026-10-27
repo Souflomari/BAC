@@ -15,6 +15,8 @@ export function LogarithmePilote() {
       nom="logarithme"
       matiere="Maths · 2ᵉ Bac"
       titre="Fonction logarithme népérien"
+      filieres="SM · PC · SVT"
+      exercices="/pilote/logarithme/exercices"
       monter={monterPilote}
       pourquoi={
         <>

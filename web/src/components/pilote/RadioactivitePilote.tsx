@@ -15,6 +15,8 @@ export function RadioactivitePilote() {
       nom="radioactivite"
       matiere="Physique-chimie · 2ᵉ Bac"
       titre="Décroissance radioactive"
+      filieres="SM · PC · SVT"
+      exercices="/pilote/radioactivite/exercices"
       monter={monterPilote}
       touches="← → pour avancer · 1 2 3 pour répondre · L pour lancer"
       pourquoi={

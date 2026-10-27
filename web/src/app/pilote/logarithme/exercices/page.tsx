@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Logarithme — exercices du pilote",
-  description: "Dix exercices générés sur le logarithme népérien, de l’application directe à l’étude de fonction du bac.",
+  description: "Des exercices générés sur le logarithme népérien, du calcul aux équations du bac.",
 };
 
 export default function ExercicesLogarithmePage() {
