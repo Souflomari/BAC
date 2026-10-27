@@ -224,8 +224,9 @@ for (const nom of PILOTES) {
   // déroule jusqu'au bout, le bilan s'affiche
   const rep = await page.goto(`${BASE}/pilote/${nom}/exercices`, { waitUntil: "networkidle" });
   if (rep && rep.ok()) {
-    await page.waitForSelector(".exos-q", { timeout: 15000 });
+    await page.waitForSelector(".exos-q, .exos-bilan", { timeout: 15000, state: "attached" });
     const n = await page.$$eval(".exos-suivi .exos-pastille:not(.fin)", (b) => b.length);
+    if (!n) defauts.push(`${nom} : la page d'exercices n'a aucun exercice`);
     for (let x = 0; x < n; x++) {
       await page.waitForSelector(".exos-q");
       const katex = await page.$$eval(".exos .katex-error", (k) => k.length);

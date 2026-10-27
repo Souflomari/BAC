@@ -142,7 +142,7 @@ export function ExercicesPilote({
     }));
   };
 
-  if (!pret || !etats.length || (ex && (!tirage || !e || e.q.length !== tirage.questions.length))) {
+  if (!pret || (N > 0 && !etats.length) || (ex && (!tirage || !e || e.q.length !== tirage.questions.length))) {
     return (
       <div className="exos" data-exercices={nom} aria-busy="true">
         <p className="exos-attente">Préparation des exercices…</p>

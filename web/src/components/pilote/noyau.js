@@ -53,6 +53,7 @@ const typo=h=>String(h).split(/(<[^>]+>|\[\[[^\]]*\]\])/).map((p,i)=>i%2?p:p
 const tyP=s=>typo(ty(s));
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const RM=matchMedia('(prefers-reduced-motion: reduce)');
+const TEL=matchMedia('(max-width: 899px)');
 const wait=ms=>new Promise(r=>setTimeout(r,RM.matches?0:ms));
 let run=0;const hooks={};
 function parts(t,str){String(str).split(/(_[^_]+_)/).forEach(part=>{if(!part)return;const sp=E('tspan',{},t);if(part[0]==='_'&&part.length>2){sp.textContent=part.slice(1,-1);sp.setAttribute('font-style','italic');}else sp.textContent=part;});}
@@ -165,6 +166,9 @@ function renderPanel(st){
   $('#script').classList.toggle('texte-seul',!(st.pari||st.deriv||st.ctl||st.tex||st.html));
   $('#script').classList.toggle('calcul',!!(st.deriv&&st.deriv.length>=4));
   $('#script').scrollTop=0;
+  // téléphone : la page défile sous la scène collée en haut ; une nouvelle étape remonte son texte
+  // juste sous la scène s'il était passé dessous
+  if(TEL.matches){const r=$('#script').getBoundingClientRect(),haut=$('.stage-wrap').getBoundingClientRect().bottom;if(r.top<haut-1)window.scrollBy(0,r.top-haut);}
   if(st.pari){wireOpts(st);if(S.ans[st.k]!=null)$('#fb').innerHTML=messagePari(st,S.ans[st.k]);}
   if(st.ctl)CTL[st.ctl].init(st);
   renderMath(body);updateNav();

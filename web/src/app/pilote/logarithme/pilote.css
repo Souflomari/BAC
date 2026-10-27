@@ -229,8 +229,12 @@
   .pilote .pilote-main { grid-template-columns: minmax(0, 1fr); grid-template-rows: 42vh auto; }
   .pilote .stage-wrap { position: sticky; top: 0; z-index: 3; border-bottom: 1px solid var(--color-text-primary); }
   .pilote .script { border-left: 0; padding: 20px 16px 0; overflow: visible; mask-image: none; }
+  .pilote .script.texte-seul > .kicker { margin-top: 0; }
   .pilote .script > .nav { margin: 0 -16px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); border-top: 1px solid var(--color-border-subtle); }
   .pilote .nav button { min-height: 48px; }
+  /* ce qui défile vers la vue (ligne de calcul, explication, fiche) s'arrête entre la scène collée
+     en haut et la navigation collée en bas : la page défile, pas le panneau */
+  .pilote .deriv li, .pilote .fb, .pilote .apres, .pilote .mot-zone > *, .pilote .ctl { scroll-margin: calc(42vh + 12px) 0 88px; }
   .pilote .primary { min-width: 0; flex: 1; }
   .pilote .stage-foot .keys { display: none; }
 }
