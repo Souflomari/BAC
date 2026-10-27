@@ -23,5 +23,11 @@
 .pilote[data-pilote="logarithme"] .lg-copie i { font-family: var(--font-reading-serif), Georgia, serif; padding-right: .08em; }
 .dark .pilote[data-pilote="logarithme"] .lg-copie { background: var(--color-surface-container-high); }
 
+/* onze parties : entre 900 et 1279 px, leurs noms entiers ne tiennent à côté du titre que sans la
+   matière ni les filières (pilote.css les cache seulement sous 1100 px) */
+@media (max-width: 1279px) and (min-width: 900px) {
+  .pilote[data-pilote="logarithme"] .pilote-matiere, .pilote[data-pilote="logarithme"] .pilote-filieres { display: none; }
+}
+
 /* la fin : une ligne de résultat */
 .pilote[data-pilote="logarithme"] .lg-res { margin: 0 0 8px; font-size: 1.0625rem; line-height: 1.5; }
