@@ -1,8 +1,8 @@
 "use client";
 
 /**
- * LogarithmePilote — la leçon pilote maths « Fonction logarithme népérien »
- * (refonte 2026-10, deuxième version), sur le squelette commun.
+ * LogarithmePilote — la leçon maths « Fonction logarithme népérien », séance 1
+ * « Pourquoi ln » (refonte 2026-10, V3), sur le squelette commun.
  * Le moteur vit dans `logarithme-moteur.js`, sur `noyau.js`.
  */
 
@@ -21,11 +21,20 @@ export function LogarithmePilote() {
       pourquoi={
         <>
           <li>
-            <b>L’histoire comme moteur.</b> Chaque idée arrive parce que quelqu’un en a eu besoin — Napier,
-            Gunter, Oughtred, Saint-Vincent.
+            <b>Ce qu’il faut savoir, d’abord.</b> Un test sur les puissances ouvre la séance : réussi du premier
+            coup, il te permet de passer le rappel.
           </li>
           <li>
-            <b>Le pourquoi d’abord, la définition du bac ensuite.</b> Quand elle arrive, elle paraît évidente.
+            <b>L’histoire sert à prédire.</b> Chaque idée arrive parce que quelqu’un en a eu besoin (Napier, Gunter,
+            Oughtred, Saint-Vincent et Sarasa), et tu paries avant de voir ce qu’ils ont trouvé.
+          </li>
+          <li>
+            <b>Le pourquoi d’abord, la définition du bac ensuite.</b> Quand elle arrive, elle paraît évidente. La
+            séance finit sur une équation du bac, rédigée comme sur une copie.
+          </li>
+          <li>
+            <b>Deux séances.</b> Celle-ci, « Pourquoi ln » : d’où vient ln, ce que dit sa courbe, ses règles. La
+            suivante, « ln comme fonction » : les limites, la dérivée de ln <i>u</i>, l’étude complète.
           </li>
         </>
       }

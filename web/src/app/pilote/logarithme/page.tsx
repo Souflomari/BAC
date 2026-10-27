@@ -9,6 +9,7 @@
 
 import type { Metadata } from "next";
 import "./pilote.css";
+import "./logarithme.css";
 import { SiteHeader } from "@/components/ui/SiteHeader";
 import { LienEvitement } from "@/components/ui/LienEvitement";
 import { LogarithmePilote } from "@/components/pilote/LogarithmePilote";
@@ -17,8 +18,8 @@ import { manifestePourHeader } from "@/lib/palette-notions";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Logarithme — leçon pilote",
-  description: "La fonction logarithme pas à pas : de Napier (1614) à la définition du bac et aux règles de calcul.",
+  title: "Fonction logarithme — la leçon",
+  description: "Pourquoi ln : de Napier (1614) à la définition du bac, ce que dit la courbe de ln, ses règles de calcul et une équation du bac.",
 };
 
 export default function PiloteLogarithmePage() {
