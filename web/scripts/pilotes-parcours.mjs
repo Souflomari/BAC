@@ -13,10 +13,17 @@
  *   - les formules que KaTeX n'a pas su rendre ;
  *   - une phrase restée cachée après l'animation ;
  *   - un « Suivant » bloqué sans geste possible ;
+ *   - les largeurs intermédiaires (900 et 1024 px : barre des parties non tronquée) ;
+ *   - en mouvement réel : clic « Suivant » pendant une animation (termine l'étape au lieu
+ *     de la quitter sur des phrases cachées) et présence d'un bouton « Rejouer » ;
+ *   - sur téléphone (390×844) : ouverture de « Mode d'emploi » en haut, et scène collée
+ *     non recouverte par l'en-tête après défilement ;
+ *   - sur les exercices : lien retour vers la leçon, inputMode compatible signes/puissances,
+ *     ponctuation du cadre, absence de « demande un indice » sans indice ou après ouverture,
+ *     statut conservé quand on lit la correction rédigée après réussite, et thème sombre adouci ;
  *   - (pour information) les étapes dont le texte déborde du panneau, et
  *     celles qui laissent plus des deux tiers du panneau vides — le retour
  *     du propriétaire du 2026-10-26 sur le « trop d'espace en dessous ».
- * Le mouvement est réduit : les animations se posent dans leur état final.
  * --porte : code de sortie 1 au premier défaut (pas pour les informations).
  */
 import fs from "node:fs";
@@ -131,6 +138,29 @@ for (const nom of PILOTES) {
     if (st.nomsLongs.length) defauts.push(`${nom} : nom de partie trop long pour la barre (${st.nomsLongs.join(", ")})`);
     if (st.longues.length) infos.push(`${nom} : six étapes de suite sans pari, question ni geste, jusqu'aux étapes ${st.longues.join(", ")}`);
   }
+
+  // largeurs intermédiaires (G-01-014) : la barre des parties ne doit pas se tronquer en interne
+  for (const w of [900, 1024]) {
+    await page.setViewportSize({ width: w, height: 800 });
+    await page.waitForTimeout(40);
+    const bar = await page.evaluate(() => {
+      const b = document.querySelector("#beats");
+      const barre = document.querySelector(".pilote-barre");
+      return {
+        beatsScroll: b?.scrollWidth ?? 0,
+        beatsClient: b?.clientWidth ?? 0,
+        barreScroll: barre?.scrollWidth ?? 0,
+        barreClient: barre?.clientWidth ?? 0,
+      };
+    });
+    if (bar.barreScroll > bar.barreClient + 1) {
+      defauts.push(`${nom} (${w} px) : .pilote-barre déborde (${bar.barreScroll} > ${bar.barreClient})`);
+    }
+    if (bar.beatsScroll > bar.beatsClient + 1) {
+      defauts.push(`${nom} (${w} px) : #beats déborde en interne (${bar.beatsScroll} > ${bar.beatsClient})`);
+    }
+  }
+  await page.setViewportSize({ width: LARGEUR, height: HAUTEUR });
 
   // une capture attend la fin de l'animation de l'étape (le noyau note l'étape « vue » à la dernière image)
   const finAnimation = () =>
@@ -254,10 +284,21 @@ for (const nom of PILOTES) {
     await page.waitForSelector(".exos-q, .exos-bilan", { timeout: 15000, state: "attached" });
     const n = await page.$$eval(".exos-suivi .exos-pastille:not(.fin)", (b) => b.length);
     if (!n) defauts.push(`${nom} : la page d'exercices n'a aucun exercice`);
+    // G-01-007 : lien retour vers la leçon dans la barre des exercices
+    const lienLecon = await page.$(`.exos-barre a[href="/pilote/${nom}"]`);
+    if (!lienLecon) defauts.push(`${nom} (exercices) : aucun lien retour vers la leçon dans .exos-barre`);
+    let indiceApresTeste = false;
     for (let x = 0; x < n; x++) {
       await page.waitForSelector(".exos-q");
       const katex = await page.$$eval(".exos .katex-error", (k) => k.length);
       if (katex) defauts.push(`${nom} exercice ${x + 1} : ${katex} formule(s) non rendue(s)`);
+      // G-01-016 : pas de point-virgule final sur « Au programme : »
+      const cadreTxt = await page.$eval(".exos-cadre", (el) => el.textContent.trim()).catch(() => "");
+      if (/;\s*$/.test(cadreTxt)) defauts.push(`${nom} exercice ${x + 1} : .exos-cadre se termine par « ; »`);
+      // G-01-002 : aucun champ de saisie numérique bloqué sur inputMode="decimal"
+      const decimals = await page.$$eval(".exos-saisie input", (ins) => ins.filter((el) => el.getAttribute("inputmode") === "decimal").length);
+      if (decimals) defauts.push(`${nom} exercice ${x + 1} : ${decimals} champ(s) encore en inputMode="decimal"`);
+
       const nq = await page.$$eval(".exos-questions > li", (l) => l.length);
       for (let j = 0; j < nq; j++) {
         const li = `.exos-questions > li:nth-child(${j + 1})`;
@@ -271,13 +312,37 @@ for (const nom of PILOTES) {
           }
           if (!ok) defauts.push(`${nom} exercice ${x + 1} question ${j + 1} : aucune option n'est acceptée`);
         } else {
-          await page.fill(`${li} input[type=text]`, "123456,789");
+          const estTexte = await page.$(`${li} .exos-saisie.texte`);
+          const fausse = estTexte ? "ZZZ ZZZ" : "123456,789";
+          await page.fill(`${li} input[type=text]`, fausse);
           await page.click(`${li} .exos-q-actions button:first-child`);
           const msg = await page.$eval(`${li} .exos-retour`, (e) => e.textContent.trim());
           if (!msg) defauts.push(`${nom} exercice ${x + 1} question ${j + 1} : une saisie fausse ne reçoit aucun retour`);
+          // G-01-010 : pas de « demande un indice » sans bouton indice, ni après ouverture de l'indice
+          const btnIndice = await page.$(`${li} .exos-q-actions button.ghost`);
+          if (!btnIndice && /demande un indice/i.test(msg)) {
+            defauts.push(`${nom} exercice ${x + 1} question ${j + 1} : message « demande un indice » sans bouton d'indice`);
+          } else if (btnIndice && !indiceApresTeste) {
+            indiceApresTeste = true;
+            await btnIndice.click();
+            await page.fill(`${li} input[type=text]`, estTexte ? "YYY YYY" : "987654,321");
+            await page.click(`${li} .exos-q-actions button:first-child`);
+            const msgApres = await page.$eval(`${li} .exos-retour`, (e) => e.textContent.trim());
+            if (/demande un indice/i.test(msgApres)) {
+              defauts.push(`${nom} exercice ${x + 1} question ${j + 1} : « demande un indice » encore affiché après ouverture de l'indice`);
+            }
+          }
         }
       }
+      // G-01-003 : ouvrir « Voir la correction rédigée » après avoir réussi toutes les questions ne déclasse pas en b-corrige
+      const toutJuste = await page.$$eval(".exos-questions > li", (ls) => ls.length > 0 && ls.every((l) => l.classList.contains("juste")));
       await page.click(".exos-correction button");
+      if (toutJuste) {
+        const clsApres = await page.$eval(`.exos-suivi > li:nth-child(${x + 1}) .exos-pastille`, (b) => b.className);
+        if (clsApres.includes("b-corrige")) {
+          defauts.push(`${nom} exercice ${x + 1} : ouvrir la correction rédigée après réussite déclasse en b-corrige`);
+        }
+      }
       for (let g = 0; g < 20 && (await page.$(".exos-correction button")); g++) await page.click(".exos-correction button");
       if (CAPTURES) {
         fs.mkdirSync(path.join(CAPTURES, nom, "exercices"), { recursive: true });
@@ -288,9 +353,109 @@ for (const nom of PILOTES) {
     const bilan = await page.$(".exos-bilan");
     if (!bilan) defauts.push(`${nom} : le bilan des exercices ne s'affiche pas`);
     console.log(`${nom} : ${n} exercice(s) parcourus`);
+
+    // G-01-005 : thème sombre adouci sur les exercices (bouton primaire adouci par rapport à --color-text-primary)
+    const pageSombre = await navigateur.newPage({ viewport: { width: 1280, height: 800 }, reducedMotion: "reduce", colorScheme: "dark" });
+    await pageSombre.goto(`${BASE}/pilote/${nom}/exercices`, { waitUntil: "networkidle" });
+    await pageSombre.waitForSelector(".exos-actions .exos-btn");
+    const sombre = await pageSombre.evaluate(() => {
+      const b = document.querySelector(".exos-actions .exos-btn:last-child");
+      const sonde = document.createElement("span");
+      sonde.style.backgroundColor = "var(--color-text-primary)";
+      document.body.appendChild(sonde);
+      const brut = getComputedStyle(sonde).backgroundColor;
+      sonde.remove();
+      return { bg: getComputedStyle(b).backgroundColor, brut };
+    });
+    if (sombre.bg === sombre.brut) {
+      defauts.push(`${nom} (exercices, sombre) : bouton primaire non adouci (égal à --color-text-primary : ${sombre.bg})`);
+    }
+    await pageSombre.close();
   }
   for (const m of erreurs.splice(0)) defauts.push(`${nom} (exercices) : erreur de la page — ${m}`);
   await page.close();
+
+  // téléphone (390×844) : ouverture de « Mode d'emploi » en haut (G-01-006) et scène non recouverte
+  // par l'en-tête fixe après défilement (G-01-001)
+  const pageMob = await navigateur.newPage({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
+  await pageMob.goto(`${BASE}/pilote/${nom}`, { waitUntil: "networkidle" });
+  await pageMob.waitForFunction(() => /étape 1 \//.test(document.querySelector("#count")?.textContent || ""));
+  await pageMob.click("#why");
+  await pageMob.waitForSelector("#whyd[open]");
+  const dlg = await pageMob.evaluate(() => {
+    const d = document.querySelector("#whyd");
+    const h = d?.querySelector("h2");
+    return {
+      scrollTop: Math.round(d?.scrollTop ?? 0),
+      h2Top: Math.round(h?.getBoundingClientRect().top ?? 0),
+      dTop: Math.round(d?.getBoundingClientRect().top ?? 0),
+    };
+  });
+  if (dlg.scrollTop > 4 || dlg.h2Top < dlg.dTop - 2) {
+    defauts.push(`${nom} (390×844) : « Mode d'emploi » s'ouvre défilé (scrollTop=${dlg.scrollTop})`);
+  }
+  await pageMob.click("#whyd button");
+  // défilement réel (réponse à l'étape 1 puis scroll vers le bas) : l'en-tête ne doit pas couvrir .stage-wrap
+  const opt1 = await pageMob.$("#body .opt:not([disabled])");
+  if (opt1) await opt1.click();
+  await pageMob.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+  await pageMob.waitForTimeout(100);
+  const cov = await pageMob.evaluate(() => {
+    const h = document.querySelector("header")?.getBoundingClientRect();
+    const s = document.querySelector(".stage-wrap")?.getBoundingClientRect();
+    if (!h || !s) return 0;
+    return h.bottom > 2 ? Math.max(0, Math.round(h.bottom - s.top)) : 0;
+  });
+  if (cov > 2) {
+    defauts.push(`${nom} (390×844) : l'en-tête recouvre la scène collée de ${cov} px après défilement`);
+  }
+  await pageMob.close();
+
+  // mouvement réel (G-01-004) : un clic sur « Suivant » pendant une animation avec phrases cachées
+  // doit terminer l'étape au lieu de la quitter, et un bouton « Rejouer » doit exister
+  const pageReel = await navigateur.newPage({ viewport: { width: 1280, height: 800 }, reducedMotion: "no-preference" });
+  await pageReel.goto(`${BASE}/pilote/${nom}`, { waitUntil: "networkidle" });
+  await pageReel.waitForFunction(() => /étape 1 \//.test(document.querySelector("#count")?.textContent || ""));
+  const aRejouer = await pageReel.evaluate(() => {
+    const btns = [...document.querySelectorAll("button")];
+    return btns.some((b) => /rejouer/i.test(`${b.textContent || ""} ${b.getAttribute("aria-label") || ""} ${b.id || ""}`));
+  });
+  if (!aRejouer) defauts.push(`${nom} : aucun bouton « Rejouer » présent`);
+  const cible = await pageReel.evaluate(() => {
+    const L = document.querySelector("[data-pilote]")?.__lecon;
+    if (!L) return null;
+    for (let b = 1; b < L.BEATS.length; b++) {
+      const idx = L.STEPS.findIndex((s) => s.beat === b);
+      const st = L.STEPS[idx];
+      if (st && Array.isArray(st.text) && st.text.some((p) => typeof p === "object" && p.a > 0) && !st.pari && !st.ctl && !st.need && !st.deriv) {
+        return { beat: b, step: idx + 1 };
+      }
+    }
+    return null;
+  });
+  if (cible) {
+    await pageReel.locator("#beats .beat").nth(cible.beat).click();
+    await pageReel.waitForTimeout(80);
+    const avant = await pageReel.evaluate(() => ({
+      step: Number((document.querySelector("#count")?.textContent || "").match(/étape (\d+)/)?.[1] || 0),
+      cachees: document.querySelectorAll("#body .say.later").length,
+      dis: document.querySelector("#next")?.disabled ?? true,
+    }));
+    if (avant.cachees > 0 && !avant.dis) {
+      await pageReel.click("#next");
+      await pageReel.waitForTimeout(120);
+      const apres = await pageReel.evaluate(() => ({
+        step: Number((document.querySelector("#count")?.textContent || "").match(/étape (\d+)/)?.[1] || 0),
+        cachees: document.querySelectorAll("#body .say.later").length,
+      }));
+      if (apres.step !== avant.step) {
+        defauts.push(`${nom} (mouvement réel, étape ${avant.step}) : clic « Suivant » quitte l'étape alors que ${avant.cachees} phrase(s) sont encore cachées`);
+      } else if (apres.cachees > 0) {
+        defauts.push(`${nom} (mouvement réel, étape ${avant.step}) : clic « Suivant » n'a pas révélé les ${apres.cachees} phrase(s) cachée(s)`);
+      }
+    }
+  }
+  await pageReel.close();
 }
 await navigateur.close();
 
