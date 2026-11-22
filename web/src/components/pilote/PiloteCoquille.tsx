@@ -121,7 +121,12 @@ export function PiloteCoquille({
             aria-label={sceneLabel}
           />
           <div className="stage-foot">
-            <span id="count" />
+            <span className="stage-foot-g">
+              <span id="count" />
+              <button type="button" className="rejouer" id="rejouer" {...attente}>
+                ↺ Rejouer l’étape
+              </button>
+            </span>
             <span className="keys">{touches}</span>
           </div>
         </section>
@@ -139,7 +144,7 @@ export function PiloteCoquille({
         </aside>
       </div>
       <dialog id="whyd">
-        <h2>Mode d’emploi</h2>
+        <h2 tabIndex={-1}>Mode d’emploi</h2>
         <ul>
           <li>
             <b>Une idée par écran.</b> Le chapitre est découpé en étapes courtes, de deux à quatre phrases chacune.

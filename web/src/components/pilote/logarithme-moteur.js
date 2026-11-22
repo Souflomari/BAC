@@ -364,6 +364,8 @@ scene('hyper',{
       this.bLab.setAttribute('x',x);this.bLab.setAttribute('y',y);rich(this.bLab,`A(_b_) ≈ ${fr(integ(1,b))}`);show(this.bLab,p.decB);
       const [x2,y2]=posLab(X,Y,0,1,a);this.dLab.setAttribute('x',x2);this.dLab.setAttribute('y',y2);rich(this.dLab,`A(_a_) ≈ ${fr(integ(1,a))}`);show(this.dLab,p.dec);}
     this.marker('a',a,p.gen);this.marker('b',b,og);this.marker('ab',a*b,p.gen);
+    // b et a trop proches sur l'axe : l'étiquette de b descend d'une ligne au lieu de chevaucher a
+    this.mk.b.t.setAttribute('y',Y(0)+(Math.abs(X(a)-X(b))<30?78:50));
     // la flèche s'arrête au-dessus de l'étiquette de la tranche d'arrivée
     {const m1=(1+b)/2,m2=a*m1,x1=X(m1),y1=Y(1/m1)-26,x2=X(m2),y2=Y(1/m2)-50,cy=Math.min(y1,y2)-60,ay=.25*y1+.5*cy+.25*y2;
       this.arrow.setAttribute('d',`M${x1.toFixed(1)} ${y1.toFixed(1)}Q${((x1+x2)/2).toFixed(1)} ${cy.toFixed(1)} ${x2.toFixed(1)} ${y2.toFixed(1)}`);show(this.arrow,og);
@@ -857,11 +859,9 @@ const STEPS=[
     {t:'Le produit : le logarithme d’un produit est la somme des logarithmes. L’inverse, vu à gauche de 1.',a:1}],
   tex:[['\\ln(ab) = \\ln a + \\ln b','ln(ab) = ln a + ln b'],['\\ln\\dfrac{1}{a} = -\\ln a','ln(1/a) = −ln a']]},
 {cle:'r-quotient',beat:8,scene:'bandes',set:{tit:'Le quotient, sur les aires',sous:'6 ÷ 2 = 3'},seq:[{p:{quot:1},d:900,w:300}],
-  text:['Le quotient <i>a</i>/<i>b</i> : à toi de trouver la ligne suivante.'],
   deriv:[
-    {tex:'\\ln\\dfrac{a}{b} = \\ln\\Big(a \\times \\dfrac{1}{b}\\Big)',alt:'ln(a/b) = ln(a × 1/b)',r:'Diviser par <i>b</i>, c’est multiplier par 1/<i>b</i>.'},
-    {tex:'\\ln\\dfrac{a}{b} = \\ln a + \\ln\\dfrac{1}{b} = \\ln a - \\ln b',alt:'ln(a/b) = ln a + ln(1/b) = ln a − ln b',r:'Le produit, puis l’inverse.'}],
-  pari:{label:'La ligne suivante ?',opts:[
+    {tex:'\\ln\\dfrac{a}{b} = \\ln\\Big(a \\times \\dfrac{1}{b}\\Big)',alt:'ln(a/b) = ln(a × 1/b)',r:'Diviser par <i>b</i>, c’est multiplier par 1/<i>b</i>.'}],
+  pari:{label:'La ligne suivante ?',apres:{tex:[['\\ln\\dfrac{a}{b} = \\ln a + \\ln\\dfrac{1}{b} = \\ln a - \\ln b','ln(a/b) = ln a + ln(1/b) = ln a − ln b']]},opts:[
     {t:'ln <i>a</i> + ln(1/<i>b</i>)',ok:true,fb:'Oui : la règle du produit.'},
     {t:'ln <i>a</i> × ln(1/<i>b</i>)',indice:'ln change-t-il un produit en produit, ou en somme ?',fb:'ln change un produit en somme, jamais en produit.'},
     {t:'ln <i>a</i> / ln <i>b</i>',indice:'La ligne écrite est un produit. Quelle règle s’applique ?',fb:'C’est l’erreur ln(<i>a</i>/<i>b</i>) = ln <i>a</i> / ln <i>b</i>.'}]}},
@@ -997,7 +997,7 @@ function profileHTML(){
   const ligne=`« Vérifie » réussies du premier coup : ${vok} sur ${V.length}.${paris.length?` Tes paris : ${paris.join(' ; ')}.`:''}`;
   const rows=res.map((ok,i)=>`<li class="${ok===true?'ok':ok===false?'ko':''}">${ok===true?'✓':ok===false?'✗':'·'} ${Q[i][1]}</li>`).join('');
   const seance2=['les limites de ln en 0 et en +∞','la dérivée de ln <i>u</i> et les primitives de <i>u</i> ′/<i>u</i>','le logarithme décimal (PC et SVT)','l’étude complète d’une fonction avec ln, comme au problème du bac'];
-  return ty(`<p class="lg-res">${ligne}</p><a class="lien-exos" href="/pilote/logarithme/exercices">Faire les exercices →</a>`
+  return ty(`<p class="res">${ligne}</p><a class="lien-exos" href="/pilote/logarithme/exercices">Faire les exercices →</a>`
     +`<details class="detail"><summary>Voir le détail</summary><ul class="prof">${rows}</ul>`
     +`<div class="next"><div class="pari-k">La prochaine séance : ln comme fonction</div><ol>${seance2.map(x=>`<li>${x}</li>`).join('')}</ol></div>`
     +`<p class="small">Ses exercices sont déjà prêts, rangés à part à la fin de la page d’exercices.</p></details>`);
@@ -1041,6 +1041,9 @@ const CTL={
         if(hit&&!S.eFound&&!S.eMontre){S.eFound=true;bt.disabled=true;bt.hidden=true;ctx.majNav();}
         $('#efb').innerHTML=ty(S.eMontre?'Le voici : l’aire vaut 1 pour <b><i>x</i> ≈ 2,718</b>.':hit?'Tu l’as : l’aire vaut 1 pour <b><i>x</i> ≈ 2,718</b>.':`Aire de 1 à ${fr(xe)} : <b>${fr(A,3)}</b>. ${A<1?'Encore un peu plus loin.':'Trop loin : reviens un peu.'}`);};
       S.essai=()=>{if(S.eFound||S.eMontre)return;S.eEssais++;if(S.eEssais>=2)dispo();};
+      // le curseur attend le pari : manipulé avant, il donnerait la réponse (G-01-012)
+      const libre=()=>{ex.disabled=ctx.rep('e')==null;};libre();
+      root.querySelectorAll('#body .opt').forEach(o=>o.addEventListener('click',()=>setTimeout(libre,0)));
       ex.addEventListener('input',()=>{ctx.stop();sc.p.xe=+ex.value;sc.render();sync();});
       ex.addEventListener('change',()=>S.essai());
       bt.addEventListener('click',()=>{if(S.eFound||S.eMontre)return;S.eMontre=true;bt.disabled=true;bt.hidden=true;ctx.majNav();ctx.tween(sc,{xe:E_},1400).then(sync);sync();});

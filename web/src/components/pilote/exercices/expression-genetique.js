@@ -158,7 +158,7 @@ export const EXERCICES = [
         enonce: `<p>Un document donne ${cas.dit} :</p><p>${cas.brin}</p>`,
         questions: [
           { type: "qcm", q: "Pour écrire l’ARNm, quel est ton geste ?", options: opts },
-          { type: "texte", q: "Écris le premier codon de l’ARNm (côté 5′).", reponse: c1, aide: "trois bases", pieges: pieges.filter((p) => p.v !== c1) },
+          { type: "texte", q: "Écris le premier codon de l’ARNm (côté 5′).", reponse: c1, aide: "trois bases", indice: "Repère d’abord quel brin est donné : le brin transcrit se complémente, le brin non transcrit se recopie (U à la place de T). Puis lis depuis l’extrémité 5′ de l’ARNm.", pieges: pieges.filter((p) => p.v !== c1) },
         ],
         correction: [
           { t: cas.geste === "rien" ? "Le document donne l’ARNm : on le découpe en codons, sans rien transformer." : cas.geste === "copie" ? "Ce brin a la séquence du brin non transcrit : l’ARNm a les mêmes bases, U à la place de T." : "Ce brin est le brin transcrit : l’ARNm est son complémentaire, U en face de A." },
@@ -256,6 +256,7 @@ export const EXERCICES = [
           {
             type: "nombre",
             q: "Combien d’acides aminés compte cette chaîne ?",
+            indice: "Commence la lecture au codon d’initiation AUG, avance trois par trois, et arrête-toi au codon stop : il ne compte pas.",
             reponse: rep.length,
             tol: { abs: 0.1 },
             pieges: [
@@ -305,7 +306,7 @@ export const EXERCICES = [
       return {
         enonce: `<p>Un ARN de transfert porte l’anticodon <b>3′-${ac}-5′</b>, écrit de 3′ vers 5′, base en face de base avec le codon.</p>${extrait([c, ac, inv])}`,
         questions: [
-          { type: "texte", q: "Quel codon de l’ARNm (de 5′ vers 3′) lui fait face ?", reponse: c, aide: "trois bases", pieges },
+          { type: "texte", q: "Quel codon de l’ARNm (de 5′ vers 3′) lui fait face ?", reponse: c, aide: "trois bases", indice: "Le codon est complémentaire de l’anticodon, base à base (A en face de U, G en face de C). Attention au sens : écris-le de 5′ vers 3′.", pieges },
           { type: "qcm", q: "Quel acide aminé cet ARNt apporte-t-il ?", options: opts },
         ],
         correction: [
@@ -438,7 +439,7 @@ export const EXERCICES = [
       const codons = [...codonsDe(toARN(s)), ...codonsDe(toARN(m))];
       const decale = genre === "délétion" || genre === "insertion";
       return {
-        enonce: `<p>Voici le même fragment du <b>brin non transcrit</b> chez deux allèles d’un gène (les triplets sont numérotés depuis le premier montré) :</p><p>allèle normal : 5′-${groupe(s)}-3′</p><p>allèle muté : 5′-${decale ? m : groupe(m)}-3′</p>${extrait(codons)}`,
+        enonce: `<p>Voici le même fragment du <b>brin non transcrit</b> chez deux allèles d’un gène (les triplets sont numérotés depuis le premier montré) :</p><p>allèle normal : 5′-${groupe(s)}-3′</p><p>allèle muté : 5′-${groupe(m)}-3′</p>${extrait(codons)}`,
         questions: [
           { type: "qcm", q: "Quel est le type de cette mutation, et son effet ?", options: opts },
           {
@@ -509,6 +510,7 @@ export const EXERCICES = [
           {
             type: "nombre",
             q: "Combien d’acides aminés compte la chaîne mutée ?",
+            indice: "Réécris l’ARNm muté, recoupe-le en codons depuis le premier, puis lis jusqu’au premier codon stop.",
             reponse: rM.length,
             tol: { abs: 0.1 },
             pieges: rN.length !== rM.length ? [{ v: rN.length, fb: "C’est la longueur de la chaîne normale.", erreur: "oublier le décalage du cadre de lecture" }] : [],
@@ -576,9 +578,9 @@ export const EXERCICES = [
       return {
         enonce: `<p>Une maladie héréditaire est due à une protéine P anormale. Le document donne un fragment du <b>brin ${brin}</b> du gène de P (les triplets sont numérotés depuis le premier montré) :</p><p>personne saine : ${montre(s)}</p><p>personne malade : ${montre(m)}</p>${extrait([...codonsDe(RN), ...codonsDe(RM)])}`,
         questions: [
-          { type: "texte", q: "Écris l’ARNm de la personne saine, de 5′ vers 3′.", reponse: RN, variantes: avec53(RN), aide: "les bases, de 5′ vers 3′", pieges: pieges1 },
-          { type: "texte", q: "Écris la chaîne d’acides aminés de la personne saine (abréviations, tirets).", reponse: tir(cN), aide: "par exemple Ala-Gly-…" },
-          { type: "texte", q: "Écris la chaîne de la personne malade.", reponse: tir(cM.aa), aide: "jusqu’au codon stop s’il y en a un", pieges: pieges3.filter((x) => x.v !== tir(cM.aa)) },
+          { type: "texte", q: "Écris l’ARNm de la personne saine, de 5′ vers 3′.", reponse: RN, variantes: avec53(RN), aide: "les bases, de 5′ vers 3′", indice: "Le document donne le brin non transcrit : l’ARNm a la même séquence, avec U à la place de T.", pieges: pieges1 },
+          { type: "texte", q: "Écris la chaîne d’acides aminés de la personne saine (abréviations, tirets).", reponse: tir(cN), aide: "par exemple Ala-Gly-…", indice: "Découpe ton ARNm en codons, depuis le premier, et cherche chacun dans l’extrait du tableau du code." },
+          { type: "texte", q: "Écris la chaîne de la personne malade.", reponse: tir(cM.aa), aide: "jusqu’au codon stop s’il y en a un", indice: "Même méthode que pour la personne saine, sur la séquence de la personne malade : écris son ARNm, découpe-le en codons, et arrête-toi au premier codon stop.", pieges: pieges3.filter((x) => x.v !== tir(cM.aa)) },
           { type: "qcm", q: "Compare les deux séquences : quelle mutation, à quel triplet ?", options: opt4 },
           { type: "qcm", q: "Explique l’origine de la maladie.", options: opt5 },
         ],

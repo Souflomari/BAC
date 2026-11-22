@@ -123,7 +123,9 @@ function lignesVues(st){return S.lignes[st.k]!=null?S.lignes[st.k]:1;}
 async function animate(sc,st,my,fresh){
   if(fresh)await wait(300);else await tweenTo(sc,st.base,st.d||750,my);
   const seq=st.seq||[];
-  for(let k=0;k<seq.length;k++){const f=seq[k];if(my!==run)return;if(f.w){await wait(f.w);if(my!==run)return;}montrerPhrases(k);await tweenTo(sc,f.p,f.d||900,my);}
+  // une séquence ne dure jamais plus de ~6 s : au-delà, toutes ses durées sont réduites d'autant
+  const tot=seq.reduce((a,f)=>a+(f.w||0)+(f.d||900),0),fac=tot>6000?6000/tot:1;
+  for(let k=0;k<seq.length;k++){const f=seq[k];if(my!==run)return;if(f.w){await wait(f.w*fac);if(my!==run)return;}montrerPhrases(k);await tweenTo(sc,f.p,(f.d||900)*fac,my);}
   if(my!==run)return;
   montrerPhrases(Infinity);
   if(st.deriv){const n=lignesVues(st);for(let j=0;j<n;j++){const x=st.deriv[j];if(x.p){if(my!==run)return;await tweenTo(sc,x.p,x.d||700,my);}}}
@@ -169,7 +171,7 @@ function renderPanel(st){
   // téléphone : la page défile sous la scène collée en haut ; une nouvelle étape remonte son texte
   // juste sous la scène s'il était passé dessous
   if(TEL.matches){const r=$('#script').getBoundingClientRect(),haut=$('.stage-wrap').getBoundingClientRect().bottom;if(r.top<haut-1)window.scrollBy(0,r.top-haut);}
-  if(st.pari){wireOpts(st);if(S.ans[st.k]!=null)$('#fb').innerHTML=messagePari(st,S.ans[st.k]);}
+  if(st.pari){wireOpts(st);if(S.ans[st.k]!=null){const fb=$('#fb');fb.innerHTML=messagePari(st,S.ans[st.k]);fb.classList.toggle('du-premier-coup',!!(st.pari.opts[S.ans[st.k]].ok&&S.first[st.k]===S.ans[st.k]));}}
   if(st.ctl)CTL[st.ctl].init(st);
   renderMath(body);updateNav();
 }
@@ -204,7 +206,7 @@ function choose(st,j){
   const fini=resolu(st);
   root.querySelector('.pari').outerHTML=pariHTML(st);wireOpts(st);renderMath(root.querySelector('.pari'));
   const btn=root.querySelector(`.opt[data-j="${j}"]`);if(btn&&!btn.disabled)btn.focus();else if(fini)$('#next').focus();else{const autre=root.querySelector('.opt:not([disabled])');autre&&autre.focus();}
-  fb.innerHTML=messagePari(st,j);renderMath(fb);
+  fb.innerHTML=messagePari(st,j);renderMath(fb);fb.classList.toggle('du-premier-coup',!!(P.opts[j].ok&&S.first[k]===j));
   if(fini&&P.apres){const ap=$('#apres');ap.innerHTML=apresHTML(P);renderMath(ap);voir(ap);}else voir(fb);
   if(fini&&P.reveal){const my=++run,sc=scenes[st.scene];(async()=>{const fr0=[{p:{...st.pre,...P.reveal[0].p},d:P.reveal[0].d},...P.reveal.slice(1)];for(const f of fr0){if(my!==run)return;await tweenTo(sc,f.p,f.d||900,my);}})();}
   updateNav();say(plain(fb.textContent||''));
@@ -224,7 +226,11 @@ function ligneSuivante(st){
   updateNav();return true;
 }
 function reset(){S.ans={};S.first={};S.lignes={};S.vu={};S.essais={};STEPS.forEach(st=>st.pari&&melanger(st.pari));L.reset&&L.reset();}
-function next(){if($('#next').disabled)return;const st=STEPS[cur];if(st.deriv&&ligneSuivante(st))return;if(cur===STEPS.length-1){reset();go(0);}else go(cur+1);}
+// « Suivant » pendant que des phrases attendent encore leur image : on termine l'animation (tout le
+// texte apparaît) au lieu de changer d'étape — l'élève ne saute jamais une phrase sans la voir
+function finir(st){if(!root.querySelector('#body .say.later'))return false;run++;const sc=scenes[st.scene];sc.p={...sc.p,...st.pre};sc.render();hooks.frame&&hooks.frame();montrerPhrases(Infinity);S.vu[st.k]=true;return true;}
+function rejouer(){const st=STEPS[cur];if(!st)return;S.vu[st.k]=false;curScene=null;go(cur);}
+function next(){if($('#next').disabled)return;const st=STEPS[cur];if(finir(st))return;if(st.deriv&&ligneSuivante(st))return;if(cur===STEPS.length-1){reset();go(0);}else go(cur+1);}
 
 /* ---------- fiches de mots ---------- */
 function ouvrirMot(btn){
@@ -260,8 +266,9 @@ function speak(st){say(st.say?(typeof st.say==='function'?st.say():st.say):plain
 const surVoix=e=>{voiceOn=!voiceOn;e.currentTarget.setAttribute('aria-pressed',voiceOn);if(voiceOn)speak(STEPS[cur]);else if('speechSynthesis' in window)speechSynthesis.cancel();};
 $('#voice').addEventListener('click',surVoix);
 
-const surPourquoi=()=>$('#whyd').showModal();
+const surPourquoi=()=>{const d=$('#whyd');d.showModal();d.scrollTop=0;const h=d.querySelector('h2');if(h)h.focus();};
 $('#why').addEventListener('click',surPourquoi);
+const btRejouer=$('#rejouer');if(btRejouer)btRejouer.addEventListener('click',rejouer);
 const surRetour=()=>go(cur-1);
 $('#next').addEventListener('click',next);$('#prev').addEventListener('click',surRetour);
 const surTouche=e=>{
@@ -279,7 +286,7 @@ go(0);
 return function demonter(){
   run++;window.removeEventListener('keydown',surTouche);root.removeEventListener('click',surClic);
   $('#next').removeEventListener('click',next);$('#prev').removeEventListener('click',surRetour);
-  $('#voice').removeEventListener('click',surVoix);$('#why').removeEventListener('click',surPourquoi);
+  $('#voice').removeEventListener('click',surVoix);$('#why').removeEventListener('click',surPourquoi);if(btRejouer)btRejouer.removeEventListener('click',rejouer);
   beatEls.forEach(b=>b.remove());while(svg.firstChild)svg.removeChild(svg.firstChild);
   if('speechSynthesis' in window)speechSynthesis.cancel();
   L.demonter&&L.demonter();

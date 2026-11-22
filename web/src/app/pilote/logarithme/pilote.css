@@ -57,7 +57,14 @@
 /* l'étiquette de date ou de lieu : un contour d'encre, pas un aplat rouge (le rouge marque ce qui compte) */
 .pilote .plaque { z-index: 2; position: absolute; top: 18px; left: 20px; font: 700 0.75rem/1 var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--color-text-primary); background: var(--st-bg); border: 1px solid var(--color-text-primary); padding: 6px 9px; opacity: 0; transition: opacity .4s; }
 .pilote .plaque.on { opacity: 1; }
-.pilote .stage-foot { z-index: 2; position: absolute; left: 20px; right: 20px; bottom: 14px; display: flex; justify-content: space-between; font: 0.75rem var(--font-ui); font-variant-numeric: tabular-nums; color: var(--st-dim); pointer-events: none; }
+.pilote .stage-foot { z-index: 2; position: absolute; left: 20px; right: 20px; bottom: 14px; display: flex; justify-content: space-between; align-items: center; font: 0.75rem var(--font-ui); font-variant-numeric: tabular-nums; color: var(--st-dim); pointer-events: none; }
+.pilote .stage-foot-g { display: flex; align-items: center; gap: 14px; }
+/* rejouer l'animation et le texte de l'étape (règle 5 du format : « Rejouer et Précédent, toujours ») */
+.pilote .rejouer { pointer-events: auto; font: 500 0.75rem var(--font-ui); color: var(--color-text-secondary); background: var(--st-bg); border: 1px solid var(--color-border-soft); padding: 4px 8px; cursor: pointer; }
+.pilote .rejouer:hover { color: var(--color-text-primary); border-color: var(--color-text-primary); }
+.pilote .rejouer:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+/* la ligne de résultat de fin de leçon, la même dans les trois pilotes */
+.pilote .res { margin: 0 0 8px; font-size: 1.0625rem; line-height: 1.5; }
 .pilote .script { background: var(--color-surface-base); border-left: 1px solid var(--color-text-primary); display: flex; flex-direction: column; padding: 36px 32px 20px; overflow: auto; min-height: 0;
   /* le texte qui défile s'efface en haut au lieu d'être tranché net */
   mask-image: linear-gradient(to bottom, transparent 0, var(--color-text-primary) 22px); }
@@ -141,6 +148,7 @@
 .pilote .fb:empty { display: none; }
 /* ce qui suit la réponse à un pari (une formule, une précision) */
 .pilote .apres:not(:empty) { margin-top: 12px; font-size: 1rem; line-height: 1.5; }
+.pilote .apres .formula { font-size: 1.0625rem; padding: 6px 14px; margin: 0 0 8px; }
 .pilote .ctl { display: grid; gap: 16px; margin: 6px 0 12px; }
 .pilote .sl { display: grid; gap: 8px; font-size: 1rem; }
 .pilote .sl output { font-weight: 700; font-variant-numeric: tabular-nums; }
@@ -221,6 +229,12 @@
 @media (max-width: 1279px) and (min-width: 900px) {
   .pilote .pilote-matiere, .pilote .pilote-filieres { display: none; }
 }
+/* entre 900 et 1099 px, onze noms de parties ne tiennent pas à côté du titre : la barre passe sur
+   sa propre ligne, noms entiers (revue externe G-01-014) */
+@media (max-width: 1099px) and (min-width: 900px) {
+  .pilote .pilote-barre { flex-wrap: wrap; row-gap: 8px; }
+  .pilote .beats { order: 3; flex-basis: 100%; }
+}
 @media (max-width: 1500px) and (min-width: 1280px) {
   .pilote .pilote-matiere { display: none; }
 }
@@ -242,14 +256,17 @@
   .pilote .tbtn { min-height: 44px; }
   /* téléphone (V3) : la scène reste en haut pendant la lecture, Retour / Suivant restent en bas */
   .pilote .pilote-main { grid-template-columns: minmax(0, 1fr); grid-template-rows: 42vh auto; }
-  .pilote .stage-wrap { position: sticky; top: 0; z-index: 3; border-bottom: 1px solid var(--color-text-primary); }
+  /* sous l'en-tête du site, lui-même collé en haut (3,5 rem) : la scène ne passe plus dessous (G-01-001) */
+  .pilote .stage-wrap { position: sticky; top: 3.5rem; z-index: 3; border-bottom: 1px solid var(--color-text-primary); }
+  .pilote .tel-cache { display: none; }
+  .pilote .rejouer { padding: 8px 10px; }
   .pilote .script { border-left: 0; padding: 20px 16px 0; overflow: visible; mask-image: none; }
   .pilote .script.texte-seul > .kicker { margin-top: 0; }
   .pilote .script > .nav { margin: 0 -16px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); border-top: 1px solid var(--color-border-subtle); }
   .pilote .nav button { min-height: 48px; }
   /* ce qui défile vers la vue (ligne de calcul, explication, fiche) s'arrête entre la scène collée
      en haut et la navigation collée en bas : la page défile, pas le panneau */
-  .pilote .deriv li, .pilote .fb, .pilote .apres, .pilote .mot-zone > *, .pilote .ctl { scroll-margin: calc(42vh + 12px) 0 88px; }
+  .pilote .deriv li, .pilote .fb, .pilote .apres, .pilote .mot-zone > *, .pilote .ctl { scroll-margin: calc(42vh + 3.5rem + 12px) 0 88px; }
   .pilote .primary { min-width: 0; flex: 1; }
   .pilote .stage-foot .keys { display: none; }
 }

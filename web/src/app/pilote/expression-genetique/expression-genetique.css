@@ -36,6 +36,8 @@
 .pilote .eg-saut:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
 /* après deux erreurs, la réponse est donnée : le saut n'est plus offert */
 .pilote .fb-bon .eg-saut-z { display: none; }
+/* le raccourci « passer à l'énigme » n'est offert qu'après une réussite du premier coup (G-01-015) */
+.pilote .fb:not(.du-premier-coup) .eg-saut-z { display: none; }
 
 /* panneau : les contrôles manipulables (cibles ≥ 44 px), allégés : des groupes segmentés,
    des flèches et des liens plutôt qu'une grille de boîtes */

@@ -279,7 +279,7 @@ const STEPS=[
     {t:`Deuxième base : la colonne (${GUG[1]}).`,a:2},
     {t:`Troisième base : la petite ligne (${GUG[2]}). On lit ${AA3[CODE[GUG]]}, la ${NOM[CODE[GUG]]}.`,a:3,fort:true}]},
 {cle:'table',beat:4,scene:'code',set:{sel:'···'},ctl:'table',
-  text:['À toi : compose un codon avec les boutons, ou clique dans le tableau.',
+  text:['À toi : compose un codon avec les boutons<span class="tel-cache">, ou clique dans le tableau</span>.',
     `Trouve ${sq(toARN(G6))}, ${sq(toARN(G6S))}, puis un codon stop.`]},
 {cle:'depart-stop',beat:4,scene:'code',set:{sel:'···',hi:''},seq:[{p:{hi:'M'},d:600,w:400},{p:{hi:'*'},d:600,w:1700},{p:{hi:'L'},d:600,w:1700}],
   text:['Trois repères à connaître dans ce tableau.',
@@ -335,7 +335,7 @@ const STEPS=[
     {t:'D’un besoin de l’organisme',fb:'C’est une idée fausse répandue. La mutation arrive par hasard (erreur de copie de l’ADN, rayons UV…) ; ses effets viennent après : utiles, nuls ou nuisibles.'},
     {t:'Du hasard',fb:'Oui : une erreur quand l’ADN est copié avant une division, ou un agent comme les rayons UV. L’organisme ne la « choisit » pas.'},
     {t:'De la maladie',fb:'C’est l’inverse : la mutation vient d’abord, par hasard (erreur de copie de l’ADN, rayons UV…). Parfois, elle cause ensuite une maladie.'}]}},
-{cle:'atelier',beat:6,scene:'atelier',set:{mut:'',sel:C6+1,prot:1,ver:1,sh:1},ctl:'atelier',
+{cle:'atelier',beat:6,scene:'atelier',set:{mut:'',sel:W0,prot:1,ver:1,sh:1},ctl:'atelier',
   text:['Voici l’allèle normal, à partir du triplet de Val. Comme au bac, on compte les triplets depuis le premier montré.',
     'Choisis un nucléotide du brin non transcrit, puis change-le.',
     'Défi : remplace l’acide glutamique n° 6 par une valine.']},
@@ -451,7 +451,7 @@ function finHTML(){
   const plan=res.map((ok,i)=>ok===false?`Le piège « ${PIEGES[i][1]} » : ${PIEGES[i][2]}.`:null).filter(Boolean)
     .concat([res.every(ok=>ok!==false)?'Aucun piège ne t’a eu : va directement à l’exercice 10, l’exercice complet comme en 2026.':'Puis l’exercice 10 : l’exercice complet, comme en 2026.']).map(x=>`<li>${x}</li>`).join('');
   const une=rep('gene-chr')===0?' ; « une seule lettre » : bien vu':'';
-  return ty(`<p class="eg-res">« Vérifie » réussies du premier coup : <b>${vok.length} sur ${vu.length||V.length}</b>. Tes paris : ${faits} faits${une}.</p>`
+  return ty(`<p class="res">« Vérifie » réussies du premier coup : <b>${vok.length} sur ${vu.length||V.length}</b>. Tes paris : ${faits} faits${une}.</p>`
     +`<a class="lien-exos" href="/pilote/expression-genetique/exercices">Faire les exercices →</a>`
     +`<details class="detail"><summary>Voir le détail</summary><ul class="prof">${rows}</ul><div class="next"><div class="pari-k">Par où commencer les exercices</div><ol>${plan}</ol></div></details>`);
 }
@@ -512,7 +512,7 @@ const CTL={
         if(A.m===HBS){S.hbs=true;m+=' <b>Trouvé : un seul nucléotide a suffi.</b>';}
         if(S.types.size)m+=`<br>Déjà obtenus : ${[...S.types].join(', ')}.`;
         $('#agfb').innerHTML=nw(ty(m));};
-      const set=m=>{ctx.stop();const b=ctx.etape().base;sc.p.on=b.on;sc.p.prot=b.prot;sc.p.ver=b.ver;sc.p.sh=b.sh;sc.p.mut=m;sc.render();sync();};
+      const set=m=>{ctx.stop();const b=ctx.etape().base;sc.p.on=b.on;sc.p.prot=b.prot;sc.p.ver=b.ver;sc.p.sh=b.sh;sc.p.mut=m;sc.render();sync();ctx.voir($('#agfb'));};
       $('#agl').addEventListener('click',()=>{sc.p.sel=clamp(sc.p.sel-1,W0,W0+WN-1);sc.render();sync();});
       $('#agr').addEventListener('click',()=>{sc.p.sel=clamp(sc.p.sel+1,W0,W0+WN-1);sc.render();sync();});
       root.querySelectorAll('[data-sub]').forEach(b=>b.addEventListener('click',()=>{const k=sc.p.sel,B=b.dataset.sub;if(CDS[k]===B)dit=`C’est déjà un ${B} dans l’allèle normal : l’atelier revient à l’allèle normal.`;set(CDS[k]===B?'':`s:${k}:${B}`);}));

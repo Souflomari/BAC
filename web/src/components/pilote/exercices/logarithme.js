@@ -693,7 +693,7 @@ export const EXERCICES = [
             q: "En quelle valeur de $x$ la fonction $f$ atteint-elle son minimum ?",
             reponse: xm0,
             tol: { abs: 0.005 },
-            indice: `$f'(x)$ a le signe de $${ax} - 1$ : elle s’annule et change de signe en $x = ${fracTex(1, a)}$.`,
+            indice: `$f'(x)$ a le signe de $${ax} - 1$ : cherche où cette expression s’annule et change de signe.`,
           },
           {
             type: "nombre",

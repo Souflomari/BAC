@@ -542,7 +542,7 @@ function profileHTML(){
   const P=STEPS.filter(s=>s.pari&&!s.verifie&&!s.pari.opts.some(o=>o.ok)),pv=P.filter(s=>bet(s.cle)!=null);
   const Q=[['q1','désintégrés ou restants'],['q2','λ en s⁻¹ avant N₀ = a₀/λ'],['q3','activité et nombre de noyaux']];
   const res=Q.map(([k])=>ctx.juste(k));
-  const ligne=`« Vérifie » réussies du premier coup : <b>${vok.length} sur ${vu.length||V.length}</b> . Tes paris : ${pv.length} faits.`;
+  const ligne=`« Vérifie » réussies du premier coup : <b>${vok.length} sur ${vu.length||V.length}</b>. Tes paris : ${pv.length} faits.`;
   const rows=res.map((ok,i)=>`<li class="${ok===true?'ok':ok===false?'ko':''}">${ok===true?'✓':ok===false?'✗':'·'} ${Q[i][1]}</li>`).join('');
   const bets=[];
   const d=bet('duel');if(d!=null)bets.push(d?'tu savais déjà qu’un noyau ne vieillit pas':'l’idée du noyau qui « s’use » t’a tenté au départ');
@@ -551,7 +551,7 @@ function profileHTML(){
   const a=bet('alpha');if(a!=null)bets.push(a?'tu savais que α emporte 2 protons':'« α ne change que A » t’a tenté');
   const b=bet('bac-geste');if(b!=null)bets.push(b?'au bac, tu as écrit d’abord ce qui reste':'au bac, le piège « 95 % » t’a tenté');
   const revoir=vko.map(s=>s.sujet).filter(Boolean);
-  return `<p class="small">${pct(ligne)}</p><a class="lien-exos" href="/pilote/radioactivite/exercices">Faire les exercices →</a>
+  return `<p class="res">${pct(ligne)}</p><a class="lien-exos" href="/pilote/radioactivite/exercices">Faire les exercices →</a>
 <details class="detail"><summary>Voir le détail</summary><ul class="prof">${rows}</ul>${bets.length?`<p class="small">Tes paris : ${bets.join(' ; ')}.</p>`:''}${revoir.length?`<p class="small">À revoir : ${revoir.join(' ; ')}.</p>`:''}${S.n0vu?'<p class="small">Le calcul de <i>N</i><sub>0</sub> depuis une masse : refais-le dans les exercices.</p>':''}<div class="next"><div class="pari-k">Dans les exercices</div><ol><li>Écrire une désintégration et nommer son type.</li><li>Demi-vie, λ, τ et leurs unités ; ${N0} depuis une masse, puis l’activité.</li><li>Un instant, un âge, le choix du radioélément ; un exercice complet au format du bac.</li></ol></div></details>`;
 }
 
@@ -585,7 +585,7 @@ const CTL={
       if(r)r.addEventListener('click',()=>rafale(st.tic));
       rl.addEventListener('click',()=>{relancer();sync();b.focus();});
       hooks.frame=sync;hooks.lancer=()=>{if(Math.round(sc.p.k)<st.tic)lancer(st.tic);};sync();}},
-  n0:{html:()=>`<div class="ctl"><label class="saisie"><span><i>N</i><sub>0</sub> =</span><input id="n0in" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="par exemple 3,2 × 10^12"></label><div class="ctl-btns"><button type="button" class="ctl-btn" id="n0ok" disabled>Vérifier</button><button type="button" class="ctl-btn alt" id="n0voir">Voir le calcul</button></div></div><p class="ctl-note" id="n0fb"></p>`,
+  n0:{html:()=>`<div class="ctl"><label class="saisie"><span><i>N</i><sub>0</sub> =</span><input id="n0in" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="par exemple 3,2 × 10^12"></label><div class="ctl-btns"><button type="button" class="ctl-btn" id="n0ok" disabled>Vérifier</button><button type="button" class="ctl-btn alt" id="n0voir">Voir le calcul</button></div></div><p class="ctl-note" id="n0fb"></p>`,
     init(){const inp=$('#n0in'),ok=$('#n0ok'),voir=$('#n0voir'),fb=$('#n0fb'),sc=scenes.masse;
       const fini=()=>{inp.disabled=true;ok.disabled=true;voir.disabled=true;ok.hidden=true;voir.hidden=true;ctx.stop();sc.p.ok=1;sc.render();ctx.majNav();};
       if(S.n0ok){inp.value=S.n0val||'';fb.innerHTML=N0_BON;fini();}
