@@ -114,13 +114,13 @@ function figureActivite({ a0m, e, th, u, xmax, s, tangente }) {
 }
 
 export const EXERCICES = [
-  /* 1 — composition d'un noyau, isotopes */
+  /* 1 — composition d'un noyau, isotopes, noyau radioactif */
   {
     id: "noyau-composition",
     titre: "La composition d’un noyau ; les isotopes",
     niveau: 1,
-    capacites: CAP("1.2.1.1", "1.2.1.2"),
-    erreurs: ["Z et A inversés", "nombre de neutrons = A", "isotopes = même nombre de neutrons", "isotopes = même A"],
+    capacites: CAP("1.2.1.1", "1.2.1.2", "1.2.1.5"),
+    erreurs: ["Z et A inversés", "nombre de neutrons = A", "isotopes = même nombre de neutrons", "isotopes = même A", "radioactivité provoquée ou prévisible"],
     gen(h) {
       const el = h.pick(ELEMENTS.filter((x) => x[3].length >= 2));
       const [X, nom, Z, As] = el;
@@ -133,6 +133,12 @@ export const EXERCICES = [
       if (isotones.length) { const b = h.pick(isotones); opts.push({ t: `${$n(b.A, b.Z, b.X)} (${b.nom} ${b.A})`, fb: `Il a aussi ${Nn} neutrons, mais ${b.Z} protons : un autre élément. Des isotopes ont le même nombre de <b>protons</b>.`, erreur: "isotopes = même nombre de neutrons" }); }
       const loin = TOUS.filter((x) => x.Z !== Z && x.A !== A && x.N !== Nn && !opts.some((o) => o.t.includes(`(${x.nom} ${x.A})`)));
       while (opts.length < 3) { const b = h.pick(loin); if (!opts.some((o) => o.t.includes(`(${b.nom} ${b.A})`))) opts.push({ t: `${$n(b.A, b.Z, b.X)} (${b.nom} ${b.A})`, fb: `${b.Z} protons au lieu de ${Z} : c’est un autre élément.`, erreur: "isotopes = même A" }); }
+      const qDef = h.melange([
+        { t: "Un noyau instable qui se désintègre spontanément et aléatoirement en un noyau plus stable, en émettant une particule", ok: true },
+        { t: "Un noyau instable dont on peut prévoir à l’avance l’instant exact de désintégration", fb: "La désintégration d’un noyau individuel est aléatoire : on ne peut pas prévoir son instant exact.", erreur: "radioactivité provoquée ou prévisible" },
+        { t: "Un noyau qui ne se désintègre que s’il est chauffé ou exposé à la lumière", fb: "La radioactivité est spontanée et indépendante des conditions extérieures (température, pression, lumière).", erreur: "radioactivité provoquée ou prévisible" },
+        { t: "Un atome qui a gagné ou perdu des électrons", fb: "Un atome qui gagne ou perd des électrons est un ion ; la radioactivité concerne le noyau.", erreur: "radioactivité provoquée ou prévisible" },
+      ]);
       const tolE = { abs: 0.01 };
       return {
         enonce: `<p>On considère le noyau ${$n(A, Z, X)} (${nom} ${A}).</p>`,
@@ -142,12 +148,14 @@ export const EXERCICES = [
           { type: "nombre", q: "Combien de neutrons ?", reponse: Nn, tol: tolE, indice: "$A$ compte les nucléons (protons et neutrons) : $N = A - Z$.",
             pieges: pieges(Nn, tolE, [{ v: A, fb: `$A = ${A}$ compte tous les nucléons, protons compris : $N = A - Z$.`, erreur: "nombre de neutrons = A" }, { v: Z, fb: "C’est le nombre de protons.", erreur: "Z et A inversés" }, { v: A + Z, fb: "On soustrait les protons des nucléons : $N = A - Z$.", erreur: "nombre de neutrons = A" }]) },
           { type: "qcm", q: `Lequel de ces noyaux est un isotope de ${$n(A, Z, X)} ?`, options: h.melange(opts) },
+          { type: "qcm", q: "Qu’est-ce qu’un noyau radioactif ?", options: qDef },
         ],
         correction: [
           { tex: `${nuc(A, Z, X)}\\ :\\ Z = ${Z},\\ A = ${A}`, r: "En bas, le nombre de charge $Z$ ; en haut, le nombre de masse $A$." },
           { t: `Le noyau contient $Z = ${Z}$ protons.` },
           { tex: `N = A - Z = ${A} - ${Z} = ${Nn}`, r: "Les nucléons qui ne sont pas des protons sont des neutrons." },
           { t: `Des isotopes ont le même nombre de protons (même élément) et un nombre de neutrons différent : ${$n(autre, Z, X)} est un isotope de ${$n(A, Z, X)}.` },
+          { t: "Un noyau radioactif est un noyau instable qui se désintègre de façon spontanée, aléatoire et inéluctable en un noyau fils plus stable, avec émission d’une particule (et éventuellement d’un rayonnement $\\gamma$)." },
         ],
       };
     },
@@ -267,13 +275,13 @@ export const EXERCICES = [
     },
   },
 
-  /* 5 — de t½ à λ et τ, en s⁻¹ */
+  /* 5 — de t½ à λ et τ, en s⁻¹ (avec équation aux dimensions, 1.2.1.14) */
   {
     id: "lambda-unites",
     titre: "De la demi-vie à λ et τ, en secondes",
     niveau: 1,
     capacites: CAP("1.2.1.13", "1.2.1.14"),
-    erreurs: ["unités non converties", "t½ = 1/λ", "τ confondu avec t½"],
+    erreurs: ["unités non converties", "t½ = 1/λ", "τ confondu avec t½", "dimension de λ inversée"],
     gen(h) {
       const r = h.pick([...COURTS, ...LONGS]);
       const an = h.pick([365 * JOUR, 3.15e7, 3.16e7]);
@@ -282,9 +290,15 @@ export const EXERCICES = [
       const ts = r.t * unS, lam = LN2 / ts, tau = 1 / lam;
       const unTex = r.u === "jours" ? "86\\,400" : an === 365 * JOUR ? "365 \\times 86\\,400" : sci(an, 3);
       const tR = { rel: 0.015 };
+      const qDim = h.melange([
+        { t: "$[\\lambda] = \\mathrm{T}^{-1}$ (en $\\text{s}^{-1}$) et $[\\tau] = \\mathrm{T}$ (en $\\text{s}$)", ok: true },
+        { t: "$[\\lambda] = \\mathrm{T}$ (en $\\text{s}$) et $[\\tau] = \\mathrm{T}^{-1}$ (en $\\text{s}^{-1}$)", fb: "Dans $e^{-\\lambda t}$, le produit $\\lambda t$ est sans dimension : $[\\lambda]\\cdot\\mathrm{T} = 1$, donc $[\\lambda] = \\mathrm{T}^{-1}$ et $[\\tau] = [1/\\lambda] = \\mathrm{T}$.", erreur: "dimension de λ inversée" },
+        { t: "$\\lambda$ et $\\tau$ sont toutes les deux sans dimension", fb: "C’est le produit $\\lambda t$ qui est sans dimension, pas $\\lambda$ seule : $[\\lambda] = \\mathrm{T}^{-1}$ et $[\\tau] = \\mathrm{T}$.", erreur: "dimension de λ inversée" },
+      ]);
       return {
         enonce: `<p>La demi-vie ${de(r.nom)} est $t_{1/2} = ${duree(r.t, r.u)}$. On donne : ${donnee}.</p>`,
         questions: [
+          { type: "qcm", q: "Dans $N(t) = N_0\\,e^{-\\lambda t}$, l’exposant $\\lambda t$ est sans dimension. Quelles sont les dimensions de $\\lambda$ et de $\\tau = 1/\\lambda$ ?", options: qDim },
           { type: "nombre", q: "Exprime $t_{1/2}$ en secondes.", reponse: ts, tol: tR, unite: "s", indice: r.u === "jours" ? "Multiplie par le nombre de secondes d’un jour." : "Convertis les années en secondes avec la donnée.",
             pieges: pieges(ts, tR, [{ v: r.t, fb: "Il faut convertir : la valeur en secondes est bien plus grande.", erreur: "unités non converties" }, { v: r.t * (r.u === "jours" ? 3600 : 365), fb: r.u === "jours" ? "Un jour compte 86 400 s (24 × 3 600), pas 3 600." : "Ça, c’est en jours. Il reste à multiplier par 86 400 s.", erreur: "unités non converties" }]) },
           { type: "nombre", q: "Calcule la constante radioactive λ, en s$^{-1}$.", reponse: lam, tol: tR, unite: "s$^{-1}$", indice: "$t_{1/2} = \\dfrac{\\ln 2}{\\lambda}$, donc $\\lambda = \\dfrac{\\ln 2}{t_{1/2}}$, avec $t_{1/2}$ en secondes.",
@@ -293,9 +307,10 @@ export const EXERCICES = [
             pieges: pieges(tau, tR, [{ v: ts, fb: "Ça, c’est $t_{1/2}$. $\\tau = 1/\\lambda = t_{1/2}/\\ln 2$, plus grand que $t_{1/2}$.", erreur: "τ confondu avec t½" }, { v: ts * LN2, fb: "$\\tau = t_{1/2}/\\ln 2$ : on divise par $\\ln 2$.", erreur: "τ confondu avec t½" }]) },
         ],
         correction: [
+          { tex: `[\\lambda]\\cdot[t] = 1 \\implies [\\lambda] = \\mathrm{T}^{-1}, \\qquad [\\tau] = \\frac{1}{[\\lambda]} = \\mathrm{T}`, r: "Analyse dimensionnelle : $\\lambda$ s’exprime en $\\text{s}^{-1}$ et $\\tau$ est une durée (en $\\text{s}$)." },
           { tex: `t_{1/2} = ${frsT(r.t)} \\times ${unTex}\\ \\text{s} \\approx ${sci(ts, 3)}\\ \\text{s}`, r: "On convertit d’abord en secondes." },
           { tex: `\\lambda = \\dfrac{\\ln 2}{t_{1/2}} \\approx \\dfrac{0{,}693}{${sci(ts, 3)}} \\approx ${sci(lam, 3)}\\ \\text{s}^{-1}`, r: "λ en s$^{-1}$, puisque $t_{1/2}$ est en secondes." },
-          { tex: `\\tau = \\dfrac{1}{\\lambda} \\approx ${sci(tau, 3)}\\ \\text{s}`, r: "τ est une durée : $[\\lambda] \\times [t] = 1$, donc $[\\tau] = [t]$." },
+          { tex: `\\tau = \\dfrac{1}{\\lambda} \\approx ${sci(tau, 3)}\\ \\text{s}`, r: "τ en secondes." },
         ],
       };
     },
@@ -505,7 +520,7 @@ export const EXERCICES = [
     titre: "Un exercice complet, au format du bac",
     niveau: 3,
     capacites: CAP("1.2.1.8", "1.2.1.10", "1.2.1.11", "1.2.1.13"),
-    erreurs: ["α ne change que A", "signe de la charge de l’électron", "unités non converties", "restants pris pour désintégrés", "τ confondu avec t½"],
+    erreurs: ["α ne change que A", "signe de la charge de l’électron", "unités non converties", "restants pris pour désintégrés", "τ confondu avec t½", "expression littérale inversée"],
     gen(h) {
       const r = h.pick([
         { nom: "l’iode 131", X: "I", A: 131, Z: 53, Y: "Xe", fils: "xénon", ty: "bm", t: 8, usage: "utilisé pour soigner la thyroïde (sujet 2022)" },
@@ -521,6 +536,12 @@ export const EXERCICES = [
       const lam = LN2 / (r.t * JOUR), N0 = a0 / lam, t1 = (r.t / LN2) * Math.log(1 / reste);
       const s = r.t, xmax = 5 * r.t;
       const tolE = { abs: 0.01 }, tolL = { abs: 0.15 * r.t }, tolN = { rel: 0.03 }, tolT = { rel: 0.015 };
+      const qLitN0 = h.melange([
+        { t: "$N_0 = \\dfrac{a_0\\,t_{1/2}}{\\ln 2}$", ok: true },
+        { t: "$N_0 = \\dfrac{a_0\\,\\ln 2}{t_{1/2}}$", fb: "Comme $a_0 = \\lambda N_0$ et $\\lambda = \\frac{\\ln 2}{t_{1/2}}$, on divise par $\\lambda$ : $N_0 = \\frac{a_0\\,t_{1/2}}{\\ln 2}$.", erreur: "expression littérale inversée" },
+        { t: "$N_0 = a_0\\,t_{1/2}$", fb: "Il manque $\\ln 2$ : $\\lambda = \\frac{\\ln 2}{t_{1/2}}$, pas $\\frac{1}{t_{1/2}}$.", erreur: "t½ = 1/λ" },
+        { t: "$N_0 = \\dfrac{\\ln 2}{a_0\\,t_{1/2}}$", fb: "$N_0$ est proportionnel à $a_0$ (plus il y a de noyaux, plus l’activité est grande) : $N_0 = \\frac{a_0\\,t_{1/2}}{\\ln 2}$.", erreur: "expression littérale inversée" },
+      ]);
       return {
         enonce: `<p>${r.nom[0].toUpperCase() + r.nom.slice(1)} ${$n(r.A, r.Z, r.X)}, ${r.usage}, est radioactif ${NOM_TYPE[r.ty]} : il donne un noyau ${partitif(r.fils)} $\\,{}^{A'}_{Z'}\\mathrm{${r.Y}}$. La figure donne l’activité $a(t)$ d’un échantillon, $t$ en jours.</p><p>Données : $1\\ \\text{jour} = 86\\,400\\ \\text{s}$. On donnera les expressions littérales avant les applications numériques.</p>`,
         figure: figureActivite({ a0m, e, th: r.t, u: "jours", xmax, s, tangente: false }),
@@ -531,7 +552,8 @@ export const EXERCICES = [
             pieges: pieges(Z2, tolE, [{ v: r.Z, fb: r.ty === "al" ? "α emporte aussi 2 protons : « α ne change que $A$ » est faux." : "La particule emporte une charge : $Z$ change.", erreur: "α ne change que A" }, { v: r.Z + z, fb: "Attention au signe de la charge de la particule.", erreur: "signe de la charge de l’électron" }]) },
           { type: "nombre", q: "2. Déterminer graphiquement la demi-vie $t_{1/2}$, en jours.", reponse: r.t, tol: tolL, unite: "jours", indice: "Cherche l’instant où $a = a_0/2$.",
             pieges: pieges(r.t, tolL, [{ v: r.t / LN2, fb: "Tu as lu à 37 % de $a_0$ (c’est τ). La demi-vie se lit à $a_0/2$.", erreur: "τ confondu avec t½" }, { v: 2 * r.t, fb: "À cet instant, il reste $a_0/4$.", erreur: "restants pris pour désintégrés" }]) },
-          { type: "nombre", q: "3. Calculer $N_0$, le nombre de noyaux à l’instant initial.", reponse: N0, tol: tolN, indice: "$a_0 = \\lambda N_0$, avec $\\lambda = \\ln 2 / t_{1/2}$ en s$^{-1}$.",
+          { type: "qcm", q: "3a. Quelle est l’expression littérale de $N_0$ en fonction de $a_0$ et $t_{1/2}$ ?", options: qLitN0 },
+          { type: "nombre", q: "3b. Calculer $N_0$, le nombre de noyaux à l’instant initial.", reponse: N0, tol: tolN, indice: "Utilise l’expression littérale trouvée en 3a, avec $t_{1/2}$ converti en secondes.",
             pieges: pieges(N0, tolN, [{ v: a0 / (LN2 / r.t), fb: "λ doit être en s$^{-1}$ : un becquerel compte des désintégrations par seconde.", erreur: "unités non converties" }, { v: a0 * lam, fb: "$N_0 = a_0/\\lambda$ : on divise.", erreur: "unités non converties" }, { v: a0, fb: "L’activité n’est pas le nombre de noyaux.", erreur: "unités non converties" }]) },
           { type: "nombre", q: `4. Déterminer, en jours, l’instant $t_1$ où ${frs(p)}${PC} des noyaux se sont désintégrés.`, reponse: t1, tol: tolT, unite: "jours", indice: `Il en reste ${frs(100 - p)}${PC} : écris $N(t_1) = ${frsT(reste)}\\,N_0$.`,
             pieges: pieges(t1, tolT, [{ v: (r.t / LN2) * Math.log(1 / (p / 100)), fb: `${frs(p)}${PC}, ce sont les désintégrés ; la loi porte sur ce qui reste.`, erreur: "restants pris pour désintégrés" }, { v: -t1, fb: "Un instant négatif : vérifie le signe du logarithme.", erreur: "restants pris pour désintégrés" }]) },
@@ -539,10 +561,123 @@ export const EXERCICES = [
         correction: [
           { tex: `${nuc(r.A, r.Z, r.X)} \\longrightarrow ${nuc(A2, Z2, r.Y)} + ${nuc(a, zTex, P)}`, r: `Lois de Soddy : $${r.A} = ${A2} + ${a}$ et $${r.Z} = ${Z2} + ${z < 0 ? `(${z})` : z}$.` },
           { t: `À $a = a_0/2 = ${frTex(a0m / 2, a0m % 2 ? 1 : 0)}\\times10^{${e}}$ Bq, on lit $t_{1/2} = ${frsT(r.t)}$ jours.` },
-          { tex: `\\lambda = \\dfrac{\\ln 2}{t_{1/2}} = \\dfrac{\\ln 2}{${frsT(r.t)} \\times 86\\,400\\ \\text{s}} \\approx ${sci(lam, 3)}\\ \\text{s}^{-1}`, r: "λ en s$^{-1}$." },
-          { tex: `N_0 = \\dfrac{a_0}{\\lambda} \\approx \\dfrac{${sci(a0, 2)}}{${sci(lam, 3)}} \\approx ${sci(N0, 2)}`, r: "Car $a_0 = \\lambda N_0$." },
+          { tex: `N_0 = \\dfrac{a_0}{\\lambda} = \\dfrac{a_0\\,t_{1/2}}{\\ln 2}`, r: "Expression littérale, avec $a_0 = \\lambda N_0$ et $\\lambda = \\ln 2 / t_{1/2}$." },
+          { tex: `N_0 \\approx \\dfrac{${sci(a0, 2)} \\times (${frsT(r.t)} \\times 86\\,400)}{\\ln 2} \\approx ${sci(N0, 2)}`, r: "On convertit $t_{1/2}$ en secondes car $a_0$ est en Bq ($\\text{s}^{-1}$)." },
           { tex: `N(t_1) = ${frsT(reste)}\\,N_0 \\iff t_1 = \\dfrac{t_{1/2}}{\\ln 2}\\,\\ln\\dfrac{1}{${frsT(reste)}}`, r: "Ce qui reste, l’expression littérale." },
           { tex: `t_1 \\approx ${frTex(t1, 1)}\\ \\text{jours}`, r: "L’application numérique, avec l’unité." },
+        ],
+      };
+    },
+  },
+
+  /* 12 — exploiter le diagramme (N, Z) de Segrè (1.2.1.3 et 1.2.1.4) */
+  {
+    id: "nz-diagramme",
+    titre: "Exploiter le diagramme (N, Z) de Segrè",
+    niveau: 2,
+    capacites: CAP("1.2.1.3", "1.2.1.4"),
+    erreurs: ["inverser zones β⁻ et β⁺", "confondre zone α et β⁻", "sens de déplacement inversé dans (N, Z)"],
+    gen(h) {
+      /* Noyaux réels, nettement détachés de la vallée de stabilité pour une lecture graphique sans ambiguïté. */
+      const POOL = [
+        { X: "Sr", nom: "strontium", A: 90, Z: 38, ty: "bm", zone: "au-dessus de la vallée de stabilité (excès de neutrons)" },
+        { X: "I", nom: "iode", A: 131, Z: 53, ty: "bm", zone: "au-dessus de la vallée de stabilité (excès de neutrons)" },
+        { X: "Cs", nom: "césium", A: 137, Z: 55, ty: "bm", zone: "au-dessus de la vallée de stabilité (excès de neutrons)" },
+        { X: "Ba", nom: "baryum", A: 140, Z: 56, ty: "bm", zone: "au-dessus de la vallée de stabilité (excès de neutrons)" },
+        { X: "Ce", nom: "cérium", A: 144, Z: 58, ty: "bm", zone: "au-dessus de la vallée de stabilité (excès de neutrons)" },
+        { X: "Fe", nom: "fer", A: 52, Z: 26, ty: "bp", zone: "au-dessous de la vallée de stabilité (excès de protons)" },
+        { X: "Cu", nom: "cuivre", A: 58, Z: 29, ty: "bp", zone: "au-dessous de la vallée de stabilité (excès de protons)" },
+        { X: "Br", nom: "brome", A: 72, Z: 35, ty: "bp", zone: "au-dessous de la vallée de stabilité (excès de protons)" },
+        { X: "Sb", nom: "antimoine", A: 118, Z: 51, ty: "bp", zone: "au-dessous de la vallée de stabilité (excès de protons)" },
+        { X: "I", nom: "iode", A: 120, Z: 53, ty: "bp", zone: "au-dessous de la vallée de stabilité (excès de protons)" },
+        { X: "Po", nom: "polonium", A: 210, Z: 84, ty: "al", zone: "au-delà de Z = 82 (noyau lourd)" },
+        { X: "Rn", nom: "radon", A: 222, Z: 86, ty: "al", zone: "au-delà de Z = 82 (noyau lourd)" },
+        { X: "Ra", nom: "radium", A: 226, Z: 88, ty: "al", zone: "au-delà de Z = 82 (noyau lourd)" },
+        { X: "U", nom: "uranium", A: 238, Z: 92, ty: "al", zone: "au-delà de Z = 82 (noyau lourd)" },
+        { X: "Pu", nom: "plutonium", A: 238, Z: 94, ty: "al", zone: "au-delà de Z = 82 (noyau lourd)" },
+      ];
+      const nucP = h.pick(POOL);
+      const N0 = nucP.A - nucP.Z;
+      const dZ = nucP.ty === "bm" ? 1 : nucP.ty === "bp" ? -1 : -2;
+      const dN = nucP.ty === "bm" ? -1 : nucP.ty === "bp" ? 1 : -2;
+      const Z1 = nucP.Z + dZ, N1 = N0 + dN;
+
+      /* Figure SVG du diagramme (N, Z) : axes, droite N = Z, vallée de stabilité, point du noyau père. */
+      const L = 66, R = 596, T = 22, B = 296, zMax = 100, nMax = 160;
+      const X = (z) => L + ((R - L) * z) / zMax;
+      const Y = (n) => B - ((B - T) * n) / nMax;
+      const f = (v) => v.toFixed(1);
+      let g = "";
+      for (let z = 0; z <= zMax; z += 20) {
+        g += `<line x1="${f(X(z))}" x2="${f(X(z))}" y1="${T}" y2="${B}" stroke="var(--color-border-soft)" stroke-width="1"/>`;
+        g += `<text x="${f(X(z))}" y="${B + 18}" text-anchor="middle" font-size="13" fill="var(--color-text-secondary)">${z}</text>`;
+      }
+      for (let n = 0; n <= nMax; n += 20) {
+        g += `<line x1="${L}" x2="${R}" y1="${f(Y(n))}" y2="${f(Y(n))}" stroke="var(--color-border-soft)" stroke-width="1"/>`;
+        if (n > 0 && n % 40 === 0) g += `<text x="${L - 8}" y="${f(Y(n) + 4)}" text-anchor="end" font-size="13" fill="var(--color-text-secondary)">${n}</text>`;
+      }
+      /* Droite N = Z */
+      g += `<line x1="${f(X(0))}" y1="${f(Y(0))}" x2="${f(X(100))}" y2="${f(Y(100))}" stroke="var(--color-text-secondary)" stroke-width="1.4" stroke-dasharray="5 5"/>`;
+      g += `<text x="${f(X(96))}" y="${f(Y(80))}" text-anchor="end" font-size="12" fill="var(--color-text-secondary)">N = Z</text>`;
+      /* Limite Z = 82 des noyaux stables */
+      g += `<line x1="${f(X(82))}" x2="${f(X(82))}" y1="${T}" y2="${B}" stroke="var(--color-border-soft)" stroke-width="1.5" stroke-dasharray="3 4"/>`;
+      g += `<text x="${f(X(82) + 4)}" y="${T + 14}" font-size="12" fill="var(--color-text-secondary)">Z = 82</text>`;
+      /* Vallée de stabilité réelle (Z = 2 à 82) */
+      const vallee = [[2, 2], [10, 10], [20, 20], [30, 35], [40, 51], [50, 69], [60, 84], [70, 103], [82, 126]];
+      const dVal = vallee.map(([z, n], i) => `${i ? "L" : "M"}${f(X(z))} ${f(Y(n))}`).join(" ");
+      g += `<path d="${dVal}" fill="none" stroke="var(--color-text-primary)" stroke-opacity="0.22" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>`;
+      g += `<path d="${dVal}" fill="none" stroke="var(--color-text-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>`;
+      g += `<text x="${f(X(36))}" y="${f(Y(88))}" text-anchor="end" font-size="12" fill="var(--color-text-secondary)">Vallée de stabilité</text>`;
+      /* Axes */
+      g += `<line x1="${L}" x2="${R}" y1="${B}" y2="${B}" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
+      g += `<line x1="${L}" x2="${L}" y1="${T}" y2="${B}" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
+      g += `<text x="${R}" y="${B + 36}" text-anchor="end" font-size="14" fill="var(--color-text-primary)">Z (protons)</text>`;
+      g += `<text x="${L - 8}" y="${T - 6}" font-size="14" fill="var(--color-text-primary)">N (neutrons)</text>`;
+      /* Point du noyau étudié + projections */
+      const px = X(nucP.Z), py = Y(N0);
+      g += `<line x1="${f(px)}" x2="${f(px)}" y1="${f(py)}" y2="${B}" stroke="var(--color-signal)" stroke-width="1.2" stroke-dasharray="3 3"/>`;
+      g += `<line x1="${L}" x2="${f(px)}" y1="${f(py)}" y2="${f(py)}" stroke="var(--color-signal)" stroke-width="1.2" stroke-dasharray="3 3"/>`;
+      g += `<circle cx="${f(px)}" cy="${f(py)}" r="5.5" fill="var(--color-signal)"/>`;
+      const lx = nucP.ty === "bp" ? px + 10 : px - 10;
+      const ly = nucP.ty === "bp" ? py + 16 : py - 8;
+      const anchor = nucP.ty === "bp" ? "start" : "end";
+      g += `<text x="${f(lx)}" y="${f(ly)}" text-anchor="${anchor}" font-size="14" font-weight="700" fill="var(--color-signal)">${nucP.X}-${nucP.A}</text>`;
+      const figure = `<svg viewBox="0 0 640 344" role="img" aria-label="Diagramme de Segrè N en fonction de Z situant le noyau ${nucP.nom} ${nucP.A}">${g}</svg>`;
+
+      const qType = h.melange([
+        { t: "Radioactivité $\\beta^-$ (excès de neutrons)", ...(nucP.ty === "bm" ? { ok: true } : { fb: `Le noyau se situe ${nucP.zone} ; la zone $\\beta^-$ se trouve au-dessus de la vallée de stabilité.`, erreur: nucP.ty === "bp" ? "inverser zones β⁻ et β⁺" : "confondre zone α et β⁻" }) },
+        { t: "Radioactivité $\\beta^+$ (excès de protons)", ...(nucP.ty === "bp" ? { ok: true } : { fb: `Le noyau se situe ${nucP.zone} ; la zone $\\beta^+$ se trouve au-dessous de la vallée de stabilité.`, erreur: "inverser zones β⁻ et β⁺" }) },
+        { t: "Radioactivité $\\alpha$ (noyau lourd, $Z > 82$)", ...(nucP.ty === "al" ? { ok: true } : { fb: `Ici $Z = ${nucP.Z} \\leq 82$ : la radioactivité $\\alpha$ concerne les noyaux lourds au-delà de $Z = 82$.`, erreur: "confondre zone α et β⁻" }) },
+        { t: "Noyau stable (dans la vallée de stabilité)", fb: `Le point rouge est en dehors de la vallée de stabilité (${nucP.zone}) : ce noyau est radioactif.`, erreur: "confondre zone α et β⁻" },
+      ]);
+      const qDepl = h.melange([
+        { t: "$Z$ augmente de 1 et $N$ diminue de 1", ...(nucP.ty === "bm" ? { ok: true } : { fb: "C’est le déplacement d’une désintégration $\\beta^-$ (un neutron devient un proton).", erreur: "sens de déplacement inversé dans (N, Z)" }) },
+        { t: "$Z$ diminue de 1 et $N$ augmente de 1", ...(nucP.ty === "bp" ? { ok: true } : { fb: "C’est le déplacement d’une désintégration $\\beta^+$ (un proton devient un neutron).", erreur: "sens de déplacement inversé dans (N, Z)" }) },
+        { t: "$Z$ diminue de 2 et $N$ diminue de 2", ...(nucP.ty === "al" ? { ok: true } : { fb: "C’est le déplacement d’une désintégration $\\alpha$ (émission de 2 protons et 2 neutrons).", erreur: "sens de déplacement inversé dans (N, Z)" }) },
+      ]);
+      const tolE = { abs: 0.01 };
+      return {
+        enonce: `<p>Le diagramme $(N, Z)$ de Segrè situe le noyau ${$n(nucP.A, nucP.Z, nucP.X)} (${nucP.nom} ${nucP.A}, soit $Z = ${nucP.Z}$ et $N = ${N0}$) par rapport à la vallée de stabilité.</p>`,
+        figure,
+        questions: [
+          { type: "qcm", q: "D’après sa position sur le diagramme, quel type de radioactivité subit ce noyau ?", options: qType },
+          { type: "qcm", q: "Comment se déplace le point représentatif du noyau dans le diagramme $(N, Z)$ lors de cette désintégration ?", options: qDepl },
+          {
+            type: "nombre",
+            q: "Quel est le nombre de neutrons $N'$ du noyau fils ?",
+            reponse: N1,
+            tol: tolE,
+            indice: `Pars de $N = ${N0}$ et applique la variation de $N$ trouvée à la question précédente.`,
+            pieges: pieges(N1, tolE, [
+              { v: N0, fb: "Le nombre de neutrons change lors de cette désintégration.", erreur: "sens de déplacement inversé dans (N, Z)" },
+              { v: N0 - dN, fb: `Tu as appliqué la variation en sens inverse : ici $N' = ${N0} ${dN > 0 ? `+ ${dN}` : `- ${-dN}`} = ${N1}$.`, erreur: "sens de déplacement inversé dans (N, Z)" },
+              { v: Z1, fb: "C’est le nombre de protons $Z'$ du noyau fils, pas son nombre de neutrons $N'$.", erreur: "sens de déplacement inversé dans (N, Z)" },
+            ]),
+          },
+        ],
+        correction: [
+          { t: `Le noyau ${$n(nucP.A, nucP.Z, nucP.X)} ($Z = ${nucP.Z}$, $N = ${N0}$) se trouve ${nucP.zone} : il est émetteur ${NOM_TYPE[nucP.ty]}.` },
+          { tex: `Z' = ${nucP.Z} ${dZ > 0 ? `+ ${dZ}` : `- ${-dZ}`} = ${Z1}, \\qquad N' = ${N0} ${dN > 0 ? `+ ${dN}` : `- ${-dN}`} = ${N1}`, r: "Le noyau fils se rapproche de la vallée de stabilité." },
         ],
       };
     },

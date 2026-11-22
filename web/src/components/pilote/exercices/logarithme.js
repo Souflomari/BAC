@@ -503,7 +503,7 @@ export const EXERCICES = [
 
   /* ============== séance 2 : « ln comme fonction » (leçon à venir) ============== */
 
-  /* 10 — logarithme décimal */
+  /* 10 — logarithme décimal (équations et inéquations, maths-sexp 1.2.18) */
   {
     id: "log-decimal",
     titre: "Le logarithme décimal",
@@ -511,31 +511,68 @@ export const EXERCICES = [
     seance: 2,
     filieres: ["PC", "SVT"],
     capacites: ["maths-sexp 1.2.18"],
-    erreurs: ["log(10^x) = 10x", "confondre log et ln"],
+    erreurs: ["log(10^x) = 10x", "confondre log et ln", "sens d’une inéquation inversé"],
     gen(h) {
       const k = h.int(2, 6),
         m = h.pick([2, 3, 5]);
+      const mode = h.pick(["eq", "le", "ge"]);
       const A = m * 10 ** k;
       const x = Math.log10(A);
+      const logm = frTex(Math.log10(m), 3);
+      const valA = `${m} \\times 10^{${k}}`;
+      if (mode === "eq") {
+        return {
+          enonce: `<p>Le logarithme décimal est $\\log x = \\dfrac{\\ln x}{\\ln 10}$ ; il vérifie $\\log(10^n) = n$. On donne $\\log ${m} \\approx ${logm}$. On veut résoudre $10^x = ${valA}$.</p>`,
+          questions: [
+            {
+              type: "nombre",
+              q: "Donne la solution $x$ à $0{,}01$ près.",
+              reponse: x,
+              tol: { abs: 0.006 },
+              indice: `Applique $\\log$ aux deux membres : $x = \\log(${valA}) = \\log ${m} + ${k}$.`,
+              pieges: [
+                { v: Math.log(A), fb: "C’est $\\ln$ du nombre, pas $\\log$ : avec la base 10, on divise par $\\ln 10$.", erreur: "confondre log et ln" },
+                { v: k, fb: `Il manque $\\log ${m}$ : $\\log(${valA}) = \\log ${m} + \\log 10^{${k}}$.`, erreur: "log(10^x) = 10x" },
+              ],
+            },
+          ],
+          correction: [
+            { tex: `10^x = ${valA} \\iff x = \\log(${valA})`, r: "$\\log$ est la fonction réciproque de $x \\mapsto 10^x$." },
+            { tex: `x = \\log ${m} + ${k}`, r: "Le logarithme d’un produit est la somme des logarithmes, et $\\log 10^{" + k + "} = " + k + "$." },
+            { tex: `x \\approx ${frTex(x, 2)}`, r: `$\\log ${m} = \\frac{\\ln ${m}}{\\ln 10} \\approx ${logm}$.` },
+          ],
+        };
+      }
+      const sym = mode === "le" ? "\\leq" : "\\geq";
+      const invSym = mode === "le" ? "\\geq" : "\\leq";
+      const ensOk = mode === "le" ? `\\left]-\\infty, ${k} + \\log ${m}\\right]` : `\\left[${k} + \\log ${m}, +\\infty\\right[`;
+      const ensInv = mode === "le" ? `\\left[${k} + \\log ${m}, +\\infty\\right[` : `\\left]-\\infty, ${k} + \\log ${m}\\right]`;
+      const ensK = mode === "le" ? `\\left]-\\infty, ${k}\\right]` : `\\left[${k}, +\\infty\\right[`;
+      const opts = h.melange([
+        { t: `$S = ${ensOk}$`, ok: true },
+        { t: `$S = ${ensInv}$`, fb: `La fonction $\\log$ est strictement croissante : appliquer $\\log$ conserve le sens de l’inégalité ($${sym}$, pas $${invSym}$).`, erreur: "sens d’une inéquation inversé" },
+        { t: `$S = ${ensK}$`, fb: `Tu as oublié le facteur $${m}$ : $\\log(${valA}) = \\log ${m} + ${k}$, pas $${k}$.`, erreur: "log(10^x) = 10x" },
+      ]);
       return {
-        enonce: `<p>Le logarithme décimal est $\\log x = \\dfrac{\\ln x}{\\ln 10}$ ; il vérifie $\\log(10^n) = n$. On donne $\\log ${m} \\approx ${frTex(Math.log10(m), 3)}$. On veut résoudre $10^x = ${m} \\times 10^{${k}}$.</p>`,
+        enonce: `<p>Le logarithme décimal est $\\log x = \\dfrac{\\ln x}{\\ln 10}$ ; il est strictement croissant sur $]0,+\\infty[$ et vérifie $\\log(10^n) = n$. On donne $\\log ${m} \\approx ${logm}$. On veut résoudre l’inéquation $10^x ${sym} ${valA}$.</p>`,
         questions: [
+          { type: "qcm", q: "Quel est l’ensemble des solutions $S$ ?", options: opts },
           {
             type: "nombre",
-            q: "Donne la solution $x$ à $0{,}01$ près.",
+            q: "Donne une valeur approchée de la borne de $S$ à $0{,}01$ près.",
             reponse: x,
             tol: { abs: 0.006 },
-            indice: `Applique $\\log$ aux deux membres : $x = \\log(${m} \\times 10^{${k}}) = \\log ${m} + ${k}$.`,
+            indice: `Calcule $${k} + \\log ${m}$ avec la valeur donnée dans l’énoncé.`,
             pieges: [
-              { v: Math.log(A), fb: "C’est $\\ln$ du nombre, pas $\\log$ : avec la base 10, on divise par $\\ln 10$.", erreur: "confondre log et ln" },
-              { v: k, fb: `Il manque $\\log ${m}$ : $\\log(${m} \\times 10^{${k}}) = \\log ${m} + \\log 10^{${k}}$.`, erreur: "log(10^x) = 10x" },
+              { v: Math.log(A), fb: "C’est $\\ln$ du nombre, pas $\\log$ : utilise $\\log " + m + " + " + k + "$.", erreur: "confondre log et ln" },
+              { v: k, fb: `Il manque $\\log ${m}$ : la borne est $${k} + \\log ${m}$.`, erreur: "log(10^x) = 10x" },
             ],
           },
         ],
         correction: [
-          { tex: `10^x = ${m} \\times 10^{${k}} \\iff x = \\log(${m} \\times 10^{${k}})`, r: "$\\log$ est la fonction réciproque de $x \\mapsto 10^x$." },
-          { tex: `x = \\log ${m} + ${k}`, r: "Le logarithme d’un produit est la somme des logarithmes, et $\\log 10^{" + k + "} = " + k + "$." },
-          { tex: `x \\approx ${frTex(x, 2)}`, r: `$\\log ${m} = \\frac{\\ln ${m}}{\\ln 10} \\approx ${frTex(Math.log10(m), 3)}$.` },
+          { tex: `10^x ${sym} ${valA} \\iff x ${sym} \\log(${valA})`, r: "$\\log$ est strictement croissante sur $]0,+\\infty[$ : l’ordre est conservé." },
+          { tex: `\\log(${valA}) = \\log ${m} + \\log 10^{${k}} = ${k} + \\log ${m} \\approx ${frTex(x, 2)}`, r: "Logarithme d’un produit." },
+          { tex: `S = ${ensOk}`, r: `Avec la borne $\\approx ${frTex(x, 2)}$.` },
         ],
       };
     },
@@ -557,6 +594,7 @@ export const EXERCICES = [
         { lim: `\\lim_{x \\to 0^+} ${xn}\\ln x`, ok: "0", why: "En $0^+$, la puissance de $x$ l’emporte sur $\\ln x$ : le produit tend vers 0.", piege: "-\\infty", pfb: "$\\ln x \\to -\\infty$, mais $" + xn + " \\to 0$ plus fort : c’est une croissance comparée, le produit tend vers 0.", perr: "croissances comparées à l’envers" },
         { lim: `\\lim_{x \\to +\\infty} (\\ln x - ${coef(n)}x)`, ok: "-\\infty", why: `On factorise : $x\\left(\\frac{\\ln x}{x} - ${n}\\right)$ ; la parenthèse tend vers $-${n}$, donc le tout vers $-\\infty$.`, piege: "+\\infty", pfb: "C’est une forme « $\\infty - \\infty$ » : on factorise par $x$ et on regarde qui l’emporte. Ici c’est $-" + coef(n) + "x$.", perr: "croissances comparées à l’envers" },
         { lim: `\\lim_{x \\to 1} \\dfrac{\\ln x}{x - 1}`, ok: "1", why: "C’est le taux d’accroissement de ln en 1 : sa limite est $\\ln'(1) = \\frac{1}{1} = 1$.", piege: "0", pfb: "Forme « 0/0 » : ce n’est pas forcément 0. C’est le taux d’accroissement de ln en 1, qui tend vers $\\ln'(1) = 1$.", perr: "forme indéterminée prise pour 0" },
+        { lim: `\\lim_{x \\to 0} \\dfrac{\\ln(1 + x)}{x}`, ok: "1", why: "En posant $u = 1 + x$ ($u \\to 1$), on retrouve $\\lim_{u \\to 1}\\frac{\\ln u}{u - 1} = \\ln'(1) = 1$.", piege: "0", pfb: "Forme « 0/0 » : ce n’est pas forcément 0. C’est le taux d’accroissement de $x \\mapsto \\ln(1+x)$ en 0, qui vaut 1.", perr: "forme indéterminée prise pour 0" },
       ];
       const L = h.pick(pool);
       const vals = ["0", "1", "+\\infty", "-\\infty"];
@@ -662,7 +700,7 @@ export const EXERCICES = [
     niveau: 3,
     seance: 2,
     capacites: ["maths-sexp 1.2.22", "maths-sexp 1.2.19", "maths-sexp 1.2.7", "maths-sm 1.3.16", "maths-sm 1.3.11"],
-    erreurs: ["(ln x)′ = ln x", "croissances comparées à l’envers", "conclure sur le signe sans le minimum"],
+    erreurs: ["(ln x)′ = ln x", "croissances comparées à l’envers", "conclure sur le signe sans le minimum", "confondre asymptote verticale et horizontale"],
     gen(h) {
       const a = h.pick([1, 2, 3]);
       const xm0 = 1 / a,
@@ -673,6 +711,16 @@ export const EXERCICES = [
         { t: "$+\\infty$", ok: true },
         { t: "$-\\infty$", fb: "$-\\ln x \\to +\\infty$ quand $x \\to 0^+$ (car $\\ln x \\to -\\infty$), et $" + ax + " \\to 0$ : la somme tend vers $+\\infty$.", erreur: "signe de −ln x en 0⁺" },
         { t: "$0$", fb: "Ce n’est pas une forme indéterminée : $" + ax + " \\to 0$ et $-\\ln x \\to +\\infty$.", erreur: "forme indéterminée prise pour 0" },
+      ]);
+      const qAsymp = h.melange([
+        { t: "Une asymptote verticale d’équation $x = 0$", ok: true },
+        { t: "Une asymptote horizontale d’équation $y = 0$", fb: "Ici $x \\to 0^+$ et $f(x) \\to +\\infty$ : la courbe longe l’axe vertical $x = 0$, pas l’axe horizontal $y = 0$.", erreur: "confondre asymptote verticale et horizontale" },
+        { t: "Aucune asymptote au voisinage de $0^+$", fb: "Une limite infinie en un réel fini ($0^+$) traduit toujours une asymptote verticale d’équation $x = 0$.", erreur: "confondre asymptote verticale et horizontale" },
+      ]);
+      const qLimInf = h.melange([
+        { t: "$+\\infty$", ok: true },
+        { t: "$-\\infty$", fb: `On factorise : $f(x) = x\\left(${a} - \\frac{\\ln x}{x}\\right)$. Comme $\\frac{\\ln x}{x} \\to 0$, la parenthèse tend vers $${a} > 0$, donc $f(x) \\to +\\infty$ : $${ax}$ l’emporte sur $\\ln x$.`, erreur: "croissances comparées à l’envers" },
+        { t: "$0$", fb: `Forme « $\\infty - \\infty$ » : on factorise par $x$. La parenthèse tend vers $${a} > 0$ et $x \\to +\\infty$, donc $f(x) \\to +\\infty$.`, erreur: "forme indéterminée prise pour 0" },
       ]);
       const qDer = h.melange([
         { t: `$f'(x) = \\dfrac{${ax} - 1}{x}$`, ok: true },
@@ -688,6 +736,8 @@ export const EXERCICES = [
         enonce: `<p>Soit $f$ la fonction définie sur $]0,+\\infty[$ par $f(x) = ${ax} - \\ln x$.${a === 1 ? "" : ` On donne $\\ln ${a} \\approx ${frTex(Math.log(a), 3)}$.`}</p>`,
         questions: [
           { type: "qcm", q: "$\\displaystyle\\lim_{x \\to 0^+} f(x)$ vaut :", options: qLim },
+          { type: "qcm", q: "Quelle interprétation géométrique en déduit-on pour la courbe $\\mathcal{C}_f$ ?", options: qAsymp },
+          { type: "qcm", q: "$\\displaystyle\\lim_{x \\to +\\infty} f(x)$ vaut :", options: qLimInf },
           { type: "qcm", q: "Pour tout $x > 0$ :", options: qDer },
           {
             type: "nombre",
@@ -707,11 +757,144 @@ export const EXERCICES = [
           { type: "qcm", q: "On en déduit :", options: qSigne },
         ],
         correction: [
-          { tex: `\\lim_{x\\to 0^+} ${ax} = 0, \\quad \\lim_{x\\to 0^+} (-\\ln x) = +\\infty`, r: "Donc $\\lim_{x\\to 0^+} f(x) = +\\infty$." },
+          { tex: `\\lim_{x\\to 0^+} ${ax} = 0, \\quad \\lim_{x\\to 0^+} (-\\ln x) = +\\infty`, r: "Donc $\\lim_{x\\to 0^+} f(x) = +\\infty$ : la droite d’équation $x = 0$ est asymptote verticale à $\\mathcal{C}_f$." },
+          { tex: `\\lim_{x\\to +\\infty} f(x) = \\lim_{x\\to +\\infty} x\\left(${a} - \\frac{\\ln x}{x}\\right) = +\\infty`, r: "Car $\\lim_{x\\to +\\infty}\\frac{\\ln x}{x} = 0$ (croissance comparée) et $" + a + " > 0$." },
           { tex: `f'(x) = ${a} - \\frac{1}{x} = \\frac{${ax} - 1}{x}`, r: "On dérive terme à terme, puis on réduit au même dénominateur." },
           { tex: `f'(x) < 0 \\ \\text{sur}\\ ${itv(0, inv)}, \\qquad f'(x) > 0 \\ \\text{sur}\\ ${itv(inv, "+\\infty")}`, r: "Le dénominateur $x$ est positif : $f'$ a le signe de $" + ax + " - 1$." },
           { tex: a === 1 ? "f(1) = 1 - \\ln 1 = 1" : `f\\left(${inv}\\right) = 1 - \\ln ${inv} = 1 + \\ln ${a} \\approx ${frTex(ym, 2)}`, r: "$f$ décroît puis croît : ce minimum est la plus petite valeur de $f$." },
           { tex: `f(x) \\geq 1 + \\ln ${a} > 0`, r: "Le minimum est strictement positif, donc $f$ l’est partout : la courbe reste au-dessus de l’axe." },
+        ],
+      };
+    },
+  },
+
+  /* 15 — système logarithmique (maths-sexp 1.2.17, maths-sm 1.3.10) */
+  {
+    id: "ln-systeme",
+    titre: "Résoudre un système logarithmique",
+    niveau: 2,
+    seance: 2,
+    capacites: ["maths-sexp 1.2.17", "maths-sm 1.3.10"],
+    erreurs: ["oublier le domaine d’existence", "confondre ln x et x", "inverser x et y"],
+    gen(h) {
+      let X, Y;
+      do {
+        X = h.int(1, 3);
+        Y = h.int(-1, 2);
+      } while (X === Y);
+      const s = X + Y;
+      const d = 2 * X - Y;
+      const expTex = (n) => (n === 0 ? "1" : n === 1 ? "e" : `e^{${n}}`);
+      const qDom = h.melange([
+        { t: "$x > 0$ et $y > 0$", ok: true },
+        { t: "$x \\geq 0$ et $y \\geq 0$", fb: "$\\ln 0$ n’existe pas : les deux inconnues doivent être strictement positives.", erreur: "oublier le domaine d’existence" },
+        { t: "Tout couple $(x, y) \\in \\mathbb{R}^2$", fb: "Pour que $\\ln x$ et $\\ln y$ existent, il faut $x > 0$ et $y > 0$.", erreur: "oublier le domaine d’existence" },
+      ]);
+      const qCpl = h.melange([
+        { t: `$\\left(${expTex(X)},\\, ${expTex(Y)}\\right)$`, ok: true },
+        { t: `$(${X},\\, ${Y})$`, fb: `Tu as donné $(\\ln x, \\ln y)$ au lieu de $(x, y)$ : $\\ln x = ${X} \\iff x = ${expTex(X)}$.`, erreur: "confondre ln x et x" },
+        { t: `$\\left(${expTex(Y)},\\, ${expTex(X)}\\right)$`, fb: `Tu as inversé $x$ et $y$ : $\\ln x = ${X}$ et $\\ln y = ${Y}$.`, erreur: "inverser x et y" },
+      ]);
+      const piegesX = [];
+      if (Y !== X) piegesX.push({ v: Y, fb: `C’est la valeur de $\\ln y$. En additionnant les deux lignes, on élimine $\\ln y$ : $3\\ln x = ${s + d}$.`, erreur: "inverser x et y" });
+      if (s + d !== X) piegesX.push({ v: s + d, fb: `C’est $3\\ln x$, pas $\\ln x$ : il reste à diviser par 3.`, erreur: "inverser x et y" });
+      return {
+        enonce: `<p>On considère le système :</p>$$\\begin{cases} \\ln x + \\ln y = ${s} \\\\ 2\\ln x - \\ln y = ${d} \\end{cases}$$`,
+        questions: [
+          { type: "qcm", q: "Pour quels couples $(x, y)$ ce système a-t-il un sens ?", options: qDom },
+          {
+            type: "nombre",
+            q: "En posant $X = \\ln x$ et $Y = \\ln y$, que vaut $X = \\ln x$ ?",
+            reponse: X,
+            tol: { abs: 0.01 },
+            indice: "Additionne les deux équations membre à membre pour éliminer $Y = \\ln y$.",
+            pieges: piegesX,
+          },
+          { type: "qcm", q: "Quel est alors le couple solution $(x, y)$ ?", options: qCpl },
+        ],
+        correction: [
+          { t: "Conditions d’existence : $x > 0$ et $y > 0$." },
+          { tex: `\\begin{cases} X + Y = ${s} \\\\ 2X - Y = ${d} \\end{cases}`, r: "On pose $X = \\ln x$ et $Y = \\ln y$." },
+          { tex: `3X = ${s + d} \\iff X = ${X}, \\qquad Y = ${s} - (${X}) = ${Y}`, r: "On additionne les deux lignes, puis on remplace dans la première." },
+          { tex: `x = ${expTex(X)}, \\quad y = ${expTex(Y)}`, r: "Les deux sont strictement positifs : $S = \\{\\left(" + expTex(X) + ",\\," + expTex(Y) + "\\right)\\}$." },
+        ],
+      };
+    },
+  },
+
+  /* 16 — primitives de u'/u et ln|u| (maths-sexp 1.2.15, maths-sm 1.3.8) */
+  {
+    id: "ln-primitive",
+    titre: "Primitives de u′/u (avec ln|u|)",
+    niveau: 2,
+    seance: 2,
+    capacites: ["maths-sexp 1.2.15", "maths-sm 1.3.8"],
+    erreurs: ["oublier la valeur absolue sur ln|u|", "oublier le facteur devant ln|u|", "confondre dérivée et primitive"],
+    gen(h) {
+      const cas = h.pick(["neg", "pos"]);
+      if (cas === "neg") {
+        const r = h.int(1, 5);
+        const k = h.pick([1, 2, 3]);
+        const y0 = h.int(-3, 4);
+        const x0 = r - 1;
+        const kStr = k === 1 ? "" : `${k}`;
+        const fTex = `\\dfrac{${k}}{x - ${r}}`;
+        const opts = h.melange([
+          { t: `$F(x) = ${kStr}\\ln(${r} - x)$`, ok: true },
+          { t: `$F(x) = ${kStr}\\ln(x - ${r})$`, fb: `Sur $]-\\infty, ${r}[$, on a $x - ${r} < 0$ : $\\ln(x - ${r})$ n’existe pas. Une primitive de $u'/u$ est $\\ln|u| = \\ln(${r} - x)$.`, erreur: "oublier la valeur absolue sur ln|u|" },
+          { t: `$F(x) = -${kStr}\\ln(${r} - x)$`, fb: `La dérivée de $\\ln(${r} - x)$ est $\\frac{-1}{${r} - x} = \\frac{1}{x - ${r}}$, déjà avec le bon signe : pas de signe moins devant.`, erreur: "confondre dérivée et primitive" },
+          { t: `$F(x) = \\dfrac{-${k}}{(x - ${r})^2}$`, fb: "C’est la dérivée de $f$, pas une primitive.", erreur: "confondre dérivée et primitive" },
+        ]);
+        return {
+          enonce: `<p>Soit $f$ la fonction définie sur $I = ${itv("-\\infty", r)}$ par $f(x) = ${fTex}$.</p>`,
+          questions: [
+            { type: "qcm", q: "Quelle fonction est une primitive de $f$ sur $I$ ?", options: opts },
+            {
+              type: "nombre",
+              q: `On cherche la primitive $G$ de $f$ sur $I$ telle que $G(${x0}) = ${y0}$. Que vaut la constante $C$ dans $G(x) = ${kStr}\\ln(${r} - x) + C$ ?`,
+              reponse: y0,
+              tol: { abs: 0.01 },
+              indice: `Remplace $x$ par $${x0}$ dans $G(x) = ${kStr}\\ln(${r} - x) + C$ et utilise $\\ln 1 = 0$.`,
+              pieges: y0 !== 0 ? [{ v: -y0, fb: `On résout $0 + C = ${y0}$, donc $C = ${y0}$, sans changer de signe.`, erreur: "confondre dérivée et primitive" }] : [],
+            },
+          ],
+          correction: [
+            { tex: `u(x) = x - ${r} < 0 \\ \\text{sur}\\ ${itv("-\\infty", r)}, \\quad u'(x) = 1`, r: "On reconnaît $f = " + (k === 1 ? "" : k + "\\cdot ") + "\\dfrac{u'}{u}$ avec $u < 0$ sur $I$." },
+            { tex: `F(x) = ${kStr}\\ln|x - ${r}| = ${kStr}\\ln(${r} - x)`, r: "Puisque $x - " + r + " < 0$, on a $|x - " + r + "| = " + r + " - x$." },
+            { tex: `G(${x0}) = ${kStr}\\ln 1 + C = C = ${y0}`, r: `Donc $G(x) = ${kStr}\\ln(${r} - x) ${y0 === 0 ? "" : sg(y0)}$.` },
+          ],
+        };
+      }
+      const a = h.int(1, 3);
+      const k = h.pick([1, 2, 3]);
+      const y0 = h.int(-3, 4);
+      const u = `${coef(a)}x^2 + 1`;
+      const num = 2 * a * k;
+      const kStr = k === 1 ? "" : `${k}`;
+      const fTex = `\\dfrac{${num}x}{${u}}`;
+      const opts = h.melange([
+        { t: `$F(x) = ${kStr}\\ln(${u})$`, ok: true },
+        { t: `$F(x) = ${num}\\ln(${u})$`, fb: `La dérivée de $\\ln(${u})$ est $\\frac{${2 * a}x}{${u}}$ : le facteur devant $\\ln$ est $\\frac{${num}}{${2 * a}} = ${k}$, pas $${num}$.`, erreur: "oublier le facteur devant ln|u|" },
+        { t: `$F(x) = \\ln(${u})$` + (k === 1 ? " + x" : ""), fb: k === 1 ? `La dérivée de $\\ln(${u}) + x$ vaut $f(x) + 1$, pas $f(x)$.` : `La dérivée de $\\ln(${u})$ est $\\frac{${2 * a}x}{${u}}$ : il manque le facteur $${k}$.`, erreur: "oublier le facteur devant ln|u|" },
+        { t: `$F(x) = \\dfrac{1}{\\ln(${u})}$`, fb: "Une primitive de $u'/u$ est $\\ln|u|$, jamais $1/\\ln u$.", erreur: "confondre dérivée et primitive" },
+      ]);
+      return {
+        enonce: `<p>Soit $f$ la fonction définie sur $\\mathbb{R}$ par $f(x) = ${fTex}$.</p>`,
+        questions: [
+          { type: "qcm", q: "Quelle fonction est une primitive de $f$ sur $\\mathbb{R}$ ?", options: opts },
+          {
+            type: "nombre",
+            q: `On cherche la primitive $G$ de $f$ sur $\\mathbb{R}$ telle que $G(0) = ${y0}$. Que vaut la constante $C$ dans $G(x) = ${kStr}\\ln(${u}) + C$ ?`,
+            reponse: y0,
+            tol: { abs: 0.01 },
+            indice: `Remplace $x$ par $0$ dans $G(x)$ et utilise $\\ln 1 = 0$.`,
+            pieges: y0 !== 0 ? [{ v: -y0, fb: `On résout $0 + C = ${y0}$, donc $C = ${y0}$.`, erreur: "confondre dérivée et primitive" }] : [],
+          },
+        ],
+        correction: [
+          { tex: `u(x) = ${u} > 0 \\ \\text{sur}\\ \\mathbb{R}, \\quad u'(x) = ${2 * a}x`, r: `On reconnaît $f(x) = ${k === 1 ? "" : k + "\\cdot "}\\dfrac{u'(x)}{u(x)}$.` },
+          { tex: `F(x) = ${kStr}\\ln(${u})`, r: "Comme $u(x) > 0$ sur $\\mathbb{R}$, $|u(x)| = u(x)$." },
+          { tex: `G(0) = ${kStr}\\ln 1 + C = C = ${y0}`, r: `Donc $G(x) = ${kStr}\\ln(${u}) ${y0 === 0 ? "" : sg(y0)}$.` },
         ],
       };
     },
