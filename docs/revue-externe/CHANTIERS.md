@@ -5,4 +5,3 @@
 
 | Qui | Fichiers ou dossiers | Pour | Depuis | Branche / PR |
 |---|---|---|---|---|
-| Antigravity | `web/src/components/pilote/ExercicesPilote.tsx`, `web/src/app/pilote/exercices.css`, `web/src/components/pilote/exercices/nombre.js`, `web/scripts/pilotes-parcours.mjs` | G-01-002 (exercices), 003, 005, 007, 010 (messages), 011, 016, partie 3 | 2026-11-22 | à créer : `antigravity/exercices-ux`, `antigravity/controles` |
