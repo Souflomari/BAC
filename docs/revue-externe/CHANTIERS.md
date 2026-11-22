@@ -5,5 +5,4 @@
 
 | Qui | Fichiers ou dossiers | Pour | Depuis | Branche / PR |
 |---|---|---|---|---|
-| Claude | `web/src/components/pilote/noyau.js`, `PiloteCoquille.tsx`, `*-moteur.js`, `*-scenes-*.js`, `expression-genetique-*.js`, `web/src/app/pilote/logarithme/pilote.css` et les CSS propres à chaque leçon, `web/src/components/pilote/exercices/{logarithme,radioactivite,expression-genetique}.js` | G-01-001, 002 (champ N₀), 004, 006, 008, 009, 010 (indices), 012-015, 017-019, 021 | 2026-11-22 | `claude/vibrant-fermi-v1lxj5` |
 | Antigravity | `web/src/components/pilote/ExercicesPilote.tsx`, `web/src/app/pilote/exercices.css`, `web/src/components/pilote/exercices/nombre.js`, `web/scripts/pilotes-parcours.mjs` | G-01-002 (exercices), 003, 005, 007, 010 (messages), 011, 016, partie 3 | 2026-11-22 | à créer : `antigravity/exercices-ux`, `antigravity/controles` |
