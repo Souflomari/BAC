@@ -27,24 +27,34 @@ type Gabarit = any;
 type Tirage = any;
 
 type EtatQ = { saisie: string; choix: number | null; essais: number; juste: boolean; message: string | null };
-type EtatEx = { graine: number; q: EtatQ[]; lignes: number; correction: boolean; indices: number[]; erreurs: string[] };
+type EtatEx = {
+  graine: number;
+  q: EtatQ[];
+  lignes: number;
+  correction: boolean;
+  corrigeAvant: boolean;
+  indices: number[];
+  erreurs: string[];
+};
 
 const etatNeuf = (graine: number, n: number): EtatEx => ({
   graine,
   q: Array.from({ length: n }, () => ({ saisie: "", choix: null, essais: 0, juste: false, message: null })),
   lignes: 0,
   correction: false,
+  corrigeAvant: false,
   indices: [],
   erreurs: [],
 });
 
 const lettre = (i: number) => String.fromCharCode(97 + i);
+const libelleCadre = (s: string) => s.trim().replace(/\s*[;,]\s*$/, ".");
 
 function bilan(e: EtatEx | undefined, nq: number): "premier" | "apres" | "corrige" | "nonfait" {
-  if (!e || e.q.every((q) => q.essais === 0) && !e.correction) return "nonfait";
+  if (!e || (e.q.every((q) => q.essais === 0) && !e.correction)) return "nonfait";
   const tout = e.q.length === nq && e.q.every((q) => q.juste);
-  if (tout && !e.correction && e.q.every((q) => q.essais === 1) && !e.indices.length) return "premier";
-  if (tout && !e.correction) return "apres";
+  if (tout && !e.corrigeAvant && e.q.every((q) => q.essais === 1) && !e.indices.length) return "premier";
+  if (tout && !e.corrigeAvant) return "apres";
   return "corrige";
 }
 
@@ -102,6 +112,7 @@ export function ExercicesPilote({
     let juste = false;
     let message = "";
     let erreur: string | null = null;
+    const peutIndice = !!q.indice && !e.indices.includes(j);
     if (q.type === "qcm") {
       if (s.choix == null) return;
       const o = q.options[s.choix];
@@ -118,7 +129,11 @@ export function ExercicesPilote({
       if (juste) message = "Juste.";
       else {
         const p = (q.pieges || []).find((x: any) => normaliser(x.v) === v);
-        message = p ? p.fb : "Ce n’est pas ça. Reprends lettre par lettre, ou demande un indice.";
+        message = p
+          ? p.fb
+          : peutIndice
+            ? "Ce n’est pas ça. Reprends lettre par lettre, ou demande un indice."
+            : "Ce n’est pas ça. Reprends lettre par lettre.";
         if (p?.erreur) erreur = p.erreur;
       }
     } else {
@@ -131,7 +146,11 @@ export function ExercicesPilote({
       if (juste) message = "Juste.";
       else {
         const p = (q.pieges || []).find((x: any) => proche(v, x.v, q.tol));
-        message = p ? p.fb : "Ce n’est pas la bonne valeur. Reprends ton calcul, ou demande un indice.";
+        message = p
+          ? p.fb
+          : peutIndice
+            ? "Ce n’est pas la bonne valeur. Reprends ton calcul, ou demande un indice."
+            : "Ce n’est pas la bonne valeur. Reprends ton calcul.";
         if (p?.erreur) erreur = p.erreur;
       }
     }
@@ -150,6 +169,7 @@ export function ExercicesPilote({
     );
   }
 
+  const autresTirages = nom === "expression-genetique";
   const barre = (
     <div className="exos-barre">
       <div className="exos-titre">
@@ -186,6 +206,9 @@ export function ExercicesPilote({
           </button>
         </li>
       </ol>
+      <Link href={lecon} className="exos-lecon">
+        ← Leçon
+      </Link>
     </div>
   );
 
@@ -240,7 +263,7 @@ export function ExercicesPilote({
                 setK(0);
               }}
             >
-              Recommencer avec d’autres nombres
+              {autresTirages ? "Recommencer avec d’autres énoncés" : "Recommencer avec d’autres nombres"}
             </button>
             <Link href={lecon} className="exos-btn ghost">
               ← Revoir la leçon
@@ -268,7 +291,7 @@ export function ExercicesPilote({
         <h2 className="exos-h">{ex.titre}</h2>
         <p className="exos-cadre">
           Au programme :{" "}
-          <span title={ex.capacites.join(" · ")}>{libelles[ex.capacites[0]] ?? ex.capacites[0]}</span>
+          <span title={ex.capacites.join(" · ")}>{libelleCadre(libelles[ex.capacites[0]] ?? ex.capacites[0])}</span>
           {ex.filieres && <span>filières {ex.filieres.join(", ")} seulement</span>}
         </p>
         <div className="exos-enonce" dangerouslySetInnerHTML={{ __html: rendre(tirage.enonce) }} />
@@ -305,7 +328,7 @@ export function ExercicesPilote({
                     <input
                       id={id}
                       type="text"
-                      inputMode={q.type === "texte" ? "text" : "decimal"}
+                      inputMode="text"
                       autoCapitalize={q.type === "texte" ? "characters" : undefined}
                       spellCheck={false}
                       autoComplete="off"
@@ -363,7 +386,12 @@ export function ExercicesPilote({
             <button
               type="button"
               className="exos-btn ghost"
-              onClick={() => maj((x) => ({ ...x, correction: true, lignes: 1 }))}
+              onClick={() =>
+                maj((x) => {
+                  const dejaTout = x.q.length > 0 && x.q.every((q) => q.juste);
+                  return { ...x, correction: true, corrigeAvant: x.corrigeAvant || !dejaTout, lignes: 1 };
+                })
+              }
             >
               {tout ? "Voir la correction rédigée" : "Voir la correction"}
             </button>
@@ -390,7 +418,7 @@ export function ExercicesPilote({
 
         <div className="exos-actions">
           <button type="button" className="exos-btn ghost" onClick={() => maj(() => etatNeuf(nouvelleGraine(), 0))}>
-            ↻ Nouveaux nombres
+            {autresTirages ? "↻ Autre tirage" : "↻ Nouveaux nombres"}
           </button>
           <span className="exos-graine">tirage n° {e.graine}</span>
           <button type="button" className="exos-btn" onClick={() => setK(k + 1)}>
