@@ -12,7 +12,7 @@ Tout ce que voit l'élève :
 
 | Surface | Fichiers |
 |---|---|
-| En-tête, navigation, pied de page | `web/src/components/` (SiteHeader, …), `web/src/app/layout.tsx` |
+| En-tête, navigation, pied de page | `web/src/components/ui/` (SiteHeader, PageShell, …), `web/src/app/layout.tsx` |
 | Accueil, « commencer », connexion | `web/src/app/page.tsx`, `commencer/`, `connexion/` |
 | Matières, notions, leçons de l'ancien format | `web/src/app/matieres/`, `notions/` |
 | Examens blancs | `web/src/app/examens/` |
