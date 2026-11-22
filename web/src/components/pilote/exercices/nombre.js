@@ -5,7 +5,7 @@
  */
 
 /**
- * Lit « 0,69 », « -1,5 », « 3/4 », « 8,0 × 10^6 », « 8e6 », « 8.10^-3 ».
+ * Lit « 0,69 », « -1,5 », « 3/4 », « 8,0 × 10^6 », « 10^15 », « 8e6 », « 8.10^-3 ».
  * Rend NaN si ce n'est pas un nombre.
  */
 export function lireNombre(s) {
@@ -18,6 +18,8 @@ export function lireNombre(s) {
   if (!t) return NaN;
   const p = t.match(/^([+-]?\d*\.?\d+)(?:[x×*·.]10\^?\(?([+-]?\d+)\)?)$/i);
   if (p) return parseFloat(p[1]) * 10 ** parseInt(p[2], 10);
+  const p10 = t.match(/^([+-]?)10\^\(?([+-]?\d+)\)?$/i);
+  if (p10) return (p10[1] === "-" ? -1 : 1) * 10 ** parseInt(p10[2], 10);
   if (/^[+-]?(\d+\.?\d*|\.\d+)(e[+-]?\d+)?$/i.test(t)) return parseFloat(t);
   const f = t.match(/^([+-]?\d+)\/([+-]?\d+)$/);
   if (f && Number(f[2]) !== 0) return Number(f[1]) / Number(f[2]);

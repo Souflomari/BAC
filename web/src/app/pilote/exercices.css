@@ -20,6 +20,9 @@
 .exos-sep { display: flex; align-items: center; gap: 6px; }
 .exos-sep::before { content: attr(data-seance); font-size: 0.75rem; color: var(--color-text-secondary); padding: 0 4px 0 10px; border-left: 1px solid var(--color-border-soft); }
 .exos-pastille:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+.exos-lecon { margin-left: auto; font: 600 0.875rem var(--font-ui); color: var(--color-text-primary); border: 1px solid var(--color-border-soft); padding: 7px 12px; text-decoration: none; white-space: nowrap; }
+.exos-lecon:hover { border-color: var(--color-text-primary); }
+.exos-lecon:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
 
 /* la colonne de lecture */
 .exos-col { max-width: 46rem; margin: 0 auto; padding: 36px var(--gutter) 64px; }
@@ -92,7 +95,17 @@
 
 @keyframes exos-rise { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .exos-lignes li { animation: none; } }
+
+/* Thème sombre (G-01-005) : même adoucissement que dans les leçons pilotes (tokens.ts uniquement). */
+.dark .exos { color: color-mix(in srgb, var(--color-text-primary) 90%, var(--color-surface-base)); }
+.dark .exos .exos-btn:not(.ghost),
+.dark .exos .exos-pastille.b-premier { background: var(--color-text-secondary); border-color: var(--color-text-secondary); }
+.dark .exos .exos-enonce,
+.dark .exos .exos-lignes li { background: var(--color-surface-container-high); }
+
 @media (max-width: 899px) {
+  .exos-barre { gap: 12px; }
   .exos-matiere { display: none; }
+  .exos-lecon { margin-left: 0; min-height: 44px; display: inline-flex; align-items: center; }
   .exos-actions .exos-btn:last-child { margin-left: 0; }
 }
