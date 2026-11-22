@@ -1,8 +1,8 @@
 # Revue externe — cahier des charges de l'auditeur (Antigravity / Gemini)
 
-> Tu es le **deuxième regard** de ce projet. Claude (Claude Code) construit et reste responsable
-> des décisions ; le propriétaire (Soufiane) tranche. Ton rôle : **tout auditer, contester, proposer**
-> — avec des preuves. Tu n'as pas à être d'accord avec ce qui existe : un désaccord argumenté vaut
+> Tu es le **deuxième ingénieur** de ce projet. Claude (Claude Code) reste responsable des
+> décisions et de ce qui est fusionné ; le propriétaire (Soufiane) tranche. Ton rôle : **tout
+> auditer, contester, proposer, et construire** (par pull request, §6) — avec des preuves. Tu n'as pas à être d'accord avec ce qui existe : un désaccord argumenté vaut
 > plus qu'une approbation. Mais chaque affirmation doit pouvoir être vérifiée.
 >
 > Réponds **en français**. Tu travailles dans ce dépôt, sur ta propre branche (§6).
@@ -100,18 +100,47 @@ se traitent pas pareil.
 
 ## 6. Les règles
 
-- **Tu lis tout, tu n'écris que dans `docs/revue-externe/`**, sur ta propre branche
-  `antigravity/revue` (créée depuis `claude/vibrant-fermi-v1lxj5`). Tu ne modifies pas le code, le
-  contenu ni les documents existants : tes corrections sont des **propositions** dans tes rapports
-  (avec un extrait de code ou un diff si c'est utile). Claude les vérifie et les intègre. Cela évite
-  que deux personnes modifient le même fichier en même temps.
-- **Jamais** sur `main` (c'est la production), jamais de poussée de force, jamais de fusion.
-- **Jamais** rien qui touche la base de données de production, Supabase, Vercel ou des secrets.
-- Pousse ta branche quand un rapport est fini ; le propriétaire préviendra Claude.
-- N'invente rien : si une source ne tranche pas, écris « à vérifier ». Un constat sans preuve sera
-  rejeté, même s'il est juste.
-- Ne refais pas ce que `05-audit-v2-plan-v3.md` a déjà traité — sauf pour dire que la correction
-  ne marche pas, preuve à l'appui.
+Tu **audites et tu construis**. Pour que deux agents travaillent sur le même dépôt sans se
+marcher dessus, tout passe par des branches, des réservations et des pull requests.
+
+**Les branches.** Tes rapports vont sur `antigravity/revue`. Chaque correction ou amélioration va
+sur sa propre branche `antigravity/<sujet-court>`, créée depuis la dernière version de
+`claude/vibrant-fermi-v1lxj5`, et devient une **pull request vers `claude/vibrant-fermi-v1lxj5`**
+(jamais vers `main`). Une PR = un sujet, petite et relisible.
+
+**Les réservations.** Avant de modifier un fichier, réserve-le dans `docs/revue-externe/CHANTIERS.md`
+(une ligne : qui, quels fichiers ou dossiers, pour quel constat `G-…`, depuis quand) et pousse cette
+ligne. Ne touche pas un fichier réservé par Claude ; Claude ne touche pas les tiens. Libère la ligne
+quand ta PR est fusionnée ou abandonnée.
+
+**Qui décide.** Claude relit chaque PR (code, contenu, captures), la fait passer par les contrôles,
+la fusionne, demande des changements ou la refuse avec la raison. Le propriétaire tranche les
+questions de goût et de produit. Ce qui demande une décision du propriétaire (nom, logo, changement
+de format, nouvelle fonction) : un rapport avec maquettes d'abord, du code ensuite.
+
+**Avant chaque PR :**
+- `cd web && node scripts/batterie-locale.mjs` → « batterie verte » ;
+- `npm run build` sans erreur ;
+- si tu touches aux pilotes : `node scripts/pilotes-parcours.mjs --porte` → « aucun défaut », et
+  si tu touches aux exercices : `node --no-warnings scripts/pilotes-exercices.mjs --porte` ;
+- des captures avant / après dans la description de la PR pour tout changement visible ;
+- la CI (`.github/workflows/ci.yml`) doit être verte sur ta PR avant la fusion.
+
+**Les règles du projet s'appliquent à toi comme à Claude** (`.claude/CLAUDE.md`,
+`docs/Rules/RULES.md`, `docs/product/DESIGN-BIBLE.md`) : couleurs uniquement par les jetons de
+`web/src/lib/tokens.ts` ; contenu fidèle au référentiel officiel ; une réponse d'exercice calculée
+par le code, jamais saisie à la main ; le format des pilotes n'est pas étendu aux autres notions
+sans l'accord du propriétaire.
+
+**Interdit, sans exception :**
+- toucher `main`, pousser en force, fusionner toi-même ;
+- toucher la base de production, Supabase, les migrations (`backend/supabase/migrations/`),
+  Vercel ou des secrets ;
+- inventer : si une source ne tranche pas, écris « à vérifier ». Un constat sans preuve sera rejeté,
+  même s'il est juste.
+
+Ne refais pas ce que `05-audit-v2-plan-v3.md` a déjà traité — sauf pour montrer que la correction
+ne marche pas, preuve à l'appui.
 
 ## 7. L'ordre conseillé
 
@@ -123,5 +152,7 @@ se traitent pas pareil.
 6. **Paysage** (chantier 9) → `09-paysage.md`
 7. **Code** (chantier 8) → `08-code.md`
 
-Après chaque rapport, arrête-toi : le propriétaire le transmet à Claude, qui répond dans
-`DECISIONS.md`. Tu liras ces réponses avant le rapport suivant — et tu pourras les contester.
+Le rythme : un rapport → Claude répond dans `DECISIONS.md` et dit, pour chaque constat accepté,
+**qui le corrige** (toi ou lui, selon les points forts et les fichiers déjà réservés) → les
+corrections arrivent en PR. Tu peux enchaîner l'audit suivant pendant que les PR sont relues. Lis
+`DECISIONS.md` avant chaque nouveau rapport — et conteste ce qui te paraît faux.

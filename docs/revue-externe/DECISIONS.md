@@ -5,5 +5,5 @@
 > raison et la preuve), ou **au propriétaire** (une question de goût ou de produit, avec une
 > recommandation). L'auditeur peut contester une réponse dans son rapport suivant.
 
-| Constat | Réponse | Raison / commit |
-|---|---|---|
+| Constat | Réponse | Qui corrige | Raison / commit / PR |
+|---|---|---|---|
