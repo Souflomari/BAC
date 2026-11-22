@@ -147,7 +147,7 @@ ne marche pas, preuve à l'appui.
 1. **Parcours réel des trois pilotes** (chantier 1, ton point fort n°1) → `01-pilotes-parcours-reel.md`
 2. **Fidélité au bac et exactitude** des pilotes et de leurs exercices (chantier 7) → `07-fidelite-exactitude.md`
 3. **Science de l'apprentissage et évaluation** (chantiers 5 et 6) → `05-science-apprentissage.md`, `06-evaluation.md`
-4. **Site, UI/UX, accessibilité, téléphone** (chantiers 2 et 4) → `02-site.md`, `04-ui-ux.md`
+4. **Site, UI/UX, accessibilité, téléphone** (chantiers 2 et 4) → `02-site.md`, `04-ui-ux.md` — **avec écriture : voir `MANDAT-UI.md`** (refonte complète, suppression du « AI slop »)
 5. **Nom, logo, identité** (chantier 3) → `03-identite.md`
 6. **Paysage** (chantier 9) → `09-paysage.md`
 7. **Code** (chantier 8) → `08-code.md`
