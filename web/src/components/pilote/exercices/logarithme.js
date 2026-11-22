@@ -518,7 +518,7 @@ export const EXERCICES = [
       const A = m * 10 ** k;
       const x = Math.log10(A);
       return {
-        enonce: `<p>Le logarithme décimal est $\\log x = \\dfrac{\\ln x}{\\ln 10}$ ; il vérifie $\\log(10^n) = n$. On veut résoudre $10^x = ${m} \\times 10^{${k}}$.</p>`,
+        enonce: `<p>Le logarithme décimal est $\\log x = \\dfrac{\\ln x}{\\ln 10}$ ; il vérifie $\\log(10^n) = n$. On donne $\\log ${m} \\approx ${frTex(Math.log10(m), 3)}$. On veut résoudre $10^x = ${m} \\times 10^{${k}}$.</p>`,
         questions: [
           {
             type: "nombre",
@@ -551,9 +551,10 @@ export const EXERCICES = [
     erreurs: ["croissances comparées à l’envers", "forme indéterminée prise pour 0"],
     gen(h) {
       const n = h.int(1, 3);
+      const xn = n === 1 ? "x" : `x^{${n}}`;
       const pool = [
-        { lim: `\\lim_{x \\to +\\infty} \\dfrac{\\ln x}{x^{${n}}}`, ok: "0", why: "En $+\\infty$, toute puissance de $x$ l’emporte sur $\\ln x$ (croissance comparée).", piege: "+\\infty", pfb: "ln tend bien vers $+\\infty$, mais beaucoup plus lentement que $x^" + n + "$ : le quotient tend vers 0.", perr: "croissances comparées à l’envers" },
-        { lim: `\\lim_{x \\to 0^+} x^{${n}}\\ln x`, ok: "0", why: "En $0^+$, la puissance de $x$ l’emporte sur $\\ln x$ : le produit tend vers 0.", piege: "-\\infty", pfb: "$\\ln x \\to -\\infty$, mais $x^" + n + " \\to 0$ plus fort : c’est une croissance comparée, le produit tend vers 0.", perr: "croissances comparées à l’envers" },
+        { lim: `\\lim_{x \\to +\\infty} \\dfrac{\\ln x}{${xn}}`, ok: "0", why: "En $+\\infty$, toute puissance de $x$ l’emporte sur $\\ln x$ (croissance comparée).", piege: "+\\infty", pfb: "ln tend bien vers $+\\infty$, mais beaucoup plus lentement que $" + xn + "$ : le quotient tend vers 0.", perr: "croissances comparées à l’envers" },
+        { lim: `\\lim_{x \\to 0^+} ${xn}\\ln x`, ok: "0", why: "En $0^+$, la puissance de $x$ l’emporte sur $\\ln x$ : le produit tend vers 0.", piege: "-\\infty", pfb: "$\\ln x \\to -\\infty$, mais $" + xn + " \\to 0$ plus fort : c’est une croissance comparée, le produit tend vers 0.", perr: "croissances comparées à l’envers" },
         { lim: `\\lim_{x \\to +\\infty} (\\ln x - ${coef(n)}x)`, ok: "-\\infty", why: `On factorise : $x\\left(\\frac{\\ln x}{x} - ${n}\\right)$ ; la parenthèse tend vers $-${n}$, donc le tout vers $-\\infty$.`, piege: "+\\infty", pfb: "C’est une forme « $\\infty - \\infty$ » : on factorise par $x$ et on regarde qui l’emporte. Ici c’est $-" + coef(n) + "x$.", perr: "croissances comparées à l’envers" },
         { lim: `\\lim_{x \\to 1} \\dfrac{\\ln x}{x - 1}`, ok: "1", why: "C’est le taux d’accroissement de ln en 1 : sa limite est $\\ln'(1) = \\frac{1}{1} = 1$.", piege: "0", pfb: "Forme « 0/0 » : ce n’est pas forcément 0. C’est le taux d’accroissement de ln en 1, qui tend vers $\\ln'(1) = 1$.", perr: "forme indéterminée prise pour 0" },
       ];
@@ -580,7 +581,7 @@ export const EXERCICES = [
     titre: "La dérivée de ln(u)",
     niveau: 2,
     seance: 2,
-    capacites: ["maths-sexp 1.2.6", "maths-sexp 1.2.16"],
+    capacites: ["maths-sexp 1.2.6", "maths-sexp 1.2.16", "maths-sm 1.3.16"],
     erreurs: ["(ln u)′ = 1/u", "(ln u)′ = ln(u′)"],
     gen(h) {
       const a = h.int(1, 3),
@@ -602,7 +603,7 @@ export const EXERCICES = [
             q: `Calcule $f'(${x0})$ (valeur exacte ou approchée à $0{,}01$ près).`,
             reponse: val,
             tol: { abs: 0.006 },
-            indice: `Remplace $x$ par $${x0}$ dans $\\dfrac{${2 * a}x}{${u}}$.`,
+            indice: `Remplace $x$ par $${x0}$ dans l’expression $f'(x) = \\dfrac{u'(x)}{u(x)}$ trouvée à la question précédente.`,
             pieges: [{ v: 1 / (a * x0 * x0 + b), fb: "Tu as oublié le numérateur $u'(x)$.", erreur: "(ln u)′ = 1/u" }],
           },
         ],
@@ -622,7 +623,7 @@ export const EXERCICES = [
     titre: "La tangente à la courbe de ln",
     niveau: 2,
     seance: 2,
-    capacites: ["maths-sexp 1.2.6", "maths-sexp 1.2.16"],
+    capacites: ["maths-sexp 1.2.6", "maths-sexp 1.2.16", "maths-sm 1.3.16"],
     erreurs: ["prendre ln a pour pente", "oublier l’ordonnée ln a"],
     gen(h) {
       const a = h.pick([2, 3, 4, 5]);
@@ -633,7 +634,7 @@ export const EXERCICES = [
         { t: `$y = \\dfrac{1}{${a}}(x - ${a})$`, fb: `La tangente passe par le point de la courbe d’abscisse $${a}$, d’ordonnée $\\ln ${a}$ : il manque $+\\ln ${a}$.`, erreur: "oublier l’ordonnée ln a" },
       ]);
       return {
-        enonce: `<p>On note $\\mathcal{C}$ la courbe de $x \\mapsto \\ln x$ et $T$ sa tangente au point d’abscisse $${a}$.</p>`,
+        enonce: `<p>On note $\\mathcal{C}$ la courbe de $x \\mapsto \\ln x$ et $T$ sa tangente au point d’abscisse $${a}$. On donne $\\ln ${a} \\approx ${frTex(Math.log(a), 3)}$.</p>`,
         questions: [
           { type: "qcm", q: "Une équation de $T$ est :", options: opts },
           {
@@ -641,7 +642,7 @@ export const EXERCICES = [
             q: "Quelle est l’ordonnée à l’origine de $T$ (à $0{,}01$ près) ?",
             reponse: ordo,
             tol: { abs: 0.015 },
-            indice: `Développe $y = \\frac{1}{${a}}(x - ${a}) + \\ln ${a}$ et lis le terme constant.`,
+            indice: "Mets l’équation de $T$ trouvée à la question précédente sous la forme $y = mx + p$ : l’ordonnée à l’origine est le terme constant $p$.",
             pieges: [{ v: Math.log(a), fb: "C’est l’ordonnée du point de contact, pas celle de l’origine : développe l’équation.", erreur: "oublier l’ordonnée ln a" }],
           },
         ],
@@ -660,7 +661,7 @@ export const EXERCICES = [
     titre: "Une étude de fonction au format bac",
     niveau: 3,
     seance: 2,
-    capacites: ["maths-sexp 1.2.22", "maths-sexp 1.2.19", "maths-sexp 1.2.7"],
+    capacites: ["maths-sexp 1.2.22", "maths-sexp 1.2.19", "maths-sexp 1.2.7", "maths-sm 1.3.16", "maths-sm 1.3.11"],
     erreurs: ["(ln x)′ = ln x", "croissances comparées à l’envers", "conclure sur le signe sans le minimum"],
     gen(h) {
       const a = h.pick([1, 2, 3]);
@@ -684,7 +685,7 @@ export const EXERCICES = [
         { t: "On ne peut pas savoir sans tracer la courbe", fb: "Le tableau de variations suffit : le minimum est strictement positif, donc $f$ aussi.", erreur: "conclure sur le signe sans le minimum" },
       ]);
       return {
-        enonce: `<p>Soit $f$ la fonction définie sur $]0,+\\infty[$ par $f(x) = ${ax} - \\ln x$.</p>`,
+        enonce: `<p>Soit $f$ la fonction définie sur $]0,+\\infty[$ par $f(x) = ${ax} - \\ln x$.${a === 1 ? "" : ` On donne $\\ln ${a} \\approx ${frTex(Math.log(a), 3)}$.`}</p>`,
         questions: [
           { type: "qcm", q: "$\\displaystyle\\lim_{x \\to 0^+} f(x)$ vaut :", options: qLim },
           { type: "qcm", q: "Pour tout $x > 0$ :", options: qDer },
@@ -700,7 +701,7 @@ export const EXERCICES = [
             q: "Quelle est la valeur de ce minimum (à $0{,}01$ près) ?",
             reponse: ym,
             tol: { abs: 0.015 },
-            indice: a === 1 ? "Calcule $f(1) = 1 - \\ln 1$." : `Calcule $f\\left(${inv}\\right) = 1 - \\ln ${inv}$ et utilise $\\ln\\frac{1}{a} = -\\ln a$.`,
+            indice: "Remplace $x$ par l’abscisse trouvée à la question précédente dans $f(x)$, puis utilise $\\ln\\frac{1}{a} = -\\ln a$ si besoin.",
             pieges: a === 1 ? [] : [{ v: 1 - Math.log(a), fb: "Attention au signe : $-\\ln\\frac{1}{a} = +\\ln a$.", erreur: "ln(1/a) = ln a" }],
           },
           { type: "qcm", q: "On en déduit :", options: qSigne },

@@ -307,7 +307,7 @@ const STEPS=[
 {cle:'arnt',beat:5,scene:'transl',set:{lab:0},seq:[{p:{k:1},d:1900,w:300},{p:{lab:1},d:700,w:400}],
   text:['Voici l’interprète : l’[[arnt|ARN de transfert]] (ARNt).',
     {t:'À un bout, il porte un acide aminé ; à l’autre, trois bases : l’[[anticodon]].',a:0},
-    {t:`Sous le codon ${sq(AUG)}, l’anticodon ${sq(UAC)} s’apparie, base à base : c’est l’ARNt de la méthionine, au site P.`,a:1,fort:true}]},
+    {t:`Sous le codon ${sq(AUG)}, l’anticodon 3′-${sq(UAC)}-5′ s’apparie, base à base : c’est l’ARNt de la méthionine, au site P.`,a:1,fort:true}]},
 {cle:'ribo',beat:5,scene:'transl',set:{lab:0,hold:0,pep:1},ctl:'ribo',need:()=>S.riboMax>=NB,needLabel:'Avance le ribosome',
   text:['[[elongation|Élongation]] : un ARNt arrive au site A, en face du codon suivant.',
     'Une [[peptidique|liaison peptidique]] relie son acide aminé à la chaîne ; puis le ribosome avance d’un codon.',
@@ -321,7 +321,7 @@ const STEPS=[
   text:['Au bac, on demande souvent ce schéma : il résume toute la synthèse.',
     'Pour chaque repère, du 1 au 6, choisis sa légende.']},
 {cle:'v-traduction',beat:5,scene:'transl',set:{k:1,end:0,met:0,lab:1,hold:1,pep:0,sites:1,rib:1},
-  text:[`Un ARNt porte l’anticodon ${sq(CAC)}, écrit sous le codon, base en face de base.`,'Quel acide aminé apporte-t-il ?'],
+  text:[`Un ARNt porte l’anticodon 3′-${sq(CAC)}-5′, écrit sous le codon, base en face de base.`,'Quel acide aminé apporte-t-il ?'],
   verifie:VF([
     [`L’histidine (${AA3[CODE[CAC]]})`,false,`${CAC}, lu dans le tableau, donnerait ${AA3[CODE[CAC]]}. Mais c’est un anticodon : le codon en face est ${GUG}, qui désigne ${AA3[CODE[GUG]]}.`,`${CAC} est un anticodon : quel codon lui fait face ?`],
     [`La méthionine (${AA3[CODE[AUG]]})`,false,`La méthionine vient avec l’anticodon ${UAC}, en face de ${AUG}. En face de ${CAC}, le codon est ${GUG} : ${AA3[CODE[GUG]]}.`,`Met vient avec l’anticodon ${UAC}. Quel codon fait face à ${CAC} ?`],
@@ -487,7 +487,7 @@ const CTL={
       const sync=()=>{const k=clamp(Math.round(sc.p.k),1,NB),c=TL_ARN.slice(3*(k-1),3*k),a=CODE[c];
         $('#rbm').disabled=k<=1;$('#rbp').disabled=k>=NB;
         const ch=traduire(CDS.slice(0,3*k)).aa;
-        $('#ribofb').innerHTML=ty(`${ORD(k)} codon : <b class="eg-seq">${c}</b> · anticodon <b class="eg-seq">${anticodon(c)}</b> → <b>${AA3[a]}</b> (${NOM[a]}).<br>Chaîne : ${chaine(ch)}${k>=NB?'. Tu viens de fabriquer le début de la chaîne β.':''}`);};
+        $('#ribofb').innerHTML=ty(`${ORD(k)} codon : <b class="eg-seq">${c}</b> · anticodon <b class="eg-seq">3′-${anticodon(c)}-5′</b> → <b>${AA3[a]}</b> (${NOM[a]}).<br>Chaîne : ${chaine(ch)}${k>=NB?'. Tu viens de fabriquer le début de la chaîne β.':''}`);};
       const goK=k=>{sc.p.hold=0;sc.p.lab=0;const to=clamp(k,1,NB);tweenK(sc,to,700).then(ok=>{if(ok){S.riboMax=Math.max(S.riboMax,to);sync();ctx.majNav();}});};
       $('#rbp').addEventListener('click',()=>goK(Math.round(sc.p.k)+1));
       $('#rbm').addEventListener('click',()=>goK(Math.round(sc.p.k)-1));

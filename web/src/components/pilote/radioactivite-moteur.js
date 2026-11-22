@@ -214,12 +214,12 @@ const STEPS=[
     ['Il diminue <i>Z</i> de 1',`γ n’a pas de charge. C’est ${bm} qui fait passer <i>Z</i> de 77 à 78.`],
     ['Il diminue <i>A</i> de 1','γ n’emporte aucun nucléon : <i>A</i> ne change pas. C’est une onde électromagnétique.'],
     ['Ni <i>A</i> ni <i>Z</i>','Oui : γ n’a ni masse ni charge. Il accompagne α ou β sans changer l’équation.',1]]),
-    apres:{tex:[[tx`${nucT(192,77,'Ir')}\longrightarrow ${nucT(192,78,'Pt')}+${nucT(0,-1,'e')}+\gamma`,'iridium 192 donne platine 192 plus un électron, avec un rayonnement gamma']]}}},
+    apres:{tex:[[tx`${nucT(192,77,'Ir')}\longrightarrow ${nucT(192,78,'Pt')}^{*}+${nucT(0,-1,'e')}`,'iridium 192 donne platine 192 excité plus un électron'],[tx`${nucT(192,78,'Pt')}^{*}\longrightarrow ${nucT(192,78,'Pt')}+\gamma`,'le platine 192 excité se désexcite en émettant un rayonnement gamma']]}}},
 {cle:'v-ecrire',beat:2,scene:'desint',set:{ty:4,rv:0},sujet:'écrire une désintégration',
   text:[`Sujet 2021 : le plutonium 238 ${nuc(238,94,'Pu')} subit une désintégration α. Son noyau fils est…`],
   verifie:{...VF([
     [nuc(234,92,'U'),true,'Oui : <i>A</i> = 238 − 4 = 234 et <i>Z</i> = 94 − 2 = 92 : l’uranium 234.'],
-    [nuc(238,93,'Np'),false,`Ce serait ${bm} : <i>Z</i> + 1, <i>A</i> inchangé. α emporte 4 nucléons, dont 2 protons.`,'Une particule α emporte-t-elle des nucléons ?'],
+    [nuc(238,93,'Np'),false,`Ce serait ${bp} : <i>Z</i> − 1, <i>A</i> inchangé. α emporte 4 nucléons, dont 2 protons.`,'Une particule α emporte-t-elle des nucléons ?'],
     [nuc(234,94,'Pu'),false,'α emporte aussi 2 protons : <i>Z</i> baisse de 2. Ce n’est plus du plutonium.','« α ne change que <i>A</i> » : vraiment ?'],
     [nuc(238,92,'U'),false,'<i>Z</i> est juste, mais <i>A</i> baisse de 4 : 238 − 4 = 234.','Et le nombre de nucléons ?']]),reveal:[{p:{rv:1},d:1000}]}},
 

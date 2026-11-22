@@ -393,11 +393,20 @@ export const EXERCICES = [
       for (;;) {
         s = triplets(h, 5).join("");
         j = h.int(1, 3);
-        p = h.int(0, 2);
+        p = genre === "insertion" ? h.int(1, 2) : h.int(0, 2);
         const k = 3 * j + p;
         if (genre === "délétion") m = s.slice(0, k) + s.slice(k + 1);
         else if (genre === "insertion") m = s.slice(0, k) + h.pick(["A", "T", "G", "C"]) + s.slice(k);
-        else {
+        if (genre === "délétion" || genre === "insertion") {
+          /* Le triplet doit se lire sans ambiguïté : aucune autre position, dans un autre triplet,
+             ne donne la même séquence mutée (une base répétée à la frontière de deux triplets). */
+          const ts = new Set();
+          for (let q = 0; q <= s.length; q++) {
+            if (genre === "délétion" && q < s.length && s.slice(0, q) + s.slice(q + 1) === m) ts.add(Math.floor(q / 3));
+            if (genre === "insertion" && s.slice(0, q) + m[q] + s.slice(q) === m) ts.add(q % 3 === 0 ? -1 - q : Math.floor(q / 3));
+          }
+          if (ts.size !== 1) continue;
+        } else {
           const b = h.pick(["A", "T", "G", "C"].filter((x) => x !== s[k]));
           m = s.slice(0, k) + b + s.slice(k + 1);
           const cN = toARN(s.slice(3 * j, 3 * j + 3)),
@@ -578,7 +587,7 @@ export const EXERCICES = [
       return {
         enonce: `<p>Une maladie héréditaire est due à une protéine P anormale. Le document donne un fragment du <b>brin ${brin}</b> du gène de P (les triplets sont numérotés depuis le premier montré) :</p><p>personne saine : ${montre(s)}</p><p>personne malade : ${montre(m)}</p>${extrait([...codonsDe(RN), ...codonsDe(RM)])}`,
         questions: [
-          { type: "texte", q: "Écris l’ARNm de la personne saine, de 5′ vers 3′.", reponse: RN, variantes: avec53(RN), aide: "les bases, de 5′ vers 3′", indice: "Le document donne le brin non transcrit : l’ARNm a la même séquence, avec U à la place de T.", pieges: pieges1 },
+          { type: "texte", q: "Écris l’ARNm de la personne saine, de 5′ vers 3′.", reponse: RN, variantes: avec53(RN), aide: "les bases, de 5′ vers 3′", indice: brin === "transcrit" ? "Le document donne le brin transcrit : l’ARNm est son complémentaire (U en face de A, A en face de T, G en face de C, C en face de G), écrit de 5′ vers 3′." : "Le document donne le brin non transcrit : l’ARNm a la même séquence, avec U à la place de T.", pieges: pieges1 },
           { type: "texte", q: "Écris la chaîne d’acides aminés de la personne saine (abréviations, tirets).", reponse: tir(cN), aide: "par exemple Ala-Gly-…", indice: "Découpe ton ARNm en codons, depuis le premier, et cherche chacun dans l’extrait du tableau du code." },
           { type: "texte", q: "Écris la chaîne de la personne malade.", reponse: tir(cM.aa), aide: "jusqu’au codon stop s’il y en a un", indice: "Même méthode que pour la personne saine, sur la séquence de la personne malade : écris son ARNm, découpe-le en codons, et arrête-toi au premier codon stop.", pieges: pieges3.filter((x) => x.v !== tir(cM.aa)) },
           { type: "qcm", q: "Compare les deux séquences : quelle mutation, à quel triplet ?", options: opt4 },

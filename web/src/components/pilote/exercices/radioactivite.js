@@ -19,6 +19,8 @@ import { fr, frTex, sciTex, sig } from "./nombre.js";
 const LN2 = Math.LN2;
 const NA = 6.02e23;
 const JOUR = 86400;
+/* Les capacités 1.2.1.* sont les mêmes dans les trois filières : on étiquette les trois. */
+const CAP = (...ids) => ids.flatMap((id) => [`pc-pc ${id}`, `pc-sm ${id}`, `pc-svt ${id}`]);
 /** un noyau pour KaTeX : nombre de masse et nombre de charge alignés à droite */
 const nuc = (A, Z, X) => {
   const a = String(A), z = String(Z);
@@ -117,7 +119,7 @@ export const EXERCICES = [
     id: "noyau-composition",
     titre: "La composition d’un noyau ; les isotopes",
     niveau: 1,
-    capacites: ["pc-pc 1.2.1.1", "pc-pc 1.2.1.2"],
+    capacites: CAP("1.2.1.1", "1.2.1.2"),
     erreurs: ["Z et A inversés", "nombre de neutrons = A", "isotopes = même nombre de neutrons", "isotopes = même A"],
     gen(h) {
       const el = h.pick(ELEMENTS.filter((x) => x[3].length >= 2));
@@ -156,7 +158,7 @@ export const EXERCICES = [
     id: "equation-desintegration",
     titre: "Compléter une équation de désintégration",
     niveau: 2,
-    capacites: ["pc-pc 1.2.1.6", "pc-pc 1.2.1.7", "pc-pc 1.2.1.8", "pc-pc 1.2.1.9"],
+    capacites: CAP("1.2.1.6", "1.2.1.7", "1.2.1.8", "1.2.1.9"),
     erreurs: ["α ne change que A", "signe de la charge de l’électron", "γ change Z ou A", "A conservé à tort en α"],
     gen(h) {
       const [X, nomX, A, Z, Y, nomY, ty] = h.pick(DESINT);
@@ -205,7 +207,7 @@ export const EXERCICES = [
     id: "fraction-demivies",
     titre: "Après plusieurs demi-vies : ce qui reste, ce qui est parti",
     niveau: 1,
-    capacites: ["pc-pc 1.2.1.10", "pc-pc 1.2.1.12"],
+    capacites: CAP("1.2.1.10", "1.2.1.12"),
     erreurs: ["N₀/n au lieu de N₀/2ⁿ", "restants pris pour désintégrés"],
     gen(h) {
       const r = h.pick([...COURTS, ...LONGS]);
@@ -235,7 +237,7 @@ export const EXERCICES = [
     id: "lire-demivie-tau",
     titre: "Lire la demi-vie et la constante de temps sur une courbe",
     niveau: 2,
-    capacites: ["pc-pc 1.2.1.10", "pc-pc 1.2.1.12", "pc-pc 1.2.1.13"],
+    capacites: CAP("1.2.1.10", "1.2.1.12", "1.2.1.13"),
     erreurs: ["τ confondu avec t½", "lire a₀/4 au lieu de a₀/2", "t½ = 1/λ"],
     gen(h) {
       const u = h.pick(["heures", "jours", "min"]);
@@ -270,7 +272,7 @@ export const EXERCICES = [
     id: "lambda-unites",
     titre: "De la demi-vie à λ et τ, en secondes",
     niveau: 1,
-    capacites: ["pc-pc 1.2.1.13", "pc-pc 1.2.1.14"],
+    capacites: CAP("1.2.1.13", "1.2.1.14"),
     erreurs: ["unités non converties", "t½ = 1/λ", "τ confondu avec t½"],
     gen(h) {
       const r = h.pick([...COURTS, ...LONGS]);
@@ -304,7 +306,7 @@ export const EXERCICES = [
     id: "n0-masse-activite",
     titre: "Le nombre de noyaux d’une masse, puis son activité",
     niveau: 2,
-    capacites: ["pc-pc 1.2.1.10", "pc-pc 1.2.1.11", "pc-pc 1.2.1.13"],
+    capacites: CAP("1.2.1.10", "1.2.1.11", "1.2.1.13"),
     erreurs: ["unités non converties", "quantité de matière prise pour N", "activité prise pour N", "t½ = 1/λ"],
     gen(h) {
       const r = h.pick([...COURTS, ...LONGS]);
@@ -351,7 +353,7 @@ export const EXERCICES = [
     id: "instant-seuil",
     titre: "À quel instant ? L’expression littérale, puis la valeur",
     niveau: 2,
-    capacites: ["pc-pc 1.2.1.10", "pc-pc 1.2.1.13"],
+    capacites: CAP("1.2.1.10", "1.2.1.13"),
     erreurs: ["restants pris pour désintégrés", "signe du logarithme", "décroissance prise pour linéaire"],
     gen(h) {
       const r = h.pick([...COURTS, ...LONGS]);
@@ -394,7 +396,7 @@ export const EXERCICES = [
     id: "desintegres-entre-dates",
     titre: "Les noyaux désintégrés entre deux dates",
     niveau: 2,
-    capacites: ["pc-pc 1.2.1.10", "pc-pc 1.2.1.12"],
+    capacites: CAP("1.2.1.10", "1.2.1.12"),
     erreurs: ["désintégrés depuis t = 0 au lieu de entre t₁ et t₂", "restants pris pour désintégrés", "N₀/n au lieu de N₀/2ⁿ"],
     gen(h) {
       const r = h.pick(COURTS);
@@ -424,7 +426,7 @@ export const EXERCICES = [
     id: "datation-c14",
     titre: "Dater au carbone 14",
     niveau: 2,
-    capacites: ["pc-pc 1.2.1.10", "pc-pc 1.2.1.15"],
+    capacites: CAP("1.2.1.10", "1.2.1.15"),
     erreurs: ["signe du logarithme", "t½ = 1/λ", "décroissance prise pour linéaire"],
     gen(h) {
       const T = h.pick([5730, 5730, 5570]);
@@ -458,7 +460,7 @@ export const EXERCICES = [
     id: "choisir-radioelement",
     titre: "Choisir le radioélément pour dater",
     niveau: 1,
-    capacites: ["pc-pc 1.2.1.15"],
+    capacites: CAP("1.2.1.15"),
     erreurs: ["demi-vie trop courte devant l’âge", "demi-vie trop longue devant l’âge"],
     gen(h) {
       const R = [
@@ -502,7 +504,7 @@ export const EXERCICES = [
     id: "bac-complet",
     titre: "Un exercice complet, au format du bac",
     niveau: 3,
-    capacites: ["pc-pc 1.2.1.8", "pc-pc 1.2.1.10", "pc-pc 1.2.1.11", "pc-pc 1.2.1.13"],
+    capacites: CAP("1.2.1.8", "1.2.1.10", "1.2.1.11", "1.2.1.13"),
     erreurs: ["α ne change que A", "signe de la charge de l’électron", "unités non converties", "restants pris pour désintégrés", "τ confondu avec t½"],
     gen(h) {
       const r = h.pick([
