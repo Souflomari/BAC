@@ -89,8 +89,8 @@ export function Derivation({
       data-derivation={id}
       className={cn(
         !bare && [
-          "my-8 rounded-lg px-5 py-5 bp-medium:px-6",
-          "bg-surface-raised shadow-elevation-1",
+          "my-8 border border-subtle px-5 py-5 bp-medium:px-6",
+          "bg-surface-raised",
         ],
         bare && "my-4"
       )}

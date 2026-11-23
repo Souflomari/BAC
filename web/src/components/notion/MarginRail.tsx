@@ -120,6 +120,7 @@ export function MarginRail({ headings, hasItems = false, bankCount }: MarginRail
         {entries.map((entry, i) => {
           const isActive = current === i;
           const isRead = i <= current;
+          const isPractice = hasItems && i === realEntries.length;
 
           return (
             <li key={i} className="relative border-b border-subtle">
@@ -142,7 +143,8 @@ export function MarginRail({ headings, hasItems = false, bankCount }: MarginRail
                 )}
               >
                 {/* Le numéro : seul repère au palier medium (rail de 56 px),
-                    numéro + titre à partir d'expanded. */}
+                    numéro + titre à partir d'expanded. L'entrée S'entraîner
+                    porte « Ex. » pour ne pas fausser le décompte des chapitres. */}
                 <span
                   aria-hidden="true"
                   className={cn(
@@ -150,7 +152,7 @@ export function MarginRail({ headings, hasItems = false, bankCount }: MarginRail
                     isActive ? "text-signal" : isRead ? "text-primary" : "text-tertiary"
                   )}
                 >
-                  {String(i + 1).padStart(2, "0")}
+                  {isPractice ? "Ex" : String(i + 1).padStart(2, "0")}
                 </span>
 
                 {/* Le titre humain du chapitre — jamais les codes R (audit U3) ;
@@ -161,7 +163,7 @@ export function MarginRail({ headings, hasItems = false, bankCount }: MarginRail
                     isActive && "font-semibold"
                   )}
                 >
-                  <span className="sr-only">{i + 1} · </span>
+                  {!isPractice && <span className="sr-only">{i + 1} · </span>}
                   {entry.shortTitle}
                   {/* Honest sujet count on the trailing bank entry (BANK-SPEC
                       §1) — a quiet parenthetical, never a progress meter. */}
@@ -220,7 +222,7 @@ export function ChapterMenuCompact({
   bankCount,
   className,
 }: MarginRailProps & { className?: string }) {
-  const { current, total, goTo } = useChapter();
+  const { current, total, lessonChapters, goTo } = useChapter();
   const hydrated = useHydrated();
   const detailsRef = useRef<HTMLDetailsElement>(null);
 
@@ -229,26 +231,26 @@ export function ChapterMenuCompact({
 
   const realEntries: RailEntry[] = headings.length > 0 ? headings : [FALLBACK_ENTRY];
   const practiceEntry: RailEntry = {
-    // Apostrophe TYPOGRAPHIQUE : cette entrée est écrite en dur, donc elle
-    // échappait à la normalisation des titres de chapitre — et se retrouvait
-    // seule, avec son apostrophe droite, au bas d'un rail par ailleurs juste.
     title: "S\u2019entraîner",
     shortTitle: "S\u2019entraîner",
     count: bankCount,
   };
   const entries: RailEntry[] = hasItems ? [...realEntries, practiceEntry] : realEntries;
+  const surEntrainement = current >= lessonChapters;
 
   return (
     <details ref={detailsRef} className={cn("group", className)}>
       <summary
         className={cn(
-          "flex min-h-touch cursor-pointer list-none items-center gap-2 rounded-lg",
+          "flex min-h-touch cursor-pointer list-none items-center gap-2",
           "text-body-sm text-secondary",
-          "state-layer focus-ring [--focus-radius:8px] px-2 -mx-2",
+          "state-layer focus-ring px-2 -mx-2",
           "[&::-webkit-details-marker]:hidden"
         )}
       >
-        <span aria-live="polite">{`Chapitre ${current + 1} / ${total}`}</span>
+        <span aria-live="polite">
+          {surEntrainement ? "S\u2019entraîner" : `Chapitre ${current + 1} / ${lessonChapters}`}
+        </span>
         <Icon
           name="chevron-right"
           size={14}
@@ -257,36 +259,40 @@ export function ChapterMenuCompact({
       </summary>
       <ol
         role="list"
-        className="mt-1 rounded-lg border border-subtle bg-surface-raised p-1 shadow-elevation-1"
+        className="mt-1 border border-subtle bg-surface-raised p-1"
       >
-        {entries.map((entry, i) => (
-          <li key={i}>
-            <button
-              type="button"
-              disabled={!hydrated}
-              aria-busy={!hydrated || undefined}
-              aria-current={current === i ? "step" : undefined}
-              onClick={() => {
-                goTo(i);
-                if (detailsRef.current) detailsRef.current.open = false;
-              }}
-              className={cn(
-                "flex min-h-touch w-full items-center gap-2 rounded-md px-3 py-1.5 text-left",
-                "text-body-sm state-layer focus-ring [--focus-radius:6px]",
-                current === i ? "font-medium text-accent" : "text-secondary"
-              )}
-            >
-              <span className="tabular-nums">{i + 1}</span>
-              {" · "}
-              <span className="min-w-0">{entry.shortTitle}</span>
-              {entry.count != null && (
-                <span className="ml-auto shrink-0 font-mono text-caption tabular-nums text-tertiary">
-                  {entry.count} sujet{entry.count > 1 ? "s" : ""}
+        {entries.map((entry, i) => {
+          const isPractice = hasItems && i === realEntries.length;
+          return (
+            <li key={i}>
+              <button
+                type="button"
+                disabled={!hydrated}
+                aria-busy={!hydrated || undefined}
+                aria-current={current === i ? "step" : undefined}
+                onClick={() => {
+                  goTo(i);
+                  if (detailsRef.current) detailsRef.current.open = false;
+                }}
+                className={cn(
+                  "flex min-h-touch w-full items-center gap-2 px-3 py-1.5 text-left",
+                  "text-body-sm state-layer focus-ring",
+                  current === i ? "font-medium text-accent" : "text-secondary"
+                )}
+              >
+                <span className="font-mono text-caption tabular-nums text-tertiary">
+                  {isPractice ? "Ex" : String(i + 1).padStart(2, "0")}
                 </span>
-              )}
-            </button>
-          </li>
-        ))}
+                <span className="min-w-0">{entry.shortTitle}</span>
+                {entry.count != null && (
+                  <span className="ml-auto shrink-0 font-mono text-caption tabular-nums text-tertiary">
+                    {entry.count} sujet{entry.count > 1 ? "s" : ""}
+                  </span>
+                )}
+              </button>
+            </li>
+          );
+        })}
       </ol>
     </details>
   );

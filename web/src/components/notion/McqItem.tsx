@@ -95,14 +95,9 @@ export function McqItem({ item, index }: McqItemProps) {
       // matches lib/shuffle.ts's prediction. Not used for styling/state.
       data-item-id={item.id}
       className={cn(
-        "rounded-xl",
-        // Surface-container tonal ladder (ADR 0024): an elevation-2 card steps UP
-        // in tone (container-high), not the at-rest raised tone.
-        "bg-surface-container-high",
-        "p-6 bp-medium:p-8",
-        // Shadow-first card (ADR 0023): elevation-2 hairline ring holds the edge;
-        // the drawn border is dropped.
-        "shadow-elevation-2"
+        "border border-subtle",
+        "bg-surface-container-low",
+        "p-5 bp-medium:p-8"
       )}
     >
       {/* Item header */}
@@ -165,7 +160,6 @@ export function McqItem({ item, index }: McqItemProps) {
             disabledExtra={[
               "bg-surface-raised",
               "border-subtle",
-              "shadow-elevation-0",
             ]}
           />
         ))}
@@ -192,25 +186,21 @@ export function McqItem({ item, index }: McqItemProps) {
               // inline-flex + w-fit so the neutral state-layer wash hugs the
               // text (not the full details width); the default disclosure
               // triangle is hidden so it doesn't collide with the padded wash.
-              "inline-flex w-fit items-center",
+              "inline-flex min-h-touch w-fit items-center",
               "cursor-pointer select-none list-none [&::-webkit-details-marker]:hidden",
               "text-body-sm font-medium text-secondary",
               "hover:text-primary",
               "transition-colors duration-micro ease-enter",
-              // The one neutral hover/pressed feedback language (ADR 0024); the
-              // text-color shift is the secondary cue. -mx keeps the text edge
-              // aligned. 8px focus ring matches the rounded host.
-              "state-layer rounded px-1.5 py-1 -mx-1.5",
-              "focus-ring [--focus-radius:8px]"
+              "state-layer px-1.5 -mx-1.5",
+              "focus-ring"
             )}
           >
             {item.solution ? "Voir la solution complète" : "Pourquoi cette réponse est la bonne"}
           </summary>
           <div
             className={cn(
-              "mt-3 px-4 py-4",
+              "mt-2 px-4 py-4",
               "bg-surface-base",
-              "rounded-lg",
               "border border-subtle",
               "text-body-sm text-primary",
               "prose-lesson",

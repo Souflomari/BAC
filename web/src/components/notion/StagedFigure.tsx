@@ -494,11 +494,8 @@ export function StagedFigure({
           // Même règle que MediaDiagram : sous 600px, le cadre défile et le
           // SVG garde sa taille naturelle (MediaDiagram.tsx, largeurNaturelle).
           "figure-cadre",
-          "rounded-xl",
+          "border border-subtle",
           "bg-surface-raised",
-          // Shadow-first card (ADR 0023): the elevation-1 hairline ring holds the
-          // edge; no drawn border. Reads as lifted, not boxed-in.
-          "shadow-elevation-1",
           "[&>svg]:w-full [&>svg]:h-auto",
           isStructural
             ? // Structural: cap to natural size, center in band
