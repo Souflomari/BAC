@@ -402,26 +402,6 @@ body {
    sanctioned pattern (gated on the explicit user action, never on mount).
    (shared-axis was likewise never built: no peer-axis navigation exists.) */
 
-/* ── Frosted-glass header (scrolled state, ADR 0023 polish) ────────────────── */
-/* Opaque fallback first (no bleed-through if backdrop-filter is unsupported);
-   where supported, a translucent surface + blur reads as "glass lifted." The
-   blur smears any content behind into an indistinct frost, so there is no
-   legible ghosting (the concern the older fully-opaque state guarded against). */
-.header-glass {
-  background-color: var(--color-surface-raised);
-}
-@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .header-glass {
-    background-color: color-mix(in srgb, var(--color-surface-raised) 82%, transparent);
-    /* saturate kept near-neutral (1.05, was 1.4): a strong saturate pumps the
-       palette in the strip abutting the reading column on scroll — a calm-core
-       color leak the adversary flagged (ADR 0024). The blur carries the "glass"
-       read; the saturation does not need to. */
-    -webkit-backdrop-filter: blur(12px) saturate(1.05);
-    backdrop-filter: blur(12px) saturate(1.05);
-  }
-}
-
 /* ── Sticky header clearance — scroll-margin-top (#3 fix) ──────────────────── */
 /*
  * The SiteHeader is sticky at top: 0, height ~56px (h-14 = 3.5rem = 56px).

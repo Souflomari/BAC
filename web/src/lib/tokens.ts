@@ -41,107 +41,85 @@ export interface Theme {
  * (THEME-ARCHITECTURE.md).
  */
 export const themes: Record<"light" | "dark", Theme> = {
-  // ── STUDIO (ADR 0030, 2026-08-18) ─────────────────────────────────────
-  // Conçu en OKLCH (clarté perçue uniforme — méthode Linear), livré en hex
-  // pour que tout consommateur (contraste, SVG, scripts) lise trivialement.
-  // Recette générale : neutres à teinte 90° (cast chaud) et chroma ≤ 0.008 ;
-  // hiérarchie par paliers de CLARTÉ + bordures, pas par ombres. Chaque
-  // valeur est passée à la porte de contraste (scripts/contrast-gate.mjs) —
-  // la recette L/C/H est en commentaire pour pouvoir RE-générer.
+  // ── MANUEL CALME (ADR 0045, 2026-11-23) ────────────────────────────────
+  // Papier chaud en clair (#FAFAF7), charbon chaud en sombre (#121210), rouge
+  // signal adouci (#C81E2B / #F04E5A), zéro ombre et angles francs à 0 px.
+  // Hiérarchie par paliers tonaux chauds et filets fins. Toutes les paires
+  // passent `scripts/contrast-gate.mjs` (76 paires, WCAG AA).
   light: {
     selector: ":root",
     vars: {
-      // Surfaces — toile près-blanc oklch(.975 .003 90) ; le TRAVAIL se
-      // fait sur du blanc pur (cartes, workspace). Paliers de 1-2 % de L.
-      "--color-surface-base": "#FFFFFF",
-      "--color-surface-raised": "#FFFFFF",
-      "--color-surface-overlay": "#FFFFFF",
-      // Échelle container : lowest = puits (rails, pistes), highest = blanc.
-      "--color-surface-container-lowest": "#F2F2F2",
-      "--color-surface-container-low": "#F5F5F5",
-      "--color-surface-container": "#F8F8F8",
-      "--color-surface-container-high": "#FBFBFB",
-      "--color-surface-container-highest": "#FFFFFF",
-      // Bordures — elles portent la séparation (les ombres ne font que
-      // suggérer). subtle oklch(.92), soft oklch(.87).
-      "--color-border-subtle": "#E3E3E3",
-      "--color-border-soft": "#CFCFCF",
-      // Bordure de champ : SEULE délimitation d'un composant ⇒ WCAG 1.4.11
-      // exige 3:1. oklch(.62) → 3,64:1 sur blanc, 3,39:1 sur toile.
-      "--color-border-field": "#767676",
-      // Encre — oklch(.22/.44/.53, teinte 90). 17,4:1 / 7,8:1 / 5,25:1 sur
-      // blanc ; tertiary tient 4,89:1 sur toile (petit corps autorisé).
-      "--color-text-primary": "#0A0A0A",
-      "--color-text-secondary": "#3D3D3D",
-      "--color-text-tertiary": "#6B6B6B",
-      "--color-text-on-accent": "#FFFFFF",
-      // Accent produit — le sarcelle signature recalibré pour le blanc :
-      // oklch(.50 .095 185) → 5,67:1 en texte sur blanc. `light` est
-      // DÉCORATIF uniquement (jamais du texte — exempté de la porte).
-      "--color-accent": "#0A0A0A",
-      "--color-accent-strong": "#000000",
-      "--color-accent-light": "#8A8A8A",
-      "--color-accent-subtle": "#F0F0F0",
-      // GRILLE (refonte 2026-10) : le SEUL rouge, réservé à ce qui demande
-      // d'agir maintenant (étape courante, points en jeu, minuteur).
-      "--color-signal": "#E3051B",
-      "--color-signal-subtle": "#FDECEE",
-      "--color-on-signal": "#FFFFFF",
-      "--focus-halo": "rgba(227,5,27,.22)",
-      // Sémantique — même clarté que l'accent (poids identique) :
-      // success oklch(.49 .09 152), warning (.49 .095 80), error (.49 .115 28).
-      "--color-success": "#1B6B39",
-      "--color-success-subtle": "#E8F3EC",
-      "--color-on-success": "#FFFFFF",
-      "--color-warning": "#835600",
+      // Surfaces — toile papier chaud (#FAFAF7), cartes et figures en blanc à
+      // peine chaud (#FFFFFC, jamais #FFFFFF pur — DESIGN-BIBLE §2 / ADR 0045).
+      "--color-surface-base": "#FAFAF7",
+      "--color-surface-raised": "#FFFFFC",
+      "--color-surface-overlay": "#FFFFFC",
+      // Échelle container monotone croissante (même sens qu'en sombre) :
+      // lowest = puits / pistes (#ECECE5) → low (#F2F2EC) → container (#F6F6F1)
+      // → high (#FAF9F5) → highest = cartes élevées (#FFFFFC).
+      "--color-surface-container-lowest": "#ECECE5",
+      "--color-surface-container-low": "#F2F2EC",
+      "--color-surface-container": "#F6F6F1",
+      "--color-surface-container-high": "#FAF9F5",
+      "--color-surface-container-highest": "#FFFFFC",
+      // Bordures chaudes — elles portent la séparation sans ombres.
+      "--color-border-subtle": "#E4E4DC",
+      "--color-border-soft": "#D0CFC5",
+      // Bordure de champ (WCAG 1.4.11 ≥ 3:1) : 5,14:1 sur base, 5,37:1 sur raised.
+      "--color-border-field": "#6B6B63",
+      // Encre chaude — 17,0:1 / 8,5:1 / 6,4:1 sur base ; tertiary ≥ 6,44:1 sur base/highest.
+      "--color-text-primary": "#181816",
+      "--color-text-secondary": "#4A4A44",
+      "--color-text-tertiary": "#5C5C55",
+      "--color-text-on-accent": "#FAFAF7",
+      // Accent principal — encre chaude pour le calme (action primaire).
+      "--color-accent": "#181816",
+      "--color-accent-strong": "#0F0F0D",
+      "--color-accent-light": "#8A8A82",
+      "--color-accent-subtle": "#EFEFE9",
+      // Rouge signal (ADR 0045) : réservé aux repères actifs et erreurs
+      // (5,46:1 sur base, 5,70:1 sur raised).
+      "--color-signal": "#C81E2B",
+      "--color-signal-subtle": "#FCECEF",
+      "--color-on-signal": "#FAFAF7",
+      "--focus-halo": "rgba(200,30,43,.22)",
+      // Sémantique — toutes ≥ 6,1:1 sur base et raised.
+      "--color-success": "#146C43",
+      "--color-success-subtle": "#E7F3EC",
+      "--color-on-success": "#FAFAF7",
+      "--color-warning": "#8A4B08",
       "--color-warning-subtle": "#FBF1DC",
-      "--color-error": "#D4001A",
-      "--color-error-subtle": "#FDECEE",
-      "--color-on-error": "#FFFFFF",
-      // Matières (ADR 0030 D3) — wayfinding, PAS actions. Cinq teintes à
-      // L/C ÉGALES oklch(.48 .095 h) : poids visuel identique, toutes
-      // ≥ 6,2:1 en texte sur blanc. h : maths 262, pc 55, svt 140,
-      // philo 335, si 210.
-      "--subject-maths": "#0A0A0A",
-      "--subject-maths-subtle": "#F2F2F2",
-      "--subject-maths-on": "#FFFFFF",
-      "--subject-pc": "#0A0A0A",
-      "--subject-pc-subtle": "#F2F2F2",
-      "--subject-pc-on": "#FFFFFF",
-      "--subject-svt": "#0A0A0A",
-      "--subject-svt-subtle": "#F2F2F2",
-      "--subject-svt-on": "#FFFFFF",
-      "--subject-philo": "#0A0A0A",
-      "--subject-philo-subtle": "#F2F2F2",
-      "--subject-philo-on": "#FFFFFF",
-      "--subject-si": "#0A0A0A",
-      "--subject-si-subtle": "#F2F2F2",
-      "--subject-si-on": "#FFFFFF",
-      // Ombres — DEUX niveaux réels (1 = carte au repos, 2 = overlay) ;
-      // 3/4 conservés pour compat, compressés vers 2. La hiérarchie vient
-      // des bordures et des paliers de ton (Linear : une seule vraie ombre).
+      "--color-error": "#B91C1C",
+      "--color-error-subtle": "#FCECEF",
+      "--color-on-error": "#FAFAF7",
+      // Matières — système monochrome en encre chaude (pas de code couleur par matière).
+      "--subject-maths": "#181816",
+      "--subject-maths-subtle": "#EFEFE9",
+      "--subject-maths-on": "#FAFAF7",
+      "--subject-pc": "#181816",
+      "--subject-pc-subtle": "#EFEFE9",
+      "--subject-pc-on": "#FAFAF7",
+      "--subject-svt": "#181816",
+      "--subject-svt-subtle": "#EFEFE9",
+      "--subject-svt-on": "#FAFAF7",
+      "--subject-philo": "#181816",
+      "--subject-philo-subtle": "#EFEFE9",
+      "--subject-philo-on": "#FAFAF7",
+      "--subject-si": "#181816",
+      "--subject-si-subtle": "#EFEFE9",
+      "--subject-si-on": "#FAFAF7",
+      // Ombres désactivées : la hiérarchie repose sur les paliers tonaux et les filets.
       "--elevation-0": "none",
       "--elevation-1": "none",
       "--elevation-2": "none",
       "--elevation-3": "none",
       "--elevation-4": "none",
-      // Figures — le repère vit sur BLANC ; encre = texte ; grille
-      // oklch(.94) à peine là ; rôles alignés sur les teintes matières
-      // (C = bleu maths, L = vert, pseudo = ambre, apériodique = violet),
-      // tous ≥ 6:1 sur blanc.
-      "--figure-surface": "#FFFFFF",
-      "--figure-ink": "#0A0A0A",
-      "--figure-ink-soft": "#3D3D3D",
-      "--figure-grid": "#E6E6E6",
-      // Les SCÈNES et figures gardent provisoirement le sarcelle d'avant la
-      // refonte : treize portes de scène lisent leurs pixels contre cette
-      // teinte (seuils de chrominance calibrés dessus). CORRECTION du
-      // 2026-10-21 : les six portes rouges après Grille ne venaient PAS du
-      // rouge — elles restaient rouges avec le sarcelle remis. La cause
-      // mesurée était le lissage sous-pixel du texte (coins carrés du
-      // plateau), fixée sur le banc (`scripts/lib/banc-navigateur.mjs`).
-      // Passer les scènes au rouge reste un chantier à part, porte par porte
-      // (docs/refonte/00-plan.md).
+      // Figures — repère sur blanc à peine chaud (#FFFFFC) ; teintes sémantiques
+      // de scène conservées pour la stabilité des 13 portes de scène (`scenes.yml`).
+      "--figure-surface": "#FFFFFC",
+      "--figure-ink": "#181816",
+      "--figure-ink-soft": "#4A4A44",
+      "--figure-grid": "#E4E4DC",
       "--figure-accent": "#00746A",
       "--figure-energy-C": "#3C5C98",
       "--figure-energy-L": "#386B3A",
@@ -150,71 +128,66 @@ export const themes: Record<"light" | "dark", Theme> = {
       "--figure-regime-aperiodic": "#704B89",
     },
   },
-  // Sombre — MÊME méthode, clartés inversées : toile oklch(.175), travail
-  // sur raised (.215), encre .93/.76/.67, accents remontés à L ≈ .73-.78.
-  // Toutes les paires passent la porte (pire cas : tertiary vs highest 4,8:1).
+  // Sombre — charbon chaud (#121210) sans halation ni noir pur ;
+  // toutes les paires passent contrast-gate.mjs (pire cas : tertiary sur highest 4,86:1).
   dark: {
     selector: ".dark",
     vars: {
-      "--color-surface-base": "#0A0A0A",
-      "--color-surface-raised": "#121212",
-      "--color-surface-overlay": "#1A1A1A",
-      "--color-surface-container-lowest": "#050505",
-      "--color-surface-container-low": "#0F0F0F",
-      "--color-surface-container": "#121212",
-      "--color-surface-container-high": "#181818",
-      "--color-surface-container-highest": "#1F1F1F",
-      // #3A3934 et pas #2F2E2A (audit R6, P2-2) : à ~1,4:1 sur les surfaces
-      // sombres, les cartes se dissolvaient sur un écran atténué — la
-      // méthode « hiérarchie par bordures » exige des bordures qu'on voit
-      // (~1,9:1 ici, toujours discret).
-      "--color-border-subtle": "#262626",
-      "--color-border-soft": "#333333",
-      "--color-border-field": "#8A8A8A",
-      "--color-text-primary": "#F2F2F2",
-      "--color-text-secondary": "#C4C4C4",
-      "--color-text-tertiary": "#9A9A9A",
-      "--color-text-on-accent": "#0A0A0A",
-      "--color-accent": "#F2F2F2",
-      "--color-accent-strong": "#FFFFFF",
-      "--color-accent-light": "#6B6B6B",
-      "--color-accent-subtle": "#1F1F1F",
-      "--color-signal": "#FF2A3B",
-      "--color-signal-subtle": "#2A0F12",
-      "--color-on-signal": "#0A0A0A",
-      "--focus-halo": "rgba(255,42,59,.30)",
-      "--color-success": "#6CC48A",
-      "--color-success-subtle": "#12261A",
-      "--color-on-success": "#0A0A0A",
-      "--color-warning": "#E0B860",
-      "--color-warning-subtle": "#2A2214",
-      "--color-error": "#FF5A66",
-      "--color-error-subtle": "#2A0F12",
-      "--color-on-error": "#0A0A0A",
-      "--subject-maths": "#F2F2F2",
-      "--subject-maths-subtle": "#1F1F1F",
-      "--subject-maths-on": "#0A0A0A",
-      "--subject-pc": "#F2F2F2",
-      "--subject-pc-subtle": "#1F1F1F",
-      "--subject-pc-on": "#0A0A0A",
-      "--subject-svt": "#F2F2F2",
-      "--subject-svt-subtle": "#1F1F1F",
-      "--subject-svt-on": "#0A0A0A",
-      "--subject-philo": "#F2F2F2",
-      "--subject-philo-subtle": "#1F1F1F",
-      "--subject-philo-on": "#0A0A0A",
-      "--subject-si": "#F2F2F2",
-      "--subject-si-subtle": "#1F1F1F",
-      "--subject-si-on": "#0A0A0A",
+      "--color-surface-base": "#121210",
+      "--color-surface-raised": "#1A1A17",
+      "--color-surface-overlay": "#22221E",
+      "--color-surface-container-lowest": "#0D0D0B",
+      "--color-surface-container-low": "#171714",
+      "--color-surface-container": "#1A1A17",
+      "--color-surface-container-high": "#20201C",
+      "--color-surface-container-highest": "#262622",
+      "--color-border-subtle": "#2B2B26",
+      "--color-border-soft": "#3C3C35",
+      "--color-border-field": "#8E8D83",
+      "--color-text-primary": "#EDECE6",
+      "--color-text-secondary": "#B3B2A8",
+      "--color-text-tertiary": "#939289",
+      "--color-text-on-accent": "#121210",
+      "--color-accent": "#EDECE6",
+      "--color-accent-strong": "#FAFAF7",
+      "--color-accent-light": "#6E6D65",
+      "--color-accent-subtle": "#262622",
+      "--color-signal": "#F04E5A",
+      "--color-signal-subtle": "#2C1417",
+      "--color-on-signal": "#121210",
+      "--focus-halo": "rgba(240,78,90,.28)",
+      "--color-success": "#4ADE80",
+      "--color-success-subtle": "#13261B",
+      "--color-on-success": "#121210",
+      "--color-warning": "#FBBF24",
+      "--color-warning-subtle": "#2B2212",
+      "--color-error": "#F87171",
+      "--color-error-subtle": "#2C1417",
+      "--color-on-error": "#121210",
+      "--subject-maths": "#EDECE6",
+      "--subject-maths-subtle": "#262622",
+      "--subject-maths-on": "#121210",
+      "--subject-pc": "#EDECE6",
+      "--subject-pc-subtle": "#262622",
+      "--subject-pc-on": "#121210",
+      "--subject-svt": "#EDECE6",
+      "--subject-svt-subtle": "#262622",
+      "--subject-svt-on": "#121210",
+      "--subject-philo": "#EDECE6",
+      "--subject-philo-subtle": "#262622",
+      "--subject-philo-on": "#121210",
+      "--subject-si": "#EDECE6",
+      "--subject-si-subtle": "#262622",
+      "--subject-si-on": "#121210",
       "--elevation-0": "none",
       "--elevation-1": "none",
       "--elevation-2": "none",
       "--elevation-3": "none",
       "--elevation-4": "none",
-      "--figure-surface": "#121212",
-      "--figure-ink": "#F2F2F2",
-      "--figure-ink-soft": "#C4C4C4",
-      "--figure-grid": "#262626",
+      "--figure-surface": "#1A1A17",
+      "--figure-ink": "#EDECE6",
+      "--figure-ink-soft": "#B3B2A8",
+      "--figure-grid": "#2B2B26",
       "--figure-accent": "#6DC3B8",
       "--figure-energy-C": "#86A5DE",
       "--figure-energy-L": "#83B384",
