@@ -106,6 +106,19 @@ relecteur. La liste d'origine :
 Un modèle moins fort n'appliquera ces règles que si un contrôle automatique les vérifie : les
 règles 1, 4, 5, 8 et 9 se contrôlent par script, et c'est le préalable à toute production en série.
 
+## 4 bis. La production des autres notions
+
+Le format est validé (ADR 0046). La chaîne, une notion à la fois :
+
+1. `notion-designer` écrit le plan de la notion (cadre officiel, fiche bible, sujets réels) ;
+2. `lesson-author` et `visual-author` écrivent la leçon, les scènes et les exercices, avec le kit
+   ([`08-kit-de-lecon.md`](08-kit-de-lecon.md)) ;
+3. les contrôles automatiques passent (règles, parcours, exercices) ;
+4. `bac-fidelity-critic` puis `pedagogy-critic` relisent ; un modèle plus fort corrige ou renvoie.
+
+**Notion d'essai : la fonction exponentielle** (maths, la suite naturelle du logarithme). La série
+ne démarre que si cet essai tient : qualité des paris, exactitude, scènes lisibles au téléphone.
+
 ## 5. Avant le lancement : les bloquants
 
 Inventaire vérifié dans le dépôt le 2026-11-23. Trois faits qui cadrent tout :

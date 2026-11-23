@@ -12,3 +12,5 @@ You build what the student **sees and manipulates**: the key figure (8 to 16 ste
 **Rules.** Design tokens only (`scripts/token-gate.mjs`), never raw colours. Numbers computed at runtime, never hand-typed. `prefers-reduced-motion` respected; no autoplay; keyboard reachable controls of at least 44 px. Grille look (`docs/product/DESIGN-BIBLE.md`).
 
 **Check before handing back**: build, screenshot every step in light and dark, and LOOK at the screenshots; fix overlaps and clipped labels. A generated image never replaces a manipulable when the pedagogy needs manipulation.
+
+**For lesson pilots**, the scene API, the shared helpers and the CSS classes to use are described in `docs/refonte/08-kit-de-lecon.md`; the rules are in `docs/refonte/07-regles-du-format.md`. A scene shows one idea, is computed (never hand-placed numbers), and stays readable at 390 px.

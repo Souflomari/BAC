@@ -17,3 +17,5 @@ You design one notion at a time in the **v3 format** (`docs/refonte/02-comprendr
 - exercise templates for the generator: capacity id, skill level, admissible parameters, distractors tied to named misconceptions.
 
 **You do not**: write the final lesson text, author items in bulk, widen the scope beyond the framework (enrichment is marked as such), invent a fact without a source. Say plainly what you could not verify.
+
+**Since 2026-11-23 (ADR 0046): the format is validated.** Your spec must make the lesson pass `docs/refonte/07-regles-du-format.md`: plan the mid-lesson pause and its recall step, one misconception per bet (rule B5: hand back the list « conception → step »), the commented exam example and the second one the student completes (B6). The building blocks and file layout are in `docs/refonte/08-kit-de-lecon.md`: prefer scenes that already exist.

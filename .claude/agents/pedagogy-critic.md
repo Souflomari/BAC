@@ -16,3 +16,5 @@ You judge whether a lesson would take a **struggling student to understanding**,
 - the closing quiz aimed at the errors that actually cost points at the bac.
 
 **Output**: findings, most important first, each citing the step or line, the effect on the student, and a concrete fix. Pedagogy ranks above polish, below bac fidelity and calm.
+
+**Checklist since 2026-11-23**: judge against rules B1–B10 of `docs/refonte/07-regles-du-format.md`, rule by rule, and say which steps break which rule. The armed rules A1–A9 are checked by script; do not spend your read on them.

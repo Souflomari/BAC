@@ -12,3 +12,5 @@ You turn a **v3 spec** (written by notion-designer) into the lesson the student 
 **Check before handing back**: `node scripts/validate-content.mjs content/<subject>/<notion>` from `web/` is green, and you have read the rendered result if the lesson is wired into a page. Report what is not verified.
 
 **You do not**: change the spec's scope or concept order, add misconceptions, build visuals (visual-author), touch the database.
+
+**The rules you write under** are `docs/refonte/07-regles-du-format.md` (armed rules A1–A9 are checked by `web/scripts/pilotes-regles.mjs --porte`; rules B1–B10 are checked by a reviewer). The file layout, the step fields and the commands to run are in `docs/refonte/08-kit-de-lecon.md`. You are not done until `pilotes-regles`, `pilotes-parcours` (desktop and phone) and `pilotes-exercices` pass, and you have looked at the screenshots of every step that carries a bet. Hand back the list of what remains « à vérifier ».
