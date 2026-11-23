@@ -14,6 +14,7 @@
  * aucun pourcentage.
  */
 
+import { frenchTypography } from "@/lib/frenchTypography";
 import { Link } from "@/components/ui/Lien";
 import { cn } from "@/lib/utils";
 import { SUBJECT_ORDER, subjectHref, subjectLabel, notionHref } from "@/lib/subjects";
@@ -49,7 +50,7 @@ export function ProgrammeMap({ notions }: { notions: NotionMeta[] }) {
       </div>
 
       {/* `grid-cols-1` borne la piste à 200 % de texte (SC 1.4.4). */}
-      <div className="mt-6 grid grid-cols-1 gap-4 bp-medium:grid-cols-2 bp-large:grid-cols-4 bp-large:items-start">
+      <div className="mt-6 grid grid-cols-1 gap-4 bp-medium:grid-cols-2 bp-large:grid-cols-4 bp-large:items-stretch">
         {ordre.map((id) => {
           const liste = sortByProgramme(
             notions.filter(
@@ -106,6 +107,19 @@ export function ProgrammeMap({ notions }: { notions: NotionMeta[] }) {
                   />
                 </div>
               )}
+
+              {/* Les parties du programme, telles que le cadre les nomme : la carte dit ce que
+                  contient la matière avant qu'on l'ouvre. Un fait du programme, pas un progrès. */}
+              {sujet && sujet.units.length > 0 ? (
+                <ul role="list" className="mt-4 flex-1 space-y-1.5 text-body-sm text-secondary">
+                  {sujet.units.map((u) => (
+                    <li key={u.title} className="flex items-baseline justify-between gap-3">
+                      <span className="min-w-0">{frenchTypography(u.title.replace(" — ", " : "))}</span>
+                      <span className="tnum shrink-0 font-mono text-caption text-tertiary">{u.chapters.length}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
 
               <details className="group mt-4 border-t border-subtle pt-1">
                 <summary
