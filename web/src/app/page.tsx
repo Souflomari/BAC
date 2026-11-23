@@ -21,7 +21,7 @@
 
 import type { Metadata } from "next";
 import { listNotions } from "@/lib/content";
-import { CATALOGUE } from "@/components/pilote/exercices/catalogue";
+import { LeconsVitrine } from "@/components/dashboard/LeconsVitrine";
 
 import { Link } from "@/components/ui/Lien";
 import { PageShell } from "@/components/ui/PageShell";
@@ -37,32 +37,6 @@ import { manifestePourHeader } from "@/lib/palette-notions";
 export const metadata: Metadata = {
   title: "Ta session",
 };
-
-const CATALOGUE_EXERCICES = CATALOGUE as Record<string, unknown[]>;
-
-const LECONS_INTERACTIVES = [
-  {
-    cle: "logarithme",
-    href: "/pilote/logarithme",
-    matiere: "Maths",
-    titre: "Fonction logarithme",
-    description: "De Napier à la définition du bac",
-  },
-  {
-    cle: "radioactivite",
-    href: "/pilote/radioactivite",
-    matiere: "Physique-Chimie",
-    titre: "Décroissance radioactive",
-    description: "De Becquerel au carbone 14",
-  },
-  {
-    cle: "expression-genetique",
-    href: "/pilote/expression-genetique",
-    matiere: "SVT",
-    titre: "Expression de l’information génétique",
-    description: "Du gène à la protéine, la drépanocytose lettre par lettre",
-  },
-] as const;
 
 export default function HomePage() {
   const notions = listNotions();
@@ -86,69 +60,31 @@ export default function HomePage() {
           </div>
 
           <section
-            aria-label="Leçons interactives"
-            className="min-w-0 border border-subtle bg-surface-raised p-5 bp-medium:p-6 bp-large:col-span-5"
+            aria-label="Examens blancs"
+            className="flex min-w-0 flex-col justify-between gap-6 border border-subtle bg-surface-container-low p-6 bp-medium:p-8 bp-large:col-span-5 bp-large:self-stretch"
           >
-            <h2 className="font-display text-h3 font-bold text-primary">Leçons interactives</h2>
-            <p className="mt-1 text-body-sm text-secondary">
-              Trois chapitres existent déjà au nouveau format guidé. Les autres sont dans le programme ci-dessous.
-            </p>
-            <ul role="list" className="mt-4 divide-y divide-subtle border-t border-subtle">
-              {LECONS_INTERACTIVES.map((lecon) => {
-                const nbExercices = CATALOGUE_EXERCICES[lecon.cle]?.length ?? 0;
-                return (
-                  <li key={lecon.href}>
-                    <Link
-                      href={lecon.href}
-                      data-lien-pilote=""
-                      className="group flex min-h-touch items-center justify-between gap-4 py-3 text-left state-layer focus-ring"
-                    >
-                      <span className="min-w-0">
-                        <span className="block font-mono text-caption uppercase tracking-eyebrow text-tertiary">
-                          {lecon.matiere}
-                          {nbExercices > 0 ? ` · ${nbExercices} exercices` : ""}
-                        </span>
-                        <span className="mt-0.5 block text-body font-semibold text-primary group-hover:text-signal">
-                          {lecon.titre}
-                        </span>
-                        <span className="block text-body-sm text-secondary">
-                          {lecon.description}
-                        </span>
-                      </span>
-                      <span
-                        aria-hidden="true"
-                        className="shrink-0 font-mono text-body text-tertiary group-hover:text-signal"
-                      >
-                        →
-                      </span>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+            <div>
+              <p className="font-mono text-caption uppercase tracking-eyebrow text-tertiary">Le jour J, en vrai</p>
+              <h2 className="mt-2 font-display text-h2 font-bold text-primary">Examens blancs</h2>
+              <p className="mt-2 text-body text-secondary">
+                {epreuves.length} épreuves réelles du bac, chronométrées, corrigées au barème.
+              </p>
+            </div>
+            <Link
+              href="/examens"
+              data-lien-examens=""
+              className="group inline-flex min-h-touch items-center gap-2 self-start text-body font-semibold text-primary underline underline-offset-4 hover:text-signal focus-ring"
+            >
+              Ouvrir les examens blancs
+              <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </Link>
           </section>
         </div>
       </div>
 
-      <ProgrammeMap notions={notions} />
+      <LeconsVitrine className="mt-12 bp-large:mt-16" />
 
-      <section aria-label="Examens blancs" className="mt-12 bp-large:mt-16 border-t-2 border-accent pt-5">
-        <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3">
-          <div>
-            <h2 className="font-display text-h2 font-bold text-primary">Examens blancs</h2>
-            <p className="mt-1 text-body text-secondary">
-              {epreuves.length} épreuves réelles du bac, en conditions d’examen.
-            </p>
-          </div>
-          <Link
-            href="/examens"
-            data-lien-examens=""
-            className="inline-flex min-h-touch items-center text-body font-semibold text-primary underline underline-offset-4 hover:text-signal focus-ring"
-          >
-            Ouvrir les examens blancs →
-          </Link>
-        </div>
-      </section>
+      <ProgrammeMap notions={notions} />
 
       <div className="mt-12 bp-large:mt-16 grid grid-cols-1 gap-x-8 gap-y-12 bp-large:grid-cols-12">
         <NoteEnJeu className="bp-large:col-span-7" />
