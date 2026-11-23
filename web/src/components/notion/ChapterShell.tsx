@@ -75,6 +75,8 @@ interface ChapterContextValue {
   current: number;
   /** Total chapter count (real chapters + the synthetic "S'entraîner" one, when present). */
   total: number;
+  /** Real lesson chapters count (excluding the trailing "S'entraîner" bank tab). */
+  lessonChapters: number;
   /** Activate a chapter by 0-based index (clamped). No-ops if already current. */
   goTo: (index: number) => void;
 }
@@ -121,7 +123,7 @@ export function useChapterStable(): ChapterStableContextValue {
  */
 export function useChapter(): ChapterContextValue {
   const ctx = useContext(ChapterContext);
-  return ctx ?? { current: 0, total: 1, goTo: () => {} };
+  return ctx ?? { current: 0, total: 1, lessonChapters: 1, goTo: () => {} };
 }
 
 // ── URL + deep-link resolution (client-only) ────────────────────────────────
@@ -178,12 +180,15 @@ const FOCUSABLE_INPUT_TAGS = new Set(["INPUT", "TEXTAREA", "SELECT"]);
 
 export function ChapterShell({
   totalChapters,
+  lessonChapters,
   children,
 }: {
   totalChapters: number;
+  lessonChapters?: number;
   children: ReactNode;
 }) {
   const total = Math.max(1, totalChapters);
+  const coursTotal = Math.min(total, Math.max(1, lessonChapters ?? total));
   // Always 0 on both the server render and the client's hydration render —
   // see the class doc comment above (the SSR-mismatch fix). The real
   // URL/hash-derived chapter is applied by the sync effect below, once,
@@ -294,7 +299,7 @@ export function ChapterShell({
 
   return (
     <ChapterStableContext.Provider value={stable}>
-      <ChapterContext.Provider value={{ current, total, goTo }}>
+      <ChapterContext.Provider value={{ current, total, lessonChapters: coursTotal, goTo }}>
         {children}
       </ChapterContext.Provider>
     </ChapterStableContext.Provider>
@@ -308,8 +313,9 @@ export function ChapterShell({
 // `display:none` there, so its copy of this text is hidden too). Both read
 // the SAME context, so they can never disagree.
 export function ChapterPosition({ className }: { className?: string }) {
-  const { current, total } = useChapter();
+  const { current, total, lessonChapters } = useChapter();
   if (total <= 1) return null; // nothing to navigate — no progress theater
+  const surEntrainement = current >= lessonChapters;
   return (
     <p
       aria-live="polite"
@@ -318,7 +324,7 @@ export function ChapterPosition({ className }: { className?: string }) {
         className
       )}
     >
-      {`Chapitre ${current + 1} / ${total}`}
+      {surEntrainement ? "S\u2019entraîner" : `Chapitre ${current + 1} / ${lessonChapters}`}
     </p>
   );
 }
@@ -327,10 +333,12 @@ export function ChapterPosition({ className }: { className?: string }) {
 // Same visual transport grammar as MotionStage/StagedFigure (TransportButton +
 // chevrons) — one transport language across the product (§1.3).
 export function ChapterTransport({ index }: { index: number }) {
-  const { total, goTo } = useChapter();
+  const { total, lessonChapters, goTo } = useChapter();
   const hasPrev = index > 0;
   const hasNext = index < total - 1;
   if (!hasPrev && !hasNext) return null;
+  const versEntrainement = index === lessonChapters - 1 && total > lessonChapters;
+  const depuisEntrainement = index >= lessonChapters;
 
   return (
     // `flex-wrap` (2026-09-05) : à 200 % de texte sur 320 px, les deux boutons
@@ -340,16 +348,22 @@ export function ChapterTransport({ index }: { index: number }) {
     // côte à côte, ils se posent l'un sous l'autre.
     <div className="chapter-transport mt-12 flex flex-wrap items-center justify-between gap-4">
       {hasPrev ? (
-        <TransportButton onClick={() => goTo(index - 1)} aria-label="Chapitre précédent">
+        <TransportButton
+          onClick={() => goTo(index - 1)}
+          aria-label={depuisEntrainement ? "Revenir au dernier chapitre" : "Chapitre précédent"}
+        >
           <Icon name="chevron-left" size={14} />
-          <span>Chapitre précédent</span>
+          <span>{depuisEntrainement ? "Dernier chapitre" : "Chapitre précédent"}</span>
         </TransportButton>
       ) : (
         <span aria-hidden="true" />
       )}
       {hasNext && (
-        <TransportButton onClick={() => goTo(index + 1)} aria-label="Chapitre suivant">
-          <span>Chapitre suivant</span>
+        <TransportButton
+          onClick={() => goTo(index + 1)}
+          aria-label={versEntrainement ? "Passer aux sujets d’entraînement" : "Chapitre suivant"}
+        >
+          <span>{versEntrainement ? "S\u2019entraîner" : "Chapitre suivant"}</span>
           <Icon name="chevron-right" size={14} />
         </TransportButton>
       )}

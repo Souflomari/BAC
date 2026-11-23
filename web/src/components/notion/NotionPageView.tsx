@@ -110,20 +110,17 @@ function MastheadMeta({ readingMinutes }: { readingMinutes?: number }) {
 // une notion sans banque montre deux colonnes, pas trois.
 function NotionFacts({
   chapters,
-  readingMinutes,
   bankCount,
 }: {
   chapters: number;
-  readingMinutes?: number;
   bankCount?: number;
 }) {
   const facts: { valeur: string; unite: string }[] = [];
   if (chapters > 0) facts.push({ valeur: String(chapters), unite: chapters > 1 ? "chapitres" : "chapitre" });
-  if (readingMinutes) facts.push({ valeur: String(readingMinutes), unite: "min de lecture" });
   if (bankCount != null && bankCount > 0) facts.push({ valeur: String(bankCount), unite: bankCount > 1 ? "sujets de bac" : "sujet de bac" });
   if (facts.length === 0) return null;
   return (
-    <dl data-notion-faits className="grid grid-cols-3 gap-x-6 border-t border-subtle pt-4">
+    <dl data-notion-faits className="flex flex-wrap gap-x-8 gap-y-4 border-t border-subtle pt-4">
       {facts.map((f) => (
         <div key={f.unite} className="min-w-0">
           <dt className="sr-only">{f.unite}</dt>
@@ -269,7 +266,7 @@ export function NotionPageView({
         className={cn(
           "sr-only focus:not-sr-only",
           "focus:fixed focus:top-4 focus:left-4 focus:z-50",
-          "focus:px-4 focus:py-2 focus:rounded-lg",
+          "focus:inline-flex focus:min-h-touch focus:items-center focus:px-4",
           "focus:bg-accent focus:text-on-accent focus:text-body-sm focus:font-medium"
         )}
       >
@@ -282,9 +279,9 @@ export function NotionPageView({
       {/* GRILLE (refonte 2026-10) — le bloc-titre remplace la bande grise
           pleine largeur et l'illustration de couverture : un fil d'Ariane, la
           matière au rouge signal, le titre en Archivo serrée, la ligne de
-          métadonnées, puis les faits calculés (chapitres, lecture, sujets) en
-          grands chiffres. Un filet d'encre ferme le bloc. `data-band` est
-          gardé : c'est l'ancre que les portes lisent pour trouver le masthead. */}
+          métadonnées, puis les faits calculés (chapitres, sujets) en grands
+          chiffres. Un filet d'encre ferme le bloc. `data-band` est gardé :
+          c'est l'ancre que les portes lisent pour trouver le masthead. */}
       {mastheadVariant === "a3" && (
         <div data-band="masthead" className="mb-10 bp-medium:mb-12">
           <Breadcrumb subject={meta.subject} title={meta.title} />
@@ -303,7 +300,6 @@ export function NotionPageView({
             <div className="min-w-0 bp-large:col-span-4">
               <NotionFacts
                 chapters={realChapters}
-                readingMinutes={meta.readingMinutes}
                 bankCount={hasBank ? bank!.entries.length : undefined}
               />
             </div>
@@ -319,7 +315,7 @@ export function NotionPageView({
           chapter's own prev/next). NotionBody and the synthetic chapter
           below are the ONLY things ChapterShell toggles visibility on — the
           shell itself renders no lesson content of its own. */}
-      <ChapterShell totalChapters={totalChapters}>
+      <ChapterShell totalChapters={totalChapters} lessonChapters={realChapterCountClamped}>
         {/* Attempt-event wiring (tutor-first plan, Lane E): the provider
             gives McqItem/CheckpointItem/AttemptFirstExercise the notion id;
             the recorder emits one visit event per chapter activation. Both
@@ -382,8 +378,7 @@ export function NotionPageView({
             ) : (
               <div
                 className={cn(
-                  "rounded-xl border border-dashed border-subtle",
-                  "px-8 py-10 text-center",
+                  "border-l-2 border-subtle pl-5 py-2",
                   "text-body-sm text-secondary"
                 )}
               >
@@ -424,8 +419,7 @@ export function NotionPageView({
             {!hasAnyContent && (
               <div
                 className={cn(
-                  "mt-12 rounded-xl border border-dashed border-subtle",
-                  "px-8 py-10 text-center",
+                  "mt-12 border-l-2 border-subtle pl-5 py-2",
                   "text-body-sm text-secondary"
                 )}
               >

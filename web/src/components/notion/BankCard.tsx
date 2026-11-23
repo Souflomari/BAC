@@ -91,20 +91,14 @@ export function BankCard({
   const dur = entry.durationMin != null ? `~${entry.durationMin} min` : null;
   const bodyId = `bank-body-${entry.id}`;
 
-  const badgePill =
-    "inline-flex items-center px-2 py-0.5 " +
-    "text-caption font-medium " +
-    "bg-surface-raised text-secondary " +
-    "border border-subtle";
-
   return (
     <article
       data-bank-card
       data-entry-id={entry.id}
       className={cn(
-        "rounded-xl overflow-hidden",
+        "overflow-hidden",
         "border border-subtle",
-        "bg-surface-container shadow-elevation-1"
+        "bg-surface-raised"
       )}
     >
       <button
@@ -115,22 +109,16 @@ export function BankCard({
         aria-expanded={open}
         aria-controls={bodyId}
         className={cn(
-          "group flex w-full items-start gap-3 text-left",
+          "group flex min-h-touch w-full items-start gap-3 text-left",
           "px-5 py-4 bp-medium:px-6 bp-medium:py-5",
-          "state-layer focus-ring [--focus-radius:12px]"
+          "state-layer focus-ring"
         )}
       >
-        {/* `overflow-x-auto` : la carte porte `overflow-hidden` pour arrondir
-            ses coins, et à 200 % de taille de texte (SC 1.4.4) un titre
-            d'exercice contenant une formule en ligne — insécable — était
-            COUPÉ par ce clip, jusqu'à 55 caractères perdus sans rien pour le
-            signaler. Il défile désormais dans sa propre boîte. */}
+        {/* `overflow-x-auto` : à 200 % de taille de texte (SC 1.4.4) un titre
+            d'exercice contenant une formule en ligne insécable défile dans sa
+            propre boîte plutôt que d'être coupé. */}
         <div className="flex-1 min-w-0 overflow-x-auto">
           <div className="flex items-start justify-between gap-3">
-            {/* `min-w-0 break-words` (2026-09-05) : le titre est un item flex à
-                côté de la pastille ; sans cela il ne descend pas sous son mot
-                le plus long et, à 200 % de texte sur 320 px, dix titres sur
-                douze défilaient hors de la carte (de 16 à 218 px). */}
             <h3 className="min-w-0 break-words font-display text-h3 font-semibold text-primary">
               {entry.title}
             </h3>
@@ -145,14 +133,29 @@ export function BankCard({
             )}
           </div>
 
-          {/* Provenance — student-visible by design (BANK-SPEC §3.1 / D1). */}
-          <div className="mt-2 flex flex-wrap items-center gap-2 text-caption text-secondary">
-            <span data-bank-provenance className={badgePill}>
+          {/* Provenance — visible à l'élève par conception (BANK-SPEC §3.1 / D1). */}
+          <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-caption text-secondary">
+            <span data-bank-provenance className="font-medium text-primary">
               {provenance}
             </span>
-            {chip && <span className={badgePill}>{chip}</span>}
-            {pts && <span className="tabular-nums">{pts}</span>}
-            {dur && <span className="tabular-nums">{dur}</span>}
+            {chip && (
+              <>
+                <span aria-hidden="true" className="text-tertiary">·</span>
+                <span>{chip}</span>
+              </>
+            )}
+            {pts && (
+              <>
+                <span aria-hidden="true" className="text-tertiary">·</span>
+                <span className="tabular-nums">{pts}</span>
+              </>
+            )}
+            {dur && (
+              <>
+                <span aria-hidden="true" className="text-tertiary">·</span>
+                <span className="tabular-nums">{dur}</span>
+              </>
+            )}
           </div>
 
           {entry.source.exerciseLabel && (

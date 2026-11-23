@@ -80,7 +80,7 @@ export function LessonEnd({
         >
           <span className="min-w-0">
             <span className="block text-caption font-medium uppercase tracking-eyebrow text-secondary">
-              {changeDeMatiere ? "Changer de matière" : "La suite du parcours"} —{" "}
+              {changeDeMatiere ? "Changer de matière" : "La suite du parcours"} ·{" "}
               {subjectLabel(next.subject)}
             </span>
             <span className="mt-2 block font-display text-h3 font-semibold text-primary group-hover:text-accent transition-colors duration-micro">
@@ -94,11 +94,11 @@ export function LessonEnd({
       <Link
         href="/"
         className={cn(
-          "mt-6 inline-block",
+          "mt-4 inline-flex min-h-touch items-center",
           "text-body-sm text-secondary hover:text-primary",
           "transition-colors duration-micro ease-enter",
-          "state-layer rounded px-2 py-1 -mx-2",
-          "focus-ring [--focus-radius:8px]"
+          "state-layer px-2 -mx-2",
+          "focus-ring"
         )}
       >
         Retour aux notions
