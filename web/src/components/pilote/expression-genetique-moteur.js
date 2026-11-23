@@ -239,7 +239,7 @@ const STEPS=[
   text:['L’ARNm est terminé. Compare-le aux deux brins d’ADN.','Ses bases sont celles…'],
   pari:{reveal:[{p:{cmp:1},d:2000}],opts:[
     {t:'du brin transcrit',fb:'C’est le piège le plus courant. L’ARNm est complémentaire du brin transcrit : il a donc les bases de l’autre brin, avec U à la place de T.',indice:'L’ARNm est complémentaire du brin transcrit. Et le complémentaire du brin transcrit, c’est… ?'},
-    {t:'du brin non transcrit, U pour T',ok:true,fb:'Exactement : complémentaire du brin transcrit, donc identique au brin non transcrit, U à la place de T. Au bac, c’est le premier réflexe.'},
+    {t:'du brin non transcrit',ok:true,fb:'Exactement : complémentaire du brin transcrit, donc identique au brin non transcrit, U à la place de T. Au bac, c’est le premier réflexe.'},
     {t:'d’aucun des deux',fb:'Regarde : il est identique au brin non transcrit, à un détail près, U à la place de T.',indice:'Compare base à base avec le brin du haut, en lisant U comme T.'}]}},
 {cle:'arn',beat:3,scene:'arn',set:{r:0},seq:[{p:{r:1},d:700,w:300},{p:{r:2},d:700,w:900},{p:{r:3},d:700,w:900},{p:{r:4.5},d:900,w:900}],
   text:['L’ARNm est une molécule d’[[arn|ARN]]. Comparé à l’ADN, trois choses changent.',

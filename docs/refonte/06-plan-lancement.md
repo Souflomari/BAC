@@ -80,8 +80,9 @@ savoir », la pause, le sujet « à revoir », l'exercice lié à chaque piège.
 
 ## 4. Les règles du format (à figer après §3)
 
-Dix règles vérifiables sont proposées ; elles deviendront un document de règles (`07`, dans ce dossier) et,
-pour celles qui se mesurent, des contrôles dans `pilotes-parcours.mjs` :
+**Fait le 2026-11-23** : les règles sont écrites dans [`07-regles-du-format.md`](07-regles-du-format.md).
+Neuf sont armées et vérifiées par `web/scripts/pilotes-regles.mjs` dans la CI ; dix autres demandent un
+relecteur. La liste d'origine :
 
 1. Un vrai pari : au moins deux options défendables, pas d'option « aucune idée », la réponse
    n'est pas dans le texte de l'étape.

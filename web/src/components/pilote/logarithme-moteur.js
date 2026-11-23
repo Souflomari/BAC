@@ -661,7 +661,7 @@ const STEPS=[
     ['2<sup>7</sup>',true,'Oui : quatre 2, puis trois 2, soit sept 2 multipliés : 2<sup>7</sup> = 128. On additionne les exposants.'],
     ['2<sup>12</sup>',false,'Ce serait 4 × 3 = 12 facteurs. Or 2<sup>4</sup> × 2<sup>3</sup> met bout à bout quatre 2 et trois 2 : sept facteurs, 2<sup>7</sup>.','Tu as multiplié les exposants. Écris les 2 un par un : combien y en a-t-il en tout ?'],
     ['4<sup>7</sup>',false,'On ne multiplie pas les bases : chaque facteur reste un 2. Sept 2 à la suite : 2<sup>7</sup>.','Les exposants s’additionnent, mais la base ne change pas : chaque facteur est un 2.']]),reveal:[{p:{qr:1},d:700}]}},
-{cle:'rappel',beat:0,scene:'savoir',set:{q:0,qr:0},seq:[{p:{r1:1},d:700,w:200},{p:{blk:1},d:1400,w:700},{p:{join:1},d:1100,w:600},{p:{res:1},d:700,w:200}],
+{cle:'sav-rappel',beat:0,scene:'savoir',set:{q:0,qr:0},seq:[{p:{r1:1},d:700,w:200},{p:{blk:1},d:1400,w:700},{p:{join:1},d:1100,w:600},{p:{res:1},d:700,w:200}],
   text:['2<sup>3</sup> se lit « 2 puissance 3 » : c’est 2 × 2 × 2 = 8. Le petit 3 est l’[[exposant]] : il compte les facteurs.',
     {t:'Pour 2<sup>2</sup> × 2<sup>3</sup>, on met les facteurs bout à bout : deux 2, puis trois 2.',a:1},
     {t:'Cinq 2 à la suite : 2<sup>2</sup> × 2<sup>3</sup> = 2<sup>5</sup> = 32. On additionne les exposants.',a:3,fort:true}],
