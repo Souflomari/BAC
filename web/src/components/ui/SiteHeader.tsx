@@ -343,7 +343,7 @@ function MenuCompact({
                   "text-body-sm text-secondary hover:text-primary"
                 )}
               >
-                Choisir ta filière
+                Choisis ta filière
               </Link>
             </DropdownMenu.Item>
             <div className="my-1.5 border-t border-subtle" />

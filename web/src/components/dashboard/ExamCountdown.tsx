@@ -61,7 +61,7 @@ export function ExamCountdown({ className }: { className?: string }) {
         href="/commencer"
         className="inline-flex min-h-touch items-center whitespace-nowrap font-semibold text-primary underline decoration-border-soft underline-offset-4 hover:text-signal focus-ring"
       >
-        {active ? "Changer de filière" : "Choisir ta filière"}
+        {active ? "Changer de filière" : "Choisis ta filière"}
       </Link>
     </section>
   );

@@ -91,7 +91,7 @@ export default function HomePage() {
           >
             <h2 className="font-display text-h3 font-bold text-primary">Leçons interactives</h2>
             <p className="mt-1 text-body-sm text-secondary">
-              Trois chapitres disponibles au nouveau format guidé&#8239;; les autres chapitres sont en cours détaillé ci-dessous.
+              Trois chapitres existent déjà au nouveau format guidé. Les autres sont dans le programme ci-dessous.
             </p>
             <ul role="list" className="mt-4 divide-y divide-subtle border-t border-subtle">
               {LECONS_INTERACTIVES.map((lecon) => {
