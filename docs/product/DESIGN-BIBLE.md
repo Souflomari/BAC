@@ -89,30 +89,20 @@ allowed to invade the core.
 
 ## 1. Surface and platform
 
-**Desktop-web-primary.** The principal surface is the web app on a laptop or
-desktop — that is where students do their long study sessions. The design is
-built **desktop-first** and adapts *down* to smaller screens, not the reverse.
+**Phone-first, desk-generous** (owner decision 2026-11-23, ADR 0045; this
+replaced « desktop-web-primary »). Many students have only a phone: every
+screen is designed first at 390 × 844 and then given room on a laptop.
 
-This has real consequences that distinguish this product from mobile-first
-learning apps (including Imprint, the aesthetic reference, which is
-phone-shaped):
-
-- **Restraint is a deliberate choice, not a constraint.** On a phone, the
-  small screen *forces* one-thing-at-a-time. On a wide desktop viewport,
-  many things *could* fit — so calmness must be *chosen* and *enforced*. The
-  default temptation on desktop is to fill the width; resist it. Use the
-  extra space for generous margins and a centered, bounded reading/working
-  column, not for more stuff.
-- **Mouse and keyboard, not thumb.** Interactions are precise (hover states
-  matter, which they don't on touch), and the keyboard is available (support
-  keyboard navigation and shortcuts for the deep-study flow).
-- **Long sessions at a desk.** The desktop context is where flow is most
-  achievable — a student sitting down for a real study block. The design
-  should feel like a calm desk, not a busy feed.
-- **Adapts down gracefully.** On tablet and phone, the bounded column becomes
-  the full width, hover states collapse into tap states, and the same calm
-  language holds. Mobile is supported and real, but it is the *secondary*
-  shape.
+- **On the phone, the primary action is visible without scrolling.** No
+  decorative block above it; every touch target is at least 44 px; pages
+  stay short (long lists fold away).
+- **On the desk, restraint is chosen.** The wide viewport could hold more;
+  it holds the same thing with generous margins and a bounded reading
+  column (65 characters), not more stuff.
+- **Both inputs.** Thumb first (no meaning carried by hover alone), and the
+  keyboard fully supported for the long study session at a desk.
+- **The same calm language at every width.** One idea per screen, the same
+  hierarchy, the same tokens.
 
 **The website and the app are the same thing.** There is no separate marketing
 site with a different language from the product. One visual system, one feel,
