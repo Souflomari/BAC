@@ -183,4 +183,38 @@ scene("end", {
   },
   render() { this.items.forEach((g, i) => { const o = clamp(this.p.n - i, 0, 1); g.style.opacity = o; g.setAttribute("transform", `translate(${((1 - o) * -16).toFixed(1)} 0)`); }); },
 });
+/* ---------- le diagramme (N, Z) ----------
+   N en abscisse, Z en ordonnée (la convention des cours marocains). La vallée passe par des
+   noyaux stables réels ; le point est l'étain 132 (Z = 50, N = 82), très à droite de l'étain
+   stable (N ≈ 69). La flèche β⁻ (N − 1, Z + 1) est grossie dix fois pour se voir. */
+scene("nz", {
+  p: { pt: 1, fl: 0, dom: 0 },
+  build(g) {
+    titre(g, "Le diagramme (*N*, *Z*)", "chaque noyau est un point : neutrons en abscisse, protons en ordonnée");
+    const L = 190, R = 850, T = 160, B = 590, X = (n) => L + ((R - L) * n) / 150, Y = (z) => B - ((B - T) * z) / 100;
+    E("line", { x1: L, y1: B, x2: R, y2: B, class: "k-ink", "stroke-width": 2 }, g);
+    E("line", { x1: L, y1: T, x2: L, y2: B, class: "k-ink", "stroke-width": 2 }, g);
+    E("line", { x1: X(0), y1: Y(0), x2: X(100), y2: Y(100), class: "k-dim", "stroke-width": 1.5, "stroke-dasharray": "7 7" }, g);
+    const val = [[2, 2], [10, 10], [20, 20], [35, 30], [51, 40], [69, 50], [84, 60], [103, 70], [126, 82]];
+    const d = val.map(([n, z], i) => `${i ? "L" : "M"}${X(n).toFixed(1)} ${Y(z).toFixed(1)}`).join(" ");
+    E("path", { d, class: "k-ink nofill", "stroke-width": 22, "stroke-opacity": 0.14, "stroke-linecap": "round", "stroke-linejoin": "round" }, g);
+    E("path", { d, class: "k-ink nofill", "stroke-width": 3, "stroke-linecap": "round", "stroke-linejoin": "round" }, g);
+    fx(g, R, B + 40, "*N* (neutrons)", "t-lab s-ink", "end");
+    fx(g, L - 14, T - 14, "*Z* (protons)", "t-lab s-ink", "middle");
+    fx(g, X(70), Y(86), "*N* = *Z*", "t-lab2 s-dim", "end");
+    fx(g, X(132), Y(90), "vallée de stabilité", "t-lab s-ink", "middle");
+    this.pt = E("g", {}, g);
+    E("circle", { cx: X(82), cy: Y(50), r: 9, class: "s-a" }, this.pt);
+    fx(this.pt, X(82) + 18, Y(50) + 26, "trop de neutrons", "t-lab s-a");
+    this.fl = E("g", {}, g);
+    const x2 = X(82 - 10), y2 = Y(50 + 10);
+    E("line", { x1: X(82), y1: Y(50), x2, y2, class: "k-a", "stroke-width": 3 }, this.fl);
+    E("path", { d: `M${x2} ${y2} l14 2 l-10 10 z`, class: "s-a" }, this.fl);
+    fx(this.fl, X(82) + 18, Y(50) + 56, "β^{−} : *N* − 1, *Z* + 1", "t-lab s-a");
+    this.dom = E("g", {}, g);
+    fx(this.dom, X(6), Y(66), "trop de protons : β^{+}", "t-lab s-ink");
+    fx(this.dom, X(140), Y(96) - 34, "noyaux lourds (*Z* > 82) : α", "t-lab s-ink", "middle");
+  },
+  render() { show(this.pt, this.p.pt); show(this.fl, this.p.fl); show(this.dom, this.p.dom); },
+});
 }

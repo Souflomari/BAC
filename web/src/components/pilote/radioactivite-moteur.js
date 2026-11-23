@@ -220,6 +220,13 @@ const STEPS=[
     ['Il diminue <i>A</i> de 1','γ n’emporte aucun nucléon : <i>A</i> ne change pas. C’est une onde électromagnétique.'],
     ['Ni <i>A</i> ni <i>Z</i>','Oui : γ n’a ni masse ni charge. Il accompagne α ou β sans changer l’équation.',1]]),
     apres:{tex:[[tx`${nucT(192,77,'Ir')}\longrightarrow ${nucT(192,78,'Pt')}^{*}+${nucT(0,-1,'e')}`,'iridium 192 donne platine 192 excité plus un électron'],[tx`${nucT(192,78,'Pt')}^{*}\longrightarrow ${nucT(192,78,'Pt')}+\gamma`,'le platine 192 excité se désexcite en émettant un rayonnement gamma']]}}},
+{cle:'nz',beat:2,scene:'nz',set:{pt:1,fl:0,dom:0},sujet:'le diagramme (N, Z)',
+  text:['Range les noyaux sur un diagramme : <i>N</i> en abscisse, <i>Z</i> en ordonnée. Les noyaux stables y dessinent une bande, la vallée de stabilité.',
+    {t:'Le noyau rouge a trop de neutrons. Pour se rapprocher de la vallée, il émet…',fort:true}],
+  pari:{reveal:[{p:{fl:1},d:900},{p:{dom:1},d:700}],apres:{html:`<p class="small">Trois domaines à reconnaître : trop de neutrons, ${bm} ; trop de protons, ${bp} ; noyaux lourds (<i>Z</i> > 82), α.</p>`},...VF([
+    [`${bm} : un neutron devient un proton`,true,'Oui : <i>N</i> diminue de 1 et <i>Z</i> augmente de 1. Le point remonte vers la vallée.'],
+    [`${bp} : un proton devient un neutron`,false,`${bp} ajoute un neutron : le noyau s’éloignerait encore. C’est la voie des noyaux qui ont trop de protons.`,'Il a trop de neutrons. Quelle émission en fait disparaître un ?'],
+    ['α : deux protons et deux neutrons partent',false,`α est la voie des noyaux lourds, au-delà de <i>Z</i> = 82. Ici, un neutron de trop devient un proton : ${bm}.`,'Ce noyau n’est pas un noyau lourd. Quelle émission change un neutron en proton ?']])}},
 {cle:'v-ecrire',beat:2,scene:'desint',set:{ty:4,rv:0},sujet:'écrire une désintégration',
   text:[`Sujet 2021 : le plutonium 238 ${nuc(238,94,'Pu')} subit une désintégration α. Son noyau fils est…`],
   verifie:{...VF([

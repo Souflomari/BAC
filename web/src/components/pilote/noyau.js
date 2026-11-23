@@ -202,7 +202,7 @@ function choose(st,j){
   // une question résolue : un clic relit l'explication d'une option, sans rien changer
   if(q&&resolu(st)){fb.innerHTML=P.opts[j].ok?messagePari(st,j):motsHTML(tyP(P.opts[j].fb||''));renderMath(fb);voir(fb);say(plain(P.opts[j].fb||''));return;}
   if(q){const ess=S.essais[k]||(S.essais[k]=[]);if(ess.includes(j))return;ess.push(j);}
-  if(S.first[k]==null)S.first[k]=j;S.ans[k]=j;
+  if(S.first[k]==null)S.first[k]=j;S.ans[k]=j;memoriser();
   const fini=resolu(st);
   root.querySelector('.pari').outerHTML=pariHTML(st);wireOpts(st);renderMath(root.querySelector('.pari'));
   const btn=root.querySelector(`.opt[data-j="${j}"]`);if(btn&&!btn.disabled)btn.focus();else if(fini)$('#next').focus();else{const autre=root.querySelector('.opt:not([disabled])');autre&&autre.focus();}
@@ -225,7 +225,7 @@ function ligneSuivante(st){
   say(plain((x.alt||x.tex)+'. '+(x.r||'')));
   updateNav();return true;
 }
-function reset(){S.ans={};S.first={};S.lignes={};S.vu={};S.essais={};STEPS.forEach(st=>st.pari&&melanger(st.pari));L.reset&&L.reset();}
+function reset(){S.ans={};S.first={};S.lignes={};S.vu={};S.essais={};STEPS.forEach(st=>st.pari&&melanger(st.pari));L.reset&&L.reset();oublier();}
 // « Suivant » pendant que des phrases attendent encore leur image : on termine l'animation (tout le
 // texte apparaît) au lieu de changer d'étape — l'élève ne saute jamais une phrase sans la voir
 function finir(st){if(!root.querySelector('#body .say.later'))return false;run++;const sc=scenes[st.scene];sc.p={...sc.p,...st.pre};sc.render();hooks.frame&&hooks.frame();montrerPhrases(Infinity);S.vu[st.k]=true;return true;}
@@ -250,7 +250,19 @@ root.addEventListener('click',surClic);
 
 /* chapitres */
 const beatEls=BEATS.map((b,k)=>{const n=STEPS.filter(s=>s.beat===k).length,btn=document.createElement('button');btn.type='button';btn.className='beat';btn.style.setProperty('--n',n);btn.innerHTML=`<span>${b.court||b.name}</span><i><b></b></i>`;btn.title=b.name;btn.addEventListener('click',()=>go(STEPS.findIndex(s=>s.beat===k)));$('#beats').appendChild(btn);return btn;});
+/* ---------- la reprise ----------
+   Un rechargement, un onglet fermé, un téléphone qui s'éteint : l'élève retrouve son étape et
+   ses réponses (sur cet appareil seulement, dans le stockage local ; rien n'est envoyé).
+   La signature refuse une mémoire écrite pour une autre version de la leçon. */
+const CLE_REPRISE=`pilote:${root.dataset.pilote||'lecon'}:reprise`;
+const signature=()=>STEPS.map(st=>st.k).join(',');
+function memoriser(){try{localStorage.setItem(CLE_REPRISE,JSON.stringify({sig:signature(),cur,ans:S.ans,first:S.first,essais:S.essais}));}catch{/* stockage refusé : pas de reprise */}}
+function oublier(){try{localStorage.removeItem(CLE_REPRISE);}catch{/* idem */}}
+function reprise(){try{const m=JSON.parse(localStorage.getItem(CLE_REPRISE)||'null');
+  if(!m||m.sig!==signature()||!(m.cur>0)||m.cur>=STEPS.length-1)return 0;
+  Object.assign(S.ans,m.ans);Object.assign(S.first,m.first);Object.assign(S.essais,m.essais);return m.cur;}catch{return 0;}}
 function updateChrome(st){
+  memoriser();
   BEATS.forEach((b,k)=>{const steps=STEPS.filter(s=>s.beat===k),f=steps[0].id,done=clamp((cur-f+1)/steps.length,0,1);beatEls[k].querySelector('b').style.width=(done*100)+'%';beatEls[k].classList.toggle('on',k===st.beat);if(k===st.beat)beatEls[k].setAttribute('aria-current','step');else beatEls[k].removeAttribute('aria-current');});
   const pl=$('#plaque');if(st.tag){pl.textContent=st.tag;pl.classList.add('on');}else pl.classList.remove('on');
 }
@@ -282,7 +294,7 @@ const surTouche=e=>{
   else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(cur-1);}
 };
 window.addEventListener('keydown',surTouche);
-go(0);
+go(reprise());
 return function demonter(){
   run++;window.removeEventListener('keydown',surTouche);root.removeEventListener('click',surClic);
   $('#next').removeEventListener('click',next);$('#prev').removeEventListener('click',surRetour);
