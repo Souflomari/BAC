@@ -48,7 +48,8 @@ confondu, puis donne le bon geste. Jamais « Non. », jamais de jugement, jamais
 
 **B3 — Un calcul se fait, il ne se lit pas.** Dans une dérivation de 3 lignes ou plus, l'élève
 choisit une ligne (`deriv` pour les lignes données, puis un `pari` dont `apres` montre la suite).
-Les leurres sont les erreurs classiques de la fiche bible, pas des absurdités.
+Les leurres sont les erreurs classiques de la fiche bible, pas des absurdités. Un leurre mène toujours à
+un résultat faux : si le mauvais calcul retombe sur la bonne solution, on change l'énoncé.
 
 **B4 — Une idée par étape.** Si une étape porte deux idées, on la coupe. Un fait qui ne sert à
 rien dans la suite (un nom, une date, une anecdote) part, ou va dans une fiche de glossaire.

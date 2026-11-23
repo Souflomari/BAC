@@ -119,6 +119,14 @@ Le format est validé (ADR 0046). La chaîne, une notion à la fois :
 **Notion d'essai : la fonction exponentielle** (maths, la suite naturelle du logarithme). La série
 ne démarre que si cet essai tient : qualité des paris, exactitude, scènes lisibles au téléphone.
 
+**Résultat de l'essai (2026-11-23) : il tient.** La leçon `/pilote/exponentielle` (58 étapes, 14
+gabarits d'exercices) a été écrite par l'auteur à partir du plan, puis relue en entier. Tous les
+contrôles passent. La relecture a trouvé une seule faute de fond, qu'aucun contrôle ne voit : dans
+le second exemple du bac, un leurre menait à la bonne solution par un mauvais calcul (corrigé en
+changeant l'équation). Leçon pour la série : le relecteur vérifie que **chaque leurre mène à un
+résultat faux**. La leçon n'est pas liée depuis l'accueil ; restent à confirmer avant de la montrer
+les points « à vérifier » du plan (exp définie comme réciproque de ln dans le programme officiel).
+
 ## 5. Avant le lancement : les bloquants
 
 Inventaire vérifié dans le dépôt le 2026-11-23. Trois faits qui cadrent tout :
