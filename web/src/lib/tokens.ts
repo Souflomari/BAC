@@ -119,7 +119,7 @@ export const themes: Record<"light" | "dark", Theme> = {
       "--figure-surface": "#FFFFFC",
       "--figure-ink": "#181816",
       "--figure-ink-soft": "#4A4A44",
-      "--figure-grid": "#E4E4DC",
+      "--figure-grid": "#E8E8E1",
       "--figure-accent": "#00746A",
       "--figure-energy-C": "#3C5C98",
       "--figure-energy-L": "#386B3A",
