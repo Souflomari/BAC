@@ -17,7 +17,7 @@ import { manifestePourHeader } from "@/lib/palette-notions";
 
 export const metadata: Metadata = {
   title: "Choisis ta filière",
-  description: "Choisis ta filière scientifique — 2ᵉ Bac (Maroc) — pour personnaliser ton programme.",
+  description: "Choisis ta filière scientifique (2ᵉ Bac, Maroc) pour adapter ton programme et tes coefficients.",
   alternates: { canonical: "/commencer" },
 };
 
@@ -25,13 +25,13 @@ export default function CommencerPage() {
   return (
     <PageShell epreuves={manifesteEpreuves()} notions={manifestePourHeader()} width="content">
       <Breadcrumb segments={[{ label: "Accueil", href: "/" }, { label: "Ta filière" }]} />
-      <header className="mb-10 max-w-lead">
-        <h1 className="font-display text-display font-bold text-primary">
+      <header className="mb-8 bp-medium:mb-10 max-w-lead">
+        <h1 className="font-display text-h1 bp-medium:text-display font-bold text-primary">
           Choisis ta filière
         </h1>
-        <p className="mt-4 text-lead text-secondary">
-          Ton programme et tes coefficients s’adaptent à ta filière. Tu pourras
-          en changer à tout moment.
+        <p className="mt-3 text-lead text-secondary">
+          Ton programme et tes coefficients s’adaptent à ta filière. Tu peux en
+          changer à tout moment.
         </p>
       </header>
 
