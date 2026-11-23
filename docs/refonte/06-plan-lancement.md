@@ -59,6 +59,18 @@ Par leçon, les premières corrections :
   devinette ; `fin-traduction` porte quatre idées sans pari ; poser en tant que telle la question
   « complémenter ou pas ? » ; barème de `bac-redaction` marqué « indicatif ».
 
+**Fait le 2026-11-23 (première série)** : dans les trois leçons, la pause est suivie d'une étape
+`rappel` ; maths : `reve` devient le pari « f(1) = ? », `croissance-2` fait pratiquer l'inéquation,
+`egales` répare le pari faux, `retour` rappelle la règle du produit, options de `v-regle` de même
+forme ; physique : phrases de barème non sourcées retirées de `bac-copie` ; SVT : `pari-u` devient un
+raisonnement, nouveau pari `stop` avant la terminaison, barème marqué « indicatif ».
+
+**Reste** : faire déduire l'hyperbole (`hyper`) ; une ligne choisie par dérivation ; le second exemple
+du bac à compléter et la copie fautive ; l'étape (N, Z) et les paris « température » et « t½ = 1/λ »
+en physique ; couper `tau` ; le test de saut de la SVT ; la question « complémenter ou pas ? » ; le
+bilan produit par l'élève ; trois étapes qui débordent d'une ou deux lignes dans le pire cas (maths
+41 et 49, SVT 18).
+
 À unifier dans le moteur (`noyau.js`), aujourd'hui codé trois fois : le saut de « Ce qu'il faut
 savoir », la pause, le sujet « à revoir », l'exercice lié à chaque piège.
 

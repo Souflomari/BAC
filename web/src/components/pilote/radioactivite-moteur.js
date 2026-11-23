@@ -298,8 +298,14 @@ const STEPS=[
     ['Plus rien : tout a disparu',false,'La courbe ne touche jamais zéro : à chaque demi-vie, il reste la moitié.','La courbe touche-t-elle zéro ?']])},
 
 /* ===== 5. la formule ===== */
+{cle:'rappel',beat:5,scene:'loi',set:{xmax:8,curve:0,run:0,st1:0,st2:0,st3:0,st4:0,stSym:0,tk:0,n0:0},sujet:'la demi-vie',
+  text:['Mi-parcours : c’est le bon moment pour une pause. Avant de repartir, un rappel.',
+    {t:'Au bout de 3 demi-vies, quelle part des noyaux du départ reste-t-il ?',fort:true}],
+  verifie:VF([['Un huitième',true,'Oui : la moitié, puis la moitié de la moitié, puis encore la moitié : 1/2 × 1/2 × 1/2 = 1/8.'],
+    ['Un sixième',false,'On ne divise pas par 2 × 3 : à chaque demi-vie, il reste la moitié de ce qui restait. 1/2 × 1/2 × 1/2 = 1/8.','À chaque demi-vie, il reste la moitié de ce qui restait. Fais-le trois fois.'],
+    ['Aucun : tout a disparu',false,'À chaque demi-vie, il reste la moitié de ce qui restait : il en reste toujours. Après trois : 1/8.','Après une demi-vie, il reste la moitié. Et après la suivante ?']])},
 {cle:'produit',beat:5,scene:'loi',set:{xmax:8,curve:0,run:0,st1:0,st2:0,st3:0,st4:0,stSym:0,tk:0,n0:0},
-  text:['Bon moment pour une pause. Puis écris ce que font les dés : <i>N</i><sub><i>k</i></sub>, les dés restants après <i>k</i> tics.'],
+  text:['Écris maintenant ce que font les dés : <i>N</i><sub><i>k</i></sub>, les dés restants après <i>k</i> tics.'],
   deriv:[
     {tex:tx`N_1=N_0\times ${F56}`,alt:'N₁ = N₀ × 5/6',r:`Tic 1 : chaque dé a ${DE-1} chances sur ${DE} de rester ; il reste 5/6 des dés.`,p:{tk:1}},
     {tex:tx`N_2=N_1\times ${F56}=N_0\times\left(${F56}\right)^{2}`,alt:'N₂ = N₁ × 5/6 = N₀ × (5/6)²',r:`Tic 2 : on repart de <i>N</i><sub>1</sub>, et il en reste encore 5/6.`,p:{tk:2}},
@@ -450,7 +456,7 @@ const STEPS=[
     {tex:tx`t_1=\dfrac{8}{\ln 2}\times\ln 20`,alt:'t₁ = (8 / ln 2) × ln 20',r:`${Th} = 8 jours : pas besoin de convertir, <i>t</i><sub>1</sub> sort dans la même unité.`},
     {tex:tx`t_1\approx ${TN(T95,1)}\ \text{jours}`,alt:`t₁ ≈ ${fr(T95,1)} jours`,r:`8 / ln 2 ≈ ${fr(T_I/Math.LN2,2)} et ln 20 ≈ ${fr(Math.log(20),2)}. Contrôle : entre 4 demi-vies (32 jours, 6,25 % restent) et 5 (40 jours).`,p:{t95:1}}]},
 {cle:'bac-copie',beat:9,scene:'bac',set:{th:1,t95:1},
-  text:['La rédaction attendue pour les 0,5 point de la question : la loi écrite pour ce qui reste, l’expression littérale de <i>t</i><sub>1</sub>, puis la valeur avec son unité.','Une valeur seule, sans expression littérale, perd des points.'],
+  text:['La rédaction attendue : la loi écrite pour ce qui reste, l’expression littérale de <i>t</i><sub>1</sub>, puis la valeur avec son unité.','C’est la consigne des sujets : les expressions littérales avant les applications numériques.'],
   tex:[[tx`N(t_1)=0{,}05\,N_0\iff e^{-\lambda t_1}=0{,}05`,'N(t₁) = 0,05 N₀ ⇔ e^(−λ t₁) = 0,05'],[tx`t_1=\dfrac{t_{1/2}}{\ln 2}\,\ln 20`,'t₁ = (t½ / ln 2) ln 20'],[tx`t_1=\dfrac{8}{\ln 2}\times\ln 20\approx ${TN(T95,1)}\ \text{jours}`,`t₁ ≈ ${fr(T95,1)} jours`]]},
 
 /* ===== 10. bilan ===== */

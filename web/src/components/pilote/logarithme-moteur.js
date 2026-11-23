@@ -675,8 +675,10 @@ const STEPS=[
 {cle:'add',beat:1,scene:'ledger',seq:[{p:{mx:1},d:900,w:200},{p:{add:1},d:500},{p:{add:8},d:1800},{p:{addc:1},d:500}],
   text:['Pose maintenant les mêmes nombres en addition.',{t:'Sept petites additions de chiffres, de droite à gauche, sur une seule ligne.',a:2},{t:'L’addition est rapide et sûre. La multiplication est lente et fragile.',a:3,fort:true}]},
 {cle:'reve',beat:1,scene:'ledger',seq:[{p:{q:1},d:900}],
-  text:['Le rêve de Napier : une fonction <i>f</i> qui transformerait chaque multiplication en addition.','Est-ce seulement possible ?'],
-  pari:BET([['Oui, ça doit exister','Napier y a cru assez pour y consacrer vingt ans de sa vie. Tu sauras à la fin de la séance s’il avait raison : ce calcul reviendra.'],['Non, c’est trop beau pour être vrai','Méfiance saine. La réponse tient pourtant dans une simple table, et ce calcul reviendra à la fin.'],['Aucune idée','C’est exactement là qu’en était Napier quand il a commencé. Ce calcul reviendra à la fin de la séance.']])},
+  text:['Le rêve de Napier : une fonction <i>f</i> qui change chaque multiplication en addition.','Si elle existe, combien vaut forcément <i>f</i>(1) ?'],
+  pari:VF([['0',true,'Oui : 1 = 1 × 1, donc <i>f</i>(1) = <i>f</i>(1) + <i>f</i>(1). Le seul nombre égal à son double, c’est 0. Reste à savoir si une telle fonction existe : ce calcul reviendra à la fin.'],
+    ['1',false,'1 = 1 × 1, donc <i>f</i>(1) = <i>f</i>(1) + <i>f</i>(1). Si <i>f</i>(1) valait 1, on aurait 1 = 2. Le seul nombre égal à son double est 0.','Écris 1 = 1 × 1, puis applique la règle du rêve.'],
+    ['On ne peut pas le savoir',false,'On peut : 1 = 1 × 1, donc <i>f</i>(1) = <i>f</i>(1) + <i>f</i>(1), ce qui force <i>f</i>(1) = 0.','Écris 1 = 1 × 1, puis applique la règle du rêve.']])},
 
 /* ===== 2. la table ===== */
 {cle:'table',beat:2,scene:'table',set:{cells:0,arrA:0,arrB:0,log:0,gap:0,inter:0,demo:0},seq:[{p:{cells:11},d:3400,w:200},{p:{arrA:10},d:2800,w:400},{p:{arrB:10},d:1800,w:400}],
@@ -735,8 +737,8 @@ const STEPS=[
 {cle:'v-regle',beat:4,scene:'rule',set:{drag:0,la:0,lb:0,cur:0,read:0},
   text:['Pour calculer 3 × 3 avec la règle, que fais-tu ?'],
   verifie:{...VF([['Je pose le 1 du haut sur le 3 du bas, et je lis en face du 3 du haut',true,'Oui : tu ajoutes la longueur de 3 à la longueur de 3. En face, on lit 9.'],
-    ['Je pose le 3 du haut sur le 3 du bas',false,'Les longueurs se comptent depuis 1 : c’est le 1 du haut qu’on pose sur le 3 du bas. On lit ensuite en face du 3 du haut : 9.','Les longueurs se comptent depuis le 1 de chaque règle. Quel repère du haut faut-il poser sur le 3 ?'],
-    ['Je pose le 0 du haut sur le 3 du bas',false,'La règle ne commence pas à 0 mais à 1 : le 1 est au pas zéro. On pose le 1 du haut sur le 3, et on lit 9 en face du 3.','Regarde le bout de la règle : y a-t-il un 0 ? Le pas zéro, c’est le nombre 1.']]),
+    ['Je pose le 3 du haut sur le 3 du bas, et je lis en face du 1 du haut',false,'Les longueurs se comptent depuis 1 : c’est le 1 du haut qu’on pose sur le 3 du bas. On lit ensuite en face du 3 du haut : 9.','Les longueurs se comptent depuis le 1 de chaque règle. Quel repère du haut faut-il poser sur le 3 ?'],
+    ['Je pose le 0 du haut sur le 3 du bas, et je lis en face du 3 du haut',false,'La règle ne commence pas à 0 mais à 1 : le 1 est au pas zéro. On pose le 1 du haut sur le 3, et on lit 9 en face du 3.','Regarde le bout de la règle : y a-t-il un 0 ? Le pas zéro, c’est le nombre 1.']]),
     reveal:[{p:{la:L3},d:1200},{p:{cur:1},d:400},{p:{lb:L3},d:1200},{p:{read:1},d:500}]}},
 
 /* ===== 5. l'aire ===== */
@@ -756,7 +758,7 @@ const STEPS=[
     {t:'Ce n’est pas un hasard : un point parti de <i>u</i>, à la hauteur 1/<i>u</i>, arrive en 2<i>u</i> à la hauteur 1/(2<i>u</i>), sur la courbe. La copie l’épouse partout.',a:0},
     {t:'Aire × 2, puis ÷ 2 : elle n’a pas changé.',a:0,fort:true}]},
 {cle:'egales',beat:5,scene:'hyper',set:{m:0,tgt:0,pt:0,A1:1,A2:1,lab:1},seq:[{p:{A3:1},d:1200,w:600}],
-  text:()=>[`Les deux aires sont égales${ctx.rep('a24')===1?' : ton pari était le bon.':' : contre-intuitif, non ?'}`,{t:'Et de 4 à 8 : encore la même, pour la même raison.',a:0},{t:'Doubler en bas, ajouter la même aire : c’est la table de Napier.',a:0,fort:true}]},
+  text:()=>[(r=>`Les deux aires sont égales${r===1?' : ton pari était le bon.':r===0?'. Tu avais parié sur la plus large : sa largeur double, mais sa hauteur est divisée par 2. Les deux effets s’annulent.':r===2?'. Tu avais parié sur la plus haute : elle est deux fois plus haute, mais deux fois moins large. Les deux effets s’annulent.':'.'}`)(ctx.rep('a24')),{t:'Et de 4 à 8 : encore la même, pour la même raison.',a:0},{t:'Doubler en bas, ajouter la même aire : c’est la table de Napier.',a:0,fort:true}]},
 {cle:'gen',beat:5,scene:'hyper',set:{A1:0,A2:0,A3:0,lab:0,gen:0,a:3,b:2},seq:[{p:{gen:1},d:1200,w:300}],ctl:'gen',
   text:['Ce n’est pas propre au 2. Étire par 3 et écrase par 3 : la tranche de 1 à 2 devient la tranche de 3 à 6, avec la même aire.',
     'Pour tous <i>a</i> et <i>b</i> : la tranche de 1 à <i>b</i> devient celle de <i>a</i> à <i>ab</i>.','Bouge <i>a</i> et <i>b</i> : les deux aires restent égales.']},
@@ -780,9 +782,14 @@ const STEPS=[
     ['Environ 0,41',false,'0,41 = 1,10 − 0,69, c’est l’aire de 1 à 1,5. Pour 6 = 2 × 3, on additionne : 0,69 + 1,10 = 1,79.','Tu as soustrait les aires. 6 s’écrit comme un produit : lequel ?']]),reveal:[{p:{va:1},d:900}]}},
 
 /* ===== 6. la dérivée et la définition du bac ===== */
+{cle:'rappel',beat:6,scene:'hyper',set:{va:0},sujet:'ajouter des aires',
+  text:['Mi-parcours : c’est le bon moment pour une pause. Avant de repartir, un rappel.',
+    {t:'L’aire de 1 à 2 vaut environ 0,69. Combien vaut l’aire de 1 à 8 ?',fort:true}],
+  verifie:VF([['Environ 2,08',true,'Oui : 8 = 2 × 2 × 2. Trois doublements, donc trois fois la même aire : 3 × 0,69.'],
+    ['Environ 5,5',false,'On ne multiplie pas l’aire par 8 : chaque doublement ajoute la même aire. 8 = 2 × 2 × 2, donc 3 × 0,69 ≈ 2,08.','Combien de doublements pour aller de 1 à 8 ?'],
+    ['Environ 1,38',false,'C’est l’aire de 1 à 4 : deux doublements. De 1 à 8, il y en a trois : 3 × 0,69 ≈ 2,08.','Combien de doublements pour aller de 1 à 8 ?']])},
 {cle:'cours',beat:6,scene:'hyper',set:{va:0},
-  text:['Tu es à mi-chemin. Si tu veux faire une pause, c’est le bon moment.',
-    'Ton cours ne définit pas ln par une aire, mais par une [[derivee|dérivée]] : ln est « la [[primitive]] de 1/<i>x</i> qui s’annule en 1 ».',
+  text:['Ton cours ne définit pas ln par une aire, mais par une [[derivee|dérivée]] : ln est « la [[primitive]] de 1/<i>x</i> qui s’annule en 1 ».',
     'Pour faire le lien, regarde à quelle vitesse l’aire grandit quand <i>x</i> avance.',{t:'Un rappel d’abord : qu’est-ce qu’une dérivée ?',fort:true}]},
 {cle:'taux',beat:6,scene:'taux',set:{on:0,sec:0,h:3.6,tan:0},seq:[{p:{on:1},d:1500,w:200},{p:{sec:1},d:700,w:500},{p:{h:.22},d:4400,w:900},{p:{tan:1},d:700,w:200}],
   text:['Prends une fonction <i>f</i> et deux points de sa courbe : en <i>x</i>, puis un petit pas <i>h</i> plus loin.',
@@ -791,7 +798,7 @@ const STEPS=[
     {t:'… et la droite devient la [[tangente]]. Sa pente, c’est la dérivée <i>f</i> ′(<i>x</i>).',a:3,fort:true}]},
 {cle:'bande',beat:6,scene:'hyper',set:{strip:1,xs:2.5,h:1.4},seq:[{p:{h:.08},d:4000,w:700}],
   text:['Fais la même chose avec l’aire : avance <i>x</i> d’un petit pas <i>h</i>.',{t:'L’aire gagne une bande fine, presque un rectangle. Combien vaut-elle, environ ?',a:0}],
-  pari:{label:'Pourquoi ce geste ?',opts:[
+  pari:{opts:[
     {t:'<i>h</i> × 1/<i>x</i>',ok:true,fb:'Oui : largeur <i>h</i>, hauteur 1/<i>x</i>. Plus <i>h</i> est petit, plus le « presque » disparaît.'},
     {t:'<i>h</i> × <i>x</i>',indice:'<i>x</i> est l’endroit où l’on se trouve. Quelle est la hauteur de la courbe en <i>x</i> ?',fb:'<i>x</i> est une position sur l’axe ; la hauteur de la bande est 1/<i>x</i>.'},
     {t:'<i>h</i>',indice:'Une aire, c’est largeur × hauteur. La hauteur vaut-elle 1 ?',fb:'Ce serait vrai si la hauteur valait 1. Elle vaut 1/<i>x</i>.'}]}},
@@ -845,8 +852,13 @@ const STEPS=[
   text:['Deux choses se lisent sur la courbe rouge.',
     {t:'Son signe : ln <i>x</i> &lt; 0 sur '+I01+', ln 1 = 0, ln <i>x</i> > 0 sur '+I1+'.',a:0},
     {t:'Sa pente 1/<i>x</i> est toujours positive : ln est [[croissante|strictement croissante]]. Un nombre plus grand a un ln plus grand.',a:1},
-    {t:'Pour <i>a</i> > 0 et <i>b</i> > 0 (le signe [[equivalent|⇔]] se lit « équivaut à ») :',a:1,fort:true}],
-  tex:[['\\ln a = \\ln b \\iff a = b','ln a = ln b ⇔ a = b'],['\\ln a < \\ln b \\iff a < b','ln a < ln b ⇔ a < b']]},
+    {t:'Un nombre plus grand a un ln plus grand : ln garde l’ordre.',a:1,fort:true}]},
+{cle:'croissance-2',beat:7,scene:'courbe',sujet:'les équations et inéquations avec ln',
+  text:['Pour <i>a</i> > 0 et <i>b</i> > 0 ([[equivalent|⇔]] se lit « équivaut à »). À toi : ln <i>x</i> &lt; ln 3 équivaut à…'],
+  tex:[['\\ln a = \\ln b \\iff a = b','ln a = ln b ⇔ a = b'],['\\ln a < \\ln b \\iff a < b','ln a < ln b ⇔ a < b']],
+  pari:VF([['0 &lt; <i>x</i> &lt; 3',true,'Oui : ln garde l’ordre, et ln <i>x</i> n’existe que pour <i>x</i> > 0. Au bac, on écrit les deux.'],
+    ['<i>x</i> &lt; 3',false,'Presque : ln <i>x</i> n’existe que pour <i>x</i> > 0. La réponse complète est 0 &lt; <i>x</i> &lt; 3.','Pour quels <i>x</i> le nombre ln <i>x</i> existe-t-il ?'],
+    ['<i>x</i> > 3',false,'ln est croissante : elle garde l’ordre, elle ne le renverse pas. ln <i>x</i> &lt; ln 3 donne <i>x</i> &lt; 3, avec <i>x</i> > 0.','ln est croissante : garde-t-elle l’ordre, ou le renverse-t-elle ?']])},
 {cle:'v-courbe',beat:7,scene:'courbe',set:{sg:0,ab:0,zone:0},
   text:['Pour quels <i>x</i> a-t-on ln(<i>x</i> − 2) &lt; 0 ?'],
   verifie:{...VF([['2&nbsp;&lt; <i>x</i>&nbsp;&lt; 3',true,'Oui : il faut <i>x</i> − 2 > 0 pour que ln existe, et <i>x</i> − 2 &lt; 1 pour qu’il soit négatif. Donc 2 &lt; <i>x</i> &lt; 3.'],
@@ -893,11 +905,11 @@ const STEPS=[
   text:['Retour à l’énigme : 2\u202F718\u202F281 × 3\u202F141\u202F592.',
     {t:'Avec une table de ln, on additionne : 14,8155 + 14,9602 = 29,7757.',a:0},
     {t:'Lue à l’envers, la table donne 8,54 × 10<sup>12</sup>. Une addition au lieu de 49 produits.',a:3,fort:true},
-    {t:'Et ces deux nombres : tu les reconnais ?',a:3}],
+    {t:'Quelle règle vient de servir ?',a:3}],
   pari:{reveal:[{p:{wink:1},d:800}],opts:[
-    {t:'e et π',fb:'Bien vu : 2,718281…, c’est e ; 3,141592…, c’est π. L’énigme était un clin d’œil.'},
-    {t:'Des puissances de 2',fb:'Non : 2,718281…, c’est e, le nombre où l’aire vaut 1 ; 3,141592…, c’est π.'},
-    {t:'Rien de spécial',fb:'Regarde mieux : 2,718281…, c’est e, le nombre où l’aire vaut 1 ; 3,141592…, c’est π.'}]}},
+    {t:'ln(<i>a</i> × <i>b</i>) = ln <i>a</i> + ln <i>b</i>',ok:true,fb:'Oui : le logarithme d’un produit est la somme des logarithmes. Au passage : 2,718281… est e, et 3,141592… est π.'},
+    {t:'ln(<i>a</i> × <i>b</i>) = ln <i>a</i> × ln <i>b</i>',indice:'Qu’a-t-on fait des deux nombres lus dans la table : une multiplication, ou une addition ?',fb:'On a additionné les deux nombres lus dans la table : c’est tout l’intérêt.'},
+    {t:'ln(<i>a</i> + <i>b</i>) = ln <i>a</i> + ln <i>b</i>',indice:'Quelle opération reliait les deux nombres de l’énigme, au départ ?',fb:'Les deux nombres étaient multipliés. Aucune règle n’existe pour ln(<i>a</i> + <i>b</i>).'}]}},
 
 /* ===== 9. au bac ===== */
 {cle:'bac',beat:9,scene:'bac',set:{f:0,dom:0,grp:0,cand:0,rej:0},seq:[{p:{f:1},d:1800,w:300}],
