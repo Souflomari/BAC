@@ -12,6 +12,7 @@
  */
 
 import { Link } from "@/components/ui/Lien";
+import { frenchTypography } from "@/lib/frenchTypography";
 import { CATALOGUE } from "@/components/pilote/exercices/catalogue";
 
 const NB = CATALOGUE as Record<string, unknown[]>;
@@ -179,7 +180,7 @@ export function LeconsVitrine({ className }: { className?: string }) {
                     {nb > 0 ? ` · ${nb} exercices` : ""}
                   </span>
                   <span className="mt-2 block font-display text-h3 font-bold text-primary">{titre}</span>
-                  <span className="mt-1 block text-body-sm text-secondary">{description}</span>
+                  <span className="mt-1 block text-body-sm text-secondary">{frenchTypography(description)}</span>
                   <span className="mt-4 inline-flex min-h-touch items-center gap-2 text-body-sm font-semibold text-primary group-hover:text-signal">
                     Ouvrir la leçon
                     <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">→</span>
