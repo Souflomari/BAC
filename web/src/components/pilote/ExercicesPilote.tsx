@@ -14,6 +14,7 @@
  * validation du format).
  */
 
+import { journal } from "@/lib/journal";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useHydrated } from "@/lib/useHydrated";
@@ -154,6 +155,18 @@ export function ExercicesPilote({
         if (p?.erreur) erreur = p.erreur;
       }
     }
+    journal({
+      type: "exo_reponse",
+      notion: nom,
+      gabarit: ex?.id,
+      graine: e.graine,
+      question: j,
+      qtype: q.type,
+      essai: s.essais + 1,
+      juste,
+      erreur,
+      indice_vu: e.indices.includes(j),
+    });
     maj((x) => ({
       ...x,
       erreurs: erreur && !x.erreurs.includes(erreur) ? [...x.erreurs, erreur] : x.erreurs,

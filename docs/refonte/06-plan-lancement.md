@@ -14,7 +14,7 @@
 | Interface « premium » : le reste (voir §2) | à faire |
 | Pilotes : améliorations (voir §3) | à faire — la critique pédagogique est faite |
 | Règles du format, vérifiables (voir §4) | à écrire, après les améliorations des pilotes |
-| Données d'apprentissage et rappel espacé | spécifié : [`docs/design/APPRENTISSAGE-DONNEES.md`](../design/APPRENTISSAGE-DONNEES.md) ; rien n'est construit |
+| Données d'apprentissage et rappel espacé | spécifié : [`docs/design/APPRENTISSAGE-DONNEES.md`](../design/APPRENTISSAGE-DONNEES.md). **Construit le 2026-11-23** : le journal local (`web/src/lib/journal.ts`), branché sur les leçons et les exercices ; la reprise des leçons. **Reste** : le modèle (preuves, boîtes, calendrier), ce qu'on montre à l'élève, les identifiants d'erreurs et de capacités dans le contenu |
 | Inventaire avant lancement | fait (voir §5) |
 
 ## 2. Interface « premium » : ce qui reste

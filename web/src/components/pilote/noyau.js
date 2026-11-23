@@ -32,6 +32,7 @@
  * Dans le texte, [[cle|mot affiché]] ouvre la fiche du mot `cle`.
  */
 import katex from "katex";
+import { journal } from "@/lib/journal";
 
 export function monterLecon(root, construire) {
 
@@ -70,6 +71,7 @@ const scenes={};
 function scene(id,def){const g=E('g',{class:'scene'});g.style.opacity=0;const s=Object.assign({id,g},def);s.defaults={...def.p};s.p={...def.p};s.build(g);s.render();scenes[id]=s;return s;}
 
 /* état de l'élève : réponses (par clé d'étape), lignes vues, étapes vues */
+const NOM=root.dataset.pilote||'lecon';
 const S={ans:{},first:{},lignes:{},vu:{},essais:{}};
 let STEPS=[],cur=-1;
 const parCle={};
@@ -138,6 +140,7 @@ function go(i){
   for(const k in hooks)delete hooks[k];
   let fresh=false;
   if(curScene!==sc){if(curScene){curScene.g.style.opacity=0;curScene.g.setAttribute('class','scene');}sc.p={...st.base};sc.render();sc.g.style.opacity=1;sc.g.setAttribute('class','scene on');curScene=sc;fresh=true;}
+  if(i!==cur)journal({type:'lecon_etape',notion:NOM,cle:st.k,index:i+1,total:STEPS.length});
   cur=i;renderPanel(st);updateChrome(st);
   animate(sc,st,my,fresh);speak(st);
 }
@@ -203,6 +206,7 @@ function choose(st,j){
   if(q&&resolu(st)){fb.innerHTML=P.opts[j].ok?messagePari(st,j):motsHTML(tyP(P.opts[j].fb||''));renderMath(fb);voir(fb);say(plain(P.opts[j].fb||''));return;}
   if(q){const ess=S.essais[k]||(S.essais[k]=[]);if(ess.includes(j))return;ess.push(j);}
   if(S.first[k]==null)S.first[k]=j;S.ans[k]=j;memoriser();
+  journal({type:'lecon_reponse',notion:NOM,cle:k,nature:q?'question':'pari',option:j,essai:q?(S.essais[k]||[]).length||1:1,juste:q?!!P.opts[j].ok:null});
   const fini=resolu(st);
   root.querySelector('.pari').outerHTML=pariHTML(st);wireOpts(st);renderMath(root.querySelector('.pari'));
   const btn=root.querySelector(`.opt[data-j="${j}"]`);if(btn&&!btn.disabled)btn.focus();else if(fini)$('#next').focus();else{const autre=root.querySelector('.opt:not([disabled])');autre&&autre.focus();}
@@ -230,7 +234,7 @@ function reset(){S.ans={};S.first={};S.lignes={};S.vu={};S.essais={};STEPS.forEa
 // texte apparaît) au lieu de changer d'étape — l'élève ne saute jamais une phrase sans la voir
 function finir(st){if(!root.querySelector('#body .say.later'))return false;run++;const sc=scenes[st.scene];sc.p={...sc.p,...st.pre};sc.render();hooks.frame&&hooks.frame();montrerPhrases(Infinity);S.vu[st.k]=true;return true;}
 function rejouer(){const st=STEPS[cur];if(!st)return;S.vu[st.k]=false;curScene=null;go(cur);}
-function next(){if($('#next').disabled)return;const st=STEPS[cur];if(finir(st))return;if(st.deriv&&ligneSuivante(st))return;if(cur===STEPS.length-1){reset();go(0);}else go(cur+1);}
+function next(){if($('#next').disabled)return;const st=STEPS[cur];if(finir(st))return;if(st.deriv&&ligneSuivante(st))return;if(cur===STEPS.length-1){journal({type:'lecon_fin',notion:NOM,etapes:STEPS.length});reset();go(0);}else go(cur+1);}
 
 /* ---------- fiches de mots ---------- */
 function ouvrirMot(btn){
@@ -254,7 +258,7 @@ const beatEls=BEATS.map((b,k)=>{const n=STEPS.filter(s=>s.beat===k).length,btn=d
    Un rechargement, un onglet fermé, un téléphone qui s'éteint : l'élève retrouve son étape et
    ses réponses (sur cet appareil seulement, dans le stockage local ; rien n'est envoyé).
    La signature refuse une mémoire écrite pour une autre version de la leçon. */
-const CLE_REPRISE=`pilote:${root.dataset.pilote||'lecon'}:reprise`;
+const CLE_REPRISE=`pilote:${NOM}:reprise`;
 const signature=()=>STEPS.map(st=>st.k).join(',');
 function memoriser(){try{localStorage.setItem(CLE_REPRISE,JSON.stringify({sig:signature(),cur,ans:S.ans,first:S.first,essais:S.essais}));}catch{/* stockage refusé : pas de reprise */}}
 function oublier(){try{localStorage.removeItem(CLE_REPRISE);}catch{/* idem */}}

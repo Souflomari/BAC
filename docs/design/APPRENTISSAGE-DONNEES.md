@@ -452,6 +452,5 @@ lecture du journal par le même module pur.
 
 Fichiers que ce document commande et qui n'existent pas encore :
 
-- CHEMIN À CRÉER: web/src/lib/journal.ts — le point d'écriture unique des événements
 - CHEMIN À CRÉER: web/src/lib/apprentissage.ts — le modèle pur (preuves, boîtes, calendrier)
 - CHEMIN À CRÉER: web/scripts/test-apprentissage.mjs — la table de cas du modèle
