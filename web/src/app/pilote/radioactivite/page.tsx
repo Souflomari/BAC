@@ -20,6 +20,7 @@ import { manifestePourHeader } from "@/lib/palette-notions";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/pilote/radioactivite" },
   title: "Décroissance radioactive — la leçon",
   description:
     "La décroissance radioactive pas à pas : de Becquerel (1896) à la datation au carbone 14, en lançant soi-même les dés.",

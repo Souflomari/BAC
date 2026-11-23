@@ -1,3 +1,4 @@
+import { SITE_OUVERT, SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import { Archivo, Source_Serif_4 } from "next/font/google";
 import localFont from "next/font/local";
@@ -83,7 +84,6 @@ const GeistSans = localFont({
 // apple-icon.png). metadataBase = the deployed preview domain — swap when a
 // production domain is decided (owner call). robots stays noindex: private
 // during build; the og/canonical set is in place for when indexing opens.
-const SITE_URL = "https://bac-pink.vercel.app";
 const SITE_DESCRIPTION =
   "Cours, schémas interactifs, exercices corrigés et annales du baccalauréat scientifique marocain, alignés sur le cadre de référence national.";
 
@@ -94,15 +94,16 @@ export const metadata: Metadata = {
     template: "%s · BAC",
   },
   description: SITE_DESCRIPTION,
-  robots: { index: false, follow: false }, // private during build
-  alternates: { canonical: "/" },
+  robots: { index: SITE_OUVERT, follow: SITE_OUVERT }, // fermé tant que le propriétaire n’a pas ouvert (lib/site.ts)
+  // Pas de canonical ici : hérité, il désignait l’accueil depuis chaque page qui n’en
+  // déclarait pas. Chaque page donne le sien.
   openGraph: {
     type: "website",
     siteName: "BAC · sciences",
     title: "BAC — préparation · sciences",
     description: SITE_DESCRIPTION,
     locale: "fr_MA",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "BAC · sciences — deux heures calmes, une notion à fond." }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "BAC · sciences : préparation au baccalauréat scientifique marocain." }],
   },
   twitter: {
     card: "summary_large_image",

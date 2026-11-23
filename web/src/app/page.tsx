@@ -36,6 +36,7 @@ import { manifestePourHeader } from "@/lib/palette-notions";
 
 export const metadata: Metadata = {
   title: "Ta session",
+  alternates: { canonical: "/" },
 };
 
 export default function HomePage() {

@@ -16,6 +16,7 @@ import { manifestePourHeader } from "@/lib/palette-notions";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/pilote/expression-genetique/exercices" },
   title: "Du gène à la protéine — exercices",
   description: "Des exercices générés sur l’expression de l’information génétique, de la transcription à l’exercice complet du bac.",
 };

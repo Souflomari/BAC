@@ -18,6 +18,7 @@ import { manifestePourHeader } from "@/lib/palette-notions";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/pilote/logarithme" },
   title: "Fonction logarithme — la leçon",
   description: "Pourquoi ln : de Napier (1614) à la définition du bac, ce que dit la courbe de ln, ses règles de calcul et une équation du bac.",
 };

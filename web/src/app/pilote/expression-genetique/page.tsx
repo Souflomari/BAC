@@ -19,6 +19,7 @@ import { manifestePourHeader } from "@/lib/palette-notions";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/pilote/expression-genetique" },
   title: "Du gène à la protéine — la leçon",
   description:
     "L’expression de l’information génétique pas à pas : ce qu’il faut savoir (protéine, chromosome, gène), puis de la drépanocytose au raisonnement de l’exercice du bac.",

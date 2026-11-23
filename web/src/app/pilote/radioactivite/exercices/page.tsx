@@ -16,6 +16,7 @@ import { manifestePourHeader } from "@/lib/palette-notions";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/pilote/radioactivite/exercices" },
   title: "Décroissance radioactive — exercices",
   description: "Des exercices générés sur la décroissance radioactive, de l’écriture d’une désintégration à l’exercice complet du bac.",
 };

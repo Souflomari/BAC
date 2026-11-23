@@ -16,6 +16,7 @@ import { manifestePourHeader } from "@/lib/palette-notions";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/pilote/logarithme/exercices" },
   title: "Fonction logarithme — exercices",
   description: "Des exercices générés sur le logarithme népérien, du calcul aux équations du bac.",
 };

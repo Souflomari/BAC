@@ -19,6 +19,7 @@ import { manifestePourHeader } from "@/lib/palette-notions";
 import { FormulaireConnexion } from "./FormulaireConnexion";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/connexion" },
   title: "Se connecter",
 };
 
