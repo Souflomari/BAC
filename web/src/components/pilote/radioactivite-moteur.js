@@ -463,10 +463,12 @@ const STEPS=[
 {cle:'bac-litteral',beat:9,scene:'bac',set:{th:1},
   text:['L’expression littérale d’abord, ligne à ligne.'],
   deriv:[
-    {tex:tx`N(t_1)=0{,}05\,N_0`,alt:'N(t₁) = 0,05 N₀',r:'95 % désintégrés : il en reste 5 %.'},
-    {tex:tx`N_0\,e^{-\lambda t_1}=0{,}05\,N_0\iff e^{\lambda t_1}=20`,alt:'N₀ e^(−λ t₁) = 0,05 N₀ ⇔ e^(λ t₁) = 20',r:`La loi ; on divise par ${N0} et on prend l’inverse : 1/0,05 = 20.`},
-    {tex:tx`\lambda\,t_1=\ln 20`,alt:'λ t₁ = ln 20',r:'e<sup><i>x</i></sup> = 20 ⇔ <i>x</i> = ln 20.'},
-    {tex:tx`t_1=\dfrac{t_{1/2}}{\ln 2}\,\ln 20`,alt:'t₁ = (t½ / ln 2) ln 20',r:`Avec λ = ln 2 / ${Th}. Encore aucune valeur numérique.`}]},
+    {tex:tx`N(t_1)=0{,}05\,N_0`,alt:'N(t₁) = 0,05 N₀',r:'95 % désintégrés : il en reste 5 %.'}],
+  pari:{label:'La ligne suivante ?',
+    apres:{tex:[[tx`\lambda\,t_1=\ln 20`,'λ t₁ = ln 20'],[tx`t_1=\dfrac{t_{1/2}}{\ln 2}\,\ln 20`,'t₁ = (t½ / ln 2) ln 20']],html:`<p class="small">Avec λ = ln 2 / ${Th}. Encore aucune valeur numérique.</p>`},opts:[
+    {t:'e<sup>λ<i>t</i><sub>1</sub></sup> = 20',ok:true,fb:`Oui : la loi, on divise par ${N0}, puis on prend l’inverse : 1/0,05 = 20.`},
+    {t:'e<sup>λ<i>t</i><sub>1</sub></sup> = 0,05',indice:'L’exposant a changé de signe. Que devient alors 0,05 ?',fb:'e<sup>−λ<i>t</i><sub>1</sub></sup> = 0,05 ; avec l’exposant positif, on prend l’inverse : 20.'},
+    {t:'e<sup>λ<i>t</i><sub>1</sub></sup> = 0,95',indice:'Combien de noyaux restent : 95 % ou 5 % ?',fb:'0,95, ce sont les noyaux désintégrés. Il en reste 5 % : on part de 0,05, dont l’inverse est 20.'}]}},
 {cle:'bac-an',beat:9,scene:'bac',set:{th:1,t95:0},
   text:['Puis l’application numérique.'],
   deriv:[

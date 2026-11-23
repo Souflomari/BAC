@@ -70,10 +70,16 @@ raisonnement, nouveau pari `stop` avant la terminaison, barème marqué « indic
 et `ln2` avec le leurre « t½ = 1/λ ») ; physique : nouveau pari `spontanee` (chauffer ne change pas le
 rythme) ; le texte ne réapparaît plus sous la barre « Retour / Suivant » quand le panneau défile.
 
-**Reste** : faire déduire l'hyperbole (`hyper`) ; une ligne choisie dans les dérivations restantes ; le second exemple
-du bac à compléter et la copie fautive ; l'étape (N, Z) en physique ; couper `tau` ; le test de saut de la SVT ; la question « complémenter ou pas ? » ; le
-bilan produit par l'élève ; trois étapes qui débordent d'une ou deux lignes dans le pire cas (maths
-41 et 49, SVT 18).
+**Fait le 2026-11-23 (troisième série)** : la reprise après rechargement (étape et réponses gardées
+sur l'appareil) ; physique : scène et étape du diagramme (N, Z), une ligne choisie dans l'exemple du
+bac ; maths : l'élève déduit l'hyperbole (`hyper-pourquoi`), second exemple du bac à compléter
+(`bac-2`, `bac-2-suite`) et copie fautive à juger (`bac-erreur`) ; SVT : le réflexe « transcrit ou
+non transcrit ? » (`reflexe-brin`).
+
+**Reste** : le second exemple du bac en physique et en SVT ; le test de saut de la SVT ; couper `tau`
+en physique ; le bilan produit par l'élève ; une ligne choisie dans les dérivations encore lues (le
+contrôle les liste comme cibles) ; les étapes qui demandent de faire défiler le panneau quand l'élève
+s'est trompé deux fois ; pendant `bac-2`, la scène montre un repère vide.
 
 À unifier dans le moteur (`noyau.js`), aujourd'hui codé trois fois : le saut de « Ce qu'il faut
 savoir », la pause, le sujet « à revoir », l'exercice lié à chaque piège.

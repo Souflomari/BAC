@@ -251,6 +251,11 @@ const STEPS=[
     {t:'Le brin transcrit est complémentaire du brin non transcrit.',a:1},
     {t:'L’ARNm est complémentaire du brin transcrit.',a:2},
     {t:'Deux fois complémentaire : l’ARNm a les bases du brin non transcrit, avec U à la place de T.',a:3,fort:true}]},
+{cle:'reflexe-brin',beat:3,scene:'regle',sujet:'du brin à l’ARNm',
+  text:['Au bac, on te donne un brin d’ADN et on te demande l’ARNm.',{t:'Avant d’écrire la moindre base, quelle question te poses-tu ?',fort:true}],
+  pari:VF([['Ce brin est-il transcrit ou non transcrit ?',true,'Oui : c’est elle qui décide. Brin transcrit : on complémente. Brin non transcrit : on recopie, avec U à la place de T.'],
+    ['Combien de triplets compte ce brin ?',false,'Le nombre de triplets ne dit pas comment écrire l’ARNm. Ce qui décide : le brin est-il transcrit ou non transcrit ?','Qu’est-ce qui change la façon d’écrire l’ARNm : la longueur du brin, ou sa nature ?'],
+    ['Par quel acide aminé commence la chaîne ?',false,'L’acide aminé vient après, à la traduction. Pour écrire l’ARNm, ce qui décide : le brin est-il transcrit ou non ?','On écrit l’ARNm avant de traduire. De quoi dépend son écriture ?']])},
 {cle:'v-transcription',beat:3,scene:'regle',
   text:[`Voici un fragment du brin non transcrit : ${sq(`5′-${groupe(V1)}-3′`)}.`,'Quel est l’ARNm correspondant ?'],
   verifie:VF([
