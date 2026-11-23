@@ -27,7 +27,7 @@ export function ExponentiellePilote() {
             jusqu’à la fin de la séance.
           </li>
           <li>
-            <b>Le miroir.</b> L’exponentielle défait ln : sa courbe est le reflet de celle de ln dans la droite{" "}
+            <b>Le miroir.</b> L’exponentielle défait ln : sa courbe est le reflet de celle de ln dans la droite{" "}
             <i>y</i>&#8239;=&#8239;<i>x</i>. Son domaine, son signe, ses limites et sa pente s’y lisent.
           </li>
           <li>
@@ -35,8 +35,8 @@ export function ExponentiellePilote() {
             limites de base. La séance finit sur une équation du bac rédigée comme sur une copie.
           </li>
           <li>
-            <b>Deux séances.</b> Celle-ci, « Pourquoi exp » : d’où vient exp et ce qu’elle sait faire. La suivante,
-            « exp comme fonction » : l’étude complète, les limites habillées et les primitives de{" "}
+            <b>Deux séances.</b> Celle-ci, « Pourquoi exp » : d’où vient exp et ce qu’elle sait faire. La suivante,
+            « exp comme fonction » : l’étude complète, les limites habillées et les primitives de{" "}
             <i>u</i>′e<sup><i>u</i></sup>.
           </li>
         </>

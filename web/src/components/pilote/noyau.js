@@ -58,8 +58,8 @@ const TEL=matchMedia('(max-width: 899px)');
 const wait=ms=>new Promise(r=>setTimeout(r,RM.matches?0:ms));
 let run=0;const hooks={};
 function parts(t,str){String(str).split(/(_[^_]+_)/).forEach(part=>{if(!part)return;const sp=E('tspan',{},t);if(part[0]==='_'&&part.length>2){sp.textContent=part.slice(1,-1);sp.setAttribute('font-style','italic');}else sp.textContent=part;});}
-function mtext(parent,x,y,str,cls,anchor){const t=E('text',{x,y,class:cls,'text-anchor':anchor||'start'},parent);parts(t,str);return t;}
-function setMT(t,str){if(t.__s===str)return;t.__s=str;t.textContent='';parts(t,str);}
+function mtext(parent,x,y,str,cls,anchor){const t=E('text',{x,y,class:cls,'text-anchor':anchor||'start'},parent);parts(t,ty(str));return t;}
+function setMT(t,str){if(t.__s===str)return;t.__s=str;t.textContent='';parts(t,ty(str));}
 function svgPt(e){const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(svg.getScreenCTM().inverse());}
 function show(el,o){el.style.opacity=o;}
 

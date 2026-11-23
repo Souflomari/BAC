@@ -150,21 +150,21 @@ export function PiloteCoquille({
             <b>Une idée par écran.</b> Le chapitre est découpé en étapes courtes, de deux à quatre phrases chacune.
           </li>
           <li>
-            <b>La scène et le script.</b> Le visuel occupe la largeur de l’écran ; le texte le commente à côté,
+            <b>La scène et le script.</b> Le visuel occupe la largeur de l’écran ; le texte le commente à côté,
             au rythme de l’animation.
           </li>
           <li>
-            <b>À ton rythme.</b> Rien ne bouge sans toi : chaque étape, et chaque ligne d’un calcul, se
+            <b>À ton rythme.</b> Rien ne bouge sans toi : chaque étape, et chaque ligne d’un calcul, se
             déclenche avec → ou espace.
           </li>
           <li>
-            <b>Un pari avant chaque révélation.</b> Tu t’engages avant de voir : c’est ce qui fait retenir.
+            <b>Un pari avant chaque révélation.</b> Tu t’engages avant de voir : c’est ce qui fait retenir.
           </li>
           {format2 && (
             <>
               <li>
-                <b>« Vérifie » à la fin de chaque partie.</b> Une question pour t’assurer que tu as compris
-                avant d’aller plus loin. Une erreur ? Un indice, et tu as un second essai.
+                <b>« Vérifie » à la fin de chaque partie.</b> Une question pour t’assurer que tu as compris
+                avant d’aller plus loin. Une erreur ? Un indice, et tu as un second essai.
               </li>
               <li>
                 <b>Chaque mot technique s’explique.</b> Un mot souligné en pointillés ouvre sa fiche, sans

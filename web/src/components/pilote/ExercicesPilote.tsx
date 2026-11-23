@@ -22,7 +22,7 @@ import { CATALOGUE, SEANCES } from "./exercices/catalogue";
 import { hasard, nouvelleGraine } from "./exercices/hasard";
 import { NIVEAUX, normaliser } from "./exercices/modele";
 import { lireNombre, proche } from "./exercices/nombre";
-import { formule, rendre } from "./exercices/texte";
+import { formule, rendre, typo } from "./exercices/texte";
 
 type Gabarit = any;
 type Tirage = any;
@@ -49,7 +49,7 @@ const etatNeuf = (graine: number, n: number): EtatEx => ({
 });
 
 const lettre = (i: number) => String.fromCharCode(97 + i);
-const libelleCadre = (s: string) => s.trim().replace(/\s*[;,]\s*$/, ".");
+const libelleCadre = (s: string) => typo(s.trim().replace(/\s*[;,]\s*$/, ".")).replace(/(\p{L})'(\p{L})/gu, "$1’$2");
 
 function bilan(e: EtatEx | undefined, nq: number): "premier" | "apres" | "corrige" | "nonfait" {
   if (!e || (e.q.every((q) => q.essais === 0) && !e.correction)) return "nonfait";
@@ -297,13 +297,13 @@ export function ExercicesPilote({
         </p>
         {(ex.seance ?? 1) > 1 && (
           <p className="exos-seance">
-            Séance {ex.seance} : {(SEANCES as Record<string, Record<number, string>>)[nom]?.[ex.seance] ?? ""}. Cette
+            Séance {ex.seance} : {(SEANCES as Record<string, Record<number, string>>)[nom]?.[ex.seance] ?? ""}. Cette
             leçon n’est pas encore écrite : l’exercice est là pour la suite.
           </p>
         )}
-        <h2 className="exos-h">{ex.titre}</h2>
+        <h2 className="exos-h">{typo(ex.titre)}</h2>
         <p className="exos-cadre">
-          Au programme :{" "}
+          Au programme :{" "}
           <span title={ex.capacites.join(" · ")}>{libelleCadre(libelles[ex.capacites[0]] ?? ex.capacites[0])}</span>
           {ex.filieres && <span>filières {ex.filieres.join(", ")} seulement</span>}
         </p>

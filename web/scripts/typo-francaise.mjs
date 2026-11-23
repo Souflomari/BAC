@@ -167,7 +167,9 @@ for (const route of routes) {
     //     de ponctuation haute sur du LaTeX rendu.
     const BLOCS = new Set(["P","DIV","LI","UL","OL","TABLE","TR","TD","TH","SECTION","ARTICLE",
       "H1","H2","H3","H4","H5","H6","BLOCKQUOTE","FIGCAPTION","HEADER","FOOTER","NAV","ASIDE",
-      "BUTTON","LABEL","DL","DT","DD","SUMMARY","DETAILS","FORM","MAIN","FIGURE"]);
+      "BUTTON","LABEL","DL","DT","DD","SUMMARY","DETAILS","FORM","MAIN","FIGURE",
+      // un <text> SVG est une légende à part : deux légendes voisines ne se lisent pas d'affilée
+      "text"]);
     const unite = (el) => {
       const k = el.closest(".katex");
       if (k) return null; // îlot : l'appelant utilisera le nœud lui-même

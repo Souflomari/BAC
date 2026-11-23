@@ -21,7 +21,7 @@ export function LogarithmePilote() {
       pourquoi={
         <>
           <li>
-            <b>Ce qu’il faut savoir, d’abord.</b> Un test sur les puissances ouvre la séance : réussi du premier
+            <b>Ce qu’il faut savoir, d’abord.</b> Un test sur les puissances ouvre la séance : réussi du premier
             coup, il te permet de passer le rappel.
           </li>
           <li>
@@ -33,8 +33,8 @@ export function LogarithmePilote() {
             séance finit sur une équation du bac, rédigée comme sur une copie.
           </li>
           <li>
-            <b>Deux séances.</b> Celle-ci, « Pourquoi ln » : d’où vient ln, ce que dit sa courbe, ses règles. La
-            suivante, « ln comme fonction » : les limites, la dérivée de ln <i>u</i>, l’étude complète.
+            <b>Deux séances.</b> Celle-ci, « Pourquoi ln » : d’où vient ln, ce que dit sa courbe, ses règles. La
+            suivante, « ln comme fonction » : les limites, la dérivée de ln <i>u</i>, l’étude complète.
           </li>
         </>
       }

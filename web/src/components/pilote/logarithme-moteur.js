@@ -104,7 +104,7 @@ scene('ledger',{
     this.addc=T(this.ag,RA,398,'7 additions de chiffres · une ligne','t-lab s-dim','end');
     this.qg=E('g',{},g);
     const t=RT(this.qg,500,390,'_f_ (_a_ × _b_) = _f_ (_a_) + _f_ (_b_)','t-huge s-ink','middle');
-    E('tspan',{class:'s-a',text:' ?'},t);
+    E('tspan',{class:'s-a',text:' ?'},t);
     T(this.qg,500,450,'une fonction qui change les produits en sommes','t-lab s-dim','middle');
   },
   render(){
