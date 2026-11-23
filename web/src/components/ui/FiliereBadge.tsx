@@ -36,17 +36,17 @@ export function FiliereBadge() {
         <button
           type="button"
           className={cn(
-            "hidden bp-medium:inline-flex items-center gap-1.5 px-3 py-1",
-            "text-body-sm font-medium",
-            "state-layer focus-ring [--focus-radius:9999px]",
+            "hidden bp-medium:inline-flex h-11 items-center gap-1.5 px-3",
+            "text-body-sm font-medium whitespace-nowrap",
+            "state-layer focus-ring",
             "transition-colors duration-micro ease-enter",
             f
-              ? "bg-accent-subtle text-accent"
-              : "border border-subtle text-secondary hover:text-primary"
+              ? "border border-subtle bg-surface-raised text-primary hover:border-soft"
+              : "border border-subtle text-secondary hover:text-primary hover:border-soft"
           )}
-          title={f ? `Filière : ${f.name}` : undefined}
+          title={f ? frenchTypography(`Filière : ${f.name}`) : undefined}
         >
-          {f ? f.short : frenchTypography("Choisis ta filière")}
+          {f ? frenchTypography(`Filière : ${f.short}`) : frenchTypography("Choisis ta filière")}
         </button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
@@ -54,9 +54,8 @@ export function FiliereBadge() {
           sideOffset={8}
           align="end"
           className={cn(
-            "z-50 min-w-[240px] rounded-xl p-1.5",
-            "border border-subtle bg-surface-raised",
-            "shadow-elevation-2",
+            "z-50 min-w-[240px] p-1.5",
+            "border border-soft bg-surface-overlay",
             // Calm opacity/scale settle — no bounce/overshoot (§5). Plain CSS
             // transition (no framer-motion/GSAP) keyed to Radix's data-state.
             "transition-[opacity,transform] duration-micro ease-enter",
@@ -71,8 +70,8 @@ export function FiliereBadge() {
                 key={fil.id}
                 onSelect={() => setFiliere(fil.id)}
                 className={cn(
-                  "flex items-center justify-between gap-3 rounded-md px-2.5 py-2",
-                  "state-layer focus-ring [--focus-radius:6px]",
+                  "flex min-h-touch items-center justify-between gap-3 px-2.5 py-2",
+                  "state-layer focus-ring",
                   "transition-colors duration-micro ease-between",
                   active
                     ? "bg-accent-subtle text-accent"
@@ -98,8 +97,8 @@ export function FiliereBadge() {
             <Link
               href="/commencer"
               className={cn(
-                "block rounded-md px-2.5 py-2",
-                "state-layer focus-ring [--focus-radius:6px]",
+                "flex min-h-touch items-center px-2.5 py-2",
+                "state-layer focus-ring",
                 "text-body-sm text-secondary hover:text-primary",
                 "transition-colors duration-micro ease-between"
               )}

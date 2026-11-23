@@ -16,6 +16,9 @@ import { Link } from "@/components/ui/Lien";
 import { SUBJECT_ORDER, subjectHref, subjectLabel } from "@/lib/subjects";
 import { cn } from "@/lib/utils";
 
+/** Matières ayant des chapitres publiés (SI est retirée tant qu'elle est vide — G-04-002). */
+const MATIERES_PUBLIEES = SUBJECT_ORDER.filter((id) => id !== "si");
+
 export function SiteFooter({ container }: { container: string }) {
   return (
     <footer
@@ -25,40 +28,46 @@ export function SiteFooter({ container }: { container: string }) {
       )}
     >
       <div className={cn(container, "py-10")}>
-        <div className="flex flex-wrap items-baseline justify-between gap-4">
+        <div className="flex flex-wrap items-center justify-between gap-4">
           {/* Wordmark echo — quiet, no glyph (the header carries the mark) */}
           <p className="text-body-sm text-secondary">
             <span className="font-display font-bold text-primary">bac<span className="text-signal">.</span></span>
-            <span aria-hidden="true"> · </span>sciences — préparer le bac marocain,
-            calmement.
+            <span aria-hidden="true"> · </span>préparation au baccalauréat scientifique marocain.
           </p>
 
-          {/* Audit R6 (visuel P1-11) : « Notions » seul à droite était une
-              colonne orpheline — un mot et 480 px de vide, signature
-              « gabarit non rempli ». Le pied devient un plan de site
-              discret : les matières, en une rangée calme. (/matieres/si
-              existe et rend son état honnête « Programme à venir ».) */}
-          <nav aria-label="Pied de page" className="flex flex-wrap items-baseline gap-1">
-            {SUBJECT_ORDER.map((id) => (
+          <nav aria-label="Pied de page" className="flex flex-wrap items-center gap-x-2 gap-y-1">
+            {MATIERES_PUBLIEES.map((id) => (
               <Link
                 key={id}
                 href={subjectHref(id)}
                 className={cn(
+                  "inline-flex min-h-touch items-center px-2",
                   "text-body-sm font-medium",
                   "state-layer text-secondary hover:text-primary",
                   "transition-colors duration-micro ease-enter",
-                  "rounded px-2 py-1",
-                  "focus-ring [--focus-radius:8px]"
+                  "focus-ring"
                 )}
               >
                 {subjectLabel(id)}
               </Link>
             ))}
+            <Link
+              href="/examens"
+              className={cn(
+                "inline-flex min-h-touch items-center px-2",
+                "text-body-sm font-medium",
+                "state-layer text-secondary hover:text-primary",
+                "transition-colors duration-micro ease-enter",
+                "focus-ring"
+              )}
+            >
+              Examens blancs
+            </Link>
           </nav>
         </div>
 
         <p className="mt-4 text-caption text-secondary">
-          © {new Date().getFullYear()} — contenu aligné sur le cadre de référence
+          © {new Date().getFullYear()} · contenu aligné sur le cadre de référence
           national.
           {/* Build stamp (Day-8.5 deployment truth): commit + build date,
               injected at build time (next.config.mjs). Answers "which

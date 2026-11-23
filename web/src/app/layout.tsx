@@ -85,7 +85,7 @@ const GeistSans = localFont({
 // during build; the og/canonical set is in place for when indexing opens.
 const SITE_URL = "https://bac-pink.vercel.app";
 const SITE_DESCRIPTION =
-  "Un tuteur patient, omniscient, infiniment disponible — préparation bac sciences au Maroc.";
+  "Cours, schémas interactifs, exercices corrigés et annales du baccalauréat scientifique marocain, alignés sur le cadre de référence national.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
