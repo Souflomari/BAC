@@ -534,28 +534,44 @@ export const EXERCICES = [
     },
   },
 
-  /* 10 — l'exercice complet, au format 2026 */
+  /* 10 — l'exercice complet, au format 2026 (substitutions, délétion, insertion) */
   {
     id: "bac-2026",
     titre: "Un exercice complet, au format 2026",
     niveau: 3,
     capacites: CAP("2.1.8", "2.1.9", "2.2.2"),
-    erreurs: ["lire le mauvais brin", "lire après le codon stop", "confondre faux-sens et non-sens", "réciter le cours sans le document", "la mutation vient d’un besoin"],
+    erreurs: ["lire le mauvais brin", "lire après le codon stop", "confondre faux-sens et non-sens", "ne pas voir le décalage du cadre de lecture", "réciter le cours sans le document", "la mutation vient d’un besoin"],
     gen(h) {
-      const genre = h.pick(["non-sens", "faux-sens"]);
+      const genre = h.pick(["non-sens", "faux-sens", "délétion", "insertion"]);
       const brin = h.pick(["non transcrit", "transcrit"]);
-      let s, m, j;
+      let s, m, j, p;
       for (;;) {
         s = triplets(h, h.int(5, 6)).join("");
-        j = h.int(2, s.length / 3 - 1);
-        const p = h.int(0, 2),
-          k = 3 * (j - 1) + p,
-          b = h.pick(["A", "T", "G", "C"].filter((x) => x !== s[k]));
-        m = s.slice(0, k) + b + s.slice(k + 1);
-        const cM = toARN(m.slice(3 * (j - 1), 3 * j)),
-          cN = toARN(s.slice(3 * (j - 1), 3 * j));
-        const g = CODE[cM] === "*" ? "non-sens" : CODE[cM] === CODE[cN] ? "silencieuse" : "faux-sens";
-        if (g === genre) break;
+        j = h.int(2, s.length / 3 - 1); // 1-based triplet index
+        const j0 = j - 1;
+        p = genre === "insertion" ? h.int(1, 2) : h.int(0, 2);
+        const k = 3 * j0 + p;
+        if (genre === "délétion" || genre === "insertion") {
+          m = genre === "délétion" ? s.slice(0, k) + s.slice(k + 1) : s.slice(0, k) + h.pick(["A", "T", "G", "C"]) + s.slice(k);
+          /* Même filtre d'ambiguïté que l'ex. 8 : un seul triplet peut produire cette séquence mutée. */
+          const ts = new Set();
+          for (let q = 0; q <= s.length; q++) {
+            if (genre === "délétion" && q < s.length && s.slice(0, q) + s.slice(q + 1) === m) ts.add(Math.floor(q / 3));
+            if (genre === "insertion" && s.slice(0, q) + m[q] + s.slice(q) === m) ts.add(q % 3 === 0 ? -1 - q : Math.floor(q / 3));
+          }
+          if (ts.size !== 1) continue;
+          const a = lire(toARN(s)).aa,
+            b = lire(toARN(m)).aa;
+          if (tir(a) === tir(b) || b.length < 2) continue;
+          break;
+        } else {
+          const b = h.pick(["A", "T", "G", "C"].filter((x) => x !== s[k]));
+          m = s.slice(0, k) + b + s.slice(k + 1);
+          const cM = toARN(m.slice(3 * j0, 3 * j)),
+            cN = toARN(s.slice(3 * j0, 3 * j));
+          const g = CODE[cM] === "*" ? "non-sens" : CODE[cM] === CODE[cN] ? "silencieuse" : "faux-sens";
+          if (g === genre) break;
+        }
       }
       const RN = toARN(s),
         RM = toARN(m),
@@ -563,14 +579,36 @@ export const EXERCICES = [
         cM = lire(RM);
       const montre = (x) => (brin === "transcrit" ? `3′-${groupe(compl(x))}-5′` : `5′-${groupe(x)}-3′`);
       const ns = genre === "non-sens";
-      const opt4 = h.melange([
-        { t: `Substitution au triplet ${j} : ${ns ? "non-sens" : "faux-sens"}`, ok: true },
-        { t: `Substitution au triplet ${j} : ${ns ? "faux-sens" : "non-sens"}`, fb: ns ? "Le triplet muté devient un codon stop : c’est une mutation non-sens." : "Le triplet muté désigne un autre acide aminé, pas un arrêt : c’est une mutation faux-sens.", erreur: "confondre faux-sens et non-sens" },
-        { t: `Délétion au triplet ${j} : décalage`, fb: "Les deux allèles ont le même nombre de nucléotides : rien n’est supprimé, un nucléotide est remplacé.", erreur: "confondre substitution et délétion" },
-        { t: `Substitution au triplet ${j + 1} : ${ns ? "non-sens" : "faux-sens"}`, fb: "Recompte les triplets depuis le premier montré.", erreur: "mal numéroter les triplets" },
-      ]);
+      const decale = genre === "délétion" || genre === "insertion";
+      const labelOk = decale
+        ? `${genre === "délétion" ? "Délétion" : "Insertion"} au triplet ${j} : décalage du cadre de lecture`
+        : `Substitution au triplet ${j} : ${ns ? "non-sens" : "faux-sens"}`;
+      const opt4 = decale
+        ? h.melange([
+            { t: labelOk, ok: true },
+            {
+              t: `${genre === "délétion" ? "Insertion" : "Délétion"} au triplet ${j} : décalage du cadre de lecture`,
+              fb: genre === "délétion" ? "Compte les nucléotides : la séquence mutée en a un de moins (délétion), pas un de plus." : "Compte les nucléotides : la séquence mutée en a un de plus (insertion), pas un de moins.",
+              erreur: "ne pas voir le décalage du cadre de lecture",
+            },
+            { t: `Substitution au triplet ${j} : faux-sens`, fb: "Une substitution garde le même nombre de nucléotides et ne touche qu’un triplet ; ici tout le cadre de lecture se décale.", erreur: "ne pas voir le décalage du cadre de lecture" },
+            { t: `${genre === "délétion" ? "Délétion" : "Insertion"} au triplet ${j + 1} : décalage du cadre de lecture`, fb: "Recompte les triplets depuis le premier montré.", erreur: "mal numéroter les triplets" },
+          ])
+        : h.melange([
+            { t: labelOk, ok: true },
+            { t: `Substitution au triplet ${j} : ${ns ? "faux-sens" : "non-sens"}`, fb: ns ? "Le triplet muté devient un codon stop : c’est une mutation non-sens." : "Le triplet muté désigne un autre acide aminé, pas un arrêt : c’est une mutation faux-sens.", erreur: "confondre faux-sens et non-sens" },
+            { t: `Délétion au triplet ${j} : décalage du cadre de lecture`, fb: "Les deux allèles ont le même nombre de nucléotides : rien n’est supprimé, un nucléotide est remplacé.", erreur: "confondre substitution et délétion" },
+            { t: `Substitution au triplet ${j + 1} : ${ns ? "non-sens" : "faux-sens"}`, fb: "Recompte les triplets depuis le premier montré.", erreur: "mal numéroter les triplets" },
+          ]);
       const opt5 = h.melange([
-        { t: ns ? "La protéine est raccourcie, donc non fonctionnelle : d’où la maladie" : "Un acide aminé change, la protéine est modifiée et ne fonctionne plus : d’où la maladie", ok: true },
+        {
+          t: decale
+            ? "Le décalage du cadre de lecture modifie la suite de la chaîne : la protéine est anormale, d’où la maladie"
+            : ns
+              ? "La protéine est raccourcie, donc non fonctionnelle : d’où la maladie"
+              : "Un acide aminé change, la protéine est modifiée et ne fonctionne plus : d’où la maladie",
+          ok: true,
+        },
         { t: "La mutation a changé le code génétique de la personne", fb: "Le code est universel : il ne change pas. C’est le message, l’allèle, qui a changé.", erreur: "confondre allèle et code" },
         { t: "La maladie a provoqué la mutation", fb: "C’est l’inverse : la mutation arrive par hasard, puis l’allèle muté donne une protéine anormale.", erreur: "la mutation vient d’un besoin" },
       ]);
@@ -578,26 +616,135 @@ export const EXERCICES = [
         ? [{ v: toARN(compl(s)), fb: "Tu as recopié le brin transcrit en changeant T en U : l’ARNm est son complémentaire.", erreur: "lire le mauvais brin" }]
         : [{ v: toARN(compl(s)), fb: "Le document donne le brin non transcrit : l’ARNm a ses bases, U à la place de T, sans complémenter.", erreur: "lire le mauvais brin" }];
       const pieges3 = [];
-      if (ns) {
+      if (cM.stop) {
         const tout = lire(RM, 0, true).aa;
         if (tir(tout) !== tir(cM.aa)) pieges3.push({ v: tir(tout), fb: "La traduction s’arrête au codon stop : ce qui suit n’est pas lu.", erreur: "lire après le codon stop" });
         pieges3.push({ v: tir(cM.aa) + "-Stop", fb: "Un codon stop ne désigne aucun acide aminé : on ne l’écrit pas dans la chaîne.", erreur: "compter le codon stop comme un acide aminé" });
       }
       if (tir(cN) !== tir(cM.aa)) pieges3.push({ v: tir(cN), fb: "C’est la chaîne de la personne saine. Écris celle de la personne malade.", erreur: "réciter le cours sans le document" });
+      const ligneMut = decale
+        ? `${genre === "délétion" ? "Délétion" : "Insertion"} d’un nucléotide au triplet ${j} : tout le découpage en codons est décalé à partir de ce triplet${cM.stop ? " et fait apparaître un codon stop prématuré" : ""}.`
+        : `Substitution d’un nucléotide au triplet ${j} : ${toARN(s.slice(3 * (j - 1), 3 * j))} devient ${toARN(m.slice(3 * (j - 1), 3 * j))}, ${ns ? "un codon stop : mutation non-sens" : `qui désigne ${nom3(toARN(m.slice(3 * (j - 1), 3 * j)))} au lieu de ${nom3(toARN(s.slice(3 * (j - 1), 3 * j)))} : mutation faux-sens`}.`;
+      const ligneConcl = decale
+        ? "Le décalage du cadre de lecture modifie tous les acides aminés suivants : la protéine P est anormale, non fonctionnelle. Gène muté → protéine anormale → maladie."
+        : ns
+          ? "La chaîne est raccourcie : la protéine P est incomplète, non fonctionnelle. Gène muté → protéine anormale → maladie."
+          : "Un acide aminé change : la protéine P est modifiée, elle ne fonctionne plus normalement. Gène muté → protéine anormale → maladie.";
       return {
         enonce: `<p>Une maladie héréditaire est due à une protéine P anormale. Le document donne un fragment du <b>brin ${brin}</b> du gène de P (les triplets sont numérotés depuis le premier montré) :</p><p>personne saine : ${montre(s)}</p><p>personne malade : ${montre(m)}</p>${extrait([...codonsDe(RN), ...codonsDe(RM)])}`,
         questions: [
           { type: "texte", q: "Écris l’ARNm de la personne saine, de 5′ vers 3′.", reponse: RN, variantes: avec53(RN), aide: "les bases, de 5′ vers 3′", indice: brin === "transcrit" ? "Le document donne le brin transcrit : l’ARNm est son complémentaire (U en face de A, A en face de T, G en face de C, C en face de G), écrit de 5′ vers 3′." : "Le document donne le brin non transcrit : l’ARNm a la même séquence, avec U à la place de T.", pieges: pieges1 },
           { type: "texte", q: "Écris la chaîne d’acides aminés de la personne saine (abréviations, tirets).", reponse: tir(cN), aide: "par exemple Ala-Gly-…", indice: "Découpe ton ARNm en codons, depuis le premier, et cherche chacun dans l’extrait du tableau du code." },
-          { type: "texte", q: "Écris la chaîne de la personne malade.", reponse: tir(cM.aa), aide: "jusqu’au codon stop s’il y en a un", indice: "Même méthode que pour la personne saine, sur la séquence de la personne malade : écris son ARNm, découpe-le en codons, et arrête-toi au premier codon stop.", pieges: pieges3.filter((x) => x.v !== tir(cM.aa)) },
+          { type: "texte", q: "Écris la chaîne de la personne malade.", reponse: tir(cM.aa), aide: "jusqu’au codon stop s’il y en a un", indice: "Même méthode que pour la personne saine, sur la séquence de la personne malade : écris son ARNm, découpe-le en codons, et arrête-toi au premier codon stop.", pieges: pieges3.filter((x, i, a) => x.v !== tir(cM.aa) && a.findIndex((y) => y.v === x.v) === i) },
           { type: "qcm", q: "Compare les deux séquences : quelle mutation, à quel triplet ?", options: opt4 },
           { type: "qcm", q: "Explique l’origine de la maladie.", options: opt5 },
         ],
         correction: [
           { t: `ARNm de la personne saine : 5′-${groupe(RN)}-3′ ; chaîne : ${ch(cN)}.`, r: brin === "transcrit" ? "ARNm complémentaire du brin transcrit, U en face de A. (0,5 pt)" : "Même séquence que le brin non transcrit, U à la place de T. (0,5 pt)" },
           { t: `ARNm de la personne malade : 5′-${groupe(RM)}-3′ ; chaîne : ${ch(cM.aa)}${cM.stop ? ", puis arrêt (codon stop)" : ""}.`, r: "(0,5 pt)" },
-          { t: `Substitution d’un nucléotide au triplet ${j} : ${toARN(s.slice(3 * (j - 1), 3 * j))} devient ${toARN(m.slice(3 * (j - 1), 3 * j))}, ${ns ? "un codon stop : mutation non-sens" : `qui désigne ${nom3(toARN(m.slice(3 * (j - 1), 3 * j)))} au lieu de ${nom3(toARN(s.slice(3 * (j - 1), 3 * j)))} : mutation faux-sens`}.`, r: "(0,25 pt)" },
-          { t: ns ? "La chaîne est raccourcie : la protéine P est incomplète, non fonctionnelle. Gène muté → protéine anormale → maladie." : "Un acide aminé change : la protéine P est modifiée, elle ne fonctionne plus normalement. Gène muté → protéine anormale → maladie.", r: "(0,25 pt) Barème indicatif, sur le modèle du sujet 2026 : 0,5 + 0,5 + 0,5." },
+          { t: ligneMut, r: "(0,25 pt)" },
+          { t: ligneConcl, r: "(0,25 pt) Barème indicatif, sur le modèle du sujet 2026 : 0,5 + 0,5 + 0,5." },
+        ],
+      };
+    },
+  },
+
+  /* 11 — schéma de synthèse de la synthèse des protéines (Partie I, 2.2.4) */
+  {
+    id: "schema-synthese",
+    titre: "Légender le schéma de synthèse des protéines",
+    niveau: 1,
+    capacites: CAP("2.2.4"),
+    erreurs: ["confondre transcription et traduction", "confondre ARNm et ARNt", "inverser noyau et cytoplasme"],
+    gen(h) {
+      const elements = [
+        { k: "transcription", nom: "Transcription", bx: 84, by: 162, tx: 160, ty: 162, fb: "La transcription a lieu dans le noyau : c’est la copie de l’ADN en ARNm." },
+        { k: "arnm", nom: "ARNm", bx: 318, by: 184, tx: 330, ty: 230, fb: "L’ARNm est le fil simple qui sort du noyau par un pore nucléaire vers le cytoplasme." },
+        { k: "ribosome", nom: "Ribosome", bx: 586, by: 204, tx: 526, ty: 204, fb: "Le ribosome est la machine à deux sous-unités posée sur l’ARNm dans le cytoplasme." },
+        { k: "arnt", nom: "ARNt", bx: 576, by: 146, tx: 494, ty: 196, fb: "L’ARNt se fixe sur un codon de l’ARNm par son anticodon et porte un acide aminé." },
+        { k: "peptidique", nom: "Liaison peptidique", bx: 454, by: 74, tx: 432, ty: 118, fb: "La liaison peptidique relie deux acides aminés voisins dans la chaîne en formation." },
+        { k: "traduction", nom: "Traduction", bx: 468, by: 304, tx: 468, ty: 278, fb: "La traduction est le passage de l’ARNm à la chaîne d’acides aminés dans le cytoplasme." },
+      ];
+      /* Numérotation permutée par tirage, comme dans un sujet de Partie I « Recopiez les couples (1, …) ». */
+      const perm = h.melange([0, 1, 2, 3, 4, 5]);
+      const parNum = perm.map((idx, i) => ({ num: i + 1, ...elements[idx] }));
+      const numDe = Object.fromEntries(parNum.map((e) => [e.k, e.num]));
+      let svg = "";
+      /* Noyau (gauche) */
+      svg += `<circle cx="164" cy="166" r="118" fill="var(--color-surface-container-low)" stroke="var(--color-text-primary)" stroke-width="1.8" stroke-dasharray="30 9"/>`;
+      svg += `<text x="164" y="74" text-anchor="middle" font-size="13" fill="var(--color-text-secondary)">Noyau</text>`;
+      /* ADN double brin */
+      svg += `<path d="M98 114 Q131 98 164 114 T230 114" fill="none" stroke="var(--color-text-primary)" stroke-width="2.2"/>`;
+      svg += `<path d="M98 128 Q131 144 164 128 T230 128" fill="none" stroke="var(--color-text-primary)" stroke-width="2.2"/>`;
+      svg += `<text x="164" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-text-primary)">ADN</text>`;
+      /* Flèche transcription */
+      svg += `<line x1="164" y1="142" x2="164" y2="180" stroke="var(--color-text-primary)" stroke-width="2"/>`;
+      svg += `<polygon points="164,186 159,176 169,176" fill="var(--color-text-primary)"/>`;
+      /* Cytoplasme */
+      svg += `<text x="456" y="34" text-anchor="middle" font-size="13" fill="var(--color-text-secondary)">Cytoplasme</text>`;
+      /* Ribosome (grande sous-unité + petite sous-unité encadrant l'ARNm) */
+      svg += `<rect x="404" y="168" width="124" height="58" rx="18" fill="var(--color-surface-container-low)" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
+      svg += `<rect x="414" y="236" width="104" height="24" rx="10" fill="var(--color-surface-container-low)" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
+      /* ARNm sortant par un pore, traversant le ribosome, avec 3 dents de codon sous l'ARNt */
+      svg += `<path d="M112 194 Q138 186 164 194 T216 194 L336 232 H594" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round"/>`;
+      for (const bx of [470, 480, 490]) {
+        svg += `<line x1="${bx}" y1="224" x2="${bx}" y2="232" stroke="var(--color-signal)" stroke-width="2"/>`;
+      }
+      /* ARNt posé directement sur l'ARNm, anticodon face au codon, portant un acide aminé */
+      svg += `<path d="M466 218 V186 Q466 178 474 178 H486 Q494 178 494 186 V218 Z" fill="var(--color-surface-base)" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
+      for (const bx of [470, 480, 490]) {
+        svg += `<line x1="${bx}" y1="218" x2="${bx}" y2="223" stroke="var(--color-text-primary)" stroke-width="2"/>`;
+      }
+      svg += `<line x1="480" y1="178" x2="480" y2="156" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
+      /* Chaîne d'acides aminés + liaisons peptidiques (une liaison mise en valeur en rouge) */
+      const aaPts = [
+        [480, 146],
+        [448, 128],
+        [416, 108],
+        [384, 88],
+      ];
+      svg += `<line x1="480" y1="146" x2="448" y2="128" stroke="var(--color-text-primary)" stroke-width="2"/>`;
+      svg += `<line x1="448" y1="128" x2="416" y2="108" stroke="var(--color-signal)" stroke-width="3"/>`;
+      svg += `<line x1="416" y1="108" x2="384" y2="88" stroke="var(--color-text-primary)" stroke-width="2"/>`;
+      for (const [cx, cy] of aaPts) svg += `<circle cx="${cx}" cy="${cy}" r="10" fill="var(--color-surface-base)" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
+      /* Flèche sens de la traduction */
+      svg += `<line x1="380" y1="278" x2="554" y2="278" stroke="var(--color-text-primary)" stroke-width="2"/>`;
+      svg += `<polygon points="560,278 550,273 550,283" fill="var(--color-text-primary)"/>`;
+      /* Traits de rappel + repères numérotés 1 à 6 */
+      for (const e of parNum) {
+        svg += `<line x1="${e.bx}" y1="${e.by}" x2="${e.tx}" y2="${e.ty}" stroke="var(--color-text-secondary)" stroke-width="1.4"/>`;
+        svg += `<circle cx="${e.tx}" cy="${e.ty}" r="3" fill="var(--color-text-primary)"/>`;
+        svg += `<circle cx="${e.bx}" cy="${e.by}" r="13" fill="var(--color-surface-base)" stroke="var(--color-signal)" stroke-width="2"/>`;
+        svg += `<text x="${e.bx}" y="${e.by + 4.5}" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-text-primary)">${e.num}</text>`;
+      }
+      const figure = `<svg viewBox="0 0 640 326" role="img" aria-label="Schéma bilan de la synthèse des protéines avec six repères numérotés de 1 à 6 reliés par traits de rappel">${svg}</svg>`;
+      const cibles = h.melange(parNum).slice(0, 3).sort((a, b) => a.num - b.num);
+      const questions = cibles.map((c) => {
+        const autres = h.melange(elements.filter((e) => e.k !== c.k)).slice(0, 3);
+        const opts = h.melange([
+          { t: `(${c.num}, ${c.nom})`, ok: true },
+          ...autres.map((a) => ({
+            t: `(${c.num}, ${a.nom})`,
+            fb: `${a.fb} Ici le repère ${c.num} désigne : ${c.nom}.`,
+            erreur: a.k === "transcription" || a.k === "traduction" ? "confondre transcription et traduction" : "confondre ARNm et ARNt",
+          })),
+        ]);
+        return { type: "qcm", q: `Quel couple associe correctement le repère ${c.num} à sa légende ?`, options: opts };
+      });
+      const qOrdre = h.melange([
+        { t: `Transcription (repère ${numDe.transcription}, dans le noyau) puis traduction (repère ${numDe.traduction}, dans le cytoplasme)`, ok: true },
+        { t: `Traduction (repère ${numDe.traduction}, dans le noyau) puis transcription (repère ${numDe.transcription}, dans le cytoplasme)`, fb: "C’est l’inverse : on transcrit d’abord l’ADN en ARNm dans le noyau, puis on traduit l’ARNm en protéine dans le cytoplasme.", erreur: "confondre transcription et traduction" },
+        { t: `Transcription (repère ${numDe.transcription}) et traduction (repère ${numDe.traduction}) ont toutes les deux lieu dans le noyau`, fb: "La traduction se fait dans le cytoplasme, sur les ribosomes ; l’ARNm sort du noyau par un pore.", erreur: "inverser noyau et cytoplasme" },
+      ]);
+      questions.push({ type: "qcm", q: "Dans quel ordre et dans quel compartiment se déroulent les deux étapes ?", options: qOrdre });
+      return {
+        enonce: "<p>Le schéma ci-dessous résume les étapes de la synthèse des protéines (format Partie I : couples numéro / légende).</p>",
+        figure,
+        questions,
+        correction: [
+          { t: `Couples attendus : ${parNum.map((e) => `(${e.num}, ${e.nom})`).join(" ; ")}.` },
+          { t: "1. <b>Transcription</b> dans le noyau : l’ADN est copié en ARNm, qui sort par un pore nucléaire." },
+          { t: "2. <b>Traduction</b> dans le cytoplasme : le ribosome lit l’ARNm, les ARNt apportent les acides aminés reliés par des liaisons peptidiques." },
         ],
       };
     },
