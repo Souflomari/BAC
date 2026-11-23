@@ -58,9 +58,9 @@ import { cn } from "@/lib/utils";
 import type { NotionMeta } from "@/lib/content";
 
 const RECO_LINK_CLASS = cn(
-  "font-medium text-primary",
-  "underline decoration-border-soft underline-offset-2",
-  "hover:text-accent state-layer focus-ring [--focus-radius:4px]",
+  "inline-flex min-h-touch items-center font-medium text-primary",
+  "underline decoration-border-soft underline-offset-4",
+  "hover:text-signal state-layer focus-ring",
   "transition-colors duration-micro ease-between"
 );
 
@@ -74,7 +74,7 @@ const RECO_LINK_CLASS = cn(
 function recoParts(pick: NextUpPick): { before: string; after: string } {
   switch (pick.source) {
     case "misconception-active":
-      return { before: "Reprends ", after: " — un point précis te fait encore trébucher." };
+      return { before: "Reprends ", after: ", un point précis te fait encore trébucher." };
     case "reprise":
       return pick.chapterIndex && pick.chaptersTotal
         ? { before: "Continue ", after: `, chapitre ${pick.chapterIndex} sur ${pick.chaptersTotal}.` }
@@ -82,7 +82,7 @@ function recoParts(pick: NextUpPick): { before: string; after: string } {
     case "revision": {
       const j = pick.daysSinceVisit;
       return j != null
-        ? { before: `Ça fait ${j} jour${j > 1 ? "s" : ""} — refais un passage sur `, after: "." }
+        ? { before: `Ça fait ${j} jour${j > 1 ? "s" : ""}, refais un passage sur `, after: "." }
         : { before: "Refais un passage sur ", after: "." };
     }
   }
@@ -163,22 +163,16 @@ export function NextUp({ notions }: { notions: NotionMeta[] }) {
     <section aria-label="Quoi étudier ensuite" className="max-w-list">
       <p
         data-reco-source="parcours"
-        className="text-body-sm text-secondary"
+        className="flex flex-wrap items-center gap-x-1.5 text-body-sm text-secondary"
       >
-        {frenchTypography("Ensuite dans le parcours :")}{" "}
+        <span>{frenchTypography("Ensuite dans le parcours :")}</span>
         <Link
           href={notionHref(pick.subject, pick.slug)}
           prefetch
-          className={cn(
-            "font-medium text-primary",
-            "underline decoration-border-soft underline-offset-2",
-            "hover:text-accent state-layer focus-ring [--focus-radius:4px]",
-            "transition-colors duration-micro ease-between"
-          )}
+          className={RECO_LINK_CLASS}
         >
           {frenchTypography(meta.title)}
         </Link>
-        .
       </p>
     </section>
   );

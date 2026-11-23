@@ -1,8 +1,10 @@
 "use client";
 
 /**
- * ExamCountdown — le compte à rebours de l'examen national (Grille, refonte
- * 2026-10). Le chiffre qui décide de tout, imprimé en très grand.
+ * ExamCountdown — le compte à rebours discret de l'examen national (ADR 0045,
+ * G-04-013). Une seule ligne factuelle en haut de l'accueil : filière active
+ * (si choisie), estimation du nombre de semaines restantes avant l'examen
+ * national, et accès direct au choix de filière.
  *
  * HONNÊTETÉ : la date officielle de l'examen national de juin 2027 n'est pas
  * publiée (docs/refonte/01-programme-bac-maroc.md §8). La cible est une
@@ -12,6 +14,9 @@
  */
 
 import { useEffect, useState } from "react";
+import { Link } from "@/components/ui/Lien";
+import { getFiliere } from "@/lib/curriculum";
+import { useFiliere } from "@/lib/useFiliere";
 import { cn } from "@/lib/utils";
 
 /** Début juin 2027 — estimation, pas une date officielle. */
@@ -25,21 +30,39 @@ function semainesRestantes(maintenant: number): number {
 export function ExamCountdown({ className }: { className?: string }) {
   const [semaines, setSemaines] = useState(() => semainesRestantes(Date.now()));
   useEffect(() => setSemaines(semainesRestantes(Date.now())), []);
+  const { filiere, mounted } = useFiliere();
+  const active = mounted ? getFiliere(filiere) : null;
 
   return (
-    <section aria-label="Compte à rebours de l'examen national" data-compte-a-rebours="" className={cn("min-w-0", className)}>
-      <p
-        className="font-display wdth-62 tnum text-[8.5rem] font-bold leading-[0.8] text-signal bp-medium:text-[11rem]"
-        suppressHydrationWarning
+    <section
+      aria-label="Compte à rebours de l'examen national"
+      data-compte-a-rebours=""
+      className={cn(
+        "min-w-0 border-b border-subtle pb-3",
+        "flex flex-wrap items-center justify-between gap-x-6 gap-y-1 text-body-sm text-secondary",
+        className
+      )}
+    >
+      <p className="min-w-0 leading-relaxed" suppressHydrationWarning>
+        {active ? (
+          <>
+            <span className="font-semibold text-primary">{active.name}</span>
+            <span aria-hidden="true" className="text-tertiary"> · </span>
+          </>
+        ) : null}
+        <strong className="tnum font-semibold text-primary">{semaines}</strong>{" "}
+        semaines environ avant l’examen national
+        <span className="text-tertiary">
+          {" "}
+          (estimation&#8239;: début juin 2027, date officielle non publiée)
+        </span>
+      </p>
+      <Link
+        href="/commencer"
+        className="inline-flex min-h-touch items-center whitespace-nowrap font-semibold text-primary underline decoration-border-soft underline-offset-4 hover:text-signal focus-ring"
       >
-        {semaines}
-      </p>
-      <p className="mt-5 text-h4 font-semibold text-primary">
-        semaines, environ, avant l’examen national
-      </p>
-      <p className="mt-1 max-w-[34ch] text-body-sm text-tertiary">
-        Estimation&#8239;: début juin 2027. La date officielle n’est pas encore publiée.
-      </p>
+        {active ? "Changer de filière" : "Choisir ta filière"}
+      </Link>
     </section>
   );
 }

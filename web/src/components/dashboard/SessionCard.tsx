@@ -69,10 +69,10 @@ export function SessionCard({ notions }: { notions: NotionMeta[] }) {
         </h2>
         <p className="mt-3 max-w-lead text-body-lg text-secondary">
           {session.kind === "start" ? (
-            <>Nouvelle notion — on la prend depuis le début.</>
+            <>Nouvelle notion, à prendre depuis le début.</>
           ) : (
             <>
-              Reprise à « {session.position} » — section {session.step} sur{" "}
+              Reprise à « {session.position} », section {session.step} sur{" "}
               {session.totalSteps}.
             </>
           )}
@@ -98,7 +98,7 @@ export function SessionCard({ notions }: { notions: NotionMeta[] }) {
         <Link
           href={notionHref(notion.subject, notion.slug)}
           data-primary-action=""
-          className={cn("mt-7 btn-primary rounded-none focus-ring")}
+          className={cn("mt-6 w-full justify-center bp-medium:w-auto btn-primary focus-ring")}
         >
           {session.kind === "start" ? "Commencer la session" : "Reprendre la session"}
           <Icon name="arrow-right" size={14} />

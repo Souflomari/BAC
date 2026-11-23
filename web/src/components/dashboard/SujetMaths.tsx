@@ -72,7 +72,7 @@ function Barre({ sujet, compact }: { sujet: Sujet; compact: boolean }) {
               <span
                 className={cn(
                   "font-display wdth-62 tnum font-bold leading-none",
-                  compact ? "text-[2.5rem]" : "text-[3.25rem]",
+                  compact ? "text-[2rem]" : "text-[2.5rem]",
                   i === 0 ? "text-signal" : "text-primary"
                 )}
               >

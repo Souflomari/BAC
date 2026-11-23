@@ -1,26 +1,17 @@
 "use client";
 
 /**
- * ProgrammeMap — LE programme, une seule carte (refonte Studio, R6 avancé).
+ * ProgrammeMap — LE programme par matière (ADR 0045, Option A — G-04-013).
  *
- * Remplace TROIS modules qui disaient la même chose sur la même page
- * (audit Fable §3.5 : « Carte de maîtrise » en liste plate à scroll
- * imbriqué, « Disponible maintenant » en accordéons d'illustrations
- * répétées, « Progrès par matière » en texte sans visualisation). Un seul
- * module : par matière, une section colorée (jeton --subject-*) avec
+ * Quatre cartes sobres (une par matière publiée) : titre de matière vers sa
+ * page dédiée, couverture réelle du cadre (« M/N chapitres »), coefficient
+ * officiel lorsque la filière est choisie, et la liste complète des chapitres
+ * repliée dans un `<details>` fermé par défaut (`Voir les N chapitres`).
  *
- *   · la COUVERTURE réelle du programme — « M/N chapitres », barre à
- *     l'appui. C'est une donnée du cadre, vérifiable, honnête pour un
- *     visiteur non connecté (inventaire 2026-08-18 : il n'existe AUCUNE
- *     donnée de progression hors session live — donc AUCUN « % lu »,
- *     aucun état de maîtrise, rien de fabriqué) ;
- *   · les notions en rangées compactes, texte d'abord — les 5 motifs
- *     d'illustration qui se répétaient sur 61 cartes sont partis, la
- *     couleur de matière fait le repérage (§3.7).
- *
- * Chaque notion garde [data-mastery-token] : l'attribut que dom-truth
- * compte (62) et que le rétrécissement par filière pilote — le contrat ne
- * change pas, seule la présentation change.
+ * Option A : tous les liens `[data-mastery-token]` restent dans le DOM dans
+ * l'ordre exact du programme (contrat D12 de `dom-truth.mjs` inchangé) tout
+ * en évitant un mur de 62 lignes sur téléphone. Aucune progression fabriquée,
+ * aucun pourcentage.
  */
 
 import { Link } from "@/components/ui/Lien";
@@ -48,22 +39,17 @@ export function ProgrammeMap({ notions }: { notions: NotionMeta[] }) {
   const construits = new Set(notions.map((n) => `${n.subject}/${n.slug}`));
 
   return (
-    <section aria-label="Le programme" className="mt-16">
-      {/* GRILLE : en-tête sur filet noir, matières en colonnes (4 au bureau),
-          chapitres numérotés dans l'ordre du programme. Contrats inchangés :
-          [data-programme-matiere], [data-couverture] (fraction machine),
-          [data-mastery-token] sur chaque lien de notion. */}
+    <section aria-label="Le programme" className="mt-12 bp-large:mt-16">
       <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-1 border-b-2 border-accent pb-3">
         <h2 className="font-display text-h2 font-bold text-primary">Le programme</h2>
         <p className="text-body-sm text-tertiary">
-          Couverture du cadre officiel, matière par matière.
+          Couverture du cadre officiel, matière par matière
+          {filiereActive ? ` · ${filiereActive.short}` : ""}.
         </p>
       </div>
 
-      {/* `grid-cols-1` et non `grid` seul : une piste `auto` est au moins aussi
-          large que le mot le plus long — à 200 % de texte, « Mathématiques »
-          débordait de 16 px (§8.5, 2026-09-05). `minmax(0,1fr)` borne la piste. */}
-      <div className="grid grid-cols-1 gap-x-8 bp-expanded:grid-cols-2 bp-large:grid-cols-4">
+      {/* `grid-cols-1` borne la piste à 200 % de texte (SC 1.4.4). */}
+      <div className="mt-6 grid grid-cols-1 gap-4 bp-medium:grid-cols-2 bp-large:grid-cols-4 bp-large:items-start">
         {ordre.map((id) => {
           const liste = sortByProgramme(
             notions.filter(
@@ -76,61 +62,94 @@ export function ProgrammeMap({ notions }: { notions: NotionMeta[] }) {
           const sujet = getSubject(id as Parameters<typeof getSubject>[0]);
           const total = sujet ? subjectChapterCount(sujet) : liste.length;
           const dispo = sujet ? subjectAvailableCount(sujet, construits) : liste.length;
+          const coef = filiereActive?.subjects.find((s) => s.id === id)?.coefficient;
+          const totalAffiche = filiereActive ? liste.length : total;
+          const dispoAffiche = filiereActive ? liste.length : dispo;
 
           return (
-            <article key={id} data-programme-matiere={id} className="min-w-0 pt-6">
-              <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b border-subtle pb-3">
+            <article
+              key={id}
+              data-programme-matiere={id}
+              className="flex min-w-0 flex-col border border-subtle bg-surface-raised p-5"
+            >
+              <header className="flex flex-col gap-1">
                 <Link
                   href={subjectHref(id)}
-                  className="min-w-0 break-words focus-ring text-h4 font-semibold text-primary hover:underline underline-offset-4"
+                  className="inline-flex min-h-touch items-center min-w-0 break-words font-display text-h4 font-bold text-primary hover:text-signal hover:underline underline-offset-4 focus-ring"
                 >
                   {subjectLabel(id)}
                 </Link>
-                {/* « 14 chapitres » quand tout est là ; la fraction n'apparaît
-                    que si elle informe. L'attribut garde la fraction machine. */}
-                <span
-                  data-couverture={`${dispo}/${total}`}
-                  className="tnum ml-auto whitespace-nowrap text-body-sm text-tertiary"
-                >
-                  {dispo === total ? `${total} chapitres` : `${dispo}/${total} chapitres`}
-                </span>
+                <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 font-mono text-caption text-secondary">
+                  <span data-couverture={`${dispoAffiche}/${totalAffiche}`} className="tnum whitespace-nowrap">
+                    {dispoAffiche === totalAffiche
+                      ? `${totalAffiche} chapitres`
+                      : `${dispoAffiche}/${totalAffiche} chapitres`}
+                  </span>
+                  {coef != null ? (
+                    <>
+                      <span aria-hidden="true" className="text-tertiary">·</span>
+                      <span className="tnum whitespace-nowrap text-tertiary">Coef. {coef}</span>
+                    </>
+                  ) : null}
+                </div>
               </header>
 
-              {dispo < total && (
+              {dispoAffiche < totalAffiche && (
                 <div
                   className="mt-3 h-1 overflow-hidden bg-surface-container-lowest"
                   role="img"
-                  aria-label={`${dispo} chapitres disponibles sur ${total} au programme`}
+                  aria-label={`${dispoAffiche} chapitres disponibles sur ${totalAffiche} au programme`}
                 >
                   <div
                     className="h-full bg-accent"
-                    style={{ width: `${Math.round((dispo / Math.max(total, 1)) * 100)}%` }}
+                    style={{ width: `${Math.round((dispoAffiche / Math.max(totalAffiche, 1)) * 100)}%` }}
                   />
                 </div>
               )}
 
-              <ol className="mt-2 grid">
-                {liste.map((n, i) => (
-                  <li key={n.slug} className="min-w-0 border-b border-subtle last:border-b-0">
-                    <Link
-                      href={notionHref(n.subject, n.slug)}
-                      data-mastery-token=""
-                      className={cn(
-                        "group grid w-full min-w-0 grid-cols-[2.25rem_minmax(0,1fr)] items-baseline py-2",
-                        "text-body-sm text-secondary hover:text-primary",
-                        "state-layer focus-ring",
-                        "transition-colors duration-micro ease-between"
-                      )}
-                    >
-                      <span aria-hidden className="tnum text-caption font-semibold text-tertiary group-hover:text-signal">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      {/* Pas de troncature (HANDOFF §11.38) : le titre se plie. */}
-                      <span className="min-w-0 break-words">{n.title}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ol>
+              <details className="group mt-4 border-t border-subtle pt-1">
+                <summary
+                  className={cn(
+                    "flex min-h-touch cursor-pointer list-none items-center justify-between gap-2",
+                    "text-body-sm font-medium text-secondary hover:text-primary",
+                    "focus-ring [&::-webkit-details-marker]:hidden"
+                  )}
+                >
+                  <span>Voir les {liste.length} chapitres</span>
+                  <span
+                    aria-hidden="true"
+                    className="font-mono text-body text-tertiary transition-transform duration-micro group-open:rotate-90"
+                  >
+                    ›
+                  </span>
+                </summary>
+
+                <ol className="mt-1 grid border-t border-subtle">
+                  {liste.map((n, i) => (
+                    <li key={n.slug} className="min-w-0 border-b border-subtle last:border-b-0">
+                      <Link
+                        href={notionHref(n.subject, n.slug)}
+                        data-mastery-token=""
+                        className={cn(
+                          "group/item grid min-h-touch w-full min-w-0 grid-cols-[2rem_minmax(0,1fr)] items-center gap-x-2 py-2",
+                          "text-body-sm text-secondary hover:text-primary",
+                          "state-layer focus-ring",
+                          "transition-colors duration-micro ease-between"
+                        )}
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="font-mono tnum text-caption font-semibold text-tertiary group-hover/item:text-signal"
+                        >
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        {/* Pas de troncature (HANDOFF §11.38) : le titre se plie. */}
+                        <span className="min-w-0 break-words">{n.title}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ol>
+              </details>
             </article>
           );
         })}
