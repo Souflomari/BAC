@@ -1,23 +1,14 @@
 /**
- * ChapterList — a subject's units → chapters (Day-9 site skeleton).
+ * ChapterList — unités et chapitres d'une matière (rapport 04 : G-04-002,
+ * G-04-004, G-04-014).
  *
- * The honest map of a matière: every chapter of the programme is listed;
- * built ones link to their notion and show reading time, un-built ones render
- * as a calm "À venir" row (no fabricated availability — the honest-state rule
- * at the catalogue level). Units are the programme's own groupings (cadre for
- * PC; standard program elsewhere).
+ * Liste honnête du programme : chaque chapitre construit renvoie vers sa leçon
+ * avec sa durée de lecture (et, lorsqu'elle existe, un lien discret vers sa
+ * leçon interactive) ; les chapitres non encore publiés affichent « À venir ».
  *
- * Filière narrowing (ADR 0025 §2.11 golden rule): narrowed here, client-side,
- * because the parent route (`matieres/[subject]/page.tsx`) is a SERVER
- * component and can't read the device's localStorage preference. `page.tsx`
- * stays server-rendered and passes every chapter (including its `filieres`
- * restriction, carried on `ChapterView`); THIS component reads `useFiliere`
- * and filters at render time — the one client boundary the narrowing needs.
- * `mounted` gates it so server and first client paint agree (no hydration
- * flash): the unfiltered list, byte-identical to before this existed, until
- * the device preference is read. No filière chosen shows every chapter, same
- * as always — the golden rule narrows, it never gates (a direct URL to an
- * out-of-filière chapter still opens normally regardless of this list).
+ * Resserrement par filière côté client (`useFiliere`, ADR 0025 §2.11) :
+ * `mounted` évite tout écart d'hydratation. Sans filière choisie, tout est
+ * affiché.
  */
 
 "use client";
@@ -34,8 +25,13 @@ export interface ChapterView {
   title: string;
   available: boolean;
   minutes?: number;
-  /** Absent = common to all filières. See curriculum.ts's `Chapter.filieres`. */
+  /** Absent = commun à toutes les filières. */
   filieres?: FiliereId[];
+  /** Passerelle vers la leçon interactive quand elle existe sur ce chapitre. */
+  pilote?: {
+    href: string;
+    nbExercices: number;
+  };
 }
 
 export interface UnitView {
@@ -43,10 +39,6 @@ export interface UnitView {
   chapters: ChapterView[];
 }
 
-// GRILLE (refonte 2026-10) : une ligne = numéro de chapitre (chiffres
-// serrés, Archivo 62 %) · titre · durée de lecture · flèche. Les lignes sont
-// séparées par des filets ; « À venir » reste la marque honnête d'un chapitre
-// non construit, en capitales calmes, jamais en pilule.
 function ChapterRow({ subject, chapter, numero }: { subject: string; chapter: ChapterView; numero: number }) {
   const inner = (
     <>
@@ -71,15 +63,13 @@ function ChapterRow({ subject, chapter, numero }: { subject: string; chapter: Ch
           {chapter.title}
         </span>
         {chapter.available && chapter.minutes != null && (
-          <span className="mt-1 block text-caption tabular-nums text-tertiary">
+          <span className="mt-1 block font-mono text-caption tabular-nums text-tertiary">
             {chapter.minutes} min de lecture
           </span>
         )}
       </span>
       {chapter.available ? (
         <span className="flex flex-shrink-0 items-center gap-2">
-          {/* Pas de pilule « Disponible » (§7, le regard R6) : le lien EST
-              l'affordance. Flèche tertiaire au repos, encre au survol. */}
           <Icon
             name="arrow-right"
             size={16}
@@ -100,22 +90,33 @@ function ChapterRow({ subject, chapter, numero }: { subject: string; chapter: Ch
         <Link
           href={notionHref(subject, chapter.slug)}
           className={cn(
-            "group flex items-baseline justify-between gap-4",
+            "group flex min-h-touch items-baseline justify-between gap-4",
             "-mx-2 px-2 py-3.5",
             "state-layer focus-ring"
           )}
         >
           {inner}
         </Link>
+        {chapter.pilote && (
+          <div className="-mt-1 pb-2 pl-12">
+            <Link
+              href={chapter.pilote.href}
+              className="inline-flex min-h-touch items-center gap-1.5 text-caption font-semibold text-signal hover:underline underline-offset-4 focus-ring"
+            >
+              <span>
+                Leçon interactive
+                {chapter.pilote.nbExercices > 0 ? ` · ${chapter.pilote.nbExercices} exercices` : ""}
+              </span>
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        )}
       </li>
     );
   }
 
   return (
-    <li
-      className="flex items-baseline justify-between gap-4 -mx-2 px-2 py-3.5"
-      aria-disabled="true"
-    >
+    <li className="flex min-h-touch items-baseline justify-between gap-4 -mx-2 px-2 py-3.5">
       {inner}
     </li>
   );
@@ -132,30 +133,31 @@ export function ChapterList({ subject, units }: { subject: string; units: UnitVi
     return (
       <div
         role="status"
-        className={cn(
-          "flex flex-col items-center justify-center rounded-2xl py-20 text-center",
-          "border border-dashed border-subtle",
-          "bg-surface-raised"
-        )}
+        className="max-w-lead border-l-2 border-subtle py-1 pl-5"
       >
-        <Icon name="empty-doc" size={44} className="mb-5 text-border-soft" />
-        <h2 className="mb-1 text-h4 font-semibold text-primary">
+        <h2 className="font-display text-h3 font-bold text-primary">
           Programme à venir
         </h2>
-        <p className="max-w-[44ch] text-body-sm text-secondary">
-          Les chapitres de cette matière seront ajoutés prochainement.
+        <p className="mt-2 text-body text-secondary">
+          Les chapitres de cette matière ne sont pas encore disponibles.
         </p>
+        <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">
+          <Link href="/" className="btn-primary focus-ring">
+            Retour à l’accueil
+          </Link>
+          <Link
+            href="/examens"
+            className="inline-flex min-h-touch items-center text-body-sm font-semibold text-primary underline decoration-border-soft underline-offset-4 hover:text-signal focus-ring"
+          >
+            Voir les examens blancs
+          </Link>
+        </div>
       </div>
     );
   }
 
-  // GRILLE (refonte 2026-10) : plus de cartes. Chaque unité est un bloc
-  // ouvert par un intitulé en capitales et un filet d'encre, ses chapitres
-  // numérotés en continu dans l'ordre du programme — sur ce qui est affiché
-  // (une filière choisie resserre la liste ; les numéros suivent la liste que
-  // l'élève a sous les yeux). `columns` et non `grid` (audit R6, P0-3) : les
-  // colonnes CSS équilibrent les hauteurs ; break-inside-avoid garde chaque
-  // unité entière. `min-w-0` : un titre long ne fait pas déborder la colonne.
+  // `columns` équilibre les hauteurs sur bureau ; `break-inside-avoid` garde
+  // chaque unité entière. `min-w-0` empêche un titre long de déborder.
   let numero = 0;
   return (
     <div className="bp-large:columns-2 bp-large:gap-16">
