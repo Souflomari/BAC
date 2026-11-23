@@ -775,7 +775,7 @@ export const EXERCICES = [
     niveau: 2,
     seance: 2,
     capacites: ["maths-sexp 1.2.17", "maths-sm 1.3.10"],
-    erreurs: ["oublier le domaine d’existence", "confondre ln x et x", "inverser x et y"],
+    erreurs: ["oublier le domaine d’existence", "confondre ln x et x", "inverser x et y", "oublier de diviser par le coefficient"],
     gen(h) {
       let X, Y;
       do {
@@ -797,7 +797,7 @@ export const EXERCICES = [
       ]);
       const piegesX = [];
       if (Y !== X) piegesX.push({ v: Y, fb: `C’est la valeur de $\\ln y$. En additionnant les deux lignes, on élimine $\\ln y$ : $3\\ln x = ${s + d}$.`, erreur: "inverser x et y" });
-      if (s + d !== X) piegesX.push({ v: s + d, fb: `C’est $3\\ln x$, pas $\\ln x$ : il reste à diviser par 3.`, erreur: "inverser x et y" });
+      if (s + d !== X) piegesX.push({ v: s + d, fb: `C’est $3\\ln x$, pas $\\ln x$ : il reste à diviser par 3.`, erreur: "oublier de diviser par le coefficient" });
       return {
         enonce: `<p>On considère le système :</p>$$\\begin{cases} \\ln x + \\ln y = ${s} \\\\ 2\\ln x - \\ln y = ${d} \\end{cases}$$`,
         questions: [
@@ -829,7 +829,7 @@ export const EXERCICES = [
     niveau: 2,
     seance: 2,
     capacites: ["maths-sexp 1.2.15", "maths-sm 1.3.8"],
-    erreurs: ["oublier la valeur absolue sur ln|u|", "oublier le facteur devant ln|u|", "confondre dérivée et primitive"],
+    erreurs: ["oublier la valeur absolue sur ln|u|", "oublier le facteur devant ln|u|", "confondre dérivée et primitive", "erreur de signe sur la constante C"],
     gen(h) {
       const cas = h.pick(["neg", "pos"]);
       if (cas === "neg") {
@@ -855,7 +855,7 @@ export const EXERCICES = [
               reponse: y0,
               tol: { abs: 0.01 },
               indice: `Remplace $x$ par $${x0}$ dans $G(x) = ${kStr}\\ln(${r} - x) + C$ et utilise $\\ln 1 = 0$.`,
-              pieges: y0 !== 0 ? [{ v: -y0, fb: `On résout $0 + C = ${y0}$, donc $C = ${y0}$, sans changer de signe.`, erreur: "confondre dérivée et primitive" }] : [],
+              pieges: y0 !== 0 ? [{ v: -y0, fb: `On résout $0 + C = ${y0}$, donc $C = ${y0}$, sans changer de signe.`, erreur: "erreur de signe sur la constante C" }] : [],
             },
           ],
           correction: [
@@ -888,7 +888,7 @@ export const EXERCICES = [
             reponse: y0,
             tol: { abs: 0.01 },
             indice: `Remplace $x$ par $0$ dans $G(x)$ et utilise $\\ln 1 = 0$.`,
-            pieges: y0 !== 0 ? [{ v: -y0, fb: `On résout $0 + C = ${y0}$, donc $C = ${y0}$.`, erreur: "confondre dérivée et primitive" }] : [],
+            pieges: y0 !== 0 ? [{ v: -y0, fb: `On résout $0 + C = ${y0}$, donc $C = ${y0}$.`, erreur: "erreur de signe sur la constante C" }] : [],
           },
         ],
         correction: [

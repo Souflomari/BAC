@@ -134,10 +134,10 @@ export const EXERCICES = [
       const loin = TOUS.filter((x) => x.Z !== Z && x.A !== A && x.N !== Nn && !opts.some((o) => o.t.includes(`(${x.nom} ${x.A})`)));
       while (opts.length < 3) { const b = h.pick(loin); if (!opts.some((o) => o.t.includes(`(${b.nom} ${b.A})`))) opts.push({ t: `${$n(b.A, b.Z, b.X)} (${b.nom} ${b.A})`, fb: `${b.Z} protons au lieu de ${Z} : c’est un autre élément.`, erreur: "isotopes = même A" }); }
       const qDef = h.melange([
-        { t: "Un noyau instable qui se désintègre spontanément et aléatoirement en un noyau plus stable, en émettant une particule", ok: true },
-        { t: "Un noyau instable dont on peut prévoir à l’avance l’instant exact de désintégration", fb: "La désintégration d’un noyau individuel est aléatoire : on ne peut pas prévoir son instant exact.", erreur: "radioactivité provoquée ou prévisible" },
-        { t: "Un noyau qui ne se désintègre que s’il est chauffé ou exposé à la lumière", fb: "La radioactivité est spontanée et indépendante des conditions extérieures (température, pression, lumière).", erreur: "radioactivité provoquée ou prévisible" },
-        { t: "Un atome qui a gagné ou perdu des électrons", fb: "Un atome qui gagne ou perd des électrons est un ion ; la radioactivité concerne le noyau.", erreur: "radioactivité provoquée ou prévisible" },
+        { t: "Un noyau instable qui se désintègre spontanément en émettant une particule", ok: true },
+        { t: "Un noyau instable dont on peut calculer l’instant exact de désintégration", fb: "La désintégration d’un noyau individuel est aléatoire : on ne peut pas prévoir son instant exact.", erreur: "radioactivité provoquée ou prévisible" },
+        { t: "Un noyau qui ne se désintègre que s’il est chauffé ou soumis à la lumière", fb: "La radioactivité est spontanée et indépendante des conditions extérieures (température, pression, lumière).", erreur: "radioactivité provoquée ou prévisible" },
+        { t: "Un atome qui a gagné ou perdu un ou plusieurs électrons de son cortège", fb: "Un atome qui gagne ou perd des électrons est un ion ; la radioactivité concerne le noyau.", erreur: "radioactivité provoquée ou prévisible" },
       ]);
       const tolE = { abs: 0.01 };
       return {
@@ -570,7 +570,9 @@ export const EXERCICES = [
     },
   },
 
-  /* 12 — exploiter le diagramme (N, Z) de Segrè (1.2.1.3 et 1.2.1.4) */
+  /* 12 — exploiter le diagramme (N, Z) de Segrè (1.2.1.3 et 1.2.1.4)
+     Convention du bac marocain (cours 2BAC BIOF SM/PC, moutamadris.ma ; charte internationale de Segrè) :
+     N (neutrons) en abscisse, Z (protons) en ordonnée. Fenêtre agrandie autour du noyau pour une lecture sans ambiguïté. */
   {
     id: "nz-diagramme",
     titre: "Exploiter le diagramme (N, Z) de Segrè",
@@ -578,75 +580,140 @@ export const EXERCICES = [
     capacites: CAP("1.2.1.3", "1.2.1.4"),
     erreurs: ["inverser zones β⁻ et β⁺", "confondre zone α et β⁻", "sens de déplacement inversé dans (N, Z)"],
     gen(h) {
-      /* Noyaux réels, nettement détachés de la vallée de stabilité pour une lecture graphique sans ambiguïté. */
+      /* Noyaux réels ; fenêtre agrandie autour du noyau et de la vallée de stabilité (N en abscisse, Z en ordonnée). */
       const POOL = [
-        { X: "Sr", nom: "strontium", A: 90, Z: 38, ty: "bm", zone: "au-dessus de la vallée de stabilité (excès de neutrons)" },
-        { X: "I", nom: "iode", A: 131, Z: 53, ty: "bm", zone: "au-dessus de la vallée de stabilité (excès de neutrons)" },
-        { X: "Cs", nom: "césium", A: 137, Z: 55, ty: "bm", zone: "au-dessus de la vallée de stabilité (excès de neutrons)" },
-        { X: "Ba", nom: "baryum", A: 140, Z: 56, ty: "bm", zone: "au-dessus de la vallée de stabilité (excès de neutrons)" },
-        { X: "Ce", nom: "cérium", A: 144, Z: 58, ty: "bm", zone: "au-dessus de la vallée de stabilité (excès de neutrons)" },
-        { X: "Fe", nom: "fer", A: 52, Z: 26, ty: "bp", zone: "au-dessous de la vallée de stabilité (excès de protons)" },
-        { X: "Cu", nom: "cuivre", A: 58, Z: 29, ty: "bp", zone: "au-dessous de la vallée de stabilité (excès de protons)" },
-        { X: "Br", nom: "brome", A: 72, Z: 35, ty: "bp", zone: "au-dessous de la vallée de stabilité (excès de protons)" },
-        { X: "Sb", nom: "antimoine", A: 118, Z: 51, ty: "bp", zone: "au-dessous de la vallée de stabilité (excès de protons)" },
-        { X: "I", nom: "iode", A: 120, Z: 53, ty: "bp", zone: "au-dessous de la vallée de stabilité (excès de protons)" },
+        { X: "Sr", nom: "strontium", A: 90, Z: 38, ty: "bm", zone: "en dessous (à droite) de la vallée de stabilité : excès de neutrons" },
+        { X: "I", nom: "iode", A: 131, Z: 53, ty: "bm", zone: "en dessous (à droite) de la vallée de stabilité : excès de neutrons" },
+        { X: "Cs", nom: "césium", A: 137, Z: 55, ty: "bm", zone: "en dessous (à droite) de la vallée de stabilité : excès de neutrons" },
+        { X: "Ba", nom: "baryum", A: 140, Z: 56, ty: "bm", zone: "en dessous (à droite) de la vallée de stabilité : excès de neutrons" },
+        { X: "Ce", nom: "cérium", A: 144, Z: 58, ty: "bm", zone: "en dessous (à droite) de la vallée de stabilité : excès de neutrons" },
+        { X: "Fe", nom: "fer", A: 52, Z: 26, ty: "bp", zone: "au-dessus (à gauche) de la vallée de stabilité : excès de protons" },
+        { X: "Cu", nom: "cuivre", A: 58, Z: 29, ty: "bp", zone: "au-dessus (à gauche) de la vallée de stabilité : excès de protons" },
+        { X: "Br", nom: "brome", A: 72, Z: 35, ty: "bp", zone: "au-dessus (à gauche) de la vallée de stabilité : excès de protons" },
+        { X: "Sb", nom: "antimoine", A: 118, Z: 51, ty: "bp", zone: "au-dessus (à gauche) de la vallée de stabilité : excès de protons" },
+        { X: "I", nom: "iode", A: 120, Z: 53, ty: "bp", zone: "au-dessus (à gauche) de la vallée de stabilité : excès de protons" },
         { X: "Po", nom: "polonium", A: 210, Z: 84, ty: "al", zone: "au-delà de Z = 82 (noyau lourd)" },
         { X: "Rn", nom: "radon", A: 222, Z: 86, ty: "al", zone: "au-delà de Z = 82 (noyau lourd)" },
         { X: "Ra", nom: "radium", A: 226, Z: 88, ty: "al", zone: "au-delà de Z = 82 (noyau lourd)" },
         { X: "U", nom: "uranium", A: 238, Z: 92, ty: "al", zone: "au-delà de Z = 82 (noyau lourd)" },
         { X: "Pu", nom: "plutonium", A: 238, Z: 94, ty: "al", zone: "au-delà de Z = 82 (noyau lourd)" },
       ];
+      /* Vallée de stabilité réelle (Z -> N moyen des isotopes stables, de Z = 2 à Pb-208 Z = 82) */
+      const VALLEE = [
+        [2, 2], [10, 10], [20, 20], [26, 30], [29, 34], [35, 44], [38, 49], [40, 51],
+        [50, 69], [51, 71], [53, 74], [55, 78], [56, 81], [58, 82], [60, 84], [70, 103], [82, 126],
+      ];
+      const nVal = (z) => {
+        if (z <= VALLEE[0][0]) return VALLEE[0][1];
+        for (let i = 1; i < VALLEE.length; i++) {
+          const [z0, n0] = VALLEE[i - 1], [z1, n1] = VALLEE[i];
+          if (z <= z1) return n0 + ((n1 - n0) * (z - z0)) / (z1 - z0);
+        }
+        return VALLEE[VALLEE.length - 1][1];
+      };
+
       const nucP = h.pick(POOL);
       const N0 = nucP.A - nucP.Z;
       const dZ = nucP.ty === "bm" ? 1 : nucP.ty === "bp" ? -1 : -2;
       const dN = nucP.ty === "bm" ? -1 : nucP.ty === "bp" ? 1 : -2;
       const Z1 = nucP.Z + dZ, N1 = N0 + dN;
 
-      /* Figure SVG du diagramme (N, Z) : axes, droite N = Z, vallée de stabilité, point du noyau père. */
-      const L = 66, R = 596, T = 22, B = 296, zMax = 100, nMax = 160;
-      const X = (z) => L + ((R - L) * z) / zMax;
-      const Y = (n) => B - ((B - T) * n) / nMax;
+      /* Fenêtre agrandie autour du noyau (N en abscisse, Z en ordonnée) */
+      let nMin, nMax, zMin, zMax, pasN, pasZ;
+      if (nucP.ty === "al") {
+        nMin = 108; nMax = 152; pasN = 10;
+        zMin = 72; zMax = 98; pasZ = 5;
+      } else {
+        const nv = nVal(nucP.Z);
+        const nMid = Math.round((N0 + nv) / 2);
+        nMin = nMid - 12; nMax = nMid + 12; pasN = 4;
+        zMin = nucP.Z - 8; zMax = nucP.Z + 8; pasZ = 4;
+      }
+
+      const L = 68, R = 602, T = 26, B = 294;
+      const X = (n) => L + ((R - L) * (n - nMin)) / (nMax - nMin);
+      const Y = (z) => B - ((B - T) * (z - zMin)) / (zMax - zMin);
       const f = (v) => v.toFixed(1);
-      let g = "";
-      for (let z = 0; z <= zMax; z += 20) {
-        g += `<line x1="${f(X(z))}" x2="${f(X(z))}" y1="${T}" y2="${B}" stroke="var(--color-border-soft)" stroke-width="1"/>`;
-        g += `<text x="${f(X(z))}" y="${B + 18}" text-anchor="middle" font-size="13" fill="var(--color-text-secondary)">${z}</text>`;
+      const clipId = `nz-clip-${nucP.X}-${nucP.A}`;
+      let g = `<defs><clipPath id="${clipId}"><rect x="${L}" y="${T}" width="${R - L}" height="${B - T}"/></clipPath></defs>`;
+
+      /* Quadrillage */
+      const nStart = Math.ceil(nMin / pasN) * pasN;
+      for (let n = nStart; n <= nMax; n += pasN) {
+        g += `<line x1="${f(X(n))}" x2="${f(X(n))}" y1="${T}" y2="${B}" stroke="var(--color-border-soft)" stroke-width="1"/>`;
+        g += `<text x="${f(X(n))}" y="${B + 18}" text-anchor="middle" font-size="13" fill="var(--color-text-secondary)">${n}</text>`;
       }
-      for (let n = 0; n <= nMax; n += 20) {
-        g += `<line x1="${L}" x2="${R}" y1="${f(Y(n))}" y2="${f(Y(n))}" stroke="var(--color-border-soft)" stroke-width="1"/>`;
-        if (n > 0 && n % 40 === 0) g += `<text x="${L - 8}" y="${f(Y(n) + 4)}" text-anchor="end" font-size="13" fill="var(--color-text-secondary)">${n}</text>`;
+      const zStart = Math.ceil(zMin / pasZ) * pasZ;
+      for (let z = zStart; z <= zMax; z += pasZ) {
+        g += `<line x1="${L}" x2="${R}" y1="${f(Y(z))}" y2="${f(Y(z))}" stroke="var(--color-border-soft)" stroke-width="1"/>`;
+        g += `<text x="${L - 8}" y="${f(Y(z) + 4)}" text-anchor="end" font-size="13" fill="var(--color-text-secondary)">${z}</text>`;
       }
-      /* Droite N = Z */
-      g += `<line x1="${f(X(0))}" y1="${f(Y(0))}" x2="${f(X(100))}" y2="${f(Y(100))}" stroke="var(--color-text-secondary)" stroke-width="1.4" stroke-dasharray="5 5"/>`;
-      g += `<text x="${f(X(96))}" y="${f(Y(80))}" text-anchor="end" font-size="12" fill="var(--color-text-secondary)">N = Z</text>`;
-      /* Limite Z = 82 des noyaux stables */
-      g += `<line x1="${f(X(82))}" x2="${f(X(82))}" y1="${T}" y2="${B}" stroke="var(--color-border-soft)" stroke-width="1.5" stroke-dasharray="3 4"/>`;
-      g += `<text x="${f(X(82) + 4)}" y="${T + 14}" font-size="12" fill="var(--color-text-secondary)">Z = 82</text>`;
-      /* Vallée de stabilité réelle (Z = 2 à 82) */
-      const vallee = [[2, 2], [10, 10], [20, 20], [30, 35], [40, 51], [50, 69], [60, 84], [70, 103], [82, 126]];
-      const dVal = vallee.map(([z, n], i) => `${i ? "L" : "M"}${f(X(z))} ${f(Y(n))}`).join(" ");
-      g += `<path d="${dVal}" fill="none" stroke="var(--color-text-primary)" stroke-opacity="0.22" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>`;
-      g += `<path d="${dVal}" fill="none" stroke="var(--color-text-primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>`;
-      g += `<text x="${f(X(36))}" y="${f(Y(88))}" text-anchor="end" font-size="12" fill="var(--color-text-secondary)">Vallée de stabilité</text>`;
+
+      /* Contenu découpé dans la fenêtre du repère */
+      let inner = "";
+      if (nucP.ty === "al") {
+        /* Zone Z > 82 légèrement teintée + ligne horizontale Z = 82 */
+        inner += `<rect x="${L}" y="${T}" width="${R - L}" height="${f(Y(82) - T)}" fill="var(--color-surface-container-low)"/>`;
+        inner += `<line x1="${L}" x2="${R}" y1="${f(Y(82))}" y2="${f(Y(82))}" stroke="var(--color-text-secondary)" stroke-width="1.5" stroke-dasharray="5 5"/>`;
+        inner += `<text x="${R - 8}" y="${f(Y(82) + 16)}" text-anchor="end" font-size="12" font-weight="600" fill="var(--color-text-secondary)">Z = 82 (limite de stabilité)</text>`;
+      } else {
+        /* Droite N = Z si elle traverse la fenêtre */
+        const dMin = Math.max(nMin, zMin), dMax = Math.min(nMax, zMax);
+        if (dMax > dMin + 2) {
+          inner += `<line x1="${f(X(dMin))}" y1="${f(Y(dMin))}" x2="${f(X(dMax))}" y2="${f(Y(dMax))}" stroke="var(--color-text-secondary)" stroke-width="1.2" stroke-dasharray="5 5"/>`;
+          inner += `<text x="${f(X(dMax) - 22)}" y="${f(Y(dMax) + 14)}" text-anchor="end" font-size="12" fill="var(--color-text-secondary)">N = Z</text>`;
+        }
+      }
+
+      /* Courbe et bande de la vallée de stabilité (tronquée à Z <= 82) */
+      const ptsVal = [];
+      for (let z = Math.max(2, zMin - 2); z <= Math.min(82, zMax + 2); z += 1) {
+        ptsVal.push([X(nVal(z)), Y(z)]);
+      }
+      if (ptsVal.length >= 2) {
+        const dVal = ptsVal.map(([px, py], i) => `${i ? "L" : "M"}${f(px)} ${f(py)}`).join(" ");
+        inner += `<path d="${dVal}" fill="none" stroke="var(--color-text-primary)" stroke-opacity="0.18" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>`;
+        inner += `<path d="${dVal}" fill="none" stroke="var(--color-text-primary)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>`;
+      }
+      if (nucP.ty === "al") {
+        /* Pb-208, dernier noyau stable au bout de la vallée */
+        inner += `<rect x="${f(X(126) - 4.5)}" y="${f(Y(82) - 4.5)}" width="9" height="9" fill="var(--color-text-primary)"/>`;
+        inner += `<text x="${f(X(126) + 10)}" y="${f(Y(82) + 16)}" font-size="12" fill="var(--color-text-primary)">Pb-208 (stable)</text>`;
+        inner += `<text x="${f(X(116) + 16)}" y="${f(Y(76) + 6)}" font-size="12" font-weight="600" fill="var(--color-text-primary)">Vallée de stabilité</text>`;
+      } else {
+        /* Repère d'un isotope stable du même élément (même ligne horizontale Z = Z0) */
+        const nv = Math.round(nVal(nucP.Z));
+        inner += `<rect x="${f(X(nv) - 5)}" y="${f(Y(nucP.Z) - 5)}" width="10" height="10" fill="var(--color-text-primary)"/>`;
+        /* Étiquette « Vallée de stabilité » collée à la courbe, à l'opposé du noyau étudié */
+        const zLab = nucP.ty === "bp" ? nucP.Z - 4.5 : nucP.Z + 4.5;
+        const xLab = X(nVal(zLab)) + (nucP.ty === "bp" ? 26 : -26);
+        const yLab = Y(zLab) + 4;
+        const anchLab = nucP.ty === "bp" ? "start" : "end";
+        inner += `<text x="${f(xLab)}" y="${f(yLab)}" text-anchor="${anchLab}" font-size="12" font-weight="600" fill="var(--color-text-primary)">Vallée de stabilité</text>`;
+      }
+      g += `<g clip-path="url(#${clipId})">${inner}</g>`;
+
       /* Axes */
       g += `<line x1="${L}" x2="${R}" y1="${B}" y2="${B}" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
       g += `<line x1="${L}" x2="${L}" y1="${T}" y2="${B}" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
-      g += `<text x="${R}" y="${B + 36}" text-anchor="end" font-size="14" fill="var(--color-text-primary)">Z (protons)</text>`;
-      g += `<text x="${L - 8}" y="${T - 6}" font-size="14" fill="var(--color-text-primary)">N (neutrons)</text>`;
+      g += `<text x="${R}" y="${B + 38}" text-anchor="end" font-size="14" fill="var(--color-text-primary)">N (neutrons)</text>`;
+      g += `<text x="${L - 8}" y="${T - 8}" font-size="14" fill="var(--color-text-primary)">Z (protons)</text>`;
+
       /* Point du noyau étudié + projections */
-      const px = X(nucP.Z), py = Y(N0);
-      g += `<line x1="${f(px)}" x2="${f(px)}" y1="${f(py)}" y2="${B}" stroke="var(--color-signal)" stroke-width="1.2" stroke-dasharray="3 3"/>`;
-      g += `<line x1="${L}" x2="${f(px)}" y1="${f(py)}" y2="${f(py)}" stroke="var(--color-signal)" stroke-width="1.2" stroke-dasharray="3 3"/>`;
-      g += `<circle cx="${f(px)}" cy="${f(py)}" r="5.5" fill="var(--color-signal)"/>`;
-      const lx = nucP.ty === "bp" ? px + 10 : px - 10;
-      const ly = nucP.ty === "bp" ? py + 16 : py - 8;
-      const anchor = nucP.ty === "bp" ? "start" : "end";
+      const px = X(N0), py = Y(nucP.Z);
+      g += `<line x1="${f(px)}" x2="${f(px)}" y1="${f(py)}" y2="${B}" stroke="var(--color-signal)" stroke-width="1.3" stroke-dasharray="3 3"/>`;
+      g += `<line x1="${L}" x2="${f(px)}" y1="${f(py)}" y2="${f(py)}" stroke="var(--color-signal)" stroke-width="1.3" stroke-dasharray="3 3"/>`;
+      g += `<circle cx="${f(px)}" cy="${f(py)}" r="6" fill="var(--color-signal)"/>`;
+      const lx = nucP.ty === "bm" ? px + 11 : nucP.ty === "bp" ? px - 11 : (N0 > 138 ? px - 11 : px + 11);
+      const ly = nucP.ty === "al" ? py - 9 : py - 9;
+      const anchor = nucP.ty === "bm" ? "start" : nucP.ty === "bp" ? "end" : (N0 > 138 ? "end" : "start");
       g += `<text x="${f(lx)}" y="${f(ly)}" text-anchor="${anchor}" font-size="14" font-weight="700" fill="var(--color-signal)">${nucP.X}-${nucP.A}</text>`;
-      const figure = `<svg viewBox="0 0 640 344" role="img" aria-label="Diagramme de Segrè N en fonction de Z situant le noyau ${nucP.nom} ${nucP.A}">${g}</svg>`;
+
+      const figure = `<svg viewBox="0 0 640 344" role="img" aria-label="Extrait agrandi du diagramme de Segrè (N en abscisse, Z en ordonnée) situant le noyau ${nucP.nom} ${nucP.A}">${g}</svg>`;
 
       const qType = h.melange([
-        { t: "Radioactivité $\\beta^-$ (excès de neutrons)", ...(nucP.ty === "bm" ? { ok: true } : { fb: `Le noyau se situe ${nucP.zone} ; la zone $\\beta^-$ se trouve au-dessus de la vallée de stabilité.`, erreur: nucP.ty === "bp" ? "inverser zones β⁻ et β⁺" : "confondre zone α et β⁻" }) },
-        { t: "Radioactivité $\\beta^+$ (excès de protons)", ...(nucP.ty === "bp" ? { ok: true } : { fb: `Le noyau se situe ${nucP.zone} ; la zone $\\beta^+$ se trouve au-dessous de la vallée de stabilité.`, erreur: "inverser zones β⁻ et β⁺" }) },
+        { t: "Radioactivité $\\beta^-$ (excès de neutrons)", ...(nucP.ty === "bm" ? { ok: true } : { fb: `Le noyau se situe ${nucP.zone} ; sur le diagramme $(N, Z)$, la zone $\\beta^-$ est en dessous (à droite) de la vallée de stabilité.`, erreur: nucP.ty === "bp" ? "inverser zones β⁻ et β⁺" : "confondre zone α et β⁻" }) },
+        { t: "Radioactivité $\\beta^+$ (excès de protons)", ...(nucP.ty === "bp" ? { ok: true } : { fb: `Le noyau se situe ${nucP.zone} ; sur le diagramme $(N, Z)$, la zone $\\beta^+$ est au-dessus (à gauche) de la vallée de stabilité.`, erreur: "inverser zones β⁻ et β⁺" }) },
         { t: "Radioactivité $\\alpha$ (noyau lourd, $Z > 82$)", ...(nucP.ty === "al" ? { ok: true } : { fb: `Ici $Z = ${nucP.Z} \\leq 82$ : la radioactivité $\\alpha$ concerne les noyaux lourds au-delà de $Z = 82$.`, erreur: "confondre zone α et β⁻" }) },
         { t: "Noyau stable (dans la vallée de stabilité)", fb: `Le point rouge est en dehors de la vallée de stabilité (${nucP.zone}) : ce noyau est radioactif.`, erreur: "confondre zone α et β⁻" },
       ]);
@@ -657,7 +724,7 @@ export const EXERCICES = [
       ]);
       const tolE = { abs: 0.01 };
       return {
-        enonce: `<p>Le diagramme $(N, Z)$ de Segrè situe le noyau ${$n(nucP.A, nucP.Z, nucP.X)} (${nucP.nom} ${nucP.A}, soit $Z = ${nucP.Z}$ et $N = ${N0}$) par rapport à la vallée de stabilité.</p>`,
+        enonce: `<p>Cet extrait du diagramme $(N, Z)$ de Segrè ($N$ en abscisse, $Z$ en ordonnée) situe le noyau ${$n(nucP.A, nucP.Z, nucP.X)} (${nucP.nom} ${nucP.A}, soit $N = ${N0}$ et $Z = ${nucP.Z}$) par rapport à la vallée de stabilité${nucP.ty === "al" ? "" : " (le carré noir repère un isotope stable du même élément)"}.</p>`,
         figure,
         questions: [
           { type: "qcm", q: "D’après sa position sur le diagramme, quel type de radioactivité subit ce noyau ?", options: qType },
@@ -676,7 +743,7 @@ export const EXERCICES = [
           },
         ],
         correction: [
-          { t: `Le noyau ${$n(nucP.A, nucP.Z, nucP.X)} ($Z = ${nucP.Z}$, $N = ${N0}$) se trouve ${nucP.zone} : il est émetteur ${NOM_TYPE[nucP.ty]}.` },
+          { t: `Le noyau ${$n(nucP.A, nucP.Z, nucP.X)} ($N = ${N0}$, $Z = ${nucP.Z}$) se trouve ${nucP.zone} : il est émetteur ${NOM_TYPE[nucP.ty]}.` },
           { tex: `Z' = ${nucP.Z} ${dZ > 0 ? `+ ${dZ}` : `- ${-dZ}`} = ${Z1}, \\qquad N' = ${N0} ${dN > 0 ? `+ ${dN}` : `- ${-dN}`} = ${N1}`, r: "Le noyau fils se rapproche de la vallée de stabilité." },
         ],
       };

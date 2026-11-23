@@ -658,12 +658,12 @@ export const EXERCICES = [
     erreurs: ["confondre transcription et traduction", "confondre ARNm et ARNt", "inverser noyau et cytoplasme"],
     gen(h) {
       const elements = [
-        { k: "transcription", nom: "Transcription", x: 146, y: 158, fb: "La transcription a lieu dans le noyau : c’est la copie de l’ADN en ARNm." },
-        { k: "arnm", nom: "ARNm", x: 300, y: 196, fb: "L’ARNm est le fil simple qui sort du noyau par un pore nucléaire vers le cytoplasme." },
-        { k: "ribosome", nom: "Ribosome", x: 540, y: 262, fb: "Le ribosome est la machine à deux sous-unités posée sur l’ARNm dans le cytoplasme." },
-        { k: "arnt", nom: "ARNt", x: 524, y: 170, fb: "L’ARNt porte un anticodon d’un côté et un acide aminé de l’autre." },
-        { k: "peptidique", nom: "Liaison peptidique", x: 432, y: 102, fb: "La liaison peptidique relie deux acides aminés voisins dans la chaîne en formation." },
-        { k: "traduction", nom: "Traduction", x: 458, y: 294, fb: "La traduction est le passage de l’ARNm à la chaîne d’acides aminés dans le cytoplasme." },
+        { k: "transcription", nom: "Transcription", bx: 84, by: 162, tx: 160, ty: 162, fb: "La transcription a lieu dans le noyau : c’est la copie de l’ADN en ARNm." },
+        { k: "arnm", nom: "ARNm", bx: 318, by: 184, tx: 330, ty: 230, fb: "L’ARNm est le fil simple qui sort du noyau par un pore nucléaire vers le cytoplasme." },
+        { k: "ribosome", nom: "Ribosome", bx: 586, by: 204, tx: 526, ty: 204, fb: "Le ribosome est la machine à deux sous-unités posée sur l’ARNm dans le cytoplasme." },
+        { k: "arnt", nom: "ARNt", bx: 576, by: 146, tx: 494, ty: 196, fb: "L’ARNt se fixe sur un codon de l’ARNm par son anticodon et porte un acide aminé." },
+        { k: "peptidique", nom: "Liaison peptidique", bx: 454, by: 74, tx: 432, ty: 118, fb: "La liaison peptidique relie deux acides aminés voisins dans la chaîne en formation." },
+        { k: "traduction", nom: "Traduction", bx: 468, by: 304, tx: 468, ty: 278, fb: "La traduction est le passage de l’ARNm à la chaîne d’acides aminés dans le cytoplasme." },
       ];
       /* Numérotation permutée par tirage, comme dans un sujet de Partie I « Recopiez les couples (1, …) ». */
       const perm = h.melange([0, 1, 2, 3, 4, 5]);
@@ -672,43 +672,52 @@ export const EXERCICES = [
       let svg = "";
       /* Noyau (gauche) */
       svg += `<circle cx="164" cy="166" r="118" fill="var(--color-surface-container-low)" stroke="var(--color-text-primary)" stroke-width="1.8" stroke-dasharray="30 9"/>`;
-      svg += `<text x="164" y="76" text-anchor="middle" font-size="13" fill="var(--color-text-secondary)">Noyau</text>`;
+      svg += `<text x="164" y="74" text-anchor="middle" font-size="13" fill="var(--color-text-secondary)">Noyau</text>`;
       /* ADN double brin */
-      svg += `<path d="M96 116 Q130 100 164 116 T232 116" fill="none" stroke="var(--color-text-primary)" stroke-width="2.2"/>`;
-      svg += `<path d="M96 130 Q130 146 164 130 T232 130" fill="none" stroke="var(--color-text-primary)" stroke-width="2.2"/>`;
-      svg += `<text x="164" y="102" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-text-primary)">ADN</text>`;
+      svg += `<path d="M98 114 Q131 98 164 114 T230 114" fill="none" stroke="var(--color-text-primary)" stroke-width="2.2"/>`;
+      svg += `<path d="M98 128 Q131 144 164 128 T230 128" fill="none" stroke="var(--color-text-primary)" stroke-width="2.2"/>`;
+      svg += `<text x="164" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-text-primary)">ADN</text>`;
       /* Flèche transcription */
       svg += `<line x1="164" y1="142" x2="164" y2="180" stroke="var(--color-text-primary)" stroke-width="2"/>`;
       svg += `<polygon points="164,186 159,176 169,176" fill="var(--color-text-primary)"/>`;
-      /* ARNm sortant par un pore */
-      svg += `<path d="M112 194 Q138 186 164 194 T216 194 L336 232 H596" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round"/>`;
-      svg += `<text x="456" y="42" text-anchor="middle" font-size="13" fill="var(--color-text-secondary)">Cytoplasme</text>`;
-      /* Ribosome */
-      svg += `<rect x="406" y="176" width="122" height="50" rx="18" fill="var(--color-surface-container-low)" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
-      svg += `<rect x="414" y="236" width="106" height="24" rx="10" fill="var(--color-surface-container-low)" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
-      /* ARNt + acide aminé */
-      svg += `<rect x="478" y="184" width="28" height="36" rx="5" fill="var(--color-surface-base)" stroke="var(--color-text-primary)" stroke-width="1.5"/>`;
-      svg += `<line x1="492" y1="170" x2="492" y2="184" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
-      svg += `<circle cx="492" cy="158" r="10" fill="var(--color-surface-base)" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
-      /* Chaîne d'acides aminés + liaisons peptidiques */
+      /* Cytoplasme */
+      svg += `<text x="456" y="34" text-anchor="middle" font-size="13" fill="var(--color-text-secondary)">Cytoplasme</text>`;
+      /* Ribosome (grande sous-unité + petite sous-unité encadrant l'ARNm) */
+      svg += `<rect x="404" y="168" width="124" height="58" rx="18" fill="var(--color-surface-container-low)" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
+      svg += `<rect x="414" y="236" width="104" height="24" rx="10" fill="var(--color-surface-container-low)" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
+      /* ARNm sortant par un pore, traversant le ribosome, avec 3 dents de codon sous l'ARNt */
+      svg += `<path d="M112 194 Q138 186 164 194 T216 194 L336 232 H594" fill="none" stroke="var(--color-signal)" stroke-width="3" stroke-linecap="round"/>`;
+      for (const bx of [470, 480, 490]) {
+        svg += `<line x1="${bx}" y1="224" x2="${bx}" y2="232" stroke="var(--color-signal)" stroke-width="2"/>`;
+      }
+      /* ARNt posé directement sur l'ARNm, anticodon face au codon, portant un acide aminé */
+      svg += `<path d="M466 218 V186 Q466 178 474 178 H486 Q494 178 494 186 V218 Z" fill="var(--color-surface-base)" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
+      for (const bx of [470, 480, 490]) {
+        svg += `<line x1="${bx}" y1="218" x2="${bx}" y2="223" stroke="var(--color-text-primary)" stroke-width="2"/>`;
+      }
+      svg += `<line x1="480" y1="178" x2="480" y2="156" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
+      /* Chaîne d'acides aminés + liaisons peptidiques (une liaison mise en valeur en rouge) */
       const aaPts = [
-        [452, 146],
-        [418, 126],
-        [384, 106],
+        [480, 146],
+        [448, 128],
+        [416, 108],
+        [384, 88],
       ];
-      svg += `<line x1="492" y1="158" x2="452" y2="146" stroke="var(--color-text-primary)" stroke-width="2"/>`;
-      svg += `<line x1="452" y1="146" x2="418" y2="126" stroke="var(--color-signal)" stroke-width="2.4"/>`;
-      svg += `<line x1="418" y1="126" x2="384" y2="106" stroke="var(--color-text-primary)" stroke-width="2"/>`;
+      svg += `<line x1="480" y1="146" x2="448" y2="128" stroke="var(--color-text-primary)" stroke-width="2"/>`;
+      svg += `<line x1="448" y1="128" x2="416" y2="108" stroke="var(--color-signal)" stroke-width="3"/>`;
+      svg += `<line x1="416" y1="108" x2="384" y2="88" stroke="var(--color-text-primary)" stroke-width="2"/>`;
       for (const [cx, cy] of aaPts) svg += `<circle cx="${cx}" cy="${cy}" r="10" fill="var(--color-surface-base)" stroke="var(--color-text-primary)" stroke-width="1.6"/>`;
       /* Flèche sens de la traduction */
-      svg += `<line x1="380" y1="278" x2="564" y2="278" stroke="var(--color-text-primary)" stroke-width="2"/>`;
-      svg += `<polygon points="570,278 560,273 560,283" fill="var(--color-text-primary)"/>`;
-      /* Repères numérotés 1 à 6 */
+      svg += `<line x1="380" y1="278" x2="554" y2="278" stroke="var(--color-text-primary)" stroke-width="2"/>`;
+      svg += `<polygon points="560,278 550,273 550,283" fill="var(--color-text-primary)"/>`;
+      /* Traits de rappel + repères numérotés 1 à 6 */
       for (const e of parNum) {
-        svg += `<circle cx="${e.x}" cy="${e.y}" r="13" fill="var(--color-surface-base)" stroke="var(--color-signal)" stroke-width="2"/>`;
-        svg += `<text x="${e.x}" y="${e.y + 4.5}" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-text-primary)">${e.num}</text>`;
+        svg += `<line x1="${e.bx}" y1="${e.by}" x2="${e.tx}" y2="${e.ty}" stroke="var(--color-text-secondary)" stroke-width="1.4"/>`;
+        svg += `<circle cx="${e.tx}" cy="${e.ty}" r="3" fill="var(--color-text-primary)"/>`;
+        svg += `<circle cx="${e.bx}" cy="${e.by}" r="13" fill="var(--color-surface-base)" stroke="var(--color-signal)" stroke-width="2"/>`;
+        svg += `<text x="${e.bx}" y="${e.by + 4.5}" text-anchor="middle" font-size="13" font-weight="700" fill="var(--color-text-primary)">${e.num}</text>`;
       }
-      const figure = `<svg viewBox="0 0 640 316" role="img" aria-label="Schéma bilan de la synthèse des protéines avec six repères numérotés de 1 à 6">${svg}</svg>`;
+      const figure = `<svg viewBox="0 0 640 326" role="img" aria-label="Schéma bilan de la synthèse des protéines avec six repères numérotés de 1 à 6 reliés par traits de rappel">${svg}</svg>`;
       const cibles = h.melange(parNum).slice(0, 3).sort((a, b) => a.num - b.num);
       const questions = cibles.map((c) => {
         const autres = h.melange(elements.filter((e) => e.k !== c.k)).slice(0, 3);
