@@ -21,7 +21,7 @@
 | Chantier | État |
 |---|---|
 | Design Grille | validé, appliqué au site |
-| Format de leçon v3 | **en validation par le propriétaire** sur trois pilotes, liés depuis l'accueil : `/pilote/logarithme` (maths), `/pilote/radioactivite` (physique), `/pilote/expression-genetique` (SVT), chacun avec sa page d'exercices générés (`…/exercices`). Retours du 2026-10-26 ([`refonte/04-retours-pilotes.md`](refonte/04-retours-pilotes.md)) ; v2 le 2026-10-26 sur le noyau commun ([ADR 0043](decisions/0043-noyau-des-pilotes.md)) ; audit de la v2 et **V3 le 2026-10-27** ([`refonte/05-audit-v2-plan-v3.md`](refonte/05-audit-v2-plan-v3.md), [ADR 0044](decisions/0044-exercices-generes-et-second-essai.md)) : maths 55 étapes et 14 exercices, physique 56 et 11, SVT 54 et 10 ; revue externe et améliorations du **2026-11-23** : maths 62 étapes et 16 exercices, physique 59 et 12, SVT 57 et 11, reprise après rechargement, règles du format vérifiées en CI ([`refonte/07-regles-du-format.md`](refonte/07-regles-du-format.md)). Ne pas étendre le format aux autres notions avant son accord. |
+| Format de leçon v3 | **validé par le propriétaire le 2026-11-23** ([ADR 0046](decisions/0046-format-v3-valide-et-lancement-sans-compte-d-abord.md)) sur trois pilotes, liés depuis l'accueil : `/pilote/logarithme` (maths), `/pilote/radioactivite` (physique), `/pilote/expression-genetique` (SVT), chacun avec sa page d'exercices générés (`…/exercices`). Retours du 2026-10-26 ([`refonte/04-retours-pilotes.md`](refonte/04-retours-pilotes.md)) ; v2 le 2026-10-26 sur le noyau commun ([ADR 0043](decisions/0043-noyau-des-pilotes.md)) ; audit de la v2 et **V3 le 2026-10-27** ([`refonte/05-audit-v2-plan-v3.md`](refonte/05-audit-v2-plan-v3.md), [ADR 0044](decisions/0044-exercices-generes-et-second-essai.md)) : maths 55 étapes et 14 exercices, physique 56 et 11, SVT 54 et 10 ; revue externe et améliorations du **2026-11-23** : maths 62 étapes et 16 exercices, physique 59 et 12, SVT 57 et 11, reprise après rechargement, règles du format vérifiées en CI ([`refonte/07-regles-du-format.md`](refonte/07-regles-du-format.md)). L'extension aux autres notions est ouverte, sous les règles du format. Pas de comptes pour l'instant : ils viendront juste avant le lancement. |
 | Plan jusqu'au lancement | [`refonte/06-plan-lancement.md`](refonte/06-plan-lancement.md) : ce qui reste (interface, pilotes, données, bloquants du lancement) et qui fait quoi. Données d'apprentissage : spécifiées dans [`design/APPRENTISSAGE-DONNEES.md`](design/APPRENTISSAGE-DONNEES.md), rien de construit. |
 | Bible du bac ([`docs/bible/`](bible/README.md)) | brouillon v0 complet : stratégie d'examen, maths (19 fiches), physique (19), chimie (11, relue une deuxième fois le 2026-10-22), SVT (26). Version lisible : https://claude.ai/artifact/G2iDVCxMC4mfeEYQ9hCZtk |
 | Référentiel officiel 2025 ([`docs/referentiel/`](referentiel/README.md)) | les 8 cadres faits : maths (73 + 61 capacités), PC (277 + 290 + 201), SVT (94 + 89 + 22) ; règles communes dans `examen.yaml`. L'ancien `docs/cadre/` est supprimé (la proposition de philosophie et le PDF du cadre PC ont été déplacés dans le référentiel). Reste : générer la liste de `web/src/lib/curriculum.ts` depuis ce référentiel, après relecture du propriétaire. |
@@ -37,13 +37,10 @@ la vérification supervisée de la synchronisation (règle 7, `docs/pipeline/pro
 
 ## Décisions attendues du propriétaire
 
-1. **Le format de leçon** : la V3 des trois pilotes et leurs exercices conviennent-ils ? Prêts à
-   relire ; ce qu'il faut regarder en priorité est listé en fin de
-   [`refonte/05-audit-v2-plan-v3.md`](refonte/05-audit-v2-plan-v3.md). Points ouverts : la longueur
-   (57 à 62 étapes, une pause suivie d'un rappel au milieu) et la séance 2 des maths (« ln comme
-   fonction »), pas encore écrite. **Cette validation débloque la refonte des 59 autres notions.**
-   Et, avant tout lancement : **le périmètre** (avec ou sans comptes ; quelles matières annoncées),
-   voir [`refonte/06-plan-lancement.md`](refonte/06-plan-lancement.md) §5.
+1. **Les matières annoncées au lancement** : sciences de l'ingénieur (vide), anglais (absent),
+   philosophie (en français alors que l'épreuve est en arabe). Le format et la question des comptes
+   sont tranchés ([ADR 0046](decisions/0046-format-v3-valide-et-lancement-sans-compte-d-abord.md)) ;
+   reste la séance 2 des maths (« ln comme fonction »), pas encore écrite.
 2. **La bible** : les questions de [`docs/bible/QUESTIONS.md`](bible/QUESTIONS.md).
 3. **La production** : quand vérifier la synchronisation et fusionner (voir ci-dessus).
 4. **Les médias générés** (Gemini pour l'image et la vidéo, ElevenLabs pour la voix) : leurs usages

@@ -120,8 +120,8 @@ Les dix bloquants, dans l'ordre :
 
 | # | Bloquant | Nature |
 |---|---|---|
-| 1 | Le périmètre du lancement : avec ou sans comptes ; quelles matières (SI vide, anglais absent, philosophie en français alors que l'épreuve est en arabe) ; ancien format ou nouveau | décision du propriétaire |
-| 2 | Valider ou refuser le nouveau format de leçon | décision du propriétaire |
+| 1 | Le périmètre du lancement. **Tranché le 2026-11-23 (ADR 0046) : sans comptes pour l'instant, comptes juste avant le lancement.** Reste : quelles matières (SI vide, anglais absent, philosophie en français alors que l'épreuve est en arabe) | décision du propriétaire |
+| 2 | Le nouveau format de leçon : **validé le 2026-11-23 (ADR 0046)** | fait |
 | 3 | Séance supervisée : la production correspond-elle à l'historique des migrations ? | opération sensible, avec le propriétaire |
 | 4 | Branch-test vert contre staging, puis migrations 048 à 051 | opération sensible |
 | 5 | Fusion de la PR #2 et configuration Vercel (dossier `web/`, variables) | opération sensible + décision |
