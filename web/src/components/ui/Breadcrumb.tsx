@@ -32,14 +32,10 @@ export function Breadcrumb({ segments }: { segments: Crumb[] }) {
                 href={seg.href}
                 className={cn(
                   "hover:text-accent transition-colors duration-micro",
-                  "rounded focus-ring",
-                  // WCAG 2.2 SC 2.5.8 (AA) : 24 px de cible minimum. Le
-                  // libellé fait 21 px de haut ; l'exception « lien en pleine
-                  // phrase » ne couvre pas un fil d'Ariane, qui est un
-                  // contrôle de navigation à part entière. `py-1` porte la
-                  // zone à 29 px, `-my-1` la rend gratuite en hauteur de
-                  // ligne — rien ne bouge à l'œil, la cible double presque.
-                  "inline-block py-1 -my-1"
+                  "focus-ring",
+                  // Cible tactile >= 44 px (MANDAT-UI §3 / G-04-004) compensée
+                  // par une marge verticale négative pour garder un fil compact.
+                  "inline-flex min-h-touch items-center -my-2"
                 )}
               >
                 {seg.label}

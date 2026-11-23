@@ -72,13 +72,13 @@ function BoutonRecherche({ compact = false }: { compact?: boolean }) {
         aria-busy={!hydrated || undefined}
         aria-label={frenchTypography("Rechercher une notion")}
         className={cn(
-          "inline-flex min-h-touch min-w-touch items-center justify-center rounded-lg",
+          "inline-flex h-11 w-11 items-center justify-center",
           "text-secondary hover:text-primary",
-          "state-layer focus-ring [--focus-radius:8px]",
+          "state-layer focus-ring",
           "transition-colors duration-micro ease-enter"
         )}
       >
-        <Icon name="loupe" size={16} />
+        <Icon name="loupe" size={18} />
       </button>
     );
   }
@@ -89,15 +89,15 @@ function BoutonRecherche({ compact = false }: { compact?: boolean }) {
       disabled={!hydrated}
       aria-busy={!hydrated || undefined}
       className={cn(
-        "inline-flex h-9 items-center gap-2 rounded-lg border border-subtle bg-surface-container-low px-3",
-        "text-body-sm text-tertiary hover:text-secondary hover:border-soft",
-        "state-layer focus-ring [--focus-radius:8px]",
+        "inline-flex h-11 items-center gap-2 border border-subtle bg-surface-container-low px-3",
+        "text-body-sm text-secondary hover:text-primary hover:border-soft",
+        "state-layer focus-ring",
         "transition-colors duration-micro ease-enter"
       )}
     >
       <Icon name="loupe" size={14} />
       <span>Rechercher</span>
-      <kbd className="rounded border border-subtle bg-surface-raised px-1.5 font-mono text-caption text-tertiary">
+      <kbd className="border border-subtle bg-surface-raised px-1.5 font-mono text-caption text-tertiary">
         ⌘K
       </kbd>
     </button>
@@ -105,9 +105,9 @@ function BoutonRecherche({ compact = false }: { compact?: boolean }) {
 }
 
 /**
- * PanneauNotions — le programme, organisé. Remplace le dropdown plat :
- * chaque matière est une section colorée avec sa couverture réelle et ses
- * premières notions ; « Tout voir » mène à la page matière.
+ * PanneauNotions — le programme, organisé. Chaque matière publiée liste sa
+ * couverture réelle et ses quatre premiers chapitres ; « Tout voir » mène à
+ * la page matière.
  */
 function PanneauNotions({
   sujets,
@@ -117,9 +117,6 @@ function PanneauNotions({
   notions: NotionPourPalette[];
 }) {
   const hydrated = useHydrated();
-  // La couverture réelle : chapitres du cadre vs chapitres construits.
-  // `builtIds` = les notions du manifeste, clés "matière/slug" — la même
-  // convention que les ids de chapitre du curriculum.
   const construits = new Set(notions.map((n) => `${n.subject}/${n.slug}`));
 
   return (
@@ -128,12 +125,13 @@ function PanneauNotions({
         <DropdownMenu.Trigger asChild>
           <button
             type="button"
+            data-menu-notions=""
             disabled={!hydrated}
             aria-busy={!hydrated || undefined}
             className={cn(
-              "group inline-flex items-center gap-1 rounded px-2 py-1",
+              "group inline-flex h-11 items-center gap-1 px-3",
               "text-body-sm font-medium text-secondary hover:text-primary",
-              "state-layer focus-ring [--focus-radius:8px]",
+              "state-layer focus-ring",
               "transition-colors duration-micro ease-enter"
             )}
           >
@@ -147,60 +145,31 @@ function PanneauNotions({
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
           <DropdownMenu.Content
-            // 16 et pas 10 : à 10 le coin haut du panneau chevauchait le
-            // filet bas du header (audit R6, P1-4) — le chrome reste intact.
-            sideOffset={16}
+            sideOffset={10}
             align="end"
             className={cn(
-              // 720 : à 600, 2 titres SVT sur 4 tronquaient dans un header
-              // qui avait 800 px libres (audit P2-4). outline-none : Radix
-              // focalise le CONTENEUR à l'ouverture et le :focus-visible
-              // global peignait un anneau accent autour du panneau entier
-              // (audit P0-2) — l'anneau appartient aux items.
-              "z-overlay w-[720px] rounded-xl border border-subtle bg-surface-overlay p-2 outline-none",
-              "shadow-elevation-3",
-              // `panneau-entree` (globals.css) : Radix MONTE le contenu déjà
-              // à l'état open — une transition ne se joue jamais ; seule une
-              // ANIMATION au mount respire. Ouverture = geste de l'élève.
+              "z-overlay w-[720px] border border-soft bg-surface-overlay p-2 outline-none",
               "panneau-entree"
             )}
           >
             <div className="grid grid-cols-2 gap-1">
               {sujets.map((id) => {
-                // Les QUATRE raccourcis du panneau sont les quatre PREMIERS
-                // chapitres du programme — pas les quatre premiers dossiers.
-                // `listNotions()` rend l'ordre de `readdirSync`, c'est-à-dire
-                // l'alphabet des SLUGS : le menu offrait « Arithmétique »
-                // (rang 13 sur 14 en maths) comme première entrée dans
-                // l'année. Même source que la carte de session et la fin de
-                // leçon — trois surfaces, un seul ordre.
                 const liste = sortByProgramme(notions.filter((n) => n.subject === id));
-                // Une matière sans la moindre notion construite (SI
-                // aujourd'hui) n'a rien à offrir dans un panneau de
-                // NAVIGATION — l'afficher « 0/0 » serait du remplissage.
                 if (liste.length === 0) return null;
                 const sujet = getSubject(id as Parameters<typeof getSubject>[0]);
                 const total = sujet ? subjectChapterCount(sujet) : liste.length;
                 const dispo = sujet ? subjectAvailableCount(sujet, construits) : liste.length;
                 return (
-                  <div key={id} className="panneau-colonne rounded-lg p-2">
+                  <div key={id} className="panneau-colonne p-2">
                     <DropdownMenu.Item asChild>
                       <Link
                         href={subjectHref(id)}
                         className={cn(
-                          "flex items-center gap-2 rounded-md px-2 py-1.5",
-                          "state-layer focus-ring [--focus-radius:6px]"
+                          "flex min-h-touch items-center gap-2 px-2",
+                          "state-layer focus-ring"
                         )}
                       >
-                        <span aria-hidden className="h-2.5 w-2.5 shrink-0" style={{ background: `var(--subject-${id})` }} />
                         <span className="text-body-sm font-semibold text-primary">{subjectLabel(id)}</span>
-                        {/* Audit R6 (P0-3) : « 25/25 » nu à côté d'un nom se
-                            lit comme UNE PROGRESSION — l'inverse de
-                            l'honnêteté visée. La fraction n'apparaît qu'en
-                            couverture partielle ; pleine, il n'y a rien à
-                            signaler. La barre de 2 px est partie avec elle
-                            (le point EST le marqueur de la matière — un
-                            seul par surface). */}
                         {dispo < total && (
                           <span
                             className="ml-auto font-mono text-caption tabular-nums text-tertiary"
@@ -217,8 +186,8 @@ function PanneauNotions({
                           href={notionHref(n.subject, n.slug)}
                           title={n.title}
                           className={cn(
-                            "block truncate rounded-md px-2 py-1 text-body-sm text-secondary hover:text-primary",
-                            "state-layer focus-ring [--focus-radius:6px]"
+                            "block truncate px-2 py-1.5 text-body-sm text-secondary hover:text-primary",
+                            "state-layer focus-ring"
                           )}
                         >
                           {n.title}
@@ -230,10 +199,9 @@ function PanneauNotions({
                         <Link
                           href={subjectHref(id)}
                           className={cn(
-                            "flex items-center gap-1 rounded-md px-2 py-1 text-caption font-medium",
-                            "state-layer focus-ring [--focus-radius:6px]"
+                            "flex items-center gap-1 px-2 py-1.5 text-caption font-semibold text-primary",
+                            "state-layer focus-ring"
                           )}
-                          style={{ color: `var(--subject-${id})` }}
                         >
                           Tout voir
                           <Icon name="arrow-right" size={11} />
@@ -251,20 +219,10 @@ function PanneauNotions({
   );
 }
 
-/** Menu compact (< expanded) : recherche, matières, réglages, compte. */
 /**
  * MenuAffichage — A−/A/A+ et thème derrière UN déclencheur « Aa ».
- *
- * Arbitrage exécuté le 2026-08-22 (mandat owner « attack everything ») :
- * l'audit charge-calme comptait 8 cibles permanentes dans le header — « une
- * salle d'étude n'a pas de tableau de bord » ; l'audit ergonomie exigeait la
- * taille de texte ATTEIGNABLE. Le menu donne les deux : 6 cibles au repos,
- * les réglages à UN clic derrière un déclencheur explicite, cibles 48 px
- * inchangées à l'intérieur. Même idiome que le MenuCompact (contrôles nus
- * dans un DropdownMenu.Content — éprouvé, sondé en R2).
  */
 function MenuAffichage() {
-  // Désactivé et `aria-busy` tant que React n'a pas pris la main (§11.28).
   const hydrated = useHydrated();
   return (
     <DropdownMenu.Root modal={false}>
@@ -275,9 +233,9 @@ function MenuAffichage() {
           aria-busy={!hydrated || undefined}
           aria-label={frenchTypography("Affichage : taille du texte et thème")}
           className={cn(
-            "inline-flex min-h-touch min-w-touch items-center justify-center rounded-lg",
+            "inline-flex h-11 w-11 items-center justify-center",
             "text-body-sm font-semibold text-secondary hover:text-primary",
-            "state-layer focus-ring [--focus-radius:8px]",
+            "state-layer focus-ring",
             "transition-colors duration-micro ease-enter"
           )}
         >
@@ -289,8 +247,7 @@ function MenuAffichage() {
           sideOffset={10}
           align="end"
           className={cn(
-            "z-overlay rounded-xl border border-subtle bg-surface-overlay p-3",
-            "shadow-elevation-3",
+            "z-overlay border border-soft bg-surface-overlay p-3",
             "panneau-entree"
           )}
         >
@@ -310,16 +267,19 @@ function MenuAffichage() {
 
 function MenuCompact({
   sujets,
+  notions,
   mode,
   user,
   onSignOut,
 }: {
   sujets: readonly string[];
+  notions: NotionPourPalette[];
   mode: string;
   user: { displayName: string } | null;
   onSignOut: () => void;
 }) {
   const hydrated = useHydrated();
+  const sujetsPublies = sujets.filter((id) => notions.some((n) => n.subject === id));
   return (
     <div className="bp-expanded:hidden">
       <DropdownMenu.Root>
@@ -330,9 +290,9 @@ function MenuCompact({
             aria-busy={!hydrated || undefined}
             aria-label={frenchTypography("Menu et réglages")}
             className={cn(
-              "inline-flex min-h-touch min-w-touch items-center justify-center rounded-lg",
+              "inline-flex h-11 w-11 items-center justify-center",
               "text-secondary hover:text-primary",
-              "state-layer focus-ring [--focus-radius:8px]",
+              "state-layer focus-ring",
               "transition-colors duration-micro ease-enter"
             )}
           >
@@ -344,9 +304,7 @@ function MenuCompact({
             sideOffset={8}
             align="end"
             className={cn(
-              "z-overlay min-w-[250px] rounded-xl border border-subtle bg-surface-overlay p-1.5 outline-none",
-              "shadow-elevation-3",
-              // Même entrée animée que le grand panneau (voir plus haut).
+              "z-overlay min-w-[260px] border border-soft bg-surface-overlay p-1.5 outline-none",
               "panneau-entree"
             )}
           >
@@ -355,31 +313,54 @@ function MenuCompact({
                 type="button"
                 onClick={() => window.dispatchEvent(new Event("ouvrir-palette"))}
                 className={cn(
-                  "flex w-full items-center gap-2 rounded-md px-2.5 py-2.5 text-left",
+                  "flex min-h-touch w-full items-center gap-2 px-2.5 text-left",
                   "text-body-sm text-secondary hover:text-primary",
-                  "state-layer focus-ring [--focus-radius:6px]"
+                  "state-layer focus-ring"
                 )}
               >
                 <Icon name="loupe" size={14} />
                 Rechercher…
               </button>
             </DropdownMenu.Item>
+            <DropdownMenu.Item asChild>
+              <Link
+                href="/examens"
+                className={cn(
+                  "flex min-h-touch items-center px-2.5",
+                  "state-layer focus-ring",
+                  "text-body-sm font-medium text-primary"
+                )}
+              >
+                Examens blancs
+              </Link>
+            </DropdownMenu.Item>
+            <DropdownMenu.Item asChild>
+              <Link
+                href="/commencer"
+                className={cn(
+                  "flex min-h-touch items-center px-2.5",
+                  "state-layer focus-ring",
+                  "text-body-sm text-secondary hover:text-primary"
+                )}
+              >
+                Choisir ta filière
+              </Link>
+            </DropdownMenu.Item>
             <div className="my-1.5 border-t border-subtle" />
             <p className="px-2.5 pb-1 pt-1 text-caption font-medium uppercase tracking-eyebrow text-secondary">
-              Notions
+              Matières
             </p>
-            {sujets.map((id) => (
+            {sujetsPublies.map((id) => (
               <DropdownMenu.Item key={id} asChild>
                 <Link
                   href={subjectHref(id)}
                   className={cn(
-                    "flex items-center gap-2 rounded-md px-2.5 py-2.5",
-                    "state-layer focus-ring [--focus-radius:6px]",
+                    "flex min-h-touch items-center px-2.5",
+                    "state-layer focus-ring",
                     "text-body-sm text-secondary hover:text-primary",
                     "transition-colors duration-micro ease-between"
                   )}
                 >
-                  <span aria-hidden className="h-2 w-2" style={{ background: `var(--subject-${id})` }} />
                   {subjectLabel(id)}
                 </Link>
               </DropdownMenu.Item>
@@ -398,12 +379,12 @@ function MenuCompact({
                       type="button"
                       onClick={onSignOut}
                       className={cn(
-                        "block w-full rounded-md px-2.5 py-2.5 text-left",
-                        "state-layer focus-ring [--focus-radius:6px]",
+                        "flex min-h-touch w-full items-center px-2.5 text-left",
+                        "state-layer focus-ring",
                         "text-body-sm text-secondary hover:text-primary"
                       )}
                     >
-                      Se déconnecter — {user.displayName}
+                      Se déconnecter ({user.displayName})
                     </button>
                   </DropdownMenu.Item>
                 ) : (
@@ -411,8 +392,8 @@ function MenuCompact({
                     <Link
                       href="/connexion"
                       className={cn(
-                        "block rounded-md px-2.5 py-2.5",
-                        "state-layer focus-ring [--focus-radius:6px]",
+                        "flex min-h-touch items-center px-2.5",
+                        "state-layer focus-ring",
                         "text-body-sm text-secondary hover:text-primary"
                       )}
                     >
@@ -430,14 +411,13 @@ function MenuCompact({
 }
 
 /**
- * GRILLE — la navigation primaire, en toutes lettres (≥ « expanded ») :
- * deux destinations, la page courante soulignée d'un trait rouge de 2 px.
- * Les notions restent dans le panneau « Notions » de la barre d'outils.
+ * Navigation primaire (≥ « expanded ») : deux destinations, page courante
+ * soulignée d'un trait rouge de 2 px.
  */
 function NavPrincipale() {
   const chemin = usePathname() ?? "/";
   const liens: { href: string; label: string; actif: boolean }[] = [
-    { href: "/", label: "Aujourd’hui", actif: chemin === "/" },
+    { href: "/", label: "Accueil", actif: chemin === "/" },
     { href: "/examens", label: "Examens blancs", actif: chemin.startsWith("/examens") },
   ];
   return (
@@ -445,8 +425,7 @@ function NavPrincipale() {
     // du header plus haute que 48 px se lit comme un REPLI — d'où des liens de
     // 44 px (h-11), centrés, et non étirés sur les 56 px de la barre ; et à
     // 200 % de texte (SC 1.4.4) les deux liens poussaient la page de 85 px —
-    // d'où `min-w-0` + `overflow-x-auto` : la bande se resserre et DÉFILE,
-    // rien n'est coupé ni perdu, et à taille normale elle ne défile jamais.
+    // d'où `min-w-0` + `overflow-x-auto`.
     <nav aria-label="Sections" className="hidden h-full min-w-0 flex-1 items-center gap-1 overflow-x-auto pl-8 bp-expanded:flex">
       {liens.map((l) => (
         <Link
@@ -496,29 +475,22 @@ export function SiteHeader({ className, container, notions = [], epreuves = [] }
   return (
     <header
       className={cn(
-        // `entete-site` (globals.css) : view-transition-name — le chrome
-        // reste posé pendant que le CONTENU fond d'une route à l'autre (R4).
         "entete-site sticky top-0 z-header w-full",
-        // GRILLE : une barre pleine, réglée d'un filet — ni verre ni ombre.
         "bg-surface-base border-b",
         scrolled ? "border-soft" : "border-subtle",
         className
       )}
     >
       <div className={cn(container ?? "mx-auto max-w-page px-gutter w-full", "flex h-14 items-center justify-between gap-3")}>
-        {/* Wordmark — glyphe + BAC, rien d'autre. Le « · sciences » est
-            parti : décoratif, il cassait en fenêtre intermédiaire (§3.3)
-            et diluait la marque. */}
         <Link
           href="/"
           className={cn(
-            "flex items-center gap-2 text-primary no-underline",
-            "rounded state-layer -mx-2 px-2 py-1",
-            "focus-ring [--focus-radius:8px]"
+            "inline-flex h-11 items-center gap-2 text-primary no-underline",
+            "state-layer -mx-2 px-2",
+            "focus-ring"
           )}
           aria-label={frenchTypography("Retour à l'accueil")}
         >
-          {/* GRILLE : le mot « bac » serré à 75 %, le point en rouge signal. */}
           <span className="font-display text-h2 font-bold leading-none tracking-tight">
             bac<span className="text-signal">.</span>
           </span>
@@ -541,21 +513,20 @@ export function SiteHeader({ className, container, notions = [], epreuves = [] }
             <PanneauNotions sujets={menuSubjects} notions={notions} />
           </div>
 
-          {/* Affichage (Aa) : A−/A/A+ + thème regroupés — voir MenuAffichage. */}
           <div className="hidden bp-expanded:block">
             <MenuAffichage />
           </div>
 
-          <MenuCompact sujets={menuSubjects} mode={mode} user={user} onSignOut={handleSignOut} />
+          <MenuCompact sujets={menuSubjects} notions={notions} mode={mode} user={user} onSignOut={handleSignOut} />
 
           {mode !== "off" &&
             (user ? (
               <div className="hidden items-center gap-1 bp-expanded:flex">
                 <div
                   role="group"
-                  aria-label={`Compte — ${user.displayName}`}
+                  aria-label={`Compte : ${user.displayName}`}
                   className={cn(
-                    "flex h-8 w-8 items-center justify-center",
+                    "flex h-9 w-9 items-center justify-center",
                     "bg-accent-subtle text-accent",
                     "text-body-sm font-semibold select-none"
                   )}
@@ -566,11 +537,11 @@ export function SiteHeader({ className, container, notions = [], epreuves = [] }
                   type="button"
                   onClick={handleSignOut}
                   className={cn(
+                    "inline-flex h-11 items-center px-3",
                     "text-body-sm font-medium",
                     "state-layer text-secondary hover:text-primary",
                     "transition-colors duration-micro ease-enter",
-                    "rounded px-2 py-1",
-                    "focus-ring [--focus-radius:8px]"
+                    "focus-ring"
                   )}
                 >
                   Se déconnecter
@@ -580,12 +551,11 @@ export function SiteHeader({ className, container, notions = [], epreuves = [] }
               <Link
                 href="/connexion"
                 className={cn(
-                  "hidden bp-expanded:inline-block",
+                  "hidden bp-expanded:inline-flex h-11 items-center px-3",
                   "text-body-sm font-medium",
                   "state-layer text-secondary hover:text-primary",
                   "transition-colors duration-micro ease-enter",
-                  "rounded px-2 py-1",
-                  "focus-ring [--focus-radius:8px]"
+                  "focus-ring"
                 )}
               >
                 Se connecter

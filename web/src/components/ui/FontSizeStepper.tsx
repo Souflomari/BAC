@@ -113,13 +113,7 @@ export function FontSizeStepper({ className }: { className?: string }) {
     <div
       className={cn(
         "flex items-center gap-0.5",
-        "rounded-md",
-        // Shadow-first segmented control (ADR 0023): elevation-1 hairline ring
-        // defines the track; the active thumb lifts within it. The track sits on
-        // a recessed container-low tone (ADR 0024 tonal ladder) so the lifted
-        // overlay-toned thumb reads as raised in tone as well as shadow.
-        "shadow-elevation-1",
-        "bg-surface-container-low",
+        "border border-subtle bg-surface-container-low",
         "p-0.5",
         className
       )}
@@ -139,32 +133,19 @@ export function FontSizeStepper({ className }: { className?: string }) {
               "inline-flex items-center justify-center",
               // §9 touch target: 48px (raised from 44px per audit finding #2)
               "min-w-touch min-h-touch px-2",
-              "rounded",
               "text-caption font-semibold",
               // Bordure PORTÉE PAR TOUS les crans (transparente au repos) :
               // l'ajouter au seul cran actif décalerait la rangée de 1 px à
               // chaque changement.
               "border border-transparent",
               "transition-colors duration-micro",
-              // Focus ring — 8px to match the rounded (8px) host (ADR 0024)
-              "focus-ring [--focus-radius:8px]",
+              "focus-ring",
               isActive
                 ? [
-                    // Lifted "selected" thumb: lightest surface + a stronger drop
-                    // (elevation-2) than the track (elevation-1), so the active
-                    // segment clearly reads as raised within the control. It also
-                    // carries the neutral state-layer so re-pressing the active
-                    // step gives the same hover/pressed feedback as every control
-                    // (ADR 0024 — one feedback language, no dead interactive).
                     "state-layer",
                     "bg-surface-overlay",
                     "text-primary",
-                    "shadow-elevation-2",
-                    // Audit R6 (ergonomie P2-8) : en sombre, la pastille
-                    // active n'était qu'un cran tonal — un liseré 1 px la
-                    // rend lisible sur écran atténué. En clair, l'ombre
-                    // suffit (la bordure reste transparente).
-                    "dark:border-soft",
+                    "border-soft",
                   ]
                 : [
                     // #1: inactive step button at caption size — must pass 4.5:1.
