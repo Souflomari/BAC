@@ -298,7 +298,7 @@ const PHILO: Subject = {
 const SI: Subject = {
   id: "si",
   label: "Sciences de l’ingénieur",
-  blurb: "Programme spécifique à la filière Sciences Mathématiques B — chapitres à venir.",
+  blurb: "Programme spécifique à la filière Sciences Mathématiques B.",
   source: "stub",
   units: [],
 };

@@ -367,19 +367,16 @@ const ExerciceArticle = memo(function ExerciceArticle({
             </p>
           )}
           {enCorrection && (
-            <p className="border-t border-subtle pt-4 text-body-sm bp-medium:pl-[5.75rem]">
+            <p className="border-t border-subtle pt-3 text-body-sm bp-medium:pl-[5.75rem]">
               <Link
                 href={notionHref(exo.subject, exo.notionSlug)}
                 className={cn(
-                  "font-semibold text-primary underline underline-offset-2 hover:text-secondary",
-                  "focus-ring",
-                  //  CIBLE TACTILE (§11.111) : 30 px de hauteur de frappe ;
-                  //  `max-w-full break-words` : jamais de débord à 320 px et
-                  //  200 % de texte (§11.183).
-                  "inline-block max-w-full break-words py-1.5"
+                  "inline-flex min-h-touch max-w-full items-center break-words",
+                  "font-semibold text-primary underline decoration-border-soft underline-offset-4 hover:text-signal",
+                  "focus-ring"
                 )}
               >
-                Revoir la notion — {exo.notionTitle} →
+                {frenchTypography(`Revoir la notion : ${exo.notionTitle} →`)}
               </Link>
             </p>
           )}
@@ -612,7 +609,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
         {frenchTypography("Durée officielle : ")}<span className="font-semibold text-primary tnum">{duree}</span>.
         {frenchTypography(" Le chrono affiche le temps écoulé, calmement. Tu peux le mettre en pause : c’est une répétition, pas une surveillance.")}
       </>,
-      <>{frenchTypography("Travaille sur papier, comme le jour J — l’écran sert à lire le sujet.")}</>,
+      <>{frenchTypography("Travaille sur papier, comme le jour J : l’écran sert à lire le sujet.")}</>,
       <>
         {frenchTypography("Les corrections n’apparaissent qu’après « Terminer l’épreuve » ; tu t’auto-évalues ensuite question par question, au barème.")}
       </>,
@@ -621,7 +618,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
       consignes.push(
         <span className="text-primary">
           {frenchTypography(
-            `Épreuve partielle : ${formatPoints(epreuve.pts)} pts sur 20 sont disponibles — la note sera ramenée sur 20 par règle de trois, à titre indicatif.`
+            `Épreuve partielle : ${formatPoints(epreuve.pts)} pts sur 20 sont disponibles. La note est ramenée sur 20 par règle de trois, à titre indicatif.`
           )}
         </span>
       );
@@ -657,7 +654,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
               disabled={!pret || chargement}
               aria-busy={!pret || chargement || undefined}
               data-primary-action
-              className="btn-primary mt-8"
+              className="btn-primary mt-8 w-full justify-center bp-medium:w-auto"
             >
               Commencer l’épreuve
             </button>
@@ -671,7 +668,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
             )}
             {erreurChargement && (
               <p className="mt-2 text-caption text-primary" role="alert">
-                Le sujet n’a pas pu se charger — vérifie la connexion et réessaie.
+                Le sujet n’a pas pu se charger. Vérifie ta connexion et réessaie.
               </p>
             )}
           </div>
@@ -682,7 +679,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
             </h2>
             <p className="mt-2 text-body-sm text-secondary">
               {epreuve.nbExercices} exercice{epreuve.nbExercices > 1 ? "s" : ""} à traiter
-              dans l’ordre de ton choix — la largeur de chaque bloc suit son barème.
+              dans l’ordre de ton choix. La largeur de chaque bloc suit son barème.
             </p>
             <div className="mt-6">
               <CarteSujet groupes={groupes} liens={false} />
@@ -740,7 +737,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
           {enCorrection ? (
             <p className="min-w-0 text-body-sm text-secondary" aria-live="polite" aria-atomic="true">
-              Auto-évaluation —{" "}
+              {frenchTypography("Auto-évaluation : ")}{" "}
               <span className="tnum">
                 {note.repondu}/{note.totalQ}
               </span>{" "}
@@ -759,7 +756,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
               <span className="ml-2 text-tertiary">sur {duree}</span>
               {depassement && (
                 <span className="ml-2 text-tertiary">
-                  — au-delà de la durée officielle
+                  (au-delà de la durée officielle)
                 </span>
               )}
             </p>
@@ -811,7 +808,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
 
       {enPause && !enCorrection && (
         <p role="status" className="mb-8 border-l-2 border-accent bg-surface-container-low px-4 py-3 text-body-sm text-secondary">
-          En pause — le chrono est arrêté. Reprends quand tu es prêt.
+          {frenchTypography("En pause : le chrono est arrêté. Reprends quand tu es prêt.")}
         </p>
       )}
 
@@ -866,9 +863,9 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
                   {groupes.map((g, k) => (
                     <li
                       key={k}
-                      className="flex items-baseline justify-between gap-3 border-b border-subtle py-2.5 text-body-sm"
+                      className="flex items-center justify-between gap-3 border-b border-subtle text-body-sm"
                     >
-                      <a href={`#exo-${g.premier + 1}`} className="min-w-0 truncate text-primary hover:underline focus-ring">
+                      <a href={`#exo-${g.premier + 1}`} className="inline-flex min-h-touch min-w-0 items-center truncate text-primary hover:underline focus-ring">
                         {g.numero != null ? `Exercice ${g.numero}` : "Partie"}
                       </a>
                       <span className="shrink-0 text-secondary tnum">
@@ -894,9 +891,9 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
                   {groupes.map((g, k) => (
                     <li
                       key={k}
-                      className="flex items-baseline justify-between gap-3 border-b border-subtle py-2.5 text-body-sm"
+                      className="flex items-center justify-between gap-3 border-b border-subtle text-body-sm"
                     >
-                      <a href={`#exo-${g.premier + 1}`} className="min-w-0 truncate text-primary hover:underline focus-ring">
+                      <a href={`#exo-${g.premier + 1}`} className="inline-flex min-h-touch min-w-0 items-center truncate text-primary hover:underline focus-ring">
                         {g.numero != null ? `Exercice ${g.numero}` : "Partie"}
                       </a>
                       <span className="shrink-0 font-semibold text-primary tnum">
@@ -913,7 +910,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
 
       {!enCorrection && (
         <div className="mt-14 flex border-t-2 border-accent pt-6">
-          <button type="button" onClick={terminer} className="btn-primary">
+          <button type="button" onClick={terminer} className="btn-primary w-full justify-center bp-medium:w-auto">
             Terminer l’épreuve
           </button>
         </div>
@@ -935,7 +932,7 @@ export function EpreuveShell({ epreuve }: { epreuve: EpreuveData }) {
               {formatNote(note.sur20)} / 20
             </span>{" "}
             {frenchTypography(
-              `— auto-évaluation indicative${!epreuve.complete ? ", ramenée sur 20 par règle de trois" : ""}. Le vrai gain est dans les questions marquées « Partiel » ou « Faux » : remonte aux notions par les liens de chaque exercice.`
+              `(auto-évaluation indicative${!epreuve.complete ? ", ramenée sur 20 par règle de trois" : ""}). Le vrai gain est dans les questions marquées « Partiel » ou « Faux » : remonte aux notions par les liens de chaque exercice.`
             )}
           </p>
         </section>

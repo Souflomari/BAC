@@ -117,7 +117,7 @@ export default function SubjectPage({ params }: { params: { subject: string } })
   const available = subjectAvailableCount(subject, builtIds);
   const metaLine =
     total === 0
-      ? "Programme à venir"
+      ? "0 chapitre publié"
       : available === total
         ? `${total} chapitre${total > 1 ? "s" : ""}`
         : `${available}/${total} chapitres disponibles`;

@@ -120,7 +120,7 @@ export default function EpreuvePage({ params }: { params: { id: string } }) {
           segments={[
             { label: "Accueil", href: "/" },
             { label: "Examens blancs", href: "/examens" },
-            { label: `${ep.year} — ${ep.session === "normale" ? "normale" : "rattrapage"}` },
+            { label: `${ep.year} · ${ep.session === "normale" ? "normale" : "rattrapage"}` },
           ]}
         />
         {/* GRILLE (refonte 2026-10) : le titre à gauche, les trois faits qui
