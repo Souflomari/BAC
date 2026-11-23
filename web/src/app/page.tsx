@@ -1,30 +1,29 @@
 /**
- * Home — la session + LE programme (refonte Studio, R6 avancé).
+ * Accueil — téléphone d'abord, séance du jour en premier (ADR 0045, rapport 04).
  *
- * L'ancienne page composait QUATRE modules dont trois disaient la même
- * chose (audit Fable §3.5) : MasteryMap (liste plate à scroll imbriqué),
- * AvailableShelf (accordéons d'illustrations répétées), SubjectProgress
- * (texte sans visualisation) — plus une grille CSS à trois zones pour les
- * tenir ensemble. Le tout est remplacé par DEUX choses :
+ * Structure :
+ *   1. ExamCountdown — une seule ligne factuelle (filière active, semaines
+ *      estimées avant l'examen national, accès au choix de filière).
+ *   2. Séance du jour (`SessionCard` + `NextUp`, action primaire unique
+ *      `[data-primary-action]`) et accès aux trois leçons interactives au
+ *      nouveau format guidé (effectifs d'exercices lus depuis `CATALOGUE`).
+ *   3. ProgrammeMap (Option A) — quatre cartes matières avec couverture réelle
+ *      (`M/N chapitres`), coefficient officiel si filière choisie, et liste
+ *      des chapitres repliée dans un `<details>` fermé (les 62 liens
+ *      `[data-mastery-token]` restent dans le DOM).
+ *   4. Examens blancs — accès aux épreuves réelles (nombre issu du corpus).
+ *   5. Repères de l'examen — coefficients officiels (`NoteEnJeu`, sans colonne
+ *      de maîtrise vide) et barème de l'épreuve de maths (`SujetMaths`).
  *
- *   1. SessionCard — l'action primaire, texte d'abord (le Cover est parti).
- *      NextUp reste sa ligne discrète en dessous, contrat inchangé
- *      ([data-primary-action], [data-reco-source]).
- *   2. ProgrammeMap — le programme par matière, couleur sémantique +
- *      couverture RÉELLE du cadre (« M/N chapitres », barre à l'appui).
- *      Chaque notion garde [data-mastery-token].
- *
- * Honest-state, revérifié à l'inventaire du 2026-08-18 : signé-déconnecté
- * il n'existe AUCUNE donnée de progression — cette page n'affiche donc
- * jamais un « % lu » ni un état de maîtrise ; la couverture du cadre est
- * la seule barre, et c'est un FAIT de contenu, pas un progrès d'élève.
+ * Honest-state : hors session connectée, aucune progression n'est fabriquée ;
+ * chaque nombre affiché provient directement des données du dépôt.
  */
 
 import type { Metadata } from "next";
 import { listNotions } from "@/lib/content";
+import { CATALOGUE } from "@/components/pilote/exercices/catalogue";
 
 import { Link } from "@/components/ui/Lien";
-import { frenchTypography } from "@/lib/frenchTypography";
 import { PageShell } from "@/components/ui/PageShell";
 import { SessionCard } from "@/components/dashboard/SessionCard";
 import { NextUp } from "@/components/dashboard/NextUp";
@@ -39,67 +38,102 @@ export const metadata: Metadata = {
   title: "Ta session",
 };
 
+const CATALOGUE_EXERCICES = CATALOGUE as Record<string, unknown[]>;
+
+const LECONS_INTERACTIVES = [
+  {
+    cle: "logarithme",
+    href: "/pilote/logarithme",
+    matiere: "Maths",
+    titre: "Fonction logarithme",
+    description: "De Napier à la définition du bac",
+  },
+  {
+    cle: "radioactivite",
+    href: "/pilote/radioactivite",
+    matiere: "Physique-Chimie",
+    titre: "Décroissance radioactive",
+    description: "De Becquerel au carbone 14",
+  },
+  {
+    cle: "expression-genetique",
+    href: "/pilote/expression-genetique",
+    matiere: "SVT",
+    titre: "Expression de l’information génétique",
+    description: "Du gène à la protéine, la drépanocytose lettre par lettre",
+  },
+] as const;
+
 export default function HomePage() {
   const notions = listNotions();
   const epreuves = manifesteEpreuves();
 
   return (
     <PageShell epreuves={epreuves} notions={manifestePourHeader()} width="page">
-      {/* GRILLE (refonte 2026-10, docs/refonte/design/grille) — une grille de
-          12 colonnes au bureau : le compte à rebours en très grand à gauche
-          (4), la session du jour à droite (8) ; puis la note en jeu (7) et le
-          sujet de maths (5) ; puis le programme en colonnes. Tout ce qui est
-          affiché est un FAIT (coefficients, poids officiels, couverture du
-          cadre) ou un état réel — jamais une progression fabriquée. */}
-      <div className="grid grid-cols-1 gap-x-8 gap-y-12 bp-large:grid-cols-12">
-        <ExamCountdown className="bp-large:col-span-4 bp-large:pt-2" />
+      <ExamCountdown />
 
-        <div className="min-w-0 bp-large:col-span-8">
-          <header className="mb-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
-            <h1 className="min-w-0 font-display text-display font-bold text-primary">Ta session</h1>
-            <p className="text-lead text-secondary">Deux heures calmes, une notion à fond.</p>
-          </header>
-          <SessionCard notions={notions} />
-          <div className="mt-4">
-            <NextUp notions={notions} />
+      <div className="mt-6 bp-large:mt-8">
+        <header className="mb-4 bp-medium:mb-6">
+          <h1 className="min-w-0 font-display text-display font-bold text-primary">Ta session</h1>
+        </header>
+
+        <div className="grid grid-cols-1 gap-8 bp-large:grid-cols-12 bp-large:items-start">
+          <div className="min-w-0 bp-large:col-span-7">
+            <SessionCard notions={notions} />
+            <div className="mt-2">
+              <NextUp notions={notions} />
+            </div>
           </div>
-          {/* Le format de leçon en test (refonte 2026-10) : une entrée
-              discrète, jamais une seconde action primaire. */}
-          <div className="mt-6 border-l-2 border-signal pl-4 text-body text-secondary">
-            <p>{frenchTypography("Nouveau format, en test (trois leçons pilotes) :")}</p>
-            <ul role="list" className="mt-1">
-              {[
-                ["/pilote/logarithme", "la fonction logarithme, de Napier à la définition du bac"],
-                ["/pilote/radioactivite", "la décroissance radioactive, de Becquerel au carbone 14"],
-                ["/pilote/expression-genetique", "du gène à la protéine, la drépanocytose lettre par lettre"],
-              ].map(([href, titre]) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    data-lien-pilote
-                    className="font-semibold text-primary underline underline-offset-4 hover:text-signal focus-ring"
-                  >
-                    {titre} →
-                  </Link>
-                </li>
-              ))}
+
+          <section
+            aria-label="Leçons interactives"
+            className="min-w-0 border border-subtle bg-surface-raised p-5 bp-medium:p-6 bp-large:col-span-5"
+          >
+            <h2 className="font-display text-h3 font-bold text-primary">Leçons interactives</h2>
+            <p className="mt-1 text-body-sm text-secondary">
+              Trois chapitres disponibles au nouveau format guidé&#8239;; les autres chapitres sont en cours détaillé ci-dessous.
+            </p>
+            <ul role="list" className="mt-4 divide-y divide-subtle border-t border-subtle">
+              {LECONS_INTERACTIVES.map((lecon) => {
+                const nbExercices = CATALOGUE_EXERCICES[lecon.cle]?.length ?? 0;
+                return (
+                  <li key={lecon.href}>
+                    <Link
+                      href={lecon.href}
+                      data-lien-pilote=""
+                      className="group flex min-h-touch items-center justify-between gap-4 py-3 text-left state-layer focus-ring"
+                    >
+                      <span className="min-w-0">
+                        <span className="block font-mono text-caption uppercase tracking-eyebrow text-tertiary">
+                          {lecon.matiere}
+                          {nbExercices > 0 ? ` · ${nbExercices} exercices` : ""}
+                        </span>
+                        <span className="mt-0.5 block text-body font-semibold text-primary group-hover:text-signal">
+                          {lecon.titre}
+                        </span>
+                        <span className="block text-body-sm text-secondary">
+                          {lecon.description}
+                        </span>
+                      </span>
+                      <span
+                        aria-hidden="true"
+                        className="shrink-0 font-mono text-body text-tertiary group-hover:text-signal"
+                      >
+                        →
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
-          </div>
+          </section>
         </div>
-      </div>
-
-      <div className="mt-16 grid grid-cols-1 gap-x-8 gap-y-14 bp-large:grid-cols-12">
-        <NoteEnJeu className="bp-large:col-span-7" />
-        <SujetMaths className="bp-large:col-span-5" />
       </div>
 
       <ProgrammeMap notions={notions} />
 
-      {/* Examens blancs — l'entrée périphérique du mode épreuve (C5), après
-          le programme : la répétition d'examen vient quand les notions sont
-          travaillées (§8 périphérie). Une rangée sur filet noir. */}
-      <section aria-label="Examens blancs" className="mt-16 border-t-2 border-accent pt-5">
-        <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3">
+      <section aria-label="Examens blancs" className="mt-12 bp-large:mt-16 border-t-2 border-accent pt-5">
+        <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3">
           <div>
             <h2 className="font-display text-h2 font-bold text-primary">Examens blancs</h2>
             <p className="mt-1 text-body text-secondary">
@@ -108,13 +142,18 @@ export default function HomePage() {
           </div>
           <Link
             href="/examens"
-            data-lien-examens
-            className="text-body font-semibold text-primary underline underline-offset-4 hover:text-signal focus-ring"
+            data-lien-examens=""
+            className="inline-flex min-h-touch items-center text-body font-semibold text-primary underline underline-offset-4 hover:text-signal focus-ring"
           >
-            Examens blancs — les épreuves réelles →
+            Ouvrir les examens blancs →
           </Link>
         </div>
       </section>
+
+      <div className="mt-12 bp-large:mt-16 grid grid-cols-1 gap-x-8 gap-y-12 bp-large:grid-cols-12">
+        <NoteEnJeu className="bp-large:col-span-7" />
+        <SujetMaths className="bp-large:col-span-5" />
+      </div>
     </PageShell>
   );
 }

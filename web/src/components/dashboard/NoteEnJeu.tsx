@@ -88,49 +88,44 @@ export function NoteEnJeu({ className }: { className?: string }) {
               <tr className="text-left text-caption font-semibold uppercase tracking-eyebrow text-tertiary">
                 <th scope="col" className="py-3 pr-4 font-semibold">Matière</th>
                 <th scope="col" className="py-3 pr-4 text-right font-semibold">Coef.</th>
-                <th scope="col" className="hidden py-3 pr-4 font-semibold bp-medium:table-cell">Poids dans le national</th>
-                <th scope="col" className="hidden py-3 text-right font-semibold bp-medium:table-cell">Ta maîtrise</th>
+                <th scope="col" className="hidden py-3 font-semibold bp-medium:table-cell">Poids dans le national</th>
               </tr>
             </thead>
             <tbody>
               {lignes(active.id).map((l) => (
                 <tr key={l.id} data-coef-matiere={l.id} className="border-t border-subtle align-middle">
                   <th scope="row" className="py-3 pr-4 text-left font-normal">
-                    <span className="block text-h4 font-semibold text-primary">{l.label}</span>
+                    <span className="block text-body font-semibold text-primary">{l.label}</span>
                     {l.horsApp && (
                       <span className="block text-caption text-tertiary">pas encore dans l’application</span>
                     )}
                   </th>
                   <td className="py-3 pr-4 text-right">
-                    <span className="font-display wdth-62 tnum text-[3.5rem] font-bold leading-none text-primary">
+                    <span className="font-display wdth-62 tnum text-[2.25rem] font-bold leading-none text-primary">
                       {l.coef}
                     </span>
                   </td>
-                  <td className="hidden py-3 pr-4 bp-medium:table-cell">
+                  <td className="hidden py-3 bp-medium:table-cell">
                     <div className="flex items-center gap-3">
-                      <div className="h-3 flex-1 bg-surface-container-lowest" aria-hidden>
+                      <div className="h-2.5 flex-1 bg-surface-container-lowest" aria-hidden>
                         <div className="h-full bg-accent" style={{ width: `${(l.coef / TOTAL_COEF) * 100}%` }} />
                       </div>
-                      <span className="tnum whitespace-nowrap text-body-sm text-secondary">
+                      <span className="font-mono tnum whitespace-nowrap text-caption text-secondary">
                         {l.coef}&#8239;/&#8239;{TOTAL_COEF}
                       </span>
                     </div>
-                  </td>
-                  <td className="hidden py-3 text-right text-h4 text-tertiary bp-medium:table-cell" aria-label="pas encore mesurée">
-                    —
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <div className="mt-4 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-t border-subtle pt-4">
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-subtle pt-3">
             <p className="max-w-[60ch] text-body-sm text-secondary">
-              Ta maîtrise apparaîtra ici après tes premiers exercices. L’examen national compte pour la
-              moitié de la moyenne du bac&#8239;: (2 × national + régional + contrôle continu) / 4.
+              L’examen national compte pour la moitié de la moyenne du bac&#8239;: (2 × national + régional + contrôle continu) / 4.
             </p>
             <Link
               href="/commencer"
-              className="whitespace-nowrap text-body-sm font-semibold text-primary underline underline-offset-4 focus-ring"
+              className="inline-flex min-h-touch items-center whitespace-nowrap text-body-sm font-semibold text-primary underline underline-offset-4 hover:text-signal focus-ring"
             >
               Changer de filière
             </Link>

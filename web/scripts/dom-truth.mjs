@@ -201,7 +201,7 @@ const BATTERY = [
   // ── U1 table (the audit's measured victims) ──
   { name: "notion masthead h1 (A3 display-lg)", page: NOTION, sel: "h1", text: "Oscillations", fontKey: "display-lg", lineHeight: true, weight: "700", family: "Archivo", colorVar: "--color-text-primary" },
   { name: "home h1", page: "/", sel: "h1", text: "Ta session", fontKey: "display", weight: "700", family: "Archivo" },
-  { name: "home lead", page: "/", sel: "header p", text: "Deux heures", fontKey: "lead" },
+  // (G-04-001, accepté dans DECISIONS.md) Le slogan « Deux heures calmes, une notion à fond. » a été retiré de l'accueil.
   { name: "home session-card h2 (Studio: display h1)", page: "/", sel: "section[aria-label*='session'] h2", fontKey: "h1", weight: "700", family: "Archivo" },
   // (Persistance-wave, 2026-07-07) shelf collapsed per matière — the trigger's
   // subject-label span is the "row title" typography at rest now; the old
