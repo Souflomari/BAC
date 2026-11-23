@@ -187,6 +187,11 @@ const STEPS=[
     ['De l’azote 14 : 7 protons, 7 neutrons','Oui : un proton de plus, c’est un autre élément ; le nombre de nucléons, 14, ne change pas.',1],
     ['Du carbone 13 : il a perdu un nucléon','Aucun nucléon ne part : un neutron devient un proton. 14 nucléons, dont 7 protons : de l’azote 14.']]),
     apres:{html:'<p class="small">Noyau père → noyau fils + particule : c’est une [[desintegration|désintégration]], spontanée et [[aleatoire|aléatoire]]. On l’appelle la [[radioactivite|radioactivité]].</p>'}}},
+{cle:'spontanee',beat:2,scene:'atome',sujet:'une désintégration spontanée',
+  text:['« Spontanée » : rien ne la déclenche. Mets-le à l’épreuve.','On chauffe un échantillon radioactif à 1 000 °C. Ses noyaux se désintègrent…'],
+  pari:VF([['Au même rythme',true,'Oui : la désintégration vient du noyau. Ni la température, ni la pression, ni une réaction chimique ne changent son rythme.'],
+    ['Plus vite',false,'La chaleur agite les atomes, mais elle n’atteint pas le noyau : le rythme ne change pas.','La chaleur agite les atomes entiers. Atteint-elle l’intérieur du noyau ?'],
+    ['Moins vite',false,'La température n’agit pas sur le noyau, ni dans un sens ni dans l’autre : le rythme ne change pas.','La chaleur agite les atomes entiers. Atteint-elle l’intérieur du noyau ?']])},
 {cle:'soddy',beat:2,scene:'desint',set:{ty:0,rv:1},
   text:['Écris-la comme au bac : noyau père → noyau fils + particule. Puis compte, avant et après la flèche.'],
   deriv:[
@@ -341,11 +346,12 @@ const STEPS=[
     'C’est la touche ln de ta calculatrice. Ces deux outils suffisent pour toute la suite.']},
 {cle:'verif',beat:5,scene:'loi',set:{xmax:20,curve:1,pente:0,n0:1,tk:0,lam:0},
   text:[`Essaie la fonction ${Nt} = ${N0}e<sup>−λ<i>t</i></sup> : vérifie-t-elle d${NI}/d<i>t</i> = −λ${NI}, en partant de ${N0} ?`],
-  deriv:[
-    {tex:tx`N'(t)=N_0\times\left(-\lambda\,e^{-\lambda t}\right)`,alt:'N′(t) = N₀ × (−λ e^(−λt))',r:'(e<sup><i>kt</i></sup>)′ = <i>k</i>e<sup><i>kt</i></sup>, avec <i>k</i> = −λ.'},
-    {tex:tx`N'(t)=-\lambda\,N_0\,e^{-\lambda t}=-\lambda\,N(t)`,alt:'N′(t) = −λ N₀ e^(−λt) = −λ N(t)',r:`On reconnaît ${Nt} : l’équation est vérifiée.`},
-    {tex:tx`N(0)=N_0\,e^{0}=N_0`,alt:'N(0) = N₀ e⁰ = N₀',r:`Car e<sup>0</sup> = 1 : elle part bien de ${N0}.`},
-    {tex:tx`N(t)=N_0\,e^{-\lambda t}`,alt:'N(t) = N₀ e^(−λt)',r:`C’est la <b>loi de décroissance radioactive</b> (on admet que c’est la seule solution). ${N0} : le nombre de noyaux à <i>t</i> = 0.`}]},
+  pari:{label:'D’abord, la dérivée : N′(t) = ?',
+    apres:{tex:[[tx`N'(t)=-\lambda\,N_0\,e^{-\lambda t}=-\lambda\,N(t)`,'N′(t) = −λ N₀ e^(−λt) = −λ N(t)'],[tx`N(0)=N_0\,e^{0}=N_0`,'N(0) = N₀ e⁰ = N₀'],[tx`N(t)=N_0\,e^{-\lambda t}`,'N(t) = N₀ e^(−λt)']],
+      html:`<p class="small">L’équation est vérifiée, et la fonction part bien de ${N0}. C’est la <b>loi de décroissance radioactive</b> (on admet que c’est la seule solution). ${N0} : le nombre de noyaux à <i>t</i> = 0.</p>`},opts:[
+    {t:`−λ ${N0} e<sup>−λ<i>t</i></sup>`,ok:true,fb:'Oui : (e<sup><i>kt</i></sup>)′ = <i>k</i>e<sup><i>kt</i></sup>, avec <i>k</i> = −λ.'},
+    {t:`${N0} e<sup>−λ<i>t</i></sup>`,indice:'(e<sup><i>kt</i></sup>)′ = <i>k</i>e<sup><i>kt</i></sup>. Ici, que vaut <i>k</i> ?',fb:'Il manque le facteur −λ : (e<sup><i>kt</i></sup>)′ = <i>k</i>e<sup><i>kt</i></sup>, avec <i>k</i> = −λ.'},
+    {t:`−λ<i>t</i> ${N0} e<sup>−λ<i>t</i></sup>`,indice:'Le facteur qui descend est le coefficient de <i>t</i>. Lequel est-ce ?',fb:'Seul le coefficient de <i>t</i> descend devant : −λ, pas −λ<i>t</i>.'}]}},
 {cle:'lambda-des',beat:5,scene:'loi',set:{lam:0,n0:1},
   text:['Et tes dés ? Leur loi est <i>N</i><sub><i>k</i></sub> = <i>N</i><sub>0</sub>(5/6)<sup><i>k</i></sup>. Quel λ leur correspond, par tic ?'],
   deriv:[
@@ -358,9 +364,13 @@ const STEPS=[
   text:[`D’où vient le ln 2 de la demi-vie ? Écris qu’au bout de ${Th}, il reste la moitié.`],
   deriv:[
     {tex:tx`N_0\,e^{-\lambda t_{1/2}}=\dfrac{N_0}{2}`,alt:'N₀ e^(−λ t½) = N₀/2',r:'La définition de la demi-vie, avec la loi de décroissance.'},
-    {tex:tx`e^{-\lambda t_{1/2}}=\dfrac12\iff e^{\lambda t_{1/2}}=2`,alt:'e^(−λ t½) = 1/2 ⇔ e^(λ t½) = 2',r:`On divise par ${N0}, qui n’est pas nul, puis on prend l’inverse.`},
-    {tex:tx`\lambda\,t_{1/2}=\ln 2`,alt:'λ t½ = ln 2',r:'Le rappel : e<sup><i>x</i></sup> = 2 ⇔ <i>x</i> = ln 2.'},
-    {tex:tx`t_{1/2}=\dfrac{\ln 2}{\lambda}`,alt:'t½ = ln 2 / λ',r:`${N0} a disparu : la demi-vie ne dépend pas du nombre de noyaux. Pour les dés : ln 2 / ${fr(LAMD,3)} ≈ ${fr(TH,2)} tics, la largeur d’une marche.`,p:{st1:1,th:1}}]},
+    {tex:tx`e^{-\lambda t_{1/2}}=\dfrac12\iff e^{\lambda t_{1/2}}=2`,alt:'e^(−λ t½) = 1/2 ⇔ e^(λ t½) = 2',r:`On divise par ${N0}, qui n’est pas nul, puis on prend l’inverse.`}],
+  pari:{label:'La ligne suivante ?',reveal:[{p:{st1:1,th:1},d:700}],
+    apres:{tex:[[tx`t_{1/2}=\dfrac{\ln 2}{\lambda}`,'t½ = ln 2 / λ']],
+      html:`<p class="small">${N0} a disparu : la demi-vie ne dépend pas du nombre de noyaux. Pour les dés : ln 2 / ${fr(LAMD,3)} ≈ ${fr(TH,2)} tics, la largeur d’une marche.</p>`},opts:[
+    {t:`λ ${Th} = ln 2`,ok:true,fb:'Oui : e<sup><i>x</i></sup> = 2 ⇔ <i>x</i> = ln 2.'},
+    {t:`λ ${Th} = 2`,indice:'Pour enlever une exponentielle, quelle fonction applique-t-on ?',fb:'On enlève l’exponentielle avec le logarithme : e<sup><i>x</i></sup> = 2 ⇔ <i>x</i> = ln 2.'},
+    {t:`λ ${Th} = 1`,indice:'Si λ<i>t</i> valait 1, que vaudrait e<sup>λ<i>t</i></sup> ? Est-ce 2 ?',fb:`Ce serait écrire ${Th} = 1/λ : l’erreur classique. e<sup>1</sup> ≈ 2,72, pas 2. Il faut λ ${Th} = ln 2 ≈ 0,69.`}]}},
 {cle:'activite',beat:6,scene:'loi',set:{th:0,st1:0,bars:0,run:0,n0:0},
   text:['Un détecteur compte des désintégrations, pas des noyaux.',`Quand il reste ${ND} dés, environ ${ent(ND/DE)} font 6 au tic suivant. Quand il en reste ${ND/2}, combien ?`],
   pari:{reveal:[{p:{bars:1},d:1400}],...BET([

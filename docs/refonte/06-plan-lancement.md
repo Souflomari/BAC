@@ -65,9 +65,13 @@ Par leçon, les premières corrections :
 forme ; physique : phrases de barème non sourcées retirées de `bac-copie` ; SVT : `pari-u` devient un
 raisonnement, nouveau pari `stop` avant la terminaison, barème marqué « indicatif ».
 
-**Reste** : faire déduire l'hyperbole (`hyper`) ; une ligne choisie par dérivation ; le second exemple
-du bac à compléter et la copie fautive ; l'étape (N, Z) et les paris « température » et « t½ = 1/λ »
-en physique ; couper `tau` ; le test de saut de la SVT ; la question « complémenter ou pas ? » ; le
+**Fait le 2026-11-23 (deuxième série)** : une ligne choisie par l'élève dans quatre calculs (maths :
+`derivee`, `r-puissance2`, la racine carrée passe dans sa propre étape `r-racine` ; physique : `verif`,
+et `ln2` avec le leurre « t½ = 1/λ ») ; physique : nouveau pari `spontanee` (chauffer ne change pas le
+rythme) ; le texte ne réapparaît plus sous la barre « Retour / Suivant » quand le panneau défile.
+
+**Reste** : faire déduire l'hyperbole (`hyper`) ; une ligne choisie dans les dérivations restantes ; le second exemple
+du bac à compléter et la copie fautive ; l'étape (N, Z) en physique ; couper `tau` ; le test de saut de la SVT ; la question « complémenter ou pas ? » ; le
 bilan produit par l'élève ; trois étapes qui débordent d'une ou deux lignes dans le pire cas (maths
 41 et 49, SVT 18).
 

@@ -65,7 +65,7 @@
 .pilote .rejouer:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
 /* la ligne de résultat de fin de leçon, la même dans les trois pilotes */
 .pilote .res { margin: 0 0 8px; font-size: 1.0625rem; line-height: 1.5; }
-.pilote .script { background: var(--color-surface-base); border-left: 1px solid var(--color-text-primary); display: flex; flex-direction: column; padding: 36px 32px 20px; overflow: auto; min-height: 0;
+.pilote .script { background: var(--color-surface-base); border-left: 1px solid var(--color-text-primary); display: flex; flex-direction: column; padding: 36px 32px 0; overflow: auto; min-height: 0;
   /* le texte qui défile s'efface en haut au lieu d'être tranché net */
   mask-image: linear-gradient(to bottom, transparent 0, var(--color-text-primary) 22px); }
 .pilote .kicker { font: 700 0.8125rem/1 var(--font-ui); color: var(--color-signal); margin-bottom: 20px; }
@@ -83,7 +83,9 @@
 /* V3 : posée à une hauteur fixe (le début du texte ne saute plus d'une étape à l'autre) */
 .pilote .script.texte-seul > .kicker { margin-top: clamp(16px, 13vh, 120px); }
 /* la navigation reste visible quand le panneau défile (longue dérivation) */
-.pilote .script > .nav { position: sticky; bottom: 0; background: var(--color-surface-base); }
+/* La barre « Retour / Suivant » colle au bas du panneau. Le blanc du bas lui appartient
+   (et non au panneau) : sinon le texte qui défile réapparaît sous les boutons. */
+.pilote .script > .nav { position: sticky; bottom: 0; background: var(--color-surface-base); padding-bottom: 20px; }
 /* ce qui défile vers la vue (ligne de calcul, explication, fiche) s'arrête au-dessus de la barre */
 .pilote .script { scroll-padding-bottom: 104px; }
 /* un mot à fiche et sa ponctuation ne se séparent pas en fin de ligne */

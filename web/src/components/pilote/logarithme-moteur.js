@@ -806,8 +806,11 @@ const STEPS=[
   text:['Écris-le, une ligne à la fois.'],
   deriv:[
     {tex:'A(x+h) - A(x) \\approx h \\times \\dfrac{1}{x}',alt:'A(x + h) − A(x) ≈ h × 1/x',r:'L’aire gagnée, c’est la bande : largeur <i>h</i>, hauteur 1/<i>x</i>.'},
-    {tex:'\\dfrac{A(x+h) - A(x)}{h} \\approx \\dfrac{1}{x}',alt:'(A(x + h) − A(x)) / h ≈ 1/x',r:'On divise par <i>h</i> : à gauche, le taux d’accroissement de A.'},
-    {tex:"A'(x) = \\dfrac{1}{x}",alt:'A′(x) = 1/x',r:'Quand <i>h</i> tend vers 0, le taux devient la dérivée. La vitesse de l’aire, c’est la hauteur de la courbe.'}]},
+    {tex:'\\dfrac{A(x+h) - A(x)}{h} \\approx \\dfrac{1}{x}',alt:'(A(x + h) − A(x)) / h ≈ 1/x',r:'On divise par <i>h</i> : à gauche, le taux d’accroissement de A.'}],
+  pari:{label:'Quand h tend vers 0, la ligne suivante ?',apres:{tex:[["A'(x) = \\dfrac{1}{x}",'A′(x) = 1/x']],html:'<p class="small">La vitesse de l’aire, c’est la hauteur de la courbe.</p>'},opts:[
+    {t:'A′(<i>x</i>) = 1/<i>x</i>',ok:true,fb:'Oui : quand <i>h</i> tend vers 0, le taux d’accroissement devient la dérivée.'},
+    {t:'A(<i>x</i>) = 1/<i>x</i>',indice:'À gauche, ce n’est pas l’aire : c’est sa variation, divisée par <i>h</i>.',fb:'À gauche se trouve le taux d’accroissement de A. Sa limite est la dérivée A′(<i>x</i>), pas l’aire A(<i>x</i>).'},
+    {t:'A′(<i>x</i>) = <i>h</i>/<i>x</i>',indice:'On a déjà divisé par <i>h</i>. En reste-t-il à droite ?',fb:'En divisant par <i>h</i>, il a disparu du membre de droite : il reste 1/<i>x</i>.'}]}},
 {cle:'definition',beat:6,scene:'hyper',set:{strip:0},seq:[{p:{lnc:1},d:2400,w:300},{p:{dl:1,seg:1},d:900,w:500},{p:{z1:1},d:700,w:500}],
   text:['Voilà la définition de ton cours, et tu sais d’où elle sort :',
     {t:'la fonction logarithme [[neperien|népérien]], notée ln, est la primitive de <i>x</i> [[fleche|↦]] 1/<i>x</i> sur l’[[intervalle]] '+I0+' qui s’annule en 1.',fort:true},
@@ -884,12 +887,18 @@ const STEPS=[
     {t:'(ln 2)<sup>3</sup>',fb:'Non : (ln 2)<sup>3</sup> ≈ 0,33. Or 8 = 2 × 2 × 2, et ln change chaque × en + : ln 2 + ln 2 + ln 2 = 3 ln 2 ≈ 2,08. Regarde les trois bandes.'},
     {t:'Ni l’un ni l’autre',fb:'8 = 2 × 2 × 2, et ln change chaque × en + : ln 8 = ln 2 + ln 2 + ln 2 = 3 ln 2 ≈ 2,08. Regarde les trois bandes égales.'}]}},
 {cle:'r-puissance2',beat:8,scene:'bandes',set:{r4:0,b3:1},
-  text:['La règle, une ligne à la fois. Elle vaut pour tout [[relatif|entier relatif]] <i>n</i>, et pour la racine carrée.'],
+  text:['La règle, une ligne à la fois, pour tout [[relatif|entier relatif]] <i>n</i>.'],
   deriv:[
     {tex:'\\ln(a^n) = \\ln(a \\times a \\times \\cdots \\times a)',alt:'ln(aⁿ) = ln(a × a × … × a)',r:'Pour <i>n</i> entier positif, une [[puissance]] est un produit de <i>n</i> facteurs.'},
-    {tex:'\\ln(a^n) = \\ln a + \\ln a + \\cdots + \\ln a = n \\ln a',alt:'ln(aⁿ) = ln a + ln a + … + ln a = n ln a',r:'La règle du produit, <i>n</i> fois. Exemple : ln(e<sup>3</sup>) = 3 ln e = 3.'},
-    {tex:'\\ln(a^{-n}) = \\ln\\dfrac{1}{a^n} = -n \\ln a',alt:'ln(a^−n) = ln(1/aⁿ) = −n ln a',r:'Un exposant négatif donne un inverse : la règle vaut pour tout entier relatif.'},
-    {tex:'\\ln\\sqrt{a} = \\dfrac{1}{2}\\ln a',alt:'ln √a = ½ ln a',r:'Car ln <i>a</i> = ln(√<i>a</i> × √<i>a</i>) = 2 ln √<i>a</i>. Sur la figure : ln 2 est la moitié de ln 4.',p:{b3:0,h4:1,tit:'La racine carrée, sur les aires',sous:'4 = 2 × 2, donc √4 = 2'}}]},
+    {tex:'\\ln(a^n) = \\ln a + \\ln a + \\cdots + \\ln a = n \\ln a',alt:'ln(aⁿ) = ln a + ln a + … + ln a = n ln a',r:'La règle du produit, <i>n</i> fois. Exemple : ln(e<sup>3</sup>) = 3 ln e = 3.'}],
+  pari:{label:'Et pour un exposant négatif : ln(a⁻ⁿ) ?',
+    apres:{tex:[['\\ln(a^{-n}) = \\ln\\dfrac{1}{a^n} = -n \\ln a','ln(a^−n) = ln(1/aⁿ) = −n ln a']],html:'<p class="small">La règle vaut donc pour tout entier relatif.</p>'},opts:[
+    {t:'−<i>n</i> ln <i>a</i>',ok:true,fb:'Oui : un exposant négatif donne un inverse, et ln change un inverse en opposé.'},
+    {t:'(ln <i>a</i>)<sup>−<i>n</i></sup>',indice:'L’exposant est sur <i>a</i>, à l’intérieur du ln. Où passe-t-il ?',fb:'L’exposant est à l’intérieur du ln : il descend devant, en facteur.'},
+    {t:'1 / (<i>n</i> ln <i>a</i>)',indice:'ln change-t-il un inverse en inverse, ou en opposé ?',fb:'ln change un inverse en opposé : ln(1/<i>x</i>) = −ln <i>x</i>.'}]}},
+{cle:'r-racine',beat:8,scene:'bandes',set:{b3:0,h4:1,tit:'La racine carrée, sur les aires',sous:'4 = 2 × 2, donc √4 = 2'},
+  text:['Et la racine carrée ? ln <i>a</i> = ln(√<i>a</i> × √<i>a</i>) = 2 ln √<i>a</i>.',{t:'Sur la figure : ln 2 est la moitié de ln 4.',fort:true}],
+  tex:[['\\ln\\sqrt{a} = \\dfrac{1}{2}\\ln a','ln √a = ½ ln a']]},
 {cle:'r-somme',beat:8,scene:'bandes',set:{tit:'Une somme, sur les aires',sous:'1 + 1 = 2',h4:0,b3:0,s12:0,z1:1},
   text:['Une erreur fréquente des copies :',{t:'ln(1 + 1) = ln 1 + ln 1 = 0.',fort:true},'Où est l’erreur ?'],
   pari:{label:'Réponds',reveal:[{p:{s12:1},d:900}],opts:[
