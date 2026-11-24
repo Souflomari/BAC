@@ -135,6 +135,11 @@ exemple une fois vérifiés. Plan prêt et tranché pour la suivante : `specs/no
 (physique). Règle de relecture ajoutée : un texte ne nomme une couleur que si elle est la même en
 thème clair et en thème sombre (l'accent rouge, jamais « noir »).
 
+Troisième leçon de la série : `/pilote/noyaux` (physique : noyaux, masse et énergie ; 59 étapes,
+14 gabarits, une scène nouvelle, le diagramme d'énergie des sujets), relue sans retouche, tous
+contrôles verts, non liée depuis l'accueil. Son « au bac » cite trois vrais sujets (2019, 2020,
+2023). Reste « à vérifier » avant de la montrer : les emplois cités dans l'étape des usages.
+
 ## 5. Avant le lancement : les bloquants
 
 Inventaire vérifié dans le dépôt le 2026-11-23. Trois faits qui cadrent tout :
