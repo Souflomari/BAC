@@ -22,6 +22,24 @@
 
 ---
 
+## 0. La leçon livrée (état au 2026-11-24)
+
+Ce plan a été écrit avant la leçon. La leçon livrée (`web/src/components/pilote/suites-moteur.js`) compte **53 étapes** : la relecture pédagogique et visuelle du 2026-11-24 en a fusionné, retiré ou déplacé plusieurs. **Le fichier de la leçon fait foi** ; les sections 1 à 8 ci-dessous restent le plan d'origine (raisons, sources, leurres), avec ses comptes d'étapes d'alors. L'ordre livré :
+
+| # | Partie | Étapes (clés, dans l'ordre) |
+|---|---|---|
+| 0 | Ce qu’il faut savoir | `savoir`, `sav-rappel` |
+| 1 | L’énigme | `comprime`, `deuxieme-jour`, `plateau`, `jours`, `questions` |
+| 2 | La machine et son escalier | `machine`, `premiere-marche`, `escalier`, `ou-vont`, `point-fixe`, `depart`, `u0-curseur` |
+| 3 | La récurrence | `pas-assez`, `dominos`, `heredite-debut`, `heredite`, `init-oubliee`, `v-recurrence` |
+| 4 | Le sens de variation | `difference`, `depart-mono`, `spirale` |
+| 5 | Converger | `rappel`, `theoreme`, `majorant-3`, `bornee-oscille`, `pas-retrecissent` |
+| 6 | La limite | `continuite`, `limite-dose`, `piege-2u`, `sans-point-fixe`, `v-lim-composee` |
+| 7 | Les suites de référence | `geo-exp`, `malthus` |
+| 8 | Retour à l’énigme | `retour-plafond`, `retour-vn`, `retour-formule`, `retour-jours`, `retour-dose` |
+| 9 | Au bac | `bac`, `bac-heredite`, `bac-mono`, `bac-lim`, `bac-copie`, `bac-2`, `bac-2-mono`, `bac-2-lim`, `bac-2-cite` |
+| 10 | Bilan | `q1`, `q2`, `q3`, `fin` |
+
 ## 1. Périmètre
 
 ### 1.1 Capacités officielles couvertes

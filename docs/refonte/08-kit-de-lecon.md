@@ -55,6 +55,8 @@ Trois façons de faire agir l'élève :
 - **`deriv`** : `[{ tex, alt, r, p }]`, un calcul révélé ligne à ligne, chaque ligne avec sa raison
   `r`. Pour que l'élève choisisse une ligne (règle B3) : les premières lignes dans `deriv`, puis un
   `pari` dont `apres.tex` montre la suite.
+  Avec un `pari` ou un `verifie`, la question reste cachée tant que « Ligne suivante » n'a pas montré
+  toutes les lignes de `deriv` : l'élève lit le calcul avant d'y répondre.
 
 Les raccourcis des pilotes : `VF([[texte, juste?, retour, indice], …])` pour une question,
 `BET([[texte, retour], …])` pour un pari de prédiction.

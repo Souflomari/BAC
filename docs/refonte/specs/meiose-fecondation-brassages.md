@@ -24,6 +24,24 @@
 
 ---
 
+## 0. La leçon livrée (état au 2026-11-24)
+
+Ce plan a été écrit avant la leçon. La leçon livrée (`web/src/components/pilote/meiose-moteur.js`) compte **52 étapes** : la relecture pédagogique et visuelle du 2026-11-24 en a fusionné, retiré ou déplacé plusieurs. **Le fichier de la leçon fait foi** ; les sections 1 à 8 ci-dessous restent le plan d'origine (raisons, sources, leurres), avec ses comptes d'étapes d'alors. L'ordre livré :
+
+| # | Partie | Étapes (clés, dans l'ordre) |
+|---|---|---|
+| 0 | Ce qu’il faut savoir | `v-savoir`, `sav-chromatides` |
+| 1 | L’énigme | `ascaris`, `doublement` |
+| 2 | Les paires | `caryotype`, `homologues`, `homo-soeurs`, `v-haploide`, `quelle-moitie` |
+| 3 | La première division | `interphase`, `tetrade`, `metaphase1`, `anaphase1`, `telophase1` |
+| 4 | La seconde division | `metaphase2`, `anaphase2`, `quatre-cellules`, `ou-reduction`, `gonosomes`, `courbe`, `schema-phases` |
+| 5 | Le hasard des paires | `rappel`, `alleles`, `orientation`, `une-cellule`, `deux-paires`, `trois-paires`, `humain-2-23`, `v-inter` |
+| 6 | Le crossing-over | `chiasma`, `echange`, `quand-co`, `v-intra` |
+| 7 | La fécondation | `fecondation`, `hasard-fec`, `v-cycle` |
+| 8 | Retour à l’énigme | `retour-moitie`, `retour-freres`, `retour-mendel` |
+| 9 | Au bac | `bac-qcm`, `bac-vf`, `bac-doc`, `bac-phases`, `bac-courbe`, `bac-copie`, `bac-2`, `bac-schema`, `bac-erreur` |
+| 10 | Bilan | `q1`, `q2`, `q3`, `fin` |
+
 ## 1. Périmètre
 
 ### 1.1 Capacités officielles couvertes

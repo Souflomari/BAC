@@ -182,6 +182,16 @@ script), puis l'auteur corrige. Les cinq autres leçons de la série y passent a
 production. Le second regard d'Antigravity est décrit dans
 [`../revue-externe/MANDAT-LECONS.md`](../revue-externe/MANDAT-LECONS.md).
 
+**Les cinq autres, relues et corrigées (2026-11-24)** : méiose 58 → 52 étapes, exponentielle 58 → 53,
+noyaux 59 → 54, dipôle RC 59 → 56, transmission 59 → 53. Chaque plan de `specs/` porte maintenant en
+tête une section 0, « La leçon livrée », avec l'ordre réel des étapes ; le fichier de la leçon fait
+foi, le reste du plan garde les raisons et les sources. Trois défauts communs aux neuf leçons sont
+corrigés dans le lecteur : une étape à calcul déroule toutes ses lignes avant de montrer la question ;
+un fondu au bas du panneau dit qu'il reste du texte ; au téléphone, les textes de scène remontent à
+11 px quand ils ne se touchent pas. Leçon pour la série : une expression régulière à regard arrière
+casse les téléphones d'avant 2023, et seul `syntaxe-vieux-moteurs.mjs` le voit ; il se lance avant
+chaque poussée de leçon.
+
 ## 5. Avant le lancement : les bloquants
 
 Inventaire vérifié dans le dépôt le 2026-11-23. Trois faits qui cadrent tout :

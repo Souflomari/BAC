@@ -63,6 +63,66 @@ function setMT(t,str){if(t.__s===str)return;t.__s=str;t.textContent='';parts(t,t
 function svgPt(e){const p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(svg.getScreenCTM().inverse());}
 function show(el,o){el.style.opacity=o;}
 
+/* ---------- le texte des scènes au téléphone ----------
+   Les scènes sont dessinées sur une toile de 1000 unités : à 390 px de large, une étiquette de 15 à
+   18 unités tombe à 6 ou 7 px. Sous 640 px, chaque texte de la scène remonte à 11 px réels au moins
+   (jamais réduit) ; l'ordinateur ne change pas. La taille d'origine est lue sur le style calculé, avant
+   notre réglage ; le réglage (inline, `important`) s'efface quand l'écran s'élargit. */
+const PLANCHER=11,PETIT=matchMedia('(max-width: 639px)');
+const echelle=()=>{const m=svg.getScreenCTM();return m?Math.hypot(m.a,m.b):0;};
+function planchert(t,k){
+  const cur=t.style.getPropertyValue('font-size'),mien=t.__mien!=null&&cur===t.__mien&&t.style.getPropertyPriority('font-size')==='important';
+  if(!PETIT.matches||!(k>0)){if(mien){t.style.removeProperty('font-size');if(t.__orig)t.style.fontSize=t.__orig;t.__mien=null;t.__orig=null;}if(t.__push){t.style.transform='';t.__push=0;}return;}
+  if(mien&&t.__k===k)return;
+  if(mien){t.style.removeProperty('font-size');if(t.__orig)t.style.fontSize=t.__orig;}else t.__orig=cur;
+  const fs=parseFloat(getComputedStyle(t).fontSize),vise=PLANCHER/k;
+  if(!(fs>0)||fs>=vise){t.__mien=null;t.__k=k;return;}
+  const v=vise.toFixed(1)+'px';t.style.setProperty('font-size',v,'important');t.__mien=t.style.getPropertyValue('font-size');t.__k=k;t.__fs0=fs;t.__fsu=vise;
+}
+// Un texte grossi qui en touche un autre se range de lui-même, dans cet ordre : s'il est la ligne du bas d'une
+// pile (un titre et son sous-titre), il descend de quelques unités (au plus 14, jamais s'il porte déjà une
+// transformation) ; sinon le plus léger des deux redescend par pas de 1,2 px réel, jamais sous sa taille
+// d'origine. Mieux vaut un texte petit qu'un texte illisible. À chaque étape on repart de la taille
+// plancher, une fois la scène posée.
+const POUSSEE_MAX=14;
+function visibleT(t,fin){let op=1,el=t;while(el&&el!==fin){const cs=getComputedStyle(el);if(cs.display==='none'||cs.visibility==='hidden')return false;op*=Number(cs.opacity);el=el.parentElement;}return op>=.3;}
+function degonfler(){
+  if(!PETIT.matches||!curScene)return;const k=echelle();if(!(k>0))return;
+  const T=[];curScene.g.querySelectorAll('text').forEach(t=>{if(t.textContent.trim()&&visibleT(t,svg))T.push(t);});
+  const vise=PLANCHER/k;
+  T.forEach(t=>{if(t.__mien!=null&&t.__fs0){t.style.setProperty('font-size',vise.toFixed(1)+'px','important');t.__mien=t.style.getPropertyValue('font-size');t.__fsu=vise;}if(t.__push){t.style.transform='';t.__push=0;}});
+  // qui redescend en premier : le plus léger, puis le plus petit à l'origine, puis le plus long
+  const cle=t=>(parseFloat(getComputedStyle(t).fontWeight)>=600?1e6:0)+(t.__fs0||t.__fsu||0)*1e3-t.textContent.length;
+  const reste=t=>t.__mien!=null&&t.__fsu>t.__fs0+.05;
+  for(let tour=0;tour<14;tour++){
+    const R=T.map(t=>t.getBoundingClientRect()),vic=new Set(),pousse=new Map();
+    for(let i=0;i<T.length;i++){const a=R[i];if(a.width<1)continue;
+      for(let j=i+1;j<T.length;j++){const c=R[j];if(c.width<1)continue;
+        const w=Math.min(a.right,c.right)-Math.max(a.left,c.left),h=Math.min(a.bottom,c.bottom)-Math.max(a.top,c.top);
+        if(!(w>1&&h>2&&w*h/Math.min(a.width*a.height,c.width*c.height)>.12))continue;
+        if(T[i].__mien==null&&T[j].__mien==null)continue;
+        const bas=a.top<=c.top?T[j]:T[i],pile=h<.6*Math.min(a.height,c.height),du=(h+1)/k;
+        if(pile&&!bas.getAttribute('transform')&&(bas.__push||0)+du<=POUSSEE_MAX){pousse.set(bas,Math.max(pousse.get(bas)||0,du));continue;}
+        const dues=[T[i],T[j]].filter(reste).sort((x,y)=>cle(x)-cle(y));if(dues.length)vic.add(dues[0]);}}
+    if(!vic.size&&!pousse.size)break;
+    pousse.forEach((du,t)=>{t.__push=(t.__push||0)+du;t.style.transform='translateY('+t.__push.toFixed(1)+'px)';});
+    vic.forEach(t=>{const cur=t.__fsu,cible=Math.max(t.__fs0,cur-1.2/k);t.style.setProperty('font-size',cible.toFixed(1)+'px','important');t.__mien=t.style.getPropertyValue('font-size');t.__fsu=cible;});
+  }
+}
+let degTimer=0;const planDegonfle=()=>{clearTimeout(degTimer);degTimer=setTimeout(degonfler,120);};
+
+const touches=new Set();let rafT=0;
+function planTexte(t){touches.add(t);if(!rafT)rafT=requestAnimationFrame(()=>{rafT=0;const k=echelle();touches.forEach(x=>{if(x.isConnected)planchert(x,k);});touches.clear();planDegonfle();});}
+function tousLesTextes(){svg.querySelectorAll('text').forEach(planTexte);}
+const obsTexte=new MutationObserver(recs=>{for(const r of recs){
+  if(r.type==='attributes'){const t=r.target;if(t.tagName==='text'&&!(t.__mien!=null&&t.style.getPropertyPriority('font-size')==='important'&&t.style.getPropertyValue('font-size')===t.__mien))planTexte(t);continue;}
+  if(r.target.tagName==='text'||r.target.tagName==='tspan')continue;
+  r.addedNodes.forEach(n=>{if(n.nodeType!==1)return;if(n.tagName==='text')planTexte(n);else if(n.querySelectorAll)n.querySelectorAll('text').forEach(planTexte);});}});
+obsTexte.observe(svg,{childList:true,subtree:true,attributes:true,attributeFilter:['style']});
+const surEchelle=()=>{touches.clear();tousLesTextes();};
+const obsTaille=typeof ResizeObserver!=='undefined'?new ResizeObserver(surEchelle):null;if(obsTaille)obsTaille.observe(svg);
+PETIT.addEventListener&&PETIT.addEventListener('change',surEchelle);
+
 const defs=E('defs');
 const mk=E('marker',{id:'arw',viewBox:'0 0 10 10',refX:'8',refY:'5',markerWidth:'8',markerHeight:'8',orient:'auto-start-reverse'},defs);
 E('path',{d:'M0 0L10 5L0 10z',class:'s-dim'},mk);
@@ -122,6 +182,9 @@ function tweenTo(sc,target,d,my){
 let curScene=null;
 // lignes d'une dérivation déjà montrées : 1 à la première visite, le compte atteint ensuite (garde au retour)
 function lignesVues(st){return S.lignes[st.k]!=null?S.lignes[st.k]:1;}
+// une étape à `deriv` ET à question : la question reste cachée tant que « Ligne suivante » n'a pas montré
+// toutes les lignes (le kit : les premières lignes dans `deriv`, puis un `pari` sur la suite)
+const attend=st=>!!(st.pari&&st.deriv&&lignesVues(st)<st.deriv.length);
 async function animate(sc,st,my,fresh){
   if(fresh)await wait(300);else await tweenTo(sc,st.base,st.d||750,my);
   const seq=st.seq||[];
@@ -132,7 +195,7 @@ async function animate(sc,st,my,fresh){
   montrerPhrases(Infinity);
   if(st.deriv){const n=lignesVues(st);for(let j=0;j<n;j++){const x=st.deriv[j];if(x.p){if(my!==run)return;await tweenTo(sc,x.p,x.d||700,my);}}}
   if(st.pari&&st.pari.reveal&&S.ans[st.k]!=null&&resolu(st))for(const f of st.pari.reveal){if(my!==run)return;await tweenTo(sc,f.p,f.d||900,my);}
-  if(my===run)S.vu[st.k]=true;
+  if(my===run){S.vu[st.k]=true;planDegonfle();}
 }
 function montrerPhrases(k){root.querySelectorAll('#body .say.later').forEach(p=>{if(+p.dataset.a<=k)p.classList.remove('later');});}
 function go(i){
@@ -152,15 +215,15 @@ const texHTML=t=>`<div class="formula">${t.map(([x,alt])=>`<span class="m" data-
 function apresHTML(P){return P.apres?`${P.apres.tex?texHTML(P.apres.tex):''}${P.apres.html?motsHTML(tyP(P.apres.html)):''}`:'';}
 // une ligne de calcul : la dernière montrée porte le trait rouge ; les plus anciennes se compactent
 // (formule + une ligne de raison, un clic les rouvre) pour que la question reste à l'écran
-function classeLigne(j,n){return j>=n?'cache':`${j<n-2?'ancien':''}${j===n-1?' der':''}`;}
+function classeLigne(j,n,st){return j>=n?'cache':`${!st.pari&&j<n-2?'ancien':''}${j===n-1?' der':''}`;}
 function derivHTML(st){const n=lignesVues(st);
-  return `<ol class="deriv">${st.deriv.map((x,j)=>`<li class="${classeLigne(j,n)}" data-l="${j}"><span class="m" data-display="1" data-tex="${esc(x.tex)}">${esc(x.alt||x.tex)}</span>${x.r?`<span class="raison">${motsHTML(tyP(x.r))}</span>`:''}</li>`).join('')}</ol>`;}
+  return `<ol class="deriv">${st.deriv.map((x,j)=>`<li class="${classeLigne(j,n,st)}" data-l="${j}"><span class="m" data-display="1" data-tex="${esc(x.tex)}">${esc(x.alt||x.tex)}</span>${x.r?`<span class="raison">${motsHTML(tyP(x.r))}</span>`:''}</li>`).join('')}</ol>`;}
 function renderPanel(st){
   $('#kicker').textContent=`${String(st.beat+1).padStart(2,'0')} — ${BEATS[st.beat].name}`;
   const revoir=S.vu[st.k]||RM.matches;
   let h=`<div class="dit">${phrases(st).map(p=>`<p class="say${p.a!=null&&!revoir?' later':''}${p.fort?' fort':''}" data-a="${p.a!=null?p.a:-1}">${motsHTML(tyP(p.t))}</p>`).join('')}</div>`;
   if(st.tex)h+=texHTML(st.tex);
-  if(st.deriv){if(S.lignes[st.k]==null)S.lignes[st.k]=1;h+=derivHTML(st);}
+  if(st.deriv){if(S.lignes[st.k]==null)S.lignes[st.k]=st.pari&&S.ans[st.k]!=null?st.deriv.length:1;h+=derivHTML(st);}
   if(st.html)h+=st.html();
   if(st.pari)h+=pariHTML(st)+`<div class="fb" id="fb"></div><div class="apres" id="apres">${S.ans[st.k]!=null&&resolu(st)?apresHTML(st.pari):''}</div>`;
   if(st.ctl)h+=CTL[st.ctl].html(st);
@@ -176,15 +239,41 @@ function renderPanel(st){
   if(TEL.matches){const r=$('#script').getBoundingClientRect(),haut=$('.stage-wrap').getBoundingClientRect().bottom;if(r.top<haut-1)window.scrollBy(0,r.top-haut);}
   if(st.pari){wireOpts(st);if(S.ans[st.k]!=null){const fb=$('#fb');fb.innerHTML=messagePari(st,S.ans[st.k]);fb.classList.toggle('du-premier-coup',!!(st.pari.opts[S.ans[st.k]].ok&&S.first[st.k]===S.ans[st.k]));}}
   if(st.ctl)CTL[st.ctl].init(st);
-  renderMath(body);updateNav();
+  renderMath(body);updateNav();planSuite();
 }
-function voir(el){if(el&&el.scrollIntoView)el.scrollIntoView({block:'nearest',behavior:RM.matches?'auto':'smooth'});}
+// Amène du texte nouveau dans la vue : entre le haut visible du panneau (le bas de la scène collée au
+// téléphone) et la barre « Retour / Suivant ». De `el` à la fin de `fin` s'ils tiennent ; sinon le début
+// d'abord, et le fondu du bas dit qu'il reste du texte. Défilement doux, immédiat si mouvement réduit.
+function voir(el,fin){
+  if(!el||!el.getBoundingClientRect)return;
+  const sc=$('#script'),nav=sc&&sc.querySelector('.nav'),tel=TEL.matches;
+  const haut=tel?$('.stage-wrap').getBoundingClientRect().bottom+12:sc.getBoundingClientRect().top+28;
+  const bas=(nav?nav.getBoundingClientRect().top:innerHeight)-12;
+  const a=el.getBoundingClientRect(),z=(fin||el).getBoundingClientRect();
+  let d=0;
+  if(z.bottom>bas)d=z.bottom-bas;
+  if(a.top-d<haut)d=a.top-haut;
+  if(Math.abs(d)<2)return;
+  (tel?window:sc).scrollBy({top:d,behavior:RM.matches?'auto':'smooth'});
+}
+// « il reste du texte sous la barre » : un fondu au bas du panneau, seulement quand c'est vrai
+function majSuite(){
+  const sc=$('#script'),nav=sc&&sc.querySelector('.nav'),b=$('#body');if(!nav||!b)return;
+  const fin=b.getBoundingClientRect().bottom-(parseFloat(getComputedStyle(b).paddingBottom)||0);
+  sc.classList.toggle('suite',fin>nav.getBoundingClientRect().top+2);
+}
+let suiteRaf=0;
+const planSuite=()=>{if(suiteRaf)return;suiteRaf=requestAnimationFrame(()=>{suiteRaf=0;majSuite();});};
+window.addEventListener('scroll',planSuite,{passive:true});window.addEventListener('resize',planSuite);
+$('#script').addEventListener('scroll',planSuite,{passive:true});
+const obsSuite=typeof ResizeObserver!=='undefined'?new ResizeObserver(planSuite):null;
+if(obsSuite){obsSuite.observe($('#body'));obsSuite.observe($('#script'));}
 function isQuiz(P){return P.opts.some(o=>o.ok);}
 // une question est résolue quand la bonne réponse est trouvée, ou après deux essais ; un pari dès le choix
 function resolu(st){const P=st.pari;if(!P)return true;const a=S.ans[st.k];if(a==null)return false;if(!isQuiz(P))return true;return !!P.opts[a].ok||(S.essais[st.k]||[]).length>=2;}
 function pariHTML(st){const P=st.pari,a=S.ans[st.k],q=isQuiz(P),ess=S.essais[st.k]||[],fini=resolu(st);
   const essai=q&&!fini&&ess.length===1?'<span class="pari-essai">second essai</span>':'';
-  return `<div class="pari${P.kind==='verifie'?' verifie':''}${fini&&a!=null?' fini':''}"><div class="pari-k">${P.label||(q?'Réponds':'Ton pari')}${essai}</div><div class="opts">${P.ordre.map((j,pos)=>{const o=P.opts[j];let c='opt',m='',dit='';
+  return `<div class="pari${P.kind==='verifie'?' verifie':''}${fini&&a!=null?' fini':''}${attend(st)?' attend':''}"><div class="pari-k">${P.label||(q?'Réponds':'Ton pari')}${essai}</div><div class="opts">${P.ordre.map((j,pos)=>{const o=P.opts[j];let c='opt',m='',dit='';
     if(q){if(fini&&o.ok){c+=' ok';m='✓';dit='bonne réponse';}else if(ess.includes(j)){c+=' ko';m='✗';dit='ta réponse, fausse';}else if(fini)c+=' off';}
     else if(a!=null){if(a===j){c+=' sel';dit='ton choix';}else c+=' off';}
     const inerte=(!q&&a!=null)||(q&&!fini&&ess.includes(j));
@@ -201,7 +290,7 @@ function messagePari(st,j){const P=st.pari,o=P.opts[j];
   return `${motsHTML(tyP(o.fb||''))}<span class="fb-bon"><b>La réponse : ${tyP(bon.t)}.</b> ${motsHTML(tyP(/^(ln|log|exp|[a-z]\b)/.test(expl)?expl:expl.charAt(0).toUpperCase()+expl.slice(1)))}</span>`;}
 function choose(st,j){
   const P=st.pari,q=isQuiz(P),k=st.k,fb=$('#fb');
-  if(!q&&S.ans[k]!=null)return;
+  if(attend(st)||(!q&&S.ans[k]!=null))return;
   // une question résolue : un clic relit l'explication d'une option, sans rien changer
   if(q&&resolu(st)){fb.innerHTML=P.opts[j].ok?messagePari(st,j):motsHTML(tyP(P.opts[j].fb||''));renderMath(fb);voir(fb);say(plain(P.opts[j].fb||''));return;}
   if(q){const ess=S.essais[k]||(S.essais[k]=[]);if(ess.includes(j))return;ess.push(j);}
@@ -211,11 +300,11 @@ function choose(st,j){
   root.querySelector('.pari').outerHTML=pariHTML(st);wireOpts(st);renderMath(root.querySelector('.pari'));
   const btn=root.querySelector(`.opt[data-j="${j}"]`);if(btn&&!btn.disabled)btn.focus();else if(fini)$('#next').focus();else{const autre=root.querySelector('.opt:not([disabled])');autre&&autre.focus();}
   fb.innerHTML=messagePari(st,j);renderMath(fb);fb.classList.toggle('du-premier-coup',!!(P.opts[j].ok&&S.first[k]===j));
-  if(fini&&P.apres){const ap=$('#apres');ap.innerHTML=apresHTML(P);renderMath(ap);voir(ap);}else voir(fb);
+  if(fini&&P.apres){const ap=$('#apres');ap.innerHTML=apresHTML(P);renderMath(ap);voir(fb,ap);}else voir(fb);
   if(fini&&P.reveal){const my=++run,sc=scenes[st.scene];(async()=>{const fr0=[{p:{...st.pre,...P.reveal[0].p},d:P.reveal[0].d},...P.reveal.slice(1)];for(const f of fr0){if(my!==run)return;await tweenTo(sc,f.p,f.d||900,my);}})();}
   updateNav();say(plain(fb.textContent||''));
 }
-function updateNav(){const st=STEPS[cur],n=$('#next'),bet=!!(st.pari&&!resolu(st)),need=!!(st.need&&!st.need());
+function updateNav(){const st=STEPS[cur],n=$('#next'),bet=!!(st.pari&&!resolu(st)&&!attend(st)),need=!!(st.need&&!st.need());
   const reste=st.deriv&&lignesVues(st)<st.deriv.length,encore=bet&&S.ans[st.k]!=null;
   n.disabled=bet||need;
   n.textContent=cur===STEPS.length-1?'Recommencer':encore?'Essaie encore':bet?'Choisis d’abord':need?(st.needLabel||'Fais-le d’abord'):reste?'Ligne suivante ↓':'Suivant →';
@@ -223,8 +312,10 @@ function updateNav(){const st=STEPS[cur],n=$('#next'),bet=!!(st.pari&&!resolu(st
 function ligneSuivante(st){
   const j=lignesVues(st);if(j>=st.deriv.length)return false;
   S.lignes[st.k]=j+1;
-  root.querySelectorAll('.deriv li').forEach(x=>{const i=+x.dataset.l;x.className=classeLigne(i,j+1)+(x.classList.contains('ouvert')?' ouvert':'');});
-  const li=root.querySelector(`.deriv li[data-l="${j}"]`);if(li)voir(li);
+  root.querySelectorAll('.deriv li').forEach(x=>{const i=+x.dataset.l;x.className=classeLigne(i,j+1,st)+(x.classList.contains('ouvert')?' ouvert':'');});
+  const li=root.querySelector(`.deriv li[data-l="${j}"]`),pq=root.querySelector('.pari.attend');
+  if(pq&&!attend(st))pq.classList.remove('attend');
+  if(li)voir(li,pq&&!attend(st)?pq:null);
   const x=st.deriv[j];if(x.p){const my=++run;tweenTo(scenes[st.scene],x.p,x.d||700,my);}
   say(plain((x.alt||x.tex)+'. '+(x.r||'')));
   updateNav();return true;
@@ -232,7 +323,7 @@ function ligneSuivante(st){
 function reset(){S.ans={};S.first={};S.lignes={};S.vu={};S.essais={};STEPS.forEach(st=>st.pari&&melanger(st.pari));L.reset&&L.reset();oublier();}
 // « Suivant » pendant que des phrases attendent encore leur image : on termine l'animation (tout le
 // texte apparaît) au lieu de changer d'étape — l'élève ne saute jamais une phrase sans la voir
-function finir(st){if(!root.querySelector('#body .say.later'))return false;run++;const sc=scenes[st.scene];sc.p={...sc.p,...st.pre};sc.render();hooks.frame&&hooks.frame();montrerPhrases(Infinity);S.vu[st.k]=true;return true;}
+function finir(st){if(!root.querySelector('#body .say.later'))return false;run++;const sc=scenes[st.scene];sc.p={...sc.p,...st.pre};sc.render();hooks.frame&&hooks.frame();montrerPhrases(Infinity);S.vu[st.k]=true;planDegonfle();return true;}
 function rejouer(){const st=STEPS[cur];if(!st)return;S.vu[st.k]=false;curScene=null;go(cur);}
 function next(){if($('#next').disabled)return;const st=STEPS[cur];if(finir(st))return;if(st.deriv&&ligneSuivante(st))return;if(cur===STEPS.length-1){journal({type:'lecon_fin',notion:NOM,etapes:STEPS.length});reset();go(0);}else go(cur+1);}
 
@@ -293,7 +384,7 @@ const surTouche=e=>{
   const st=STEPS[cur];
   if(e.key==='Escape'){const z=$('#motz');if(z&&z.innerHTML){z.innerHTML='';root.querySelectorAll('.mot[aria-expanded="true"]').forEach(b=>b.setAttribute('aria-expanded','false'));}return;}
   if(L.touche&&L.touche(e,st))return;
-  if(st&&st.pari&&/^[1-4]$/.test(e.key)&&+e.key<=st.pari.opts.length){e.preventDefault();choose(st,st.pari.ordre[+e.key-1]);return;}
+  if(st&&st.pari&&!attend(st)&&/^[1-4]$/.test(e.key)&&+e.key<=st.pari.opts.length){e.preventDefault();choose(st,st.pari.ordre[+e.key-1]);return;}
   if(e.key==='ArrowRight'||e.key==='PageDown'||(e.key===' '&&t.tagName!=='BUTTON')){e.preventDefault();next();}
   else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(cur-1);}
 };
@@ -301,6 +392,8 @@ window.addEventListener('keydown',surTouche);
 go(reprise());
 return function demonter(){
   run++;window.removeEventListener('keydown',surTouche);root.removeEventListener('click',surClic);
+  clearTimeout(degTimer);obsTexte.disconnect();if(obsTaille)obsTaille.disconnect();cancelAnimationFrame(rafT);PETIT.removeEventListener&&PETIT.removeEventListener('change',surEchelle);
+  window.removeEventListener('scroll',planSuite);window.removeEventListener('resize',planSuite);if(obsSuite)obsSuite.disconnect();cancelAnimationFrame(suiteRaf);
   $('#next').removeEventListener('click',next);$('#prev').removeEventListener('click',surRetour);
   $('#voice').removeEventListener('click',surVoix);$('#why').removeEventListener('click',surPourquoi);if(btRejouer)btRejouer.removeEventListener('click',rejouer);
   beatEls.forEach(b=>b.remove());while(svg.firstChild)svg.removeChild(svg.firstChild);

@@ -90,6 +90,15 @@
 /* La barre « Retour / Suivant » colle au bas du panneau. Le blanc du bas lui appartient
    (et non au panneau) : sinon le texte qui défile réapparaît sous les boutons. */
 .pilote .script > .nav { position: sticky; bottom: 0; background: var(--color-surface-base); padding-bottom: 20px; }
+/* Du blanc sous la dernière ligne : ce qu'on lit en dernier ne colle pas à la barre. */
+.pilote .body { padding-bottom: 8px; }
+/* Un fondu au-dessus de la barre dit « il reste du texte en dessous » ; le noyau pose `.suite` sur le
+   panneau seulement quand c'est vrai. Ni flèche ni rebond : un dégradé du fond, sans mouvement. */
+.pilote .script > .nav::before { content: ""; position: absolute; left: 0; right: 0; bottom: 100%; height: 40px; pointer-events: none; opacity: 0;
+  background: linear-gradient(to top, var(--color-surface-base), color-mix(in srgb, var(--color-surface-base) 0%, transparent)); }
+.pilote .script.suite > .nav::before { opacity: 1; }
+/* la question d'une étape à calcul reste cachée tant que les lignes de `deriv` ne sont pas toutes écrites */
+.pilote .pari.attend { display: none; }
 /* ce qui défile vers la vue (ligne de calcul, explication, fiche) s'arrête au-dessus de la barre */
 .pilote .script { scroll-padding-bottom: 104px; }
 /* un mot à fiche et sa ponctuation ne se séparent pas en fin de ligne */
@@ -197,6 +206,9 @@
 .pilote :where([data-pilote-scene] text) { paint-order: stroke fill; stroke: var(--st-bg); stroke-width: 4px; stroke-linejoin: round; }
 .pilote :where([data-pilote-scene] text.s-onsig, [data-pilote-scene] text.sans-halo) { stroke: none; }
 .pilote .scene.on { pointer-events: auto; }
+/* Le noyau règle la taille et la position des textes de scène (téléphone) et les relit aussitôt : sans
+   transition, y compris sous « mouvement réduit » où le filet global laisse 0,01 ms à chaque propriété. */
+.pilote [data-pilote-scene] text { transition: none !important; }
 .pilote .s-ink { fill: var(--st-ink); } .pilote .s-dim { fill: var(--st-dim); } .pilote .s-a { fill: var(--st-a); }
 .pilote .s-b { fill: var(--st-b); } .pilote .s-c { fill: var(--st-c); } .pilote .s-bg { fill: var(--st-bg); }
 .pilote .k-ink { stroke: var(--st-ink); } .pilote .k-dim { stroke: var(--st-dim); } .pilote .k-a { stroke: var(--st-a); }
@@ -273,6 +285,7 @@
   .pilote .script { border-left: 0; padding: 20px 16px 0; overflow: visible; mask-image: none; }
   .pilote .compte { top: 20px; right: 16px; }
   .pilote .script.texte-seul > .kicker { margin-top: 0; }
+  .pilote .body { padding-bottom: 36px; }
   .pilote .script > .nav { margin: 0 -16px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); border-top: 1px solid var(--color-border-subtle); }
   .pilote .nav button { min-height: 48px; }
   /* ce qui défile vers la vue (ligne de calcul, explication, fiche) s'arrête entre la scène collée

@@ -45,6 +45,23 @@
 
 ---
 
+## 0. La leçon livrée (état au 2026-11-24)
+
+Ce plan a été écrit avant la leçon. La leçon livrée (`web/src/components/pilote/transmission-moteur.js`) compte **53 étapes** : la relecture pédagogique et visuelle du 2026-11-24 en a fusionné, retiré ou déplacé plusieurs. **Le fichier de la leçon fait foi** ; les sections 1 à 8 ci-dessous restent le plan d'origine (raisons, sources, leurres), avec ses comptes d'étapes d'alors. L'ordre livré :
+
+| # | Partie | Étapes (clés, dans l'ordre) |
+|---|---|---|
+| 0 | Ce qu’il faut savoir | `sav-notation`, `sav-lignee`, `v-savoir` |
+| 1 | L’énigme | `mendel`, `f2`, `ratio` |
+| 2 | Un caractère | `dominance`, `echiquier`, `derniere-case`, `rapports`, `lisses-purs`, `produit` |
+| 3 | Le test-cross | `testeur`, `deux-hypotheses`, `v-testcross` |
+| 4 | Un rapport inattendu | `jaunes`, `deux-pour-un`, `letal-calc` |
+| 5 | Deux gènes, deux paires | `deux-genes`, `orientation`, `tc-indep`, `f2-16`, `retour-556`, `demarche`, `demarche-ecrire` |
+| 6 | Le test-cross des souris | `rappel`, `souris-f1`, `absolu-tc`, `absolu-f2`, `vrai-tc`, `quatre-classes`, `crossing-over`, `deux-sur-quatre`, `pourcentage`, `parentaux-recombines`, `cinquante` |
+| 7 | La distance et la carte | `double`, `centimorgan`, `total`, `trois-genes`, `v-carte` |
+| 8 | Au bac | `bac-doc`, `bac-q1`, `bac-q2`, `bac-gametes`, `bac-erreur`, `bac-2`, `bac-2-cases`, `bac-2-suite` |
+| 9 | Bilan | `q1`, `q2`, `q3`, `fin` |
+
 ## 1. Périmètre
 
 ### 1.1 Capacités officielles couvertes

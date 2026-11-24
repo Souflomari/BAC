@@ -21,6 +21,7 @@
  *   - sur les exercices : lien retour vers la leçon, inputMode compatible signes/puissances,
  *     ponctuation du cadre, absence de « demande un indice » sans indice ou après ouverture,
  *     statut conservé quand on lit la correction rédigée après réussite, et thème sombre adouci ;
+ *   - (pour information, sous 640 px) les étapes dont un texte de scène reste sous 11 px réels ;
  *   - (pour information) les étapes dont le texte déborde du panneau, et
  *     celles qui laissent plus des deux tiers du panneau vides — le retour
  *     du propriétaire du 2026-10-26 sur le « trop d'espace en dessous ».
@@ -176,6 +177,30 @@ for (const nom of PILOTES) {
       )
       .catch(() => {});
 
+  // sous 640 px : la taille réelle (écran) du plus petit texte utile de la scène, mesurée quand l'étape est
+  // posée. Pour information seulement : le noyau remonte les textes à 11 px, sauf ceux qui se toucheraient.
+  const petits = [];
+  const mesurerTextes = async () => {
+    await finAnimation();
+    await page.waitForTimeout(220);
+    return page.evaluate(() => {
+      const svg = document.querySelector("[data-pilote-scene]");
+      let min = Infinity;
+      svg.querySelectorAll(".scene.on text").forEach((t) => {
+        if (!t.textContent.trim()) return;
+        let op = 1;
+        for (let el = t; el && el !== svg; el = el.parentElement) {
+          const cs = getComputedStyle(el);
+          if (cs.display === "none" || cs.visibility === "hidden") return;
+          op *= Number(cs.opacity);
+        }
+        if (op < 0.3 || t.getBoundingClientRect().width < 1) return;
+        const m = t.getScreenCTM();
+        min = Math.min(min, parseFloat(getComputedStyle(t).fontSize) * Math.hypot(m.a, m.b));
+      });
+      return min === Infinity ? null : Math.round(min * 10) / 10;
+    });
+  };
   const vues = new Set();
   const debordent = [];
   const vides = [];
@@ -260,6 +285,10 @@ for (const nom of PILOTES) {
       defauts.push(`${nom} étape ${e.i} : ${e.lignesCachees} ligne(s) de calcul jamais montrée(s)`);
     }
     // l'étape est complète : on la mesure, on la capture, on avance
+    if (LARGEUR < 640) {
+      const min = await mesurerTextes();
+      if (min != null && min < 11) petits.push(`${e.i} (${String(min).replace(".", ",")} px)`);
+    }
     if (e.deborde) debordent.push(e.i);
     if (e.rempli < 0.34) vides.push(e.i);
     if (CAPTURES) await finAnimation(), await page.screenshot({ path: path.join(CAPTURES, nom, `etape-${String(e.i).padStart(2, "0")}.png`) });
@@ -274,6 +303,7 @@ for (const nom of PILOTES) {
   if (vues.size !== total) defauts.push(`${nom} : ${vues.size} étape(s) vue(s) sur ${total}`);
   console.log(`${nom} : ${vues.size} / ${total} étapes parcourues, ${erreurs.length} erreur(s)`);
   if (debordent.length) infos.push(`${nom} : le texte déborde du panneau aux étapes ${debordent.join(", ")}`);
+  if (petits.length) infos.push(`${nom} : texte de scène sous 11 px réels au téléphone aux étapes ${petits.join(", ")}`);
   if (vides.length) infos.push(`${nom} : plus des deux tiers du panneau vides aux étapes ${vides.join(", ")}`);
 
   // la page d'exercices du pilote, si elle existe : chaque exercice s'affiche, chaque QCM se

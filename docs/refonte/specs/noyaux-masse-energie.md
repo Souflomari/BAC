@@ -14,6 +14,25 @@
 
 ---
 
+## 0. La leçon livrée (état au 2026-11-24)
+
+Ce plan a été écrit avant la leçon. La leçon livrée (`web/src/components/pilote/noyaux-moteur.js`) compte **54 étapes** : la relecture pédagogique et visuelle du 2026-11-24 en a fusionné, retiré ou déplacé plusieurs. **Le fichier de la leçon fait foi** ; les sections 1 à 8 ci-dessous restent le plan d'origine (raisons, sources, leurres), avec ses comptes d'étapes d'alors. L'ordre livré :
+
+| # | Partie | Étapes (clés, dans l'ordre) |
+|---|---|---|
+| 0 | Ce qu’il faut savoir | `sav-test`, `sav-rappel` |
+| 1 | L’énigme | `soleil`, `charbon`, `gravite`, `aston`, `eddington` |
+| 2 | Masse et énergie | `einstein`, `pile`, `un-gramme`, `mev-ev`, `u-mev` |
+| 3 | Le défaut de masse | `peser`, `dm-def`, `calc-dm`, `v-dm` |
+| 4 | L’énergie de liaison | `axe-energie`, `sens`, `formation`, `dm-inverse` |
+| 5 | Comparer les noyaux | `par-nucleon`, `rn-po`, `u-par-nucleon`, `aston-courbe`, `aston-lire` |
+| 6 | Le bilan d’une réaction | `rappel`, `trois-niveaux`, `bilan-masse`, `signe`, `deux-routes` |
+| 7 | Fission et fusion | `deux-voies`, `fer-fer`, `fission-eq`, `fission-bilan`, `gramme`, `type` |
+| 8 | Retour à l’énigme | `retour-eq`, `retour-de`, `retour-duree` |
+| 9 | Usages et dangers | `usages`, `dangers` |
+| 10 | Au bac | `bac`, `bac-elib`, `bac-dm-ecart`, `bac-dm`, `bac-copie`, `bac-2022-lit`, `bac-2022-num`, `bac-2b`, `bac-erreur` |
+| 11 | Pour finir | `q1`, `q2`, `q3`, `fin` |
+
 ## 1. Périmètre
 
 ### 1.1 Capacités officielles couvertes

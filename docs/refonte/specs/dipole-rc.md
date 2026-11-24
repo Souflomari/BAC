@@ -18,6 +18,26 @@
 
 ---
 
+## 0. La leçon livrée (état au 2026-11-24)
+
+Ce plan a été écrit avant la leçon. La leçon livrée (`web/src/components/pilote/dipole-rc-moteur.js`) compte **56 étapes** : la relecture pédagogique et visuelle du 2026-11-24 en a fusionné, retiré ou déplacé plusieurs. **Le fichier de la leçon fait foi** ; les sections 1 à 8 ci-dessous restent le plan d'origine (raisons, sources, leurres), avec ses comptes d'étapes d'alors. L'ordre livré :
+
+| # | Partie | Étapes (clés, dans l'ordre) |
+|---|---|---|
+| 0 | Ce qu’il faut savoir | `sav-test`, `sav-rappel` |
+| 1 | L’énigme | `allumage`, `flash` |
+| 2 | Le condensateur | `leyde`, `armatures`, `q-u`, `parallele` |
+| 3 | La charge, pas à pas | `allure`, `i0`, `pas-pari`, `pas-reste`, `pas`, `permanent`, `courant-constant` |
+| 4 | L’équation | `convention`, `dqdt`, `ed-maille`, `ed-i`, `ed-q` |
+| 5 | La solution | `x-test`, `expo-rappel`, `verif`, `verif-ident`, `dim`, `i-t` |
+| 6 | La constante de temps | `rappel`, `tangente`, `val-tau`, `lecture-63`, `reste`, `cinq-tau`, `double`, `influence-E`, `curseurs` |
+| 7 | La décharge | `ed-decharge`, `sol-decharge`, `i-decharge`, `v-37` |
+| 8 | L’énergie | `energie-pari`, `energie-etablir`, `energie-calc` |
+| 9 | Mesurer | `oscillo`, `oscillo-lire` |
+| 10 | Retour à l’énigme | `retour-lampe` |
+| 11 | Au bac | `bac`, `bac-ed`, `bac-R`, `bac-C`, `bac-2a`, `bac-2b`, `bac-2c` |
+| 12 | Bilan | `q1`, `q2`, `q3`, `fin` |
+
 ## 1. Périmètre
 
 ### 1.1 Le nom et les capacités officielles

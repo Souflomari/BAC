@@ -9,6 +9,25 @@
 
 ---
 
+## 0. La leçon livrée (état au 2026-11-24)
+
+Ce plan a été écrit avant la leçon. La leçon livrée (`web/src/components/pilote/exponentielle-moteur.js`) compte **53 étapes** : la relecture pédagogique et visuelle du 2026-11-24 en a fusionné, retiré ou déplacé plusieurs. **Le fichier de la leçon fait foi** ; les sections 1 à 8 ci-dessous restent le plan d'origine (raisons, sources, leurres), avec ses comptes d'étapes d'alors. L'ordre livré :
+
+| # | Partie | Étapes (clés, dans l'ordre) |
+|---|---|---|
+| 0 | Ce qu’il faut savoir | `savoir`, `sav-rappel` |
+| 1 | L’énigme | `bernoulli`, `semestre`, `fortune`, `curseur`, `plafond` |
+| 2 | Défaire ln | `defaire`, `k-curseur`, `cent`, `exp-nom`, `aller-retour` |
+| 3 | Le miroir | `diag`, `domaine-exp`, `asymptotes`, `pliage`, `passage` |
+| 4 | Les règles de exp | `somme-produit`, `preuve-produit`, `notation`, `e2x` |
+| 5 | Les équations | `ek`, `k-negatif`, `ek-ineq`, `inequation`, `systeme`, `v-equations` |
+| 6 | La dérivée | `rappel`, `reflet-pente`, `pente-hauteur`, `derivee`, `eu`, `h0`, `v-derivee` |
+| 7 | La tangente | `tangente0`, `preuve-tangente` |
+| 8 | Retour à l’énigme | `retour-plafond`, `retour-limite`, `croissance` |
+| 9 | Les limites | `course`, `x-sur-ex`, `x-ex-moins` |
+| 10 | Au bac | `bac`, `bac-sol`, `bac-copie`, `bac-ineq`, `bac-2`, `bac-2-suite`, `bac-2-ineq` |
+| 11 | Bilan | `q1`, `q2`, `q3`, `fin` |
+
 ## 1. Périmètre
 
 ### 1.1 Capacités officielles couvertes
