@@ -152,6 +152,12 @@ est accordé. Règle de relecture ajoutée : **la scène affichée dit la même 
 question**. Reste « à vérifier » : la notation de l'énergie emmagasinée, la disposition du schéma
 du sujet 2022.
 
+Sixième leçon de la série : `/pilote/transmission` (SVT : les lois de la transmission des caractères ;
+59 étapes, 14 gabarits, une scène nouvelle, l'échiquier de croisement), relue sans retouche, tous
+contrôles verts, non liée depuis l'accueil. Elle s'appuie sur quatre sujets de SVT encore « à
+vérifier » et sur les effectifs de Mendel pris dans des sources secondaires : rien de cela ne se
+montre aux élèves avant vérification. L'hérédité liée au sexe et la codominance restent à faire.
+
 ## 5. Avant le lancement : les bloquants
 
 Inventaire vérifié dans le dépôt le 2026-11-23. Trois faits qui cadrent tout :
