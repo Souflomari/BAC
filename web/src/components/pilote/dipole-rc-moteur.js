@@ -28,6 +28,7 @@ import {
 import { scenesA } from "./dipole-rc-scenes-a";
 import { scenesB } from "./dipole-rc-scenes-b";
 import { scenesC } from "./dipole-rc-scenes-c";
+import { scenesD } from "./dipole-rc-scenes-d";
 
 export function monterPilote(root) {
 return monterLecon(root, ctx => {
@@ -61,6 +62,7 @@ function sciF2(x){return sciH(x,1).replace(/<sup>(.*?)<\/sup>/,'^{$1}');}
 scenesA(ctx,O);
 scenesB(ctx,O);
 scenesC(ctx,O,QUIZ);
+scenesD(ctx,O);
 
 /* ---------- des écritures pour le panneau ---------- */
 const uCh='<i>u</i><sub>C</sub>', uRh='<i>u</i><sub>R</sub>', uAB='<i>u</i><sub>AB</sub>', Eh='<i>E</i>', Rh='<i>R</i>', Ch='<i>C</i>', ih='<i>i</i>', qh='<i>q</i>', th_='<i>τ</i>', RCh='<i>RC</i>';
@@ -88,6 +90,9 @@ const dyn=f=>({get html(){return f();}});
 const CI=o=>({jeu:'rc',K:1,t:0,fi:0,fu:0,fr:0,fe:0,fa:'',ch:1,qq:0.67,nm:0,osc:0,rv:0,gen:0,k2:1,real:0,sub:'',...o});
 const CV=o=>({jeu:'charge',xmax:T_MAX,ym:14,curve:0,exact:0,Eline:0,trans:0,pas:0,tan:0,p63:0,lect:0,uR:0,p37:0,taus:0,ghost:0,base:0,R:R_OHM,C:C_F,E:E_V,live:0,osc:0,pts:0,rep:0,sub:'',...o});
 const DR=o=>({jeu:'qu',line:1,pt:0,tri:0,sub:'',...o});
+// la scène couplée (circuit + u_C(t) + i(t)) : l'instant t pilote tout ; `ic` : ce qui dit i, caché tant qu'une question le demande
+const CP=o=>({t:0,ic:0,taus:0,tau1:0,trans:0,...o});
+const T6=6*TAU;
 const FL=(...n)=>Object.fromEntries(['fi','fu','fr','fe'].map(k=>[k,n.includes(k)?1:0]));
 const ALL=FL('fi','fu','fr','fe');
 
@@ -204,12 +209,13 @@ const STEPS=[
     [`${fr(reste(2)-dUPas(1),2)} V : encore ${fr(dUPas(1),1)} V de moins`,false,`Tu as retranché la montée du premier pas. Elle a diminué depuis : le reste est multiplié par ${fr(REDUC,1)}, pas réduit d’une valeur fixe.`,'La montée du premier pas est-elle encore la bonne au troisième pas ?']])}},
 {cle:'pas',beat:3,scene:'courbe',ctl:'pas',needLabel:'Fais les pas d’abord',set:CV({jeu:'charge',xmax:2.6,Eline:1,pas:2}),
   text:['Clique sur « Pas suivant » : chaque pas ajoute ce que le courant apporte pendant '+dtp+' s.',{t:`À chaque pas, ce qui reste à charger est multiplié par ${redP}.`,fort:true}]},
-{cle:'permanent',beat:3,scene:'courbe',set:CV({jeu:'charge',xmax:14,Eline:1,exact:1,trans:1}),sujet:'le courant en régime permanent',
+{cle:'permanent',beat:3,scene:'couple',set:CP({t:0,trans:1}),seq:[{p:{t:T6},d:4500}],sujet:'le courant en régime permanent',
   text:[`Longtemps après, ${uCh} est pratiquement égale à ${Eh}. Le courant…`],
   verifie:{...VF([
     ['est nul',true,`Oui : ${uRh} = ${Eh} − ${uCh} ≈ 0, donc ${ih} ≈ 0.`],
     [`vaut encore ${Eh}/${Rh}`,false,`Tu as cru qu’un condensateur chargé laisse passer le courant. Quand ${uCh} ≈ ${Eh}, ${uRh} ≈ 0, donc ${ih} ≈ 0.`,'Que vaut la tension aux bornes de R quand u_C = E ?'],
     [`devient négatif, car ${uCh} dépasse ${Eh}`,false,`Tu as supposé que ${uCh} dépasse ${Eh}. La montée ralentit en approchant ${Eh} et ne le franchit pas : ${uRh} reste positive.`,'La courbe franchit-elle la droite u = E ?']]),
+    reveal:[{p:{ic:1},d:1300}],
     apres:dyn(()=>`<p>Le [[regime|régime transitoire]] précède le régime permanent.</p>${rappelLampe()?`<p>${rappelLampe()} Le condensateur chargé ne laisse plus passer de courant : la lampe s’éteint.</p>`:'<p>Dans l’énigme, la lampe s’éteint : le condensateur est chargé, il ne passe plus de courant.</p>'}`)}},
 {cle:'courant-constant',beat:3,scene:'droite',set:DR({jeu:'courant',line:1,pt:1,tri:1}),sujet:'la capacité avec un générateur de courant',
   text:[`Et si on imposait le courant ? Sujet 2025, session normale, exercice 3, questions 1-1 et 1-2 (${fr(S25.bareme[0],1)} pt chacune) : un générateur de courant débite <i>I</i><sub>0</sub> = ${fr(S25.I0*1e6,0)} µA dans un condensateur vide.`,`La droite de ${uCh}(<i>t</i>) a pour pente ${fr(S25.pente,0)} V·s<sup>−1</sup>. Que vaut la capacité ?`],
@@ -301,7 +307,7 @@ const STEPS=[
     ['[T] : τ est en secondes',true,'Oui : [U][I]<sup>−1</sup> × [I][T][U]<sup>−1</sup> laisse [T].'],
     ['sans dimension : R et C se compensent',false,'Tu as cru que R et C se compensent. [U][I]<sup>−1</sup> × [I][T][U]<sup>−1</sup> laisse [T].','Que reste-t-il quand [U] et [I] se simplifient ?'],
     ['[T]<sup>−1</sup>',false,'[T]<sup>−1</sup> est la dimension de 1/τ, le α du sujet 2019. Le produit des deux lignes donne [T].','τ est-il une durée ou une fréquence ?']])}},
-{cle:'i-t',beat:5,scene:'courbe',set:CV({jeu:'charge',Eline:1,exact:1}),sujet:'l’intensité i(t) et la charge q(t)',
+{cle:'i-t',beat:5,scene:'couple',set:CP({t:0}),seq:[{p:{t:T6},d:3500}],sujet:'l’intensité i(t) et la charge q(t)',
   text:[`${uCh}(<i>t</i>) est établie : déduis-en l’intensité du courant.`,`On a ${ih} = ${Ch} ${dudt}, et ${dudt} vient de la vérification.`],
   tex:[[tx`i=C\,\dfrac{\mathrm{d}u_C}{\mathrm{d}t}`,'i = C duC/dt'],[tx`\dfrac{\mathrm{d}u_C}{\mathrm{d}t}=\dfrac{E}{\tau}\,e^{-t/\tau}`,'duC/dt = (E/τ) e^(−t/τ)']],
   pari:{label:'Le courant i(t) ?',
@@ -310,7 +316,8 @@ const STEPS=[
     ...VF([
     [`${ih}(<i>t</i>) = (${Eh}/${Rh}) ${eRC}`,true,`Oui : ${Ch} × ${Eh}/(${RCh}) = ${Eh}/${Rh}. Le courant part de ${Eh}/${Rh} et décroît.`],
     [`${ih}(<i>t</i>) = (${Eh}/(${RCh})) ${eRC}`,false,`Tu as oublié ${Ch} : (${Eh}/(${RCh})) ${eRC} est ${dudt}, en V·s<sup>−1</sup>. Multiplie par ${Ch}.`,'Quelle unité a du_C/dt, et quelle unité faut-il pour i ?'],
-    [`${ih}(<i>t</i>) = (${Eh}/${Rh})(1 − ${eRC})`,false,`Tu as fait monter le courant comme ${uCh}. ${ih} part de ${Eh}/${Rh} à <i>t</i> = 0 : il décroît.`,'Que vaut i à t = 0 ?']])}},
+    [`${ih}(<i>t</i>) = (${Eh}/${Rh})(1 − ${eRC})`,false,`Tu as fait monter le courant comme ${uCh}. ${ih} part de ${Eh}/${Rh} à <i>t</i> = 0 : il décroît.`,'Que vaut i à t = 0 ?']]),
+    reveal:[{p:{ic:1,t:0},d:700},{p:{t:T6},d:3800}]}},
 
 /* ===== 6. la constante de temps ===== */
 {cle:'rappel',beat:6,scene:'courbe',set:CV({jeu:'charge',Eline:1,exact:1}),sujet:'u_C et i à t = 0',
@@ -340,21 +347,21 @@ const STEPS=[
     [`${d1(T_FAUX37)} s`,false,`Tu as lu à 37 % de ${Eh}, soit ${u37} V. 37 % est le repère d’une courbe qui descend.`,'Où lit-on τ quand la courbe monte : à 37 % ou à 63 % ?'],
     [`${th} s`,false,`Tu as lu à la moitié de ${Eh}, soit ${dn(MOITIE)} V. C’est τ ln 2, la « demi-vie » de la charge, pas τ.`,'La moitié de E est-elle le repère de τ ?'],
     [`${tauS} s`,true,`Oui : ${p63} % de ${Ev} V font ${u63} V, atteints à <i>t</i> = ${th_} = ${tauS} s.`]])}},
-{cle:'reste',beat:6,scene:'courbe',set:CV({jeu:'charge',xmax:6,Eline:1,uR:1,base:1}),sujet:'ce qui reste à charger',
+{cle:'reste',beat:6,scene:'couple',set:CP({t:0,tau1:1}),seq:[{p:{t:TAU},d:2600}],sujet:'ce qui reste à charger',
   text:[`À <i>t</i> = ${th_}, la courbe ${uCh} passe à ${u63} V.`,`Ce qui reste à charger, ${uRh} = ${Eh} − ${uCh}, vaut…`],
   verifie:{...VF([
     [`${u37} V, soit ${pc(dechPart(1))} % de ${Eh}`,true,`Oui : ${Ev} − ${u63} = ${u37} V. ${uRh} est la courbe qui descend : il en reste ${pc(dechPart(1))} % à ${th_}.`],
     [`${u63} V, soit ${p63} % de ${Eh}`,false,`Tu as repris ${uCh}. Le reste à charger est ${Eh} − ${uCh} : il en reste ${pc(dechPart(1))} %.`,`Que vaut E − u_C quand u_C = ${u63} V ?`],
     [`0 : la tangente touche l’axe en ${th_}`,false,`Tu as pris la tangente pour la courbe. ${uRh} ne s’annule pas en ${th_} : seule sa tangente coupe l’axe des temps en ${th_}.`,'Une exponentielle atteint-elle 0 ?']]),
-    reveal:[{p:{p37:1},d:900}],
-    apres:{tex:[[tx`u_R(t)=E\,e^{-t/\tau}`,'uR(t) = E e^(−t/τ)']],html:`<p>Courbe qui monte : ${p63} % atteints. Courbe qui descend (${uRh}, ${ih}, décharge) : ${pc(dechPart(1))} % restants. Comme pour les noyaux, la tangente à l’origine de ${uRh} coupe l’axe des temps en ${th_}.</p><p>Sur ${ih}(<i>t</i>), la même lecture : ${ih}(${th_}) ≈ ${iTau} mA.</p>`}}},
-{cle:'cinq-tau',beat:6,scene:'courbe',set:CV({jeu:'charge',Eline:1,exact:1}),sujet:'la durée de la charge, environ 5τ',
+    reveal:[{p:{ic:1},d:1100}],
+    apres:{tex:[[tx`u_R(t)=E\,e^{-t/\tau}`,'uR(t) = E e^(−t/τ)']],html:`<p>Courbe qui monte : ${p63} % atteints. Courbe qui descend (${uRh}, ${ih}, décharge) : ${pc(dechPart(1))} % restants.</p><p>La courbe de ${ih} le montre : ${ih}(${th_}) ≈ ${iTau} mA, soit ${pc(dechPart(1))} % de sa valeur de départ.</p>`}}},
+{cle:'cinq-tau',beat:6,scene:'couple',set:CP({t:0,ic:1}),seq:[{p:{t:T6},d:4500}],sujet:'la durée de la charge, environ 5τ',
   text:['Au bout de combien de temps la charge est-elle pratiquement finie, à plus de 99 % ?'],
   verifie:{fixe:true,...VF([
     [`${th_} = ${tauS} s`,false,`À ${th_}, seulement ${p63} % sont atteints. Il faut environ 5${th_} pour dépasser 99 %.`,'Quelle part est atteinte à τ ?'],
     [`2${th_} = ${tau2} s`,false,`À 2${th_}, ${p86} % seulement sont atteints. Il faut environ 5${th_} pour dépasser 99 %.`,'Quelle part est atteinte à 2τ ?'],
     [`environ 5${th_} = ${t5} s`,true,`Oui : à 5${th_}, ${p99} % de la charge est faite.`]]),
-    reveal:[{p:{taus:1},d:1500}],
+    reveal:[{p:{taus:1,trans:1},d:1500}],
     apres:{html:'<p>Le [[regime|régime transitoire]] dure environ 5τ ; ensuite, le régime est permanent.</p>'}}},
 {cle:'double',beat:6,scene:'courbe',set:CV({jeu:'charge',Eline:1,exact:1}),
   text:[`On double ${Rh} et on divise ${Ch} par deux.`,`La courbe ${uCh}(<i>t</i>)…`],
