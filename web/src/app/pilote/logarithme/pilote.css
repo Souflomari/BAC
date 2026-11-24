@@ -251,6 +251,11 @@
 @media (max-width: 1279px) and (min-width: 900px) {
   .pilote .pilote-matiere, .pilote .pilote-filieres { display: none; }
 }
+/* entre 900 et 1399 px, le lien « Où j'en suis » pousse les noms de parties sur les outils (vu sur la
+   méiose à 1280 px : « Bac », « Bilan » sous « Exercices ») : il ne s'affiche qu'au-delà, et au téléphone */
+@media (max-width: 1399px) and (min-width: 900px) {
+  .pilote .tbtn-suivi { display: none; }
+}
 /* entre 900 et 1099 px, onze noms de parties ne tiennent pas à côté du titre : la barre passe sur
    sa propre ligne, noms entiers (revue externe G-01-014) */
 @media (max-width: 1099px) and (min-width: 900px) {

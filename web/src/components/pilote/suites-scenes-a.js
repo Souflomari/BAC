@@ -13,13 +13,18 @@
  * zone (0 : rien ; 1 : seulement là où f(x) > x ; 2 : seulement là où f(x) < x ; un seul aplat d'accent
  * à la fois, avec son étiquette posée dans la zone), ecart + en (l'écart f(u_n) − u_n au terme n, une
  * accolade à droite de l'escalier), axeU (les termes reportés sur l'axe), pt1 (le point (u_1 ; u_1) sur
- * la droite), bornes (l'intervalle I et son image), lecU (la lecture « u_0 = … : u_10 ≈ … »).
+ * la droite), bornes (l'intervalle I et son image), lecU (la lecture « u_0 = … : u_10 ≈ … »), ges (1 : la légende du geste en cours, de l'escalier
+ * décomposé en deux gestes : la verticale pleine vers la courbe, l'horizontale en tirets vers y = x, puis le report sur l'axe), gj (0 → 1 : la
+ * jauge de l'écart |u_n − ℓ|, une barre par terme, calculée ; sans point fixe, la jauge du pas u_{n+1} − u_n ; une barre naît quand l'escalier
+ * atteint son terme).
  */
 import { fr, ent, FONCS, orbite, SAV, SAV_U5, PAS_N, PAS_V } from "./suites-outils";
 
 // la zone de dessin dans le repère 1000 × 720 de la scène
 export const PLOT = { x0: 70, x1: 930, y0: 104, y1: 648 };
-const NMAX = 16;                       // marches calculées au plus
+const NMAX = 16;
+const JROWS = 6;                       // les barres de la jauge : les termes u_0 à u_5
+const cf = (v) => { const r = Number(v.toFixed(3)); return fr(r, (String(r).split(".")[1] || "").length); };   // 0,125 · 2 · 0,063                       // marches calculées au plus
 const ZONE_OPA = 0.1;                  // l'aplat d'accent de la zone active
 
 export function scenesA(ctx, O) {
@@ -34,7 +39,7 @@ const bornePas = (etendue) => PAS_TICK.find((s) => etendue / s <= 8) || 5;
 const c1 = (v) => Math.max(-100, Math.min(100, v));        // une valeur qui diverge reste dessinable (le tracé est découpé)
 
 scene("toile", {
-  p: { f: "dose", cb: 0, diag: 0, u0: 0, k: 0, zoom: 0, cad: 0, fixe: 0, zone: 0, ecart: 0, en: 2, axeU: 0, pt1: 0, bornes: 0, lecU: 0, wr: 0 },
+  p: { f: "dose", cb: 0, diag: 0, u0: 0, k: 0, zoom: 0, cad: 0, fixe: 0, zone: 0, ecart: 0, en: 2, axeU: 0, pt1: 0, bornes: 0, lecU: 0, wr: 0, ges: 0, gj: 0 },
   // la fenêtre courante (zoom compris) et l'échelle : une seule unité sur les deux axes
   repere() {
     const F = FONCS[this.p.f], w = F.win, z = F.zw ? clamp(this.p.zoom, 0, 1) : 0, zw = F.zw || w;
@@ -66,9 +71,11 @@ scene("toile", {
     this.bXt = fx(this.bg, 0, 0, "*I*", "t-lab2 s-ink", "middle"); this.bYt = fx(this.bg, 0, 0, "*I*", "t-lab2 s-ink", "end");
     // la courbe, la droite, l'escalier, tout découpé au cadre
     const cg = E("g", { "clip-path": "url(#su-clip)" }, g);
-    this.dg = E("line", { class: "k-c", "stroke-dasharray": "9 7", "stroke-width": 2.4 }, cg);
+    this.dg = E("line", { class: "k-ink", "stroke-dasharray": "11 8", "stroke-width": 3 }, cg);
     this.cv = E("path", { class: "k-ink nofill", "stroke-width": 3.4, pathLength: 1000, "stroke-dasharray": "1000 1000", "stroke-linejoin": "round" }, cg);
-    this.ec = E("path", { class: "k-a nofill", "stroke-width": 5.6, "stroke-linejoin": "round", "stroke-linecap": "round" }, cg);
+    // l'escalier en deux gestes : les verticales (vers la courbe) pleines, les horizontales (vers y = x) en tirets
+    this.ecV = E("path", { class: "k-a nofill", "stroke-width": 5.6, "stroke-linejoin": "round", "stroke-linecap": "round" }, cg);
+    this.ec = E("path", { class: "k-a nofill", "stroke-width": 5.6, "stroke-linejoin": "round", "stroke-linecap": "round", "stroke-dasharray": "13 9" }, cg);
     // l'écart f(u_n) − u_n : une accolade fine à droite de l'escalier, pour ne pas le recouvrir
     this.eg = E("path", { class: "k-ink nofill", "stroke-width": 4, "stroke-linejoin": "miter" }, cg);
     // les termes reportés sur l'axe : un point, une chute en pointillé, une étiquette
@@ -80,15 +87,21 @@ scene("toile", {
     // l'étiquette de la zone active, posée dans la zone : deux lignes, la règle puis ce qu'elle dit
     this.zl = [fx(g, 0, 0, "", "t-lab2 s-ink", "middle"), fx(g, 0, 0, "", "t-lab s-ink", "middle"), fx(g, 0, 0, "", "t-lab s-ink", "middle")];
     this.p1T = fx(g, 0, 0, "(*u*_{1} ; *u*_{1})", "t-lab s-ink");
-    this.st = E("circle", { r: 9, class: "s-a" }, g);
+    this.st = E("circle", { r: 11, class: "s-a" }, g);
+    this.hd = E("circle", { r: 9, class: "s-a" }, g);
     // une zone de saisie plus large que le point, invisible : on peut le saisir et le glisser (étape du curseur de u_0)
     this.stHit = E("circle", { r: 30, class: "s-ink", "fill-opacity": 0, "pointer-events": "all" }, g);
     // le point fixe
     this.fp = [0, 1].map(() => { const gg = E("g", {}, g); return { g: gg, c: E("circle", { r: 10, class: "s-bg k-ink", "stroke-width": 4 }, gg), t: fx(gg, 0, 0, "", "t-cle s-ink") }; });
     // les noms des deux lignes
     this.cvT = fx(g, 0, 0, "*y* = *f*(*x*)", "t-lab2 s-ink", "end");
-    this.dgT = fx(g, 0, 0, "*y* = *x*", "t-lab2 s-c");
+    this.dgT = fx(g, 0, 0, "*y* = *x*", "t-lab2 s-ink");
     this.ecT = fx(g, 0, 0, "", "t-lab2 s-ink");
+    // la jauge de l'écart, à gauche du repère (la place est libre), et la légende du geste en cours, sous le sous-titre
+    this.jg = E("g", {}, g);
+    this.jT = fx(this.jg, 80, 140, "", "t-lab2 s-ink");
+    this.jR = Array.from({ length: JROWS }, () => { const gg = E("g", {}, this.jg); return { g: gg, l: fx(gg, 80, 0, "", "t-lab s-ink"), b: E("rect", { height: 15, class: "s-ink" }, gg), v: fx(gg, 0, 0, "", "t-lab s-ink", "start") }; });
+    this.gs = fx(g, 60, 88, "", "t-lab2 s-ink");
     // les trois valeurs de w_n, écrites quand le pari tranche
     this.wl = PAS_N.map((n, i) => fx(g, 780, 330 + i * 44, `*w*_{${ent(n)}} ≈ ${fr(PAS_V[i], 2)}`, "t-lab2 s-ink"));
   },
@@ -140,11 +153,43 @@ scene("toile", {
     const V = [[p.u0, 0]];
     for (let i = 0; i < NMAX; i++) { V.push([u[i], f(u[i])]); V.push([u[i + 1], u[i + 1]]); }
     const t = clamp(2 * p.k, 0, 2 * NMAX), full = Math.floor(t), rem = t - full;
-    let de = "";
-    if (t > 0) { de = "M" + fix(X(c1(V[0][0]))) + " " + fix(Y(0)); for (let i = 1; i <= full; i++) de += "L" + fix(X(c1(V[i][0]))) + " " + fix(Y(c1(V[i][1]))); if (rem > 0 && full < V.length - 1) { const a = V[full], b = V[full + 1]; de += "L" + fix(X(c1(lerp(a[0], b[0], rem)))) + " " + fix(Y(c1(lerp(a[1], b[1], rem)))); } }
-    this.ec.setAttribute("d", de); show(this.ec, t > 0 ? 1 : 0);
+    // chaque segment est un tracé à part : le numéro impair monte vers la courbe (plein), le pair va vers y = x (tirets)
+    let dV = "", dH = "", tete = V[0];
+    const sg2 = (a, b) => "M" + fix(X(c1(a[0]))) + " " + fix(Y(c1(a[1]))) + "L" + fix(X(c1(b[0]))) + " " + fix(Y(c1(b[1])));
+    if (t > 0) {
+      for (let i = 1; i <= full && i < V.length; i++) { if (i % 2) dV += sg2(V[i - 1], V[i]); else dH += sg2(V[i - 1], V[i]); tete = V[i]; }
+      if (rem > 0 && full < V.length - 1) { const a = V[full], b = V[full + 1], q = [lerp(a[0], b[0], rem), lerp(a[1], b[1], rem)]; if ((full + 1) % 2) dV += sg2(a, q); else dH += sg2(a, q); tete = q; }
+    }
+    this.ecV.setAttribute("d", dV); this.ec.setAttribute("d", dH); show(this.ecV, t > 0 ? 1 : 0); show(this.ec, t > 0 ? 1 : 0);
+    // la tête de l'escalier, et la légende du geste (seulement quand une étape la demande)
+    this.hd.setAttribute("cx", fix(X(c1(tete[0])))); this.hd.setAttribute("cy", fix(Y(c1(tete[1])))); show(this.hd, p.ges * (t > 0 ? 1 : 0) * (1 - R.z));
+    {
+      const n = Math.floor(p.k + 1e-9), fz = p.k - n;
+      let tx = "";
+      if (p.k <= 1e-9) tx = `départ : *${L}*_{0} sur l’axe`;
+      else if (fz > 1e-6 && fz <= 0.5 + 1e-6) tx = `1. monter : *f*(*${L}*_{${n}}) se lit sur la courbe`;
+      else if (fz > 0.5) tx = "2. aller à droite, jusqu’à la droite *y* = *x*";
+      else tx = p.axeU > 0.5 ? `3. descendre : *${L}*_{${n}} se reporte sur l’axe` : "2. arrivé sur la droite *y* = *x*";
+      setFx(this.gs, tx); show(this.gs, p.ges * (1 - R.z));
+    }
+    // la jauge : l'écart |u_n − ℓ| de chaque terme au point fixe, ou le pas u_{n+1} − u_n quand il n'y a pas de point fixe
+    {
+      const lim = F.fix.length ? F.fix[0] : null, val = (i) => (lim != null ? Math.abs(u[i] - lim) : u[i + 1] - u[i]);
+      const vals = Array.from({ length: JROWS }, (_, i) => val(i)), vmax = Math.max(...vals) || 1;
+      const bx = 122, bw = Math.max(40, xA - 36 - bx - 84), aOn = p.gj * (1 - R.z);   // les valeurs suivent le bout de la barre et s'arrêtent avant les graduations de l'axe
+      setFx(this.jT, lim != null ? `écart |*${L}*_{*n*} − ${cf(lim)}|` : `pas *${L}*_{*n*+1} − *${L}*_{*n*}`);
+      const dernier = Math.min(JROWS - 1, Math.floor(p.k + 1e-9) - (lim != null ? 0 : 1));
+      this.jR.forEach((q, i) => {
+        const al = clamp(2 * (p.k - i - (lim != null ? 0 : 1)) + 1, 0, 1), y = 176 + 40 * i;
+        at(q.l, 80, y + 5); setFx(q.l, `*${L}*_{${i}}`);
+        const wi = Math.max(2, bw * (vals[i] / vmax) * al);
+        set(q.b, { x: bx, y: y - 10, width: wi }); q.b.setAttribute("class", i === dernier ? "s-a" : "s-ink");
+        at(q.v, bx + wi + 10, y + 5); setFx(q.v, cf(vals[i])); show(q.g, al);
+      });
+      show(this.jg, aOn);
+    }
     // le point de départ
-    this.st.setAttribute("cx", fix(X(p.u0))); this.st.setAttribute("cy", fix(yA)); show(this.st, p.axeU * (1 - R.z));
+    this.st.setAttribute("cx", fix(X(p.u0))); this.st.setAttribute("cy", fix(yA)); show(this.st, Math.max(p.axeU, t > 0 ? 1 : 0) * (1 - R.z));
     this.stHit.setAttribute("cx", fix(X(p.u0))); this.stHit.setAttribute("cy", fix(yA));
     // l'écart f(u_n) − u_n au terme n
     const en = clamp(Math.round(p.en), 0, NMAX - 1), un = u[en];

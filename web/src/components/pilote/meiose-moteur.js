@@ -11,8 +11,9 @@
  * le hasard des paires (2ⁿ), le crossing-over, la fécondation, le retour à l'énigme, deux exercices
  * types « au bac », puis le bilan. La suite est annoncée à la fin : la transmission des caractères.
  *
- * Les scènes vivent dans meiose-scenes-{a,b,c}.js (la figure-clé `meiose` est une scène nouvelle, à
- * trois modes), les outils et TOUS les nombres dans meiose-outils.js ; le déroulé, le panneau, les
+ * Les scènes vivent dans meiose-scenes-{a,b,c,d}.js (la figure-clé `meiose` est une scène nouvelle, à
+ * trois modes ; `division`, dans -d, montre les deux divisions d'une cellule à 2n = 4 avec des chromosomes bichromatidiens, le fuseau
+ * et la plaque équatoriale, pour les étapes de la première et de la seconde division et du hasard des paires), les outils et TOUS les nombres dans meiose-outils.js ; le déroulé, le panneau, les
  * paris, les fiches et les calculs ligne à ligne dans noyau.js. Aucune valeur numérique affichée
  * n'est tapée à la main : elle sort d'un calcul de meiose-outils.js.
  */
@@ -25,6 +26,7 @@ import {
 import { scenesA } from "./meiose-scenes-a";
 import { scenesB } from "./meiose-scenes-b";
 import { scenesC, REPERES } from "./meiose-scenes-c";
+import { scenesD } from "./meiose-scenes-d";
 
 const sup = (b, n) => `${b}<sup>${n}</sup>`;
 
@@ -61,6 +63,7 @@ const FIN = [
 scenesA(ctx, O);
 scenesB(ctx, O);
 scenesC(ctx, O, QUIZ, FIN);
+scenesD(ctx, O);
 
 /* ---------- le script ---------- */
 const BEATS = [
@@ -75,6 +78,8 @@ const VF = (t) => ({ opts: t.map(([x, ok, fb, indice]) => (ok ? { t: x, ok: true
 const NOTE_PARI = "Pari noté. La méiose va répondre, et tu le verras toi-même dans la figure.";
 const NOTE_PARI_O = "Pari noté. À l’étape suivante, tu retournes la petite paire toi-même, et la figure tranche.";
 // l'état de base de la scène `meiose` : tout ce que les étapes précédentes ont pu laisser est remis à zéro
+// l'état de base de la scène `division` (les deux divisions d'une cellule à 2n = 4) : `u` est le palier, 0 à 6 ; `o` l'orientation de la petite paire
+const DV = (o) => ({ u: 0, o: 0, al: 0, tet: 0, cnt: 0, gam: 0, cmp: 0, frz: 0, mit: 0, ...o });
 const MEIOSE_0 = { kar: 0, fec: 0, ph: 0, plq: 0, tet: 0, al: 0, or2: 0, gam: 0, co: 0, chi: 0, cnt: 0, mit: 0, zyg: 0, fcnt: 0, rg: 0, idm: 1, pt: 1, nlab: 1, hap: 0, ori: 1, frz: 0, rc: 0, dbl: 0 };
 
 const STEPS = [
@@ -144,26 +149,26 @@ const STEPS = [
     [`${ADN_S}<i>q</i>`, true, `Oui : le nombre de chromosomes reste ${N2}, mais chaque chromosome a doublé : ${etat(1).chromatides} chromatides, ${ADN_S}<i>q</i>.`],
     [`${ADN_G1}<i>q</i>`, false, `Tu as cru que l’ADN suit le nombre de chromosomes, qui reste ${N2}. La réplication double l’ADN : ${ADN_S}<i>q</i>.`, "Le nombre de chromosomes ne change pas en phase S. Et chaque chromosome ?"],
     ["<i>q</i>", false, `Tu as cru que la cellule se prépare déjà à diviser par deux. La réplication double toujours l’ADN : ${ADN_S}<i>q</i>.`, "La phase S copie l’ADN : la quantité monte-t-elle ou baisse-t-elle ?"]]) } },
-{ cle: "tetrade", beat: 3, scene: "meiose", set: { ph: 1, cnt: 0 }, seq: [{ p: { ph: 2 }, d: 2400, w: 600 }, { p: { tet: 1 }, d: 500 }], sujet: "compter les tétrades",
+{ cle: "tetrade", beat: 3, scene: "division", set: DV({ u: 0 }), seq: [{ p: { u: 1 }, d: 2400, w: 600 }, { p: { tet: 1 }, d: 500 }], sujet: "compter les tétrades",
   text: ["Prophase I : les homologues se rapprochent et s’accolent sur toute leur longueur.", { t: `Chaque paire devient une [[tetrade|tétrade]] : 4 chromatides. La figure en montre deux, pour ${N2} chromosomes.`, a: 1 },
     { t: `Chez la drosophile (2<i>n</i> = ${D8.n2}), combien de tétrades en prophase I ?`, a: 1, fort: true }],
   pari: { label: "Réponds", ...VF([
     [`${TET_D8}`, true, `Oui : une tétrade, c’est une paire. ${TET_D8} paires, ${TET_D8} tétrades, de 4 chromatides chacune.`],
     [`${D8.n2}`, false, `Tu as compté des chromosomes. Une tétrade, c’est une paire : ${D8.n2} chromosomes font ${TET_D8} paires.`, "Une tétrade réunit combien de chromosomes ?"],
     [`${CHROMATIDES_D8}`, false, `Tu as compté des chromatides : ${CHROMATIDES_D8} en tout, mais 4 par tétrade, donc ${CHROMATIDES_D8 / 4} tétrades.`, "Combien de chromatides dans une tétrade ?"]]) } },
-{ cle: "metaphase1", beat: 3, scene: "meiose", set: { ph: 2, tet: 0, plq: 1, mit: 0 },
+{ cle: "metaphase1", beat: 3, scene: "division", set: DV({ u: 1 }), seq: [{ p: { u: 1.5 }, d: 1800 }],
   text: ["Les tétrades rejoignent la plaque équatoriale, au milieu de la cellule.", { t: "Comment les chromosomes s’y placent-ils ?", fort: true }],
-  pari: { label: "Ton pari", reveal: [{ p: { ph: 3 }, d: 1800 }, { p: { mit: 1 }, d: 1300 }], opts: [
+  pari: { label: "Ton pari", reveal: [{ p: { u: 2 }, d: 1800 }, { p: { mit: 1 }, d: 1300 }], opts: [
     { t: "un par un, alignés, comme en mitose", fb: "Ce serait vrai si la méiose était deux mitoses. En métaphase I, les paires se placent de part et d’autre de la plaque." },
     { t: "par paires, un homologue de chaque côté de la plaque", fb: "Oui : en métaphase I, les paires se placent de part et d’autre de la plaque, un homologue de chaque côté. La mitose, à droite, les aligne un par un." },
     { t: "en désordre", fb: "Pas de désordre : sur la plaque, les chromosomes sont par paires en métaphase I. La mitose, à droite, les aligne un par un." }] } },
-{ cle: "anaphase1", beat: 3, scene: "meiose", set: { ph: 3, mit: 0 }, sujet: "ce que sépare l’anaphase I",
+{ cle: "anaphase1", beat: 3, scene: "division", set: DV({ u: 2 }), sujet: "ce que sépare l’anaphase I",
   text: ["Les paires sont sur la plaque.", { t: "Que va séparer l’anaphase I ?", fort: true }],
-  pari: { label: "Réponds", reveal: [{ p: { ph: 4 }, d: 2000 }], ...VF([
+  pari: { label: "Réponds", reveal: [{ p: { u: 2.6 }, d: 2000 }], ...VF([
     ["les homologues de chaque paire", true, "Oui : chaque homologue part vers un pôle, avec ses deux chromatides."],
     ["les chromatides sœurs de chaque chromosome", false, "Tu as appliqué ce que fait la mitose. En métaphase I, ce sont les paires qui sont à cheval sur la plaque : on les sépare.", "Dans la figure, que voit-on de part et d’autre de la plaque : des chromosomes seuls ou des paires ?"],
     ["rien : les paires restent entières", false, "Alors aucune cellule ne serait haploïde. Pour réduire le nombre de chromosomes, il faut séparer les paires.", `Si les paires restent entières, chaque cellule garde-t-elle ses ${N2} chromosomes ?`]]) } },
-{ cle: "telophase1", beat: 3, scene: "meiose", set: { ph: 4, cnt: 0 }, seq: [{ p: { ph: 5 }, d: 2200, w: 500 }], sujet: "la division réductionnelle",
+{ cle: "telophase1", beat: 3, scene: "division", set: DV({ u: 2.6 }), seq: [{ p: { u: 3 }, d: 2200, w: 500 }], sujet: "la division réductionnelle",
   text: ["Fin de la division I : la cellule s’est partagée en deux.", { t: "Chaque cellule obtenue contient…", fort: true }],
   verifie: { reveal: [{ p: { cnt: 1 }, d: 700 }], apres: { html: "C’est la [[reductionnelle|division réductionnelle]] : 2<i>n</i> devient <i>n</i>. Une première question de l’énigme est résolue : la moitié exacte, c’est un chromosome de chaque paire. Ces chromosomes à 2 chromatides sont [[bichromatidien|bichromatidiens]]." }, ...VF([
     [`<i>n</i> = ${etat(5).chrom} chromosomes à 2 chromatides`, true, `Oui : un chromosome de chaque paire, encore à deux chromatides : ${etat(5).chrom} chromosomes, ${etat(5).adn}<i>q</i>.`],
@@ -171,21 +176,21 @@ const STEPS = [
     [`<i>n</i> = ${etat(5).chrom} chromosomes à 1 chromatide`, false, "Tu as cru qu’haploïde veut dire une chromatide. Les chromatides ne se sont pas encore séparées : elles le feront à la division II.", "À la division I, les chromatides sœurs se sont-elles séparées ?"]]) } },
 
 /* ===== 4. la seconde division ===== */
-{ cle: "metaphase2", beat: 4, scene: "meiose", set: { ph: 5, cnt: 0, plq: 1 }, seq: [{ p: { ph: 6 }, d: 2200, w: 400 }], sujet: "la cellule en métaphase II",
+{ cle: "metaphase2", beat: 4, scene: "division", set: DV({ u: 3 }), seq: [{ p: { u: 4 }, d: 2200, w: 400 }], sujet: "la cellule en métaphase II",
   text: ["Division II : chacune des deux cellules se prépare à se diviser à son tour.", "Ses chromosomes se placent un par un sur la plaque.", { t: "En métaphase II, chaque cellule est…", fort: true }],
   verifie: VF([
     ["haploïde, à chromosomes à 2 chromatides", true, `Oui : ${etat(6).chrom} chromosomes, sans paire, encore à deux chromatides.`],
     ["diploïde, car chaque chromosome a 2 chromatides", false, `Tu as compté des chromatides comme des chromosomes. La cellule a ${etat(6).chrom} chromosomes, sans aucun homologue : elle est haploïde, <i>n</i>.`, "Y a-t-il encore des paires dans la cellule ?"],
     ["haploïde, à chromosomes à 1 chromatide", false, "Tu as cru qu’haploïde veut dire une chromatide. La seconde division n’a pas encore eu lieu : les chromatides sont encore jointes.", "Les chromatides se séparent à quelle phase de la division II ?"]]) },
-{ cle: "anaphase2", beat: 4, scene: "meiose", set: { ph: 6 }, sujet: "ce que sépare l’anaphase II",
+{ cle: "anaphase2", beat: 4, scene: "division", set: DV({ u: 4 }), sujet: "ce que sépare l’anaphase II",
   text: [{ t: "Que sépare l’anaphase II ?", fort: true }],
-  pari: { label: "Réponds", reveal: [{ p: { ph: 7 }, d: 2000 }], ...VF([
+  pari: { label: "Réponds", reveal: [{ p: { u: 5 }, d: 2000 }], ...VF([
     ["les chromatides sœurs de chaque chromosome", true, "Oui : chaque chromatide part vers un pôle. Les chromosomes n’ont plus qu’une chromatide."],
     ["les homologues de chaque paire", false, `Tu as repris la division I. Il n’y a plus de paire dans la cellule : un seul chromosome de chaque paire, <i>n</i> = ${etat(6).chrom}.`, "Y a-t-il encore des homologues à séparer dans cette cellule ?"],
     ["rien : les chromosomes restent entiers", false, `Alors les quatre cellules auraient des chromosomes à deux chromatides, et ${ADN_DIV1}<i>q</i>. Un gamète vaut <i>q</i> : il faut séparer les chromatides.`, "Un gamète vaut q. Combien vaut une cellule à chromosomes encore à deux chromatides ?"]]) } },
-{ cle: "quatre-cellules", beat: 4, scene: "meiose", set: { ph: 7 }, seq: [{ p: { ph: 8, cnt: 1 }, d: 2200, w: 500 }],
+{ cle: "quatre-cellules", beat: 4, scene: "division", set: DV({ u: 5 }), seq: [{ p: { u: 6, cnt: 1 }, d: 2200, w: 500 }],
   text: [`Quatre cellules, chacune avec ${etat(8).chrom} chromosomes à une seule chromatide, [[monochromatidien|monochromatidiens]], et <i>q</i> d’ADN.`, { t: "C’est la [[equationnelle|division équationnelle]] : le nombre de chromosomes ne change pas, comme dans une mitose.", a: 0 }, { t: "Une réplication, deux divisions.", a: 0, fort: true }] },
-{ cle: "ou-reduction", beat: 4, scene: "meiose", set: { ph: 8, cnt: 1 }, sujet: "où le nombre de chromosomes est divisé par deux",
+{ cle: "ou-reduction", beat: 4, scene: "division", set: DV({ u: 6, cnt: 1 }), sujet: "où le nombre de chromosomes est divisé par deux",
   text: ["Deux divisions se sont suivies.", { t: "À quel moment le nombre de chromosomes est-il divisé par deux ?", fort: true }],
   verifie: { reveal: [{ p: { frz: 1 }, d: 800 }], ...VF([
     ["à la division I", true, "Oui : 2<i>n</i> devient <i>n</i> quand les homologues se séparent, à la division I."],
@@ -214,18 +219,18 @@ const STEPS = [
     [`${D8.n} chromosomes à 2 chromatides`, true, `Oui : la division I a réduit ${D8.n2} à ${D8.n}, et les chromatides ne se séparent qu’à l’anaphase II.`],
     [`${D8.n2} chromosomes à 2 chromatides`, false, `La réduction a eu lieu à la division I : chaque cellule n’a plus que <i>n</i> = ${D8.n} chromosomes.`, "Combien de chromosomes reste-t-il après la division I ?"],
     [`${D8.n} chromosomes à 1 chromatide`, false, "Les chromatides se séparent seulement à l’anaphase II : en métaphase II, elles sont encore deux.", "À quelle phase les chromatides sœurs se séparent-elles ?"]]) },
-{ cle: "alleles", beat: 5, scene: "meiose", set: { ...MEIOSE_0, ph: 3, al: 1, plq: 1, ori: 0 }, seq: [{ p: { ph: 8 }, d: 4600, w: 600 }, { p: { gam: 1 }, d: 600 }],
+{ cle: "alleles", beat: 5, scene: "division", set: DV({ u: 2, al: 1 }), seq: [{ p: { u: 6 }, d: 4600, w: 600 }, { p: { gam: 1 }, d: 600 }],
   text: ["Écrivons les allèles : A et a pour la grande paire, B et b pour la petite.",
     { t: "Dans cette orientation, les deux chromosomes du père partent du même côté.", a: 0 },
     { t: `Ils arrivent dans les mêmes cellules : ${G_SANS.length} types de gamètes seulement, ${G_SANS.join(" et ")}.`, a: 1 },
     { t: "Retourne en pensée la petite paire : quels gamètes sortent ?", a: 1, fort: true }],
   pari: { label: "Ton pari", ...BET([[`${typesDe(1, 0, 1).join(" et ")}`, NOTE_PARI_O], ["encore " + G_SANS.join(" et ") + " : les chromosomes d’un même parent restent ensemble", NOTE_PARI_O], ["les quatre types à la fois", NOTE_PARI_O]]) } },
-{ cle: "orientation", beat: 5, scene: "meiose", tag: "1903 · Sutton", set: { ph: 3, or2: 0, gam: 0, plq: 1, ori: 0 }, ctl: "orient", need: () => S.mTypes.size >= 4, needLabel: "Retourne la petite paire", sujet: "l’orientation des paires",
+{ cle: "orientation", beat: 5, scene: "division", tag: "1903 · Sutton", set: DV({ u: 2, al: 1, cmp: 1 }), ctl: "orient", need: () => S.mTypes.size >= 4, needLabel: "Retourne la petite paire", sujet: "l’orientation des paires",
   text: () => [{ 1: "Tu avais parié sur le hasard, paire par paire.", 0: "Tu avais parié sur « toujours celui du père ». Voyons ce que fait la petite paire.", 2: "Tu avais parié sur « tout le père ou toute la mère ». Voyons ce que fait la petite paire." }[ctx.rep("quelle-moitie")] || "Voyons ce que fait la petite paire.",
     "1903 : Sutton parie que la position de chaque paire sur la plaque est due au hasard.", "À toi de tester : retourne la petite paire, puis regarde les gamètes."] },
-{ cle: "une-cellule", beat: 5, scene: "meiose", set: { ph: 3, or2: 0, gam: 0, cnt: 0, ori: 1, plq: 1 }, sujet: "une cellule, combien de types",
+{ cle: "une-cellule", beat: 5, scene: "division", set: DV({ u: 2, al: 1 }), sujet: "une cellule, combien de types",
   text: ["Dans la figure, une seule cellule fait sa méiose, sans crossing-over.", { t: "Combien de types de gamètes produit-elle ?", fort: true }],
-  pari: { label: "Réponds", reveal: [{ p: { ph: 8 }, d: 4200 }, { p: { gam: 1 }, d: 600 }], apres: { html: "Pour chaque paire, un gamète reçoit soit le chromosome du père, soit celui de la mère : 2 choix." }, ...VF([
+  pari: { label: "Réponds", reveal: [{ p: { u: 6 }, d: 4200 }, { p: { gam: 1 }, d: 600 }], apres: { html: "Pour chaque paire, un gamète reçoit soit le chromosome du père, soit celui de la mère : 2 choix." }, ...VF([
     [`${typesDe(0, 0, 1).length}`, true, `Oui : une cellule n’a qu’une orientation à la métaphase I, donc ${typesDe(0, 0, 1).length} types de gamètes (ici ${G_SANS.join(" et ")}).`],
     [`${typesDe(0, 0, 1).length * 2}`, false, "Tu as confondu une cellule et l’ensemble des cellules. Les 4 types viennent de cellules orientées différemment : une cellule n’a qu’une orientation.", "Combien d’orientations une même cellule a-t-elle à la métaphase I ?"],
     ["1", false, "Les deux homologues d’une paire partent dans des cellules différentes : les 4 gamètes ne sont pas tous identiques.", "Les deux homologues d’une paire partent-ils dans la même cellule ?"]]) } },
@@ -247,7 +252,7 @@ const STEPS = [
     [`${sup(2, N_HOMME)} ≈ ${millions(T23)}`, true, `Oui : ${sup(2, N_HOMME)} = ${ent(T23)}, soit ${millions(T23)} de types de spermatozoïdes.`],
     [`2 × ${N_HOMME} = ${LEURRE_46}`, false, `Tu as additionné : 2 par paire, ${N_HOMME} paires. Chaque paire double le nombre de types : 2 × 2 × … , ${N_HOMME} fois.`, "Que faisait la règle de trois paires : additionner ou multiplier ?"],
     [`${N_HOMME}² = ${LEURRE_529}`, false, `Tu as calculé ${N_HOMME}². C’est 2 choix par paire, ${N_HOMME} fois : ${sup(2, N_HOMME)}.`, "2 choix par paire, ou 23 choix par paire ?"]]) } },
-{ cle: "v-inter", beat: 5, scene: "meiose", set: { ph: 8, gam: 1, or2: 0, cnt: 0, ori: 1 }, sujet: "brassage et mutation",
+{ cle: "v-inter", beat: 5, scene: "division", set: DV({ u: 6, al: 1, gam: 1 }), sujet: "brassage et mutation",
   text: [{ t: "Le brassage interchromosomique fait apparaître…", fort: true }],
   verifie: VF([
     ["de nouvelles combinaisons d’allèles", true, "Oui : les allèles existaient déjà, le hasard des paires les combine autrement."],
@@ -423,7 +428,7 @@ const mots = {
   chromatide: { t: "chromatide", d: "Un chromosome non copié a une chromatide, une molécule d’ADN. Copié, il en a deux, les chromatides sœurs, identiques tant qu’il n’y a pas eu de crossing-over." },
   bichromatidien: { t: "bichromatidien", d: "Un chromosome bichromatidien a deux chromatides : il a été copié, et ses chromatides ne sont pas encore séparées." },
   monochromatidien: { t: "monochromatidien", d: "Un chromosome monochromatidien n’a qu’une chromatide : il n’a pas été copié, ou ses chromatides sont déjà séparées." },
-  centromere: { t: "centromère", d: "L’endroit où les deux chromatides sœurs d’un chromosome copié sont reliées. Sur la figure, c’est le point blanc." },
+  centromere: { t: "centromère", d: "L’endroit où les deux chromatides sœurs d’un chromosome copié sont reliées. Sur la figure, c’est le rond au milieu du chromosome." },
   meiose: { t: "méiose", d: "La suite de deux divisions qui fabrique les gamètes à partir d’une cellule 2<i>n</i> : une réplication de l’ADN, puis une division réductionnelle et une division équationnelle. Elle donne quatre cellules haploïdes." },
   tetrade: { t: "tétrade", d: "Une paire de chromosomes homologues accolés en prophase I : 4 chromatides. On l’appelle aussi bivalent." },
   reductionnelle: { t: "division réductionnelle", d: "La première division de la méiose : les homologues se séparent, 2<i>n</i> devient <i>n</i>. Les chromosomes gardent leurs deux chromatides." },
@@ -472,7 +477,7 @@ const CTL = {
   // orient : la petite paire se retourne (un demi-tour visible), puis la méiose se rejoue jusqu'aux quatre cellules
   orient: { html: () => `<div class="ctl"><button type="button" class="ctl-btn" id="ori">Retourne la petite paire</button><button type="button" class="ctl-btn alt${S.mDispo && S.mTypes.size < 4 ? "" : " me-cache"}" id="montre"${S.mTypes.size >= 4 ? " disabled hidden" : ""}>Montre-moi</button></div><p class="ctl-note" id="orfb"></p><p class="me-liste" id="orlst"></p>`,
     init() {
-      const sc = scenes.meiose; S.mOr = Math.round(sc.p.or2); S.mBusy = false;
+      const sc = scenes.division; S.mOr = Math.round(sc.p.o); S.mBusy = false; if (S.mTypes.size >= 4) { sc.p.cmp = 2; sc.render(); }
       const sync = (k) => {
         const lst = [...S.mTypes];
         $("#orlst").innerHTML = ty(`Types de gamètes obtenus : ${lst.join(" · ")}`);
@@ -481,12 +486,12 @@ const CTL = {
       const jouer = async () => {
         if (S.mBusy) return; S.mBusy = true; const my = ++jeton, cible = 1 - S.mOr;
         const ici = () => my === jeton && ctx.etape() && ctx.etape().cle === "orientation";
-        ctx.stop(); sc.p.gam = 0; sc.p.ph = 3; sc.p.or2 = S.mOr; sc.render();
+        ctx.stop(); sc.p.gam = 0; sc.p.u = 2; sc.p.o = S.mOr; sc.p.cmp = S.mTypes.size >= 4 ? 2 : 1; sc.render();
         $("#ori").disabled = true;
-        await ctx.tween(sc, { or2: cible }, 1000); if (!ici()) { S.mBusy = false; return; }
-        await ctx.tween(sc, { ph: 8 }, 4200); if (!ici()) { S.mBusy = false; return; }
+        await ctx.tween(sc, { o: cible }, 1000); if (!ici()) { S.mBusy = false; return; }
+        await ctx.tween(sc, { u: 6 }, 4200); if (!ici()) { S.mBusy = false; return; }
         await ctx.tween(sc, { gam: 1 }, 500); if (!ici()) { S.mBusy = false; return; }
-        S.mOr = cible; typesDe(cible, 0, 1).forEach((t) => S.mTypes.add(t)); S.mBusy = false;
+        S.mOr = cible; typesDe(cible, 0, 1).forEach((t) => S.mTypes.add(t)); S.mBusy = false; ctx.tween(sc, { cmp: S.mTypes.size >= 4 ? 2 : 1 }, 500);
         const b = $("#ori"); if (b) b.disabled = false;
         sync(cible); if (S.mTypes.size >= 4) { const m = $("#montre"); if (m) { m.disabled = true; m.hidden = true; } }
         ctx.majNav();

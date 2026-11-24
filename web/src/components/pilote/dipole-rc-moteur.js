@@ -307,7 +307,7 @@ const STEPS=[
     ['[T] : τ est en secondes',true,'Oui : [U][I]<sup>−1</sup> × [I][T][U]<sup>−1</sup> laisse [T].'],
     ['sans dimension : R et C se compensent',false,'Tu as cru que R et C se compensent. [U][I]<sup>−1</sup> × [I][T][U]<sup>−1</sup> laisse [T].','Que reste-t-il quand [U] et [I] se simplifient ?'],
     ['[T]<sup>−1</sup>',false,'[T]<sup>−1</sup> est la dimension de 1/τ, le α du sujet 2019. Le produit des deux lignes donne [T].','τ est-il une durée ou une fréquence ?']])}},
-{cle:'i-t',beat:5,scene:'couple',set:CP({t:0}),seq:[{p:{t:T6},d:3500}],sujet:'l’intensité i(t) et la charge q(t)',
+{cle:'i-t',beat:5,scene:'couple',ctl:'temps',set:CP({t:0}),seq:[{p:{t:T6},d:3500}],sujet:'l’intensité i(t) et la charge q(t)',
   text:[`${uCh}(<i>t</i>) est établie : déduis-en l’intensité du courant.`,`On a ${ih} = ${Ch} ${dudt}, et ${dudt} vient de la vérification.`],
   tex:[[tx`i=C\,\dfrac{\mathrm{d}u_C}{\mathrm{d}t}`,'i = C duC/dt'],[tx`\dfrac{\mathrm{d}u_C}{\mathrm{d}t}=\dfrac{E}{\tau}\,e^{-t/\tau}`,'duC/dt = (E/τ) e^(−t/τ)']],
   pari:{label:'Le courant i(t) ?',
@@ -347,7 +347,7 @@ const STEPS=[
     [`${d1(T_FAUX37)} s`,false,`Tu as lu à 37 % de ${Eh}, soit ${u37} V. 37 % est le repère d’une courbe qui descend.`,'Où lit-on τ quand la courbe monte : à 37 % ou à 63 % ?'],
     [`${th} s`,false,`Tu as lu à la moitié de ${Eh}, soit ${dn(MOITIE)} V. C’est τ ln 2, la « demi-vie » de la charge, pas τ.`,'La moitié de E est-elle le repère de τ ?'],
     [`${tauS} s`,true,`Oui : ${p63} % de ${Ev} V font ${u63} V, atteints à <i>t</i> = ${th_} = ${tauS} s.`]])}},
-{cle:'reste',beat:6,scene:'couple',set:CP({t:0,tau1:1}),seq:[{p:{t:TAU},d:2600}],sujet:'ce qui reste à charger',
+{cle:'reste',beat:6,scene:'couple',ctl:'temps',set:CP({t:0,tau1:1}),seq:[{p:{t:TAU},d:2600}],sujet:'ce qui reste à charger',
   text:[`À <i>t</i> = ${th_}, la courbe ${uCh} passe à ${u63} V.`,`Ce qui reste à charger, ${uRh} = ${Eh} − ${uCh}, vaut…`],
   verifie:{...VF([
     [`${u37} V, soit ${pc(dechPart(1))} % de ${Eh}`,true,`Oui : ${Ev} − ${u63} = ${u37} V. ${uRh} est la courbe qui descend : il en reste ${pc(dechPart(1))} % à ${th_}.`],
@@ -355,7 +355,7 @@ const STEPS=[
     [`0 : la tangente touche l’axe en ${th_}`,false,`Tu as pris la tangente pour la courbe. ${uRh} ne s’annule pas en ${th_} : seule sa tangente coupe l’axe des temps en ${th_}.`,'Une exponentielle atteint-elle 0 ?']]),
     reveal:[{p:{ic:1},d:1100}],
     apres:{tex:[[tx`u_R(t)=E\,e^{-t/\tau}`,'uR(t) = E e^(−t/τ)']],html:`<p>Courbe qui monte : ${p63} % atteints. Courbe qui descend (${uRh}, ${ih}, décharge) : ${pc(dechPart(1))} % restants.</p><p>La courbe de ${ih} le montre : ${ih}(${th_}) ≈ ${iTau} mA, soit ${pc(dechPart(1))} % de sa valeur de départ.</p>`}}},
-{cle:'cinq-tau',beat:6,scene:'couple',set:CP({t:0,ic:1}),seq:[{p:{t:T6},d:4500}],sujet:'la durée de la charge, environ 5τ',
+{cle:'cinq-tau',beat:6,scene:'couple',ctl:'temps',set:CP({t:0,ic:1}),seq:[{p:{t:T6},d:4500}],sujet:'la durée de la charge, environ 5τ',
   text:['Au bout de combien de temps la charge est-elle pratiquement finie, à plus de 99 % ?'],
   verifie:{fixe:true,...VF([
     [`${th_} = ${tauS} s`,false,`À ${th_}, seulement ${p63} % sont atteints. Il faut environ 5${th_} pour dépasser 99 %.`,'Quelle part est atteinte à τ ?'],
@@ -611,6 +611,19 @@ const CTL={
       if(S.pasClics>0){fb.innerHTML=noteDuPas(dernierPas());setTimeout(()=>{if(ctx.etape()===st){sc.p.pas=dernierPas();sc.render();}},900);}
       b.addEventListener('click',()=>{S.pasClics++;const k=dernierPas();ctx.stop();sc.p.pas=k;sc.render();fb.innerHTML=noteDuPas(k);ctx.voir(fb);if(S.pasClics>=5)terminer();else ctx.majNav();});
       v.addEventListener('click',()=>{S.pasClics=5;terminer();});}},
+  // le curseur de temps de la scène `couple` : il règle t, arrête l'animation en cours, et ne paraît qu'une fois la question résolue
+  // (avant le pari, le glisser donnerait la réponse : i(t), u_R, la durée de la charge)
+  temps:{html:()=>`<div class="rc-tctl" id="tctl" hidden><div class="rc-cur"><label><span><i>t</i></span><input id="rct" type="range" min="0" max="${T6}" step="${T6/120}" value="0" aria-label="Instant t, de 0 à ${fr(T6,0)} secondes"><output id="rcot" for="rct">0 s</output></label></div><p class="ctl-note">Fais glisser l’instant <i>t</i> : le circuit et les deux courbes suivent.</p></div>`,
+    init(st){const sc=scenes.couple,I=$('#rct'),Oo=$('#rcot');
+      const lire=t=>{I.setAttribute('aria-valuetext',`t = ${fr(t,1)} s`);Oo.textContent=`${fr(t,1)} s`;};
+      // le curseur suit la scène pendant qu'elle s'anime (la révélation de la réponse, par exemple)
+      ctx.hooks.frame=()=>{if(document.activeElement!==I){I.value=sc.p.t;lire(sc.p.t);}};
+      I.value=sc.p.t;lire(sc.p.t);
+      I.addEventListener('input',()=>{ctx.stop();
+        // l'élève prend la main : la révélation s'achève d'un coup, puis t suit le curseur
+        const pr=st.pari&&st.pari.reveal;if(pr)pr.forEach(r=>Object.assign(sc.p,r.p));
+        sc.p.t=+I.value;sc.render();lire(sc.p.t);});
+      majTemps();}},
   rc:{html:()=>`<div class="ctl"><div class="rc-cur">`+
       [['r','R',CRANS_R.length-1,3,v=>`${fkO(CRANS_R[v])} kΩ`],['c','C',CRANS_C.length-1,2,v=>`${fr(CRANS_C[v]*1e6,0)} µF`],['e','E',CRANS_E.length-1,2,v=>`${fr(CRANS_E[v],0)} V`]]
         .map(([k,n,mx,i0,f])=>`<label><span><i>${n}</i></span><input id="rc${k}" type="range" min="0" max="${mx}" step="1" value="${i0}" aria-label="${n}"><output id="rco${k}" for="rc${k}">${f(i0)}</output></label>`).join('')
@@ -636,6 +649,12 @@ const CTL={
       else note();}}
 };
 
+// le curseur de temps paraît quand la question de l'étape est résolue : bonne réponse, ou deux essais
+function resolue(st){const P=st.pari,a=S.ans[st.k];if(!P||a==null)return false;return !!P.opts[a].ok||(S.essais[st.k]||[]).length>=2;}
+function majTemps(){const st=ctx.etape();if(!st||st.ctl!=='temps')return;const z=$('#tctl');if(z&&z.hidden&&resolue(st))z.hidden=false;}
+const surChoix=()=>setTimeout(majTemps,0);
+root.addEventListener('click',surChoix);window.addEventListener('keydown',surChoix);
+
 // « Passer » : un bouton du panneau mène à une autre étape
 const surSaut=e=>{const b=e.target.closest&&e.target.closest('[data-aller]');if(!b||!root.contains(b))return;const i=STEPS.findIndex(s=>s.cle===b.dataset.aller);if(i>=0){e.preventDefault();ctx.aller(i);}};
 root.addEventListener('click',surSaut);
@@ -643,6 +662,6 @@ root.addEventListener('click',surSaut);
 return {BEATS,STEPS,CTL,mots,
   reset(){S.pasClics=0;S.rcBouges=[];S.rcPos=null;S.rcE24=false;S.rcCouple=false;},
   plain:s=>s.replace(/ ?%/g,' pour cent').replace(/Ω/g,' ohms').replace(/µ/g,'micro').replace(/τ/g,' tau ').replace(/λ/g,' lambda ').replace(/Δ/g,' delta '),
-  demonter(){root.removeEventListener('click',surSaut);}};
+  demonter(){root.removeEventListener('click',surSaut);root.removeEventListener('click',surChoix);window.removeEventListener('keydown',surChoix);}};
 });
 }
