@@ -127,6 +127,14 @@ changeant l'équation). Leçon pour la série : le relecteur vérifie que **chaq
 résultat faux**. La leçon n'est pas liée depuis l'accueil ; restent à confirmer avant de la montrer
 les points « à vérifier » du plan (exp définie comme réciproque de ln dans le programme officiel).
 
+**La série (2026-11-24).** Deuxième leçon écrite par la chaîne : `/pilote/meiose` (SVT : la méiose,
+la fécondation et les brassages ; 58 étapes, 12 gabarits), relue, tous contrôles verts, non liée
+depuis l'accueil. Son « au bac » repose sur des exercices types : de vrais sujets de SVT sont
+maintenant transcrits (dossier des sujets de SVT, statut « à vérifier ») et remplaceront le premier
+exemple une fois vérifiés. Plan prêt et tranché pour la suivante : `specs/noyaux-masse-energie.md`
+(physique). Règle de relecture ajoutée : un texte ne nomme une couleur que si elle est la même en
+thème clair et en thème sombre (l'accent rouge, jamais « noir »).
+
 ## 5. Avant le lancement : les bloquants
 
 Inventaire vérifié dans le dépôt le 2026-11-23. Trois faits qui cadrent tout :

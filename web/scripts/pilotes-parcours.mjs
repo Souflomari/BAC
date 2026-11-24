@@ -43,7 +43,7 @@ const PORTE = args.includes("--porte");
 const SOMBRE = args.includes("--sombre");
 const TEXTE = opt("--texte", null);
 const [LARGEUR, HAUTEUR] = opt("--ecran", "1280x800").split("x").map(Number);
-const PILOTES = ["logarithme", "radioactivite", "expression-genetique", "exponentielle"].filter((p) => !SEUL || p === SEUL);
+const PILOTES = ["logarithme", "radioactivite", "expression-genetique", "exponentielle", "meiose"].filter((p) => !SEUL || p === SEUL);
 
 if (!BASE) {
   const PORT = Number(opt("--port", "3947"));

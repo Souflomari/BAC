@@ -9,12 +9,14 @@ import { EXERCICES as logarithme } from "./logarithme.js";
 import { EXERCICES as radioactivite } from "./radioactivite.js";
 import { EXERCICES as expressionGenetique } from "./expression-genetique.js";
 import { EXERCICES as exponentielle } from "./exponentielle.js";
+import { EXERCICES as meiose } from "./meiose.js";
 
 export const CATALOGUE = {
   logarithme,
   radioactivite,
   "expression-genetique": expressionGenetique,
   exponentielle,
+  meiose,
 };
 
 /** Les séances au-delà de la première, quand une notion en a plusieurs : leur titre. */
