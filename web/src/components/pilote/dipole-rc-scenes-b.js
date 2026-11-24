@@ -51,13 +51,14 @@ scene("courbe", {
     this.ax = E("g", {}, T0);
     this.trG = E("g", {}, T0);
     this.trB = E("rect", { class: "f-c" }, this.trG);
+    this.trB.style.opacity = 0.4;
     this.trL = lab(this.trG, 0, 0, "régime transitoire", "rc-l s-ink", "middle", 26);
-    this.perL = lab(T0, 0, 0, "régime permanent", "rc-l s-ink", "end", 26);
+    this.perL = lab(T0, 0, 0, "régime permanent", "rc-l s-ink", "start", 26);
     this.cl = E("g", { "clip-path": "url(#rcclip-courbe)" }, T0);
     this.cvBase = E("path", { class: "k-dim nofill", "stroke-width": 2.5, "stroke-dasharray": "8 8" }, this.cl);
     this.cvUR = E("path", { class: "k-a nofill", "stroke-width": 3.5, pathLength: 1000, "stroke-dasharray": "1000 1000" }, this.cl);
+    this.cvG = E("path", { class: "k-a nofill", "stroke-width": 9 }, this.cl);          // la courbe de R × 2 et C ÷ 2 : un halo sous la courbe noire, qui se superpose
     this.cv = E("path", { class: "k-ink nofill", "stroke-width": 4, pathLength: 1000, "stroke-dasharray": "1000 1000" }, this.cl);
-    this.cvG = E("path", { class: "k-a nofill", "stroke-width": 3, "stroke-dasharray": "10 10" }, this.cl);
     this.eL = line(T0, "k-dim", 2.5, { "stroke-dasharray": "8 8" });
     this.eT = lab(T0, 0, 0, "", "rc-l s-ink", "start", 26);
     // les pas : un segment par pas, de pente (E − u)/(RC), et un point au bout
@@ -93,8 +94,9 @@ scene("courbe", {
     this.rT = lab(this.rG, 0, 0, "", "rc-l s-ink", "start", 26);
     this.rN = lab(this.rG, 0, 0, "*u*_{R}", "rc-g s-a", "start", 36);
     // les repères nτ
-    this.nt = [1, 2, 3, 4, 5].map((n) => { const sg = E("g", {}, T0); return { g: sg, v: line(sg, "k-dim", 2, { "stroke-dasharray": "5 7" }), d: E("circle", { r: 6.5, class: "s-ink" }, sg), l: lab(sg, 0, 0, n === 1 ? "*τ*" : `${n}*τ*`, "rc-l s-a", "middle", 26), p: lab(sg, 0, 0, "", "rc-l s-ink", "middle", 26) }; });
-    this.gL = lab(T0, 0, 0, "*R* × 2 et *C* ÷ 2", "rc-l s-a", "start", 26);
+    this.nt = [1, 2, 3, 4, 5].map((n) => { const sg = E("g", {}, T0); return { g: sg, v: line(sg, "k-dim", 2, { "stroke-dasharray": "5 7" }), d: E("circle", { r: 6.5, class: "s-ink" }, sg), l: lab(sg, 0, 0, n === 1 ? "*τ*" : `${n}*τ*`, n === 5 ? "rc-l s-a" : "rc-l s-c", "middle", 26), p: lab(sg, 0, 0, "", "rc-l s-ink", "start", 26) }; });
+    this.gL = lab(T0, 0, 0, "*R* × 2 et *C* ÷ 2", "rc-l s-ink", "start", 26);
+    this.gLl = line(T0, "k-a", 2.5);
 
     /* ----- l'énergie : une parabole ----- */
     this.enG = E("g", {}, g);
@@ -112,6 +114,9 @@ scene("courbe", {
     this.bC1 = lab(this.bG, 0, 0, "(*C*_{1})", "rc-l s-ink", "start", 26);
     this.bC2 = lab(this.bG, 0, 0, "(*C*_{2})", "rc-l s-ink", "start", 26);
     this.bR1 = E("g", {}, this.bG); this.bR1h = line(this.bR1, "k-a", 3, { "stroke-dasharray": "8 7" }); this.bR1d = E("circle", { r: 9, class: "s-a" }, this.bR1);
+    // la copie du bilan : la lecture à 63 % (grise), puis la bonne, à 37 % (rouge)
+    this.bR3 = E("g", {}, this.bG); this.bR3h = line(this.bR3, "k-dim", 3, { "stroke-dasharray": "8 7" }); this.bR3v = line(this.bR3, "k-dim", 3, { "stroke-dasharray": "8 7" }); this.bR3d = E("circle", { r: 9, class: "s-dim" }, this.bR3); this.bR3t = lab(this.bR3, 0, 0, "", "rc-l s-c", "start", 26);
+    this.bR4 = E("g", {}, this.bG); this.bR4h = line(this.bR4, "k-a", 3, { "stroke-dasharray": "8 7" }); this.bR4v = line(this.bR4, "k-a", 3, { "stroke-dasharray": "8 7" }); this.bR4d = E("circle", { r: 9, class: "s-a" }, this.bR4); this.bR4t = lab(this.bR4, 0, 0, "", "rc-l s-ink", "start", 26);
     this.bR2 = E("g", {}, this.bG); this.bR2v = line(this.bR2, "k-a", 3, { "stroke-dasharray": "8 7" }); this.bR2d = E("circle", { r: 9, class: "s-a" }, this.bR2);
   },
   render() {
@@ -124,8 +129,8 @@ scene("courbe", {
       const key = [p.xmax.toFixed(2), p.ym.toFixed(1), p.osc > 0.5 ? 1 : 0, p.uR > 0.5 || (p.p37 > 0.5 && jeu === "charge") ? 1 : 0].join();
       if (this._k !== key) {
         this._k = key;
-        const xs = p.osc > 0.5 ? OSC_S_DIV : p.xmax <= 3.2 ? 0.5 : p.xmax <= 6.5 ? 1 : 1;
-        axes(this.ax, X, Y, 0, p.xmax, xs, p.ym, p.ym <= 15 ? 2 : 4, p.osc > 0.5 ? (v) => String(Math.round(v / OSC_S_DIV)) : gr, (v) => String(v), p.osc > 0.5 ? "divisions (0,5 s chacune)" : "*t* (s)", p.uR > 0.5 || (p.p37 > 0.5 && jeu === "charge") ? "*u* (V)" : "*u*_{C} (V)", 56);
+        const xs = p.osc > 0.5 ? OSC_S_DIV : p.xmax <= 1.2 ? 0.2 : p.xmax <= 3.2 ? 0.5 : 1;
+        axes(this.ax, X, Y, 0, p.xmax, xs, p.ym, p.ym <= 4 ? 1 : p.ym <= 15 ? 2 : 4, p.osc > 0.5 ? (v) => String(Math.round(v / OSC_S_DIV)) : gr, (v) => String(v), p.osc > 0.5 ? "divisions (0,5 s chacune)" : "*t* (s)", p.uR > 0.5 || (p.p37 > 0.5 && jeu === "charge") ? "*u* (V)" : "*u*_{C} (V)", 56);
       }
       const fU = (t) => (dech ? uDech(t, Ev, tau) : uC(t, Ev, tau));
       const fUR = (t) => Ev - fU(t);
@@ -134,13 +139,13 @@ scene("courbe", {
       show(this.trG, p.trans);
       this.trB.setAttribute("x", X(0).toFixed(1)); this.trB.setAttribute("y", Y(p.ym).toFixed(1)); this.trB.setAttribute("width", Math.max(0, X(Math.min(5 * tau, p.xmax)) - X(0)).toFixed(1)); this.trB.setAttribute("height", (Y(0) - Y(p.ym)).toFixed(1));
       setT(this.trL, (X(0) + X(Math.min(5 * tau, p.xmax))) / 2, Y(p.ym) + 34);
-      setT(this.perL, X(p.xmax) - 6, Y(Ev) - 16); show(this.perL, p.trans);
+      setT(this.perL, X(5 * tau) + 10, Y(Ev) - 16); show(this.perL, 5 * tau < p.xmax - 1.2 ? p.trans : 0);
       // les courbes
       this.cv.setAttribute("d", courbe(fU, 0, p.xmax, X, Y)); this.cv.style.strokeDashoffset = 1000 * (1 - dr);
       this.cvUR.setAttribute("d", courbe(fUR, 0, p.xmax, X, Y)); this.cvUR.style.strokeDashoffset = 1000 * (1 - clamp(p.uR, 0, 1)); show(this.cvUR, p.uR > 0 ? 1 : 0);
       this.cvBase.setAttribute("d", courbe((t) => (dech ? uDech(t) : uC(t)), 0, p.xmax, X, Y)); show(this.cvBase, 0.9 * p.base);
-      this.cvG.setAttribute("d", courbe((t) => (dech ? uDech(t, Ev, p.R * 2 * (p.C / 2)) : uC(t, Ev, p.R * 2 * (p.C / 2))), 0, p.xmax, X, Y)); show(this.cvG, p.ghost);
-      setT(this.gL, X(1.4 * tau), Y(0.5 * Ev) + 40); show(this.gL, p.ghost);
+      this.cvG.setAttribute("d", courbe((t) => (dech ? uDech(t, Ev, p.R * 2 * (p.C / 2)) : uC(t, Ev, p.R * 2 * (p.C / 2))), 0, p.xmax, X, Y)); show(this.cvG, 0.35 * p.ghost);
+      { const ug = fU(2.6 * tau); setT(this.gL, X(2.6 * tau) - 40, Y(0.62 * Ev)); setL(this.gLl, X(2.6 * tau), Y(0.62 * Ev) - 30, X(2.6 * tau), Y(ug) + 8); show(this.gL, p.ghost); show(this.gLl, p.ghost); }
       // la droite u = E
       setL(this.eL, X(0), Y(Ev), X(p.xmax), Y(Ev)); show(this.eL, p.Eline);
       setT(this.eT, X(0) + 14, Y(Ev) - 12); setFx(this.eT, `*E* = ${fr(Ev, 0)} V`); show(this.eT, p.Eline);
@@ -157,8 +162,9 @@ scene("courbe", {
       show(this.stT1, clamp(p.pas, 0, 1) * (p.pas < 3 ? 1 : 0)); show(this.stT2, clamp(p.pas - 1, 0, 1) * (p.pas < 3 ? 1 : 0));
       // la tangente
       const y0 = dech ? Ev : 0, y1 = dech ? 0 : Ev;
+      this.tgL.setAttribute("class", p.lect > 0 ? "k-dim" : "k-a"); this.tgD.setAttribute("class", p.lect > 0 ? "s-dim" : "s-a");
       setL(this.tgL, X(0), Y(y0), X(tau), Y(y1)); setL(this.tgV, X(tau), Y(y1), X(tau), Y(0)); setC(this.tgD, X(tau), Y(y1));
-      setT(this.tgT, X(tau), Y(0) + 76); show(this.tgT, 1 - Math.min(1, p.taus * 5)); setT(this.tgN, X(tau) + 18, dech ? Y(0) - 44 : Y(Ev) + 36); show(this.tgG, p.tan); show(this.tgN, p.tan > 0 && !p.osc ? 1 : 0);
+      setT(this.tgT, X(tau), Y(0) + 76); show(this.tgT, (1 - Math.min(1, p.taus * 5)) * (p.lect > 0 ? 0 : 1)); setT(this.tgN, X(tau) + 18, dech ? Y(0) - 44 : Y(Ev) + 36); show(this.tgG, p.tan); show(this.tgN, p.tan > 0 && !p.osc ? 1 : 0);
       // le point à 63 %
       const u63 = fU(tau);
       setL(this.pH, X(0), Y(u63), X(tau), Y(u63)); setL(this.pV, X(tau), Y(u63), X(tau), Y(0)); setC(this.pD, X(tau), Y(u63));
@@ -176,16 +182,16 @@ scene("courbe", {
       this.nt.forEach((q, i) => {
         const n = i + 1, t = n * tau, v = fU(t), o = clamp(p.taus * 5 - i, 0, 1) * (t <= p.xmax + 1e-9 ? 1 : 0);
         setL(q.v, X(t), Y(v), X(t), Y(0)); setC(q.d, X(t), Y(v));
-        setT(q.l, X(t), Y(0) + 76); setT(q.p, X(t), Y(v) - 18); setFx(q.p, `${fr((dech ? dechPart(n) : chargePart(n)) * 100, n === 5 ? 1 : 0)} %`); show(q.g, o);
+        setT(q.l, X(t), Y(0) + 76); setT(q.p, X(t) + 14, dech ? Y(v) - 16 : Y(v) + 36); setFx(q.p, `${fr((dech ? dechPart(n) : chargePart(n)) * 100, n === 5 ? 1 : 0)} %`); show(q.g, o);
       });
       // quelques mots sur les courbes
       // les titres
       if (p.live) { a = "Les trois curseurs"; b = `*R* = ${fr(p.R / 1e3, Number.isInteger(p.R / 1e3) ? 0 : 1)} kΩ · *C* = ${fr(p.C * 1e6, 0)} µF · *E* = ${fr(Ev, 0)} V · *τ* = ${fT(tau)} s`; }
       else if (p.osc > 0.5) { a = "L’écran de l’oscilloscope"; b = "0,5 s par division"; }
-      else if (p.pas > 0.05) { a = "La charge, pas à pas"; b = `un pas dure ${fr(DT_PAS, 2)} s, soit *τ*/10`; }
+      else if (p.pas > 0.05) { a = "La charge, pas à pas"; b = `un pas dure ${fr(DT_PAS, 2)} s`; }
       else if (dech) { a = "La décharge"; b = `*u*_{C}(0) = ${fr(Ev, 0)} V`; }
       else if (p.taus > 0.5) { a = "Les repères de la durée de charge"; b = "ce qui est atteint à *τ*, 2*τ*, 3*τ*, 4*τ*, 5*τ*"; }
-      else if (p.p37 > 0.5 || p.uR > 0.5) { a = "Ce qui reste à charger"; b = "*u*_{R} = *E* − *u*_{C}"; }
+      else if (p.p37 > 0.5 || p.uR > 0.5) { a = "Ce qui reste à charger"; b = ""; }
       else if (p.lect > 0) { a = "Une lecture graphique"; b = "la valeur lue, et l’instant où la courbe la prend"; }
       else if (p.tan > 0.5) { a = "La tangente à l’origine"; b = "elle rejoint la droite *u* = *E* en *τ*"; }
       else if (p.ghost > 0.5) { a = "Deux montages, une courbe ?"; b = `*R* = ${fr(p.R / 1e3, 0)} kΩ, *C* = ${fr(p.C * 1e6, 0)} µF · *E* = ${fr(Ev, 0)} V`; }
@@ -214,9 +220,15 @@ scene("courbe", {
       setL(this.bT, X1(0), Y(0), X1(tauB), Y(S22.E));
       setT(this.bTl, X1(tauB) + 16, Y(S22.E) + 6);
       setT(this.bC1, X1(120), Y(S22.E * (1 - Math.exp(-120 / tauB))) + 44); setT(this.bC2, X2(70), Y(S22.i0 * 1e3 * Math.exp(-70 / tauB)) - 20);
-      show(this.bT, p.curve); show(this.bTl, p.curve); show(this.bC1, p.curve); show(this.bC2, p.curve);
+      this.bT.setAttribute("class", p.rep >= 3 ? "k-dim" : "k-a"); show(this.bT, p.curve); show(this.bTl, p.curve); show(this.bC1, p.curve); show(this.bC2, p.curve);
       setL(this.bR1h, X2(0), Y(S22.i0 * 1e3), X2(0) + 0.01, Y(S22.i0 * 1e3)); setC(this.bR1d, X2(0), Y(S22.i0 * 1e3)); show(this.bR1, p.rep === 1 ? 1 : 0);
       setL(this.bR2v, X1(tauB), Y(S22.E), X1(tauB), Y(0)); setC(this.bR2d, X1(tauB), Y(S22.E)); show(this.bR2, p.rep === 2 ? 1 : 0);
+      const tA = S22.tCopie * 1e3, iB = S22.i37 * 1e3;
+      setL(this.bR3h, X2(0), Y(S22.i63 * 1e3), X2(tA), Y(S22.i63 * 1e3)); setL(this.bR3v, X2(tA), Y(S22.i63 * 1e3), X2(tA), Y(0)); setC(this.bR3d, X2(tA), Y(S22.i63 * 1e3));
+      setFx(this.bR3t, `${fr(S22.i63 * 1e3, 1)} mA`); setT(this.bR3t, X2(tA) + 14, Y(S22.i63 * 1e3) - 14);
+      setL(this.bR4h, X2(0), Y(iB), X2(tauB), Y(iB)); setL(this.bR4v, X2(tauB), Y(iB), X2(tauB), Y(0)); setC(this.bR4d, X2(tauB), Y(iB));
+      setFx(this.bR4t, `${fr(iB, 1)} mA`); setT(this.bR4t, X2(tauB) + 14, Y(iB) - 14);
+      show(this.bR3, p.rep >= 3 ? 1 : 0); show(this.bR4, clamp(p.rep - 3, 0, 1));
       a = "Sujet 2022, session normale"; b = "figure 2 : les courbes (C₁) et (C₂), et la tangente (T)";
     }
     this.ti.set(a, p.sub || b);
@@ -228,9 +240,9 @@ scene("expo", {
   p: { cv: 0, p1: 0, p5: 0, tg: 0 },
   build(g) {
     const X = (x) => 130 + 150 * x, Y = (y) => 560 - 400 * y;
-    this.ti = titre(g, "La fonction exponentielle, décroissante", "");
+    this.ti = titre(g, "La fonction e^{−t/τ}", "elle décroît de 1 vers 0");
     const ax = E("g", {}, g);
-    axes(ax, X, Y, 0, 5.4, 1, 1, 0.5, (v) => String(v), (v) => (v === 0.5 ? "0,5" : String(v)), "*x*", "e^{−x}", 56);
+    axes(ax, X, Y, 0, 5.4, 1, 1, 0.5, (v) => String(v), (v) => (v === 0.5 ? "0,5" : String(v)), "*t*/*τ*", "e^{−t/τ}", 56);
     this.cv = E("path", { d: courbe((x) => Math.exp(-x), 0, 5.4, X, Y), class: "k-ink nofill", "stroke-width": 4, pathLength: 1000, "stroke-dasharray": "1000 1000" }, g);
     this.tg = E("g", {}, g);
     E("line", { x1: X(0), y1: Y(1), x2: X(1), y2: Y(0), class: "k-a", "stroke-width": 3.5, "stroke-dasharray": "10 8" }, this.tg);

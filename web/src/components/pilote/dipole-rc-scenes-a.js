@@ -23,7 +23,8 @@
  *   ch     charges des armatures : 0 aucune, 1 oui (boucles : suivent q ; 'cond' : A seule), 2 A et B
  *   qq     'cond' : la part de charge dessinée (0 à 1)
  *   nm     les noms A et B (0 ou 1)
- *   osc    les deux branchements d'oscilloscope (0 ou 1)
+ *   osc    les branchements d'oscilloscope : 1, la voie Y₁ sur A et la masse sur B ; 2, la masse sur A et Y₁ de l'autre côté de R (le premier s'estompe)
+ *   real   le sens réel du courant, à l'inverse de la flèche i (0 ou 1)
  *   rv     'leyde' : le dénouement (les deux conducteurs et l'isolant se nomment)
  *   sub    un sous-titre imposé (sinon celui du jeu)
  * Couleurs : des classes seulement (k-ink, k-a, k-dim, s-ink, s-a, s-dim, s-bg, f-a, f-c).
@@ -69,7 +70,7 @@ function accent(l, on) {
 }
 
 scene("circuit", {
-  p: { jeu: "rc", K: 1, t: 0, fi: 0, fu: 0, fr: 0, fe: 0, fa: "", ch: 1, qq: 0.5, nm: 0, osc: 0, rv: 0, gen: 0, k2: 1, sub: "" },
+  p: { jeu: "rc", K: 1, t: 0, fi: 0, fu: 0, fr: 0, fe: 0, fa: "", ch: 1, qq: 0.67, nm: 0, osc: 0, rv: 0, gen: 0, k2: 1, real: 0, sub: "" },
   build(g) {
     this.ti = titre(g, "", "");
 
@@ -129,8 +130,8 @@ scene("circuit", {
     this.qA = SLOTS.map((o) => charge(L, XR + o, YA - 24, true));
     this.qB = SLOTS.map((o) => charge(L, XR + o, YBP + 24, false));
     // les flèches de la convention récepteur, avec leur étiquette
-    this.aI = fleche(L, XR, 252, XR, 318);
-    this.aIt = lab(L, XR - 20, 292, "*i*", "rc-g s-ink", "end", 36);
+    this.aI = fleche(L, XR, 252, XR, 298);
+    this.aIt = lab(L, XR - 20, 286, "*i*", "rc-g s-ink", "end", 36);
     this.aU = fleche(L, XR + 112, YBP + 28, XR + 112, YA - 28);
     this.aUt = lab(L, XR + 126, (YA + YBP) / 2 + 12, "*u*_{C}", "rc-g s-ink", "start", 36);
     this.aR = fleche(L, RX1, YT - 62, RX0, YT - 62);
@@ -142,10 +143,26 @@ scene("circuit", {
     E("circle", { cx: XR, cy: YT, r: 7.5, class: "s-a" }, this.os);
     line(this.os, XR, YT, XR + 118, YT - 62, "k-a", 4.5, { "stroke-dasharray": "2 9", "marker-end": "url(#rcarwA)" });
     lab(this.os, XR + 76, YT - 80, "*Y*_{1}", "rc-g s-ink", "start", 36);
-    E("circle", { cx: XR, cy: YB, r: 7.5, class: "s-a" }, this.os);
-    line(this.os, XR, YB, XR, YB + 34, "k-a", 4.5);
-    [[34, 34], [24, 52], [12, 70]].forEach(([h, y]) => line(this.os, XR - h, YB + y, XR + h, YB + y, "k-a", 4.5));
+    E("circle", { cx: XR, cy: YB, r: 7.5, class: "s-ink" }, this.os);
+    line(this.os, XR, YB, XR, YB + 34, "k-ink", 3);
+    [[34, 34], [24, 52], [12, 70]].forEach(([h, y]) => line(this.os, XR - h, YB + y, XR + h, YB + y, "k-ink", 3));
     lab(this.os, XR + 50, YB + 62, "masse", "rc-l s-ink", "start", 26);
+    lab(this.os, XR - 14, YT - 14, "A", "rc-l s-ink", "end", 26);
+    lab(this.os, XR - 14, YB - 14, "B", "rc-l s-ink", "end", 26);
+    // le second branchement, pour voir i : la masse sur A, la voie Y₁ de l'autre côté de R
+    this.os2 = E("g", {}, L);
+    E("circle", { cx: RX0, cy: YT, r: 7.5, class: "s-a" }, this.os2);
+    line(this.os2, RX0, YT, RX0 + 70, YT - 70, "k-a", 4.5, { "stroke-dasharray": "2 9", "marker-end": "url(#rcarwA)" });
+    lab(this.os2, RX0 + 84, YT - 74, "*Y*_{1}", "rc-g s-ink", "start", 36);
+    E("circle", { cx: XR, cy: YT, r: 7.5, class: "s-ink" }, this.os2);
+    line(this.os2, XR, YT, XR + 46, YT, "k-ink", 3);
+    [[30, 0], [20, 12], [10, 24]].forEach(([h, dx]) => line(this.os2, XR + 46 + dx, YT - h, XR + 46 + dx, YT + h, "k-ink", 3));
+    lab(this.os2, XR + 40, YT + 58, "masse", "rc-l s-ink", "start", 26);
+    lab(this.os2, XR - 14, YT - 14, "A", "rc-l s-ink", "end", 26);
+    // le sens réel du courant quand i < 0 : de B vers A, à l'inverse de la flèche i
+    this.real = E("g", {}, L);
+    line(this.real, XR + 30, 298, XR + 30, 252, "k-dim", 4.5, { "stroke-dasharray": "2 9", "marker-end": "url(#rcarw)" });
+    lab(this.real, XR + 44, 280, "sens réel", "rc-l s-c", "start", 26);
 
     /* ----- un condensateur seul ----- */
     const K = this.K = E("g", {}, g);
@@ -217,7 +234,8 @@ scene("circuit", {
     show(this.cap1, para ? 0 : 1); show(this.para, para ? 1 : 0); show(this.wR, para ? 0 : 1);
     show(this.noms, p.nm);
     // les charges : une par place, qui apparaît à mesure que q grandit
-    const vis = (j) => clamp(q * SLOTS.length - j, 0, 1) * (p.ch > 0 ? 1 : 0);
+    const nCh = 2 * Math.round(clamp(q, 0, 1) * 3);                          // des paires : le schéma reste symétrique
+    const vis = (j) => (nCh > j ? 1 : 0) * (p.ch > 0 ? 1 : 0);
     this.qA.forEach((c, j) => show(c, para ? 0 : vis(j))); this.qB.forEach((c, j) => show(c, para ? 0 : vis(j)));
     // les flèches
     show(this.aI, p.fi); show(this.aIt, p.fi); show(this.aU, p.fu); show(this.aUt, p.fu);
@@ -226,9 +244,11 @@ scene("circuit", {
     accent(this.aI, p.fa === "i"); accent(this.aU, p.fa === "uC"); accent(this.aR, p.fa === "uR"); accent(this.aE, p.fa === "E");
     this.aIt.setAttribute("class", "rc-g " + (p.fa === "i" ? "s-a" : "s-ink")); this.aUt.setAttribute("class", "rc-g " + (p.fa === "uC" ? "s-a" : "s-ink"));
     this.aRt.setAttribute("class", "rc-g " + (p.fa === "uR" ? "s-a" : "s-ink")); this.aEt.setAttribute("class", "rc-g " + (p.fa === "E" ? "s-a" : "s-ink"));
-    show(this.os, jeu === "oscillo" ? p.osc : 0);
+    show(this.os, jeu === "oscillo" ? (p.osc > 1 ? 1 - clamp(p.osc - 1, 0, 1) : p.osc) : 0);
+    show(this.os2, jeu === "oscillo" ? clamp(p.osc - 1, 0, 1) : 0);
+    show(this.real, jeu === "rc" ? p.real : 0);
     // un condensateur seul : A seule, puis A et B
-    const nq = Math.round(clamp(p.qq, 0, 1) * 6);
+    const nq = 2 * Math.round(clamp(p.qq, 0, 1) * 3);
     this.kA.forEach((c, j) => show(c, j < nq && p.ch > 0 ? 1 : 0));
     this.kB.forEach((c, j) => show(c, j < nq && p.ch > 1.5 ? 1 : 0));
     // Leyde
@@ -244,7 +264,7 @@ scene("circuit", {
       cond: ["Un condensateur", "deux conducteurs séparés par un isolant"],
       leyde: ["Un schéma de la bouteille de Leyde", "un vase de verre, de l’eau, une main"],
     }[jeu] || ["", ""];
-    this.ti.set(T[0], p.sub || T[1]);
+    this.ti.set(T[0], p.sub || (jeu === "oscillo" && p.osc > 1.5 ? "masse sur A, voie *Y*_{1} de l’autre côté de *R*" : T[1]));
   },
 });
 }
