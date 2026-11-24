@@ -40,8 +40,13 @@
  *     (verification-svt §6). À vérifier : que les sujets marocains emploient « bivalent ».
  *  9. [S] Génotypes à deux gènes indépendants notés A//a B//b : à confirmer sur un vrai sujet avant la
  *     mise en ligne (plan §9.9). La leçon écrit les gamètes « AD B », sans double trait.
- * 10. Au bac : aucun sujet de SVT n'est dans docs/sujets/. Les deux exemples sont des EXERCICES
- *     TYPES, dits tels à l'écran, au barème « indicatif » (plan §6, §9.2).
+ * 10. Au bac : deux items réels, verbatim, de docs/sujets/svt/meiose-fecondation-brassages.md
+ *     (vérifiés par un second lecteur le 2026-11-24) : PC rattrapage 2024, première partie II.3
+ *     (0,5 pt) et SVT rattrapage 2024, première partie III.a (0,25 pt) ; le QCM « le crossing-over se
+ *     déroule lors de » est le PC rattrapage 2024, II.1 (0,5 pt). Les deux exercices longs restent des
+ *     EXERCICES TYPES, dits tels à l'écran, au barème « indicatif » (plan §6, §9.2). Dans ces sujets :
+ *     « monochromatidiens / bichromatidiens », « division réductionnelle suivie d'une division
+ *     équationnelle ».
  * Capacités du cadre 2025 : docs/referentiel/svt-svt.yaml (3.1.1 à 3.1.4, 3.2.3) et svt-pc.yaml
  * (2.3.1 à 2.3.4, 2.4.3).
  */
@@ -80,7 +85,7 @@ export const N2_HOMME = 46;                               // 2n chez l'Homme [V]
 export const T23 = types(N_HOMME);                        // 8 388 608
 export const C23 = couple(N_HOMME);                       // ≈ 7,04 × 10^13
 export const ADD23 = 2 * T23;                             // le leurre 2 × 2^23 ≈ 1,68 × 10^7
-export const INV23 = 1 / T23;                             // 1/2^23 : deux fois la même combinaison
+export const INV23 = 1 / T23;                             // 1/2^23 : un second enfant reçoit du père les mêmes chromosomes (sans crossing-over)
 export const LEURRE_46 = 2 * N_HOMME;                     // le leurre 2 × 23
 export const LEURRE_529 = N_HOMME ** 2;                   // le leurre 23²
 /** trois paires : 8 ; les leurres 6 (2 × 3) et 9 (3²) restent distincts de 8 */
@@ -129,14 +134,19 @@ export const ALL = { G1: ["A", "D"], G2: ["a", "d"], P1: ["B"], P2: ["b"] };
  * fille 1 et fille 2 de la cellule de droite). `o` : 0 ou 1, l'orientation de la petite paire (0 : les
  * deux chromosomes paternels partent du même côté) ; `co` : 1 si un crossing-over a eu lieu entre A et D.
  */
-export function gametes(o, co) {
+export function gametes(o, co, niv = 2) {
+  // niv 1 : un seul gène sur la grande paire (A, a), avant que D n'arrive avec le crossing-over ; niv 2 : A D
+  if (niv < 2) {
+    const pl1 = o ? ALL.P2[0] : ALL.P1[0], pr1 = o ? ALL.P1[0] : ALL.P2[0];
+    return [`${ALL.G1[0]} ${pl1}`, `${ALL.G1[0]} ${pl1}`, `${ALL.G2[0]} ${pr1}`, `${ALL.G2[0]} ${pr1}`];
+  }
   const g1a = ALL.G1.join(""), g1b = co ? ALL.G1[0] + ALL.G2[1] : g1a;
   const g2a = co ? ALL.G2[0] + ALL.G1[1] : ALL.G2.join(""), g2b = ALL.G2.join("");
   const pl = o ? ALL.P2[0] : ALL.P1[0], pr = o ? ALL.P1[0] : ALL.P2[0];
   return [`${g1a} ${pl}`, `${g1b} ${pl}`, `${g2a} ${pr}`, `${g2b} ${pr}`];
 }
 /** Les types distincts, dans l'ordre d'apparition. */
-export const typesDe = (o, co) => [...new Set(gametes(o, co))];
+export const typesDe = (o, co, niv = 2) => [...new Set(gametes(o, co, niv))];
 /** Après crossing-over : combien des quatre chromatides de la tétrade portent une combinaison nouvelle ? */
 export const RECOMBINEES = gametes(0, 1).filter((g, i) => g.split(" ")[0] !== gametes(0, 0)[i].split(" ")[0]).length;
 
@@ -186,7 +196,7 @@ export function outilsScene(ctx) {
       E("tspan", a, t);
     });
   }
-  const TAILLE = { "t-titre": 18, "t-sous": 16, "t-lab": 18, "t-lab2": 20, "t-cle": 26, "t-big": 30, "t-big2": 30, "t-huge": 60, "t-tick": 15, "me-all": 34, "me-gen": 32, "me-cnt": 21 };
+  const TAILLE = { "t-titre": 18, "t-sous": 16, "t-lab": 18, "t-lab2": 20, "t-cle": 26, "t-big": 30, "t-big2": 30, "t-huge": 60, "t-tick": 15, "me-all": 30, "me-gen": 22, "me-cnt": 21, "me-tb-h": 20, "me-tb-b": 24, "me-tb-big": 30, "me-f1": 22, "me-f2": 20 };
   const taille = (cls) => { for (const c of String(cls).split(/\s+/)) if (TAILLE[c]) return TAILLE[c]; return 18; };
   function fx(parent, x, y, str, cls, anchor) {
     const t = E("text", { x, y, class: cls, "text-anchor": anchor || "start" }, parent);
@@ -223,8 +233,8 @@ export function longueursCellule(n, H) {
  * phase : 'prophase1' 'metaphase1' 'anaphase1' 'telophase1' 'prophase2' 'metaphase2' 'anaphase2' 'telophase2'
  *         et, pour les leurres, 'mitose-meta' 'mitose-ana'.
  */
-export function dessinCellule(phase, n, { W = 300, H = 220, o = [] } = {}) {
-  const it = [], w = Math.max(3.5, Math.min(9, (H / 22) * (n > 3 ? 0.65 : 1))), L = longueursCellule(n, H);
+export function dessinCellule(phase, n, { W = 300, H = 220, o = [], w: wImp } = {}) {
+  const it = [], w = wImp || Math.max(3.5, Math.min(9, (H / 22) * (n > 3 ? 0.65 : 1))), L = longueursCellule(n, H);
   const gap = 0.07 * H, tot = L.reduce((a, b) => a + b, 0) + (n - 1) * gap, y0 = (H - tot) / 2;
   const yc = L.map((_, i) => y0 + L.slice(0, i).reduce((a, b) => a + b, 0) + i * gap + L[i] / 2);
   const cell = (x, y, ww, hh) => it.push({ t: "rect", x, y, w: ww, h: hh, rx: Math.min(hh, ww) * 0.3, k: "cell" });
@@ -233,13 +243,16 @@ export function dessinCellule(phase, n, { W = 300, H = 220, o = [] } = {}) {
   // les tiges sont longues : on les réduit pour tenir dans une demi-cellule quand il le faut
   if (phase === "prophase1") {
     cell(4, 4, W - 8, H - 8);
+    // une tétrade par paire : quatre chromatides horizontales, empilées, chacune avec son centromère
+    // (la même figure que dans la scène `meiose`) ; les tétrades s'empilent dans la cellule
+    const s = Math.min(w * 1.55, (H * 0.8) / (3 * n + 1.6 * (n - 1) + 1) * 0.9);
+    const hT = 3 * s + w, gT = Math.max(hT * 0.45, 12), totT = n * hT + (n - 1) * gT, top = (H - totT) / 2;
     for (let i = 0; i < n; i++) {
-      // une tétrade : quatre chromatides parallèles, un contour pointillé
-      const x = (W / (n + 1)) * (i + 1), s = Math.min(w * 1.7, (W / (n + 1) - 2 * w - 10) / 3), Li = Math.min(L[i] * 1.0, H * 0.4);
-      const yy = H / 2;
-      it.push({ t: "rect", x: x - 1.5 * s - w, y: yy - Li / 2 - 5, w: 3 * s + 2 * w, h: Li + 10, rx: 4, k: "dim", dash: "4 4" });
+      const yc0 = top + i * (hT + gT) + hT / 2, Li = Math.min(L[i] * 0.9, W * 0.5), x = W / 2;
+      it.push({ t: "rect", x: x - Li / 2 - 12, y: yc0 - hT / 2 - 6, w: Li + 24, h: hT + 12, rx: 4, k: "dim", dash: "4 4" });
       [[-1.5, "a"], [-0.5, "a"], [0.5, "ink"], [1.5, "ink"]].forEach(([u, k]) => {
-        it.push({ t: "line", x1: x + u * s, y1: yy - Li / 2, x2: x + u * s, y2: yy + Li / 2, k, w });
+        it.push({ t: "line", x1: x - Li / 2, y1: yc0 + u * s, x2: x + Li / 2, y2: yc0 + u * s, k, w });
+        it.push({ t: "circle", cx: x, cy: yc0 + u * s, r: w * 0.62, k });
       });
     }
     return { W, H, items: it };
@@ -255,7 +268,7 @@ export function dessinCellule(phase, n, { W = 300, H = 220, o = [] } = {}) {
   if (phase === "anaphase1") {
     cell(4, 4, W - 8, H - 8);
     for (let i = 0; i < n; i++) {
-      const d = Math.min(W * 0.34, W / 2 - L[i] / 2 - 14);
+      const d = Math.min(W * 0.32, W / 2 - L[i] / 2 - 24);
       tige(it, cx - d, yc[i], L[i], 0, "a", 2, w); tige(it, cx + d, yc[i], L[i], 0, "ink", 2, w);
     }
     return { W, H, items: it };
@@ -265,7 +278,16 @@ export function dessinCellule(phase, n, { W = 300, H = 220, o = [] } = {}) {
     cell(4, 4, hw, H - 8); cell(8 + hw, 4, hw, H - 8);
     for (let i = 0; i < n; i++) {
       const gx = side(i) < 0 ? 4 + hw / 2 : 8 + hw + hw / 2, px = side(i) < 0 ? 8 + hw + hw / 2 : 4 + hw / 2;
-      tige(it, gx, yc[i], Math.min(L[i], hw - 22), 0, "a", 2, w); tige(it, px, yc[i], Math.min(L[i], hw - 22), 0, "ink", 2, w);
+      tige(it, gx, yc[i], Math.min(L[i], hw - 36), 0, "a", 2, w); tige(it, px, yc[i], Math.min(L[i], hw - 36), 0, "ink", 2, w);
+    }
+    return { W, H, items: it };
+  }
+  if (phase === "anaphase1-paires") {
+    // un leurre : les deux homologues de chaque paire partent ensemble vers le même pôle (la paire reste entière)
+    cell(4, 4, W - 8, H - 8);
+    for (let i = 0; i < n; i++) {
+      const d = Math.min(W * 0.32, W / 2 - L[i] / 2 - 24), sg = i % 2 ? 1 : -1, dy = Math.min(w * 1.6, H * 0.08);
+      tige(it, cx + sg * d, yc[i] - dy, L[i], 0, "a", 2, w); tige(it, cx + sg * d, yc[i] + dy, L[i], 0, "ink", 2, w);
     }
     return { W, H, items: it };
   }
@@ -278,7 +300,7 @@ export function dessinCellule(phase, n, { W = 300, H = 220, o = [] } = {}) {
       if (phase === "prophase2") tige(it, W * (0.28 + 0.44 * ((i * 0.618) % 1)), yc[i], Math.min(L[i], W * 0.4), 0.35 * (i % 2 ? 1 : -1), k, 2, w);
       else if (phase === "metaphase2") tige(it, cx, yc[i], Math.min(L[i], W * 0.5), 0, k, 2, w);
       else {
-        const Li = Math.min(L[i], W * 0.3), d = W * 0.3;
+        const Li = Math.min(L[i], W * 0.24), d = W * 0.27;
         tige(it, cx - d, yc[i], Li, 0, k, 1, w); tige(it, cx + d, yc[i], Li, 0, k, 1, w);
       }
     }

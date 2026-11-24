@@ -421,6 +421,193 @@ lecture du journal par le même module pur.
     leçons), préalable à tout le reste, et l'effort pour porter plus d'erreurs au plancher de
     3 gabarits (8 sur 115 aujourd'hui).
 
+## 9 · Le diagnostic transversal et la remédiation (ajout du 2026-11-24)
+
+Ce qui est codé (`web/src/lib/apprentissage.ts`) et tenu par la table de cas
+(`web/scripts/test-apprentissage.mjs`). Les différences avec §2-§4 sont dites en 9.6.
+
+### 9.1 Le catalogue : ce que le contenu doit fournir
+
+Le modèle ne lit pas les leçons : il lit un **catalogue** (`web/src/lib/apprentissage-catalogue/`).
+Pour chaque question de leçon (`cle`) : les capacités officielles, l'index de l'option juste, et
+pour **chaque option, dans l'ordre de l'auteur**, une étiquette : un identifiant de conception, ou
+`inattention` (erreur de compte ou de lecture), ou `aucune` (la bonne option, ou une option fausse
+qui ne désigne aucune idée précise : on préfère ne rien dire que d'attribuer une idée au hasard).
+Pour chaque gabarit : capacités, niveau, nombre d'options des QCM, et la même étiquette pour chaque
+libellé `erreur`. Le **registre des conceptions** (identifiant stable, phrase calme, leçon qui
+l'enseigne, étapes qui l'enseignent, où elle apparaît dans les exercices, source) et le **graphe**
+vivent dans `graphe-transversal.ts`.
+
+Aujourd'hui, seul `logarithme` est catalogué en entier (33 questions, 99 options, 16 gabarits,
+62 libellés), par lecture du moteur et des exercices. Les huit autres leçons ne sont décrites que
+par les libellés d'exercices que cite le graphe. **À faire après la correction des leçons** :
+étiqueter chaque leurre des huit autres (une ligne par option) ; c'est un travail d'auteur, pas
+une déduction automatique, et le contrôle `web/scripts/apprentissage-catalogue.mjs` (leçons
+stables : bloquant ; leçons en correction : avertissement, `--strict` pour bloquer) refuse tout
+catalogue qui ne correspond plus à sa leçon (signature des étapes, nombre et ordre des options,
+option juste, libellés produits sur 400 graines, capacités du référentiel).
+
+### 9.2 Les règles, une phrase chacune
+
+1. **Exhibition forte** : une option ou un piège étiqueté `m`, choisi au premier essai, et non
+   corrigé seul ; au second essai on sort d'un indice, ce n'est plus une preuve.
+2. **Inattention** : une exhibition corrigée seule au second essai, sans indice (exercices
+   seulement : dans une leçon, l'indice suit toujours la première erreur) ; elle est notée, jamais
+   comptée pour un diagnostic.
+3. **Plancher** : `m` n'est jamais dite active si le catalogue la piège en moins de **3 lieux
+   distincts** (étapes ou gabarits).
+4. **Active** : au moins 2 exhibitions fortes sur 2 énoncés distincts **et** plus d'une occasion sur
+   deux (au hasard sur 3 options, on tombe sur un leurre donné une fois sur trois).
+5. **Probable** : au moins une exhibition, sans atteindre la règle 4 ; ou un prérequis suggéré par
+   l'aval (9.3), jamais affirmé.
+6. **Écartée** : des réussites seules, sur énoncés distincts, là où `m` était un piège possible,
+   dont la somme des preuves `1 − hasard` atteint 1,5 (deux saisies, ou trois QCM à 3 options).
+7. **Tenace** : active, et répétée (3 fois ou plus), ou revenue 3 jours ou plus après la précédente,
+   ou rouverte après avoir été écartée.
+8. **Remontée** : un prérequis `U` du graphe devient une hypothèse s'il explique au moins
+   2 exhibitions fortes, sur 2 énoncés distincts, de conceptions d'aval observées **hors de sa
+   leçon** ; entre plusieurs `U`, on retient d'abord celui qui explique le plus, puis celui que
+   l'élève a déjà montré dans sa leçon, puis l'ordre du graphe ; un second `U` n'est retenu que s'il
+   explique encore 2 erreurs non couvertes.
+9. **Statut du prérequis** : *confirmé* s'il a déjà été montré dans sa propre leçon (ou si sa
+   capacité est faible avec assez d'observations) ; *écarté* s'il a été écarté, ou si sa capacité est
+   comprise : les erreurs d'aval restent alors locales ; sinon *à vérifier*.
+10. **La prochaine chose à faire** (au plus trois) : un prérequis (à vérifier : un exercice de sa
+    leçon qui le piège ; confirmé : l'étape qui l'enseigne), puis une conception active non expliquée
+    par ce prérequis, tenace d'abord (un gabarit qui la piège, différent de ceux où elle est apparue,
+    de niveau au plus égal), puis les révisions dues, la plus en retard d'abord. Une erreur d'aval
+    expliquée par un prérequis retenu n'est pas remédiée à part.
+
+### 9.3 Ce qu'on affirme, et ce qu'on n'affirme pas
+
+- Jamais « tu ne sais pas », jamais « tu as une lacune en … ». Toujours **une observation et une
+  action** : « Plusieurs erreurs en suites, radioactivité viennent peut-être d'un même point : le
+  sens d'une inégalité gardé en divisant par un nombre négatif. Un court exercice pour le vérifier. »
+- Le lien transversal est dit « peut-être » tant que l'élève ne l'a pas montré dans la leçon
+  d'amont ; l'action proposée est **un test** du prérequis, qui le confirme ou l'écarte.
+- Aucun pourcentage, aucune estimation chiffrée n'est montrée ; les nombres décident et tracent
+  la courbe du bilan, la phrase reste un fait.
+
+### 9.4 Les limites, honnêtement
+
+- **Un QCM à trois options** se réussit au hasard une fois sur trois ; deux réussites, une fois sur
+  neuf ; deux erreurs sur le même leurre, une fois sur neuf aussi. D'où la règle 4 (taux) et la
+  règle 6 (preuves pondérées) : sur des QCM seuls, il faut au moins trois occasions pour conclure,
+  et une saisie (nombre, texte) vaut presque une preuve entière.
+- **Combien d'observations** : un diagnostic demande au moins 3 lieux au catalogue, 2 exhibitions
+  et 3 à 4 occasions ; un prérequis transversal, 2 erreurs d'aval puis un exercice d'amont. En
+  dessous, on dit « pas encore assez pour dire ».
+- **Une étiquette est une hypothèse d'auteur** : un leurre choisi peut l'être pour une autre raison
+  que celle qu'on lui prête. Le graphe aussi : ses 20 arêtes sont tirées de la bible et des
+  spécifications de leçon (aucun rapport de critique n'existe encore sous
+  `docs/revue-externe/rapports/`), aucune n'est mesurée.
+- **Le grain des exercices** : un gabarit est réputé piéger toutes les conceptions de ses libellés,
+  sur toutes ses questions ; une réussite crédite toutes ses capacités (sur-crédit, §0).
+- **Le temps de réponse** n'est pas encore émis : on ne distingue pas une réponse réfléchie d'un
+  clic au hasard autrement que par le taux.
+
+### 9.5 Ce qu'il faut brancher
+
+Dans les événements, au moment de la réponse : l'identifiant de conception de l'option choisie
+(pas seulement son index), la signature de la leçon, le nombre d'options affichées, le temps de
+réponse, l'ouverture de la correction (`exo_correction`). Dans le contenu : l'étiquetage des
+leurres des huit leçons (9.1). Dans l'interface : la page « où j'en suis » qui lit `bilan()`.
+
+### 9.6 Ce qui change par rapport à §2-§4
+
+- « Comprise » demande toujours deux réussites seules sur deux énoncés (et deux gabarits s'il y en
+  a deux) et aucune erreur active ; la condition « au moins une saisie » est remplacée par le
+  **seuil de l'estimation continue** (0,85, §10.2), qui la retrouve : deux QCM réussis donnent 0,77,
+  un QCM et une saisie 0,98.
+- Les **boîtes** de §3.1 sont remplacées par une **demi-vie** par capacité (§10.3), calée pour
+  reproduire l'échelle quand les révisions sont faites à l'heure.
+- Le plancher « 3 gabarits » de §4 compte aussi les étapes de leçon qui piègent la conception.
+- Un échec fait baisser la mémoire **à tout moment**, pas seulement à une révision due : on ne
+  garde jamais un « compris » démenti.
+
+## 10 · Le suivi continu, et l'analyse à l'état de l'art (ajout du 2026-11-24)
+
+### 10.1 Ce qui se fait
+
+| Famille | Ce qu'elle estime | Ce qu'il lui faut |
+|---|---|---|
+| **BKT** (Corbett & Anderson 1995) | la probabilité de connaître une capacité, mise à jour à chaque réponse (connaissance initiale, apprentissage, hasard, étourderie) | des paramètres par capacité ; ajustés sur des données, sinon fixés a priori |
+| **PFA** (Pavlik, Cen & Koedinger 2009) | une régression logistique sur les réussites et échecs passés par capacité | des coefficients ajustés sur une population |
+| **IRT** (modèles à 1, 2, 3 paramètres) | la difficulté, la discrimination et le hasard de **chaque question** | quelques centaines de réponses par question |
+| **Diagnostic cognitif à matrice Q** (DINA, de la Torre 2009) | quelles capacités, parmi celles qu'une question exige, manquent | une matrice question × capacité relue, et des réponses de population pour le glissement et le hasard |
+| **DKT** (Piech et al. 2015) | un réseau récurrent qui prédit la réponse suivante | des dizaines de milliers de séquences ; peu explicable |
+| **HLR / FSRS** (Settles & Meeder 2016 ; open-spaced-repetition) | la mémoire : une stabilité (demi-vie) et une récupérabilité qui décroît | des révisions espacées en grand nombre pour ajuster |
+
+### 10.2 Ce qu'on prend dès maintenant, sur l'appareil comme au serveur
+
+**BKT à paramètres fixés a priori**, parce que c'est le seul modèle dont chaque mise à jour se dit en
+une phrase et qui accepte un hasard différent par question. Connaissance initiale 0,2 ;
+apprentissage 0,15 par occasion ; étourderie 0,1 ; **hasard déduit du nombre d'options** (1/k pour un
+QCM, 0,02 pour une saisie) ; **un indice vu, un énoncé déjà rencontré, une question de leçon posée
+juste après l'explication** relèvent le hasard à 0,5 (la réponse prouve moins) et pèsent moitié ;
+seul le premier essai est observé (le second suit un indice). L'**incertitude** vient du poids cumulé
+des observations : moins de 2, « pas encore assez pour dire » ; un intervalle approché
+(±1,96 √(p(1 − p)/(n + 2))) se resserre avec elles. Les étiquettes montrées se dérivent de cette
+estimation : *compris* (règle de §9.6 et estimation ≥ 0,85, avant la date de retour), *fragile*
+(à revoir, ou en cours avec assez d'observations), *reste à voir* (jamais vue, ou pas assez).
+`bilan()` les compte par capacité officielle, regroupées par leçon et par matière, avec la courbe
+de l'estimation après chaque réponse. Ces valeurs sont des **choix**, pas des mesures.
+
+### 10.3 La mémoire : une demi-vie plutôt que des boîtes
+
+Chaque capacité porte une demi-vie `h` (rappel attendu `R = 2^(−jours/h)`, la forme de HLR) ;
+l'estimation affichée décroît vers son point de départ avec `R`. Le retour est fixé quand `R`
+tomberait à 0,8. Départ `h = 3,1 j` (premier retour au lendemain) ; une réussite seule **après la
+moitié de l'intervalle prévu** multiplie `h` par `1 + 6(1 − R)` : à l'heure (R = 0,8), × 2,2, le
+facteur de l'échelle de §3.1 (1, 2, 5, 11, 23, 51 j au lieu de 1, 3, 7, 16, 35) ; plus tard, le gain
+est plus grand ; plus tôt, rien. Un échec divise `h` par 5 (environ deux boîtes). La compression par
+l'examen (§3.2) s'applique à l'intervalle. **Pourquoi pas les boîtes** : c'est la même chose quand
+l'élève est à l'heure, et c'est plus juste quand il ne l'est pas (un retour tardif réussi prouve
+davantage), avec un seul nombre par capacité, que FSRS saura ajuster plus tard.
+
+### 10.4 Ce qui exige des données de population (le plan du lancement, avec les comptes)
+
+Les comptes ouvrent avant le lancement (décision du propriétaire, 2026-11-24) : ces analyses sont le
+plan, pas une hypothèse. Le modèle tourne **à l'identique** sur l'appareil et au serveur (même
+module pur, aucune horloge ni hasard cachés, test « le même calcul partout »).
+
+| Analyse | Ce qu'elle apprend | Volume pour être fiable (ordres de grandeur, à vérifier) |
+|---|---|---|
+| Difficulté et discrimination de chaque question (IRT à 2 paramètres) | les questions trop faciles, trop dures, ou qui ne séparent pas | ≈ 200 à 500 réponses au premier essai par question |
+| Leurres qui ne discriminent pas | un leurre choisi autant par ceux qui réussissent ailleurs que par les autres ne prouve rien : on retire son étiquette | ≈ 30 choix par leurre, sur ≈ 300 élèves |
+| Paramètres BKT par capacité (hasard, étourderie, apprentissage) | remplacer les valeurs a priori | ≈ 100 élèves × 5 occasions par capacité |
+| Validation du graphe de prérequis | une arête tient si les élèves qui montrent l'erreur d'amont font l'erreur d'aval nettement plus que les autres, et si remédier l'amont la fait baisser | quelques centaines d'élèves ayant fait les deux leçons |
+| Courbes d'apprentissage par leçon | le taux d'erreur à la n-ième occasion doit baisser ; une courbe plate signale une capacité mal découpée ou une leçon qui n'enseigne pas | ≈ 50 élèves par capacité |
+| Matrice Q et DINA | les capacités réellement exigées par chaque question | ≈ 500 élèves par filière |
+| Ajustement de FSRS | les demi-vies | ≈ 2 000 révisions dues (§7) |
+
+**Comment on mesure que le modèle prédit bien** : on rejoue le journal dans l'ordre et, avant
+chaque réponse au premier essai, on note la probabilité de réussite que le modèle donnait
+(`p(1 − étourderie) + (1 − p)·hasard`) ; puis l'**AUC** (sépare-t-il réussites et échecs ? 0,5 = le
+hasard), la **perte logarithmique**, et la **calibration** (parmi les réponses prédites à 0,7, environ
+70 % réussies ?), par capacité et par leçon, contre deux témoins : le taux de réussite moyen de la
+question, et le taux de l'élève. Un modèle qui ne bat pas ces témoins ne mérite pas ses paramètres.
+
+### 10.5 Ce qu'il faut stocker dès le premier jour, pour ne rien perdre
+
+Une analyse de population ne se rattrape pas : une réponse non enregistrée est perdue. Dès le
+premier jour, **chaque réponse au premier essai et aux suivants**, avec :
+
+- l'enveloppe synchronisable : `id` stable généré à l'écriture (rend l'envoi idempotent et la fusion
+  de plusieurs appareils sûre : `fusionnerJournaux()`), `t` de l'appareil **et** l'heure de réception
+  du serveur (l'écart détecte une horloge fausse), `seance`, `filiere` ;
+- la **version du contenu** : la signature de la leçon (ses `cle`) ou du gabarit, pour que l'index
+  d'option se relise toujours avec le bon catalogue (un événement d'une autre version n'est plus
+  interprété, test « version de leçon différente ») ;
+- la réponse **brute par option** : l'index auteur, l'ordre d'affichage (le mélange), le nombre
+  d'options montrées ; pour une saisie, la valeur normalisée seulement si elle tombe sur un piège ;
+- la graine du tirage, le temps de réponse depuis l'affichage, l'indice vu (et quand), la
+  correction ouverte, le numéro d'essai ;
+- jamais : un nom, un texte libre, une adresse, un identifiant d'appareil.
+
+Le stockage côté serveur (table, fonction d'écriture, consentements) reste à écrire par
+supabase-architect derrière la porte de production (§6) ; ce document n'en écrit aucune ligne.
+
 ## Références (citées seulement là où on en est sûr ; le reste porte « à vérifier »)
 
 - Roediger, H. L., & Karpicke, J. D. (2006). Test-enhanced learning. *Psychological Science*.
@@ -441,6 +628,13 @@ lecture du journal par le même module pur.
 - Corbett, A. T., & Anderson, J. R. (1995). Knowledge tracing. *User Modeling and User-Adapted Interaction*.
 - Pelánek, R. (2016). Applications of the Elo rating system in adaptive educational systems.
   *Computers & Education*.
+- Pavlik, P. I., Cen, H., & Koedinger, K. R. (2009). Performance factors analysis. *AIED* (à
+  vérifier : actes exacts).
+- de la Torre, J. (2009). DINA model and parameter estimation. *Journal of Educational and
+  Behavioral Statistics* (à vérifier).
+- Piech, C., et al. (2015). Deep knowledge tracing. *NeurIPS*.
+- Settles, B., & Meeder, B. (2016). A trainable spaced repetition model for language learning.
+  *ACL* (half-life regression).
 - FSRS : projet open-spaced-repetition (modèle DSR) ; détails des paramètres et seuils d'ajustement
   à vérifier sur sa documentation au moment de l'étape 3.
 
@@ -450,7 +644,12 @@ lecture du journal par le même module pur.
 
 ---
 
-Fichiers que ce document commande et qui n'existent pas encore :
+Fichiers que ce document commande :
 
-- CHEMIN À CRÉER: web/src/lib/apprentissage.ts — le modèle pur (preuves, boîtes, calendrier)
-- CHEMIN À CRÉER: web/scripts/test-apprentissage.mjs — la table de cas du modèle
+- `web/src/lib/apprentissage.ts` — le modèle pur (suivi continu, conceptions, diagnostic
+  transversal, actions, bilan)
+- `web/scripts/test-apprentissage.mjs` — la table de cas du modèle (44 cas)
+- `web/src/lib/apprentissage-catalogue/logarithme.ts` — le catalogue étiqueté de la leçon stable
+- `web/src/lib/apprentissage-catalogue/graphe-transversal.ts` — le registre des conceptions et
+  le graphe des prérequis, proposition à relire
+- `web/scripts/apprentissage-catalogue.mjs` — le contrôle qui empêche le catalogue de dériver
