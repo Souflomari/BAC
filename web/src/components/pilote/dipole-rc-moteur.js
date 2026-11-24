@@ -72,8 +72,8 @@ const Ee='<i>E</i><sub>e</sub>';
 /* les lettres des grandeurs, en italique partout dans le panneau (texte, options, retours, indices) :
    une seule passe, hors des balises et des fiches [[mot]] */
 const IX={'du_C/dt':dudt,'u_C':uCh,'u_R':uRh,'C_éq':'<i>C</i><sub>éq</sub>','e^(−t/τ)':eTau,'e^0':'e<sup>0</sup>','i₀':'<i>i</i><sub>0</sub>','RC':RCh,'E':Eh,'R':Rh,'i':ih,'q':qh,'C':Ch,'τ':th_};
-const IXRE=/du_C\/dt|u_C|u_R|C_éq|e\^\(−t\/τ\)|e\^0|i₀|\bRC\b|\bE\b|\bR\b|\bi\b|\bq\b|(?<![µmn°])\bC\b|τ/g;
-const ix=s=>typeof s!=='string'?s:s.split(/(<sub>.*?<\/sub>|<sup>.*?<\/sup>|<i>.*?<\/i>|<b>.*?<\/b>|<[^>]+>|\[\[[^\]]*\]\])/).map((p,i)=>i%2?p:p.replace(IXRE,m=>IX[m])).join('');
+const IXRE=/[µmn°]C\b|du_C\/dt|u_C|u_R|C_éq|e\^\(−t\/τ\)|e\^0|i₀|\bRC\b|\bE\b|\bR\b|\bi\b|\bq\b|\bC\b|τ/g;
+const ix=s=>typeof s!=='string'?s:s.split(/(<sub>.*?<\/sub>|<sup>.*?<\/sup>|<i>.*?<\/i>|<b>.*?<\/b>|<[^>]+>|\[\[[^\]]*\]\])/).map((p,i)=>i%2?p:p.replace(IXRE,m=>IX[m]||m)).join('');
 
 // un pari : neutre à l'écran ; `juste` (3ᵉ case) ne sert qu'au profil de fin
 const BET=t=>({opts:t.map(([x,fb,j])=>({t:ix(x),fb:ix(fb),juste:!!j}))});
