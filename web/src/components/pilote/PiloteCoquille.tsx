@@ -101,6 +101,9 @@ export function PiloteCoquille({
               Exercices
             </Link>
           )}
+          <Link className="tbtn" href="/ou-j-en-suis">
+            Où j’en suis
+          </Link>
           <button type="button" className="tbtn" id="voice" aria-pressed="false" {...attente}>
             Voix
           </button>

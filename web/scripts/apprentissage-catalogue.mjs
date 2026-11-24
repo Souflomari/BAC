@@ -2,7 +2,8 @@
  * apprentissage-catalogue.mjs — le catalogue d'apprentissage ne dérive pas des leçons.
  *
  * Vérifie, sans navigateur ni build :
- *   1. pour chaque leçon cataloguée (aujourd'hui `logarithme`) : la signature (liste des `cle`),
+ *   1. pour chaque leçon cataloguée (la liste `LECONS` de `apprentissage-catalogue/index.ts`, les
+ *      neuf leçons v3 ; une leçon du graphe sans catalogue est un écart) : la signature (liste des `cle`),
  *      chaque question à options (cle présente, nombre d'options, option juste, début du texte de
  *      chaque option dans l'ordre de l'auteur), et qu'aucune question de la leçon ne manque ;
  *   2. pour chaque gabarit catalogué : il existe, ses capacités sont les mêmes, et l'ensemble des
@@ -16,7 +17,8 @@
  *   node --experimental-strip-types web/scripts/apprentissage-catalogue.mjs [--strict]
  *
  * Le moteur d'une leçon est chargé avec un `noyau.js` de remplacement (qui rend seulement le
- * script d'étapes) : aucun fichier de leçon n'est modifié ni exécuté dans un DOM.
+ * script d'étapes ; une scène rend un leurre pour tout objet que le moteur lui accroche au
+ * montage) : aucun fichier de leçon n'est modifié ni exécuté dans un DOM.
  */
 import { register } from "node:module";
 import { readFileSync, readdirSync } from "node:fs";
@@ -31,11 +33,11 @@ const EN_CORRECTION = new Set(["meiose", "exponentielle", "noyaux", "dipole-rc",
 
 // un noyau de remplacement : il ne monte rien, il rend le script de la leçon
 const STUB = `const stub=()=>new Proxy(function(){},{get:(t,k)=>k===Symbol.toPrimitive?()=>"":k==="style"?{}:stub(),apply:()=>stub(),set:()=>true});
-export function monterLecon(root,construire){const scenes={};const base={E:()=>stub(),lerp:(a,b,t)=>a+(b-a)*t,clamp:(x,a,b)=>Math.max(a,Math.min(b,x)),ease:t=>t,fr:x=>String(x),ty:s=>String(s),esc:s=>String(s),RM:{matches:true},wait:()=>Promise.resolve(),show(){},mtext:()=>stub(),setMT(){},svgPt:()=>({x:0,y:0}),scene:(id,def)=>{const s={id,...def,p:{...(def.p||{})},defaults:{...(def.p||{})},g:stub()};scenes[id]=s;return s;},scenes,hooks:{},S:{ans:{},first:{},lignes:{},vu:{},essais:{}},svg:stub(),defs:stub(),root:stub(),$:()=>stub(),stop(){},etape:()=>null,aller(){},rep:()=>undefined,juste:()=>null,renderMath(){},say(){},plain:t=>t,majNav(){},tween:()=>Promise.resolve(),voir(){}};
+export function monterLecon(root,construire){const scenes={};const base={E:()=>stub(),lerp:(a,b,t)=>a+(b-a)*t,clamp:(x,a,b)=>Math.max(a,Math.min(b,x)),ease:t=>t,fr:x=>String(x),ty:s=>String(s),esc:s=>String(s),RM:{matches:true},wait:()=>Promise.resolve(),show(){},mtext:()=>stub(),setMT(){},svgPt:()=>({x:0,y:0}),scene:(id,def)=>{const s=new Proxy({id,...def,p:{...(def.p||{})},defaults:{...(def.p||{})},g:stub()},{get:(t,k)=>k in t||typeof k==="symbol"?t[k]:stub()});scenes[id]=s;return s;},scenes,hooks:{},S:{ans:{},first:{},lignes:{},vu:{},essais:{}},svg:stub(),defs:stub(),root:stub(),$:()=>stub(),stop(){},etape:()=>null,aller(){},rep:()=>undefined,juste:()=>null,renderMath(){},say(){},plain:t=>t,majNav(){},tween:()=>Promise.resolve(),voir(){}};
 return construire(new Proxy(base,{get:(t,k)=>k in t?t[k]:stub()}));}`;
 const HOOKS = `export async function resolve(spec, ctx, next) {
   if (/(^|\\/)noyau(\\.js)?$/.test(spec) && ctx.parentURL && ctx.parentURL.includes("/pilote/")) return { url: ${JSON.stringify("data:text/javascript," + encodeURIComponent(STUB))}, shortCircuit: true };
-  if (spec.startsWith(".") && !/\\.[cm]?[jt]s$/.test(spec)) { try { return await next(spec + ".js", ctx); } catch {} }
+  if (spec.startsWith(".") && !/\\.[cm]?[jt]s$/.test(spec)) { for (const ext of [".js", ".ts"]) { try { return await next(spec + ext, ctx); } catch {} } }
   return next(spec, ctx);
 }`;
 register("data:text/javascript," + encodeURIComponent(HOOKS));
@@ -44,10 +46,11 @@ globalThis.window = leurre;
 globalThis.document = leurre;
 globalThis.matchMedia = () => ({ matches: true, addEventListener() {} });
 
-const { LOGARITHME } = await import(path.join(WEB, "src/lib/apprentissage-catalogue/logarithme.ts"));
+// la liste des leçons cataloguées est celle de l'interface (index.ts) : ce qui est montré est ce qui est contrôlé
+const { LECONS } = await import(path.join(WEB, "src/lib/apprentissage-catalogue/index.ts"));
 const { GRAPHE } = await import(path.join(WEB, "src/lib/apprentissage-catalogue/graphe-transversal.ts"));
 const { hasard } = await import(path.join(PILOTE, "exercices/hasard.js"));
-const LECONS = [LOGARITHME];
+const ATTENDUES = Object.keys(GRAPHE.matieres);
 
 const erreurs = [];
 const avertissements = [];
@@ -101,6 +104,13 @@ const verifierCapacite = (lecon, c, ou) => { if (!capacites.has(c)) signaler(lec
 
 const conceptions = new Map(GRAPHE.conceptions.map((k) => [k.id, k]));
 let nQuestions = 0, nOptions = 0, nGabarits = 0, nLibelles = 0, nRefs = 0;
+
+// 0 : chaque leçon connue a son catalogue, une seule fois, dans la bonne matière
+for (const l of ATTENDUES) if (!LECONS.some((c) => c.lecon === l)) erreurs.push(`${l} : leçon du graphe sans catalogue`);
+for (const c of LECONS) {
+  if (LECONS.filter((d) => d.lecon === c.lecon).length > 1) erreurs.push(`${c.lecon} : catalogué deux fois`);
+  if (GRAPHE.matieres[c.lecon] !== c.matiere) erreurs.push(`${c.lecon} : matière ${c.matiere}, le graphe dit ${GRAPHE.matieres[c.lecon]}`);
+}
 
 // 1 et 2 : les leçons cataloguées
 for (const cat of LECONS) {
@@ -172,5 +182,5 @@ for (const a of GRAPHE.aretes) {
 
 for (const a of avertissements) console.log(`avertissement  ${a}`);
 for (const e of erreurs) console.log(`ÉCART  ${e}`);
-console.log(`\n${nQuestions} questions, ${nOptions} options, ${nGabarits} gabarits, ${nLibelles} libellés, ${nRefs} renvois du graphe, ${GRAPHE.aretes.length} arêtes : ${erreurs.length} écart(s), ${avertissements.length} avertissement(s).`);
+console.log(`\n${LECONS.length} leçons, ${nQuestions} questions, ${nOptions} options, ${nGabarits} gabarits, ${nLibelles} libellés, ${nRefs} renvois du graphe, ${GRAPHE.aretes.length} arêtes : ${erreurs.length} écart(s), ${avertissements.length} avertissement(s).`);
 process.exit(erreurs.length ? 1 : 0);

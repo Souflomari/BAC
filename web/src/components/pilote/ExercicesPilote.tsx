@@ -16,7 +16,7 @@
 
 import { journal } from "@/lib/journal";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useHydrated } from "@/lib/useHydrated";
 import { CATALOGUE, SEANCES } from "./exercices/catalogue";
 import { hasard, nouvelleGraine } from "./exercices/hasard";
@@ -106,6 +106,17 @@ export function ExercicesPilote({
 
   const maj = (f: (x: EtatEx) => EtatEx) => setEtats((s) => s.map((x, i) => (i === k ? f(x) : x)));
 
+  // le temps mis à répondre : depuis l'affichage de l'énoncé, puis depuis la réponse précédente
+  const tVue = useRef(0);
+  useEffect(() => {
+    tVue.current = performance.now();
+  }, [k, e?.graine]);
+  const duree = () => {
+    const d = Math.round(performance.now() - tVue.current);
+    tVue.current = performance.now();
+    return d;
+  };
+
   const verifier = (j: number) => {
     if (!tirage || !e) return;
     const q = tirage.questions[j];
@@ -166,6 +177,9 @@ export function ExercicesPilote({
       juste,
       erreur,
       indice_vu: e.indices.includes(j),
+      // pour relire la réponse plus tard : l'option choisie, combien étaient montrées, le temps mis
+      ...(q.type === "qcm" ? { choix: s.choix, n: q.options.length } : {}),
+      duree: duree(),
     });
     maj((x) => ({
       ...x,
@@ -375,7 +389,10 @@ export function ExercicesPilote({
                     <button
                       type="button"
                       className="exos-btn petit ghost"
-                      onClick={() => maj((x) => ({ ...x, indices: [...x.indices, j] }))}
+                      onClick={() => {
+                        journal({ type: "exo_indice", notion: nom, gabarit: ex?.id, graine: e.graine, question: j });
+                        maj((x) => ({ ...x, indices: [...x.indices, j] }));
+                      }}
                     >
                       Un indice
                     </button>
@@ -399,12 +416,13 @@ export function ExercicesPilote({
             <button
               type="button"
               className="exos-btn ghost"
-              onClick={() =>
+              onClick={() => {
+                journal({ type: "exo_correction", notion: nom, gabarit: ex?.id, graine: e.graine, tout_juste: e.q.length > 0 && e.q.every((q) => q.juste) });
                 maj((x) => {
                   const dejaTout = x.q.length > 0 && x.q.every((q) => q.juste);
                   return { ...x, correction: true, corrigeAvant: x.corrigeAvant || !dejaTout, lignes: 1 };
-                })
-              }
+                });
+              }}
             >
               {tout ? "Voir la correction rédigée" : "Voir la correction"}
             </button>

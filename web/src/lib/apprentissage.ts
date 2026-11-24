@@ -243,7 +243,7 @@ export function lireJournal(brut: unknown, maintenant: Date): Lecture {
       const essai = estEntier(o.essai) && o.essai >= 1 ? o.essai : 1;
       const juste = question ? (typeof o.juste === "boolean" ? o.juste : null) : null;
       if (question && juste === null) return void ignores++;
-      const signature = estTexte(o.signature) ? o.signature : null;
+      const signature = estTexte(o.sig) ? o.sig : estTexte(o.signature) ? o.signature : null;
       evenements.push({ type: "lecon_reponse", ms, seance, lecon, cle: o.cle, question, option: o.option, essai, juste, signature, rang });
     } else if (o.type === "exo_reponse") {
       if (!estTexte(o.gabarit) || !estEntier(o.question) || typeof o.juste !== "boolean") return void ignores++;
@@ -373,7 +373,7 @@ export function tentatives(lecture: Lecture, cat: Catalogue): Tentative[] {
         sortie.push(t);
       }
       const sig = cat.lecons[e.lecon]?.signature;
-      const memeVersion = !e.signature || !sig || e.signature === sig;
+      const memeVersion = !e.signature || !sig || e.signature === sig || e.signature === condenser(sig);
       const etiquette = q && !e.juste && memeVersion ? (q.options[e.option]?.e ?? null) : null;
       // dans une leçon, la première erreur montre toujours l'indice : le second essai le suit
       t.essais.push({ juste: !!e.juste, etiquette, indice: t.essais.length > 0, ms: e.ms });
@@ -465,6 +465,17 @@ export type Options = {
   /** filière de l'élève : ne garder que ses capacités */
   filiere?: string;
 };
+
+/** La signature d'une leçon en huit caractères (FNV-1a) : c'est le champ `sig` que `noyau.js` écrit
+ *  dans chaque réponse, pour ne pas recopier la liste des étapes à chaque événement. */
+export function condenser(signature: string): string {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < signature.length; i++) {
+    h ^= signature.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return (h >>> 0).toString(16).padStart(8, "0");
+}
 
 const iso = (ms: number) => new Date(ms).toISOString();
 
@@ -769,8 +780,14 @@ export function remonter(diags: DiagnosticConception[], suivis: SuiviCapacite[],
       }
     } else {
       const s = parCap.get(n.capacite);
+      // la preuve directe doit être AUTRE que les erreurs qu'on cherche à expliquer : un énoncé
+      // d'aval qui porte aussi cette capacité ne peut ni confirmer ni rouvrir sa propre cause
+      const expliques = new Set(explique.map((x) => x.enonce));
+      const ailleurs = s ? s.preuves.filter((p) => !expliques.has(p.enonce) && p.issue !== "inachevee") : [];
+      const solides = new Set(ailleurs.filter((p) => p.issue === "solide").map((p) => p.enonce));
       if (s && (s.etat === "comprise" || s.etat === "a_revoir")) statut = "ecartee";
-      else if (s && s.confiance !== "insuffisante" && s.estimation < 0.5) {
+      else if (s && ailleurs.length > 0 && ailleurs.every((p) => p.issue === "solide") && solides.size >= 2) statut = "ecartee";
+      else if (s && s.confiance !== "insuffisante" && s.estimation < 0.5 && ailleurs.some((p) => p.issue === "echec" || p.issue === "aidee")) {
         statut = "confirmee";
         direct = true;
       }
@@ -830,6 +847,8 @@ export type Action = {
   motif: "prerequis" | "conception" | "revision";
   cible: Cible;
   raison: string;
+  /** la capacité officielle visée, quand l'action porte sur un point précis (révision) */
+  capacite?: string;
   /** la règle qui a produit l'action (pour `data-state-source`) */
   regle: string;
 };
@@ -890,7 +909,7 @@ export function prochainesActions(diags: DiagnosticConception[], suivis: SuiviCa
     const gabs = gabaritsDeCapacite(cat, s.capacite);
     const cible = gabs.find((g) => g.type === "gabarit" && !deja.has(g.gabarit)) ?? gabs[0];
     const retard = auj - jourDe(Date.parse(s.prochaineRevision!));
-    if (cible) ajoute({ motif: "revision", cible, raison: retard > 0 ? "Ce point attend son retour depuis quelques jours : un exercice neuf pour le garder." : "C’est le jour de revoir ce point : un exercice neuf pour le garder.", regle: "revision:due" });
+    if (cible) ajoute({ motif: "revision", cible, raison: retard > 0 ? "Ce point attend son retour depuis quelques jours : un exercice neuf pour le garder." : "C’est le jour de revoir ce point : un exercice neuf pour le garder.", capacite: s.capacite, regle: "revision:due" });
   }
   return actions;
 }

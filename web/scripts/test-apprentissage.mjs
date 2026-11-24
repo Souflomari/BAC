@@ -395,6 +395,62 @@ ok("une seule erreur en aval", "une erreur d'aval isolée ne fait remonter aucun
   assert.equal(analyse([SEUIL], { maintenant: maintenant(1) }).hypotheses.length, 0);
 });
 
+// ── 5 bis. Les huit autres leçons (catalogue complet) ──────────────────────────
+// Les 44 cas ci-dessus lisent le seul catalogue de logarithme (leurs comptes en dépendent) ; ceux-ci
+// lisent les neuf catalogues, comme l'interface (apprentissage-catalogue/index.ts).
+
+const NEUF = [];
+for (const f of ["logarithme", "exponentielle", "suites", "radioactivite", "noyaux", "dipole-rc", "expression-genetique", "meiose", "transmission"]) {
+  NEUF.push(...Object.values(await import(path.join(WEB, `src/lib/apprentissage-catalogue/${f}.ts`))));
+}
+const CAT9 = A.composerCatalogue(NEUF, GRAPHE);
+const analyse9 = (journal, m) => A.analyser(journal, CAT9, { maintenant: m });
+/** une réponse de leçon, dans n'importe quelle leçon cataloguée */
+const L9 = (lecon, j, cle, option, { h = 0, seance = `s-${lecon}` } = {}) => ({
+  v: 1, id: id(), t: date(j, h), seance, type: "lecon_reponse", notion: lecon, cle, nature: "question", option, essai: 1,
+  juste: CAT9.lecons[lecon].questions[cle].juste === option,
+});
+
+ok("conception hors logarithme", "en expression génétique, le brin non transcrit complémenté à l'étape pari-brin, dans un exercice, puis au piège q1 : la conception du brin est active, et la première action la remédie dans sa leçon", () => {
+  const a = analyse9([
+    L9("expression-genetique", 0, "pari-brin", 0),
+    X(0, "brin-non-transcrit", 61, { lecon: "expression-genetique", qtype: "texte", juste: false, erreur: "complémenter le brin non transcrit", h: 1 }),
+    L9("expression-genetique", 0, "q1", 0, { h: 2 }),
+  ], maintenant(0, 3));
+  const d = a.conceptions.find((x) => x.conception === "gen.brin-transcrit");
+  assert.equal(d.etat, "active");
+  assert.ok(d.lieux >= 3);
+  assert.equal(d.observations.filter((o) => o.nature === "forte").length, 3);
+  assert.equal(a.actions[0].motif, "conception");
+  assert.equal(a.actions[0].cible.lecon, "expression-genetique");
+});
+
+ok("remontée exponentielle vers logarithme", "les conditions d'existence de ln oubliées en logarithme (bac-rejet), puis une racine t < 0 gardée deux fois en exponentielle (étape k-negatif, gabarit exp-trinome) : le prérequis du logarithme est retenu, confirmé, et l'action rejoue son étape", () => {
+  const a = analyse9([
+    L9("logarithme", 0, "bac-rejet", 1),
+    L9("exponentielle", 2, "k-negatif", 1),
+    X(2, "exp-trinome", 71, { lecon: "exponentielle", juste: false, erreur: "garder t < 0", h: 1 }),
+  ], maintenant(3));
+  const h = a.hypotheses[0];
+  assert.equal(h.amont, "conception:ln.domaine-oublie");
+  assert.equal(h.statut, "confirmee");
+  assert.ok(h.explique.every((x) => x.lecon === "exponentielle" && x.conception === "exp.t-negatif"));
+  assert.equal(a.conceptions.find((x) => x.conception === "exp.t-negatif").expliqueePar, "conception:ln.domaine-oublie");
+  assert.equal(a.actions[0].motif, "prerequis");
+  assert.equal(a.actions[0].cible.lecon, "logarithme");
+});
+
+ok("remontée physique vers maths par une étape de leçon", "en radioactivité, l'étape bac-litteral (signe perdu) et le gabarit datation-c14 ; en logarithme, ln d'un nombre entre 0 et 1 dit positif (q1) : le prérequis ln.signe-sur-0-1 l'emporte, confirmé", () => {
+  const a = analyse9([
+    L9("logarithme", 0, "q1", 1),
+    L9("radioactivite", 1, "bac-litteral", 1),
+    X(1, "datation-c14", 81, { lecon: "radioactivite", juste: false, erreur: "signe du logarithme", h: 1 }),
+  ], maintenant(2));
+  assert.equal(a.hypotheses[0].amont, "conception:ln.signe-sur-0-1");
+  assert.equal(a.hypotheses[0].statut, "confirmee");
+  assert.deepEqual(a.actions[0].cible, { type: "etape", lecon: "logarithme", cle: "gauche" });
+});
+
 // ── 6. Les actions et le bilan ─────────────────────────────────────────────────
 
 ok("ordre et nombre des actions", "au plus trois actions : prérequis d'abord, puis conception, puis révision ; des phrases calmes, sans point d'exclamation ni tiret cadratin, jamais « tu ne sais pas »", () => {
@@ -435,6 +491,13 @@ ok("le même calcul partout", "analyser deux fois le même journal (appareil, se
 });
 
 // ── exécution ──────────────────────────────────────────────────────────────────
+
+ok("prérequis écarté, neuf catalogues", "une erreur d'aval qui porte aussi la capacité du prérequis ne confirme pas sa propre cause : avec les neuf leçons cataloguées, le prérequis réussi seul reste écarté", () => {
+  const ok2 = [X(0, "ln-domaine", 31, { q: 1 }), X(0, "ln-domaine", 32, { q: 1, h: 1 }), X(0, "ln-signe", 33, { q: 1, h: 2 }), X(0, "ln-signe", 34, { q: 1, h: 3 }), X(0, "ln-inequation", 35, { q: 1, h: 4 })];
+  const a = analyse9([...ok2, { ...SEUIL, t: date(1) }, { ...DATATION, t: date(1, 1) }], maintenant(1, 2));
+  assert.ok(!a.hypotheses.some((h) => h.statut === "confirmee"));
+  assert.ok(!a.actions.some((x) => x.motif === "prerequis"));
+});
 
 let passes = 0;
 for (const c of cas) {

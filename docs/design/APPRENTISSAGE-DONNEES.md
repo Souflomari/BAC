@@ -63,6 +63,14 @@ de texte libre de l'élève, d'adresse IP ni d'identifiant d'appareil dans l'év
 | `epreuve_verdict` | `EpreuveShell` (radiogroup) | auto-notation | `epreuve`, `question`, `verdict`, `pts` |
 | `epreuve_fin` | `EpreuveShell` « Terminer » | fin | `epreuve`, `secondes` |
 
+**Émis depuis le 2026-11-24** (en plus des champs ci-dessus) : `lecon_reponse` porte `sig` (la
+signature de la leçon en huit caractères, `condenser()` de `lib/apprentissage.ts`), `n` (nombre
+d'options), `ordre` (l'ordre montré, en index d'auteur) et `duree` (millisecondes depuis que la
+question est lisible, ou depuis la réponse précédente) ; `exo_reponse` porte `duree` et, pour un
+QCM, `choix` et `n` ; `exo_indice` et `exo_correction` (`tout_juste`) sont émis. Pas encore émis :
+`exo_tirage`, l'identifiant de conception dans l'événement (il se relit par le catalogue et `sig`),
+les événements d'épreuve.
+
 Branchements minimaux : `monterLecon(root, construire, { journal })` reçoit une fonction
 `journal(evt)` (sans elle, rien ne change : les tests actuels restent identiques) ;
 `ExercicesPilote` et `EpreuveShell` reçoivent le même `journal` par prop. Une seule fonction
@@ -438,6 +446,8 @@ libellé `erreur`. Le **registre des conceptions** (identifiant stable, phrase c
 l'enseigne, étapes qui l'enseignent, où elle apparaît dans les exercices, source) et le **graphe**
 vivent dans `graphe-transversal.ts`.
 
+**Mise à jour du 2026-11-24 (soir)** : les neuf leçons sont cataloguées (364 questions, 1 100 options, 122 gabarits ; générateur et tables d'étiquettes dans `web/scripts/apprentissage-gen/`), le registre compte 93 conceptions (45 ajoutées avec les catalogues, à relire, sans arête nouvelle). Le paragraphe qui suit décrit l'état d'avant.
+
 Aujourd'hui, seul `logarithme` est catalogué en entier (33 questions, 99 options, 16 gabarits,
 62 libellés), par lecture du moteur et des exercices. Les huit autres leçons ne sont décrites que
 par les libellés d'exercices que cite le graphe. **À faire après la correction des leçons** :
@@ -648,7 +658,7 @@ Fichiers que ce document commande :
 
 - `web/src/lib/apprentissage.ts` — le modèle pur (suivi continu, conceptions, diagnostic
   transversal, actions, bilan)
-- `web/scripts/test-apprentissage.mjs` — la table de cas du modèle (44 cas)
+- `web/scripts/test-apprentissage.mjs` — la table de cas du modèle (48 cas)
 - `web/src/lib/apprentissage-catalogue/logarithme.ts` — le catalogue étiqueté de la leçon stable
 - `web/src/lib/apprentissage-catalogue/graphe-transversal.ts` — le registre des conceptions et
   le graphe des prérequis, proposition à relire

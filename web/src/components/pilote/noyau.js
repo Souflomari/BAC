@@ -179,7 +179,7 @@ function tweenTo(sc,target,d,my){
       if(t<1)requestAnimationFrame(step);else res();};
     requestAnimationFrame(step);});
 }
-let curScene=null;
+let curScene=null,tVue=0; // tVue : l'instant où la question en cours est devenue lisible
 // lignes d'une dérivation déjà montrées : 1 à la première visite, le compte atteint ensuite (garde au retour)
 function lignesVues(st){return S.lignes[st.k]!=null?S.lignes[st.k]:1;}
 // une étape à `deriv` ET à question : la question reste cachée tant que « Ligne suivante » n'a pas montré
@@ -204,7 +204,7 @@ function go(i){
   let fresh=false;
   if(curScene!==sc){if(curScene){curScene.g.style.opacity=0;curScene.g.setAttribute('class','scene');}sc.p={...st.base};sc.render();sc.g.style.opacity=1;sc.g.setAttribute('class','scene on');curScene=sc;fresh=true;}
   if(i!==cur)journal({type:'lecon_etape',notion:NOM,cle:st.k,index:i+1,total:STEPS.length});
-  cur=i;renderPanel(st);updateChrome(st);
+  cur=i;tVue=performance.now();renderPanel(st);updateChrome(st);
   animate(sc,st,my,fresh);speak(st);
 }
 
@@ -295,7 +295,9 @@ function choose(st,j){
   if(q&&resolu(st)){fb.innerHTML=P.opts[j].ok?messagePari(st,j):motsHTML(tyP(P.opts[j].fb||''));renderMath(fb);voir(fb);say(plain(P.opts[j].fb||''));return;}
   if(q){const ess=S.essais[k]||(S.essais[k]=[]);if(ess.includes(j))return;ess.push(j);}
   if(S.first[k]==null)S.first[k]=j;S.ans[k]=j;memoriser();
-  journal({type:'lecon_reponse',notion:NOM,cle:k,nature:q?'question':'pari',option:j,essai:q?(S.essais[k]||[]).length||1:1,juste:q?!!P.opts[j].ok:null});
+  // ce qu'il faut pour relire la réponse plus tard : la version de la leçon, l'ordre montré, le temps mis
+  journal({type:'lecon_reponse',notion:NOM,cle:k,nature:q?'question':'pari',option:j,essai:q?(S.essais[k]||[]).length||1:1,juste:q?!!P.opts[j].ok:null,
+    sig:empreinte(),n:P.opts.length,ordre:P.ordre.slice(),duree:Math.round(performance.now()-tVue)});tVue=performance.now();
   const fini=resolu(st);
   root.querySelector('.pari').outerHTML=pariHTML(st);wireOpts(st);renderMath(root.querySelector('.pari'));
   const btn=root.querySelector(`.opt[data-j="${j}"]`);if(btn&&!btn.disabled)btn.focus();else if(fini)$('#next').focus();else{const autre=root.querySelector('.opt:not([disabled])');autre&&autre.focus();}
@@ -314,7 +316,7 @@ function ligneSuivante(st){
   S.lignes[st.k]=j+1;
   root.querySelectorAll('.deriv li').forEach(x=>{const i=+x.dataset.l;x.className=classeLigne(i,j+1,st)+(x.classList.contains('ouvert')?' ouvert':'');});
   const li=root.querySelector(`.deriv li[data-l="${j}"]`),pq=root.querySelector('.pari.attend');
-  if(pq&&!attend(st))pq.classList.remove('attend');
+  if(pq&&!attend(st)){pq.classList.remove('attend');tVue=performance.now();}
   if(li)voir(li,pq&&!attend(st)?pq:null);
   const x=st.deriv[j];if(x.p){const my=++run;tweenTo(scenes[st.scene],x.p,x.d||700,my);}
   say(plain((x.alt||x.tex)+'. '+(x.r||'')));
@@ -351,6 +353,8 @@ const beatEls=BEATS.map((b,k)=>{const n=STEPS.filter(s=>s.beat===k).length,btn=d
    La signature refuse une mémoire écrite pour une autre version de la leçon. */
 const CLE_REPRISE=`pilote:${NOM}:reprise`;
 const signature=()=>STEPS.map(st=>st.k).join(',');
+// la même signature en huit caractères (FNV-1a), pour le journal : `condenser()` de lib/apprentissage.ts
+let emp=null;function empreinte(){if(emp)return emp;let h=0x811c9dc5;const s=signature();for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,0x01000193);}return emp=(h>>>0).toString(16).padStart(8,'0');}
 function memoriser(){try{localStorage.setItem(CLE_REPRISE,JSON.stringify({sig:signature(),cur,ans:S.ans,first:S.first,essais:S.essais}));}catch{/* stockage refusé : pas de reprise */}}
 function oublier(){try{localStorage.removeItem(CLE_REPRISE);}catch{/* idem */}}
 function reprise(){try{const m=JSON.parse(localStorage.getItem(CLE_REPRISE)||'null');
