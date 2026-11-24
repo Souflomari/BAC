@@ -17,18 +17,17 @@ import { useEffect, useState } from "react";
 import { Link } from "@/components/ui/Lien";
 import { getFiliere } from "@/lib/curriculum";
 import { useFiliere } from "@/lib/useFiliere";
+import { semainesRestantes } from "@/lib/compte-a-rebours";
 import { cn } from "@/lib/utils";
 
-/** Début juin 2027 — estimation, pas une date officielle. */
-const CIBLE_ESTIMEE = Date.UTC(2027, 5, 1);
-const SEMAINE = 7 * 24 * 3600 * 1000;
-
-function semainesRestantes(maintenant: number): number {
-  return Math.max(0, Math.ceil((CIBLE_ESTIMEE - maintenant) / SEMAINE));
-}
-
-export function ExamCountdown({ className }: { className?: string }) {
-  const [semaines, setSemaines] = useState(() => semainesRestantes(Date.now()));
+/**
+ * `initial` est le nombre calculé par le serveur au build : le premier rendu du
+ * navigateur doit donner EXACTEMENT le même HTML, sinon la page désaccorde le
+ * jour où le nombre de semaines change (vu en CI à minuit UTC, 2026-11-24).
+ * Le vrai chiffre du jour est posé juste après le montage.
+ */
+export function ExamCountdown({ initial, className }: { initial: number; className?: string }) {
+  const [semaines, setSemaines] = useState(initial);
   useEffect(() => setSemaines(semainesRestantes(Date.now())), []);
   const { filiere, mounted } = useFiliere();
   const active = mounted ? getFiliere(filiere) : null;

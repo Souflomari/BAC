@@ -29,6 +29,7 @@ import { SessionCard } from "@/components/dashboard/SessionCard";
 import { NextUp } from "@/components/dashboard/NextUp";
 import { ProgrammeMap } from "@/components/dashboard/ProgrammeMap";
 import { ExamCountdown } from "@/components/dashboard/ExamCountdown";
+import { semainesRestantes } from "@/lib/compte-a-rebours";
 import { NoteEnJeu } from "@/components/dashboard/NoteEnJeu";
 import { SujetMaths } from "@/components/dashboard/SujetMaths";
 import { manifesteEpreuves } from "@/lib/palette-epreuves";
@@ -45,7 +46,7 @@ export default function HomePage() {
 
   return (
     <PageShell epreuves={epreuves} notions={manifestePourHeader()} width="page">
-      <ExamCountdown />
+      <ExamCountdown initial={semainesRestantes(Date.now())} />
 
       <div className="mt-6 bp-large:mt-8">
         <header className="mb-4 bp-medium:mb-6">
