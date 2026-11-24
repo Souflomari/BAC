@@ -1,8 +1,8 @@
 # `meiose-fecondation-brassages` — Transfert de l'information génétique par la reproduction sexuée (méiose, fécondation, brassages inter- et intrachromosomique)
 
 > Annales examen national, **SVT** 2ème Bac (option française / BIOF).
-> Transcriptions **non vérifiées** : chaque exercice porte
-> `Statut: transcrit, à vérifier par un second lecteur`. Le protocole de
+> Transcriptions nées `Statut: transcrit, à vérifier par un second lecteur` ;
+> second lecteur passé le 2026-11-24 (voir la ligne `Statut` de chaque bloc). Le protocole de
 > vérification est celui de la banque PC / Maths (`docs/sujets/pc/README.md` §3,
 > `docs/sujets/maths/README.md` §3) : re-fetch indépendant de la source, rendu
 > des pages, diff caractère par caractère, figures re-décrites depuis l'image.
@@ -33,7 +33,7 @@
 
 ## 2022 — session normale — Exercice 2 *(filière SVT)*
 Source: https://www.alloschool.com/element/138541 (PDF : https://www.alloschool.com/assets/documents/course-398/examen-national-svt-2eme-bac-svt-2022-normale-sujet.pdf), pages 3-4 sur 6
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : source re-téléchargée indépendamment (element/138541 → `course-398/…-2022-normale-sujet.pdf` re-dérivé, 6 pages) ; pages 1, 3, 4 rendues à 120 dpi, Doc. 3 zoomé à 250 dpi, couche texte re-extraite ; diff énoncé, croisements, NB (gras italique, haut de p. 4), questions, barème (0,75 + 1 + 1,25 + 0,25 + 1,25 = 4,5), sic « Au fils », en-tête (NS 32F, المسالك الدولية) : conforme ; Doc. 1 re-décrit sur l'image (0 / 48 / 67 cM, locus couleur au-dessus du centromère, locus ailes au-dessous) : conforme ; Doc. 3 relu au zoom : 0,8 à l'origine, ≈ 0,39 à la 5e génération, ≈ 0,30 à la 10e, un peu moins de 0,1 (≈ 0,09) au terme de la courbe à la 50e (« à confirmer » levé) ; re-dérivé : distance 67 − 48 = 19 cM → 19 % de gamètes recombinés (9,5 % + 9,5 %) et 81 % de parentaux (40,5 % + 40,5 %), concordant avec le corrigé.
 
 - Filière / épreuve : Sciences Expérimentales, filière Sciences de la Vie et de la Terre — شعبة العلوم التجريبية: مسلك علوم الحياة والأرض - خيار فرنسية — SVT, durée 3 (h), coefficient 7 [OFF-sujet, en-tête p. 1]
 - Session : الدورة العادية 2022 (session normale 2022) — المسالك الدولية
@@ -75,7 +75,7 @@ Le document 1 présente la position relative de ces deux gènes (loci) de la dro
 
 *Document 2 (dessin) :* une enceinte (cage) vue en coupe, titrée « Enceinte d'élevage de la drosophile » ; du couvercle descend un « Axe » vertical au bout duquel est fixée la « Nourriture » posée sur un « Support suspendu » (trapèze gris) ; des drosophiles sont dessinées en vol dans la partie haute et posées au fond de l'enceinte.
 
-*Document 3 (courbe) :* titre « Fréquence du phénotype « ailes vestigiales » » ; ordonnée graduée de 0 à 1 par pas de 0,1 ; abscisse « Générations », graduée 5, 10, 15 … 50. Courbe décroissante partant d'environ 0,8 à l'origine, chutant rapidement (environ 0,4 vers la 5e génération), puis décroissant lentement jusqu'à environ 0,1 vers la 50e génération (lectures d'échelle à confirmer ; le corrigé officiel donne « de 0,8 (la 1ère génération) à 0,1 (la 50ème génération) »).
+*Document 3 (courbe) :* titre « Fréquence du phénotype « ailes vestigiales » » ; ordonnée graduée de 0 à 1 par pas de 0,1 ; abscisse « Générations », graduée 5, 10, 15 … 50. Courbe décroissante partant de 0,8 à l'origine, chutant rapidement (environ 0,4 vers la 5e génération, 0,3 vers la 10e), puis décroissant lentement jusqu'à un peu moins de 0,1 à la 50e génération (lectures confirmées au zoom 250 dpi par le second lecteur ; le corrigé officiel donne « de 0,8 (la 1ère génération) à 0,1 (la 50ème génération) »).
 
 4. **Décrivez** l'évolution de la fréquence du phénotype « ailes vestigiales » au fil des générations (document 3). **(0,25 pt)**
 5. En exploitant les données de l'expérience**, expliquez** la variation de la fréquence du phénotype « ailes vestigiales » au fil des générations chez cette population de drosophiles. **Déduisez** le facteur responsable de la variation des fréquences phénotypiques observée. **(1,25 pt)**
@@ -83,9 +83,9 @@ Le document 1 présente la position relative de ces deux gènes (loci) de la dro
 Total imprimé : 0,75 + 1 + 1,25 + 0,25 + 1,25 = 4,5 pts (conforme à l'en-tête).
 
 ### Corrigé officiel — 2022 normale, Exercice 2 (NR 32F, p. 3 sur 4 ; intitulé imprimé « Exercise 2 (4,5 pts) »)
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : corrigé re-téléchargé indépendamment (element/138542 → `course-398/…-2022-normale-corrige.pdf` re-dérivé, 4 pages) ; page 3 rendue à 120 dpi puis zoomée à 300 dpi (Q2, Q3) et comparée ligne par ligne : texte, points imprimés, ordre des gamètes et des colonnes de l'échiquier, « 40 ,5% » à espace parasite, crochets de phénotype : conformes ; pourcentages re-dérivés de la carte du Doc. 1 (19 cM) et concordants. Précision ajoutée sur l'image : le trait de fraction des génotypes est **double** ; les gamètes sont soulignés d'un trait **simple** (voir la note de notation).
 
-Notation des génotypes : le corrigé écrit les génotypes en fraction (chromosome du haut / trait / chromosome du bas). Ils sont rendus ici « haut // bas ».
+Notation des génotypes : le corrigé écrit les génotypes en fraction (chromosome du haut / **double trait** / chromosome du bas), constaté au zoom 300 dpi ; ils sont rendus ici « haut // bas ». Les gamètes sont écrits soulignés d'un **trait simple** (par ex. « vg⁺ b⁺ » souligné), rendus ici sans le trait.
 
 **Question 1 — Note : 0.75**
 - Le croisement 1 a donné une génération de drosophiles homogène aux ailes longues et corps claire donc :
@@ -135,7 +135,7 @@ On observe que la fréquence du phénotype ailes vestigiales diminue au fil des 
 
 ## 2024 — session rattrapage — Exercice 3 *(filière SVT)*
 Source: https://www.alloschool.com/element/145879 (PDF : https://www.alloschool.com/assets/documents/course-398/examen-national-svt-2eme-bac-svt-2024-rattrapage-sujet.pdf), page 5 sur 6
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : source re-téléchargée indépendamment (element/145879 → `course-398/…-2024-rattrapage-sujet.pdf` re-dérivé, 6 pages) ; pages 1 et 5 rendues à 120 dpi, couche texte re-extraite ; diff énoncé, hypothèse (en gras), NB (« ℓ » cursif sur l'image, « l » dans la couche texte : l'image fait foi), tableau F'₂ (48.29 / 48.71 / 1.29 / 1.71 %, point décimal), questions, barème (1 + 1 + 1 = 3), en-tête (RS 32F, المسالك الدولية - الدورة الاستدراكية 2024, coefficient 7, 3h) : conforme ; re-dérivé : total 100 %, recombinés 1,29 + 1,71 = 3 % (soit 3 cM), parentaux 97 % — linkage relatif, concordant avec le corrigé. Détail typographique sans incidence : « F₂ » de la question 2 est en gras sur l'original.
 
 - Filière / épreuve : Sciences Expérimentales, filière Sciences de la Vie et de la Terre — شعبة العلوم التجريبية مسلك علوم الحياة والأرض (خيار فرنسية) — SVT, durée 3h, coefficient 7 [OFF-sujet, en-tête p. 1]
 - Session : الدورة الاستدراكية 2024 (session de rattrapage 2024) — المسالك الدولية
@@ -175,9 +175,9 @@ Afin de vérifier l'hypothèse on réalise un deuxième croisement :
 Total imprimé : 1 + 1 + 1 = 3 points (conforme à l'en-tête).
 
 ### Corrigé officiel — 2024 rattrapage, Exercice 3 (RR 32F, « Eléments de réponses », p. 3-4 sur 4)
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : corrigé re-téléchargé indépendamment (element/145880 → `course-398/…-2024-rattrapage-corrige.pdf` re-dérivé, 4 pages) ; pages 1, 3, 4 rendues (p. 3 à 300 dpi) et comparées ligne par ligne : texte, points (Q1 0,5 + 0,5 ; Q2 0,25 + 0.5 + 0,25 ; Q3 0, 5 + 0,25 + 0,25), échiquier, « [g, l] » à l droit dans la dernière case, « 1/4 [g, ℓ] » dans la conclusion : conformes ; proportions 3/4 – 1/4 re-dérivées sous linkage absolu.
 
-Notation : le corrigé écrit les génotypes de gènes liés en fraction (deux traits) ; ils sont rendus ici « haut // bas ».
+Notation : le corrigé écrit les génotypes de gènes liés en fraction à **double trait** (constaté au zoom) ; ils sont rendus ici « haut // bas ». Les gamètes sont soulignés d'un **trait simple** (« ½ G L » souligné). Les gènes indépendants sont écrits en ligne « G//g L//ℓ ».
 
 **Question 1 — Note : 1pt**
 - **Mode de transmission des deux caractères** ……… 0,5pt
@@ -214,10 +214,10 @@ Notation : le corrigé écrit les génotypes de gènes liés en fraction (deux t
 
 ## 2024 — session normale — Exercice 3 *(filière SVT)*
 Source: https://www.alloschool.com/element/145877 (PDF : https://www.alloschool.com/assets/documents/course-398/examen-national-svt-2eme-bac-svt-2024-normale-sujet.pdf), page 5 sur 6
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : source re-téléchargée indépendamment (element/145877 → `course-398/…-2024-normale-sujet.pdf` re-dérivé, 6 pages) ; pages 1 et 5 rendues à 120 dpi, couche texte re-extraite ; diff énoncé, trois croisements, NB (gras italique), questions, barème (1 + 0,75 + 1,25 = 3), guillemets diacritiques autour de « Dexter » : conforme ; re-dérivé : D//d × D//d → 2/3 [D] et 1/3 [d] après mort de D//D ; F₁ × F₁ en gènes indépendants → 12 survivants sur 16, 6/12 [R, D], 2/12 [r, D], 3/12 [R, d], 1/12 [r, d], concordant avec le corrigé. **Correction** : la ligne « Session » portait « — المسالك الدولية » ; l'en-tête de la p. 1 de ce sujet ne porte pas cette mention : retirée.
 
 - Filière / épreuve : Sciences Expérimentales, filière Sciences de la Vie et de la Terre — شعبة العلوم التجريبية مسلك علوم الحياة والأرض (خيار فرنسية) — SVT, durée 3h, coefficient 7 [OFF-sujet, en-tête p. 1]
-- Session : الدورة العادية 2024 (session normale 2024) — المسالك الدولية
+- Session : الدورة العادية 2024 (session normale 2024)
 - Code sujet : NS 32F · Barème de l'exercice : 3 points (imprimé « Exercice 3 (3 points) »)
 - Pages du PDF : 5 (sur 6) — l'exercice tient sur la seule page 5
 - Corrigé officiel : https://www.alloschool.com/element/145878 (PDF : https://www.alloschool.com/assets/documents/course-398/examen-national-svt-2eme-bac-svt-2024-normale-corrige.pdf), code NR 32F, pages 3-4 sur 5
@@ -248,7 +248,7 @@ Dans le cadre de l'étude de la transmission de deux caractères héréditaires 
 Total imprimé : 1 + 0,75 + 1,25 = 3 points (conforme à l'en-tête).
 
 ### Corrigé officiel — 2024 normale, Exercice 3 (NR 32F, p. 3-4 sur 5)
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : corrigé re-téléchargé indépendamment (element/145878 → `course-398/…-2024-normale-corrige.pdf` re-dérivé, 5 pages) ; pages 3-4 rendues et comparées ligne par ligne : texte, points (Q1 0,5 + 0,5 ; Q2 0,5 + 0,25 ; Q3 0,25 + 0,25 + 0.5 + 0,25), ordre des gamètes (R/ D/, r/ d/, R/ d/, r/ D/), les 16 cases de l'échiquier une à une et les quatre cases barrées : conformes ; décompte des cases re-fait (6 + 2 + 3 + 1 = 12).
 
 **Question 1 — Note : 1 pt** (page 3)
 - ● **Mode de transmission du caractère** : ……… 0,5pt
@@ -299,10 +299,10 @@ Statut: transcrit, à vérifier par un second lecteur
 
 ## 2024 — session rattrapage — Exercice 2, Partie II *(filière Sciences Physiques)*
 Source: https://www.alloschool.com/element/145839 (PDF : https://www.alloschool.com/assets/documents/course-399/examen-national-svt-sciences-physiques-2024-rattrapage-sujet.pdf), page 5 sur 6
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : source re-téléchargée indépendamment (element/145839 → `course-399/…-sciences-physiques-2024-rattrapage-sujet.pdf` re-dérivé, 6 pages) ; pages 1 et 5 rendues à 120 dpi, couche texte re-extraite ; diff énoncé, deux tableaux de croisement (102 / 49 ; 110 / 114 / 114 / 114), consigne des symboles (« ℓ » sur l'image), questions, barème (1.5 + 1.5 + 1 = 4) : conforme ; re-dérivé : 102 + 49 = 151, 102/151 = 67,55 % et 49/151 = 32,45 % (≈ 2/3 – 1/3) ; 110 + 3 × 114 = 452, 110/452 = 24,34 % et 114/452 = 25,22 %. **Correction** : la ligne « Session » portait « — المسالك الدولية » ; l'en-tête de la p. 1 du sujet RS 34F ne porte pas cette mention : retirée.
 
 - Filière / épreuve : Sciences Expérimentales, filière **Sciences Physiques** — شعبة العلوم التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) — SVT, durée 3h, coefficient 5 [OFF-sujet, en-tête p. 1]
-- Session : الدورة الاستدراكية 2024 (session de rattrapage 2024) — المسالك الدولية
+- Session : الدورة الاستدراكية 2024 (session de rattrapage 2024)
 - Code sujet : RS 34F · Barème de l'exercice complet : 6 pts (imprimé « Exercice 2 (6 pts) ») ; Partie II = questions 3-4 = 1.5 + 1.5 + 1 = 4 pts
 - Pages du PDF : 5 (sur 6)
 - Corrigé officiel : https://www.alloschool.com/element/145840 (PDF : https://www.alloschool.com/assets/documents/course-399/examen-national-svt-sciences-physiques-2024-rattrapage-corrige.pdf), code RR 34F, pages 3-4 sur 4
@@ -332,9 +332,9 @@ Statut: transcrit, à vérifier par un second lecteur
 4. A partir du croisement 2, **montrer** que les résultats obtenus sont compatibles avec la troisième loi de Mendel puis **vérifier** l'hypothèse proposée. **(1pt)**
 
 ### Corrigé officiel — 2024 rattrapage filière PC, Exercice 2, questions 3-4 (RR 34F, p. 3-4 sur 4)
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : corrigé re-téléchargé indépendamment (element/145840 → `course-399/…-sciences-physiques-2024-rattrapage-corrige.pdf` re-dérivé, 4 pages) ; pages 3-4 rendues et comparées ligne par ligne : texte, génotypes, gamètes, échiquier (case G//G barrée), pourcentages imprimés (67,54 % ; 32,45 % ; 24.33 % ; 25.22 % × 3) : conformes ; rattachement des points re-constaté sur l'image (alignement de chaque valeur sur la ligne à pointillés qu'elle termine) : 3.a 0.25 / 0.25 / 0.25 / 0.25 / 0.5 (= 1,5) ; 3.b 0.25 / 0.5 / 0.5pt / 0.25pt (= 1,5) ; 4 0.25 / 0.25 / 0.25 / 0.25 (= 1) — conforme au rendu ci-dessous. Arrondis re-dérivés : 102/151 = 67,55 % (le corrigé imprime 67,54 %, troncature) ; 49/151 = 32,45 % ; 110/452 = 24,34 % (imprimé 24.33 %, troncature) ; 114/452 = 25,22 %.
 
-Les points sont imprimés dans une colonne de droite ; leur rattachement ligne à ligne est rendu d'après leur position verticale (à confirmer).
+Les points sont imprimés dans une colonne de droite ; leur rattachement ligne à ligne, rendu d'après leur position verticale, a été confirmé sur l'image par le second lecteur.
 
 **Question 3.a** (page 3)
 - **a. Type de dominance et génotypes des parents avec justification :**
@@ -388,7 +388,7 @@ Les points sont imprimés dans une colonne de droite ; leur rattachement ligne �
 
 ### 2020 — session rattrapage — Partie I, question II (QCM) *(filière SVT)*
 Source: https://www.alloschool.com/element/109872 (PDF : https://www.alloschool.com/assets/documents/course-398/examen-national-svt-2eme-bac-svt-2020-rattrapage-sujet.pdf), page 1 sur 6
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : source re-téléchargée indépendamment (element/109872 → `course-398/…-2020-rattrapage-sujet.pdf` re-dérivé, 6 pages) ; p. 1 rendue à 120 dpi : consigne, quatre données et seize suggestions, barème (2 pts), en-tête (RS 32F, المسالك الدولية, الدورة الاستدراكية 2020, durée 3, coefficient 7) : conformes.
 
 - Filière / épreuve : filière Sciences de la Vie et de la Terre — شعبة العلوم التجريبية مسلك علوم الحياة والأرض (خيار فرنسية) — SVT, durée 3, coefficient 7 [OFF-sujet, en-tête p. 1]
 - Session : الدورة الاستدراكية 2020 (session de rattrapage 2020) — المسالك الدولية
@@ -423,11 +423,11 @@ Statut: transcrit, à vérifier par un second lecteur
 - **d.** la séparation des chromosomes homologues lors de l'anaphase.
 
 **Corrigé officiel (RR 32F, p. 1, ligne « II ») :** (1,c) (2,d) (3,b) (4,b) — Note : 0.5×4
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : corrigé re-téléchargé indépendamment (element/109873 → `course-398/…-2020-rattrapage-corrige.pdf` re-dérivé, 5 pages) ; p. 1 rendue : ligne « II » et note conformes ; réponses re-dérivées (méiose = réductionnelle puis équationnelle ; dominant lié à X → père atteint, toutes ses filles atteintes ; crossing-over entre homologues en prophase I ; mitose conserve le nombre de chromosomes).
 
 ### 2024 — session rattrapage — Première partie, question II (QCM) *(filière Sciences Physiques)*
 Source: https://www.alloschool.com/element/145839 (PDF : https://www.alloschool.com/assets/documents/course-399/examen-national-svt-sciences-physiques-2024-rattrapage-sujet.pdf), page 1 sur 6
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : source re-téléchargée indépendamment (element/145839, 6 pages) ; p. 1 rendue à 120 dpi : consigne, quatre propositions et seize suggestions, indice « G₁ », barème (2 pts), en-tête (RS 34F, الدورة الاستدراكية 2024 sans mention « المسالك الدولية », coefficient 5, 3h) : conformes.
 
 - Filière / épreuve : filière **Sciences Physiques** — شعبة العلوم التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) — SVT, durée 3h, coefficient 5 [OFF-sujet, en-tête p. 1]
 - Session : الدورة الاستدراكية 2024 (session de rattrapage 2024)
@@ -462,11 +462,11 @@ Statut: transcrit, à vérifier par un second lecteur
 - **d**. monochromatidiens et ne présentent pas des yeux de réplication.
 
 **Corrigé officiel (RR 34F, p. 1, ligne « II ») :** (1, a) (2, b) (3, a) (4, a) — Note : 0.5 x 4
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : corrigé re-téléchargé indépendamment (element/145840, 4 pages) ; p. 1 rendue : ligne « II » et note conformes ; réponses re-dérivées (crossing-over en prophase I ; G₁ monochromatidien non condensé ; méiose → quatre cellules haploïdes à chromosomes monochromatidiens ; fin de S bichromatidiens sans yeux de réplication).
 
 ### 2024 — session rattrapage — Partie I, question III, proposition a (vrai / faux) *(filière SVT)*
 Source: https://www.alloschool.com/element/145879 (PDF : https://www.alloschool.com/assets/documents/course-398/examen-national-svt-2eme-bac-svt-2024-rattrapage-sujet.pdf), page 1 sur 6
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : source re-téléchargée indépendamment (element/145879, 6 pages) ; p. 1 rendue à 120 dpi : consigne du bloc III, quatre propositions a-d, barème (1 pt), en-tête RS 32F : conformes. Signalé hors périmètre : le bloc IV de la même page (association phases de la mitose / caractéristiques) contient, parmi les cinq éléments du groupe 2, le distracteur « c- Echange de fragments entre les chromosomes homologues » (crossing-over) ; il n'est pas transcrit ici.
 
 - Filière / épreuve : filière Sciences de la Vie et de la Terre — RS 32F, durée 3h, coefficient 7 [OFF-sujet, en-tête p. 1]
 - Barème du bloc III : (1 pt), quatre propositions a-d ; seule la proposition **a** porte sur la méiose (b : diagnostic prénatal ; c : codon ; d : plasmide). Le bloc est transcrit en entier.
@@ -482,6 +482,6 @@ Statut: transcrit, à vérifier par un second lecteur
 | **d** | Le plasmide est une molécule d'ADN circulaire indépendante du chromosome bactérien. |
 
 **Corrigé officiel (RR 32F, p. 1, ligne « III ») :** (a, Faux) (b, Vrai) (c, Vrai) (d, Vrai) — Note : (0,25x4) pt
-Statut: transcrit, à vérifier par un second lecteur — la couche texte du corrigé mélange l'ordre des cellules du tableau ; l'association lettre / réponse a été relue sur l'image rendue de la p. 1 du corrigé.
+Statut: vérifié — second lecteur, 2026-11-24 : corrigé re-téléchargé indépendamment (element/145880 → `course-398/…-2024-rattrapage-corrige.pdf`, 4 pages) ; p. 1 rendue : ligne « III » « (a, Faux) (b, Vrai) (c, Vrai) (d, Vrai) » et note « (0,25x4) pt » conformes (a re-dérivé : Faux, les cellules issues de la division réductionnelle reçoivent chacune un homologue différent de chaque paire). Note du premier lecteur conservée : la couche texte du corrigé mélange l'ordre des cellules du tableau ; l'association lettre / réponse a été relue sur l'image rendue de la p. 1 du corrigé.
 
 ---

@@ -1,8 +1,8 @@
 # `expression-information-genetique` — Expression de l'information génétique (transcription, traduction, mutation → protéine → phénotype)
 
 > Annales examen national, **SVT** 2ème Bac (option française / BIOF).
-> Transcriptions **non vérifiées** : chaque exercice porte
-> `Statut: transcrit, à vérifier par un second lecteur`. Le protocole de
+> Transcriptions nées `Statut: transcrit, à vérifier par un second lecteur` ;
+> second lecteur passé le 2026-11-24 (voir la ligne `Statut` de chaque bloc). Le protocole de
 > vérification est celui de la banque PC / Maths (`docs/sujets/pc/README.md` §3,
 > `docs/sujets/maths/README.md` §3) : re-fetch indépendant de la source, rendu
 > des pages, diff caractère par caractère, figures re-décrites depuis l'image.
@@ -29,7 +29,7 @@
 
 ## 2022 — session normale — Exercice 1 *(filière SVT)*
 Source: https://www.alloschool.com/element/138541 (PDF : https://www.alloschool.com/assets/documents/course-398/examen-national-svt-2eme-bac-svt-2022-normale-sujet.pdf), pages 2-3 sur 6
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : source re-téléchargée indépendamment (page element/138541 re-fetchée, lien `course-398/…-2022-normale-sujet.pdf` re-dérivé de la page, PDF de 6 pages) ; pages 1-3 rendues à 120 dpi, Doc. 1 et Doc. 4 zoomés à 250 dpi, couche texte re-extraite par `pdftotext` ; diff énoncé, questions, barème (1 + 1,5 + 1 + 1 = 4,5), séquences du Doc. 2 lettre par lettre, Doc. 3 case par case, en-tête (NS 32F, المسالك الدولية, الدورة العادية 2022, coefficient 7, durée 3) : conforme ; arbre du Doc. 4 re-décrit sur l'image : conforme ; re-dérivé : ARNm et acides aminés des deux allèles avec le Doc. 3 (Gln-Gln-Ac.glu-Phe-Val-Arg-Ala-Leu-Arg-Arg / …-Phe-Arg-Ala-Arg-Arg-Arg), triplets mutés n° 15 (GTC→TTC) et n° 18 (CTA→CGA) à partir de la numérotation 11-20, probabilité ½ pour B//b × b//b. Points « à confirmer » du premier lecteur levés sur l'image (voir la description du Doc. 1, complétée).
 
 - Filière / épreuve : Sciences Expérimentales, filière Sciences de la Vie et de la Terre — شعبة العلوم التجريبية: مسلك علوم الحياة والأرض - خيار فرنسية — SVT, durée 3 (h), coefficient 7 [OFF-sujet, en-tête p. 1]
 - Session : الدورة العادية 2022 (session normale 2022) — المسالك الدولية
@@ -45,12 +45,13 @@ Afin de déterminer l'origine génétique de cette maladie et son mode de transm
 
 - **Donnée 1 :** On mesure la quantité des grandes sous-unités et celle des petites sous-unités des ribosomes chez un individu sain et chez un individu malade. La figure (a) du document 1 donne les résultats obtenus. La figure (b) montre l'intervention des ribosomes au cours de la synthèse de l'hémoglobine au niveau des cellules précurseurs des globules rouges chez un individu sain et chez un individu malade.
 
-*Document 1 — Figure (a) (histogramme) :* ordonnée « Quantité des sous-unités des ribosomes (UA) », graduée 0, 10, 20, 30, 40, 50. Deux groupes de deux barres : « Individu sain » et « Individu malade ». Légende : barre pleine (gris foncé) = « Grandes sous-unité du ribosome » ; barre hachurée = « Petites sous-unité du ribosome » (singulier « sous-unité » tel qu'imprimé). Individu sain : les deux barres atteignent environ 46-47 (hauteurs égales à la lecture). Individu malade : barre pleine ≈ 46-47, barre hachurée ≈ 23 (lecture d'échelle à confirmer ; le corrigé officiel donne 46 UA et 23 UA).
+*Document 1 — Figure (a) (histogramme) :* ordonnée « Quantité des sous-unités des ribosomes (UA) », graduée 0, 10, 20, 30, 40, 50. Deux groupes de deux barres : « Individu sain » et « Individu malade ». Légende : barre pleine (gris foncé) = « Grandes sous-unité du ribosome » ; barre hachurée = « Petites sous-unité du ribosome » (singulier « sous-unité » tel qu'imprimé). Individu sain : les deux barres atteignent environ 46-47 (hauteurs égales à la lecture). Individu malade : barre pleine ≈ 46-47, barre hachurée ≈ 23 (lecture d'échelle confirmée par le second lecteur au zoom 250 dpi : le quadrillage porte des traits intermédiaires tous les 5 UA ; les barres « sain » et la barre pleine « malade » s'arrêtent entre 45 et 50, la barre hachurée « malade » un peu au-dessous du milieu entre 20 et 25 ; le corrigé officiel donne 46 UA et 23 UA).
 
 *Document 1 — Figure (b) (schéma) :* deux cadres en pointillés.
 - Cadre « Individu sain » : à gauche, un groupe de grandes sous-unités libres (gros cercles) et, en dessous, un groupe de petites sous-unités libres (petits demi-cercles), en nombres voisins ; deux flèches les conduisent vers un brin « ARNm de l'hémoglobine » (ligne horizontale, flèche verticale désignant l'ARNm) portant 5 ribosomes assemblés (grande sous-unité au-dessus, petite sous-unité au-dessous du brin) ; une flèche mène à des chaînes repliées (environ 5 molécules dessinées) légendées « Quantité normale d'hémoglobine ».
 - Cadre « Individu malade » : même disposition, mais avec nettement moins de petites sous-unités libres que de grandes ; sur l'« ARNm de l'hémoglobine », 3 grandes sous-unités seules (sans petite sous-unité) puis 2 ribosomes complets ; une flèche mène à 2 molécules légendées « Quantité faible d'hémoglobine ».
-- Légende commune : petit demi-cercle = « Petite sous-unité du ribosome » ; gros cercle = « Grande sous-unité du ribosome ». (Le nombre exact de sous-unités libres dessinées n'est pas relevé : non vérifié.)
+- Légende commune : petit demi-cercle = « Petite sous-unité du ribosome » ; gros cercle = « Grande sous-unité du ribosome ».
+- Nombres de sous-unités libres dessinées (comptés par le second lecteur au zoom 250 dpi) : individu sain, 5 grandes (rangées de 2 + 1 et 2) et 5 petites (rangées de 2 + 1 et 2) ; individu malade, 5 grandes et 2 petites. Molécules d'hémoglobine dessinées : 5 chez l'individu sain, 2 chez l'individu malade.
 
 1. **En vous basant** sur la figure (a) du document 1, **comparez** la quantité des petites sous-unités à celle des grandes sous-unités des ribosomes chez l'individu sain puis chez l'individu malade. **Expliquez,** à partir de la figure (b), le manque en hémoglobine observé chez l'individu malade. **(1pt)**
 
@@ -87,7 +88,7 @@ Sous les séquences : « Sens de lecture → ». Les numéros 11, 15 et 20 sont 
 Total imprimé : 1 + 1,5 + 1 + 1 = 4,5 pts (conforme à l'en-tête).
 
 ### Corrigé officiel — 2022 normale, Exercice 1 (NR 32F, « Les éléments de réponse », p. 1-2 sur 4)
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : corrigé re-téléchargé indépendamment (element/138542 → `course-398/…-2022-normale-corrige.pdf` re-dérivé, 4 pages) ; pages 1-2 rendues et comparées ligne par ligne : texte, points imprimés (0.25 + 0.25 + 0.5 ; 0.25 × 2 + 0.25 × 4 ; 0.5 + 0.5 ; 0.25 × 4), échiquier et en-tête (NR 32F, « Exercice 1 (4,5 pts) ») conformes ; séquences re-dérivées depuis le sujet et concordantes. Précision de lecture : l'original écrit « ARNₘ » (m en indice) aux deux lignes ARNm ; rendu ici « ARNm ».
 
 Colonnes du tableau officiel : Question · Les éléments de réponse · Note.
 
@@ -136,10 +137,10 @@ Colonnes du tableau officiel : Question · Les éléments de réponse · Note.
 
 ## 2024 — session normale — Exercice 2 *(filière SVT)*
 Source: https://www.alloschool.com/element/145877 (PDF : https://www.alloschool.com/assets/documents/course-398/examen-national-svt-2eme-bac-svt-2024-normale-sujet.pdf), pages 3-4 sur 6
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : source re-téléchargée indépendamment (element/145877 → `course-398/…-2024-normale-sujet.pdf` re-dérivé, 6 pages) ; pages 1, 3, 4 rendues à 120 dpi, Doc. 2, Doc. 3 et Doc. 5 zoomés à 250 dpi, couche texte re-extraite ; diff énoncé, questions, barème (1 + 1,5 + 1,25 + 0,5 + 0,75 = 5), séquences du Doc. 3 lettre par lettre (27 nucléotides, seule différence en position 17 : G→T), arbre du Doc. 5 individu par individu : conforme ; re-dérivé avec le Doc. 4 : Thr-Met-Ac.glu-Asn-Ile-Arg-Ser-Val-Ser / …-Ile-Leu-Ser-Val-Ser (triplet 6 CGG→CTG), probabilité ½ pour m//m × M//m. **Correction** : la ligne « Session » portait « — المسالك الدولية » ; l'en-tête de la p. 1 de ce sujet ne porte pas cette mention (seulement « الدورة العادية 2024 ») : retirée. Description du Doc. 2 précisée sur l'image zoomée (« à confirmer » levé).
 
 - Filière / épreuve : Sciences Expérimentales, filière Sciences de la Vie et de la Terre — شعبة العلوم التجريبية مسلك علوم الحياة والأرض (خيار فرنسية) — SVT, durée 3h, coefficient 7 [OFF-sujet, en-tête p. 1]
-- Session : الدورة العادية 2024 (session normale 2024) — المسالك الدولية
+- Session : الدورة العادية 2024 (session normale 2024)
 - Code sujet : NS 32F · Barème de l'exercice : 5 points (imprimé « Exercice 2 (5 points) »)
 - Pages du PDF : 3 (énoncé, Doc. 1, Doc. 2) et 4 (questions 1-4, Doc. 3, Doc. 4, Doc. 5) — sur 6
 - Corrigé officiel : https://www.alloschool.com/element/145878 (PDF : https://www.alloschool.com/assets/documents/course-398/examen-national-svt-2eme-bac-svt-2024-normale-corrige.pdf), code NR 32F, pages 2-3 sur 5
@@ -160,7 +161,7 @@ La sclérose latérale amyotrophique (SLA), connue sous le nom de « la maladie 
 
 Sous le tableau : « + Faible ; +++ Forte ».
 
-*Document 2 (dessins) :* deux colonnes, « Chez une personne saine » et « Chez une personne malade ». À gauche : un motoneurone dessiné avec un corps cellulaire étoilé à nombreux prolongements et un axone se ramifiant sur un muscle ; flèches légendées « Motoneurone en bon état » et « Muscle normal ». À droite : un motoneurone dessiné plus grêle, à prolongements réduits, et un muscle plus mince ; flèches légendées « Motoneurone endommagé » et « Muscle atrophié ». (Description de l'allure des dessins lue à 110 dpi : à confirmer.)
+*Document 2 (dessins) :* deux colonnes, « Chez une personne saine » et « Chez une personne malade ». À gauche : un motoneurone dessiné avec un corps cellulaire étoilé (noyau visible) à nombreux prolongements et un axone épais, régulier, se ramifiant sur un muscle épais (faisceau de traits) ; flèches légendées « Motoneurone en bon état » (pointant l'axone) et « Muscle normal ». À droite : un motoneurone dessiné plus petit, à axone grêle et irrégulier (contour bosselé), dont les ramifications terminales sont réduites, et un muscle nettement plus mince ; flèches légendées « Motoneurone endommagé » (pointant l'axone) et « Muscle atrophié ». (Allure confirmée par le second lecteur au zoom 250 dpi.)
 
 1. En vous basant sur les documents 1 et 2, **comparez** l'activité de l'enzyme SOD1 et la quantité des molécules toxiques accumulées dans les motoneurones d'une personne saine et dans les motoneurones d'une personne malade, puis **montrez** la relation protéine - caractère. **(1pt)**
 
@@ -197,7 +198,7 @@ Sous le tableau : « + Faible ; +++ Forte ».
 Total imprimé : 1 + 1,5 + 1,25 + 0,5 + 0,75 = 5 points (conforme à l'en-tête).
 
 ### Corrigé officiel — 2024 normale, Exercice 2 (NR 32F, p. 2-3 sur 5)
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : corrigé re-téléchargé indépendamment (element/145878 → `course-398/…-2024-normale-corrige.pdf` re-dérivé, 5 pages) ; pages 2-3 rendues et comparées ligne par ligne : texte, points imprimés (Q1 0,25 + 0,25 + 0,5 ; Q2 0,25 × 4 + 0,5 ; Q3 0,5 + 0,25 × 3 ; Q4.a 0,25 × 2 ; Q4.b 0,5 + 0,25), échiquier (lignes « Gamètes III₂ », colonne « Gamètes III₁ ») : conformes ; séquences et probabilité re-dérivées et concordantes.
 
 **Question 1 — Note : 1 pt**
 - **Comparaison :**
@@ -248,10 +249,10 @@ Acceptez toute réponse logique :
 
 ## 2024 — session rattrapage — Exercice 2, Partie I *(filière Sciences Physiques)*
 Source: https://www.alloschool.com/element/145839 (PDF : https://www.alloschool.com/assets/documents/course-399/examen-national-svt-sciences-physiques-2024-rattrapage-sujet.pdf), pages 3-4 sur 6
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : source re-téléchargée indépendamment (element/145839 → `course-399/…-sciences-physiques-2024-rattrapage-sujet.pdf` re-dérivé, 6 pages) ; pages 1, 3, 4 rendues à 120 dpi, Doc. 1 zoomé à 250 dpi, couche texte re-extraite ; diff énoncé, questions, barème (0.75 + 1.25), Doc. 2 triplet par triplet (brins non transcrit et transcrit, 489-497) et acides aminés : conforme ; histogramme (b) relu au zoom : barres exactement à 25 et à 125 ng/ml, seuil pointillé à 75 (« à confirmer » levé) ; re-dérivé : CGA (Arg) → TGA sur le brin non transcrit au triplet 493, soit GCT → ACT sur le brin transcrit (G→A), codon ARNm UGA = STOP, peptide arrêté après Ala, concordant avec le Doc. 2 et le corrigé. **Corrections** : (1) la ligne « Session » portait « — المسالك الدولية » ; l'en-tête de la p. 1 du sujet RS 34F ne porte pas cette mention (elle figure en revanche sur l'en-tête du corrigé RR 34F) : retirée ; (2) figure (a) : la flèche mène à un texte non encadré, et les récepteurs ne sont pas légendés sur la cellule (légende en bas seulement) : description corrigée ; (3) le renvoi de « Seuil » est un astérisque « * » en exposant, non « ⁕ » : corrigé.
 
 - Filière / épreuve : Sciences Expérimentales, filière **Sciences Physiques** — شعبة العلوم التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) — SVT, durée 3h, coefficient 5 [OFF-sujet, en-tête p. 1]
-- Session : الدورة الاستدراكية 2024 (session de rattrapage 2024) — المسالك الدولية
+- Session : الدورة الاستدراكية 2024 (session de rattrapage 2024)
 - Code sujet : RS 34F · Barème de l'exercice complet : 6 pts (imprimé « Exercice 2 (6 pts) ») ; Partie I = questions 1-2 = 0.75 + 1.25 = 2 pts
 - Pages du PDF : 3 (introduction de l'exercice, bas de page) et 4 (Partie I : Donnée 1, Doc. 1, Q1, Donnée 2, Doc. 2, Q2) — sur 6
 - Corrigé officiel : https://www.alloschool.com/element/145840 (PDF : https://www.alloschool.com/assets/documents/course-399/examen-national-svt-sciences-physiques-2024-rattrapage-corrige.pdf), code RR 34F, page 2 sur 4
@@ -266,9 +267,9 @@ Afin d'étudier les mécanismes de l'expression de l'information génétique et 
 
 ●**Donnée 1 :** La progranuline est secrétée par des cellules de soutien au niveau du cortex cérébral et agit sur les cellules nerveuses. La figure (a) du document 1 représente l'effet de la progranuline sur les cellules nerveuses chez une personne saine et la figure (b) du même document représente le taux plasmatique de la progranuline normale chez une personne saine et chez une personne atteinte de la DLFT.
 
-*Document 1 — Figure (a) (schéma) :* à gauche, une « Cellule de soutien » (cellule étoilée à noyau noir) libère de petites molécules de « Progranuline » (petit symbole en crochet) vers une « Cellule nerveuse » (neurone étoilé à noyau noir) portant des « Récepteur de la progranuline » (symbole en Y) sur lesquels se fixent les molécules ; une flèche mène à l'encadré « Maturation et protection de la cellule nerveuse ». Légende en bas : symbole crochet = « Progranuline » ; symbole Y = « Récepteur de la progranuline ».
+*Document 1 — Figure (a) (schéma) :* en haut à gauche, une « Cellule de soutien » (cellule étoilée à noyau noir) ; une flèche courbe part d'elle vers un groupe de petites molécules de « Progranuline » (petit symbole en crochet) libérées ; une seconde flèche courbe conduit ces molécules vers la « Cellule nerveuse » (neurone étoilé à noyau noir, à long prolongement ramifié) dont le corps cellulaire porte deux récepteurs (symbole en Y) occupés chacun par une molécule ; une flèche droite part de la cellule nerveuse vers le texte (non encadré) « Maturation et protection de la cellule nerveuse ». Légende en bas : symbole crochet = « Progranuline » ; symbole Y = « Récepteur de la progranuline ».
 
-*Document 1 — Figure (b) (histogramme) :* ordonnée « Taux plasmatique de la progranuline (en ng/ml) », graduée 0, 25, 50, 75, 100, 125, 150. Deux barres : « Personne atteinte » (barre hachurée, ≈ 25) et « Personne saine » (barre noire, ≈ 125) (lectures à confirmer ; le corrigé officiel donne 25 et 125 ng/ml). Une ligne pointillée horizontale à 75 est fléchée « Seuil⁕ » ; à droite, une accolade au-dessus du seuil : « Maturation et protection des cellules nerveuses » ; une accolade au-dessous : « Dégénérescence des cellules nerveuses ». Note encadrée : « ⁕ Seuil : Taux plasmatique de la progranuline en dessous duquel les cellules nerveuses dégénèrent. »
+*Document 1 — Figure (b) (histogramme) :* ordonnée « Taux plasmatique de la progranuline (en ng/ml) », graduée 0, 25, 50, 75, 100, 125, 150. Deux barres : « Personne atteinte » (barre hachurée, à 25) et « Personne saine » (barre noire, à 125) (lectures confirmées au zoom par le second lecteur ; le corrigé officiel donne 25 et 125 ng/ml). Une ligne pointillée horizontale à 75 est fléchée « Seuil* » (astérisque en exposant) ; à droite, une accolade au-dessus du seuil : « Maturation et protection des cellules nerveuses » ; une accolade au-dessous : « Dégénérescence des cellules nerveuses ». Note dans un cadre en pointillés : « * Seuil : Taux plasmatique de la progranuline en dessous duquel les cellules nerveuses dégénèrent. »
 
 1. En se basant sur les données du document 1, **décrire** le mode d'action de la progranuline sur les cellules nerveuses puis **montrer** la relation entre le taux plasmatique de la progranuline et l'état de santé de la personne. **(0.75pt)**
 
@@ -301,9 +302,9 @@ Afin d'étudier les mécanismes de l'expression de l'information génétique et 
 *(Suite de l'exercice : « II. » — questions 3 et 4 — voir `meiose-fecondation-brassages.md`.)*
 
 ### Corrigé officiel — 2024 rattrapage filière PC, Exercice 2, questions 1-2 (RR 34F, p. 2 sur 4)
-Statut: transcrit, à vérifier par un second lecteur
+Statut: vérifié — second lecteur, 2026-11-24 : corrigé re-téléchargé indépendamment (element/145840 → `course-399/…-sciences-physiques-2024-rattrapage-corrige.pdf` re-dérivé, 4 pages) ; page 2 rendue et comparée ligne par ligne : texte conforme ; rattachement des points re-constaté sur l'image (chaque valeur de la colonne « Note » est alignée sur la ligne à pointillés qu'elle termine) : Q1 0.25 / 0.25 / 0.25 (= 0,75) ; Q2 0.25 / 0.5 / 0.25 / 0.25 (= 1,25) — conforme au rendu ci-dessous.
 
-En-tête de la ligne : « Exercice 2 » — « 6 pts ». Les points sont imprimés dans une colonne de droite ; leur rattachement ligne à ligne est rendu d'après leur position verticale (à confirmer).
+En-tête de la ligne : « Exercice 2 » — « 6 pts ». Les points sont imprimés dans une colonne de droite ; leur rattachement ligne à ligne, rendu d'après leur position verticale, a été confirmé sur l'image par le second lecteur.
 
 **Question 1**
 - ▪ **Description du mode d'action de la progranuline :**
