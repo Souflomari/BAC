@@ -20,7 +20,7 @@ export function scenesA(ctx, O) {
 const { E, lerp, clamp, show, scene, defs } = ctx;
 const { fx, setFx, titre, noyau } = O;
 
-[["nxarw", "s-ink"], ["nxarwA", "s-a"]].forEach(([id, c]) => {
+[["nxarw", "s-ink"], ["nxarwA", "s-a"], ["nxarwD", "s-dim"]].forEach(([id, c]) => {
   const mk = E("marker", { id, viewBox: "0 0 10 10", refX: "8", refY: "5", markerWidth: "6", markerHeight: "6", orient: "auto-start-reverse" }, defs);
   E("path", { d: "M0 0L10 5L0 10z", class: c }, mk);
 });
@@ -33,11 +33,11 @@ scene("desint", {
     const PX = 180, Y = 320;
     // cas 0 : ²¹⁰Po → ²⁰⁶Pb + α (le sujet 2020 N, Exercice III)
     const c0 = E("g", {}, g);
-    noyau(c0, PX, Y, 92, 40, 60, 10.5);
+    noyau(c0, PX, Y, 92, 14, 26, 13);
     fx(c0, PX, 470, "polonium 210", "rd-fort s-ink", "middle"); fx(c0, PX, 498, "*A* = 210 · *Z* = 84", "t-lab s-ink", "middle");
     E("line", { x1: 300, x2: 410, y1: Y, y2: Y, class: "k-dim", "stroke-width": 2.5, "marker-end": "url(#nxarw)" }, c0);
     const f0 = E("g", {}, c0), i0 = E("g", {}, c0);
-    noyau(f0, 540, Y, 92, 39, 61, 10.5);
+    noyau(f0, 540, Y, 92, 14, 25, 13);
     fx(f0, 540, 470, "plomb 206", "rd-fort s-ink", "middle"); fx(f0, 540, 498, "*A* = 206 · *Z* = 82", "t-lab s-ink", "middle");
     E("circle", { cx: 540, cy: Y, r: 80, class: "k-dim nofill", "stroke-width": 2, "stroke-dasharray": "6 6" }, i0);
     fx(i0, 540, Y + 9, "?", "t-cle s-dim", "middle"); fx(i0, 540, 470, "noyau fils", "rd-fort s-ink", "middle"); fx(i0, 540, 498, "*A* = ? · *Z* = ?", "t-lab s-ink", "middle");
@@ -48,15 +48,15 @@ scene("desint", {
     const c1 = E("g", {}, g);
     E("circle", { cx: 70, cy: Y, r: 12, class: "neut", "stroke-width": 2.2 }, c1); fx(c1, 70, Y - 28, "neutron", "t-lab s-ink", "middle");
     fx(c1, 110, Y + 9, "+", "t-cle s-ink", "middle");
-    noyau(c1, 215, Y, 82, 40, 60, 9.5);
+    noyau(c1, 215, Y, 82, 15, 25, 12);
     fx(c1, 200, 470, "uranium 235", "rd-fort s-ink", "middle"); fx(c1, 200, 498, "*A* = 235 · *Z* = 92", "t-lab s-ink", "middle");
     E("line", { x1: 320, x2: 400, y1: Y, y2: Y, class: "k-dim", "stroke-width": 2.5, "marker-end": "url(#nxarw)" }, c1);
     const f1 = E("g", {}, c1), i1 = E("g", {}, c1);
-    noyau(f1, 490, Y - 20, 52, 24, 36, 7.5); noyau(f1, 650, Y + 18, 66, 30, 44, 8.5);
+    noyau(f1, 490, Y, 52, 9, 15, 10); noyau(f1, 650, Y, 66, 11, 18, 11);
     fx(f1, 490, 470, "strontium 94", "rd-fort s-ink", "middle"); fx(f1, 490, 498, "*A* = 94 · *Z* = 38", "t-lab s-ink", "middle");
-    fx(f1, 650, 540, "xénon 140", "rd-fort s-ink", "middle"); fx(f1, 650, 568, "*A* = 140 · *Z* = 54", "t-lab s-ink", "middle");
-    [[800, Y - 70], [880, Y - 20]].forEach(([x, y]) => { E("circle", { cx: x, cy: y, r: 12, class: "neut", "stroke-width": 2.2 }, f1); E("line", { x1: x - 30, y1: y + 14, x2: x - 14, y2: y + 5, class: "k-a", "stroke-width": 2.5 }, f1); });
-    fx(f1, 860, Y - 100, "2 neutrons", "t-lab s-ink", "middle");
+    fx(f1, 650, 470, "xénon 140", "rd-fort s-ink", "middle"); fx(f1, 650, 498, "*A* = 140 · *Z* = 54", "t-lab s-ink", "middle");
+    [[790, Y - 28], [870, Y + 28]].forEach(([x, y]) => { E("circle", { cx: x, cy: y, r: 12, class: "neut", "stroke-width": 2.2 }, f1); });
+    fx(f1, 830, Y - 70, "2 neutrons", "t-lab s-ink", "middle");
     E("circle", { cx: 490, cy: Y, r: 70, class: "k-dim nofill", "stroke-width": 2, "stroke-dasharray": "6 6" }, i1);
     fx(i1, 490, Y + 9, "?", "t-cle s-dim", "middle"); fx(i1, 490, 470, "deux noyaux, et des neutrons", "rd-fort s-ink", "middle");
     this.cas = [{ g: c0, fg: f0, inc: i0 }, { g: c1, fg: f1, inc: i1 }];
@@ -76,8 +76,9 @@ scene("soleil", {
   build(g) {
     this.ti = titre(g, "Combien de temps le Soleil peut-il briller ?", "des durées, de un an à cent milliards d’années (échelle logarithmique)");
     E("line", { x1: LX(1), x2: LX(1e11) + 10, y1: 520, y2: 520, class: "k-dim", "stroke-width": 1.5 }, g);
-    [[1, "1 an"], [1e2, "100 ans"], [1e4, "10 000 ans"], [1e6, "1 million"], [1e8, "100 millions"], [1e10, "10 milliards"], [1e11, "100 milliards"]].forEach(([a, l]) => {
-      E("line", { x1: LX(a), x2: LX(a), y1: 520, y2: 527, class: "k-dim" }, g); fx(g, LX(a), 552, l, "t-sous", "middle");
+    for (let e = 0; e <= 11; e++) E("line", { x1: LX(10 ** e), x2: LX(10 ** e), y1: 520, y2: 525, class: "k-dim" }, g);
+    [[1, "1 an"], [1e3, "1 000 ans"], [1e6, "1 million"], [1e9, "1 milliard"], [1e11, "100 milliards"]].forEach(([a, l]) => {
+      E("line", { x1: LX(a), x2: LX(a), y1: 520, y2: 530, class: "k-dim" }, g); fx(g, LX(a), 556, l, "t-sous", "middle");
     });
     const rep = (a, y, l1, l2, cls, anc) => {
       const gg = E("g", {}, g), x = LX(a);
@@ -126,20 +127,21 @@ function jeux() {
     J.He = { u: true, coupe: true, dil: true, titre: "La masse d’un noyau d’hélium", ref: m[0], mB: m[1], ys, e: [0, -(m[0] - m[1]) * UMEV],
       niv: [{ k: "A", y: ys[0], nom: "2 p + 2 n séparés", vu: `${fg(m[0], 5)} u`, ve: "" }, { k: "B", y: ys[1], nom: "noyau ^{4}He", vu: `${fg(m[1], 5)} u`, ve: `${fg(-EL_HE, 1)} MeV` }],
       acc: { a: 0, b: 1, x: 235, l: [["Δ*m*", `${fg(DM_HE, 5)} u`], ["Δ*m* *c*^{2}", `${sg(EL_HE)} MeV`]] },
-      fl: [{ id: "up", a: 1, b: 0, x: 450, cls: "k-a", l: ["à fournir", `*E*_{ℓ} ≈ ${sg(EL_HE)} MeV`] }, { id: "down", a: 0, b: 1, x: 700, cls: "k-ink", l: ["libérée à", "la formation"] }] };
+      dimUp: true,
+      fl: [{ id: "up", a: 1, b: 0, x: 450, cls: "k-a", l: ["à fournir", `*E*_{ℓ} ≈ ${sg(EL_HE)} MeV`] }, { id: "down", a: 0, b: 1, x: 700, cls: "k-a", l: ["libérée à", "la formation"] }] };
   }
   // ²H + ³H → ⁴He + n : trois niveaux, en MeV
   {
     const { ys } = placer([0, -E_REAC_DT, -EL_HE], YA, YB, 100);
-    J.DT = { u: false, titre: "Un bilan sur l’échelle d’énergie", ref: 0, ys, e: [0, -E_REAC_DT, -EL_HE],
+    J.DT = { u: false, titre: "^{2}H + ^{3}H → ^{4}He + n", ref: 0, ys, e: [0, -E_REAC_DT, -EL_HE],
       niv: [{ k: "A", y: ys[0], nom: "nucléons séparés", vu: "", ve: "" }, { k: "B", y: ys[1], nom: "^{2}H + ^{3}H", vu: "", ve: "" }, { k: "C", y: ys[2], nom: "^{4}He + n", vu: "", ve: `${fg(-EL_HE, 1)} MeV` }],
-      fl: [{ id: "rUp", a: 1, b: 0, x: 230, cls: "k-ink", l: ["on fournit", "Σ*E*_{ℓ}(réactifs)"] }, { id: "rDown", a: 0, b: 2, x: 480, cls: "k-ink", l: ["on récupère", "*E*_{ℓ}(^{4}He)"] },
+      fl: [{ id: "rUp", a: 1, b: 0, x: 230, cls: "k-dim", l: ["on fournit", "Σ*E*_{ℓ}(réactifs)"] }, { id: "rDown", a: 0, b: 2, x: 480, cls: "k-dim", l: ["on récupère", "*E*_{ℓ}(^{4}He)"] },
         { id: "de", a: 1, b: 2, x: 720, cls: "k-a", l: ["Δ*E*", `${fg(DE_DT_X, 2)} MeV`] }] };
   }
   // 4 ¹H → ⁴He + 2 e⁺ : le Soleil
   {
     const { ys } = placer([0, DE_SOLEIL_X], YA, YB, 100);
-    J.soleil = { u: false, titre: "Dans le Soleil", ref: 0, ys, e: [0, DE_SOLEIL_X],
+    J.soleil = { u: false, titre: "4 ^{1}H → ^{4}He + 2 e^{+}", ref: 0, ys, e: [0, DE_SOLEIL_X],
       niv: [{ k: "A", y: ys[0], nom: "4 ^{1}H", vu: "", ve: "" }, { k: "B", y: ys[1], nom: "^{4}He + 2 e^{+}", vu: "", ve: "" }],
       fl: [{ id: "de", a: 0, b: 1, x: 450, cls: "k-a", l: ["Δ*E*", `≈ ${fg(DE_SOLEIL_X, 1)} MeV`] }] };
   }
@@ -209,7 +211,7 @@ scene("niveaux", {
     // les flèches
     this.fl = (J.fl || []).map((f) => {
       const fg0 = E("g", {}, d), y1 = J.niv[f.a].y, y2 = J.niv[f.b].y, ym = (y1 + y2) / 2;
-      const ln = E("line", { x1: f.x, x2: f.x, y1, y2: y1, class: f.cls, "stroke-width": 4.5, "marker-end": `url(#${f.cls === "k-a" ? "nxarwA" : "nxarw"})` }, fg0);
+      const ln = E("line", { x1: f.x, x2: f.x, y1, y2: y1, class: f.cls, "stroke-width": 4.5, "marker-end": `url(#${f.cls === "k-a" ? "nxarwA" : f.cls === "k-dim" ? "nxarwD" : "nxarw"})` }, fg0);
       const l1 = fx(fg0, f.x + 16, ym - 4, f.l[0], "nx-n s-ink"), l2 = fx(fg0, f.x + 16, ym + 24, f.l[1], "nx-a s-ink");
       return { ...f, g: fg0, ln, l1, l2, y1, y2 };
     });
@@ -239,15 +241,16 @@ scene("niveaux", {
       k = clamp(k, 0, 1); show(f.g, k > 0.001 ? 1 : 0);
       const y = lerp(f.y1, f.y2, k), dir = Math.sign(f.y2 - f.y1), cut = k > 0.5 ? 4 : 0;
       f.ln.setAttribute("y2", (y - dir * cut).toFixed(1));
+      const gris = f.id === "up" && J.dimUp && p.down > 0.001, cls = gris ? "k-dim" : f.cls;
+      f.ln.setAttribute("class", cls); f.ln.setAttribute("marker-end", `url(#${cls === "k-a" ? "nxarwA" : cls === "k-dim" ? "nxarwD" : "nxarw"})`);
       show(f.l1, clamp(k * 2 - 1, 0, 1)); show(f.l2, clamp(k * 2 - 1, 0, 1) * clamp(p.val, 0, 1));
     });
   },
   _titres(J, ax, p) {
     const id = this._jeu;
     if (id === "H4") return [J.titre, "axe coupé : l’écart est dilaté pour se voir"];
-    if (id === "He") return [ax > 0.5 ? "Le même écart, en énergie" : J.titre, ax > 0.5 ? "énergie : le zéro est aux nucléons séparés" : "axe coupé : l’écart est dilaté pour se voir"];
-    if (id === "DT") return [J.titre, "énergie : le zéro est aux nucléons séparés"];
-    if (id === "soleil") return [J.titre, "énergie : le zéro est à quatre noyaux d’hydrogène"];
+    if (id === "He") return [ax > 0.5 ? "L’hélium 4, en énergie" : J.titre, ax > 0.5 ? "" : "axe coupé : l’écart est dilaté pour se voir"];
+    if (id === "DT" || id === "soleil") return [J.titre, ""];
     return [J.titre, "axe coupé : l’écart des deux niveaux du bas est dilaté"];
   },
 });

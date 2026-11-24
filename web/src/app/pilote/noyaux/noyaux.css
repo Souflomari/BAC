@@ -35,7 +35,7 @@
 .pilote[data-pilote="noyaux"] [data-pilote-scene] .nx-g { font-size: 28px; font-weight: 700; }
 .pilote[data-pilote="noyaux"] .rd-fort { font-size: 18px; font-weight: 700; }
 .pilote[data-pilote="noyaux"] .rd-ind { font-size: 16px; }
-.pilote[data-pilote="noyaux"] .prot { fill: var(--st-ink); stroke: var(--st-ink); }
+.pilote[data-pilote="noyaux"] .prot { fill: color-mix(in srgb, var(--st-ink) 72%, var(--st-bg)); stroke: var(--st-ink); }
 .pilote[data-pilote="noyaux"] .neut { fill: var(--st-cell); stroke: var(--st-ink); }
 .pilote[data-pilote="noyaux"] .elec { fill: var(--st-dim); }
 .pilote[data-pilote="noyaux"] .band { fill: var(--st-fa); }
@@ -53,3 +53,9 @@
 .pilote[data-pilote="noyaux"] .nx-copie p { margin: 0; }
 .dark .pilote[data-pilote="noyaux"] .nx-copie { background: var(--color-surface-container-high); }
 .pilote[data-pilote="noyaux"] .mot-carte svg text { font-family: var(--font-ui); }
+
+/* une formule plus large que le panneau se fait défiler au lieu d'être coupée (la dérivation le fait déjà) */
+.pilote[data-pilote="noyaux"] .formula .m { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding-bottom: 4px; font-size: 0.94em; }
+.pilote[data-pilote="noyaux"] .formula .m .katex-display { margin: 0; text-align: left; }
+.pilote[data-pilote="noyaux"] .apres .formula .m { font-size: 0.94em; }
+@media (max-width: 899px) { .pilote[data-pilote="noyaux"] .formula .m { font-size: 0.82em; } }

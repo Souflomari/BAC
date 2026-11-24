@@ -187,12 +187,23 @@ export const FISSION = {
   get elP() { return ELT("235U"); }, get elF1() { return ELT("94Sr"); }, get elF2() { return ELT("140Xe"); },
   get lib() { return this.elF1 + this.elF2 - this.elP; },         // environ 184,6 MeV
 };
+/** l'énergie libérée par la fission, telle que l'élève la calcule : les trois E_ℓ arrondies au dixième (184,6 MeV) */
+const r1o = (x) => Math.round(x * 10) / 10;
+export const FL_AFF = r1o(FISSION.elF1) + r1o(FISSION.elF2) - r1o(FISSION.elP);
 export const M_PROTON_U = MP_X;
 export const CINQUIEME = 0.2 * MP_X * UMEV;                       // 0,2 m_p c² ≈ 188 MeV : « environ 200 MeV » chez Meitner et Frisch
 export const N_GRAMME = (1 / 235) * NA;                           // noyaux d'uranium 235 dans 1 g
-export const E_GRAMME_J = N_GRAMME * 185 * MEV_J;                 // à 185 MeV par fission : environ 7,6 × 10¹⁰ J
-export const E_CARBONE_EV = (393.51e3 / NA) / EV_J;               // source 8 : environ 4,08 eV par molécule de CO₂
-export const FOIS_CHIMIE = (185e6) / E_CARBONE_EV;                // quarante millions de fois
+export const E_GRAMME_J = N_GRAMME * FL_AFF * MEV_J;              // à 184,6 MeV par fission : environ 7,6 × 10¹⁰ J
+export const E_CARBONE_EV = (393.51e3 / NA) / EV_J;               // source 8 : environ 4,08 eV par molécule de CO₂ formée
+export const FOIS_CHIMIE = (FL_AFF * 1e6) / E_CARBONE_EV;         // PAR RÉACTION : environ 45 millions de fois (une fission contre une molécule de CO₂)
+export const E_CARBONE_G = 393.51e3 / 12;                         // source 8 : 393,51 kJ par mole de CO₂, donc par mole de carbone (12 g) : environ 3,3 × 10⁴ J par gramme de carbone brûlé
+export const FOIS_GRAMME = E_GRAMME_J / E_CARBONE_G;              // PAR GRAMME : environ 2,3 millions de fois (1 g d'uranium 235 contre 1 g de carbone)
+export const MEITNER_MEV = 200;                                   // source 7 : « 200 MeV », estimation de Meitner et Frisch (1938)
+/** la masse perdue par le Soleil chaque seconde, en kg : L / c² (environ 4,3 milliards de kilogrammes) */
+export const KG_PAR_S = L_SOL / (C * C);
+export const E_MASSE_PROTON = MP_X * UMEV;                        // 938,3 MeV : l'énergie de masse d'un nucléon, pour juger un ΔE démesuré
+/** l'énergie de masse libérée si la part PART_SOLEIL de la masse du Soleil est changée en énergie, en joules */
+export const E_SOLEIL_J = PART_SOLEIL * M_SOL * C * C;
 
 /* ---------- les sujets (source 4) : valeurs imprimées, à ne citer qu'avec le sujet ---------- */
 /** sujet 2020 N, Exercice III, Q2 : niveaux imprimés 1,971 820 × 10⁵ ; 1,955 372 × 10⁵ ; 1,955 318 × 10⁵ MeV, écrits ici en entiers (unités de 0,1 MeV) pour éviter l'erreur des flottants */
@@ -205,6 +216,11 @@ export const S20 = {
   get dmU() { return this.elPo / this.u; },                      // 1,7659 u
   get dmKg() { return this.dmU * this.uKg; },                    // 2,93 × 10⁻²⁷ kg
 };
+/** sujet 2022 N, Exercice 2, partie 2, question 2 (0,5 pt) : ¹³¹I → ¹³¹Xe + β⁻ ; masses imprimées, 1 u = 931,5 MeV/c² */
+export const S22 = { mI: 130.906125, mXe: 130.905082, mB: 5.4858e-4, u: 931.5,
+  get dE() { return (this.mXe + this.mB - this.mI) * this.u; },          // −0,461 MeV (négatif : libérée)
+  get sansBeta() { return (this.mXe - this.mI) * this.u; },              // −0,972 MeV : la masse du β⁻ oubliée
+  get kg() { return (this.mXe + this.mB - this.mI) * 9e16; } };          // u pris pour des kg : sans sens, jamais un MeV
 /** sujet 2023 N, Exercice 2, §2 : E_ℓ en MeV (2,366 est la donnée du sujet) */
 export const S23 = { h2: 2.366, h3: 8.475, he: 28.296,
   get lib() { return Math.abs(this.h2 + this.h3 - this.he); },   // 17,455 MeV
