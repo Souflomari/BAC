@@ -158,6 +158,15 @@ contrôles verts, non liée depuis l'accueil. Elle s'appuie sur quatre sujets de
 vérifier » et sur les effectifs de Mendel pris dans des sources secondaires : rien de cela ne se
 montre aux élèves avant vérification. L'hérédité liée au sexe et la codominance restent à faire.
 
+**Sujets de SVT vérifiés (2026-11-24).** Un second lecteur a relu les vingt blocs du dossier des
+sujets de SVT sur les sources re-téléchargées : tous « vérifiés ». Conséquences : les barèmes et les
+pourcentages que cite `/pilote/transmission` (sujet 2022, exercice 2) concordent avec le corrigé
+imprimé ; ce verrou-là est levé, il lui reste les effectifs de Mendel. Pour `/pilote/meiose`, aucun
+exercice réel ne porte sur les phases et la courbe d'ADN : seuls des QCM et un vrai-faux de
+restitution existent ; ses deux exemples restent des exercices types, dits tels. Constaté sur les
+corrigés : les mots « tétrade », « bivalent » et « ségrégation indépendante » n'y figurent pas ; la
+filière PC écrit les phénotypes avec un point-virgule, la filière SVT avec une virgule.
+
 ## 5. Avant le lancement : les bloquants
 
 Inventaire vérifié dans le dépôt le 2026-11-23. Trois faits qui cadrent tout :
