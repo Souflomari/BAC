@@ -4,6 +4,7 @@ import { useState } from "react";
 import { MaquetteMeiose } from "./MaquetteMeiose";
 import { MaquetteDipoleRc } from "./MaquetteDipoleRc";
 import { MaquetteSuites } from "./MaquetteSuites";
+import { useHydrated } from "@/lib/useHydrated";
 import { ty } from "./outils";
 
 type OngletId = "meiose" | "dipole-rc" | "suites";
@@ -16,6 +17,16 @@ const ONGLETS: { id: OngletId; label: string; matiere: string }[] = [
 
 export function MaquettesPageView() {
   const [onglet, setOnglet] = useState<OngletId>("meiose");
+  // Aucune commande active dans le HTML prérendu (dom-truth) : les maquettes n'existent qu'une fois
+  // la page prise en main par React, on ne sert donc aucun bouton avant.
+  const pret = useHydrated();
+  if (!pret) {
+    return (
+      <p className="text-body-sm text-secondary" aria-busy="true">
+        {ty("Chargement des maquettes…")}
+      </p>
+    );
+  }
 
   return (
     <div className="mq-page space-y-6">
