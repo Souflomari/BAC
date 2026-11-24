@@ -1,7 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { clamp, frNum, ty, useReducedMotion } from "./outils";
+import { calculerJauge, clamp, creerRepere, frNum, SVG_FS, ty, useLectureAnimee } from "./outils";
 
 /**
  * Maquette 2 — Le dipôle RC : la charge du condensateur (les trois ensemble).
@@ -73,68 +72,24 @@ const INSTANTS = [
 ];
 
 export function MaquetteDipoleRc() {
-  const reducedMotion = useReducedMotion();
-  // Au repos : K ouvert (θ = -0.2), rien ne démarre seul
-  const [theta, setTheta] = useState(-0.2);
-  const [playing, setPlaying] = useState(false);
-  // Phase intégrée ∫ i(t)/I0 dt = 1 − e^{−θ} pour déplacer les porteurs exactement à la vitesse i(t) !
-  const rafRef = useRef<number | null>(null);
-  const lastTsRef = useRef<number | null>(null);
-
-  const stopAnim = useCallback(() => {
-    setPlaying(false);
-    lastTsRef.current = null;
-    if (rafRef.current != null) {
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = null;
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!playing) return;
-    const tick = (ts: number) => {
-      if (lastTsRef.current == null) lastTsRef.current = ts;
-      const dt = Math.min(0.06, (ts - lastTsRef.current) / 1000);
-      lastTsRef.current = ts;
-      setTheta((prev) => {
-        const next = prev < 0 ? prev + dt * 1.4 : prev + dt * 0.78;
-        if (next >= 5) {
-          setPlaying(false);
-          lastTsRef.current = null;
-          return 5;
-        }
-        return next;
-      });
-      rafRef.current = requestAnimationFrame(tick);
-    };
-    rafRef.current = requestAnimationFrame(tick);
-    return () => {
-      if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
-    };
-  }, [playing]);
-
-  const togglePlay = () => {
-    if (playing) {
-      stopAnim();
-      return;
-    }
-    if (reducedMotion) {
-      const nextPreset = INSTANTS.find((p) => p.theta > theta + 0.05) ?? INSTANTS[0];
-      setTheta(nextPreset.theta);
-      return;
-    }
-    if (theta >= 4.98) setTheta(-0.2);
-    lastTsRef.current = null;
-    setPlaying(true);
-  };
+  const {
+    valeur: theta,
+    playing,
+    reduced: reducedMotion,
+    togglePlay,
+    lancerVers,
+    fixer,
+  } = useLectureAnimee({
+    initial: -0.2,
+    min: -0.2,
+    max: 5,
+    vitesse: 0.78,
+    palierSuivant: (prev) => (INSTANTS.find((p) => p.theta > prev + 0.05) ?? INSTANTS[0]).theta,
+  });
 
   const rejouer = () => {
-    stopAnim();
-    setTheta(-0.2);
-    if (!reducedMotion) {
-      lastTsRef.current = null;
-      setPlaying(true);
-    }
+    if (reducedMotion) fixer(-0.2);
+    else lancerVers(5, -0.2);
   };
 
   const closed = theta >= 0;
@@ -146,52 +101,30 @@ export function MaquetteDipoleRc() {
   const uR = E_VOLT * currentFrac;
   const iMa = I0_MA * currentFrac;
   const qUc = QMAX_UC * chargeFrac;
+  const jaugeQ = calculerJauge(chargeFrac, 1, 360);
 
   // Déplacement cumulé des porteurs dans les fils : proportionnel à la charge intégrée ∫ i dt ∝ (1 − e^{−θ})
   // Si prefers-reduced-motion est actif, les porteurs restent fixes.
   const carrierShift = reducedMotion ? 0 : chargeFrac * 1.85;
 
-  // Coordonnées des deux chronogrammes synchronisés à droite (x ∈ [430, 728])
+  // Coordonnées des deux chronogrammes synchronisés à droite (x ∈ [442, 728])
   const GX0 = 442;
   const GX1 = 728;
   const GW = GX1 - GX0;
-  const xOf = (tNorm: number) => GX0 + (clamp(tNorm, 0, 5) / 5) * GW;
-
-  // Graphe haut : uC(t) ∈ [0, E], y ∈ [74, 214]
   const UY0 = 214;
   const UY1 = 80;
-  const yOfU = (uVal: number) => UY0 - (uVal / E_VOLT) * (UY0 - UY1);
-
-  // Graphe bas : i(t) ∈ [0, I0], y ∈ [294, 434]
   const IY0 = 434;
   const IY1 = 300;
-  const yOfI = (iVal: number) => IY0 - (iVal / I0_MA) * (IY0 - IY1);
+  const repU = creerRepere({ x0: GX0, y0: UY0, w: GW, h: UY0 - UY1, xMin: 0, xMax: 5, yMin: 0, yMax: E_VOLT });
+  const repI = creerRepere({ x0: GX0, y0: IY0, w: GW, h: IY0 - IY1, xMin: 0, xMax: 5, yMin: 0, yMax: I0_MA });
+  const xOf = repU.X;
+  const yOfU = repU.Y;
+  const yOfI = repI.Y;
 
-  // Construction des courbes déjà parcourues jusqu'à th
-  let pathU = "";
-  let pathI = "";
-  let pathGhostU = "";
-  let pathGhostI = "";
-  const STEPS = 75;
-  for (let k = 0; k <= STEPS; k++) {
-    const tk = (5 * k) / STEPS;
-    const xk = xOf(tk).toFixed(1);
-    const uk = yOfU(E_VOLT * (1 - Math.exp(-tk))).toFixed(1);
-    const ik = yOfI(I0_MA * Math.exp(-tk)).toFixed(1);
-    pathGhostU += `${k === 0 ? "M" : "L"}${xk} ${uk}`;
-    pathGhostI += `${k === 0 ? "M" : "L"}${xk} ${ik}`;
-  }
-  if (closed) {
-    const nLive = Math.max(1, Math.ceil((th / 5) * STEPS));
-    for (let k = 0; k <= nLive; k++) {
-      const tk = Math.min(th, (5 * k) / STEPS);
-      const xk = xOf(tk).toFixed(1);
-      const uk = yOfU(E_VOLT * (1 - Math.exp(-tk))).toFixed(1);
-      const ik = yOfI(I0_MA * Math.exp(-tk)).toFixed(1);
-      pathU += `${k === 0 ? "M" : "L"}${xk} ${uk}`;
-      pathI += `${k === 0 ? "M" : "L"}${xk} ${ik}`;
-    }
-  }
+  const pathGhostU = repU.tracerCourbe((t) => E_VOLT * (1 - Math.exp(-t)), 0, 5, 70);
+  const pathGhostI = repI.tracerCourbe((t) => I0_MA * Math.exp(-t), 0, 5, 70);
+  const pathU = closed ? repU.tracerCourbe((t) => E_VOLT * (1 - Math.exp(-t)), 0, Math.max(0.01, th), 60) : "";
+  const pathI = closed ? repI.tracerCourbe((t) => I0_MA * Math.exp(-t), 0, Math.max(0.01, th), 60) : "";
 
   // 6 emplacements de charges + sur A et − sur B
   const SLOTS = [-50, -30, -10, 10, 30, 50];
@@ -208,9 +141,9 @@ export function MaquetteDipoleRc() {
       </div>
 
       <div className="grid grid-cols-1 bp-large:grid-cols-12">
-        <div className="mq-stage-box px-2 py-2 bp-medium:px-4 bp-medium:py-4 bp-large:col-span-7 bp-large:border-b-0 bp-large:border-r bp-large:border-subtle">
+        <div className="mq-stage-box px-1 py-2 bp-medium:px-4 bp-medium:py-4 bp-large:col-span-7 bp-large:border-b-0 bp-large:border-r bp-large:border-subtle">
           <svg
-            viewBox="0 0 760 510"
+            viewBox="0 0 760 500"
             className="mq-svg"
             role="img"
             aria-label={ty(
@@ -227,10 +160,10 @@ export function MaquetteDipoleRc() {
             </defs>
 
             {/* En-tête : valeurs numériques en direct */}
-            <text x={20} y={34} fontSize={23} fontWeight={700} className="mq-f-ink mq-mono">
+            <text x={20} y={34} fontSize={SVG_FS} fontWeight={700} className="mq-f-ink mq-mono">
               {closed ? `t = ${frNum(th, 2)} τ (${frNum(th * TAU_S, 2)} s)` : ty("K ouvert (repos)")}
             </text>
-            <text x={740} y={34} textAnchor="end" fontSize={23} className="mq-f-sec mq-mono">
+            <text x={740} y={34} textAnchor="end" fontSize={SVG_FS} className="mq-f-sec mq-mono">
               {`uC = ${frNum(uC, 2)} V · i = ${frNum(iMa, 2)} mA`}
             </text>
 
@@ -243,7 +176,7 @@ export function MaquetteDipoleRc() {
             {/* Générateur idéal de tension E */}
             <circle cx={64} cy={270} r={30} className="mq-f-stage mq-s-ink" strokeWidth={3} />
             <line x1={30} y1={296} x2={30} y2={244} className="mq-s-ink" strokeWidth={2.5} markerEnd="url(#mq-arw-ink)" />
-            <text x={14} y={278} fontSize={23} fontWeight={700} className="mq-f-ink">
+            <text x={14} y={278} fontSize={SVG_FS} fontWeight={700} className="mq-f-ink">
               E
             </text>
 
@@ -259,13 +192,13 @@ export function MaquetteDipoleRc() {
               strokeWidth={4}
               strokeLinecap="round"
             />
-            <text x={143} y={74} textAnchor="middle" fontSize={23} fontWeight={700} className="mq-f-sig">
+            <text x={143} y={74} textAnchor="middle" fontSize={SVG_FS} fontWeight={700} className="mq-f-sig">
               K
             </text>
 
             {/* Conducteur ohmique R */}
             <rect x={188} y={92} width={68} height={32} className="mq-f-stage mq-s-ink" strokeWidth={3} />
-            <text x={222} y={116} textAnchor="middle" fontSize={23} fontWeight={700} className="mq-f-ink">
+            <text x={222} y={116} textAnchor="middle" fontSize={SVG_FS} fontWeight={700} className="mq-f-ink">
               R
             </text>
 
@@ -273,10 +206,10 @@ export function MaquetteDipoleRc() {
             <rect x={226} y={255} width={128} height={30} className="mq-f-ink-soft" />
             <line x1={226} y1={252} x2={354} y2={252} className="mq-s-ink" strokeWidth={5} />
             <line x1={226} y1={288} x2={354} y2={288} className="mq-s-ink" strokeWidth={5} />
-            <text x={214} y={258} textAnchor="end" fontSize={23} fontWeight={700} className="mq-f-ink">
+            <text x={214} y={258} textAnchor="end" fontSize={SVG_FS} fontWeight={700} className="mq-f-ink">
               A
             </text>
-            <text x={214} y={296} textAnchor="end" fontSize={23} fontWeight={700} className="mq-f-ink">
+            <text x={214} y={296} textAnchor="end" fontSize={SVG_FS} fontWeight={700} className="mq-f-ink">
               B
             </text>
 
@@ -300,10 +233,10 @@ export function MaquetteDipoleRc() {
               const op = clamp(chargeFrac * SLOTS.length - j, 0, 1);
               return (
                 <g key={dx} opacity={op}>
-                  <text x={290 + dx} y={244} textAnchor="middle" fontSize={23} fontWeight={700} className="mq-f-sig mq-sans-halo">
+                  <text x={290 + dx} y={244} textAnchor="middle" fontSize={SVG_FS} fontWeight={700} className="mq-f-sig mq-sans-halo">
                     +
                   </text>
-                  <text x={290 + dx} y={311} textAnchor="middle" fontSize={23} fontWeight={700} className="mq-f-ink mq-sans-halo">
+                  <text x={290 + dx} y={311} textAnchor="middle" fontSize={SVG_FS} fontWeight={700} className="mq-f-ink mq-sans-halo">
                     −
                   </text>
                 </g>
@@ -322,7 +255,7 @@ export function MaquetteDipoleRc() {
                   strokeWidth={2 + 3.5 * currentFrac}
                   markerEnd="url(#mq-arw-sig)"
                 />
-                <text x={326} y={175} fontSize={23} fontWeight={700} className="mq-f-sig">
+                <text x={326} y={175} fontSize={SVG_FS} fontWeight={700} className="mq-f-sig">
                   i(t)
                 </text>
               </g>
@@ -340,18 +273,18 @@ export function MaquetteDipoleRc() {
                   strokeWidth={3.5}
                   markerEnd="url(#mq-arw-ink)"
                 />
-                <text x={382} y={278} fontSize={23} fontWeight={700} className="mq-f-ink">
+                <text x={382} y={278} fontSize={SVG_FS} fontWeight={700} className="mq-f-ink">
                   uC
                 </text>
               </g>
             )}
 
             {/* Jauge de charge qA */}
-            <text x={20} y={456} fontSize={23} className="mq-f-sec mq-mono">
-              {`qA = +${Math.round(qUc)} µC (${Math.round(chargeFrac * 100)} %)`}
+            <text x={20} y={456} fontSize={SVG_FS} className="mq-f-sec mq-mono">
+              {`qA = +${Math.round(qUc)} µC (${jaugeQ.pctEntier} %)`}
             </text>
             <rect x={20} y={468} width={360} height={16} className="mq-f-panel mq-s-line" strokeWidth={1.5} />
-            <rect x={20} y={468} width={360 * chargeFrac} height={16} className="mq-f-sig" />
+            <rect x={20} y={468} width={closed ? jaugeQ.largeur : 0} height={16} className="mq-f-sig" />
 
             {/* ==================== DROITE : DEUX CHRONOGRAMMES LIÉS ==================== */}
             <line x1={GX0} y1={UY0} x2={GX1} y2={UY0} className="mq-s-line" strokeWidth={1.8} />
@@ -360,10 +293,10 @@ export function MaquetteDipoleRc() {
             <line x1={GX0} y1={UY0} x2={xOf(1)} y2={UY1} className="mq-s-subtle" strokeWidth={1.5} strokeDasharray="3 4" />
             <path d={pathGhostU} className="mq-nofill mq-s-subtle" strokeWidth={2} />
             {closed && <path d={pathU} className="mq-nofill mq-s-ink" strokeWidth={3.8} />}
-            <text x={GX0 - 8} y={UY1 + 7} textAnchor="end" fontSize={23} className="mq-f-sec mq-mono">
+            <text x={GX0 - 8} y={UY1 + 7} textAnchor="end" fontSize={SVG_FS} className="mq-f-sec mq-mono">
               E
             </text>
-            <text x={GX1} y={UY1 + 26} textAnchor="end" fontSize={23} fontWeight={700} className="mq-f-ink">
+            <text x={GX1} y={UY1 + 26} textAnchor="end" fontSize={SVG_FS} fontWeight={700} className="mq-f-ink">
               {ty("uC(t) monte")}
             </text>
 
@@ -371,18 +304,18 @@ export function MaquetteDipoleRc() {
             <line x1={GX0} y1={IY1 - 10} x2={GX0} y2={IY0} className="mq-s-line" strokeWidth={1.8} />
             <path d={pathGhostI} className="mq-nofill mq-s-subtle" strokeWidth={2} />
             {closed && <path d={pathI} className="mq-nofill mq-s-sig" strokeWidth={3.8} />}
-            <text x={GX0 - 8} y={IY1 + 8} textAnchor="end" fontSize={23} className="mq-f-sig mq-mono">
+            <text x={GX0 - 8} y={IY1 + 8} textAnchor="end" fontSize={SVG_FS} className="mq-f-sig mq-mono">
               I0
             </text>
-            <text x={GX1} y={IY1 + 28} textAnchor="end" fontSize={23} fontWeight={700} className="mq-f-sig">
+            <text x={GX1} y={IY1 + 28} textAnchor="end" fontSize={SVG_FS} fontWeight={700} className="mq-f-sig">
               {ty("i(t) faiblit")}
             </text>
 
             <line x1={xOf(1)} y1={UY1} x2={xOf(1)} y2={IY0 + 6} className="mq-s-subtle" strokeWidth={1.4} strokeDasharray="4 4" />
-            <text x={xOf(1)} y={IY0 + 28} textAnchor="middle" fontSize={23} className="mq-f-sec mq-mono">
+            <text x={xOf(1)} y={IY0 + 28} textAnchor="middle" fontSize={SVG_FS} className="mq-f-sec mq-mono">
               τ
             </text>
-            <text x={GX1} y={IY0 + 28} textAnchor="end" fontSize={23} className="mq-f-sec mq-mono">
+            <text x={GX1} y={IY0 + 28} textAnchor="end" fontSize={SVG_FS} className="mq-f-sec mq-mono">
               5τ
             </text>
 
@@ -436,8 +369,7 @@ export function MaquetteDipoleRc() {
                   type="button"
                   aria-pressed={Math.abs(theta - inst.theta) < 0.12}
                   onClick={() => {
-                    stopAnim();
-                    setTheta(inst.theta);
+                    fixer(inst.theta);
                   }}
                   className="mq-seg px-2.5"
                 >
@@ -461,8 +393,7 @@ export function MaquetteDipoleRc() {
                 step={0.02}
                 value={theta}
                 onChange={(e) => {
-                  stopAnim();
-                  setTheta(Number(e.target.value));
+                  fixer(Number(e.target.value));
                 }}
                 className="mq-slider"
               />

@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { clamp, frNum, lerp, ty, useReducedMotion } from "./outils";
+import { useMemo, useState } from "react";
+import { calculerJauge, clamp, creerRepere, frNum, lerp, SVG_FS, ty, useLectureAnimee } from "./outils";
 
 /**
  * Maquette 3 — L'escalier d'une suite récurrente u_{n+1} = f(u_n) :
@@ -61,54 +61,27 @@ const MODES: Record<ModeId, ModeConfig> = {
 const FIXE = 3.0;
 
 export function MaquetteSuites() {
-  const reducedMotion = useReducedMotion();
   const [modeId, setModeId] = useState<ModeId>("converge");
   const [cote, setCote] = useState<"gauche" | "droite">("gauche");
-  // Au repos : k = 0 (seul u0 est posé sur l'axe des abscisses)
-  const [k, setK] = useState(0);
-  const [playing, setPlaying] = useState(false);
-  const targetRef = useRef<number | null>(null);
-  const rafRef = useRef<number | null>(null);
-  const lastTsRef = useRef<number | null>(null);
 
   const cfg = MODES[modeId];
   const u0 = cote === "gauche" ? cfg.u0Gauche : cfg.u0Droite;
   const maxK = cfg.maxMarches;
 
-  const stopAnim = useCallback(() => {
-    setPlaying(false);
-    targetRef.current = null;
-    lastTsRef.current = null;
-    if (rafRef.current != null) {
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = null;
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!playing) return;
-    const tick = (ts: number) => {
-      if (lastTsRef.current == null) lastTsRef.current = ts;
-      const dt = Math.min(0.06, (ts - lastTsRef.current) / 1000);
-      lastTsRef.current = ts;
-      setK((prev) => {
-        const limit = targetRef.current ?? maxK;
-        const next = prev + dt * 0.95;
-        if (next >= limit) {
-          setPlaying(false);
-          targetRef.current = null;
-          lastTsRef.current = null;
-          return limit;
-        }
-        return next;
-      });
-      rafRef.current = requestAnimationFrame(tick);
-    };
-    rafRef.current = requestAnimationFrame(tick);
-    return () => {
-      if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
-    };
-  }, [playing, maxK]);
+  const {
+    valeur: k,
+    playing,
+    reduced: reducedMotion,
+    togglePlay,
+    lancerVers,
+    fixer,
+  } = useLectureAnimee({
+    initial: 0,
+    min: 0,
+    max: maxK,
+    vitesse: 0.95,
+    palierSuivant: (prev) => Math.min(maxK, Math.floor(prev) + 1),
+  });
 
   const termes = useMemo(() => {
     const arr = [u0];
@@ -119,47 +92,24 @@ export function MaquetteSuites() {
   }, [cfg, u0, maxK]);
 
   const changerMode = (nextMode: ModeId, nextCote?: "gauche" | "droite") => {
-    stopAnim();
     setModeId(nextMode);
     if (nextCote) setCote(nextCote);
     else if (nextMode === "diverge" && cote === "gauche") setCote("droite");
-    setK(0);
+    fixer(0);
   };
 
   const avancerPas = (delta: number) => {
     const dest = clamp(Math.round((k + delta) * 2) / 2, 0, maxK);
-    stopAnim();
     if (reducedMotion || dest <= k) {
-      setK(dest);
+      fixer(dest);
       return;
     }
-    targetRef.current = dest;
-    setPlaying(true);
-  };
-
-  const togglePlay = () => {
-    if (playing) {
-      stopAnim();
-      return;
-    }
-    if (reducedMotion) {
-      setK((prev) => (prev >= maxK ? 0 : Math.min(maxK, Math.floor(prev) + 1)));
-      return;
-    }
-    if (k >= maxK - 0.02) setK(0);
-    targetRef.current = maxK;
-    lastTsRef.current = null;
-    setPlaying(true);
+    lancerVers(dest);
   };
 
   const rejouer = () => {
-    stopAnim();
-    setK(0);
-    if (!reducedMotion) {
-      targetRef.current = maxK;
-      lastTsRef.current = null;
-      setPlaying(true);
-    }
+    if (reducedMotion) fixer(0);
+    else lancerVers(maxK, 0);
   };
 
   // Repère CARRÉ strictement orthonormé dans le SVG 760 × 500 : carré 358 × 358 px pour [0 ; 6,2]²
@@ -167,8 +117,9 @@ export function MaquetteSuites() {
   const Y0 = 434;
   const SIZE = 358;
   const MAX_VAL = 6.2;
-  const X = (val: number) => X0 + (val / MAX_VAL) * SIZE;
-  const Y = (val: number) => Y0 - (val / MAX_VAL) * SIZE;
+  const rep = creerRepere({ x0: X0, y0: Y0, w: SIZE, h: SIZE, xMin: 0, xMax: MAX_VAL, yMin: 0, yMax: MAX_VAL });
+  const X = rep.X;
+  const Y = rep.Y;
 
   // Sommets de l'escalier : V[0] = (u0, 0), V[1] = (u0, u1), V[2] = (u1, u1), V[3] = (u1, u2), ...
   const sommets: [number, number][] = [[termes[0], 0]];
@@ -199,15 +150,7 @@ export function MaquetteSuites() {
     }
   }
 
-  // Courbe y = f(x) bornée au cadre [0 ; 6,2]
-  let curvePath = "";
-  for (let i = 0; i <= 80; i++) {
-    const xv = (MAX_VAL * i) / 80;
-    const yv = cfg.fn(xv);
-    if (yv >= -0.2 && yv <= MAX_VAL + 0.2) {
-      curvePath += `${curvePath ? "L" : "M"} ${X(xv).toFixed(1)} ${Y(clamp(yv, 0, MAX_VAL)).toFixed(1)} `;
-    }
-  }
+  const curvePath = rep.tracerCourbe(cfg.fn, 0, MAX_VAL, 80);
 
   const indiceActuel = Math.min(maxK, Math.floor(k + 0.001));
   const uCourant = termes[indiceActuel];
@@ -226,7 +169,7 @@ export function MaquetteSuites() {
       </div>
 
       <div className="grid grid-cols-1 bp-large:grid-cols-12">
-        <div className="mq-stage-box px-2 py-2 bp-medium:px-4 bp-medium:py-4 bp-large:col-span-7 bp-large:border-b-0 bp-large:border-r bp-large:border-subtle">
+        <div className="mq-stage-box px-1 py-2 bp-medium:px-4 bp-medium:py-4 bp-large:col-span-7 bp-large:border-b-0 bp-large:border-r bp-large:border-subtle">
           <svg
             viewBox="0 0 760 500"
             className="mq-svg"
@@ -242,10 +185,10 @@ export function MaquetteSuites() {
             </defs>
 
             {/* En-tête */}
-            <text x={20} y={34} fontSize={23} fontWeight={700} className="mq-f-ink">
+            <text x={20} y={34} fontSize={SVG_FS} fontWeight={700} className="mq-f-ink">
               {ty(cfg.formule)}
             </text>
-            <text x={740} y={34} textAnchor="end" fontSize={23} className="mq-f-sig mq-mono">
+            <text x={740} y={34} textAnchor="end" fontSize={SVG_FS} className="mq-f-sig mq-mono">
               {ty(cfg.pente)}
             </text>
 
@@ -261,14 +204,14 @@ export function MaquetteSuites() {
                   x={X(v)}
                   y={Y0 + 28}
                   textAnchor="middle"
-                  fontSize={23}
+                  fontSize={SVG_FS}
                   fontWeight={v === 3 ? 700 : 400}
                   className={v === 3 ? "mq-f-ink mq-mono" : "mq-f-dim mq-mono"}
                 >
                   {v === 3 ? "ℓ=3" : String(v)}
                 </text>
                 <line x1={X0 - 6} y1={Y(v)} x2={X0} y2={Y(v)} className="mq-s-dim" strokeWidth={1.6} />
-                <text x={X0 - 10} y={Y(v) + 8} textAnchor="end" fontSize={23} className="mq-f-dim mq-mono">
+                <text x={X0 - 10} y={Y(v) + 8} textAnchor="end" fontSize={SVG_FS} className="mq-f-dim mq-mono">
                   {String(v)}
                 </text>
               </g>
@@ -302,7 +245,7 @@ export function MaquetteSuites() {
               x={modeId === "converge" ? X(5.45) : X(6.05)}
               y={modeId === "converge" ? Y(5.68) : Y(5.45)}
               textAnchor="end"
-              fontSize={23}
+              fontSize={SVG_FS}
               className="mq-f-sec"
             >
               y = x
@@ -311,7 +254,7 @@ export function MaquetteSuites() {
               x={modeId === "converge" ? X(5.9) : X(4.35)}
               y={modeId === "converge" ? Y(cfg.fn(5.9)) - 12 : Y(5.85)}
               textAnchor="end"
-              fontSize={23}
+              fontSize={SVG_FS}
               fontWeight={700}
               className="mq-f-ink"
             >
@@ -353,10 +296,10 @@ export function MaquetteSuites() {
             )}
 
             {/* ==================== DROITE : LECTURE DES TERMES & ÉCART |u_n − ℓ| ==================== */}
-            <text x={436} y={88} fontSize={23} fontWeight={700} className="mq-f-ink">
+            <text x={436} y={88} fontSize={SVG_FS} fontWeight={700} className="mq-f-ink">
               {ty("Geste en cours")}
             </text>
-            <text x={436} y={118} fontSize={23} className="mq-f-sig">
+            <text x={436} y={118} fontSize={SVG_FS} className="mq-f-sig">
               {ty(
                 segTotal === 0
                   ? `Départ : u0 = ${frNum(u0, 2)}`
@@ -370,37 +313,36 @@ export function MaquetteSuites() {
 
             <line x1={436} y1={136} x2={740} y2={136} className="mq-s-subtle" strokeWidth={1.5} />
 
-            <text x={436} y={168} fontSize={23} fontWeight={700} className="mq-f-ink">
+            <text x={436} y={168} fontSize={SVG_FS} fontWeight={700} className="mq-f-ink">
               {ty("Écart |un − 3|")}
             </text>
 
             {/* Barres comparatives d'écart pour n = 0 .. maxK */}
             {termes.slice(0, maxK + 1).map((val, idx) => {
               const dist = Math.abs(val - FIXE);
-              const barMax = 2.8;
-              const w = clamp(dist / barMax, 0, 1) * 165;
+              const bar = calculerJauge(dist, 2.8, 165);
               const yRow = 198 + idx * 35;
               const actif = idx <= indiceActuel;
               return (
                 <g key={idx} opacity={actif ? 1 : 0.28}>
-                  <text x={436} y={yRow + 18} fontSize={23} className="mq-f-ink mq-mono">
+                  <text x={436} y={yRow + 18} fontSize={SVG_FS} className="mq-f-ink mq-mono">
                     {`u${idx}`}
                   </text>
                   <rect
                     x={478}
                     y={yRow + 2}
-                    width={Math.max(3, w)}
+                    width={bar.largeur}
                     height={18}
                     className={idx === indiceActuel ? "mq-f-sig" : "mq-f-ink"}
                   />
-                  <text x={740} y={yRow + 18} textAnchor="end" fontSize={23} className="mq-f-sec mq-mono">
+                  <text x={740} y={yRow + 18} textAnchor="end" fontSize={SVG_FS} className="mq-f-sec mq-mono">
                     {frNum(dist, 2)}
                   </text>
                 </g>
               );
             })}
 
-            <text x={436} y={468} fontSize={23} className="mq-f-sec">
+            <text x={436} y={468} fontSize={SVG_FS} className="mq-f-sec">
               {ty(modeId === "converge" ? "Écart ÷ 2 par marche" : "Écart × 1,75 par marche")}
             </text>
           </svg>
@@ -456,9 +398,8 @@ export function MaquetteSuites() {
                 type="button"
                 aria-pressed={cote === "gauche"}
                 onClick={() => {
-                  stopAnim();
                   setCote("gauche");
-                  setK(0);
+                  fixer(0);
                 }}
                 className="mq-seg"
               >
@@ -468,9 +409,8 @@ export function MaquetteSuites() {
                 type="button"
                 aria-pressed={cote === "droite"}
                 onClick={() => {
-                  stopAnim();
                   setCote("droite");
-                  setK(0);
+                  fixer(0);
                 }}
                 className="mq-seg"
               >
@@ -493,8 +433,7 @@ export function MaquetteSuites() {
                 step={0.05}
                 value={k}
                 onChange={(e) => {
-                  stopAnim();
-                  setK(Number(e.target.value));
+                  fixer(Number(e.target.value));
                 }}
                 className="mq-slider"
               />
