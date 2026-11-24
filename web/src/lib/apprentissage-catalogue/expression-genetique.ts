@@ -46,7 +46,7 @@ export const EXPRESSION_GENETIQUE: CatalogueLecon = {
     "v-transcription": { capacites: TRANS, juste: 1, options: [{ t: "3′-CAA UGA-5′", e: "gen.brin-transcrit" }, { t: "5′-GUU ACU-3′", e: "aucune" }, { t: "5′-GTT ACT-3′", e: "gen.t-dans-arn" }] },
     alphabet: { capacites: [], juste: 2, options: [{ t: "1 base", e: "aucune" }, { t: "2 bases", e: "aucune" }, { t: "3 bases", e: "aucune" }] },
     nirenberg: { capacites: [], juste: null, options: [{ t: "Rien : ce n’est pas un vrai gène", e: "aucune" }, { t: "Une chaîne d’un seul acide aminé", e: "aucune" }, { t: "Une protéine au hasard", e: "aucune" }] },
-    "v-code": { capacites: CODE, juste: 0, options: [{ t: "Met – Val – His", e: "aucune" }, { t: "Met – Val – His – Stop", e: "gen.codon-stop" }, { t: "Val – His", e: "gen.codon-initiation" }] },
+    "v-code": { capacites: CODE, juste: 0, options: [{ t: "Met – Val – His", e: "aucune" }, { t: "Met – Val – His – Stop", e: "gen.codon-stop" }, { t: "Val – His", e: "inattention" }] },
     rappel: { capacites: TRANS, juste: 0, options: [{ t: "AUG", e: "aucune" }, { t: "UAC", e: "gen.brin-transcrit" }, { t: "ATG", e: "gen.t-dans-arn" }] },
     "pari-aa": { capacites: [], juste: null, options: [{ t: "Le ribosome les fabrique", e: "aucune" }, { t: "Ils sont déjà dans le cytoplasme", e: "aucune" }, { t: "L’ARNm les apporte", e: "aucune" }] },
     stop: { capacites: SYNTH, juste: 0, options: [{ t: "La chaîne est libérée", e: "aucune" }, { t: "Un ARNt apporte un acide aminé «", e: "gen.codon-stop" }, { t: "Le ribosome saute ce codon et co", e: "gen.codon-stop" }] },
@@ -102,7 +102,7 @@ export const EXPRESSION_GENETIQUE: CatalogueLecon = {
       erreurs: {
         "lire avant le codon d’initiation": "gen.codon-initiation",
         "lire après le codon stop": "gen.codon-stop",
-        "oublier la méthionine": "gen.codon-initiation",
+        "oublier la méthionine": "inattention",
         "compter le codon stop comme un acide aminé": "gen.codon-stop",
       },
     },

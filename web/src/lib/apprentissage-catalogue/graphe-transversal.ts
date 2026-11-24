@@ -23,7 +23,9 @@
  *
  * 2026-11-24, avec les catalogues des huit autres leçons : 45 conceptions ajoutées (marquées
  * « ajoutées avec le catalogue de la leçon »), chacune parce que plusieurs leurres ou libellés
- * d'exercices la nomment et qu'aucune conception du registre ne la disait. Aucune arête ajoutée.
+ * d'exercices la nomment et qu'aucune conception du registre ne la disait. Relecture du même jour :
+ * 3 fusions, 1 conception créée (meiose.division-i-mitose), 4 arêtes ajoutées, 5 retirées
+ * (jugées fausses), 1 réorientée.
  */
 import type { Arete, Conception, Matiere } from "../apprentissage";
 
@@ -48,7 +50,7 @@ const BIBLE_LN = "docs/bible/01-maths.md A6 (conceptions erronées)";
 export const CONCEPTIONS: Conception[] = [
   // ── logarithme (catalogue complet : apprentissage-catalogue/logarithme.ts) ──
   { id: "ln.produit-en-produit", lecon: "logarithme", libelle: "ln d’un produit écrit comme un produit de ln", capacites: REGLES, etapes: ["r-prod", "retour"], source: BIBLE_LN },
-  { id: "ln.somme-en-somme", lecon: "logarithme", libelle: "ln d’une somme découpé comme une somme de ln", capacites: REGLES, etapes: ["r-somme"], source: BIBLE_LN },
+  { id: "ln.somme-en-somme", lecon: "logarithme", libelle: "ln d’une somme ou d’une différence découpé en somme ou différence de ln", capacites: REGLES, etapes: ["r-somme"], source: BIBLE_LN },
   { id: "ln.quotient-en-quotient", lecon: "logarithme", libelle: "ln d’un quotient écrit comme un quotient de ln", capacites: REGLES, etapes: ["r-quotient"], exercices: [["suites", "seuil-ln", "ln(a/b) = ln a / ln b"]], source: "logarithme.js ln-quotient ; suites.js seuil-ln" },
   { id: "ln.exposant-reste-puissance", lecon: "logarithme", libelle: "l’exposant laissé en puissance au lieu de descendre devant ln", capacites: REGLES, etapes: ["r-puissance", "r-puissance2"], source: "logarithme.js ln-produit-puissance" },
   { id: "ln.inverse-mal-traite", lecon: "logarithme", libelle: "ln de l’inverse pris pour l’inverse de ln, ou son signe oublié", capacites: REGLES, etapes: ["r-puissance2"], source: "logarithme.js ln-quotient, ln-simplifier" },
@@ -57,7 +59,7 @@ export const CONCEPTIONS: Conception[] = [
   { id: "ln.inegalite-stricte", lecon: "logarithme", libelle: "ln demande un nombre strictement positif : > et non ≥", capacites: RESOUDRE, etapes: ["domaine"], source: "logarithme.js ln-domaine" },
   { id: "ln.signe-sur-0-1", lecon: "logarithme", libelle: "ln est négatif entre 0 et 1", capacites: ETUDE, etapes: ["gauche", "croissance"], source: `${BIBLE_LN} : « ln x < 0 pour 0 < x < 1 : souvent oublié »` },
   { id: "ln.zero-et-un", lecon: "logarithme", libelle: "ln vaut 0 en 1, pas en 0", capacites: REGLES, etapes: ["reve"], source: "logarithme.js ln-signe ; leçon, étape v-regle" },
-  { id: "ln.croissance-renversee", lecon: "logarithme", libelle: "ln est croissante : elle garde le sens d’une inégalité", capacites: RESOUDRE, etapes: ["croissance", "croissance-2"], source: "logarithme.js ln-inequation, log-decimal" },
+  { id: "ln.croissance-renversee", lecon: "logarithme", libelle: "ln et exp sont croissantes : elles gardent le sens d’une inégalité", capacites: [...RESOUDRE, ...EXP], etapes: ["croissance", "croissance-2"], exercices: [["exponentielle", "exp-inequation", "sens renversé sans raison"]], source: "logarithme.js ln-inequation, log-decimal ; exponentielle.js exp-inequation ; leçon exponentielle, étapes ek-ineq, inequation (fb « exp est croissante : elle garde l’ordre ») ; fusion de exp.croissance-renversee (relecture 2026-11-24)" },
   { id: "ln.nombre-et-logarithme", lecon: "logarithme", libelle: "un nombre confondu avec son logarithme (les valeurs et les pas)", capacites: RESOUDRE, etapes: ["table", "nom"], source: "logarithme.js ln-systeme, ln-simplifier ; leçon, étapes v-table, v-trous" },
   { id: "ln.argument-oublie", lecon: "logarithme", libelle: "raisonner sur x au lieu de ce qui est dans le ln", capacites: RESOUDRE, etapes: ["v-courbe"], source: "logarithme.js ln-signe" },
   { id: "ln.derivee", lecon: "logarithme", libelle: "la dérivée de ln u est u′/u", capacites: ETUDE, source: "logarithme.js ln-derivee, ln-etude" },
@@ -72,19 +74,18 @@ export const CONCEPTIONS: Conception[] = [
   { id: "etude.signe-sans-minimum", lecon: "logarithme", libelle: "le signe d’une fonction conclu sans son minimum", capacites: ETUDE, source: "logarithme.js ln-etude" },
   { id: "prim.facteur-oublie", lecon: "logarithme", libelle: "le facteur devant ln|u| oublié dans une primitive", capacites: ["maths-sexp 1.2.15", "maths-sm 1.3.8"], source: "logarithme.js ln-primitive" },
   { id: "prim.derivee-primitive", lecon: "logarithme", libelle: "dérivée et primitive confondues", capacites: ["maths-sexp 1.2.15", "maths-sm 1.3.8"], source: "logarithme.js ln-primitive" },
-  { id: "graphe.pente-hauteur", lecon: "logarithme", libelle: "la pente d’une courbe confondue avec sa hauteur", capacites: ETUDE, etapes: ["pente", "derivee"], exercices: [["exponentielle", "exp-tangente", "pente a au lieu de eᵃ"], ["exponentielle", "exp-tangente", "ordonnée eᵃ oubliée"]], source: "logarithme.js ln-tangente ; leçon, étape pente ; exponentielle.js exp-tangente" },
+  { id: "graphe.pente-hauteur", lecon: "logarithme", libelle: "la pente d’une courbe confondue avec sa hauteur", capacites: ETUDE, etapes: ["pente", "derivee"], source: "logarithme.js ln-tangente ; leçon, étape pente" },
   { id: "deriv.u-prime-oublie", lecon: "logarithme", libelle: "la dérivée de l’intérieur oubliée en dérivant une composée", capacites: ["maths-sexp 1.2.6", "maths-sm 1.3.16"], exercices: [["exponentielle", "exp-derivee", "(e^u)′ = e^u"]], source: "logarithme.js ln-derivee ; exponentielle.js exp-derivee ; bible 01 A6 prérequis « dérivée d’une fonction composée »" },
   { id: "puiss.exposants-multiplies", lecon: "logarithme", libelle: "les exposants multipliés au lieu d’être additionnés", capacites: [], etapes: ["savoir", "sav-rappel"], source: "bible 01 A6 prérequis « 2³ × 2⁴ ? » ; leçon, étape savoir" },
   { id: "puiss.bases-multipliees", lecon: "logarithme", libelle: "les bases multipliées dans un produit de puissances", capacites: [], etapes: ["savoir", "sav-rappel"], source: "leçon, étape savoir" },
 
   // ── exponentielle (leçon en correction : exercices seulement) ──
-  { id: "exp.exposant-facteur", lecon: "exponentielle", libelle: "un facteur dans l’exposant lu comme un facteur devant : e^{2x} lu 2eˣ", capacites: EXP, exercices: [["exponentielle", "exp-trinome", "e^{2x} = 2eˣ"], ["exponentielle", "exp-ln-retour", "e^{k ln a} = ka"]], source: "docs/refonte/specs/fonction-exponentielle.md (vérifie e2x, l. 262 ; tableau l. 401)" },
+  { id: "exp.exposant-facteur", lecon: "exponentielle", libelle: "un exposant lu comme un facteur : e^{2x} lu 2eˣ, eˣ lu e × x, (eᵃ)ⁿ lu n·eᵃ", capacites: EXP, exercices: [["exponentielle", "exp-trinome", "e^{2x} = 2eˣ"], ["exponentielle", "exp-ln-retour", "e^{k ln a} = ka"]], source: "docs/refonte/specs/fonction-exponentielle.md (vérifie e2x, l. 262 ; tableau l. 401)" },
   { id: "exp.produit-exposants", lecon: "exponentielle", libelle: "eᵃ × eᵇ écrit e^{ab} au lieu de e^{a+b}", capacites: EXP, exercices: [["exponentielle", "exp-regles", "eᵃeᵇ = e^{ab}"]], source: "exponentielle.js exp-regles" },
   { id: "exp.somme-en-somme", lecon: "exponentielle", libelle: "exp d’une somme découpée en somme d’exp", capacites: EXP, exercices: [["exponentielle", "exp-regles", "e^{a+b} = eᵃ + eᵇ"], ["exponentielle", "exp-systeme", "eˣ + eʸ = e^{x+y}"]], source: "docs/bible/01-maths.md A7 : « e^{a+b} = eᵃ + eᵇ »" },
   { id: "exp.t-negatif", lecon: "exponentielle", libelle: "une valeur négative gardée pour eˣ, qui est toujours positive", capacites: EXP, exercices: [["exponentielle", "exp-trinome", "garder t < 0"], ["exponentielle", "exp-equation", "x = ln(−k) quand k ≤ 0"]], source: "docs/refonte/specs/fonction-exponentielle.md (exp-trinome, l. 462) ; bible A7 « eˣ > 0 oublié » ; libellés tels que les tirages les produisent (la liste `erreurs` du gabarit en écrit une forme plus longue)" },
 
   // ajoutées avec le catalogue de la leçon (2026-11-24) : chacune nommée par au moins deux leurres ou libellés
-  { id: "exp.croissance-renversee", lecon: "exponentielle", libelle: "exp est croissante : elle garde le sens d’une inégalité", capacites: EXP, exercices: [["exponentielle", "exp-inequation", "sens renversé sans raison"]], source: "exponentielle.js exp-inequation ; leçon, étapes ek-ineq, inequation (fb « exp est croissante : elle garde l’ordre »)" },
   { id: "exp.conditions-ajoutees", lecon: "exponentielle", libelle: "des conditions d’existence ajoutées pour exp, qui existe sur ℝ (le réflexe de ln transféré)", capacites: EXP, exercices: [["exponentielle", "exp-inequation", "conditions d’existence ajoutées"]], source: "exponentielle.js exp-inequation ; leçon, étape inequation (fb « Tu as transféré le réflexe de ln »)" },
   { id: "exp.retour-t-x", lecon: "exponentielle", libelle: "après le changement t = eˣ, la réponse laissée en t sans revenir à x", capacites: EXP, exercices: [["exponentielle", "exp-trinome", "oublier de revenir de t à x"], ["exponentielle", "exp-trinome-ineq", "S donné en t au lieu de x"]], source: "exponentielle.js exp-trinome, exp-trinome-ineq ; leçon, étapes bac-sol, bac-ineq, bac-2-ineq" },
   { id: "exp.reciproque-confondue", lecon: "exponentielle", libelle: "pour défaire exp, on applique ln, pas exp", capacites: EXP, exercices: [["exponentielle", "exp-equation", "x = eᵏ"], ["exponentielle", "exp-trinome", "exp au lieu de ln"]], source: "exponentielle.js exp-equation, exp-trinome ; leçon, étapes ek, bac-sol" },
@@ -97,7 +98,7 @@ export const CONCEPTIONS: Conception[] = [
   { id: "suites.sens-ln-q", lecon: "suites", libelle: "le sens gardé en divisant par ln q, négatif quand 0 < q < 1", capacites: ["maths-sexp 1.1.5", "maths-sm 1.1.5"], exercices: [["suites", "seuil-ln", "le sens gardé en divisant par ln q < 0"]], source: "docs/refonte/specs/suites-numeriques.md l. 43-45 (inéquations logarithmiques réutilisées)" },
 
   // ajoutées avec le catalogue de la leçon (2026-11-24) : chacune nommée par au moins deux leurres ou libellés
-  { id: "suites.arith-geo-confondues", lecon: "suites", libelle: "une suite géométrique traitée comme une arithmétique : on multiplie par q, on n’ajoute pas q", capacites: ["maths-sexp 1.1.1", "maths-sm 1.1.1"], etapes: ["sav-rappel"], exercices: [["suites", "suites-base", "arithmétique et géométrique confondues"], ["suites", "majoration-geometrique", "arithmétique et géométrique confondues"]], source: "suites.js suites-base, majoration-geometrique ; leçon, étape savoir" },
+  { id: "suites.arith-geo-confondues", lecon: "suites", libelle: "arithmétique et géométrique confondues : on ajoute r, on multiplie par q", capacites: ["maths-sexp 1.1.1", "maths-sm 1.1.1"], etapes: ["sav-rappel"], exercices: [["suites", "suites-base", "arithmétique et géométrique confondues"], ["suites", "majoration-geometrique", "arithmétique et géométrique confondues"]], source: "suites.js suites-base, majoration-geometrique ; leçon, étape savoir" },
   { id: "suites.heredite-sans-hypothese", lecon: "suites", libelle: "une hérédité écrite sans partir de l’hypothèse de récurrence", capacites: ["maths-sexp 1.1.4", "maths-sm 1.1.4"], etapes: ["heredite-debut", "heredite"], exercices: [["suites", "recurrence-affine", "hérédité sans hypothèse"], ["suites", "recurrence-f-croissante", "f(x) < b pour tout x"]], source: "suites.js recurrence-affine, recurrence-f-croissante, fin-de-probleme ; leçon, étapes heredite, bac-heredite, q2" },
   { id: "suites.initialisation-oubliee", lecon: "suites", libelle: "une récurrence sans initialisation : l’hérédité seule ne prouve rien", capacites: ["maths-sexp 1.1.4", "maths-sm 1.1.4"], etapes: ["dominos", "init-oubliee"], exercices: [["suites", "recurrence-affine", "initialisation oubliée"]], source: "suites.js recurrence-affine ; leçon, étapes init-oubliee, v-recurrence" },
   { id: "suites.croissante-renverse-ordre", lecon: "suites", libelle: "une fonction croissante garde l’ordre : a ≤ b donne f(a) ≤ f(b)", capacites: ["maths-sexp 1.1.4", "maths-sm 1.1.4"], etapes: ["heredite"], exercices: [["suites", "recurrence-f-croissante", "ordre renversé (f traitée comme décroissante)"]], source: "suites.js recurrence-f-croissante, fin-de-probleme ; leçon, étapes heredite, bac-heredite, bac-2, q2" },
@@ -105,7 +106,7 @@ export const CONCEPTIONS: Conception[] = [
   { id: "suites.majorant-limite", lecon: "suites", libelle: "un majorant (ou une borne) pris pour la limite", capacites: ["maths-sexp 1.1.2", "maths-sm 1.1.2"], etapes: ["majorant-3"], exercices: [["suites", "critere-convergence", "un majorant pris pour la limite"], ["suites", "point-fixe", "un majorant pris pour la limite"]], source: "suites.js critere-convergence, point-fixe, fin-de-probleme ; leçon, étapes majorant-3, bac-lim, q1" },
   { id: "suites.critere-incomplet", lecon: "suites", libelle: "le critère de convergence appliqué avec une seule de ses deux hypothèses : monotone et bornée", capacites: ["maths-sexp 1.1.2", "maths-sm 1.1.2"], etapes: ["theoreme", "bornee-oscille"], exercices: [["suites", "critere-convergence", "une seule hypothèse suffit"], ["suites", "critere-convergence", "croissante donc +∞"]], source: "suites.js critere-convergence, fin-de-probleme ; leçon, étapes majorant-3, bornee-oscille, limite-dose, bac-2-lim, q1, q3" },
   { id: "suites.point-fixe-convergence", lecon: "suites", libelle: "résoudre ℓ = f(ℓ) pris pour une preuve de convergence", capacites: ["maths-sexp 1.1.4", "maths-sm 1.1.4", "maths-sexp 1.1.2", "maths-sm 1.1.2"], etapes: ["piege-2u"], exercices: [["suites", "point-fixe", "un point fixe prouve la convergence"], ["suites", "suite-auxiliaire-affine", "un point fixe prouve la convergence"]], source: "suites.js point-fixe, suite-auxiliaire-affine ; leçon, étapes limite-dose, piege-2u, q3" },
-  { id: "suites.depart-limite", lecon: "suites", libelle: "le premier terme pris pour la limite : la limite ne dépend pas du départ", capacites: ["maths-sexp 1.1.4", "maths-sm 1.1.4"], etapes: ["depart"], exercices: [["suites", "point-fixe", "la limite dépend du terme initial"], ["suites", "limite-composee", "g(u_0) au lieu de g(ℓ)"]], source: "suites.js point-fixe, limite-composee, suite-auxiliaire-affine ; leçon, étapes piege-2u, bac-lim, bac-2-lim" },
+  { id: "suites.depart-limite", lecon: "suites", libelle: "le premier terme pris pour la limite : la limite vérifie ℓ = f(ℓ)", capacites: ["maths-sexp 1.1.4", "maths-sm 1.1.4"], etapes: ["depart"], exercices: [["suites", "point-fixe", "la limite dépend du terme initial"], ["suites", "limite-composee", "g(u_0) au lieu de g(ℓ)"]], source: "suites.js point-fixe, limite-composee, suite-auxiliaire-affine ; leçon, étapes piege-2u, bac-lim, bac-2-lim" },
 
   // ── radioactivité ──
   { id: "rad.signe-log", lecon: "radioactivite", libelle: "le signe du logarithme perdu en isolant le temps", capacites: ["pc-pc 1.2.1.13", "pc-sm 1.2.1.13", "pc-svt 1.2.1.13"], exercices: [["radioactivite", "instant-seuil", "signe du logarithme"], ["radioactivite", "datation-c14", "signe du logarithme"]], source: "docs/bible/02-physique.md N1, prérequis « Résoudre e^(−0,1t) = 0,5 » (l. 494)" },
@@ -124,7 +125,7 @@ export const CONCEPTIONS: Conception[] = [
   // ajoutées avec le catalogue de la leçon (2026-11-24)
   { id: "noy.stabilite-el-totale", lecon: "noyaux", libelle: "la stabilité se compare par nucléon (Eℓ/A), pas par l’énergie de liaison totale", capacites: [...["pc-pc 1.2.2.2", "pc-sm 1.2.2.2", "pc-svt 1.2.2.2"], ...["pc-pc 1.2.2.4", "pc-sm 1.2.2.4", "pc-svt 1.2.2.4"]], exercices: [["noyaux", "nme-stabilite", "comparer E_ℓ au lieu de E_ℓ/A"], ["noyaux", "nme-vrai-faux", "comparer E_ℓ au lieu de E_ℓ/A"]], source: "noyaux.js nme-stabilite, nme-vrai-faux ; leçon, étapes par-nucleon, rn-po, rappel" },
   { id: "noy.el-par-nucleon-additionnees", lecon: "noyaux", libelle: "dans un bilan, ce sont les Eℓ qui s’additionnent, pas les Eℓ/A", capacites: ["pc-pc 1.2.2.10", "pc-sm 1.2.2.10", "pc-svt 1.2.2.6"], exercices: [["noyaux", "nme-bilan-liaisons", "E_ℓ/A additionnées"]], source: "noyaux.js nme-bilan-liaisons ; leçon, étapes deux-routes, fission-bilan, bac-2b, bac-erreur" },
-  { id: "noy.signe-delta-e", lecon: "noyaux", libelle: "ΔE = après − avant : il est négatif quand de l’énergie est libérée", capacites: ["pc-pc 1.2.2.10", "pc-sm 1.2.2.10", "pc-svt 1.2.2.6"], exercices: [["noyaux", "nme-bilan-masses", "produits − réactifs inversé (signe de ΔE)"], ["noyaux", "nme-bilan-liaisons", "sens inversé (ΔE de signe faux)"]], source: "noyaux.js nme-bilan-masses, nme-bilan-liaisons ; leçon, étapes signe, deux-routes, retour-de, bac-2022-lit, q3" },
+  { id: "noy.signe-delta-e", lecon: "noyaux", libelle: "le sens du bilan inversé : ΔE est négatif quand de l’énergie est libérée", capacites: ["pc-pc 1.2.2.10", "pc-sm 1.2.2.10", "pc-svt 1.2.2.6"], exercices: [["noyaux", "nme-bilan-masses", "produits − réactifs inversé (signe de ΔE)"], ["noyaux", "nme-bilan-liaisons", "sens inversé (ΔE de signe faux)"]], source: "noyaux.js nme-bilan-masses, nme-bilan-liaisons ; leçon, étapes signe, deux-routes, retour-de, bac-2022-lit, q3" },
   { id: "noy.masse-conservee", lecon: "noyaux", libelle: "un noyau pèse moins que ses nucléons séparés : la masse ne se conserve pas", capacites: ["pc-pc 1.2.2.1", "pc-sm 1.2.2.1", "pc-svt 1.2.2.1"], exercices: [["noyaux", "nme-vrai-faux", "la masse se conserve"]], source: "noyaux.js nme-vrai-faux ; leçon, étape q1" },
   { id: "noy.el-reserve", lecon: "noyaux", libelle: "l’énergie de liaison vue comme une réserve que le noyau libère, alors qu’elle est sortie à sa formation", capacites: ["pc-pc 1.2.2.1", "pc-sm 1.2.2.1", "pc-svt 1.2.2.1"], exercices: [["noyaux", "nme-vrai-faux", "E_ℓ vue comme une réserve que le noyau libère"]], source: "noyaux.js nme-vrai-faux ; leçon, étape formation" },
 
@@ -134,26 +135,25 @@ export const CONCEPTIONS: Conception[] = [
   { id: "rc.tau-moitie", lecon: "dipole-rc", libelle: "τ lu à la moitié de la tension au lieu de 63 %", capacites: ["pc-pc 1.3.1.9", "pc-sm 1.3.1.9"], exercices: [["dipole-rc", "rc-lecture-tau", "lecture à la moitié"], ["dipole-rc", "rc-bac", "τ lu à 37 % ou à la moitié"]], source: "docs/refonte/specs/dipole-rc.md l. 457 (« lu à 6 V : c’est τ·ln 2 ») ; bible 02 §1 piège 6" },
 
   // ajoutées avec le catalogue de la leçon (2026-11-24)
-  { id: "rc.i-comme-uc", lecon: "dipole-rc", libelle: "le courant confondu avec la tension du condensateur : i part de E/R et décroît, quand uC part de 0 et monte", capacites: ["pc-pc 1.3.1.10", "pc-sm 1.3.1.10", "pc-svt 1.3.1.10"], exercices: [["dipole-rc", "rc-expressions", "i part de zéro"]], source: "dipole-rc.js rc-expressions ; leçon, étapes i0, i-t, rappel, i-decharge" },
+  { id: "rc.i-comme-uc", lecon: "dipole-rc", libelle: "le courant traité comme uC : à t = 0, i = E/R, puis il décroît", capacites: ["pc-pc 1.3.1.10", "pc-sm 1.3.1.10", "pc-svt 1.3.1.10"], exercices: [["dipole-rc", "rc-expressions", "i part de zéro"]], source: "dipole-rc.js rc-expressions ; leçon, étapes i0, i-t, rappel, i-decharge" },
   { id: "rc.condensateur-conduit", lecon: "dipole-rc", libelle: "un condensateur chargé ne laisse pas passer le courant : en régime permanent, i = 0", capacites: ["pc-pc 1.3.1.10", "pc-sm 1.3.1.10", "pc-svt 1.3.1.10"], exercices: [["dipole-rc", "rc-regimes", "régime permanent avec i ≠ 0"]], source: "dipole-rc.js rc-regimes ; leçon, étape permanent" },
   { id: "rc.repere-63-37", lecon: "dipole-rc", libelle: "63 % se lit sur une courbe qui monte, 37 % sur une courbe qui descend", capacites: ["pc-pc 1.3.1.9", "pc-sm 1.3.1.9", "pc-svt 1.3.1.9"], exercices: [["dipole-rc", "rc-lecture-tau", "63 % lu sur une descente"], ["dipole-rc", "rc-lecture-tau", "37 % lu sur une montée"], ["dipole-rc", "rc-regimes", "63 % et 37 % échangés"]], source: "dipole-rc.js rc-lecture-tau, rc-regimes ; leçon, étapes val-tau, lecture-63, v-37, bac-C, q1" },
   { id: "rc.tau-fin-charge", lecon: "dipole-rc", libelle: "à t = τ la charge n’est faite qu’à 63 % : elle est pratiquement finie vers 5τ", capacites: ["pc-pc 1.3.1.11", "pc-sm 1.3.1.11", "pc-svt 1.3.1.11"], exercices: [["dipole-rc", "rc-regimes", "τ = fin de la charge"]], source: "dipole-rc.js rc-regimes ; leçon, étapes val-tau, cinq-tau" },
   { id: "rc.e-change-tau", lecon: "dipole-rc", libelle: "la tension E prise pour ce qui règle la durée de la charge : τ = RC ne contient pas E", capacites: ["pc-pc 1.3.1.16", "pc-sm 1.3.1.16", "pc-svt 1.3.1.17"], exercices: [["dipole-rc", "rc-influence", "E change τ"]], source: "dipole-rc.js rc-influence ; leçon, étapes influence-E, retour-lampe" },
 
   // ── méiose (leçon en correction : exercices seulement) ──
-  { id: "meiose.haploide-une-chromatide", lecon: "meiose", libelle: "haploïde lu comme « une seule chromatide » au lieu de « un chromosome de chaque paire »", capacites: ["svt-svt 3.1.1", "svt-pc 2.3.1"], exercices: [["meiose", "meiose-comptes", "haploïde = une chromatide"], ["meiose", "meiose-document", "haploïde = q"]], source: "docs/bible/04-svt.md T1 : « Une cellule haploïde a des chromosomes à une seule chromatide »" },
-  { id: "meiose.soeurs-homologues", lecon: "meiose", libelle: "chromatides sœurs et chromosomes homologues confondus", capacites: ["svt-svt 3.1.3", "svt-pc 2.3.3"], exercices: [["meiose", "crossing-over", "échange entre chromatides sœurs"], ["meiose", "crossing-over", "4 recombinés sur 4"], ["meiose", "anaphase-alleles", "chromatides séparées en anaphase I"]], source: "docs/bible/04-svt.md T1 : « Homologues = chromatides sœurs : la confusion qui fausse tout le reste »" },
-  { id: "meiose.additionner-choix", lecon: "meiose", libelle: "des choix indépendants additionnés au lieu d’être multipliés", capacites: ["svt-svt 3.1.3", "svt-pc 2.3.3"], exercices: [["meiose", "gametes-2n", "le nombre de types s’additionne (2 × n)"], ["meiose", "fecondation-combinaisons", "le nombre de combinaisons s’additionne (2 × 2ⁿ)"]], source: "docs/bible/04-svt.md T1 prérequis « Puissances de 2, dénombrement »" },
+  { id: "meiose.haploide-une-chromatide", lecon: "meiose", libelle: "la ploïdie lue sur les chromatides : haploïde veut dire un chromosome de chaque paire, pas une seule chromatide", capacites: ["svt-svt 3.1.1", "svt-pc 2.3.1"], exercices: [["meiose", "meiose-comptes", "haploïde = une chromatide"], ["meiose", "meiose-document", "haploïde = q"]], source: "docs/bible/04-svt.md T1 : « Une cellule haploïde a des chromosomes à une seule chromatide »" },
+  { id: "meiose.soeurs-homologues", lecon: "meiose", libelle: "chromatides sœurs et chromosomes homologues confondus", capacites: ["svt-svt 3.1.3", "svt-pc 2.3.3"], exercices: [["meiose", "crossing-over", "échange entre chromatides sœurs"]], source: "docs/bible/04-svt.md T1 : « Homologues = chromatides sœurs : la confusion qui fausse tout le reste »" },
+  { id: "meiose.additionner-choix", lecon: "meiose", libelle: "2 choix par paire, n paires : 2ⁿ (ni 2n, ni n²)", capacites: ["svt-svt 3.1.3", "svt-pc 2.3.3"], exercices: [["meiose", "gametes-2n", "le nombre de types s’additionne (2 × n)"], ["meiose", "fecondation-combinaisons", "le nombre de combinaisons s’additionne (2 × 2ⁿ)"], ["meiose", "gametes-2n", "n² au lieu de 2ⁿ"], ["meiose", "meiose-document", "n² au lieu de 2ⁿ"]], source: "docs/bible/04-svt.md T1 prérequis « Puissances de 2, dénombrement » ; meiose.js gametes-2n, meiose-document ; fusion de meiose.puissance-inversee (relecture 2026-11-24)" },
 
   // ajoutées avec le catalogue de la leçon (2026-11-24)
-  { id: "meiose.reduction-division-ii", lecon: "meiose", libelle: "le nombre de chromosomes est divisé par deux à la division I, quand les homologues se séparent, pas à la II", capacites: ["svt-svt 3.1.1", "svt-pc 2.3.1"], exercices: [["meiose", "meiose-courbe", "la réduction placée à la division II"]], source: "meiose.js meiose-courbe ; leçon, étapes ou-reduction, courbe, retour-moitie" },
-  { id: "meiose.puissance-inversee", lecon: "meiose", libelle: "deux choix par paire, n fois : 2ⁿ, pas n²", capacites: ["svt-svt 3.1.3", "svt-pc 2.3.3"], exercices: [["meiose", "gametes-2n", "n² au lieu de 2ⁿ"], ["meiose", "meiose-document", "n² au lieu de 2ⁿ"]], source: "meiose.js gametes-2n, meiose-document ; leçon, étapes trois-paires, humain-2-23, q2" },
+  { id: "meiose.division-i-mitose", lecon: "meiose", libelle: "la division I traitée comme une mitose : ce sont les homologues qui se séparent", capacites: ["svt-svt 3.1.1", "svt-pc 2.3.1"], exercices: [["meiose", "anaphase-alleles", "chromatides séparées en anaphase I"], ["meiose", "meiose-phase", "la méiose, c’est deux mitoses"], ["meiose", "meiose-document", "la méiose, c’est deux mitoses"]], source: "meiose.js anaphase-alleles, meiose-phase, meiose-document ; leçon, étapes anaphase1, telophase1 (fb « Tu as appliqué ce que fait la mitose », « Tu as pensé mitose ») ; relecture 2026-11-24" },
   { id: "meiose.brassage-mutation", lecon: "meiose", libelle: "le brassage combine des allèles qui existent déjà ; seule une mutation en crée un nouveau", capacites: ["svt-svt 3.1.3", "svt-pc 2.3.3"], exercices: [["meiose", "brassage-identifier", "« mutation » pour une combinaison nouvelle"]], source: "meiose.js brassage-identifier ; leçon, étapes v-inter, bac-copie" },
-  { id: "meiose.adn-chromosomes", lecon: "meiose", libelle: "la quantité d’ADN suit le nombre de chromatides, pas celui des chromosomes", capacites: ["svt-svt 3.1.1", "svt-pc 2.3.1"], exercices: [["meiose", "meiose-comptes", "la quantité d’ADN suit le nombre de chromosomes"]], source: "meiose.js meiose-comptes ; leçon, étape interphase" },
+  { id: "meiose.adn-chromosomes", lecon: "meiose", libelle: "quantité d’ADN et nombre de chromosomes confondus", capacites: ["svt-svt 3.1.1", "svt-pc 2.3.1"], exercices: [["meiose", "meiose-comptes", "la quantité d’ADN suit le nombre de chromosomes"], ["meiose", "meiose-courbe", "la réduction placée à la division II"]], source: "meiose.js meiose-comptes, meiose-courbe ; leçon, étapes interphase, ou-reduction, courbe, retour-moitie ; fusion de meiose.reduction-division-ii (relecture 2026-11-24)" },
 
   // ── transmission (leçon en correction : exercices seulement) ──
   { id: "trans.alleles-par-cellule", lecon: "transmission", libelle: "deux allèles d’un gène par individu, un seul par gamète", capacites: ["svt-svt 3.2.1", "svt-pc 2.4.1"], exercices: [["transmission", "gametes-genotype", "gamète à deux allèles d’un gène"], ["transmission", "f1-dominance", "un seul allèle par individu"]], source: "docs/bible/04-svt.md T2 prérequis « Méiose : un allèle par gamète » (T1)" },
-  { id: "trans.recombines-moitie", lecon: "transmission", libelle: "un crossing-over donne deux gamètes recombinés sur quatre : d/2 par type", capacites: ["svt-svt 3.2.2", "svt-pc 2.4.2"], exercices: [["transmission", "gametes-genotype", "d au lieu de d/2 par gamète recombiné"]], source: "docs/bible/04-svt.md T1 (crossing-over entre chromatides non sœurs, « combien des 4 gamètes sont recombinés ? (2) ») et T3" },
+  { id: "trans.recombines-moitie", lecon: "transmission", libelle: "les d % de recombinés se partagent entre deux types : d/2 chacun", capacites: ["svt-svt 3.2.2", "svt-pc 2.4.2"], exercices: [["transmission", "gametes-genotype", "d au lieu de d/2 par gamète recombiné"]], source: "docs/bible/04-svt.md T1 (crossing-over entre chromatides non sœurs, « combien des 4 gamètes sont recombinés ? (2) ») et T3" },
   { id: "trans.addition-pour-et", lecon: "transmission", libelle: "les probabilités additionnées pour « et » au lieu d’être multipliées", capacites: ["svt-svt 3.2.1", "svt-pc 2.4.1"], exercices: [["transmission", "f2-monohybride", "addition pour « et »"], ["transmission", "f2-deux-genes", "addition pour « et »"]], source: "docs/bible/04-svt.md T2 : « On additionne les probabilités pour “et” »" },
   // ajoutées avec le catalogue de la leçon (2026-11-24)
   { id: "trans.phenotype-genotype", lecon: "transmission", libelle: "un même phénotype pris pour un même génotype : un individu dominant peut cacher un allèle récessif", capacites: ["svt-svt 3.2.1", "svt-pc 2.4.1"], exercices: [["transmission", "f1-dominance", "même phénotype, même génotype"], ["transmission", "interpretation-complete", "génotype des parents copié sur leur phénotype"]], source: "transmission.js f1-dominance, test-cross-un-gene, interpretation-complete ; leçon, étapes dominance, lisses-purs, bac-q2" },
@@ -166,33 +166,15 @@ export const CONCEPTIONS: Conception[] = [
   { id: "gen.brin-transcrit", lecon: "expression-genetique", libelle: "brin transcrit et brin non transcrit confondus : on complémente le premier, on recopie le second avec U pour T", capacites: ["svt-svt 2.2.1", "svt-pc 2.2.1"], etapes: ["pari-brin", "reflexe-brin"], exercices: [["expression-genetique", "brin-non-transcrit", "complémenter le brin non transcrit"], ["expression-genetique", "brin-transcrit", "recopier le brin transcrit en changeant T en U"]], source: "expression-genetique.js brin-non-transcrit, brin-transcrit, complementer-ou-non, bac-2026 ; leçon, étapes pari-brin (« le piège le plus courant »), v-transcription, rappel, q1" },
   { id: "gen.t-dans-arn", lecon: "expression-genetique", libelle: "un T écrit dans l’ARN, qui porte U à sa place", capacites: ["svt-svt 2.2.1", "svt-pc 2.2.1"], etapes: ["pari-u"], exercices: [["expression-genetique", "adn-arn", "mettre T dans l’ARN"], ["expression-genetique", "brin-transcrit", "garder T dans l’ARNm"]], source: "expression-genetique.js adn-arn, brin-transcrit, brin-non-transcrit, anticodon ; leçon, étapes pari-u, v-transcription, rappel, q1" },
   { id: "gen.codon-stop", lecon: "expression-genetique", libelle: "un codon stop ne désigne aucun acide aminé : la lecture s’arrête là", capacites: ["svt-svt 2.2.2", "svt-pc 2.2.2"], etapes: ["stop"], exercices: [["expression-genetique", "arnm-chaine", "compter le codon stop comme un acide aminé"], ["expression-genetique", "arnm-chaine", "lire après le codon stop"]], source: "expression-genetique.js arnm-chaine, decalage, bac-2026 ; leçon, étapes v-code, stop, q2" },
-  { id: "gen.codon-initiation", lecon: "expression-genetique", libelle: "la lecture commence au codon d’initiation AUG, qui est traduit lui aussi (Met)", capacites: ["svt-svt 2.2.2", "svt-pc 2.2.2"], etapes: ["v-code"], exercices: [["expression-genetique", "arnm-chaine", "lire avant le codon d’initiation"], ["expression-genetique", "arnm-chaine", "oublier la méthionine"]], source: "expression-genetique.js arnm-chaine ; leçon, étapes v-code, q2" },
+  { id: "gen.codon-initiation", lecon: "expression-genetique", libelle: "la lecture commence au codon AUG, pas au premier nucléotide", capacites: ["svt-svt 2.2.2", "svt-pc 2.2.2"], etapes: ["v-code"], exercices: [["expression-genetique", "arnm-chaine", "lire avant le codon d’initiation"]], source: "expression-genetique.js arnm-chaine ; leçon, étapes v-code, q2" },
   { id: "gen.anticodon-codon", lecon: "expression-genetique", libelle: "l’anticodon lu dans le tableau du code, qui se lit en codons d’ARNm", capacites: ["svt-svt 2.2.3", "svt-pc 2.2.3"], etapes: ["v-traduction"], exercices: [["expression-genetique", "anticodon", "lire l’anticodon dans le tableau"]], source: "expression-genetique.js anticodon ; leçon, étape v-traduction" },
   { id: "gen.decalage-cadre", lecon: "expression-genetique", libelle: "une insertion ou une délétion décale tout le cadre de lecture, pas un seul codon", capacites: ["svt-svt 2.1.9", "svt-pc 2.1.9"], etapes: ["decalage", "v-insertion"], exercices: [["expression-genetique", "decalage", "ne décaler qu’un codon"], ["expression-genetique", "type-mutation", "ne pas voir le décalage du cadre de lecture"]], source: "expression-genetique.js decalage, type-mutation, bac-2026 ; leçon, étape v-insertion" },
-  { id: "gen.allele-code", lecon: "expression-genetique", libelle: "une mutation donne un autre allèle du même gène ; le code génétique, lui, ne change pas", capacites: ["svt-svt 2.1.9", "svt-pc 2.1.9"], exercices: [["expression-genetique", "bac-2026", "confondre allèle et code"]], source: "expression-genetique.js bac-2026 ; leçon, étape q3" },
+  { id: "gen.allele-code", lecon: "expression-genetique", libelle: "une mutation crée un autre allèle du même gène : ni un autre gène, ni un autre code", capacites: ["svt-svt 2.1.9", "svt-pc 2.1.9"], exercices: [["expression-genetique", "bac-2026", "confondre allèle et code"]], source: "expression-genetique.js bac-2026 ; leçon, étape q3" },
 ];
 
 const P = "proposition à relire" as const;
 
 export const ARETES: Arete[] = [
-  {
-    amont: { conception: "exp.exposant-facteur" }, aval: "rc.coefficient-exposant", statut: P,
-    raison: "Dans u_C = E(1 − e^{−t/RC}), le coefficient de t est dans l’exposant ; le confondre avec un facteur devant fait écrire α = RC, ou multiplier par RC dans l’équation.",
-    exemple: "Dériver E e^{−t/τ} donne −(E/τ) e^{−t/τ} : le 1/τ de l’exposant descend devant, comme le 2 de e^{2x} n’est pas un 2 devant eˣ.",
-    source: "docs/refonte/specs/dipole-rc.md l. 68-71 (dérivée de e^u réutilisée, étape eu de l’exponentielle) ; bible 02 E1 prérequis",
-  },
-  {
-    amont: { conception: "exp.exposant-facteur" }, aval: "rad.puissance-demivies", statut: P,
-    raison: "N = N₀e^{−λt} ; à t = n·t½, l’exposant n multiplie λt½ : N = N₀(e^{−λt½})ⁿ = N₀/2ⁿ. Lire l’exposant n comme un facteur donne N₀/n.",
-    exemple: "Après 3 demi-vies il reste N₀/8, pas N₀/3.",
-    source: "docs/bible/02-physique.md N1 (« Après n demi-vies, il reste N₀/n » ; prérequis exponentielle, l. 494)",
-  },
-  {
-    amont: { conception: "deriv.u-prime-oublie" }, aval: "rc.coefficient-exposant", statut: P,
-    raison: "Vérifier une solution de RC·du/dt + u = E demande de dériver e^{−t/RC} ; oublier la dérivée de l’intérieur fait perdre le 1/RC.",
-    exemple: "(e^{−t/τ})′ = −(1/τ)e^{−t/τ}, comme (ln u)′ = u′/u et non 1/u.",
-    source: "docs/bible/02-physique.md E1 prérequis « Dériver E(1 − e^(−t/τ)) » (l. 674) ; spec dipole-rc l. 69-70",
-  },
   {
     amont: { conception: "ineq.sens-diviser-negatif" }, aval: "suites.sens-ln-q", statut: P,
     raison: "Le seuil qⁿ < a se résout en n ln q < ln a ; pour 0 < q < 1, ln q < 0 et diviser renverse le sens.",
@@ -252,18 +234,6 @@ export const ARETES: Arete[] = [
     source: "docs/refonte/specs/dipole-rc.md l. 70-71 (τ = 1/λ, étapes tau de la radioactivité) et l. 457 ; bible 02 §1 piège 6",
   },
   {
-    amont: { conception: "meiose.haploide-une-chromatide" }, aval: "trans.alleles-par-cellule", statut: P,
-    raison: "Un gamète haploïde porte un chromosome de chaque paire, donc un allèle de chaque gène ; lire « haploïde » comme « une chromatide » brouille ce compte.",
-    exemple: "Un parent A//a donne des gamètes A et a, chacun à 1/2, jamais un gamète Aa.",
-    source: "docs/bible/04-svt.md T1 (conception « haploïde = une chromatide ») et T2 prérequis « Méiose : un allèle par gamète »",
-  },
-  {
-    amont: { conception: "meiose.soeurs-homologues" }, aval: "trans.recombines-moitie", statut: P,
-    raison: "Le crossing-over se fait entre chromatides non sœurs de deux homologues : deux des quatre chromatides seulement sont recombinées.",
-    exemple: "Distance d = 20 cM : chaque type recombiné vaut d/2 = 10 % des gamètes, pas 20 %.",
-    source: "docs/bible/04-svt.md T1 (« Homologues = chromatides sœurs » ; pari « combien des 4 gamètes sont recombinés ? (2) ») ; T3",
-  },
-  {
     amont: { conception: "meiose.additionner-choix" }, aval: "trans.addition-pour-et", statut: P,
     raison: "Compter les gamètes (2ⁿ) et calculer « A et B » (½ × ½) sont le même geste : des choix indépendants se multiplient.",
     exemple: "Deux gènes indépendants : P(a et b) = ½ × ½ = ¼, pas ½ + ½.",
@@ -276,10 +246,10 @@ export const ARETES: Arete[] = [
     source: "docs/bible/01-maths.md A6 prérequis « 2³ × 2⁴ ? » et A7 conceptions",
   },
   {
-    amont: { conception: "ln.produit-en-produit" }, aval: "exp.somme-en-somme", statut: P,
-    raison: "exp défait ln : ln change les produits en sommes, exp les sommes en produits ; brouiller l’une brouille souvent l’autre.",
-    exemple: "ln(ab) = ln a + ln b, donc e^{a+b} = eᵃ × eᵇ.",
-    source: "docs/bible/01-maths.md A7, idée-clé « exp défait ln : elle transforme les sommes en produits »",
+    amont: { conception: "ln.somme-en-somme" }, aval: "exp.somme-en-somme", statut: P,
+    raison: "Les deux erreurs distribuent une fonction sur une somme : ln(a + b) n’est pas ln a + ln b, et e^{a+b} n’est pas eᵃ + eᵇ.",
+    exemple: "ln(1 + 1) = ln 2 ≠ 0 = ln 1 + ln 1 ; e^{0+0} = 1 ≠ 2 = e⁰ + e⁰.",
+    source: "docs/bible/01-maths.md A6 et A7 (conceptions « ln(a + b) = ln a + ln b » et « e^{a+b} = eᵃ + eᵇ ») ; leçon exponentielle, étape somme-produit (indice « Teste a = b = 0 ») ; réorientée à la relecture 2026-11-24 (l’amont était ln.produit-en-produit)",
   },
   {
     amont: { conception: "ln.domaine-oublie" }, aval: "exp.t-negatif", statut: P,
@@ -292,6 +262,31 @@ export const ARETES: Arete[] = [
     raison: "Le défaut de masse se calcule avec Z protons et A − Z neutrons, notation vue dans la leçon de radioactivité.",
     exemple: "⁵⁶₂₆Fe : 26 protons, 30 neutrons ; prendre 56 neutrons fausse Δm.",
     source: "docs/refonte/specs/noyaux-masse-energie.md l. 45-46",
+  },
+  // ajoutées à la relecture du 2026-11-24
+  {
+    amont: { conception: "rad.restants-desintegres" }, aval: "rc.repere-63-37", statut: P,
+    raison: "63 % atteints et 37 % restants sont les deux faces d’une même décroissance ; confondre ce qui reste et ce qui est parti fait lire le mauvais repère.",
+    exemple: "À t = τ : 37 % des noyaux restent, 63 % sont partis ; de même u_C a atteint 63 % de E à la charge, et il reste 37 % à la décharge.",
+    source: "leçon radioactivite, étape v-tau (« 37 %, c’est ce qui reste ») ; leçon dipole-rc, étapes val-tau, reste, v-37",
+  },
+  {
+    amont: { conception: "graphe.pente-hauteur" }, aval: "rc.i-comme-uc", statut: P,
+    raison: "i = C du_C/dt est la pente de u_C, pas sa hauteur : u_C part de 0 avec sa plus grande pente, donc i part de E/R.",
+    exemple: "À t = 0, u_C = 0 mais du_C/dt = E/τ : i = C·E/τ = E/R.",
+    source: "leçon logarithme, étape pente ; leçon dipole-rc, étapes i0, tangente, i-t ; dipole-rc.js rc-expressions",
+  },
+  {
+    amont: { conception: "suites.arith-geo-confondues" }, aval: "rad.part-du-depart", statut: P,
+    raison: "La décroissance radioactive est géométrique : à chaque pas on multiplie ce qui reste par le même facteur ; retirer une quantité fixe, c’est la traiter comme arithmétique.",
+    exemple: "100 dés, un sixième part à chaque tic : 100, 83, 69, … (× 5/6), et non 100, 83, 66, … (− 17).",
+    source: "leçon radioactivite, étapes v-des, deltaN ; radioactivite.js instant-seuil, datation-c14 (« décroissance prise pour linéaire ») ; leçon suites, étape savoir",
+  },
+  {
+    amont: { conception: "gen.allele-code" }, aval: "meiose.brassage-mutation", statut: P,
+    raison: "Savoir qu’une mutation crée un nouvel allèle (et rien d’autre) est ce qui permet de dire que le brassage, lui, n’en crée aucun : il combine ceux qui existent.",
+    exemple: "GAG → GTG crée l’allèle βS ; la méiose d’un parent βA//βS ne donne que des gamètes βA ou βS.",
+    source: "leçon expression-genetique, étape q3 ; meiose.js brassage-identifier ; leçon meiose, étapes v-inter, bac-copie",
   },
 ];
 

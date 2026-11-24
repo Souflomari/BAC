@@ -64,7 +64,7 @@ export const RADIOACTIVITE: CatalogueLecon = {
     irhoud: { capacites: [], juste: null, options: [{ t: "Oui, avec un meilleur détecteur", e: "aucune" }, { t: "Non : il n’en reste presque rien", e: "aucune" }, { t: "Oui, mais avec moins de précisio", e: "aucune" }] },
     "v-datation": { capacites: DATER, juste: 0, options: [{ t: "le tritium (12,3 ans)", e: "aucune" }, { t: "le carbone 14 (5 730 ans)", e: "aucune" }, { t: "le potassium 40 (1,25 milliard d", e: "aucune" }] },
     "bac-geste": { capacites: [], juste: null, options: [{ t: "Écrire ce qui reste : N(t1) = 0,", e: "aucune" }, { t: "Écrire N(t1) = 0,95 N0", e: "aucune" }, { t: "Lire t1 sur la courbe", e: "aucune" }] },
-    "bac-litteral": { capacites: REL, juste: 0, options: [{ t: "eλt1 = 20", e: "aucune" }, { t: "eλt1 = 0,05", e: "rad.signe-log" }, { t: "eλt1 = 0,95", e: "rad.restants-desintegres" }] },
+    "bac-litteral": { capacites: REL, juste: 0, options: [{ t: "eλt1 = 20", e: "aucune" }, { t: "eλt1 = 0,05", e: "inattention" }, { t: "eλt1 = 0,95", e: "rad.restants-desintegres" }] },
     q1: { capacites: DEMI, juste: 2, options: [{ t: "25 %", e: "rad.restants-desintegres" }, { t: "50 %", e: "aucune" }, { t: "75 %", e: "aucune" }] },
     q2: { capacites: UNITES, juste: 0, options: [{ t: "s−1", e: "aucune" }, { t: "jour−1", e: "inattention" }, { t: "sans unité", e: "aucune" }] },
     q3: { capacites: ACTIVITE, juste: 1, options: [{ t: "8,0 × 106 noyaux", e: "aucune" }, { t: "a / λ", e: "aucune" }, { t: "λ × a", e: "aucune" }] },
@@ -102,7 +102,9 @@ export const RADIOACTIVITE: CatalogueLecon = {
       erreurs: {
         "τ confondu avec t½": "phys.tau-demivie",
         "lire a₀/4 au lieu de a₀/2": "inattention",
+        "τ = t½ × ln 2": "inattention",
         "t½ = 1/λ": "phys.tau-demivie",
+        "τ donné pour λ": "aucune",
       },
     },
     "lambda-unites": {
@@ -111,7 +113,9 @@ export const RADIOACTIVITE: CatalogueLecon = {
         "dimension de λ inversée": "aucune",
         "unités non converties": "inattention",
         "t½ = 1/λ": "phys.tau-demivie",
+        "λ = ln 2 × t½": "inattention",
         "τ confondu avec t½": "phys.tau-demivie",
+        "τ = t½ × ln 2": "inattention",
       },
     },
     "n0-masse-activite": {
@@ -127,7 +131,7 @@ export const RADIOACTIVITE: CatalogueLecon = {
       capacites: ["pc-pc 1.2.1.10", "pc-sm 1.2.1.10", "pc-svt 1.2.1.10", "pc-pc 1.2.1.13", "pc-sm 1.2.1.13", "pc-svt 1.2.1.13"], niveau: 2, optionsQcm: 4,
       erreurs: {
         "signe du logarithme": "rad.signe-log",
-        "décroissance prise pour linéaire": "aucune",
+        "décroissance prise pour linéaire": "rad.part-du-depart",
         "restants pris pour désintégrés": "rad.restants-desintegres",
       },
     },
@@ -142,7 +146,7 @@ export const RADIOACTIVITE: CatalogueLecon = {
     "datation-c14": {
       capacites: ["pc-pc 1.2.1.10", "pc-sm 1.2.1.10", "pc-svt 1.2.1.10", "pc-pc 1.2.1.15", "pc-sm 1.2.1.15", "pc-svt 1.2.1.15"], niveau: 2, optionsQcm: 4,
       erreurs: {
-        "décroissance prise pour linéaire": "aucune",
+        "décroissance prise pour linéaire": "rad.part-du-depart",
         "signe du logarithme": "rad.signe-log",
         "t½ = 1/λ": "phys.tau-demivie",
       },
@@ -160,10 +164,13 @@ export const RADIOACTIVITE: CatalogueLecon = {
         "α ne change que A": "aucune",
         "signe de la charge de l’électron": "inattention",
         "τ confondu avec t½": "phys.tau-demivie",
-        "restants pris pour désintégrés": "rad.restants-desintegres",
+        "lire a₀/4 au lieu de a₀/2": "inattention",
         "t½ = 1/λ": "phys.tau-demivie",
         "expression littérale inversée": "aucune",
         "unités non converties": "inattention",
+        "activité prise pour N": "aucune",
+        "restants pris pour désintégrés": "rad.restants-desintegres",
+        "signe du logarithme": "rad.signe-log",
       },
     },
     "nz-diagramme": {

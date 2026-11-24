@@ -4,7 +4,7 @@ const PG = "trans.phenotype-genotype", RE = "trans.rapport-exact-exige", QC = "t
 const AL = "trans.alleles-par-cellule", ET = "trans.addition-pour-et", RM = "trans.recombines-moitie";
 export default {
   nom: "TRANSMISSION", matiere: "svt", entete: entete("transmission", 14, true),
-  nouvelles: [PG, RE, QC, F2G],
+  nouvelles: [],
   caps: { MEIOSE: M("3.1.3", "2.3.3"), UN: M("3.2.1", "2.4.1"), DEUX: M("3.2.2", "2.4.2"), SCHEMA: M("3.2.3", "2.4.3"), CARTE: M("3.2.4", "2.4.4") },
   q: {
     "sav-lignee": ["UN", "-", "-", "-"],
@@ -29,7 +29,7 @@ export default {
     "absolu-tc": ["DEUX", "-", "-", AL],
     "absolu-f2": ["DEUX", "-", F2G, "-"],
     "quatre-classes": ["DEUX", "-", QC, "-"],
-    "deux-sur-quatre": ["SCHEMA", "-", RM, "-"],
+    "deux-sur-quatre": ["SCHEMA", "-", "-", "-"],
     pourcentage: ["CARTE", "-", "-", "-"],
     "parentaux-recombines": ["DEUX", "-", "-", "-"],
     cinquante: ["DEUX", "-", "-", "-"],
@@ -54,7 +54,7 @@ export default {
     "gene-letal": ["-", "-", "-", "-"],
     "gametes-genotype": ["-", AL, RM, "-"],
     notation: ["-", "-", "-"],
-    "test-cross-deux-genes": ["-", "-", "-", "-", "-"],
+    "test-cross-deux-genes": { "rapport exact exigé": "trans.rapport-exact-exige", "« deux grandes classes, donc linkage absolu »": "-", "rapport de la F₂ appliqué au test-cross": "trans.rapport-f2-generalise", "« quatre classes, donc indépendants »": "trans.quatre-classes-independants", "division par les parentaux": "-", "une seule classe": "-", "indépendants supposés sans quatre classes égales": "-", "quatre classes supposées en linkage absolu": "-" },
     "f2-deux-genes": ["-", ET, F2G],
     "parentaux-recombines": ["-", "-"],
     distance: ["-", "-", "-"],

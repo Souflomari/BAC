@@ -110,7 +110,7 @@ export const EXERCICES = [
       const pb = distincts(w2, [
         { v: e2, fb: `Tu as écrit $a(u_n + b)$ au lieu de $a\\,u_n + b$. Chaque pas multiplie $u_n$ par $a$, puis ajoute $b$.`, erreur: "a(u_n + b) au lieu de a·u_n + b" },
         { v: w1, fb: "Tu t’es arrêté à $u_1$. Il faut un pas de plus : $u_2 = a\\,u_1 + b$.", erreur: "un pas de moins" },
-        { v: v0 + 2 * b, fb: "Tu as ajouté $b$ à chaque pas sans multiplier par $a$ : c’est une arithmétique. Ici, $u_{n+1} = a\\,u_n + b$.", erreur: "arithmétique et géométrique confondues" },
+        { v: v0 + 2 * b, fb: "Tu as ajouté $b$ à chaque pas sans multiplier par $a$ : c’est une arithmétique. Ici, $u_{n+1} = a\\,u_n + b$.", erreur: "a oublié (seul b ajouté)" },
       ], 0.01);
       return {
         enonce: `${ux}<p>Une autre suite est définie par $u_0 = ${v0}$ et, pour tout entier $n$, $u_{n+1} = ${lin(a, "u_n", b)}$.</p>`,
@@ -314,7 +314,7 @@ export const EXERCICES = [
             { t: "qu’elle converge", fb: "Tu as ajouté ce qu’on veut démontrer. L’hypothèse à ajouter est une borne : une suite croissante et majorée converge.", erreur: "hérédité circulaire" },
           ] : [
             { t: "qu’elle est monotone", ok: true },
-            { t: "qu’elle est positive", fb: "Tu as ajouté un signe, qui ne change rien. Le critère demande la monotonie : une suite bornée et monotone converge.", erreur: "une seule hypothèse suffit" },
+            { t: "qu’elle est positive", fb: "Tu as ajouté un signe, qui ne change rien. Le critère demande la monotonie : une suite bornée et monotone converge.", erreur: "un signe ajouté au lieu de la monotonie" },
             { t: "qu’elle est continue", fb: "Une suite n’est pas « continue ». Le critère demande la monotonie : bornée et monotone, elle converge.", erreur: "confusion suite et fonction" },
           ]) },
         ],
@@ -390,7 +390,7 @@ export const EXERCICES = [
         return {
           enonce: "<p>La suite définie par $u_0 = 2$ et $u_{n+1} = 1 + \\ln u_n$ converge (admis), avec $1 \\le u_n \\le 2$.</p>",
           questions: [{ type: "nombre", q: "Quelle est sa limite $\\ell$ ?", reponse: 1, tol: { abs: 0.01 }, indice: "$\\ell = 1 + \\ln \\ell$ : quel $\\ell$ de $[1\\,;\\,2]$ convient ?", pieges: [
-            { v: 2, fb: "Tu as donné $u_0$, ou le majorant $2$. La limite vérifie $\\ell = 1 + \\ln \\ell$ : $2$ ne la vérifie pas.", erreur: "un majorant pris pour la limite" },
+            { v: 2, fb: "Tu as donné $u_0$, ou le majorant $2$. La limite vérifie $\\ell = 1 + \\ln \\ell$ : $2$ ne la vérifie pas.", erreur: "u₀ ou le majorant pris pour la limite" },
             { v: Math.E, fb: "Tu as donné $e$, la borne de l’intervalle : ce n’est pas la limite. $\\ell = 1 + \\ln \\ell$ n’est pas vérifiée par $e$.", erreur: "un majorant pris pour la limite" },
           ] }],
           correction: [
@@ -403,7 +403,7 @@ export const EXERCICES = [
       return {
         enonce: "<p>On pose $f(x) = x\\left(e^{x/2} - 1\\right)^{2}$, $u_0 = 1$ et $u_{n+1} = f(u_n)$. La suite est décroissante, minorée par $0$, donc convergente. Les solutions de $f(\\ell) = \\ell$ sont $0$ et $\\ln 4 \\approx 1{,}39$.</p>",
         questions: [{ type: "nombre", q: "Quelle est sa limite $\\ell$ ?", reponse: 0, tol: { abs: 0.01 }, indice: "La suite décroît à partir de $1$ : laquelle des deux solutions est atteignable ?", pieges: [
-          { v: ln4, fb: `Tu as pris l’autre solution, ${"$\\ln 4$"}. Une suite décroissante partie de $1$ ne remonte pas à $\\ln 4 \\approx 1{,}39$.`, erreur: "un majorant pris pour la limite" },
+          { v: ln4, fb: `Tu as pris l’autre solution, ${"$\\ln 4$"}. Une suite décroissante partie de $1$ ne remonte pas à $\\ln 4 \\approx 1{,}39$.`, erreur: "l’autre point fixe pris pour la limite" },
           { v: 1, fb: "Tu as donné $u_0$. $f(1) \\ne 1$ : $1$ n’est pas un point fixe.", erreur: "la limite dépend du terme initial" },
         ] }],
         correction: [
@@ -632,8 +632,12 @@ export const EXERCICES = [
       const pl = [
         { v: b, fb: `Tu as pris la borne $${bT}$ pour la limite. Elle vérifie $f(\\ell) = \\ell$ et reste dans $${I}$ : ce n’est pas la borne.`, erreur: "un majorant pris pour la limite" },
         { v: a, fb: `Tu as pris la borne $${aT}$ pour la limite. La limite est le point fixe que la suite atteint.`, erreur: "un minorant pris pour la limite" },
-        { v: autres[0], fb: "Tu as pris un autre nombre de l’intervalle : seule la solution de $f(\\ell) = \\ell$ atteinte par la suite convient.", erreur: "la limite dépend du terme initial" },
-        { v: autres[1], fb: "Tu as pris le terme initial : la limite ne dépend pas du départ.", erreur: "la limite dépend du terme initial" },
+        // u₀ est autres[0] (bac19, ln, rac) ou autres[1] (bac22) ; l'autre valeur est u₁ (bac19, rac), une borne (ln) ou l'autre point fixe (bac22)
+        ...autres.map((v) => (v === Number(u0T)
+          ? { v, fb: "Tu as pris le terme initial $u_0$ : la limite est la solution de $f(\\ell) = \\ell$ que la suite atteint, pas son point de départ.", erreur: "la limite dépend du terme initial" }
+          : v === b
+            ? { v, fb: `Tu as pris la borne $${bT}$ pour la limite. Elle vérifie $f(\\ell) = \\ell$ et reste dans $${I}$ : ce n’est pas la borne.`, erreur: "un majorant pris pour la limite" }
+            : { v, fb: "Tu as pris $u_1 = f(u_0)$, un terme de la suite : la limite est la solution de $f(\\ell) = \\ell$ atteinte par la suite.", erreur: "un terme de la suite pris pour la limite" })),
       ];
       return {
         enonce: `<p>Soit $f(x) = ${fx}$ et $(u_n)$ définie par $u_0 = ${u0T}$ et $u_{n+1} = f(u_n)$. La partie I du problème a établi : $f$ est continue et croissante sur $${I}$ ; $f(${aT}) = ${FA}$ et $f(${bT}) = ${FB}$ ; $${signe}$.</p><p>On suppose que $u_n \\in ${I}$ pour tout $n$ (récurrence faite avec $f(I) \\subset I$).</p>`,

@@ -65,16 +65,21 @@ for (const ex of liste) {
   const mode = [...nopt].sort((a, b) => b[1] - a[1] || b[0] - a[0])[0]?.[0] ?? 3;
   const sp = spec.g[ex.id];
   if (!sp) { errs.push(`gabarit non spécifié ${ex.id} (${lib.length} libellés: ${J(lib)})`); continue; }
-  if (sp.length !== lib.length) errs.push(`${ex.id}: ${sp.length} étiquettes pour ${lib.length} libellés ${J(lib)}`);
+  // une table : soit un tableau dans l'ordre où les libellés apparaissent, soit { libellé: étiquette }
+  const parLib = Array.isArray(sp) ? null : sp;
+  if (parLib) { for (const l of Object.keys(parLib)) if (!lib.includes(l)) errs.push(`${ex.id}: libellé inconnu ${J(l)}`); }
+  else if (sp.length !== lib.length) errs.push(`${ex.id}: ${sp.length} étiquettes pour ${lib.length} libellés ${J(lib)}`);
+  const etiq = (l, i) => (parLib ? parLib[l] : sp[i]) ?? "?";
   const er = lib.map((l, i) => {
-    const e = lab(sp[i] ?? "?");
+    const e = lab(etiq(l, i));
+    if (e === "?") errs.push(`${ex.id}: libellé sans étiquette ${J(l)}`);
     if (e !== "aucune" && e !== "inattention" && !ids.has(e) && !(spec.nouvelles || []).includes(e)) errs.push(`${ex.id}: conception inconnue ${e}`);
     if (e === "aucune") stats.gauc++; else if (e === "inattention") stats.ginat++; else stats.gconc++;
     return `${J(l)}: ${J(e)}`;
   });
   stats.g++;
   glignes.push(`    ${J(ex.id)}: {\n      capacites: ${J(ex.capacites).replace(/","/g, "\", \"")}, niveau: ${ex.niveau}, optionsQcm: ${mode},\n      erreurs: {\n        ${er.join(",\n        ")},\n      },\n    },`);
-  if (process.env.VOIR) console.log(ex.id, lib.map((l, i) => `\n   ${l} => ${lab(sp[i] ?? "?")}`).join(""));
+  if (process.env.VOIR) console.log(ex.id, lib.map((l, i) => `\n   ${l} => ${lab(etiq(l, i))}`).join(""));
 }
 for (const k of Object.keys(spec.g)) if (!liste.some((x) => x.id === k)) errs.push(`spec: gabarit inconnu ${k}`);
 if (errs.length) { console.log(errs.join("\n")); process.exit(1); }

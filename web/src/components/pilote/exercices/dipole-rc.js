@@ -327,7 +327,7 @@ export const EXERCICES = [
         : [`$u_C(t) = U_0\\,e^{-t/\\tau}$ pendant la décharge (condensateur chargé sous $E$)`, "Calcule $U_0$, en V.", "V", T.E];
       const tolA = { rel: 0.02 };
       const qs = [{ type: "nombre", q: qA, reponse: A, tol: tolA, unite: uniteA, indice: T.forme === 0 ? "$q = C\\,u_C$ : à la fin de la charge, $u_C = E$." : T.forme === 1 ? "À la fin de la charge, $u_C$ vaut la tension du générateur." : "À $t = 0$, la tension aux bornes du condensateur chargé vaut $E$.",
-        pieges: pieges(A, tolA, T.forme === 0 ? [{ v: T.E, fb: "Tu as pris $A = E$ pour la charge $q$. $A$ est une charge : $A = C\\,E$.", erreur: "A = E pour la charge q" }, { v: T.E / T.C, fb: "Tu as divisé $E$ par $C$. La charge finale est $C\\,E$.", erreur: "A = E pour la charge q" }] : [{ v: T.E / (T.R), fb: "Tu as divisé $E$ par $R$ : c’est une intensité. L’amplitude de $u_C$ est $E$.", erreur: "τ quelconque" }]) }];
+        pieges: pieges(A, tolA, T.forme === 0 ? [{ v: T.E, fb: "Tu as pris $A = E$ pour la charge $q$. $A$ est une charge : $A = C\\,E$.", erreur: "A = E pour la charge q" }, { v: T.E / T.C, fb: "Tu as divisé $E$ par $C$. La charge finale est $C\\,E$.", erreur: "A = E pour la charge q" }] : [{ v: T.E / (T.R), fb: "Tu as divisé $E$ par $R$ : c’est une intensité. L’amplitude de $u_C$ est $E$.", erreur: "E/R pris pour l’amplitude" }]) }];
       if (T.forme === 0) qs.push({ type: "nombre", q: "Calcule $\\alpha$, en s⁻¹.", reponse: alpha, tol, unite: "s⁻¹", indice: "$\\alpha$ est l’inverse de la constante de temps $\\tau = RC$.",
         pieges: pieges(alpha, tol, [{ v: tau, fb: "Tu as donné $RC$ pour $\\alpha$. $\\alpha = 1/(RC)$, l’inverse de la constante de temps.", erreur: "α = RC" }, { v: T.C * 1e-6 / T.R, fb: "Tu as divisé $C$ par $R$. $\\alpha = 1/(RC)$.", erreur: "τ = R/C" }]) });
       else qs.push({ type: "nombre", q: "Calcule la constante de temps $\\tau$, en s.", reponse: tau, tol, unite: "s", indice: "La substitution dans l’équation donne $\\tau = RC$.",
@@ -467,11 +467,11 @@ export const EXERCICES = [
           { type: "nombre", q: `À $t = ${T.n === 1 ? "" : T.n}\\tau$, quelle part de $E$ la tension $u_C$ ${T.charge ? "a-t-elle atteinte" : "a-t-elle conservée"} ? Donne un pourcentage.`, reponse: part, tol: tolP, unite: "%", indice: T.charge ? "$u_C = E\\left(1 - e^{-t/\\tau}\\right)$ : calcule $1 - e^{-n}$." : "$u_C = E\\,e^{-t/\\tau}$ : calcule $e^{-n}$.",
             pieges: pieges(part, tolP, [{ v: autre, fb: T.charge ? "Tu as pris la part qui reste (la décroissance). À la charge, $u_C = E(1 - e^{-t/\\tau})$ monte vers $E$." : "Tu as pris la part atteinte (la montée). À la décharge, $u_C = E\\,e^{-t/\\tau}$ : il reste $e^{-n}$.", erreur: "63 % et 37 % échangés" }, { v: 100, fb: "Tu as cru que la charge est finie à $\\tau$ : à $n\\tau$, la part n’est pas 100 %.", erreur: "τ = fin de la charge" }]) },
           { type: "nombre", q: `Quelle est la durée du régime transitoire (environ $5\\tau$), en ${tU} ?`, reponse: dur, tol: tolD, unite: tU, indice: "Au bout de $5\\tau$, la charge est faite à plus de 99 %.",
-            pieges: pieges(dur, tolD, [{ v: tv, fb: "Tu as pris $\\tau$ pour la durée du régime transitoire. À $\\tau$, 63 % seulement sont atteints : il faut environ $5\\tau$.", erreur: "τ = fin de la charge" }, { v: 2 * tv, fb: "À $2\\tau$, 86 % seulement sont atteints : il faut environ $5\\tau$.", erreur: "τ = fin de la charge" }]) },
+            pieges: pieges(dur, tolD, [{ v: tv, fb: "Tu as pris $\\tau$ pour la durée du régime transitoire. À $\\tau$, 63 % seulement sont atteints : il faut environ $5\\tau$.", erreur: "τ = fin de la charge" }, { v: 2 * tv, fb: "À $2\\tau$, 86 % seulement sont atteints : il faut environ $5\\tau$.", erreur: "2τ pris pour la durée du régime transitoire" }]) },
           { type: "qcm", q: "Longtemps après la fermeture, en régime permanent, l’intensité du courant…", options: h.melange([
             { t: "est nulle, et $u_C = E$ à la charge", ok: true },
             { t: "vaut $E/R$ : le condensateur chargé laisse passer le courant", fb: "Tu as cru qu’un condensateur chargé conduit. En régime permanent, $u_R = 0$, donc $i = 0$.", erreur: "régime permanent avec i ≠ 0" },
-            { t: "est négative : $u_C$ dépasse $E$", fb: "La courbe approche $E$ sans le dépasser : $u_R$ reste positive, puis tend vers 0.", erreur: "régime permanent avec i ≠ 0" }]) },
+            { t: "est négative : $u_C$ dépasse $E$", fb: "La courbe approche $E$ sans le dépasser : $u_R$ reste positive, puis tend vers 0.", erreur: "u_C dépasse E" }]) },
         ],
         correction: [
           { tex: `${T.charge ? "\\dfrac{u_C}{E} = 1 - e^{-" + T.n + "}" : "\\dfrac{u_C}{E} = e^{-" + T.n + "}"} \\approx ${num(part / 100, 3)}`, r: T.charge ? "La part atteinte à la charge." : "La part qui reste à la décharge." },
@@ -515,7 +515,7 @@ export const EXERCICES = [
               { t: "non : plus $E$ est grand, plus $\\tau$ est grand", fb: "Tu as cru que $E$ change $\\tau$. $\\tau = RC$ ne contient pas $E$ : seule la hauteur de l’asymptote change.", erreur: "E change τ" },
               { t: "non : plus $E$ est grand, plus la charge va vite", fb: "Tu as cru qu’une tension plus grande charge plus vite. La courbe monte plus haut dans le même temps : $\\tau$ ne change pas.", erreur: "E change τ" }]) },
             { type: "nombre", q: `Quelle est la valeur de $u_C$ à $t = \\tau$ pour la courbe ${k + 1}, en V ?`, reponse: Es[k] * P63, tol: { rel: 0.02 }, unite: "V", indice: "À $t = \\tau$, la tension a atteint 63 % de sa valeur finale $E$.",
-              pieges: pieges(Es[k] * P63, { rel: 0.02 }, [{ v: Es[k], fb: "Tu as pris $\\tau$ pour la fin de la charge. À $t = \\tau$, 63 % seulement sont atteints.", erreur: "E change τ" }, { v: Es[k] * P37, fb: "Tu as pris 37 % : c’est le repère d’une courbe qui descend. À la charge, on lit 63 %.", erreur: "E change τ" }]) },
+              pieges: pieges(Es[k] * P63, { rel: 0.02 }, [{ v: Es[k], fb: "Tu as pris $\\tau$ pour la fin de la charge. À $t = \\tau$, 63 % seulement sont atteints.", erreur: "τ = fin de la charge" }, { v: Es[k] * P37, fb: "Tu as pris 37 % : c’est le repère d’une courbe qui descend. À la charge, on lit 63 %.", erreur: "37 % lu sur une montée" }]) },
           ],
           correction: [{ t: `$\\tau = RC = ${num(tau * 1e3, 3)}\\ \\text{ms}$ est le même pour les trois courbes : $E$ ne change que la hauteur de l’asymptote.` }, { tex: `u_C(\\tau) = 0{,}63\\,E_${k + 1} = ${num(Es[k] * P63, 3)}\\ \\text{V}`, r: "63 % de la valeur finale." }],
         };
@@ -623,12 +623,12 @@ export const EXERCICES = [
         questions: [
           { type: "qcm", q: "Quelle est l’équation différentielle vérifiée par $u_C(t)$ ?", options: h.melange([
             { t: "$\\dfrac{\\mathrm{d}u_C}{\\mathrm{d}t} + \\dfrac{1}{RC}\\,u_C = \\dfrac{E}{RC}$", ok: true },
-            { t: "$\\dfrac{\\mathrm{d}u_C}{\\mathrm{d}t} + RC\\,u_C = RC\\,E$", fb: "Tu as multiplié par $RC$ au lieu de diviser. L’homogénéité tranche : $RC\\,u_C$ n’est pas en V·s⁻¹.", erreur: "E oublié" },
-            { t: "$\\dfrac{\\mathrm{d}u_C}{\\mathrm{d}t} - \\dfrac{1}{RC}\\,u_C = \\dfrac{E}{RC}$", fb: "Tu as perdu un signe : avec ce signe, la solution grandirait sans limite.", erreur: "E oublié" }]) },
+            { t: "$\\dfrac{\\mathrm{d}u_C}{\\mathrm{d}t} + RC\\,u_C = RC\\,E$", fb: "Tu as multiplié par $RC$ au lieu de diviser. L’homogénéité tranche : $RC\\,u_C$ n’est pas en V·s⁻¹.", erreur: "RC multiplié au lieu de divisé" },
+            { t: "$\\dfrac{\\mathrm{d}u_C}{\\mathrm{d}t} - \\dfrac{1}{RC}\\,u_C = \\dfrac{E}{RC}$", fb: "Tu as perdu un signe : avec ce signe, la solution grandirait sans limite.", erreur: "signe perdu" }]) },
           { type: "qcm", q: "Quelle est l’expression de $i(t)$ ?", options: h.melange([
             { t: "$i = \\dfrac{E}{R}\\,e^{-t/RC}$", ok: true },
             { t: "$i = \\dfrac{E}{RC}\\,e^{-t/RC}$", fb: "Tu as oublié $C$ : c’est $\\mathrm{d}u_C/\\mathrm{d}t$, en V·s⁻¹. Multiplie par $C$.", erreur: "C oublié" },
-            { t: "$i = \\dfrac{E}{R}\\left(1 - e^{-t/RC}\\right)$", fb: "Tu as fait monter le courant comme $u_C$. $i$ part de $E/R$ à $t = 0$ : il décroît.", erreur: "C oublié" }]) },
+            { t: "$i = \\dfrac{E}{R}\\left(1 - e^{-t/RC}\\right)$", fb: "Tu as fait monter le courant comme $u_C$. $i$ part de $E/R$ à $t = 0$ : il décroît.", erreur: "i part de zéro" }]) },
           { type: "nombre", q: "Détermine la résistance $R$, en Ω.", reponse: T.R, tol, unite: "Ω", indice: "À $t = 0$, $u_C = 0$ : $i(0) = E/R$.",
             pieges: pieges(T.R, tol, [{ v: T.E / (i0), fb: "Tu as laissé $i_0$ en mA. Convertis : $i_0$ en ampères, puis $R = E/i_0$.", erreur: "mA non converti" }, { v: i0 * 1e-3 / T.E, fb: "Tu as divisé $i_0$ par $E$. $R = E/i_0$ : la tension sur le courant.", erreur: "i₀/E au lieu de E/i₀" }]) },
           { type: "nombre", q: "Déduis la capacité $C$ du condensateur, en µF.", reponse: T.C, tol, unite: "µF", indice: "$\\tau = RC$, lu là où la tangente à l’origine coupe le palier.",

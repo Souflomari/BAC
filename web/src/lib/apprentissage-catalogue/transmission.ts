@@ -60,7 +60,7 @@ export const TRANSMISSION: CatalogueLecon = {
     "vrai-tc": { capacites: [], juste: null, options: [{ t: "2 classes à ½ : l’hypothèse est", e: "aucune" }, { t: "4 classes à ¼ : les gènes sont i", e: "aucune" }, { t: "4 classes, deux grandes et deux", e: "aucune" }] },
     "quatre-classes": { capacites: DEUX, juste: 0, options: [{ t: "non : liés, car les classes sont", e: "aucune" }, { t: "oui, car il y a quatre classes", e: "trans.quatre-classes-independants" }, { t: "liés, sans crossing-over : l’hyp", e: "aucune" }] },
     "crossing-over": { capacites: [], juste: null, options: [{ t: "d’un échange entre les deux homo", e: "aucune" }, { t: "d’une mutation : L devenu ℓ", e: "aucune" }, { t: "du testeur, qui a donné son ℓ", e: "aucune" }] },
-    "deux-sur-quatre": { capacites: SCHEMA, juste: 0, options: [{ t: "2 sur 4", e: "aucune" }, { t: "les 4", e: "trans.recombines-moitie" }, { t: "1 sur 4", e: "aucune" }] },
+    "deux-sur-quatre": { capacites: SCHEMA, juste: 0, options: [{ t: "2 sur 4", e: "aucune" }, { t: "les 4", e: "aucune" }, { t: "1 sur 4", e: "aucune" }] },
     pourcentage: { capacites: CARTE, juste: 0, options: [{ t: "3 % : 1,29 % + 1,71 %", e: "aucune" }, { t: "1,5 % : la moyenne de 1,29 et 1,", e: "aucune" }, { t: "97 % : 48,29 % + 48,71 %", e: "aucune" }] },
     "parentaux-recombines": { capacites: DEUX, juste: 0, options: [{ t: "[G, L] et [g, ℓ]", e: "aucune" }, { t: "[G, ℓ] et [g, L]", e: "aucune" }, { t: "les quatre", e: "aucune" }] },
     cinquante: { capacites: DEUX, juste: 0, options: [{ t: "dans peu de méioses", e: "aucune" }, { t: "à chaque méiose", e: "aucune" }, { t: "jamais : ces souris sont des err", e: "aucune" }] },
@@ -138,11 +138,14 @@ export const TRANSMISSION: CatalogueLecon = {
     "test-cross-deux-genes": {
       capacites: ["svt-svt 3.2.2", "svt-pc 2.4.2"], niveau: 2, optionsQcm: 3,
       erreurs: {
-        "rapport exact exigé": "aucune",
+        "rapport exact exigé": "trans.rapport-exact-exige",
         "« deux grandes classes, donc linkage absolu »": "aucune",
-        "« quatre classes, donc indépendants »": "aucune",
+        "rapport de la F₂ appliqué au test-cross": "trans.rapport-f2-generalise",
+        "« quatre classes, donc indépendants »": "trans.quatre-classes-independants",
         "division par les parentaux": "aucune",
         "une seule classe": "aucune",
+        "indépendants supposés sans quatre classes égales": "aucune",
+        "quatre classes supposées en linkage absolu": "aucune",
       },
     },
     "f2-deux-genes": {

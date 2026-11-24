@@ -369,24 +369,38 @@ ok("prérequis écarté", "si les prérequis sont réussis seuls (et la capacit�
   assert.equal(conc(a, "rad.signe-log").expliqueePar, undefined);
 });
 
-ok("e^{2x} lu 2eˣ et le dipôle RC", "l'erreur e^{2x} = 2eˣ vue en exponentielle, puis deux erreurs de coefficient dans l'exposant en RC : le prérequis exponentiel est retenu (plutôt que la dérivée d'une composée), et l'action pointe un gabarit de l'exponentielle", () => {
+// remplace « e^{2x} lu 2eˣ et le dipôle RC » : l'arête exp.exposant-facteur → rc.coefficient-exposant
+// a été retirée à la relecture (2026-11-24) ; le lien maths → RC qui reste vrai passe par la pente.
+ok("pente et hauteur, puis le courant du dipôle RC", "la pente prise pour la hauteur en logarithme (étape pente), puis le courant traité comme uC sur deux énoncés de RC : le prérequis du logarithme est retenu, confirmé, et l'action rejoue son étape", () => {
+  const a = analyse([
+    L(0, "pente", 1),
+    X(1, "rc-expressions", 42, { lecon: "dipole-rc", juste: false, erreur: "i part de zéro" }),
+    X(1, "rc-expressions", 43, { lecon: "dipole-rc", juste: false, erreur: "i part de zéro", h: 1 }),
+  ], { maintenant: maintenant(2) });
+  assert.equal(a.hypotheses[0].amont, "conception:graphe.pente-hauteur");
+  assert.equal(a.hypotheses[0].statut, "confirmee");
+  assert.deepEqual(a.actions[0].cible, { type: "etape", lecon: "logarithme", cle: "pente" });
+});
+
+ok("exposant lu comme facteur : plus de lien vers le RC", "l'erreur e^{2x} = 2eˣ puis deux erreurs de coefficient en RC ne remontent plus à l'exponentielle (arête retirée à la relecture)", () => {
   const a = analyse([
     X(0, "exp-trinome", 41, { lecon: "exponentielle", juste: false, erreur: "e^{2x} = 2eˣ" }),
     X(1, "rc-solution", 42, { lecon: "dipole-rc", juste: false, erreur: "α = RC" }),
     X(1, "rc-equation", 43, { lecon: "dipole-rc", juste: false, erreur: "RC multiplié au lieu de divisé", h: 1 }),
   ], { maintenant: maintenant(2) });
-  assert.equal(a.hypotheses[0].amont, "conception:exp.exposant-facteur");
-  assert.equal(a.hypotheses[0].statut, "confirmee");
-  assert.equal(a.actions[0].cible.lecon, "exponentielle");
+  assert.ok(!a.hypotheses.some((h) => h.amont === "conception:exp.exposant-facteur"));
 });
 
-ok("haploïde et transmission", "« haploïde = une chromatide » vu en méiose, puis deux erreurs d'allèles par gamète en transmission : la méiose est le prérequis retenu", () => {
+// remplace « haploïde et transmission » : l'arête meiose.haploide-une-chromatide → trans.alleles-par-cellule
+// a été retirée à la relecture (2026-11-24) ; le lien méiose → transmission qui reste vrai est le dénombrement.
+ok("dénombrer en méiose et « et » en transmission", "les choix additionnés en méiose (2 × n), puis l'addition pour « et » dans deux exercices de transmission : la méiose est le prérequis retenu", () => {
   const a = analyse([
-    X(0, "meiose-comptes", 51, { lecon: "meiose", juste: false, erreur: "haploïde = une chromatide" }),
-    X(3, "gametes-genotype", 52, { lecon: "transmission", juste: false, erreur: "gamète à deux allèles d’un gène" }),
-    X(3, "f1-dominance", 53, { lecon: "transmission", juste: false, erreur: "un seul allèle par individu", h: 1 }),
+    X(0, "gametes-2n", 51, { lecon: "meiose", juste: false, erreur: "le nombre de types s’additionne (2 × n)" }),
+    X(3, "f2-monohybride", 52, { lecon: "transmission", juste: false, erreur: "addition pour « et »" }),
+    X(3, "f2-deux-genes", 53, { lecon: "transmission", juste: false, erreur: "addition pour « et »", h: 1 }),
   ], { maintenant: maintenant(4) });
-  assert.equal(a.hypotheses[0].amont, "conception:meiose.haploide-une-chromatide");
+  assert.equal(a.hypotheses[0].amont, "conception:meiose.additionner-choix");
+  assert.equal(a.hypotheses[0].statut, "confirmee");
   assert.equal(a.actions[0].motif, "prerequis");
   assert.equal(a.actions[0].cible.lecon, "meiose");
 });
@@ -440,15 +454,27 @@ ok("remontée exponentielle vers logarithme", "les conditions d'existence de ln 
   assert.equal(a.actions[0].cible.lecon, "logarithme");
 });
 
-ok("remontée physique vers maths par une étape de leçon", "en radioactivité, l'étape bac-litteral (signe perdu) et le gabarit datation-c14 ; en logarithme, ln d'un nombre entre 0 et 1 dit positif (q1) : le prérequis ln.signe-sur-0-1 l'emporte, confirmé", () => {
+ok("remontée physique vers maths", "en radioactivité, le signe du logarithme perdu dans deux gabarits (instant-seuil, datation-c14) ; en logarithme, ln d'un nombre entre 0 et 1 dit positif (q1) : le prérequis ln.signe-sur-0-1 l'emporte, confirmé", () => {
   const a = analyse9([
     L9("logarithme", 0, "q1", 1),
-    L9("radioactivite", 1, "bac-litteral", 1),
+    X(1, "instant-seuil", 80, { lecon: "radioactivite", juste: false, erreur: "signe du logarithme" }),
     X(1, "datation-c14", 81, { lecon: "radioactivite", juste: false, erreur: "signe du logarithme", h: 1 }),
   ], maintenant(2));
   assert.equal(a.hypotheses[0].amont, "conception:ln.signe-sur-0-1");
   assert.equal(a.hypotheses[0].statut, "confirmee");
   assert.deepEqual(a.actions[0].cible, { type: "etape", lecon: "logarithme", cle: "gauche" });
+});
+
+ok("la division I traitée comme une mitose", "en méiose, l'anaphase I qui sépare des chromatides (étape anaphase1), la télophase I « pensée mitose » et le gabarit anaphase-alleles : la conception division-i-mitose est active ; homologues et sœurs ne sont pas accusés", () => {
+  const a = analyse9([
+    L9("meiose", 0, "anaphase1", 1),
+    L9("meiose", 0, "telophase1", 1, { h: 1 }),
+    X(0, "anaphase-alleles", 91, { lecon: "meiose", qtype: "qcm", juste: false, erreur: "chromatides séparées en anaphase I", h: 2 }),
+  ], maintenant(0, 3));
+  const d = a.conceptions.find((x) => x.conception === "meiose.division-i-mitose");
+  assert.equal(d.etat, "active");
+  assert.equal(d.observations.filter((o) => o.nature === "forte").length, 3);
+  assert.equal(a.conceptions.find((x) => x.conception === "meiose.soeurs-homologues").observations.filter((o) => o.nature === "forte").length, 0);
 });
 
 // ── 6. Les actions et le bilan ─────────────────────────────────────────────────

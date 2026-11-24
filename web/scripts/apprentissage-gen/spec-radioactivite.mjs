@@ -2,7 +2,7 @@ import { entete } from "./entete.mjs";
 const T = (id) => ["pc-pc", "pc-sm", "pc-svt"].map((f) => `${f} ${id}`);
 export default {
   nom: "RADIOACTIVITE", matiere: "physique", entete: entete("radioactivite", 12, false),
-  nouvelles: ["rad.restants-desintegres", "rad.part-du-depart", "rad.conditions-exterieures"],
+  nouvelles: [],
   caps: { COMPO: T("1.2.1.1"), NZ: T("1.2.1.4"), DESINT: T("1.2.1.8"), LOI: T("1.2.1.10"), DEMI: T("1.2.1.12"), REL: T("1.2.1.13"), UNITES: [...T("1.2.1.11"), ...T("1.2.1.14")], DATER: T("1.2.1.15"), ACTIVITE: [...T("1.2.1.10"), ...T("1.2.1.11")] },
   q: {
     "sav-test": ["COMPO", "-", "noy.composition", "noy.composition", "-"],
@@ -18,7 +18,7 @@ export default {
     ln2: ["REL", "-", "-", "phys.tau-demivie"],
     "v-tau": ["DEMI", "rad.restants-desintegres", "phys.tau-demivie", "-"],
     "v-datation": ["DATER", "-", "-", "-"],
-    "bac-litteral": ["REL", "-", "rad.signe-log", "rad.restants-desintegres"],
+    "bac-litteral": ["REL", "-", "i", "rad.restants-desintegres"],
     q1: ["DEMI", "rad.restants-desintegres", "-", "-"],
     q2: ["UNITES", "-", "i", "-"],
     q3: ["ACTIVITE", "-", "-", "-"],
@@ -27,14 +27,14 @@ export default {
     "noyau-composition": ["noy.composition", "noy.composition", "-", "-", "rad.conditions-exterieures"],
     "equation-desintegration": ["-", "-", "i", "-", "-"],
     "fraction-demivies": ["rad.puissance-demivies", "rad.restants-desintegres"],
-    "lire-demivie-tau": ["phys.tau-demivie", "i", "phys.tau-demivie"],
-    "lambda-unites": ["-", "i", "phys.tau-demivie", "phys.tau-demivie"],
+    "lire-demivie-tau": { "τ confondu avec t½": "phys.tau-demivie", "lire a₀/4 au lieu de a₀/2": "i", "τ = t½ × ln 2": "i", "t½ = 1/λ": "phys.tau-demivie", "τ donné pour λ": "-" },
+    "lambda-unites": { "dimension de λ inversée": "-", "unités non converties": "i", "t½ = 1/λ": "phys.tau-demivie", "λ = ln 2 × t½": "i", "τ confondu avec t½": "phys.tau-demivie", "τ = t½ × ln 2": "i" },
     "n0-masse-activite": ["i", "-", "phys.tau-demivie", "-"],
-    "instant-seuil": ["rad.signe-log", "-", "rad.restants-desintegres"],
+    "instant-seuil": { "signe du logarithme": "rad.signe-log", "décroissance prise pour linéaire": "rad.part-du-depart", "restants pris pour désintégrés": "rad.restants-desintegres" },
     "desintegres-entre-dates": ["rad.puissance-demivies", "-", "rad.restants-desintegres"],
-    "datation-c14": ["-", "rad.signe-log", "phys.tau-demivie"],
+    "datation-c14": { "décroissance prise pour linéaire": "rad.part-du-depart", "signe du logarithme": "rad.signe-log", "t½ = 1/λ": "phys.tau-demivie" },
     "choisir-radioelement": ["-", "-"],
-    "bac-complet": ["-", "i", "phys.tau-demivie", "rad.restants-desintegres", "phys.tau-demivie", "-", "i"],
+    "bac-complet": { "α ne change que A": "-", "signe de la charge de l’électron": "i", "τ confondu avec t½": "phys.tau-demivie", "lire a₀/4 au lieu de a₀/2": "i", "t½ = 1/λ": "phys.tau-demivie", "expression littérale inversée": "-", "unités non converties": "i", "activité prise pour N": "-", "restants pris pour désintégrés": "rad.restants-desintegres", "signe du logarithme": "rad.signe-log" },
     "nz-diagramme": ["-", "-", "-"],
   },
 };

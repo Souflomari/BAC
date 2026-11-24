@@ -2,7 +2,7 @@ import { entete } from "./entete.mjs";
 const T = (id) => [`svt-svt ${id}`, `svt-pc ${id}`];
 export default {
   nom: "EXPRESSION_GENETIQUE", matiere: "svt", entete: entete("expression-genetique", 11, false),
-  nouvelles: ["gen.brin-transcrit", "gen.t-dans-arn", "gen.codon-stop", "gen.codon-initiation", "gen.anticodon-codon", "gen.decalage-cadre", "gen.allele-code"],
+  nouvelles: [],
   caps: { CARAC: T("2.1.8"), MUT: T("2.1.9"), TRANS: T("2.2.1"), CODE: T("2.2.2"), SYNTH: T("2.2.3"), TRADUC: [...T("2.2.2"), ...T("2.2.3")] },
   q: {
     "v-savoir": ["", "-", "-", "-"],
@@ -13,7 +13,7 @@ export default {
     "reflexe-brin": ["TRANS", "-", "-", "-"],
     "v-transcription": ["TRANS", "gen.brin-transcrit", "-", "gen.t-dans-arn"],
     alphabet: ["", "-", "-", "-"],
-    "v-code": ["CODE", "-", "gen.codon-stop", "gen.codon-initiation"],
+    "v-code": ["CODE", "-", "gen.codon-stop", "i"],
     rappel: ["TRANS", "-", "gen.brin-transcrit", "gen.t-dans-arn"],
     stop: ["SYNTH", "-", "gen.codon-stop", "gen.codon-stop"],
     "v-traduction": ["TRADUC", "gen.anticodon-codon", "-", "-"],
@@ -29,7 +29,7 @@ export default {
     "brin-transcrit": ["gen.brin-transcrit", "gen.t-dans-arn"],
     "complementer-ou-non": ["gen.brin-transcrit", "gen.brin-transcrit", "-", "gen.t-dans-arn"],
     "adn-arn": ["-", "-", "-", "-", "gen.t-dans-arn", "-"],
-    "arnm-chaine": ["gen.codon-initiation", "gen.codon-stop", "gen.codon-initiation", "gen.codon-stop"],
+    "arnm-chaine": { "lire avant le codon d’initiation": "gen.codon-initiation", "lire après le codon stop": "gen.codon-stop", "oublier la méthionine": "i", "compter le codon stop comme un acide aminé": "gen.codon-stop" },
     anticodon: ["gen.anticodon-codon", "i", "gen.t-dans-arn"],
     "phases-traduction": ["-", "-", "-", "-", "-", "-"],
     "type-mutation": ["gen.decalage-cadre", "-", "-", "i"],

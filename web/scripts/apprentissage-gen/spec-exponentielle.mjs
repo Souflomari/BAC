@@ -1,7 +1,7 @@
 import { entete } from "./entete.mjs";
-const N = ["exp.croissance-renversee","exp.conditions-ajoutees","exp.retour-t-x","exp.reciproque-confondue","exp.exposant-negatif","exp.derivee-regle-puissance","exp.positivite-etendue","deriv.terme-a-terme"];
+const N = ["ln.croissance-renversee","exp.conditions-ajoutees","exp.retour-t-x","exp.reciproque-confondue","exp.exposant-negatif","exp.derivee-regle-puissance","exp.positivite-etendue","deriv.terme-a-terme"];
 export default {
-  nom: "EXPONENTIELLE", matiere: "maths", nouvelles: N,
+  nom: "EXPONENTIELLE", matiere: "maths", nouvelles: [],
   entete: entete("exponentielle", 14, true),
   caps: {
     EXP: ["maths-sexp 1.2.20", "maths-sm 1.3.13"],
@@ -26,8 +26,8 @@ export default {
     e2x: ["EXP", "-", "exp.exposant-facteur", "-"],
     ek: ["EXP", "-", "exp.exposant-facteur", "exp.reciproque-confondue"],
     "k-negatif": ["EXP", "-", "exp.t-negatif", "-"],
-    "ek-ineq": ["EXP", "-", "exp.croissance-renversee", "-"],
-    inequation: ["EXP", "-", "exp.croissance-renversee", "exp.conditions-ajoutees"],
+    "ek-ineq": ["EXP", "-", "ln.croissance-renversee", "-"],
+    inequation: ["EXP", "-", "ln.croissance-renversee", "exp.conditions-ajoutees"],
     systeme: ["EXP", "-", "-", "-"],
     "v-equations": ["EXP", "-", "-", "exp.positivite-etendue"],
     rappel: ["EXP", "-", "-", "i"],
@@ -59,7 +59,7 @@ export default {
     // signe de b, x=eᵏ, ln(−k), diviser par a oublié, eᵘ=0
     "exp-equation": ["i", "exp.reciproque-confondue", "exp.t-negatif", "isoler.coefficient-oublie", "-"],
     // borne, sens renversé, conditions ajoutées, sens gardé /négatif
-    "exp-inequation": ["i", "exp.croissance-renversee", "exp.conditions-ajoutees", "ineq.sens-diviser-negatif"],
+    "exp-inequation": ["i", "ln.croissance-renversee", "exp.conditions-ajoutees", "ineq.sens-diviser-negatif"],
     // poser t oublié, e^{2x}=2eˣ, garder t<0, revenir à x oublié, exp au lieu de ln
     "exp-trinome": ["-", "exp.exposant-facteur", "exp.t-negatif", "exp.retour-t-x", "exp.reciproque-confondue"],
     "exp-trinome-ineq": ["exp.retour-t-x", "-"],
@@ -70,7 +70,7 @@ export default {
     // lim −∞ = −∞, e^{−x} lu eˣ, 0/0→∞, 0/0→0, lim −∞ = 1, croissances envers, ∞/∞=1
     "exp-limites": ["exp.exposant-negatif", "i", "-", "lim.forme-indeterminee-nulle", "-", "lim.croissances-comparees-envers", "-"],
     // ordonnée oubliée, pente a, ordonnée à l'origine, courbe sous tangente
-    "exp-tangente": ["graphe.pente-hauteur", "graphe.pente-hauteur", "-", "-"],
+    "exp-tangente": { "ordonnée eᵃ oubliée": "-", "pente a au lieu de eᵃ": "-", "ordonnée à l’origine prise pour l’ordonnée du point": "-", "courbe sous sa tangente": "-" },
     // inconnues eˣ eʸ, système non résolu, eˣ+eʸ, somme racine
     "exp-systeme": ["-", "i", "exp.somme-en-somme", "i"],
     // 0/0→0, facteur k oublié, ∞−∞→0, croissances envers

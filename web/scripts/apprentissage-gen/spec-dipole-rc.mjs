@@ -2,7 +2,7 @@ import { entete } from "./entete.mjs";
 const T = (id) => ["pc-pc", "pc-sm", "pc-svt"].map((f) => `${f} ${id}`);
 export default {
   nom: "DIPOLE_RC", matiere: "physique", entete: entete("dipole-rc", 15, true),
-  nouvelles: ["rc.i-comme-uc", "rc.condensateur-conduit", "rc.repere-63-37", "rc.tau-fin-charge", "rc.e-change-tau"],
+  nouvelles: [],
   caps: {
     CONV: T("1.3.1.1"), IDQ: T("1.3.1.2"), QCU: T("1.3.1.3"), CAPA: T("1.3.1.5"), ASSOC: T("1.3.1.6"),
     ED: T("1.3.1.7"), UC: T("1.3.1.8"), COURBES: T("1.3.1.9"), CONT: T("1.3.1.10"), TAU: T("1.3.1.11"), DOCS: T("1.3.1.13"),
@@ -60,15 +60,15 @@ export default {
     "rc-capacite-graphe": ["i", "-", "-", "i"],
     "rc-associations": ["-", "-", "i"],
     "rc-equation": ["-", "-", "rc.coefficient-exposant", "i"],
-    "rc-solution": ["-", "-", "i", "rc.coefficient-exposant", "-"],
+    "rc-solution": { "E/R pris pour l’amplitude": "-", "τ = R/C": "-", "préfixe non converti": "i", "α = RC": "rc.coefficient-exposant", "A = E pour la charge q": "-" },
     "rc-expressions": ["-", "rc.i-comme-uc", "-", "i"],
     "rc-lecture-tau": ["rc.repere-63-37", "rc.tau-moitie", "i", "rc.repere-63-37"],
     "rc-droite-dudt": ["rc.pente-lue", "rc.pente-lue"],
-    "rc-regimes": ["rc.repere-63-37", "rc.tau-fin-charge", "rc.condensateur-conduit"],
-    "rc-influence": ["-", "-", "rc.e-change-tau"],
+    "rc-regimes": { "63 % et 37 % échangés": "rc.repere-63-37", "τ = fin de la charge": "rc.tau-fin-charge", "2τ pris pour la durée du régime transitoire": "-", "régime permanent avec i ≠ 0": "rc.condensateur-conduit", "u_C dépasse E": "-" },
+    "rc-influence": { "R seul règle la vitesse": "-", "un R plus grand charge plus vite": "-", "E change τ": "rc.e-change-tau", "τ = fin de la charge": "rc.tau-fin-charge", "37 % lu sur une montée": "rc.repere-63-37" },
     "rc-energie": ["i", "i", "i", "-"],
     "rc-mesure": ["-", "i", "i"],
-    "rc-bac": ["-", "-", "i", "i", "rc.tau-moitie"],
+    "rc-bac": { "RC multiplié au lieu de divisé": "rc.coefficient-exposant", "signe perdu": "-", "i part de zéro": "rc.i-comme-uc", "C oublié": "-", "mA non converti": "i", "i₀/E au lieu de E/i₀": "i", "τ lu à 37 % ou à la moitié": "rc.tau-moitie" },
     "rc-energie-etablir": ["-", "-", "i"],
   },
 };

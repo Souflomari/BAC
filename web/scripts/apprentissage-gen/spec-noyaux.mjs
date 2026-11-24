@@ -2,7 +2,7 @@ import { entete } from "./entete.mjs";
 const T = (id) => ["pc-pc", "pc-sm", "pc-svt"].map((f) => `${f} ${id}`);
 export default {
   nom: "NOYAUX", matiere: "physique", entete: entete("noyaux", 14, true),
-  nouvelles: ["noy.stabilite-el-totale", "noy.el-par-nucleon-additionnees", "noy.signe-delta-e", "noy.masse-conservee", "noy.el-reserve"],
+  nouvelles: [],
   caps: {
     DESINT: T("1.2.1.8"),
     DM: T("1.2.2.1"), ELA: T("1.2.2.2"), UNIT: T("1.2.2.3"), EMASSE: T("1.2.2.5"),

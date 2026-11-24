@@ -48,8 +48,8 @@ export const EXPONENTIELLE: CatalogueLecon = {
     e2x: { capacites: EXP, juste: 0, options: [{ t: "(eˣ)²", e: "aucune" }, { t: "2eˣ", e: "exp.exposant-facteur" }, { t: "e^(x²)", e: "aucune" }] },
     ek: { capacites: EXP, juste: 0, options: [{ t: "x = ln 5", e: "aucune" }, { t: "x = 5/e", e: "exp.exposant-facteur" }, { t: "x = e^5", e: "exp.reciproque-confondue" }] },
     "k-negatif": { capacites: EXP, juste: 0, options: [{ t: "aucune solution", e: "aucune" }, { t: "x = ln(−2)", e: "exp.t-negatif" }, { t: "x = −ln 2", e: "aucune" }] },
-    "ek-ineq": { capacites: EXP, juste: 0, options: [{ t: "x < ln 5", e: "aucune" }, { t: "x > ln 5", e: "exp.croissance-renversee" }, { t: "0 < x < ln 5", e: "aucune" }] },
-    inequation: { capacites: EXP, juste: 0, options: [{ t: "x < 4", e: "aucune" }, { t: "x > 4", e: "exp.croissance-renversee" }, { t: "x < 4 et x > 1/2", e: "exp.conditions-ajoutees" }] },
+    "ek-ineq": { capacites: EXP, juste: 0, options: [{ t: "x < ln 5", e: "aucune" }, { t: "x > ln 5", e: "ln.croissance-renversee" }, { t: "0 < x < ln 5", e: "aucune" }] },
+    inequation: { capacites: EXP, juste: 0, options: [{ t: "x < 4", e: "aucune" }, { t: "x > 4", e: "ln.croissance-renversee" }, { t: "x < 4 et x > 1/2", e: "exp.conditions-ajoutees" }] },
     systeme: { capacites: EXP, juste: 0, options: [{ t: "(3 ; 2)", e: "aucune" }, { t: "(e3 ; e2)", e: "aucune" }, { t: "aucune solution : eˣ × eʸ ne se", e: "aucune" }] },
     "v-equations": { capacites: EXP, juste: 0, options: [{ t: "x > 0", e: "aucune" }, { t: "x > 1", e: "aucune" }, { t: "pour tout réel x", e: "exp.positivite-etendue" }] },
     rappel: { capacites: EXP, juste: 0, options: [{ t: "8", e: "aucune" }, { t: "6", e: "aucune" }, { t: "9", e: "inattention" }] },
@@ -114,7 +114,7 @@ export const EXPONENTIELLE: CatalogueLecon = {
       capacites: ["maths-sexp 1.2.20", "maths-sm 1.3.13"], niveau: 2, optionsQcm: 3,
       erreurs: {
         "erreur de signe sur la borne": "inattention",
-        "sens renversé sans raison": "exp.croissance-renversee",
+        "sens renversé sans raison": "ln.croissance-renversee",
         "conditions d’existence ajoutées": "exp.conditions-ajoutees",
         "sens gardé en divisant par un négatif": "ineq.sens-diviser-negatif",
       },
@@ -174,8 +174,8 @@ export const EXPONENTIELLE: CatalogueLecon = {
     "exp-tangente": {
       capacites: ["maths-sexp 1.2.22", "maths-sm 1.3.16"], niveau: 2, optionsQcm: 3,
       erreurs: {
-        "ordonnée eᵃ oubliée": "graphe.pente-hauteur",
-        "pente a au lieu de eᵃ": "graphe.pente-hauteur",
+        "ordonnée eᵃ oubliée": "aucune",
+        "pente a au lieu de eᵃ": "aucune",
         "ordonnée à l’origine prise pour l’ordonnée du point": "aucune",
         "courbe sous sa tangente": "aucune",
       },

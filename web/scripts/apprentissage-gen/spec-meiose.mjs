@@ -1,10 +1,12 @@
 import { entete } from "./entete.mjs";
 const M = (a, b) => [`svt-svt ${a}`, `svt-pc ${b}`];
 const H1 = "meiose.haploide-une-chromatide", SH = "meiose.soeurs-homologues", AD = "meiose.additionner-choix";
-const RD = "meiose.reduction-division-ii", PI = "meiose.puissance-inversee", BM = "meiose.brassage-mutation", ADN = "meiose.adn-chromosomes";
+const BM = "meiose.brassage-mutation", ADN = "meiose.adn-chromosomes", DM = "meiose.division-i-mitose";
+// fusions de la relecture : réduction à la division II → ADN et chromosomes confondus ; n² → additionner les choix
+const RD = ADN, PI = AD;
 export default {
   nom: "MEIOSE", matiere: "svt", entete: entete("meiose", 12, true),
-  nouvelles: [RD, PI, BM, ADN],
+  nouvelles: [],
   caps: { PHASES: M("3.1.1", "2.3.1"), CARYO: M("3.1.2", "2.3.2"), ROLE: M("3.1.3", "2.3.3"), SCHEMA: M("3.1.4", "2.3.4") },
   q: {
     "v-savoir": ["", "-", "-", "-"],
@@ -14,8 +16,8 @@ export default {
     "v-haploide": ["CARYO", "-", "-", "-"],
     interphase: ["PHASES", "-", ADN, "-"],
     tetrade: ["PHASES", "-", "-", "-"],
-    anaphase1: ["PHASES", "-", SH, "-"],
-    telophase1: ["PHASES", "-", SH, H1],
+    anaphase1: ["PHASES", "-", DM, "-"],
+    telophase1: ["PHASES", "-", DM, H1],
     metaphase2: ["PHASES", "-", H1, H1],
     anaphase2: ["PHASES", "-", "-", "-"],
     "ou-reduction": ["PHASES", "-", RD, "-"],
@@ -27,7 +29,7 @@ export default {
     "humain-2-23": ["ROLE", "-", AD, PI],
     "v-inter": ["ROLE", "-", BM, "-"],
     chiasma: ["ROLE", "-", SH, "-"],
-    echange: ["ROLE", "-", "-", SH],
+    "echange": ["ROLE", "-", "-", "-"],
     "quand-co": ["PHASES", "-", "-", "-", "-"],
     "v-intra": ["ROLE", "-", "-", "-"],
     fecondation: ["ROLE", "-", "-", "-"],
@@ -49,17 +51,17 @@ export default {
     q3: ["ROLE", "-", SH, "-"],
   },
   g: {
-    "meiose-phase": ["-", "-", "-", "-"],
+    "meiose-phase": { "phases confondues": "-", "haploïde lu comme diploïde": "-", "anaphase I et II confondues": "-", "la méiose, c’est deux mitoses": "meiose.division-i-mitose" },
     "meiose-comptes": ["-", H1, ADN],
     "meiose-courbe": [RD, "-", "-"],
     "caryotype-formule": ["-", "-", "-"],
     "gametes-2n": [AD, PI, "-"],
     "gametes-genotype": ["-", "trans.alleles-par-cellule"],
-    "anaphase-alleles": ["-", SH, "-"],
-    "crossing-over": [SH, SH, "-", "-"],
+    "anaphase-alleles": { "les deux chromosomes paternels toujours ensemble": "-", "chromatides séparées en anaphase I": "meiose.division-i-mitose", "homologues séparés en anaphase II": "-" },
+    "crossing-over": { "échange entre chromosomes de paires différentes": "-", "échange entre chromatides sœurs": "meiose.soeurs-homologues", "4 recombinés sur 4": "-", "confondre parental et recombiné": "-", "crossing-over hors intervalle compté": "-" },
     "fecondation-combinaisons": [AD, "-", "-"],
     "cycle-caryotype": ["-", "-", "-"],
     "brassage-identifier": [BM, "-", "-"],
-    "meiose-document": ["-", "-", "-", H1, "-", AD, PI, "-", "-"],
+    "meiose-document": ["-", DM, "-", H1, "-", AD, PI, "-", "-"],
   },
 };

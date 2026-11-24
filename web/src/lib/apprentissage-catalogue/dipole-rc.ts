@@ -141,7 +141,7 @@ export const DIPOLE_RC: CatalogueLecon = {
     "rc-solution": {
       capacites: ["pc-pc 1.3.1.7", "pc-sm 1.3.1.7", "pc-svt 1.3.1.7", "pc-pc 1.3.1.8", "pc-sm 1.3.1.8", "pc-svt 1.3.1.8", "pc-pc 1.3.1.11", "pc-sm 1.3.1.11", "pc-svt 1.3.1.11"], niveau: 2, optionsQcm: 3,
       erreurs: {
-        "τ quelconque": "aucune",
+        "E/R pris pour l’amplitude": "aucune",
         "τ = R/C": "aucune",
         "préfixe non converti": "inattention",
         "α = RC": "rc.coefficient-exposant",
@@ -178,7 +178,9 @@ export const DIPOLE_RC: CatalogueLecon = {
       erreurs: {
         "63 % et 37 % échangés": "rc.repere-63-37",
         "τ = fin de la charge": "rc.tau-fin-charge",
+        "2τ pris pour la durée du régime transitoire": "aucune",
         "régime permanent avec i ≠ 0": "rc.condensateur-conduit",
+        "u_C dépasse E": "aucune",
       },
     },
     "rc-influence": {
@@ -187,6 +189,8 @@ export const DIPOLE_RC: CatalogueLecon = {
         "R seul règle la vitesse": "aucune",
         "un R plus grand charge plus vite": "aucune",
         "E change τ": "rc.e-change-tau",
+        "τ = fin de la charge": "rc.tau-fin-charge",
+        "37 % lu sur une montée": "rc.repere-63-37",
       },
     },
     "rc-energie": {
@@ -209,7 +213,9 @@ export const DIPOLE_RC: CatalogueLecon = {
     "rc-bac": {
       capacites: ["pc-pc 1.3.1.7", "pc-sm 1.3.1.7", "pc-svt 1.3.1.7", "pc-pc 1.3.1.8", "pc-sm 1.3.1.8", "pc-svt 1.3.1.8", "pc-pc 1.3.1.9", "pc-sm 1.3.1.9", "pc-svt 1.3.1.9", "pc-pc 1.3.1.11", "pc-sm 1.3.1.11", "pc-svt 1.3.1.11"], niveau: 3, optionsQcm: 3,
       erreurs: {
-        "E oublié": "aucune",
+        "RC multiplié au lieu de divisé": "rc.coefficient-exposant",
+        "signe perdu": "aucune",
+        "i part de zéro": "rc.i-comme-uc",
         "C oublié": "aucune",
         "mA non converti": "inattention",
         "i₀/E au lieu de E/i₀": "inattention",
