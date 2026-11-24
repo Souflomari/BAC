@@ -80,10 +80,10 @@ export const f_bac22 = (x) => x * Math.pow(Math.exp(x / 2) - 1, 2);             
 export const f_bac19 = (x) => x + 0.5 - Math.log(x) + 0.5 * Math.pow(Math.log(x), 2); // sujet 2019, deuxième partie
 export const FIX_EXPM = racine((x) => Math.exp(-x) - x, 0, 1);                  // ≈ 0,5671
 export const FONCS = {
-  dose: { f: f_dose, lab: "½*x* + 1", win: { x0: -1.5, x1: 6.5, y0: -1.5, y1: 6.5 }, zw: { x0: 1.7, x1: 2.05, y0: 1.7, y1: 2.05 }, fix: [2], I: null },
+  dose: { f: f_dose, lab: "½*x* + 1", win: { x0: -1.5, x1: 6.5, y0: -1.5, y1: 6.5 }, zw: { x0: 1.7, x1: 2.05, y0: 1.7, y1: 2.05 }, zc: { x0: -1.2, x1: 2.6, y0: -0.5, y1: 2.6 }, fix: [2], I: [0, 2], J: [f_dose(0), f_dose(2)] },
   expm: { f: f_expm, lab: "e^{−*x*}", win: { x0: -0.25, x1: 1.45, y0: -0.25, y1: 1.45 }, zw: null, fix: [FIX_EXPM], I: null },
   pas: { lettre: "w", f: f_pas, lab: "*x* + e^{−*x*}", win: { x0: -0.3, x1: 4.3, y0: -0.3, y1: 4.3 }, zw: null, fix: [], I: null },
-  double: { lettre: "v", f: f_double, lab: "2*x* − 1", win: { x0: -0.6, x1: 10.6, y0: -1.2, y1: 10.6 }, zw: null, fix: [1], I: null },
+  double: { lettre: "s", f: f_double, lab: "2*x* − 1", win: { x0: -0.6, x1: 10.6, y0: -1.2, y1: 10.6 }, zw: null, fix: [1], I: null },
   bac22: { f: f_bac22, lab: "*x*(e^{*x*/2} − 1)^{2}", win: { x0: -0.2, x1: 1.6, y0: -0.2, y1: 1.6 }, zw: null, fix: [0, LN4], I: [0, LN4] },
   bac19: { f: f_bac19, lab: "*x* + ½ − ln *x* + ½(ln *x*)^{2}", win: { x0: 0.5, x1: 3.1, y0: -0.35, y1: 3.1 }, zw: null, fix: [Math.E], I: [1, Math.E] },
 };
@@ -105,9 +105,9 @@ export const PLAFOND_DOSE = 2;
 /** ce que dit la dent de scie au sommet du jour n : u_n ; au creux : u_n / 2 (avant la prise suivante) */
 export const creux = (n) => U_DOSE[n] / 2;
 export const PAS_ASSEZ = { n: 30, max: Math.max(...U_DOSE.slice(0, 31)) };   // 31 termes u_0..u_30, tous < 2
-/** w_n = 0,1 × 1,5ⁿ : w_0 à w_7 < 2, puis w_8 > 2 */
-export const w = (n) => 0.1 * Math.pow(1.5, n);
-export const W7 = w(7), W8 = w(8);
+/** t_n = 0,1 × 1,5ⁿ : t_0 à t_7 < 2, puis t_8 > 2 (la lettre t ne sert qu'à cette suite) */
+export const tgeo = (n) => 0.1 * Math.pow(1.5, n);
+export const TG7 = tgeo(7), TG8 = tgeo(8);
 
 /* ---------- la machine (partie 2) ---------- */
 export const U_DEPART5 = orbite(f_dose, 5, 40);                       // u_0 = 5 : décroît vers 2
@@ -120,7 +120,7 @@ export const HEREDITE_CONTRE = f_dose(3);                              // ½x + 
 export const U_DEPART5_1 = U_DEPART5[1];                               // 3,5 (u_n ≥ 5 : l'hérédité ne marche pas)
 
 /* ---------- le sens de variation (partie 4) ---------- */
-export const U_DEP6 = f_dose(6);                                       // q2 : f(6) = 4 < 6
+export const U_DEPART5_DEC = U_DEPART5[1] < U_DEPART5[0] && U_DEPART5[2] < U_DEPART5[1];   // u_0 = 5 : décroissante (rappel)
 export const SPIRALE = orbite(f_expm, 0, 12);                          // 0 ; 1 ; 0,368 ; 0,692 ; 0,500 ; 0,606…
 
 /* ---------- converger (partie 5) ---------- */
@@ -132,14 +132,17 @@ export const PAS_V = PAS_N.map(pasW);                                  // w_10, 
 export const PAS_LN = PAS_N.map((n) => Math.log(n + 1));               // w_n ≥ ln(n + 1)
 
 /* ---------- la limite (partie 6) ---------- */
-export const V_DOUBLE = orbite(f_double, 2, 5);                        // v_0 = 2 ; 3 ; 5 ; 9 ; 17 : v_n = 1 + 2ⁿ
+export const S_DOUBLE = orbite(f_double, 2, 5);                        // s_0 = 2 ; 3 ; 5 ; 9 ; 17 : s_n = 1 + 2ⁿ
 export const LN_LIM = Math.log(2);                                     // ln est continue en 2 : ≈ 0,69
-export const LIM_DOSE_CHOIX = { depart: 0, dose: 1 };                  // les leurres de limite-dose : 0 (u_0), 1 (la dose)
 
 /* ---------- les suites de référence (partie 7) ---------- */
 export const DEMI = (n) => Math.pow(0.5, n);
-export const MALTHUS = { periodes: 9, pop: Math.pow(2, 9), vivres: 1 + 9, arith: 1 + 2 * 9, trop: Math.pow(2, 10) };   // 512 à 10 ; 19 ; 1024
+export const MALTHUS = { periodes: 9, pop: Math.pow(2, 9), vivres: 1 + 9 };   // 512 à 10 (Malthus, 1798, chapitre 2)
 export const GEO_10 = DEMI(10);                                        // (½)^10 ≈ 0,001
+
+/** le seuil par ln : n ln ½ ≤ ln 0,01 donne n ≥ ln 0,01 / ln ½ (le sens est renversé) ; le leurre qui garde le sens, et celui qui prend ln 2 */
+export const LN001_LNDEMI = Math.log(0.01) / Math.log(0.5);            // 6,64
+export const LN001_LN2 = Math.log(0.01) / Math.log(2);                 // −6,64 : vrai dès n = 0, le leurre de ln ½ = ln 2
 
 /* ---------- le retour (partie 8) ---------- */
 export const U_EXPLICITE = (n) => 2 - 2 * Math.pow(0.5, n);            // u_n = 2 − 2(½)ⁿ
@@ -151,6 +154,11 @@ export const ECART6 = 2 - U_DOSE[6], ECART7 = 2 - U_DOSE[7];           // 0,0312
 export const DOSE2 = { f: (x) => x / 2 + 2, plateau: 4, eps: 0.04 };
 export const SEUIL2 = seuil(4, 0.5, DOSE2.eps);                        // le même 7ᵉ jour
 export const DOSE2_FAUX = { deux: 2, trois: 3 };
+
+/* ---------- le bilan : l'hérédité sur une fonction neuve (q2) ---------- */
+/** f(x) = √(x + 2), u_0 = 0, P(n) : 0 ≤ u_n ≤ 2 ; f est croissante, f(0) = √2, f(2) = 2 ; f(7) = 3 > 2 contredit « f(x) ≤ 2 pour tout x » */
+export const f_neuve = (x) => Math.sqrt(x + 2);
+export const NEUVE = { f0: f_neuve(0), f2: f_neuve(2), f7: f_neuve(7), u: orbite(f_neuve, 0, 12) };
 
 /* ---------- le bac (partie 9) ---------- */
 export const U_BAC22 = orbite(f_bac22, 1, 6);                          // 1 ; 0,421 ; … : décroissante

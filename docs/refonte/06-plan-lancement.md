@@ -167,6 +167,21 @@ restitution existent ; ses deux exemples restent des exercices types, dits tels.
 corrigés : les mots « tétrade », « bivalent » et « ségrégation indépendante » n'y figurent pas ; la
 filière PC écrit les phénotypes avec un point-virgule, la filière SVT avec une virgule.
 
+**Retour du propriétaire sur `/pilote/suites` (2026-11-24)** : « assez bonne », mais chargée, des
+couleurs à revoir à l'étape des zones, une interface encore un peu ennuyeuse. Deux critiques dédiés
+(visuel sur captures, pédagogie sur le script) ont trouvé ce que la relecture d'exactitude n'avait
+pas vu. Corrigé : la leçon passe de 59 à 53 étapes ; les zones sont un aplat léger, une à la fois,
+dans une fenêtre resserrée ; l'hérédité s'enseigne par « f croissante », comme au bac ; le report
+sur l'axe se fait en trois temps ; l'élève rédige la justification de la convergence et cite les
+conditions de f(ℓ) = ℓ. La coquille commune est allégée (plus rien sur la scène que « Rejouer »,
+« Suivant » seul bouton fort, l'option fausse en gris).
+
+**La chaîne change** : après les contrôles automatiques et la relecture d'exactitude, chaque leçon
+passe devant `ux-critic` (sur captures, ordinateur et téléphone) et `pedagogy-critic` (sur le
+script), puis l'auteur corrige. Les cinq autres leçons de la série y passent avant toute nouvelle
+production. Le second regard d'Antigravity est décrit dans
+[`../revue-externe/MANDAT-LECONS.md`](../revue-externe/MANDAT-LECONS.md).
+
 ## 5. Avant le lancement : les bloquants
 
 Inventaire vérifié dans le dépôt le 2026-11-23. Trois faits qui cadrent tout :

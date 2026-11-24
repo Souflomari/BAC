@@ -30,12 +30,13 @@ scene("end", {
   p: { n: 0 },
   build(g) {
     fx(g, 90, 96, "Ce que tu as compris", "t-titre s-ink");
-    const I = [["La machine *u*_{*n*+1} = *f*(*u*_{*n*}) se dessine :", "l’escalier entre la courbe de *f* et la droite *y* = *x*."],
-      ["La récurrence, en deux pièces :", "initialisation, puis hérédité avec l’hypothèse nommée."],
-      ["Le sens de variation se lit sur le signe de *f*(*x*) − *x*", "sur l’intervalle où vivent les *u*_{*n*}, pas sur le sens de *f*."],
-      ["Monotone et bornée, donc convergente (critère admis) :", "un majorant n’est pas la limite."],
-      ["Après la convergence seulement, la limite vérifie ℓ = *f*(ℓ),", "*f* continue ; un point fixe seul ne prouve rien."]];
-    this.items = I.map((l, i) => { const gg = E("g", {}, g), y = 170 + i * 100; E("text", { x: 90, y: y + 8, class: "t-cle s-ink", text: String(i + 1) }, gg); fx(gg, 140, y, l[0], "t-lab2 s-ink"); fx(gg, 140, y + 30, l[1], "t-lab s-dim"); return gg; });
+    // cinq blocs : le numéro en accent, une phrase courte en gras, la suite en gris, de l'air entre les blocs
+    const I = [["La machine se dessine.", "L’escalier entre la courbe de *f* et la droite *y* = *x*."],
+      ["La récurrence a deux pièces.", "L’initialisation, puis l’hérédité avec l’hypothèse nommée."],
+      ["Le sens se lit sur *f*(*x*) − *x*.", "Sur l’intervalle où vivent les *u*_{*n*}, pas sur le sens de *f*."],
+      ["Monotone et bornée : convergente.", "Le critère est admis ; un majorant n’est pas la limite."],
+      ["ℓ = *f*(ℓ) vient après la convergence.", "*f* est continue ; un point fixe seul ne prouve rien."]];
+    this.items = I.map((l, i) => { const gg = E("g", {}, g), y = 176 + i * 108; E("text", { x: 90, y: y + 8, class: "t-cle s-a", text: String(i + 1) }, gg); fx(gg, 140, y, l[0], "t-lab2 s-ink"); fx(gg, 140, y + 38, l[1], "t-lab s-dim"); return gg; });
   },
   render() { this.items.forEach((g, i) => { const o = clamp(this.p.n - i, 0, 1); g.style.opacity = o; g.setAttribute("transform", `translate(${((1 - o) * -16).toFixed(1)} 0)`); }); },
 });

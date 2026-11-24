@@ -7,7 +7,7 @@
  * pas posé) et les tableaux de valeurs (`table`, adapté de la leçon exponentielle). Aucune couleur
  * écrite en dur : les classes de pilote.css seulement ; toutes les valeurs viennent de suites-outils.js.
  */
-import { fr, ent, orbite, DOSE2, U_DOSE } from "./suites-outils";
+import { fr, ent, orbite, DOSE2, U_DOSE, tgeo } from "./suites-outils";
 import { sciF } from "./exponentielle-outils";
 
 /** un nombre aussi exact que possible, à six décimales au plus : 1,75 ; 1,984375 ; 1,998047 */
@@ -91,14 +91,13 @@ scene("doses", {
 const pw = (b, n) => Math.pow(b, n);
 const exact = (x, d) => fr(x, d);
 const MODES = {
-  u: { t: "Les termes de la suite", s: "*u*_{0} = 0 et *u*_{*n*+1} = ½*u*_{*n*} + 1", h: ["*n*", "*u*_{*n*}"], N: 31, B: 2, f: (i) => [String(i), U_DOSE[i].toFixed(9).replace(".", ",")], dx: [60, 220] },
+  tgeo: { t: "Une autre suite", s: "*t*_{*n*} = 0,1 × 1,5^{*n*}", h: ["*n*", "*t*_{*n*}"], N: 9, B: 1, f: (i) => [String(i), fr(tgeo(i), 4)], dx: [150, 360] },
   alt: { t: "Une suite bornée", s: "(−1)^{*n*} reste entre −1 et 1", h: ["*n*", "(−1)^{*n*}"], N: 10, B: 1, f: (i) => [String(i), i % 2 ? "−1" : "1"], dx: [150, 360] },
   demi: { t: "Les puissances de ½", s: "(½)^{*n*}, pour *n* de 0 à 10", h: ["*n*", "(½)^{*n*}"], N: 11, B: 1, f: (i) => [String(i), exact(pw(0.5, i), i)], dx: [110, 420] },
-  mdemi: { t: "Les puissances de −½", s: "(−½)^{*n*}, pour *n* de 0 à 10", h: ["*n*", "(−½)^{*n*}"], N: 11, B: 1, f: (i) => [String(i), exact(pw(-0.5, i), i)], dx: [110, 420] },
   malthus: { t: "La population et les vivres", s: "une période : 25 ans ; au départ, 1 et 1", h: ["période *n*", "population 2^{*n*}", "vivres 1 + *n*"], N: 10, B: 1, f: (i) => [String(i), ent(pw(2, i)), ent(1 + i)], dx: [150, 420, 700] },
 };
 scene("table", {
-  p: { mode: "u", rows: 0 },
+  p: { mode: "tgeo", rows: 0 },
   build(g) {
     this.ti = titre(g, "", "");
     this.hd = Array.from({ length: 6 }, () => fx(g, 0, 0, "", "t-lab s-dim", "end"));
