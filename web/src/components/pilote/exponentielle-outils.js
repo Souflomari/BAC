@@ -17,7 +17,7 @@
  *  2. [V] Sujet de bac, Sciences expérimentales 2021, session normale, exercice 1,
  *     questions 1 a) et 1 b), 0,5 point chacune : résoudre e^{2x} − 4e^x + 3 = 0, puis
  *     e^{2x} − 4e^x + 3 ≤ 0 (docs/sujets/maths/limites-continuite.md, statut vérifié).
- *  3. Le second exemple du bac (e^{2x} − 3e^x − 4 = 0) est un « exercice type », non tiré d'un sujet.
+ *  3. Le second exemple du bac (e^{2x} − e^x − 6 = 0, puis ≤ 0) est un « exercice type », non tiré d'un sujet.
  * Capacités du cadre 2025 : docs/referentiel/maths-sexp.yaml (1.2.20, 1.2.21, 1.2.22) et
  * maths-sm.yaml (1.3.13, 1.3.14, 1.3.16).
  */
@@ -39,6 +39,10 @@ function mantisse(x, d) {
 export const sciF = (x, d = 1) => { const [m, e] = mantisse(x, d); return `${fr(m, d)} × 10^{${e < 0 ? "−" : ""}${Math.abs(e)}}`; };
 /** une formule en ligne dans le panneau (rendue par KaTeX) avec son texte de repli */
 export const M = (tex, alt) => `<span class="m" data-tex="${String(tex).replace(/"/g, "&quot;")}">${alt ?? tex}</span>`;
+/** « ln » et « exp » en romain dans le texte du panneau (classe fn), hors balises et hors [[fiches]] ; l'espace insécable est gardée */
+export const fnHTML = (h) => typeof h !== "string" ? h : h.split(/(<[^>]+>|\[\[[^\]]*\]\])/).map((p, i) => i % 2 ? p : p.replace(/\b(ln|exp)\b( (?=\S))?/g, (m, w, sp) => `<span class="fn">${w}</span>${sp ? "\u00A0" : ""}`)).join("");
+/** un nombre sans zéros inutiles : 2,250 → 2,25 ; 2,000 → 2 */
+export const sansZeros = (s) => (s.includes(",") ? s.replace(/0+$/, "").replace(/,$/, "") : s);
 /** un nombre pour KaTeX : 2{,}25 */
 export const TN = (x, d = 2) => fr(x, d).replace(/,/g, "{,}").replace(/ /g, "\\,").replace("−", "-");
 
@@ -86,12 +90,18 @@ export const systeme = (p, q) => [(p + q) / 2, (p - q) / 2];
 export const [SYS_X, SYS_Y] = systeme(5, 1);
 
 /* ---------- la dérivée ---------- */
+/** « même miroir, autre point » : le point de exp à la hauteur H_PH, de pente H_PH, d'abscisse ln H_PH */
+export const H_PH = 6;
+export const X_PH = Math.log(H_PH);                   // ≈ 1,79 : l'abscisse, pas la pente
 export const E2 = Math.exp(2);                        // pente de exp en 2 : ≈ 7,39
 export const DEUX_E = 2 * Math.E;                     // le leurre 2e ≈ 5,44
 export const taux = (h) => (Math.exp(h) - 1) / h;     // (e^h − 1)/h
-export const H_DEBUT = 1.5, H_FIN = 0.05;
+export const H_DEBUT = 1, H_FIN = 0.05;
 export const EXP_ECART = Math.exp(-1) - 1;            // e^{−1} − 1 ≈ −0,63 (g′ en −1)
 export const E_MOINS_1 = Math.E - 1;                  // g′(1) ≈ 1,72
+
+/* ---------- x e^x en −∞ ---------- */
+export const X_MOINS10 = -10 * Math.exp(-10);         // x eˣ pour x = −10 ≈ −0,00045
 
 /* ---------- la course eˣ / x ---------- */
 export const R_COURSE = [1, 2, 5, 10, 15, 20];
@@ -109,9 +119,9 @@ export function racines(a, b, c) {
   return { delta, r1: (-b - s) / (2 * a), r2: (-b + s) / (2 * a) };
 }
 export const BAC1 = { a: 1, b: -4, c: 3 };            // e^{2x} − 4e^x + 3 = 0 (SExp 2021 N, Q1a)
-export const BAC2 = { a: 1, b: -3, c: -4 };           // e^{2x} − 3e^x − 4 = 0 (exercice type)
+export const BAC2 = { a: 1, b: -1, c: -6 };           // e^{2x} − e^x − 6 = 0 (exercice type) : t = 3 ou t = −2
 export const R1 = racines(BAC1.a, BAC1.b, BAC1.c);    // Δ = 4 ; t = 1 ou 3
-export const R2 = racines(BAC2.a, BAC2.b, BAC2.c);    // Δ = 25 ; t = −1 ou 4
+export const R2 = racines(BAC2.a, BAC2.b, BAC2.c);    // Δ = 25 ; t = −2 ou 3
 export const LN3 = Math.log(3), LN2_ = Math.log(2);
 
 /* ---------- les outils de scène (liés au noyau) ---------- */
@@ -124,10 +134,12 @@ export function outilsScene(ctx) {
   function fxFill(t, str) {
     const fs = t.__fs; t.__s = str; t.textContent = ""; let shift = 0;
     const items = [];
+    // « ln » et « exp » en romain (classe fn) : dans la police condensée, « ln » se lit « In »
     const ital = (txt, dy, small) => String(txt).split(/(\*[^*\s][^*]*\*)/).forEach((q) => {
       if (!q) return;
       const it = q[0] === "*" && q.length > 2 && q.endsWith("*");
-      items.push({ txt: it ? q.slice(1, -1) : q, dy, small, it });
+      if (it) { items.push({ txt: q.slice(1, -1), dy, small, it }); return; }
+      q.split(/(\bln\b|\bexp\b)/).forEach((w) => { if (w) items.push({ txt: w, dy, small, it: false, fn: w === "ln" || w === "exp" }); });
     });
     String(str).split(/(\^\{[^}]*\}|_\{[^}]*\})/).forEach((part) => {
       if (!part) return;
@@ -135,8 +147,9 @@ export function outilsScene(ctx) {
       else if (part.startsWith("_{")) ital(part.slice(2, -1), 0.24 * fs, true);
       else ital(part, 0, false);
     });
-    items.forEach(({ txt, dy, small, it }) => {
+    items.forEach(({ txt, dy, small, it, fn }) => {
       const a = { text: txt }, d = dy - shift;
+      if (fn) a.class = "fn";
       if (Math.abs(d) > 0.01) a.dy = d.toFixed(1);
       shift = dy;
       if (small) a["font-size"] = (0.7 * fs).toFixed(1);
