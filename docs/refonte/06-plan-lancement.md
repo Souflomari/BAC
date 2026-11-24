@@ -140,6 +140,11 @@ Troisième leçon de la série : `/pilote/noyaux` (physique : noyaux, masse et �
 contrôles verts, non liée depuis l'accueil. Son « au bac » cite trois vrais sujets (2019, 2020,
 2023). Reste « à vérifier » avant de la montrer : les emplois cités dans l'étape des usages.
 
+Quatrième leçon de la série : `/pilote/suites` (maths : les suites numériques, séance 1 ; 59 étapes,
+14 gabarits, une scène nouvelle, l'escalier d'une suite récurrente), relue sans retouche, tous
+contrôles verts, non liée depuis l'accueil. Son « au bac » cite les sujets 2022 et 2019. Plans
+prêts et tranchés pour les deux suivantes : `specs/dipole-rc.md` et `specs/transmission-caracteres.md`.
+
 ## 5. Avant le lancement : les bloquants
 
 Inventaire vérifié dans le dépôt le 2026-11-23. Trois faits qui cadrent tout :

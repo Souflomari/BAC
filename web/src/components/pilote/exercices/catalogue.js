@@ -11,6 +11,7 @@ import { EXERCICES as expressionGenetique } from "./expression-genetique.js";
 import { EXERCICES as exponentielle } from "./exponentielle.js";
 import { EXERCICES as meiose } from "./meiose.js";
 import { EXERCICES as noyaux } from "./noyaux.js";
+import { EXERCICES as suites } from "./suites.js";
 
 export const CATALOGUE = {
   logarithme,
@@ -19,10 +20,12 @@ export const CATALOGUE = {
   exponentielle,
   meiose,
   noyaux,
+  suites,
 };
 
 /** Les séances au-delà de la première, quand une notion en a plusieurs : leur titre. */
 export const SEANCES = {
   logarithme: { 2: "ln comme fonction" },
   exponentielle: { 2: "exp comme fonction" },
+  suites: { 2: "Encadrer, comparer" },
 };
