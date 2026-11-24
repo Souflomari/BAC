@@ -41,3 +41,6 @@
 
 /* un phénotype déjà touché : une coche, sans le barrer */
 .pilote[data-pilote="transmission"] .ctl-btn.vu::after { content: " ✓"; }
+
+/* le bilan de fin : les sous-lignes en poids normal, les titres seuls en gras */
+.pilote[data-pilote="transmission"] [data-pilote-scene] .tr-fin2 { font-weight: 400; }

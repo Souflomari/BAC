@@ -34,7 +34,7 @@ export function scenesB(ctx, O) {
   };
 
   scene("echiquier", {
-    p: { crx: 0, v1: 0, v2: 0, v3: 0, fcnt: 0, cr: null, grille: 0, G: null, fill: 99, phe: 0, cls: "", aire: 0, obs: 0, tot: 0, leg: 0, hd: 1, sel: -1 },
+    p: { crx: 0, v1: 0, v2: 0, v3: 0, fcnt: 0, cr: null, grille: 0, G: null, fill: 99, phe: 0, cls: "", aire: 0, obs: 0, tot: 0, leg: 0, hd: 1, sel: -1, wl: 1, gn: 0, xb: 1 },
     manual: new Set(), onCell: null,
     build(g) {
       this.ti = titre(g, "", "");
@@ -66,7 +66,7 @@ export function scenesB(ctx, O) {
       if (n === 2) fx(g2, 560, 350, "×", "t-big2 s-ink", "middle", 40);
       // ligne 3 : la génération obtenue
       this.r3 = E("g", {}, X); const g3 = this.r3;
-      fx(g3, 40, 500, cr.gen, "t-cle s-a", "start", 34);
+      fx(g3, 40, 500, cr.gen, "t-cle s-ink", "start", 34);
       this.q = fx(g3, 560, 506, "?", "t-huge s-dim", "middle", 60);
       this.res = E("g", {}, g3);
       const m = cr.res.length, rx = m === 1 ? [560] : [380, 740];
@@ -97,8 +97,8 @@ export function scenesB(ctx, O) {
           const cg = E("g", { style: "cursor:pointer" }, gg), c = { x, g: cg };
           c.r = E("rect", { class: "cell", rx: 6 }, cg);
           c.t = [0, 1, 2, 3].map(() => fx(cg, 0, 0, "", "t-lab s-ink", "middle", 20));
-          c.k1 = E("line", { class: "k-ink", "stroke-width": 3, "stroke-linecap": "round" }, cg);
-          c.k2 = E("line", { class: "k-ink", "stroke-width": 3, "stroke-linecap": "round" }, cg);
+          c.k1 = E("line", { class: "k-dim", "stroke-width": 2.5, "stroke-linecap": "round" }, cg);
+          c.k2 = E("line", { class: "k-dim", "stroke-width": 2.5, "stroke-linecap": "round" }, cg);
           cg.addEventListener("click", () => { this.p.sel = i; this.onCell && this.onCell(i, D); this.render(); });
           return c;
         });
@@ -112,7 +112,7 @@ export function scenesB(ctx, O) {
       if (p.G !== this._G) { this._G = p.G; this.buildGrille(p.G); }
       const gr = clamp(p.grille, 0, 1), cx = clamp(p.crx, 0, 1) * (1 - gr);
       show(this.X, cx); show(this.R, gr);
-      this.ti.set(gr > 0.5 ? "Échiquier de croisement" : "Schéma d’un croisement", gr > 0.5 && this.gs.length === 1 ? (this.gs[0].D.sub || "") : "");
+      this.ti.set(gr > 0.5 ? "Échiquier de croisement" : ((p.cr && p.cr.titre) || ""), gr > 0.5 && this.gs.length === 1 ? (this.gs[0].D.sub || "") : "");
       if (this.r1) {
         show(this.r1, p.v1); show(this.r2, p.v2); show(this.r3, p.v3);
         show(this.q, 1 - clamp(p.fcnt, 0, 1)); show(this.res, clamp(p.fcnt, 0, 1));
@@ -127,14 +127,16 @@ export function scenesB(ctx, O) {
         const HW = 128, HH = 100, ix = bx + HW, iy = by + HH, iw = bw - HW;
         const ih = n === 2 || rows === 1 ? 250 : rows === 2 ? 360 : tel ? 350 : 380;
         const norm = (arr) => { const s = arr.reduce((a, b) => a + b.p, 0); return arr.map((x) => x.p / s); };
-        const cw = norm(D.cols).map((f) => lerp(1 / cols, f, aire) * iw), rh = norm(D.rows).map((f) => lerp(1 / rows, f, aire) * ih);
+        // les aires suivent les proportions ; une classe étroite garde au moins 64 unités pour se lire (le reste se réduit d'autant)
+        const etire = (fr, tot, sol) => { const raw = fr.map((f) => f * tot); if (aire < 0.5 || raw.length < 3) return raw; const bas = raw.map((x) => x < sol), manque = raw.reduce((a, x, i) => a + (bas[i] ? sol - x : 0), 0), gros = raw.reduce((a, x, i) => a + (bas[i] ? 0 : x), 0); return raw.map((x, i) => (bas[i] ? sol : x * (1 - manque / gros))); };
+        const cw = etire(norm(D.cols).map((f) => lerp(1 / cols, f, aire)), iw, 64), rh = norm(D.rows).map((f) => lerp(1 / rows, f, aire) * ih);
         const cx0 = cw.map((_, i) => ix + cw.slice(0, i).reduce((a, b) => a + b, 0)), ry0 = rh.map((_, i) => iy + rh.slice(0, i).reduce((a, b) => a + b, 0));
         setFx(o.sub, D.legende || "", 24); o.sub.setAttribute("x", f1(bx + bw / 2)); o.sub.setAttribute("y", f1(by - 8)); o.sub.style.opacity = n > 1 ? 1 : 0;
         // les entêtes : proportion au-dessus, gamète dessous ; les colonnes étroites en quinconce, avec un trait
         let nb = 0;
         o.colH.forEach((c, i) => {
           const g = D.cols[i], w = cw[i], mid = cx0[i] + w / 2, etroit = w < 92 && cols > 1;
-          const niv = etroit ? nb++ % 2 : 0, yb = iy - 12 - niv * 56, fs = tel ? 32 : 26;
+          const niv = etroit ? nb++ % 2 : 0, yb = iy - 12 - niv * 62, fs = tel ? 32 : 26;
           setFx(c.a, g.pl, fs); setFx(c.b, sup(g.h.join(D.mode === "lie" ? " " : "/ ") + (D.mode === "lie" ? "" : "/")), fs);
           const ax = etroit ? mid : mid, an = etroit ? "end" : "middle";
           c.a.setAttribute("text-anchor", an); c.b.setAttribute("text-anchor", an);
@@ -154,14 +156,18 @@ export function scenesB(ctx, O) {
           const hl = p.cls && (p.cls === "rec" ? x.rec : x.phe === p.cls && !x.bar);
           c.r.setAttribute("x", f1(X0 + 2)); c.r.setAttribute("y", f1(Y0 + 2)); c.r.setAttribute("width", f1(Math.max(1, w - 4))); c.r.setAttribute("height", f1(Math.max(1, h - 4)));
           c.r.setAttribute("class", `cell${hl ? " hl-a" : ""}`);
-          c.g.style.opacity = p.cls && !hl ? 0.4 : 1;
+          c.g.style.opacity = p.cls && !hl ? 0.6 : 1;
           // les lignes de la case, par priorité : phénotype, fraction, génotype, observé
           const obsT = D.obsC && D.obsC[x.phe];
           let L = [];
           const grande = D.cells.length >= 8 && tel;
-          if (!grande) L.push(["geno", x.geno]);
-          if (p.phe) L.push(["phe", x.phe]);
-          if (!grande || !p.phe) L.push(["w", x.wlab]);                      // à 390 px, une grille de 8 cases ou plus : les phénotypes seuls (plan §9.2)
+          if (p.gn) L.push(["geno", x.geno]);
+          else {
+            if (!grande) L.push(["geno", x.geno]);
+            if (p.phe) L.push(["phe", x.phe]);
+            if (p.wl && (!grande || !p.phe)) L.push(["w", x.wlab]);
+          }
+          if (!L.length) L.push(["phe", x.phe]);                      // à 390 px, une grille de 8 cases ou plus : les phénotypes seuls (plan §9.2)
           if (p.obs && obsT && !grande && D.classes.length === D.cells.length) L.push(["obs", `obs. ${obsT}`]);    // une classe = une case, sinon l'observé s'écrit dans la légende
           const ordre = ["geno", "phe", "w", "obs"];
           L.sort((a, b) => ordre.indexOf(a[0]) - ordre.indexOf(b[0]));
@@ -175,15 +181,16 @@ export function scenesB(ctx, O) {
             if (!l) { t.style.opacity = 0; return; }
             setFx(t, sup(l[1]), fs);
             t.setAttribute("x", f1(X0 + w / 2)); t.setAttribute("y", f1(top + j * lh));
-            t.style.opacity = fait * (x.bar ? 0.55 : 1) * (minuscule || w < 60 || h < 40 ? 0 : 1);
+            t.style.opacity = fait * (x.bar && p.xb ? 0.6 : 1) * (minuscule || w < 60 || h < 40 ? 0 : 1);
           });
-          const b = p.fill !== 0 && x.bar && D.bar !== false ? fait : 0, m = Math.min(w, h) * 0.12;
-          setL(c.k1, X0 + m + 2, Y0 + m + 2, X0 + w - m - 2, Y0 + h - m - 2); setL(c.k2, X0 + w - m - 2, Y0 + m + 2, X0 + m + 2, Y0 + h - m - 2);
-          c.k1.style.opacity = b; c.k2.style.opacity = b;
+          // la case barrée : une seule diagonale, fine et grise, pour ne pas écraser le texte
+          const b = p.fill !== 0 && x.bar && D.bar !== false ? fait * clamp(p.xb, 0, 1) : 0, m = Math.min(w, h) * 0.2;
+          setL(c.k1, X0 + w - m - 2, Y0 + m + 2, X0 + m + 2, Y0 + h - m - 2); setL(c.k2, 0, 0, 0, 0);
+          c.k1.style.opacity = b; c.k2.style.opacity = 0;
           c.r.style.opacity = manuel ? 1 : 1;
         });
         // la légende : ce que chaque classe compte
-        const ly = iy + ih + 2, deux = D.rows.length >= 3 && !p.obs;
+        const ly = iy + ih + 12, deux = D.rows.length >= 3 && !p.obs;
         o.leg.forEach((t, k) => {
           const cl = D.classes[k], obsT = D.obsT && D.obsT[cl.key];
           const s = `${cl.key} : ${p.tot ? `${cl.n} case${cl.n > 1 ? "s" : ""} sur ${cl.N}` : cl.lab}${p.obs && obsT ? ` · observé ${obsT}` : ""}`;

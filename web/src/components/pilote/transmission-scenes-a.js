@@ -74,7 +74,7 @@ export function scenesA(ctx, O) {
       this.cells = [0, 1, 2, 3].map(() => E("rect", { y: CELL_Y0, height: CELL_H, rx: 70, class: "cell" }, this.W));
       this.pl = [0, 1].map(() => ln(this.W, "k-dim", 1.6, { "stroke-dasharray": "6 6" }));
       this.tetR = [E("rect", { rx: 8, class: "k-dim nofill", "stroke-width": 1.8, "stroke-dasharray": "5 5" }, this.W), E("rect", { rx: 8, class: "k-dim nofill", "stroke-width": 1.8, "stroke-dasharray": "5 5" }, this.W)];
-      this.tetT = fx(this.W, 430, 205, "tétrade : 4 chromatides", "t-lab2 s-ink", "middle");
+      this.tetT = fx(this.W, 430, 205, "quatre chromatides", "t-lab2 s-ink", "middle");
       // les huit chromatides : segments, centromère, étiquettes d'allèles (2 emplacements sur la grande paire, 1 sur la petite)
       this.ch = [];
       CHR.forEach((c) => [0, 1].forEach((ci) => {
@@ -114,9 +114,10 @@ export function scenesA(ctx, O) {
         const q = pos[ob.c.id + ob.ci], h = ob.L / 2, vc = 0.14 * ob.L, dl = 0.14 * ob.L;
         const cr = crosser(ob), du = cr ? (ob.c.id === "G1" ? SP : -SP) * gx * wT : 0;
         const [x0, y0] = W2(q, -h, 0), [x1, y1] = W2(q, vc, 0), [x2, y2] = W2(q, vc + dl, du), [x3, y3] = W2(q, h, du), [x4, y4] = W2(q, h, 0);
-        const op = q.op;
+        const op = q.op, kk = all(ob.c).length ? ob.k : "k-dim";      // un chromosome sans allèle étudié passe en gris
+        ob.up.setAttribute("class", kk); ob.sl.setAttribute("class", kk); ob.lo.setAttribute("class", kk); ob.cen.setAttribute("class", `s-bg ${kk}`);
         setL(ob.up, x0, y0, x1, y1); setL(ob.sl, x1, y1, x2, y2); setL(ob.lo, x2, y2, x3, y3); setL(ob.lx, x1, y1, x4, y4);
-        ob.lx.setAttribute("class", cr ? autre(ob).pat ? "k-a" : "k-ink" : ob.k);
+        ob.lx.setAttribute("class", cr ? autre(ob).pat ? "k-a" : "k-ink" : kk);
         ob.up.style.opacity = op; ob.sl.style.opacity = op * (cr ? 1 - gy : 1); ob.lo.style.opacity = op * (cr ? 1 - gy : 1); ob.lx.style.opacity = cr ? op * gy : 0;
         ob.cen.setAttribute("cx", f1(q.x)); ob.cen.setAttribute("cy", f1(q.y)); ob.cen.style.opacity = op;
         ob.q = q;

@@ -99,7 +99,8 @@ export function echiquier({ genes, cols, rows, mode, letal = [] }) {
     const cs = vivantes.filter((x) => x.phe === k), w = cs.reduce((a, x) => a + x.w, 0);
     return { key: k, n: cs.length, N, w, part: w / W, lab: egal ? (letal.length ? `${cs.length}/${N}` : fLab(cs.length, N)) : pct(w / W) };
   }).filter((c) => c.n > 0);
-  cells.forEach((x) => { x.wlab = egal ? fLab(1, cols.length * rows.length) : pct(x.w); });
+  // une grille à une seule case : « 100 % », comme l'entête de son gamète ; sinon des fractions (modèle) ou des pourcentages (données)
+  cells.forEach((x) => { x.wlab = egal ? (cols.length * rows.length === 1 ? `100${NB}%` : fLab(1, cols.length * rows.length)) : pct(x.w); });
   return { genes, mode, cols, rows, cells, classes, N, nTot: cells.length, egal, letal };
 }
 /** marque les cases « recombinées » d'un test-cross de gènes liés : celles dont le gamète du parent hybride est recombiné */
@@ -144,6 +145,9 @@ export const PC24_N = PC24.jaunes + PC24.grises;                                
 export const PC24_TC = [110, 114, 114, 114];                                     // croisement 2 (test-cross) : jaunes courts, jaunes longs, gris courts, gris longs
 export const PC24_PART = PC24.jaunes / PC24_N;                                    // 67,55 % (le corrigé imprime 67,54 %)
 export const PC24_RAPPORT = PC24.jaunes / PC24.grises;                            // ≈ 2,08
+// pour 151 souris : ce que donneraient 3 pour 1 (113,25 et 37,75) et 2 pour 1 (100,67 et 50,33)
+export const PC24_ATT31 = { jaunes: (PC24_N * 3) / 4, grises: PC24_N / 4 };
+export const PC24_ATT21 = { jaunes: (PC24_N * 2) / 3, grises: PC24_N / 3 };
 // SVT 2024 R, test-cross F1 × double récessif : pourcentages imprimés au sujet
 export const SV24R = { GL: 48.29, gl: 48.71, Gl: 1.29, gL: 1.71 };
 export const SV24R_REC = SV24R.Gl + SV24R.gL;                                     // 3,00
@@ -198,6 +202,10 @@ export const EX_LEURRE_UNE = distanceCM(EX_TC.Ab, EX_N);                        
 const exC = [["A", "B", EX_TC.AB], ["a", "b", EX_TC.ab], ["A", "b", EX_TC.Ab], ["a", "B", EX_TC.aB]].map(([x, y, n]) => ({ h: [x, y], p: n / EX_N, pl: ent(n) }));
 CAS.exTC = echiquier({ genes: [GENES.A, GENES.B], cols: exC, rows: egaux([["a", "b"]]), mode: "lie" });
 CAS.exTC.cells.forEach((c, i) => { c.wlab = ent(exC[i].p * EX_N); });
+// la démarche du bac : un test-cross « d'exemple » de F1, quatre classes (des effectifs proches, pas égaux)
+export const DEM = { LJ: 102, Lj: 98, lJ: 101, lj: 99 };
+export const DEM_N = Object.values(DEM).reduce((a, b) => a + b, 0);                // 400
+export const DEM_PARTS = Object.values(DEM).map((n) => (100 * n) / DEM_N);           // 25,5 ; 24,5 ; 25,25 ; 24,75
 // 12 cM : la part attendue de [A, b]
 export const D12 = 12, D12_CLASSE = D12 / 2, D12_PAR = (100 - D12) / 2;           // 6 ; 44
 // trois gènes : A-B 8, B-C 5, A-C 13
