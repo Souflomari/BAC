@@ -1,0 +1,169 @@
+/* /pilote/maquettes — styles dédiés aux trois maquettes de mouvement.
+   Règle stricte : uniquement les jetons de tokens.ts (encre, gris, un seul
+   accent rouge --color-signal, surfaces chaudes clair et sombre).
+   Zéro couleur écrite en dur, zéro ombre, zéro rebond. */
+
+.mq-page {
+  --mq-bg: var(--color-surface-base);
+  --mq-stage: var(--color-surface-raised);
+  --mq-panel: var(--color-surface-container-low);
+  --mq-ink: var(--color-text-primary);
+  --mq-sec: var(--color-text-secondary);
+  --mq-dim: var(--color-text-tertiary);
+  --mq-sig: var(--color-signal);
+  --mq-sig-soft: color-mix(in srgb, var(--color-signal) 14%, transparent);
+  --mq-ink-soft: color-mix(in srgb, var(--color-text-primary) 10%, transparent);
+  --mq-line: var(--color-border-subtle);
+  --mq-line-strong: var(--color-border-soft);
+  --mq-grid: color-mix(in srgb, var(--color-text-primary) 5%, transparent);
+  color: var(--color-text-primary);
+}
+
+.dark .mq-page {
+  --mq-ink: color-mix(in srgb, var(--color-text-primary) 90%, var(--color-surface-base));
+  --mq-sig-soft: color-mix(in srgb, var(--color-signal) 26%, transparent);
+  --mq-ink-soft: color-mix(in srgb, var(--color-text-primary) 18%, transparent);
+  --mq-grid: color-mix(in srgb, var(--color-text-primary) 6%, transparent);
+}
+
+.mq-card {
+  background: var(--mq-stage);
+  border: 1px solid var(--mq-line);
+}
+
+.mq-stage-box {
+  position: relative;
+  background-color: var(--mq-stage);
+  background-image:
+    linear-gradient(var(--mq-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--mq-grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  border-bottom: 1px solid var(--mq-line);
+}
+
+.mq-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+.mq-svg text {
+  font-family: var(--font-ui);
+  paint-order: stroke fill;
+  stroke: var(--mq-stage);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+.mq-svg text.mq-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.mq-svg text.mq-sans-halo {
+  stroke: none;
+}
+
+/* Fills & strokes sémantiques — jetons uniquement */
+.mq-f-ink { fill: var(--mq-ink); }
+.mq-f-sec { fill: var(--mq-sec); }
+.mq-f-dim { fill: var(--mq-dim); }
+.mq-f-sig { fill: var(--mq-sig); }
+.mq-f-stage { fill: var(--mq-stage); }
+.mq-f-panel { fill: var(--mq-panel); }
+.mq-f-sig-soft { fill: var(--mq-sig-soft); }
+.mq-f-ink-soft { fill: var(--mq-ink-soft); }
+.mq-nofill { fill: none; }
+
+.mq-s-ink { stroke: var(--mq-ink); }
+.mq-s-sec { stroke: var(--mq-sec); }
+.mq-s-dim { stroke: var(--mq-dim); }
+.mq-s-sig { stroke: var(--mq-sig); }
+.mq-s-line { stroke: var(--mq-line-strong); }
+.mq-s-subtle { stroke: var(--mq-line); }
+
+/* Commandes tactiles ≥ 48 px */
+.mq-btn {
+  min-height: var(--touch-target);
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font: 600 0.875rem/1.2 var(--font-ui);
+  border: 1px solid var(--mq-line-strong);
+  background: var(--mq-stage);
+  color: var(--mq-ink);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mq-btn:hover:not(:disabled) {
+  background: var(--mq-panel);
+  border-color: var(--mq-ink);
+}
+
+.mq-btn:focus-visible {
+  outline: 2px solid var(--mq-sig);
+  outline-offset: 2px;
+}
+
+.mq-btn:disabled {
+  opacity: 0.38;
+  cursor: default;
+}
+
+.mq-btn-primary {
+  background: var(--mq-ink);
+  color: var(--mq-bg);
+  border-color: var(--mq-ink);
+}
+
+.mq-btn-primary:hover:not(:disabled) {
+  background: var(--color-accent-strong);
+  color: var(--mq-bg);
+}
+
+.mq-seg {
+  min-height: var(--touch-target);
+  padding: 0 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: 500 0.875rem/1.2 var(--font-ui);
+  border: 1px solid var(--mq-line-strong);
+  background: transparent;
+  color: var(--mq-sec);
+  cursor: pointer;
+}
+
+.mq-seg[aria-pressed="true"] {
+  background: var(--mq-panel);
+  color: var(--mq-ink);
+  border-color: var(--mq-sig);
+  box-shadow: inset 0 -2px 0 var(--mq-sig);
+  font-weight: 700;
+}
+
+.mq-seg:focus-visible {
+  outline: 2px solid var(--mq-sig);
+  outline-offset: 2px;
+}
+
+.mq-slider {
+  width: 100%;
+  height: var(--touch-target);
+  margin: 0;
+  accent-color: var(--color-signal);
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mq-page *,
+  .mq-page *::before,
+  .mq-page *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
