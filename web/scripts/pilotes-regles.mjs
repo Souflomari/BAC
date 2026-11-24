@@ -28,7 +28,7 @@ const val = (n) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : nu
 const porte = args.includes("--porte");
 const PORT = Number(val("--port") ?? 3800 + (process.pid % 150));
 const BASE = val("--base") ?? `http://127.0.0.1:${PORT}`;
-const PILOTES = val("--pilote") ? [val("--pilote")] : ["logarithme", "radioactivite", "expression-genetique", "exponentielle", "meiose", "noyaux", "suites"];
+const PILOTES = val("--pilote") ? [val("--pilote")] : ["logarithme", "radioactivite", "expression-genetique", "exponentielle", "meiose", "noyaux", "suites", "dipole-rc"];
 
 /** Les seuils. Chacun est tenu par les trois pilotes au jour où il est armé. */
 export const SEUILS = {

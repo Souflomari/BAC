@@ -145,6 +145,13 @@ Quatrième leçon de la série : `/pilote/suites` (maths : les suites numérique
 contrôles verts, non liée depuis l'accueil. Son « au bac » cite les sujets 2022 et 2019. Plans
 prêts et tranchés pour les deux suivantes : `specs/dipole-rc.md` et `specs/transmission-caracteres.md`.
 
+Cinquième leçon de la série : `/pilote/dipole-rc` (physique ; 58 étapes, 15 gabarits, une scène
+nouvelle, le schéma de circuit), relue, tous contrôles verts, non liée depuis l'accueil. Relecture :
+une étape montrait le circuit en charge pour une question sur une charge qui diminue ; le schéma
+est accordé. Règle de relecture ajoutée : **la scène affichée dit la même situation que la
+question**. Reste « à vérifier » : la notation de l'énergie emmagasinée, la disposition du schéma
+du sujet 2022.
+
 ## 5. Avant le lancement : les bloquants
 
 Inventaire vérifié dans le dépôt le 2026-11-23. Trois faits qui cadrent tout :
