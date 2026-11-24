@@ -8,7 +8,7 @@
 > paris, contrôles). Il s'ajoute à [`MANDAT-MULTIMODAL.md`](MANDAT-MULTIMODAL.md) et à
 > [`MANDAT-LECONS.md`](MANDAT-LECONS.md).
 
-## 1. Les règles (`docs/refonte/09-regles-du-mouvement.md`)
+## 1. Les règles (un fichier neuf, « 09-regles-du-mouvement », dans le dossier `docs/refonte/`)
 
 Un document d'une à deux pages, que l'auteur d'une scène peut suivre sans avoir vu les maquettes.
 Chaque règle tient en une phrase, suivie de son exemple dans une maquette (fichier et ligne) et du
@@ -60,9 +60,9 @@ donne : une maquette ne recalcule pas autrement que la leçon.
 
 ## 3. Ce qu'il faut rendre
 
-- `docs/refonte/09-regles-du-mouvement.md` ;
+- le fichier des règles (§1) ;
 - les six maquettes et les primitives ;
-- `docs/revue-externe/rapports/11-maquettes-suite.md` : pour chaque maquette, l'étape de la leçon
+- un rapport neuf, « 11-maquettes-suite », dans le dossier `docs/revue-externe/rapports/` : pour chaque maquette, l'étape de la leçon
   (clé, pas numéro) où elle irait, ce qu'elle remplace, ce que le texte de l'étape devrait dire de
   différent (à signaler seulement : le texte reste à Claude), une capture à 1280 et à 390 px, et la
   taille de texte mesurée au téléphone ;
