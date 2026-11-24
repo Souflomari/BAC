@@ -121,16 +121,16 @@ export function PiloteCoquille({
             aria-label={sceneLabel}
           />
           <div className="stage-foot">
-            <span className="stage-foot-g">
-              <span id="count" />
-              <button type="button" className="rejouer" id="rejouer" {...attente}>
-                ↺ Rejouer l’étape
-              </button>
-            </span>
-            <span className="keys">{touches}</span>
+            <button type="button" className="rejouer" id="rejouer" {...attente}>
+              ↺ Rejouer l’étape
+            </button>
           </div>
         </section>
         <aside className="script" id="script">
+          {/* le compteur : discret, en tête du texte ; `#count` garde la phrase entière pour les
+              lecteurs d'écran et pour le parcours automatique */}
+          <span className="compte" id="compte" aria-hidden="true" />
+          <span className="sr-only" id="count" />
           <div className="kicker" id="kicker" />
           <div className="body" id="body" aria-live="polite" />
           <div className="nav">
@@ -156,6 +156,9 @@ export function PiloteCoquille({
           <li>
             <b>À ton rythme.</b> Rien ne bouge sans toi : chaque étape, et chaque ligne d’un calcul, se
             déclenche avec → ou espace.
+          </li>
+          <li>
+            <b>Au clavier.</b> {touches}.
           </li>
           <li>
             <b>Un pari avant chaque révélation.</b> Tu t’engages avant de voir : c’est ce qui fait retenir.

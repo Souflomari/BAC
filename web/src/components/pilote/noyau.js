@@ -219,7 +219,7 @@ function updateNav(){const st=STEPS[cur],n=$('#next'),bet=!!(st.pari&&!resolu(st
   const reste=st.deriv&&lignesVues(st)<st.deriv.length,encore=bet&&S.ans[st.k]!=null;
   n.disabled=bet||need;
   n.textContent=cur===STEPS.length-1?'Recommencer':encore?'Essaie encore':bet?'Choisis d’abord':need?(st.needLabel||'Fais-le d’abord'):reste?'Ligne suivante ↓':'Suivant →';
-  $('#prev').disabled=cur===0;$('#count').textContent=`étape ${cur+1} / ${STEPS.length}`;}
+  $('#prev').disabled=cur===0;$('#count').textContent=`étape ${cur+1} / ${STEPS.length}`;const cp=$('#compte');if(cp)cp.textContent=`${cur+1} / ${STEPS.length}`;}
 function ligneSuivante(st){
   const j=lignesVues(st);if(j>=st.deriv.length)return false;
   S.lignes[st.k]=j+1;

@@ -44,7 +44,8 @@
 .pilote .beat.on { color: var(--color-signal); font-weight: 700; }
 .pilote .beat.on i b { background: var(--color-signal); }
 .pilote .pilote-outils { display: flex; gap: 8px; }
-.pilote .tbtn { font: 500 0.8125rem var(--font-ui); background: transparent; color: var(--color-text-primary); border: 1px solid var(--color-border-soft); padding: 8px 12px; cursor: pointer; white-space: nowrap; text-decoration: none; display: inline-flex; align-items: center; }
+.pilote .tbtn { font: 500 0.8125rem var(--font-ui); background: transparent; color: var(--color-text-secondary); border: 1px solid transparent; padding: 8px 12px; cursor: pointer; white-space: nowrap; text-decoration: none; display: inline-flex; align-items: center; }
+.pilote .tbtn:hover { color: var(--color-text-primary); border-color: var(--color-border-soft); }
 .pilote .tbtn[aria-pressed="true"] { background: var(--color-text-primary); color: var(--color-surface-base); border-color: var(--color-text-primary); }
 
 /* scène + script */
@@ -58,9 +59,12 @@
 .pilote .plaque { z-index: 2; position: absolute; top: 18px; left: 20px; font: 700 0.75rem/1 var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--color-text-primary); background: var(--st-bg); border: 1px solid var(--color-text-primary); padding: 6px 9px; opacity: 0; transition: opacity .4s; }
 .pilote .plaque.on { opacity: 1; }
 .pilote .stage-foot { z-index: 2; position: absolute; left: 20px; right: 20px; bottom: 14px; display: flex; justify-content: space-between; align-items: center; font: 0.75rem var(--font-ui); font-variant-numeric: tabular-nums; color: var(--st-dim); pointer-events: none; }
-.pilote .stage-foot-g { display: flex; align-items: center; gap: 14px; }
+/* le compteur d'étapes : en tête du texte, à droite de la partie en cours ; plus rien d'autre
+   que « Rejouer » ne reste écrit sur la scène (les raccourcis clavier sont dans le mode d'emploi) */
+.pilote .script { position: relative; }
+.pilote .compte { position: absolute; top: 36px; right: 32px; font: 500 0.75rem/1 var(--font-ui); font-variant-numeric: tabular-nums; color: var(--color-text-tertiary); }
 /* rejouer l'animation et le texte de l'étape (règle 5 du format : « Rejouer et Précédent, toujours ») */
-.pilote .rejouer { pointer-events: auto; font: 500 0.75rem var(--font-ui); color: var(--color-text-secondary); background: var(--st-bg); border: 1px solid var(--color-border-soft); padding: 4px 8px; cursor: pointer; }
+.pilote .rejouer { pointer-events: auto; font: 500 0.75rem var(--font-ui); color: var(--color-text-tertiary); background: var(--st-bg); border: 1px solid transparent; padding: 4px 8px; margin-left: -8px; cursor: pointer; }
 .pilote .rejouer:hover { color: var(--color-text-primary); border-color: var(--color-text-primary); }
 .pilote .rejouer:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
 /* la ligne de résultat de fin de leçon, la même dans les trois pilotes */
@@ -130,15 +134,17 @@
 .pilote .pari-essai { font-weight: 500; color: var(--color-text-secondary); }
 .pilote .opts { display: grid; }
 .pilote .opt { display: flex; gap: 16px; align-items: baseline; text-align: left; font: 1.0625rem/1.35 var(--font-ui); color: var(--color-text-primary); background: transparent; border: 0; border-bottom: 1px solid var(--color-border-soft); padding: 16px 12px 16px 16px; cursor: pointer; }
-.pilote .opt kbd { font: 700 1.75rem/1 var(--font-ui); font-variation-settings: "wdth" 62; color: var(--color-text-primary); min-width: 1ch; }
+/* le numéro de l'option : un repère de touche, pas un titre */
+.pilote .opt kbd { font: 600 1.25rem/1.2 var(--font-ui); font-variation-settings: "wdth" 62; color: var(--color-text-secondary); min-width: 1ch; }
 /* V3, états d'un choix : un pari choisi = encre (un pari n'est jamais noté) ; une question :
    juste = vert + ✓, faux = rouge + ✗ ; les options non choisies restent lisibles (texte secondaire) */
 .pilote .opt:hover:not([disabled]) { background: var(--color-surface-container-low); }
 .pilote .opt.sel { box-shadow: inset 3px 0 0 var(--color-text-primary); font-weight: 600; }
 .pilote .opt.ok kbd, .pilote .opt.ok .marque { color: var(--color-success); }
 .pilote .opt.ok { box-shadow: inset 3px 0 0 var(--color-success); }
-.pilote .opt.ko kbd, .pilote .opt.ko .marque { color: var(--color-signal); }
-.pilote .opt.ko { box-shadow: inset 3px 0 0 var(--color-signal); }
+/* une erreur ne crie pas : le rouge reste l'accent de la leçon, l'option fausse se retire en gris */
+.pilote .opt.ko, .pilote .opt.ko kbd, .pilote .opt.ko .marque { color: var(--color-text-secondary); }
+.pilote .opt.ko { box-shadow: inset 3px 0 0 var(--color-border-soft); }
 .pilote .opt.off, .pilote .opt.off kbd { color: var(--color-text-secondary); }
 .pilote .opt[disabled] { cursor: default; }
 .pilote .opt .marque { margin-left: auto; font: 700 1.25rem/1 var(--font-ui); }
@@ -158,7 +164,9 @@
 .pilote .ctl-note { font-size: 1rem; line-height: 1.5; margin: 6px 0 0; padding-left: 14px; border-left: 3px solid var(--color-text-primary); }
 .pilote .nav { margin-top: auto; padding-top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .pilote .nav button { font: 700 1rem var(--font-ui); cursor: pointer; padding: 14px 20px; }
-.pilote .ghost { background: transparent; border: 1px solid var(--color-text-primary); color: var(--color-text-primary); }
+/* « Retour » : secondaire, pour que « Suivant » soit le seul bouton fort de l'écran */
+.pilote .ghost { background: transparent; border: 1px solid var(--color-border-soft); color: var(--color-text-secondary); font-weight: 500; }
+.pilote .ghost:hover:not(:disabled) { border-color: var(--color-text-primary); color: var(--color-text-primary); }
 .pilote .primary { background: var(--color-text-primary); color: var(--color-surface-base); border: 1px solid var(--color-text-primary); min-width: 170px; }
 .pilote .nav button:disabled { opacity: .3; cursor: default; }
 .pilote .prof { list-style: none; padding: 0; margin: 0 0 12px; display: grid; gap: 6px; font-size: 1.0625rem; }
@@ -243,10 +251,10 @@
 /* écrans bas (1366 × 768) : le panneau regagne sa marge haute */
 @media (max-height: 780px) and (min-width: 900px) {
   .pilote .script { padding-top: 22px; }
+  .pilote .compte { top: 22px; }
   .pilote .kicker { margin-bottom: 14px; }
   .pilote .dit { gap: .8em; margin-bottom: 16px; }
   .pilote .opt { padding-top: 12px; padding-bottom: 12px; }
-  .pilote .opt kbd { font-size: 1.5rem; }
 }
 @media (max-width: 899px) {
   .pilote { height: auto; }
@@ -263,6 +271,7 @@
   .pilote .tel-cache { display: none; }
   .pilote .rejouer { padding: 8px 10px; }
   .pilote .script { border-left: 0; padding: 20px 16px 0; overflow: visible; mask-image: none; }
+  .pilote .compte { top: 20px; right: 16px; }
   .pilote .script.texte-seul > .kicker { margin-top: 0; }
   .pilote .script > .nav { margin: 0 -16px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); border-top: 1px solid var(--color-border-subtle); }
   .pilote .nav button { min-height: 48px; }
