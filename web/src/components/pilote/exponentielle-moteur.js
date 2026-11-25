@@ -22,11 +22,12 @@ import { monterLecon } from "./noyau";
 import {
   fr, ent, M, cap, CRANS, SEUIL_N, SEMESTRE, SEMESTRE_FIN, GAIN_PLAFOND,
   LN2_145, PUISS_2, EXP_MOINS1, LN5, BORNE, SYS_X, SYS_Y, EXP_ECART, E_MOINS_1,
-  R1, R2, R_RAPPEL, A_PT, B_TAN, PENTE_EXP, X_RAPPEL, H_DEBUT, H_FIN, H_PH, X_PH, X_MOINS10, BAC1, P_SOMME, outilsScene, fnHTML,
+  R1, R2, R_RAPPEL, R_COURSE, A_PT, B_TAN, PENTE_EXP, X_RAPPEL, H_DEBUT, H_FIN, H_PH, X_PH, X_MOINS10, BAC1, P_SOMME, outilsScene, fnHTML,
 } from "./exponentielle-outils";
 import { scenesA } from "./exponentielle-scenes-a";
 import { scenesB } from "./exponentielle-scenes-b";
 import { scenesC } from "./exponentielle-scenes-c";
+import { scenesD } from "./exponentielle-scenes-d";
 
 export function monterPilote(root) {
 return monterLecon(root, ctx => {
@@ -49,6 +50,7 @@ const PIEGES=[
 scenesA(ctx,O);
 scenesB(ctx,O);
 scenesC(ctx,O,PIEGES);
+scenesD(ctx,O);
 
 /* ---------- le script ---------- */
 const BEATS=[
@@ -305,10 +307,10 @@ const STEPS=[
   text:[{t:'Capitalisé à chaque instant, le capital gagne 100 % de ce qu’il vaut : sa pente est sa hauteur.',fort:true},'C’est la courbe <i>y</i> = e<sup><i>t</i></sup>, qui vaut e à <i>t</i> = 1.','En physique, <i>N</i>(<i>t</i>) = <i>N</i><sub>0</sub>e<sup>−λ<i>t</i></sup> suit la même idée : sa pente est proportionnelle à sa hauteur, mais négative.']}
 
 /* ===== 9. les limites ===== */
-,{cle:'course',beat:9,scene:'expo',set:{ex:0,u3:0,pt:0,tg:0,kOn:0,ki:0,nl:0,ratio:1,xr:1,fcn:0},sujet:'les croissances comparées',
+,{cle:'course',beat:9,scene:'course',set:{x:1},sujet:'les croissances comparées',
   text:['eˣ et <i>x</i> tendent tous les deux vers +∞.',{t:'Quand <i>x</i> tend vers +∞, eˣ/<i>x</i>…',fort:true}],
-  pari:{...BET([['tend vers +∞','Pari noté. Regarde la course.'],['tend vers 1 : les deux tendent vers +∞','Pari noté. Regarde la course.'],['tend vers 0','Pari noté. Regarde la course.']]),reveal:[{p:{xr:20},d:5200}],
-    apres:{tex:[['\\lim_{x\\to+\\infty}\\dfrac{e^{x}}{x}=+\\infty','lim eˣ/x = +∞ quand x → +∞'],['\\lim_{x\\to+\\infty}\\dfrac{e^{x}}{x^{n}}=+\\infty\\quad(n\\ \\text{entier non nul})','lim eˣ/xⁿ = +∞ quand x → +∞']],html:'Le tableau le suggère ; [[preuve-ex|la preuve]] tient en trois lignes.'}}},
+  pari:{...BET([['tend vers +∞','Pari noté. Regarde la course.'],['tend vers 1 : les deux tendent vers +∞','Pari noté. Regarde la course.'],['tend vers 0','Pari noté. Regarde la course.']]),reveal:[{p:{x:R_COURSE[R_COURSE.length-1]},d:7000}],
+    apres:{tex:[['\\lim_{x\\to+\\infty}\\dfrac{e^{x}}{x}=+\\infty','lim eˣ/x = +∞ quand x → +∞'],['\\lim_{x\\to+\\infty}\\dfrac{e^{x}}{x^{n}}=+\\infty\\quad(n\\ \\text{entier non nul})','lim eˣ/xⁿ = +∞ quand x → +∞']],html:'La course le suggère ; [[preuve-ex|la preuve]] tient en trois lignes.'}}},
 {cle:'x-sur-ex',beat:9,scene:'expo',set:{ratio:0,ex:0,fcn:2},sujet:'x e^(−x) en +∞',
   text:['Une limite du bac, avec une forme indéterminée.',{t:`Que vaut la limite de ${M('xe^{-x}','x e^(−x)')} quand <i>x</i> tend vers +∞ ?`,fort:true}],
   verifie:{...VF([

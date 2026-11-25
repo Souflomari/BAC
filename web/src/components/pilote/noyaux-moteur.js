@@ -383,7 +383,7 @@ const STEPS=[
 
 /* ===== 9. usages et dangers ===== */
 {cle:'usages',beat:9,scene:'quiz',set:{qi:0,rv:0},sujet:'fission et désintégration',
-  text:['Quelques [[applications|applications nucléaires]] : produire de l’électricité par fission ; voir l’intérieur du corps avec le fluor 18 (imagerie TEP) ; soigner avec l’iode 131 ; dater avec le carbone 14.','Un stimulateur cardiaque au plutonium 238 (sujet 2021) tire son énergie…'],
+  text:['Quelques [[applications|applications nucléaires]] : produire de l’électricité par fission ; voir l’intérieur du corps avec le fluor 18 (imagerie TEP) ; soigner avec l’iode 131 ; dater avec le carbone 14.','Un stimulateur cardiaque au plutonium 238, comme on en posait dans les années 1970 (sujet 2021), tire son énergie…'],
   verifie:VF([
     ['des désintégrations α du plutonium',true,'Oui : le plutonium 238 émet des particules α, et leur énergie alimente le stimulateur.'],
     ['de fissions du plutonium',false,'Aucun neutron ne casse le noyau ici : désintégration et fission sont deux réactions différentes. Le plutonium 238 émet des particules α.','Qu’est-ce qui déclenche une fission ?'],
@@ -518,7 +518,7 @@ const mots={
   energieliberee:{t:'énergie libérée',d:'<i>E</i><sub>lib</sub> = |Δ<i>E</i>| : l’énergie qu’une réaction cède au milieu, quand Δ<i>E</i> &lt; 0. Elle est toujours positive.'},
   fusion:{t:'fusion',d:'Une réaction nucléaire où deux noyaux légers s’unissent en un noyau plus lourd. Exemple : ²H + ³H → ⁴He + n.'},
   fission:{t:'fission',d:'Une réaction nucléaire où un noyau lourd, frappé par un neutron, se casse en deux noyaux de taille moyenne, avec des neutrons émis. Ces neutrons peuvent en casser d’autres : c’est une réaction en chaîne, hors programme.'},
-  applications:{t:'applications nucléaires',d:'Produire de l’électricité par fission (une réaction différente de la désintégration radioactive) ; soigner (iode 131) ; voir l’intérieur du corps (fluor 18, imagerie TEP) ; dater (carbone 14) ; alimenter des stimulateurs cardiaques (plutonium 238).'},
+  applications:{t:'applications nucléaires',d:'Produire de l’électricité par fission (une réaction différente de la désintégration radioactive) ; soigner (iode 131) ; voir l’intérieur du corps (fluor 18, imagerie TEP) ; dater (carbone 14) ; alimenter des stimulateurs cardiaques (plutonium 238, dans les années 1970 ; remplacé depuis par des piles au lithium).'},
 };
 Object.values(mots).forEach(m=>{m.d=pct(m.d);});
 

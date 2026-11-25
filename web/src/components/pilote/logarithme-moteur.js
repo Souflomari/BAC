@@ -123,7 +123,7 @@ scene('ledger',{
 
 /* ---------- 2. la table des puissances de 2 ---------- */
 scene('table',{
-  p:{cells:0,arrA:0,arrB:0,log:0,gap:0,inter:0,pick:[],demo:0,da:2,db:3},
+  p:{cells:0,arrA:0,arrB:0,log:0,gap:0,inter:0,pick:[],demo:0,da:2,db:3,jump:0},
   build(g){
     const X=i=>52+i*82;this.X=X;
     this.capTop=T(g,52,180,'Pas — on avance en ajoutant 1','t-lab s-dim');
@@ -153,10 +153,17 @@ scene('table',{
     this.bA=E('text',{x:52,y:604,class:'t-cle s-ink'},g);
     this.bB=E('text',{x:340,y:604,class:'t-cle s-ink'},g);
     this.b2=E('text',{x:52,y:652,class:'t-cle s-ink'},g);
+    // l'arc « + b » sur la ligne des pas et l'arc « × 2^b » sur la ligne des valeurs : tracés ENSEMBLE, par le seul paramètre `jump`
+    this.jp=E('g',{},g);
+    this.jA=E('path',{class:'k-a nofill','stroke-width':3,pathLength:100,'stroke-dasharray':100},this.jp);
+    this.jB=E('path',{class:'k-b nofill','stroke-width':3,pathLength:100,'stroke-dasharray':100},this.jp);
+    this.jdA=E('circle',{r:7,class:'s-a'},this.jp);this.jdB=E('circle',{r:7,class:'s-ink'},this.jp);
+    this.jtA=E('text',{class:'t-lab2 s-a','text-anchor':'middle'},this.jp);this.jtB=E('text',{class:'t-lab2 s-ink','text-anchor':'middle'},this.jp);
   },
   click(i){
     if(!this.p.inter)return;
     this.p.pick=this.p.pick.length>=2?[i]:[...this.p.pick,i];
+    this.p.jump=0;if(this.p.pick.length===2&&this.p.pick[0]+this.p.pick[1]<=10)ctx.tween(this,{jump:1},900);
     this.render();hooks.onPick&&hooks.onPick(this.p.pick);
   },
   render(){
@@ -170,11 +177,24 @@ scene('table',{
       else if(p.log>.5)tc+=' hl-log';
       c.top.setAttribute('class',tc);c.bot.setAttribute('class',bc);
     });
-    const on=clamp(p.cells,0,1),all=clamp(p.cells-10,0,1),fade=1-.8*p.gap;
+    // les deux arcs de la somme : de la case a à la case a + b, en haut (+ b) et en bas (× 2^b)
+    const pr=p.inter?pk:[da,db],jok=p.inter?pk.length===2&&pk[0]+pk[1]<=10:d>=2,jm=jok?clamp(p.jump,0,1):0;
+    if(jm>0){
+      const a0=pr[0],b0=pr[1],x1=this.X(a0)+38,x2=this.X(a0+b0)+38,m=(x1+x2)/2,q=(u,v,w)=>(1-jm)*(1-jm)*u+2*(1-jm)*jm*v+jm*jm*w;
+      this.jA.setAttribute('d',`M${x1} 240Q${m} 40 ${x2} 240`);this.jB.setAttribute('d',`M${x1} 460Q${m} 636 ${x2} 460`);
+      this.jA.style.strokeDashoffset=100*(1-jm);this.jB.style.strokeDashoffset=100*(1-jm);
+      this.jdA.setAttribute('cx',q(x1,m,x2).toFixed(1));this.jdA.setAttribute('cy',q(240,40,240).toFixed(1));
+      this.jdB.setAttribute('cx',q(x1,m,x2).toFixed(1));this.jdB.setAttribute('cy',q(460,636,460).toFixed(1));
+      this.jtA.setAttribute('x',m);this.jtA.setAttribute('y',128);this.jtA.textContent=ty('+ '+b0);
+      this.jtB.setAttribute('x',m);this.jtB.setAttribute('y',570);this.jtB.textContent=ty('× '+2**b0);
+      [this.jtA,this.jtB].forEach(t=>show(t,clamp(jm*1.4,0,1)));
+    }
+    show(this.jp,jm>0?1:0);
+    const on=clamp(p.cells,0,1),all=clamp(p.cells-10,0,1),fade=(1-.8*p.gap)*(1-.8*jm);
     this.arcA.forEach((a,i)=>show(a,clamp(p.arrA-i,0,1)*fade));
     this.arcB.forEach((b,i)=>show(b,clamp(p.arrB-i,0,1)*fade));
-    show(this.capTop,on*(1-p.log));show(this.capLog,p.log);
-    show(this.capBot,all*(1-p.gap));show(this.ghost,p.gap);
+    show(this.capTop,on*(1-p.log)*(1-jm));show(this.capLog,p.log);
+    show(this.capBot,all*(1-p.gap)*(1-jm));show(this.ghost,p.gap);
     let a='',b='',c='',o=0;
     if(p.inter){o=1;
       if(pk.length===1)a=`${2**pk[0]} → pas ${pk[0]}`;
@@ -681,26 +701,26 @@ const STEPS=[
     ['On ne peut pas le savoir',false,'On peut : 1 = 1 × 1, donc <i>f</i>(1) = <i>f</i>(1) + <i>f</i>(1), ce qui force <i>f</i>(1) = 0.','Écris 1 = 1 × 1, puis applique la règle du rêve.']])},
 
 /* ===== 2. la table ===== */
-{cle:'table',beat:2,scene:'table',set:{cells:0,arrA:0,arrB:0,log:0,gap:0,inter:0,demo:0},seq:[{p:{cells:11},d:3400,w:200},{p:{arrA:10},d:2800,w:400},{p:{arrB:10},d:1800,w:400}],
+{cle:'table',beat:2,scene:'table',set:{cells:0,arrA:0,arrB:0,log:0,gap:0,inter:0,demo:0,jump:0},seq:[{p:{cells:11},d:3400,w:200},{p:{arrA:10},d:2800,w:400},{p:{arrB:10},d:1800,w:400}],
   text:['L’idée de départ circule depuis le mathématicien allemand Stifel, en 1544 : deux lignes de nombres qui avancent ensemble. Napier va la rendre utilisable.',
     {t:'En bas, on part de 1 et on double à chaque case : 1, 2, 4, 8…',a:0},
     {t:'En haut, on compte les doublements : on ajoute 1 à chaque case.',a:1},
     {t:'Une ligne avance à coups de × 2, l’autre à coups de + 1.',a:2,fort:true}]},
-{cle:'exemple',beat:2,scene:'table',set:{da:2,db:3,demo:0},seq:[{p:{demo:1},d:500,w:300},{p:{demo:2},d:500,w:1300},{p:{demo:3},d:500,w:900},{p:{demo:4},d:500,w:700}],
+{cle:'exemple',beat:2,scene:'table',set:{da:2,db:3,demo:0,jump:0},seq:[{p:{demo:1},d:500,w:300},{p:{demo:2},d:500,w:1300},{p:{demo:3,jump:1},d:900,w:900},{p:{demo:4},d:500,w:700}],
   text:['Un exemple : 4 × 8, sans multiplier.',{t:'4 est au pas 2, et 8 au pas 3.',a:0},{t:'On additionne les pas : 2 + 3 = 5. Au pas 5, la table donne 32. Et en effet, 4 × 8 = 32.',a:3},
     {t:'C’est la règle des puissances : 2<sup>2</sup> × 2<sup>3</sup> = 2<sup>5</sup>. Les pas sont les exposants.',a:3,fort:true}]},
-{cle:'pick',beat:2,scene:'table',set:{demo:0,inter:1,pick:[]},ctl:'pick',
+{cle:'pick',beat:2,scene:'table',set:{demo:0,inter:1,pick:[],jump:0},ctl:'pick',
   text:['À toi : calcule 16 × 32 sans multiplier.','Clique 16, puis 32, dans la ligne du bas. La table additionne leurs pas, puis lit le résultat.']},
-{cle:'nom',beat:2,scene:'table',set:{inter:0,pick:[]},seq:[{p:{log:1},d:1000}],
+{cle:'nom',beat:2,scene:'table',set:{inter:0,pick:[],jump:0},seq:[{p:{log:1},d:1000}],
   text:['La ligne du haut a un nom.',{t:'Napier l’appelle [[logarithme]], du grec <i>logos</i>, le rapport, et <i>arithmos</i>, le nombre.',a:0},{t:'Le logarithme d’un nombre compte ses pas : 512 est au pas 9, car neuf doublements mènent de 1 à 512.',a:0,fort:true}]},
-{cle:'v-table',beat:2,scene:'table',set:{log:0,da:3,db:6,demo:0},
+{cle:'v-table',beat:2,scene:'table',set:{log:0,da:3,db:6,demo:0,jump:0},
   text:['Dans la table, 8 est au pas 3 et 64 au pas 6.','Où lit-on 8 × 64 ?'],
   verifie:{...VF([['Au pas 9',true,'Oui : 3 + 6 = 9, et au pas 9 on lit 512. En effet, 8 × 64 = 512.'],
     ['Au pas 18',false,'Ce serait 3 × 6 : on ne multiplie pas les pas, on les additionne. 3 + 6 = 9, et au pas 9 on lit 512.','Tu as multiplié les pas. Que fait-on aux pas quand on multiplie les valeurs ?'],
-    ['Au pas 72',false,'72 = 8 + 64 : ce sont les valeurs qu’on aurait additionnées. Ce sont les pas qui s’additionnent : 3 + 6 = 9.','72 = 8 + 64 : tu as additionné les valeurs. Qu’est-ce qui s’additionne, dans la table ?']]),reveal:[{p:{demo:4},d:900}]}},
+    ['Au pas 72',false,'72 = 8 + 64 : ce sont les valeurs qu’on aurait additionnées. Ce sont les pas qui s’additionnent : 3 + 6 = 9.','72 = 8 + 64 : tu as additionné les valeurs. Qu’est-ce qui s’additionne, dans la table ?']]),reveal:[{p:{demo:4,jump:1},d:900}]}},
 
 /* ===== 3. les trous ===== */
-{cle:'trou',beat:3,scene:'table',set:{demo:0,gap:0},seq:[{p:{gap:1},d:1100}],
+{cle:'trou',beat:3,scene:'table',set:{demo:0,gap:0,jump:0},seq:[{p:{gap:1},d:1100}],
   text:['Un astronome a besoin de 16 × 3.','Problème : où est 3 dans la table ?'],
   pari:BET([['Entre 2 et 4','Justement : entre 2 et 4, il n’y a aucune case. Ni 3, ni 5, ni 6, ni 7. La table est trouée.'],['À un pas et demi, environ','Bien vu : il faudrait des demi-pas, des dixièmes de pas… La table, elle, saute de 2 à 4.'],['Nulle part','Exact. Et c’est le cas de presque tous les nombres. Napier va boucher ces trous.']])},
 {cle:'pas',beat:3,scene:'fine',set:{pts:0,m70:0,m140:0,m110:0,m196:0,m306:0,sumA:0,sumB:0},seq:[{p:{pts:1},d:4000,w:300},{p:{m110:1},d:900,w:400},{p:{m196:1},d:900,w:700}],

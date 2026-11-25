@@ -76,6 +76,7 @@ import {mots} from "./expression-genetique-mots";
 import {scenesA} from "./expression-genetique-scenes-a";
 import {scenesB,W0,WN,verdict as verdictDe} from "./expression-genetique-scenes-b";
 import {scenesC,REPERES} from "./expression-genetique-scenes-c";
+import {scenesD} from "./expression-genetique-scenes-d";
 
 /** Une séquence dans le panneau : le style des lettres de la scène (expression-genetique.css). */
 const sq=s=>`<span class="eg-seq">${s}</span>`;
@@ -116,6 +117,7 @@ const QUIZ=[
 scenesA(ctx);
 scenesB(ctx);
 scenesC(ctx,QUIZ);
+scenesD(ctx);
 
 const VF=t=>({opts:t.map(([x,ok,fb,indice])=>({t:x,ok,fb,indice}))});
 const NOTE_PARI='Pari noté. Pour trancher, il faut suivre le chemin du gène à la protéine : c’est toute la séance. Tu vérifieras toi-même, dans l’atelier.';
@@ -372,18 +374,18 @@ const STEPS=[
     {t:'Un acide aminé change',fb:`${toARN(A_NS6.cM)} ne désigne aucun acide aminé : c’est un codon stop. La chaîne s’arrête après ${A_NS6.len} acides aminés : mutation [[non-sens|non-sens]].`},
     {t:'Rien ne change',fb:`Ce serait vrai si ${toARN(A_NS6.cM)} désignait aussi ${AA3[A_NS6.aN]}. Mais c’est un codon stop : la chaîne s’arrête après ${A_NS6.len} acides aminés. Mutation [[non-sens|non-sens]].`},
     {t:`Elle s’arrête après ${A_NS6.len} acides aminés`,fb:`Oui. ${toARN(A_NS6.cM)} est un codon stop : la chaîne ne compte que ${A_NS6.len} acides aminés au lieu de ${L_MURE}. Mutation [[non-sens|non-sens]].`}]}},
-{cle:'decalage',beat:6,scene:'atelier',set:{mut:'',sel:C6+1,sh:1},
+{cle:'decalage',beat:6,scene:'cadre',set:{u:0,m:0},
   text:[`Dernier essai : on supprime un seul nucléotide, le ${G6[1]} de ${sq(G6)}, sans le remplacer.`,'Combien d’acides aminés vont changer ?'],
-  pari:{label:'Ton pari',reveal:[{p:{mut:FS6},d:600}],opts:[
+  pari:{label:'Ton pari',reveal:[{p:{u:3},d:4800}],opts:[
     {t:'Un seul',fb:`Plus que ça. Le ribosome lit trois par trois depuis AUG : un nucléotide en moins décale toute la lecture. Un codon stop arrive vite : ${A_FS6.len} acides aminés au lieu de ${L_MURE}.`},
     {t:'Tous ceux qui suivent',fb:`Oui. Une [[deletion|délétion]] d’un nucléotide décale toute la lecture : c’est un [[decalage|décalage du cadre de lecture]]. Un codon stop arrive vite : ${A_FS6.len} acides aminés au lieu de ${L_MURE}.`},
     {t:'Aucun',fb:`Le code est redondant, mais pas à ce point : un nucléotide en moins décale toute la lecture. Un codon stop arrive vite : ${A_FS6.len} acides aminés au lieu de ${L_MURE}.`}]}},
-{cle:'v-insertion',beat:6,scene:'atelier',set:{mut:'',sel:C3,sh:0},
+{cle:'v-insertion',beat:6,scene:'cadre',set:{u:0,m:1},
   text:[`Et si on ajoute un nucléotide ? On insère un ${INS3.split(':')[2]} au début du triplet ${C3/3}.`,'Que devient la chaîne ?'],
   verifie:{...VF([
     [`Tout change à partir du n° ${A_INS.first}`,true,`Oui : une [[insertion]] décale aussi le cadre de lecture. ${chaine(A_INS.tr.aa.slice(1))}, puis un codon stop : ${A_INS.len} acides aminés au lieu de ${L_MURE}.`],
     [`Seul le n° ${A_INS.first} change`,false,'Ce serait vrai pour une substitution. Une insertion décale le découpage de tous les codons suivants.','Un nucléotide en plus : comment le ribosome découpe-t-il la suite, trois par trois ?'],
-    ['Rien : il est ignoré',false,'Le ribosome ne peut pas repérer le nucléotide ajouté : il lit trois par trois, et tout le découpage se décale.','Le ribosome lit trois par trois, sans repère entre les codons : peut-il sauter un nucléotide ?']]),reveal:[{p:{mut:INS3},d:600}]}},
+    ['Rien : il est ignoré',false,'Le ribosome ne peut pas repérer le nucléotide ajouté : il lit trois par trois, et tout le découpage se décale.','Le ribosome lit trois par trois, sans repère entre les codons : peut-il sauter un nucléotide ?']]),reveal:[{p:{u:3},d:4800}]}},
 
 /* ===== 7. retour à l'énigme ===== */
 {cle:'echelles',beat:7,scene:'levels',set:{lv:1,m1:0,c1:0,o1:0,flow:0,map:0},seq:[{p:{m1:1},d:1800,w:500},{p:{c1:1},d:1200,w:700}],
