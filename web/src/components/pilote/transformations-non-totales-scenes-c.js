@@ -8,7 +8,8 @@
  * de `aston`).
  *
  * `avancement`, paramètres : cases (le nombre de cases montrées, dans l'ordre de lecture : 4 par ligne),
- * lit (0 littéral, 1 numérique), squelette (1 : les lignes et les cases vides, pour le rappel), fx (une case mise en évidence, ou −1), cache (une case masquée, ou −1),
+ * lit (0 littéral, 1 numérique), squelette (1 : les lignes et les cases vides, pour le rappel), fx (une case mise en évidence, ou −1), cache et cache2 (deux cases masquées, ou −1),
+ * exces (1 : la colonne de l'eau dit « excès » ; 0 : ses cases restent vides, tant que l'élève n'a pas dit qui limite),
  * tete ('generique' : AH, A⁻ ; 'ethan' : CH₃COOH, CH₃COO⁻), conc ('C' ou 'CA' : la lettre du sujet).
  * `barres`, paramètres : xm (la barre x_max), xf (la barre x_f et l'écart grisé), tau (le rapport τ), C et pH
  * (la concentration et le pH), cur (0 ou 1 : les valeurs de C et du pH s'affichent, ce sont celles des curseurs).
@@ -23,7 +24,7 @@ const { setFx, titre, lab } = O;
 /* ---------- le tableau d'avancement ---------- */
 const XC = [285, 475, 665, 855], YR = [255, 345, 435], CW = 186, CH = 76;
 scene("avancement", {
-  p: { cases: 0, lit: 0, fx: -1, cache: -1, tete: "generique", conc: "C", squelette: 0, sub: "" },
+  p: { cases: 0, lit: 0, fx: -1, cache: -1, cache2: -1, exces: 1, tete: "generique", conc: "C", squelette: 0, sub: "" },
   build(g) {
     this.ti = titre(g, "", "");
     this.tete = XC.map((x) => { const r = E("rect", { x: x - CW / 2, y: 160, width: CW, height: 56, class: "cell" }, g); return { r, t: lab(g, x, 197, "", "tn-g s-ink", "middle", 28) }; });
@@ -44,16 +45,16 @@ scene("avancement", {
       const n0 = sciF(N0, 1);
       const L = [[cv, "excès", "0", "0"], [`${cv} − *x*`, "excès", "*x*", "*x*"], [`${cv} − *x*_{f}`, "excès", "*x*_{f}", "*x*_{f}"]];
       const U = [[n0, "excès", "0", "0"], [`${n0} − *x*`, "excès", "*x*", "*x*"], [sciF(N0 - XF, 1), "excès", sciF(XF, 1), sciF(XF, 1)]];
-      return (p.lit ? U : L)[r][c];
+      return c === 1 && p.exces < 0.5 ? "" : (p.lit ? U : L)[r][c];
     };
     this.cel.forEach((cl, i) => {
-      const r = Math.floor(i / 4), c = i % 4, o = i === p.cache ? 0 : clamp(p.cases - i, 0, 1), sq = p.squelette && i !== p.cache && i >= p.cases;
+      const r = Math.floor(i / 4), c = i % 4, cache = i === p.cache || i === p.cache2, o = cache ? 0 : clamp(p.cases - i, 0, 1), sq = p.squelette && !cache && i >= p.cases;
       cl.g.style.opacity = sq ? 1 : o; cl.g.setAttribute("transform", `translate(0 ${((1 - o) * 12).toFixed(1)})`);
       setFx(cl.t, sq ? "" : num(r, c));
       cl.rect.setAttribute("class", i === Math.round(p.fx) ? "cell hl-a" : "cell");
     });
     this.lig.forEach((l, r) => show(l, p.squelette ? 1 : clamp((p.cases - 4 * r) / 2, 0, 1)));
-    this.ti.set("Le tableau d’avancement", p.sub || "AH + H_{2}O → A^{−} + H_{3}O^{+} : trois lignes, un avancement *x*");
+    this.ti.set("Le tableau d’avancement", p.sub || "AH + H_{2}O ⇄ A^{−} + H_{3}O^{+} : trois lignes, un avancement *x*");
   },
 });
 

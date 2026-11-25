@@ -54,11 +54,12 @@ const num = (x, n = 3) => {
 const pcent = (x) => num(x * 100, 3);
 const m = (s) => `\\mathrm{${s}}`;
 
+/** `nom` : « l’acide éthanoïque » ; `de` : « d’acide éthanoïque » (« une solution d’acide éthanoïque », jamais « de l’acide ») */
 const ACIDES = [
-  { id: "ethan", nom: "l’acide éthanoïque", AH: "CH_3COOH", A: "CH_3COO^-", pka: PKA.ethan },
-  { id: "propan", nom: "l’acide propanoïque", AH: "C_2H_5COOH", A: "C_2H_5COO^-", pka: PKA.propan },
-  { id: "benzo", nom: "l’acide benzoïque", AH: "C_6H_5COOH", A: "C_6H_5COO^-", pka: PKA.benzo },
-  { id: "metha", nom: "l’acide méthanoïque", AH: "HCOOH", A: "HCOO^-", pka: PKA.metha },
+  { id: "ethan", nom: "l’acide éthanoïque", de: "d’acide éthanoïque", AH: "CH_3COOH", A: "CH_3COO^-", pka: PKA.ethan },
+  { id: "propan", nom: "l’acide propanoïque", de: "d’acide propanoïque", AH: "C_2H_5COOH", A: "C_2H_5COO^-", pka: PKA.propan },
+  { id: "benzo", nom: "l’acide benzoïque", de: "d’acide benzoïque", AH: "C_6H_5COOH", A: "C_6H_5COO^-", pka: PKA.benzo },
+  { id: "metha", nom: "l’acide méthanoïque", de: "d’acide méthanoïque", AH: "HCOOH", A: "HCOO^-", pka: PKA.metha },
 ];
 const COUPLES = [...ACIDES.map((a) => ({ acide: a.AH, base: a.A })), { acide: "NH_4^+", base: "NH_3" }, { acide: "H_3O^+", base: "H_2O" }];
 const aq = (e) => `${e}_{(aq)}`;
@@ -83,7 +84,7 @@ export const EXERCICES = [
     capacites: CAPR("2.2.1.1"),
     erreurs: ["proton ajouté au lieu de retiré", "base = HO⁻ (+3)", "ordre base/acide", "eau à rôle fixe (+5)", "eau solvant seulement"],
     gen(h) {
-      const c = h.pick(COUPLES), faux = c.base === "H_2O" ? "H_3O^+" : "HO^-";
+      const c = h.pick(COUPLES), faux = "HO^-";
       const eauBase = h.int(0, 1) === 0;
       return {
         enonce: `<p>Selon Brønsted, un acide est une espèce capable de céder un proton $\\mathrm{H^+}$, une base une espèce capable d’en capter un. On considère le couple $${m(c.acide)}/${m(c.base)}$.</p>`,
@@ -130,8 +131,8 @@ export const EXERCICES = [
           { type: "qcm", q: "Quelle est l’équation de la réaction de l’acide avec l’eau ?", options: h.melange([
             { t: eq(a), ok: true },
             { t: `$${m(aq(a.AH))}\\rightleftarrows ${m(aq(a.A))}+${m("H^+_{(aq)}")}$`, fb: "Tu as écrit la demi-équation du couple. Dans l’équation de la réaction, le proton passe à l’eau, qui devient $\\mathrm{H_3O^+}$.", erreur: "demi-équation (+4)" },
-            { t: `$${m(aq(a.AH))}+${m("HO^-_{(aq)}")}\\rightleftarrows ${m(aq(a.A))}+${m("H_2O_{(l)}")}$`, fb: "C’est l’équation du dosage par la soude, pas celle de la réaction avec l’eau. Ici, la base qui capte le proton est $\\mathrm{H_2O}$.", erreur: "équation de dosage (+9)" },
-            { t: `$${m(aq(a.AH))}+${m("H_2O_{(l)}")}\\rightleftarrows ${m(aq(a.A))}+${m("H_3O_{(aq)}")}$`, fb: "Les charges ne s’équilibrent pas : l’espèce qui a capté un proton est l’ion $\\mathrm{H_3O^+}$, de charge $+1$.", erreur: "charges non équilibrées" }]) },
+            { t: `$${m(aq(a.AH))}+${m("HO^-_{(aq)}")}\\rightleftarrows ${m(aq(a.A))}+${m("H_2O_{(l)}")}$`, fb: "Tu as écrit l’équation du dosage par la soude, pas celle de la réaction avec l’eau. Ici, la base qui capte le proton est $\\mathrm{H_2O}$.", erreur: "équation de dosage (+9)" },
+            { t: `$${m(aq(a.AH))}+${m("H_2O_{(l)}")}\\rightleftarrows ${m(aq(a.A))}+${m("H_3O_{(aq)}")}$`, fb: "Tu as écrit $\\mathrm{H_3O}$ sans charge : les charges ne s’équilibrent pas. L’espèce qui a capté un proton est l’ion $\\mathrm{H_3O^+}$, de charge $+1$.", erreur: "charges non équilibrées" }]) },
           { type: "qcm", q: "Quels sont les deux couples de cette réaction ?", options: h.melange([
             { t: `$${m(a.AH)}/${m(a.A)}$ et $${m("H_3O^+")}/${m("H_2O")}$`, ok: true },
             { t: `$${m(a.AH)}/${m("H_2O")}$ et $${m(a.A)}/${m("H_3O^+")}$`, fb: "Tu as mis les deux réactifs ensemble, puis les deux produits. Un couple, c’est un acide et l’espèce qu’il devient en cédant un proton.", erreur: "couples croisés (+8)" },
@@ -181,7 +182,7 @@ export const EXERCICES = [
     titre: "Le tableau d’avancement : x_max et la ligne finale",
     niveau: 2,
     capacites: CAPR("2.2.1.4"),
-    erreurs: ["eau limitante (+6)", "V en mL (+7)", "x_f dans la colonne de l’acide (+10)", "C divisée par V (+7)"],
+    erreurs: ["eau limitante (+6)", "V en mL (+7)", "x_f dans la colonne de l’acide (+10)", "acide inchangé (+10)", "C divisée par V (+7)"],
     gen(h) {
       const T = solution(h, { tauMax: 0.9 });
       const V = T.V / 1000, xmax = T.C * V, tol = { rel: 0.02 };
@@ -191,7 +192,7 @@ export const EXERCICES = [
           { type: "qcm", q: "Dans la ligne « état final » du tableau, la quantité de $\\mathrm{AH}$ vaut…", options: h.melange([
             { t: "$C\\,V - x_\\mathrm{f}$ : l’acide a perdu ce qui a réagi", ok: true },
             { t: "$x_\\mathrm{f}$ : la quantité formée", fb: "Tu as mis dans la colonne de l’acide ce qui s’est formé. $x_\\mathrm{f}$ est la quantité de $\\mathrm{A^-}$ et de $\\mathrm{H_3O^+}$ formées : l’acide en a perdu autant.", erreur: "x_f dans la colonne de l’acide (+10)" },
-            { t: "$C\\,V$ : l’acide n’a pas changé", fb: "Tu as laissé l’acide inchangé. Ce qui a réagi est retiré : $C\\,V - x_\\mathrm{f}$.", erreur: "x_f dans la colonne de l’acide (+10)" }]) },
+            { t: "$C\\,V$ : l’acide n’a pas changé", fb: "Tu as laissé l’acide inchangé. Ce qui a réagi est retiré : $C\\,V - x_\\mathrm{f}$.", erreur: "acide inchangé (+10)" }]) },
           { type: "qcm", q: "Quel est le réactif limitant ?", options: h.melange([
             { t: "$\\mathrm{AH}$ : l’eau est le solvant, en excès", ok: true },
             { t: "$\\mathrm{H_2O}$ : l’eau manquerait la première", fb: "Tu as cherché le réactif limitant du côté de l’eau. L’eau est le solvant, en excès : seul $\\mathrm{AH}$ peut limiter.", erreur: "eau limitante (+6)" }]) },
@@ -217,7 +218,7 @@ export const EXERCICES = [
       const T = solution(h, { tauMax: 0.5 });
       const V = T.V / 1000, xmax = T.C * V, xf = T.h * V, tol = { rel: 0.03 };
       return {
-        enonce: `<p>On dispose de $V = ${num(T.V, 3)}\\ \\text{mL}$ d’une solution de ${T.a.nom}, de concentration ${unCas(T)}. Son pH vaut $${frTex(T.pH, 2)}$. On néglige les ions $\\mathrm{H_3O^+}$ venus de l’eau seule.</p>`,
+        enonce: `<p>On dispose de $V = ${num(T.V, 3)}\\ \\text{mL}$ d’une solution ${T.a.de}, de concentration ${unCas(T)}. Son pH vaut $${frTex(T.pH, 2)}$. On néglige les ions $\\mathrm{H_3O^+}$ venus de l’eau seule.</p>`,
         questions: [
           { type: "nombre", q: "Calcule l’avancement maximal $x_\\mathrm{max}$, en mol.", reponse: xmax, tol, unite: "mol", indice: "$x_\\mathrm{max} = C\\,V$, avec $V$ en litres." },
           { type: "nombre", q: "Calcule l’avancement final $x_\\mathrm{f}$, en mol.", reponse: xf, tol, unite: "mol", indice: "$x_\\mathrm{f} = n(\\mathrm{H_3O^+})_\\mathrm{f} = [\\mathrm{H_3O^+}]_\\mathrm{f}\\,V$, avec $[\\mathrm{H_3O^+}]_\\mathrm{f} = 10^{-\\mathrm{pH}}$.",
@@ -225,7 +226,7 @@ export const EXERCICES = [
           { type: "qcm", q: "Que dire de $x_\\mathrm{f}$ par rapport à $x_\\mathrm{max}$ ?", options: h.melange([
             { t: "$x_\\mathrm{f} < x_\\mathrm{max}$ : la transformation est limitée", ok: true },
             { t: "$x_\\mathrm{f} = x_\\mathrm{max}$, à la précision du pH-mètre près", fb: "Tu as mis l’écart sur le compte de la mesure. Ici $x_\\mathrm{f}$ est très inférieur à $x_\\mathrm{max}$ : ce n’est pas une erreur de mesure.", erreur: "x_f = x_max à la mesure près (B-1)" },
-            { t: "$x_\\mathrm{f} < x_\\mathrm{max}$ : la réaction n’a pas encore fini", fb: "Tu as pensé que la réaction est en cours. $x_\\mathrm{f}$ est l’avancement de l’état final, celui où la réaction s’est arrêtée.", erreur: "pas encore fini (I-vitesse)" }]) },
+            { t: "$x_\\mathrm{f} < x_\\mathrm{max}$ : la réaction n’a pas encore fini", fb: "Tu as pensé que la réaction est en cours. $x_\\mathrm{f}$ est l’avancement de l’état final, celui où $x$ ne change plus.", erreur: "pas encore fini (I-vitesse)" }]) },
         ],
         correction: [
           { tex: `x_\\mathrm{max} = C\\,V = ${num(xmax, 3)}\\ \\text{mol}`, r: "Le tableau : $\\mathrm{AH}$ est limitant." },
@@ -247,7 +248,7 @@ export const EXERCICES = [
       const T = solution(h, { tauMax: 0.5 });
       const tol = { rel: 0.03 }, pc = T.tau * 100;
       return {
-        enonce: `<p>Une solution de ${T.a.nom}, de concentration ${unCas(T)}, a un pH de $${frTex(T.pH, 2)}$. Le sujet ne donne pas le volume de la solution.</p>`,
+        enonce: `<p>Une solution ${T.a.de}, de concentration ${unCas(T)}, a un pH de $${frTex(T.pH, 2)}$. Le sujet ne donne pas le volume de la solution.</p>`,
         questions: [
           { type: "qcm", q: "Peut-on calculer le taux d’avancement final $\\tau$ ?", options: h.melange([
             { t: "oui : le volume $V$ se simplifie dans $\\tau = x_\\mathrm{f}/x_\\mathrm{max}$", ok: true },
@@ -272,7 +273,7 @@ export const EXERCICES = [
     titre: "Transformation totale, limitée, ou pratiquement totale",
     niveau: 1,
     capacites: CAPR("2.2.1.5"),
-    erreurs: ["limitée = rien (B-4)", "⇄ donc τ loin de 1 (I-quasi)", "rapide donc totale (I-vitesse)", "acide fort pris pour limité"],
+    erreurs: ["limitée = rien (B-4)", "grande part = totale (B-4)", "⇄ donc τ loin de 1 (I-quasi)", "τ lu comme une vitesse (I-vitesse)", "acide fort pris pour limité", "« il manque V » (I-conclusion)"],
     gen(h) {
       const cas = h.int(0, 2);
       if (cas === 0) {
@@ -281,19 +282,19 @@ export const EXERCICES = [
         return {
           enonce: `<p>Une solution d’acide chlorhydrique de concentration $C = ${num(C, 2)}\\ \\text{mol·L}^{-1}$ a un pH de $${frTex(pH, 1)}$.</p>`,
           questions: [{ type: "qcm", q: "La transformation de l’acide avec l’eau est…", options: h.melange([
-            { t: "totale : $\\tau = 1$", ok: true },
-            { t: "limitée : un acide ne réagit jamais entièrement", fb: "Tu as pris un acide fort pour un acide faible. Ici $10^{-\\mathrm{pH}} = C$ : tout l’acide a réagi, $\\tau = 1$.", erreur: "acide fort pris pour limité" },
-            { t: "limitée : l’acide est rapide à réagir", fb: "Tu as lié la rapidité à la fin de la réaction. $\\tau$ ne dit rien de la vitesse : ici $\\tau = 1$.", erreur: "rapide donc totale (I-vitesse)" }]) }],
+            { t: "totale : tout l’acide a réagi", ok: true },
+            { t: "limitée : un acide faible ne cède jamais tout", fb: "Tu as pris un acide fort pour un acide faible. Ici $10^{-\\mathrm{pH}} = C$ : tout l’acide a réagi, $\\tau = 1$.", erreur: "acide fort pris pour limité" },
+            { t: "on ne peut pas savoir : le volume manque", fb: "Tu as cru qu’il faut le volume. $V$ se simplifie dans $\\tau = 10^{-\\mathrm{pH}}/C$ : ici $\\tau = 1$.", erreur: "« il manque V » (I-conclusion)" }]) }],
           correction: [{ tex: `\\tau = \\dfrac{10^{-\\mathrm{pH}}}{C} = \\dfrac{${num(hDe(pH), 3)}}{${num(C, 3)}} = 1`, r: "Toutes les molécules ont cédé leur proton : la transformation est totale." }],
         };
       }
       if (cas === 1) {
-        const tau = h.pick([0.05, 0.1, 0.2, 0.35, 0.5, 0.8, 0.9]);
+        const tau = h.pick([0.8, 0.85, 0.9, 0.95]);
         return {
-          enonce: `<p>On étudie la réaction d’un acide avec l’eau. Le taux d’avancement final vaut $\\tau = ${frTex(tau, tau < 0.1 ? 2 : 2)}$.</p>`,
+          enonce: `<p>On étudie la réaction d’un acide avec l’eau. Le taux d’avancement final vaut $\\tau = ${frTex(tau, 2)}$.</p>`,
           questions: [{ type: "qcm", q: "La transformation est…", options: h.melange([
-            { t: "limitée (non totale) : $\\tau < 1$", ok: true },
-            { t: "totale : une grande part de l’acide a réagi", fb: "Tu as pris « une grande part » pour « tout ». Totale veut dire $\\tau = 1$, pas $\\tau$ proche de 1.", erreur: "limitée = rien (B-4)" },
+            { t: "limitée (non totale) : elle s’arrête avant la fin", ok: true },
+            { t: "totale : une grande part de l’acide a réagi", fb: "Tu as pris « une grande part » pour « tout ». Totale veut dire $\\tau = 1$, pas $\\tau$ proche de 1.", erreur: "grande part = totale (B-4)" },
             { t: "impossible : limitée veut dire que presque rien ne réagit", fb: "Tu as lu « limitée » comme « presque rien ». Limitée veut dire « s’arrête avant la fin », quelle que soit la part qui a réagi.", erreur: "limitée = rien (B-4)" }]) }],
           correction: [{ tex: `\\tau = ${frTex(tau, 2)} < 1`, r: "La transformation s’arrête avant la fin : elle est limitée, même si $\\tau$ est grand." }],
         };
@@ -301,9 +302,9 @@ export const EXERCICES = [
       return {
         enonce: `<p>Un sujet du bac (session normale 2012) écrit avec ⇄ l’équation de l’acide éthanoïque avec l’ammoniac, et demande de s’assurer que la transformation est totale. Le calcul, que l’on admet ici, donne $\\tau \\approx 0{,}99$.</p>`,
         questions: [{ type: "qcm", q: "La transformation est…", options: h.melange([
-          { t: "pratiquement totale, bien que l’équation soit écrite avec ⇄", ok: true },
+          { t: "pratiquement totale : ⇄ ne donne pas $\\tau$", ok: true },
           { t: "limitée : avec ⇄, $\\tau$ reste loin de 1", fb: "Tu as lu ⇄ comme « $\\tau$ est petit ». $\\tau$ ne se lit pas sur la flèche, il se calcule : ici il est proche de 1.", erreur: "⇄ donc τ loin de 1 (I-quasi)" },
-          { t: "limitée : la réaction est lente", fb: "Tu as lu $\\tau$ comme une vitesse. $\\tau$ ne dit rien de la vitesse, et $\\tau \\approx 0{,}99$ est pratiquement 1.", erreur: "rapide donc totale (I-vitesse)" }]) }],
+          { t: "limitée : la réaction est lente", fb: "Tu as lu $\\tau$ comme une vitesse. $\\tau$ ne dit rien de la vitesse, et $\\tau \\approx 0{,}99$ est pratiquement 1.", erreur: "τ lu comme une vitesse (I-vitesse)" }]) }],
         correction: [{ t: "⇄ dit que les deux sens existent ; $\\tau$ dit jusqu’où la transformation va. Ici $\\tau \\approx 0{,}99$ : pratiquement totale." }],
       };
     },
@@ -316,15 +317,15 @@ export const EXERCICES = [
     niveau: 2,
     filieres: ["PC", "SM"],
     capacites: CAPR_PCSM("2.2.1.6"),
-    erreurs: ["équilibre figé (B-3)", "attendre (B-1)", "catalyseur (B-2)", "sens fixe (B-5)", "espèce ajoutée (B-6)", "⇄ = lente (I-lente)"],
+    erreurs: ["équilibre figé (B-3)", "attendre (B-1)", "catalyseur (B-2)", "sens fixe (B-5)", "espèce ajoutée (B-6)", "⇄ = lente (I-lente)", "⇄ donc τ loin de 1 (I-quasi)"],
     gen(h) {
       const Q = [
-        { q: "Au palier, le nombre d’ions $\\mathrm{A^-}$ reste autour d’une même valeur. Les ions $\\mathrm{A^-}$ eux-mêmes…", ok: "changent : certains redeviennent $\\mathrm{AH}$, d’autres apparaissent", f1: ["sont toujours les mêmes, rien ne réagit plus", "Tu as lu un compte stable comme des molécules figées. Le compte garde sa valeur, pas les mêmes molécules.", "équilibre figé (B-3)"], f2: ["ont tous disparu", "Tu as confondu un compte stable et un compte nul. Il reste des ions $\\mathrm{A^-}$ : seuls leur nombre est stable.", "équilibre figé (B-3)"] },
+        { q: "Au palier, le nombre d’ions $\\mathrm{A^-}$ reste autour d’une même valeur. Les ions $\\mathrm{A^-}$ eux-mêmes…", ok: "changent : certains redeviennent $\\mathrm{AH}$, d’autres apparaissent", f1: ["sont toujours les mêmes, rien ne réagit plus", "Tu as lu un compte stable comme des molécules figées. Le compte garde sa valeur, pas les mêmes molécules.", "équilibre figé (B-3)"], f2: ["ont tous disparu", "Tu as confondu un compte stable et un compte nul. Il reste des ions $\\mathrm{A^-}$ : seul leur nombre est stable.", "équilibre figé (B-3)"] },
         { q: "Au palier, la vitesse de la réaction directe et celle de la réaction inverse sont…", ok: "égales, et non nulles", f1: ["nulles : plus rien ne réagit", "Tu as confondu égales et nulles. Les deux réactions continuent, à la même vitesse.", "équilibre figé (B-3)"], f2: ["différentes : la réaction directe l’emporte", "Tu as supposé que le sens direct garde l’avantage. Au palier, les quantités ne changent plus : les deux vitesses sont égales.", "sens fixe (B-5)"] },
         { q: "On laisse évoluer un système à l’équilibre pendant plus longtemps. $\\tau$…", ok: "ne change pas : le palier est atteint", f1: ["augmente, jusqu’à valoir 1", "Tu as pensé qu’il suffit d’attendre. À l’équilibre, les quantités ne changent plus : attendre ne modifie pas $\\tau$.", "attendre (B-1)"], f2: ["diminue, jusqu’à valoir 0", "Tu as supposé que le sens inverse finit par tout défaire. Il compense le sens direct, sans le dépasser.", "attendre (B-1)"] },
         { q: "On ajoute un catalyseur à un système qui évolue vers l’équilibre. $\\tau$ à l’équilibre…", ok: "ne change pas : l’équilibre est atteint plus vite", f1: ["augmente, d’autant plus que la quantité de catalyseur est grande", "Tu as cru qu’un catalyseur déplace l’équilibre. Il accélère les deux sens autant : $\\tau$ reste le même.", "catalyseur (B-2)"], f2: ["devient égal à 1", "Tu as cru qu’un catalyseur mène la réaction jusqu’au bout. Il accélère les deux sens autant, sans changer $\\tau$.", "catalyseur (B-2)"] },
-        { q: "On mélange des ions $\\mathrm{A^-}$ et des ions $\\mathrm{H_3O^+}$, sans aucune molécule $\\mathrm{AH}$. Il se forme…", ok: "$\\mathrm{AH}$ et $\\mathrm{H_2O}$ : c’est le sens inverse", f1: ["rien : la réaction ne va que de $\\mathrm{AH}$ vers $\\mathrm{A^-}$", "Tu as cru le sens fixé par l’équation. Il dépend de ce qu’on met : ici, $\\mathrm{A^-}$ et $\\mathrm{H_3O^+}$ réagissent.", "sens fixe (B-5)"], f2: ["plus d’ions $\\mathrm{A^-}$ : l’acide ajouté en dernier fait avancer le sens direct", "Tu as suivi l’ordre des ajouts. Regarde les réactifs présents : ici $\\mathrm{A^-}$ et $\\mathrm{H_3O^+}$, pas $\\mathrm{AH}$.", "espèce ajoutée (B-6)"] },
-        { q: "La double flèche ⇄ d’une équation signifie…", ok: "que les deux réactions, directe et inverse, ont lieu", f1: ["que la réaction est lente", "Tu as lié ⇄ à la lenteur. La double flèche dit « deux sens », pas une vitesse.", "⇄ = lente (I-lente)"], f2: ["que $\\tau$ est petit", "Tu as lu ⇄ comme « $\\tau$ est petit ». $\\tau$ se calcule ; la flèche dit seulement qu’il y a deux sens.", "⇄ = lente (I-lente)"] },
+        { q: "On mélange des ions $\\mathrm{A^-}$ et des ions $\\mathrm{H_3O^+}$, sans aucune molécule $\\mathrm{AH}$. Il se forme…", ok: "$\\mathrm{AH}$ et $\\mathrm{H_2O}$ : c’est le sens inverse", f1: ["rien : la réaction ne va que de $\\mathrm{AH}$ vers $\\mathrm{A^-}$", "Tu as cru le sens fixé par l’équation. Il dépend de ce qu’on met : ici, $\\mathrm{A^-}$ et $\\mathrm{H_3O^+}$ réagissent.", "sens fixe (B-5)"], f2: ["plus d’ions $\\mathrm{A^-}$ : l’acide ajouté en dernier impose le sens direct", "Tu as cru que l’espèce ajoutée en dernier impose le sens. Regarde les réactifs présents : ici $\\mathrm{A^-}$ et $\\mathrm{H_3O^+}$, pas $\\mathrm{AH}$.", "espèce ajoutée (B-6)"] },
+        { q: "La double flèche ⇄ d’une équation signifie…", ok: "que les deux sens ont lieu", f1: ["que la réaction est lente", "Tu as lié ⇄ à la lenteur. La double flèche dit « deux sens », pas une vitesse.", "⇄ = lente (I-lente)"], f2: ["que $\\tau$ est petit", "Tu as lu ⇄ comme « $\\tau$ est petit ». $\\tau$ se calcule ; la flèche dit seulement qu’il y a deux sens.", "⇄ donc τ loin de 1 (I-quasi)"] },
       ];
       const pris = h.melange(Q).slice(0, 3);
       return {
@@ -344,7 +345,7 @@ export const EXERCICES = [
     titre: "La dilution augmente le taux d’avancement (enrichissement en PC et SM)",
     niveau: 2,
     capacites: ["pc-svt 2.2.3.6"],
-    erreurs: ["C non divisée (+7)", "τ inchangé (I-conditions)", "τ diminue (+11)", "la nature de l’acide change (+12)"],
+    erreurs: ["C non divisée (+7)", "τ inchangé (I-conditions)", "τ diminue (+11)", "la nature de l’acide change (+12)", "l’eau fournit des H₃O⁺ (+5)"],
     gen(h) {
       const a = h.pick(ACIDES), f = h.pick([10, 100]);
       const T = tire(() => {
@@ -354,19 +355,19 @@ export const EXERCICES = [
       }, (t) => t.p1 >= 2 && t.p2 <= 5.5 && t.t2 <= 0.8 && t.t2 > t.t1 * 1.3 && t.t1 >= 0.01);
       const tol = { rel: 0.03 };
       return {
-        enonce: `<p>On dilue ${f} fois une solution de ${a.nom}, de concentration $C_0 = ${num(T.C0, 2)}\\ \\text{mol·L}^{-1}$. Le pH vaut $${frTex(T.p1, 2)}$ avant la dilution, $${frTex(T.p2, 2)}$ après.</p>`,
+        enonce: `<p>On dilue ${f} fois une solution ${a.de}, de concentration $C_0 = ${num(T.C0, 2)}\\ \\text{mol·L}^{-1}$. Le pH vaut $${frTex(T.p1, 2)}$ avant la dilution, $${frTex(T.p2, 2)}$ après.</p>`,
         questions: [
           { type: "nombre", q: "Calcule le taux d’avancement final $\\tau$ avant la dilution.", reponse: T.t1, tol, indice: "$\\tau = 10^{-\\mathrm{pH}}/C$ : avec la concentration d’avant.", pieges: [] },
           { type: "nombre", q: "Calcule le taux d’avancement final $\\tau'$ après la dilution.", reponse: T.t2, tol, indice: `Après la dilution, la concentration est $C_0/${f}$ : utilise-la, avec le nouveau pH.`,
             pieges: pieges(T.t2, tol, [{ v: hDe(T.p2) / T.C0, fb: "Tu as gardé la concentration d’avant la dilution. $C$ a été divisée par " + f + " : utilise $C_0/" + f + "$.", erreur: "C non divisée (+7)" }, { v: T.t1, fb: "Tu as repris $\\tau$ d’avant. Recalcule avec le nouveau pH et la nouvelle concentration.", erreur: "τ inchangé (I-conditions)" }]) },
           { type: "qcm", q: "Quand on dilue, $\\tau$…", options: h.melange([
             { t: "augmente", ok: true },
-            { t: "ne change pas : c’est le même acide", fb: "Tu as supposé que $\\tau$ ne dépend que de l’acide. L’état de départ, plus dilué, change aussi $\\tau$.", erreur: "τ inchangé (I-conditions)" },
-            { t: "diminue : il y a moins d’acide par litre", fb: "Tu as compté l’acide par litre. Il y en a moins, mais la part qui réagit grandit.", erreur: "τ diminue (+11)" }]) },
+            { t: "ne change pas", fb: "Tu as supposé que $\\tau$ ne dépend que de l’acide. L’état de départ, plus dilué, change aussi $\\tau$.", erreur: "τ inchangé (I-conditions)" },
+            { t: "diminue", fb: "Tu as compté l’acide par litre. Il y en a moins, mais la part qui réagit grandit.", erreur: "τ diminue (+11)" }]) },
           { type: "qcm", q: "Pourquoi ?", options: h.melange([
-            { t: "dilués, les ions $\\mathrm{A^-}$ et $\\mathrm{H_3O^+}$ se rencontrent plus rarement : le sens inverse ralentit", ok: true },
+            { t: "les ions $\\mathrm{A^-}$ et $\\mathrm{H_3O^+}$ se rencontrent plus rarement", ok: true },
             { t: "l’acide devient plus fort quand on le dilue", fb: "Tu as changé la nature de l’acide. Il est le même : c’est l’état de départ, plus dilué, qui a changé.", erreur: "la nature de l’acide change (+12)" },
-            { t: "l’eau ajoutée cède des protons en plus", fb: "Tu as pensé que l’eau fournit des $\\mathrm{H_3O^+}$. Ils viennent de l’acide : l’eau les capte.", erreur: "la nature de l’acide change (+12)" }]) },
+            { t: "l’eau ajoutée cède des protons en plus", fb: "Tu as pensé que l’eau fournit des $\\mathrm{H_3O^+}$. Ils viennent de l’acide : l’eau les capte.", erreur: "l’eau fournit des H₃O⁺ (+5)" }]) },
         ],
         correction: [
           { tex: `\\tau = \\dfrac{10^{-${frTex(T.p1, 2)}}}{${num(T.C0, 3)}} = ${num(T.t1, 3)}`, r: "Avant la dilution." },
@@ -383,25 +384,25 @@ export const EXERCICES = [
     titre: "Au bac : l’équation, τ, la conclusion, et α = 1 − τ",
     niveau: 3,
     capacites: CAPR("2.2.1.2", "2.2.1.4", "2.2.1.5"),
-    erreurs: ["demi-équation (+4)", "équation de dosage (+9)", "C oubliée (B-7)", "rapport inversé", "limitée = rien (B-4)", "rapide donc totale (I-vitesse)", "% mal placé (B-9)", "α pris pour τ (+10)", "x_f dans la colonne de l’acide (+10)"],
+    erreurs: ["demi-équation (+4)", "équation de dosage (+9)", "C oubliée (B-7)", "rapport inversé", "limitée = rien (B-4)", "τ lu comme une vitesse (I-vitesse)", "% mal placé (B-9)", "α pris pour τ (+10)", "x_f dans la colonne de l’acide (+10)", "acide inchangé (+10)"],
     gen(h) {
       const forme = h.pick([2022, 2021, 2023]), rejoue = h.int(0, 2) === 0, tol = { rel: 0.03 };
       if (forme === 2022) {
         const T = rejoue ? { a: ACIDES[1], C: S22.Ca, pH: S22.pH, tau: S22.tau, h: S22.h } : solution(h, { dec: 1, tauMax: 0.4 });
         T.tau = tauDePh(T.C, T.pH);
         return {
-          enonce: `<p>Forme du sujet 2022. Une solution de ${T.a.nom} $${m(T.a.AH)}$ a pour concentration $C_a = ${num(T.C, 2)}\\ \\text{mol·L}^{-1}$ et pour pH $${frTex(T.pH, 1)}$. Le volume n’est pas donné.</p>`,
+          enonce: `<p>Forme du sujet 2022. Une solution ${T.a.de}, $${m(T.a.AH)}$, a pour concentration $C_a = ${num(T.C, 2)}\\ \\text{mol·L}^{-1}$ et pour pH $${frTex(T.pH, 1)}$. Le volume n’est pas donné.</p>`,
           questions: [
             { type: "qcm", q: "Écris l’équation de la réaction de l’acide avec l’eau (0,5 pt).", options: h.melange([
               { t: eq(T.a), ok: true },
               { t: `$${m(aq(T.a.AH))}\\rightleftarrows ${m(aq(T.a.A))}+${m("H^+_{(aq)}")}$`, fb: "Tu as écrit la demi-équation du couple. Le proton passe à l’eau, qui devient $\\mathrm{H_3O^+}$.", erreur: "demi-équation (+4)" },
-              { t: `$${m(aq(T.a.AH))}+${m("HO^-_{(aq)}")}\\rightleftarrows ${m(aq(T.a.A))}+${m("H_2O_{(l)}")}$`, fb: "C’est l’équation du dosage, pas celle de la réaction avec l’eau.", erreur: "équation de dosage (+9)" }]) },
+              { t: `$${m(aq(T.a.AH))}+${m("HO^-_{(aq)}")}\\rightleftarrows ${m(aq(T.a.A))}+${m("H_2O_{(l)}")}$`, fb: "Tu as écrit l’équation du dosage, pas celle de la réaction avec l’eau.", erreur: "équation de dosage (+9)" }]) },
             { type: "nombre", q: "Calcule $\\tau$ (0,75 pt).", reponse: T.tau, tol, indice: "$\\tau = 10^{-\\mathrm{pH}}/C_a$ : $V$ se simplifie.",
               pieges: pieges(T.tau, tol, [{ v: hDe(T.pH), fb: "Tu as oublié de diviser par $C_a$. $\\tau = 10^{-\\mathrm{pH}}/C_a$.", erreur: "C oubliée (B-7)" }, { v: T.C / hDe(T.pH), fb: "Tu as inversé le rapport. $\\tau \\le 1$ : $10^{-\\mathrm{pH}}$ est au numérateur.", erreur: "rapport inversé" }]) },
             { type: "qcm", q: "Que peut-on conclure ?", options: h.melange([
               { t: "$\\tau < 1$ : la transformation est limitée", ok: true },
               { t: "$\\tau \\approx 0$ : l’acide ne réagit pas avec l’eau", fb: "Tu as lu « petit » comme « nul ». Une part, petite, de l’acide a réagi.", erreur: "limitée = rien (B-4)" },
-              { t: "la réaction est lente", fb: "Tu as lu $\\tau$ comme une vitesse. $\\tau$ ne dit rien de la vitesse.", erreur: "rapide donc totale (I-vitesse)" }]) },
+              { t: "la réaction est lente, puisque $\\tau$ est petit", fb: "Tu as lu $\\tau$ comme une vitesse. $\\tau$ ne dit rien de la vitesse.", erreur: "τ lu comme une vitesse (I-vitesse)" }]) },
           ],
           correction: [
             { tex: `\\tau = \\dfrac{x_\\mathrm{f}}{x_\\mathrm{max}} = \\dfrac{10^{-\\mathrm{pH}}}{C_a} = \\dfrac{10^{-${frTex(T.pH, 1)}}}{${num(T.C, 3)}} = ${num(T.tau, 3)}`, r: "La formule littérale d’abord, puis les valeurs." },
@@ -410,17 +411,17 @@ export const EXERCICES = [
         };
       }
       if (forme === 2021) {
-        const T = rejoue ? { a: { nom: "un acide faible" }, C: S21.Ca, pH: S21.pH } : solution(h, { dec: 2, tauMax: 0.4 });
+        const T = rejoue ? { a: { nom: "un acide faible", de: "d’un acide faible" }, C: S21.Ca, pH: S21.pH } : solution(h, { dec: 2, tauMax: 0.4 });
         const tau = tauDePh(T.C, T.pH);
         return {
-          enonce: `<p>Forme du sujet 2021. Une solution de ${T.a.nom}, de concentration $C_a = ${num(T.C, 2)}\\ \\text{mol·L}^{-1}$, a un pH de $${frTex(T.pH, 2)}$. Le sujet demande : « Montrer que $\\tau \\approx ${num(tau * 100, 3)}\\ \\%$ ».</p>`,
+          enonce: `<p>Forme du sujet 2021. Une solution ${T.a.de}, de concentration $C_a = ${num(T.C, 2)}\\ \\text{mol·L}^{-1}$, a un pH de $${frTex(T.pH, 2)}$. Le sujet demande : « Montrer que $\\tau \\approx ${num(tau * 100, 3)}\\ \\%$ ».</p>`,
           questions: [
             { type: "nombre", q: "Calcule $\\tau$ comme une fraction.", reponse: tau, tol, indice: "$\\tau = 10^{-\\mathrm{pH}}/C_a$.",
               pieges: pieges(tau, tol, [{ v: hDe(T.pH), fb: "Tu as oublié de diviser par $C_a$. $\\tau = 10^{-\\mathrm{pH}}/C_a$.", erreur: "C oubliée (B-7)" }, { v: T.C / hDe(T.pH), fb: "Tu as inversé le rapport. $\\tau \\le 1$.", erreur: "rapport inversé" }]) },
-            { type: "qcm", q: "Ton résultat est une fraction ; le sujet écrit un pourcentage. Ils sont…", options: h.melange([
-              { t: "la même valeur : la fraction multipliée par 100 est le pourcentage", ok: true },
-              { t: "différents : il faut recommencer le calcul", fb: "Tu as pris une fraction et un pourcentage pour deux résultats. $\\tau \\times 100$ donne le pourcentage : c’est la même valeur.", erreur: "% mal placé (B-9)" },
-              { t: "la même valeur, sans avoir à multiplier par 100", fb: "Tu as oublié de multiplier par 100. Le pourcentage est la fraction multipliée par 100, sans cela les deux sont cent fois différents.", erreur: "% mal placé (B-9)" }]) },
+            { type: "qcm", q: "Ton résultat est une fraction ; le sujet écrit un pourcentage. Que dire ?", options: h.melange([
+              { t: "une même valeur : la fraction multipliée par 100 est le pourcentage", ok: true },
+              { t: "deux valeurs différentes : il faut recommencer le calcul", fb: "Tu as pris une fraction et un pourcentage pour deux résultats. $\\tau \\times 100$ donne le pourcentage : c’est la même valeur.", erreur: "% mal placé (B-9)" },
+              { t: "une valeur cent fois trop petite : il faut recommencer en multipliant par 100", fb: "Tu as oublié que le pourcentage est la fraction multipliée par 100. Ce n’est pas un autre calcul : c’est la même valeur, écrite autrement.", erreur: "% mal placé (B-9)" }]) },
           ],
           correction: [{ tex: `\\tau = \\dfrac{10^{-${frTex(T.pH, 2)}}}{${num(T.C, 3)}} = ${num(tau, 3)} = ${pcent(tau)}\\ \\%`, r: "On montre la valeur en calculant, puis en la mettant en pourcentage." }],
         };
@@ -428,12 +429,12 @@ export const EXERCICES = [
       const T = rejoue ? { a: ACIDES[0], C: S23.CA, pH: S23.pH } : solution(h, { dec: 2, tauMax: 0.4, acide: ACIDES[0] });
       const tau = tauDePh(T.C, T.pH), alpha = 1 - tau;
       return {
-        enonce: `<p>Forme du sujet 2023. Une solution de ${T.a.nom}, de concentration $C_A = ${num(T.C, 2)}\\ \\text{mol·L}^{-1}$, a un pH de $${frTex(T.pH, 2)}$. On définit $\\alpha = \\dfrac{[\\mathrm{AH}]_{\\text{éq}}}{[\\mathrm{AH}]_{\\text{éq}} + [\\mathrm{A^-}]_{\\text{éq}}}$, et le sujet demande de montrer, avec le tableau d’avancement, que $\\alpha = 1 - \\tau$.</p>`,
+        enonce: `<p>Forme du sujet 2023. Une solution ${T.a.de}, de concentration $C_A = ${num(T.C, 2)}\\ \\text{mol·L}^{-1}$, a un pH de $${frTex(T.pH, 2)}$. On définit $\\alpha = \\dfrac{[\\mathrm{AH}]_{\\text{éq}}}{[\\mathrm{AH}]_{\\text{éq}} + [\\mathrm{A^-}]_{\\text{éq}}}$, et le sujet demande de montrer, avec le tableau d’avancement, que $\\alpha = 1 - \\tau$.</p>`,
         questions: [
           { type: "qcm", q: "Dans la ligne finale du tableau, $n(\\mathrm{AH})$ vaut…", options: h.melange([
             { t: "$C_A V - x_\\mathrm{f}$", ok: true },
             { t: "$x_\\mathrm{f}$", fb: "Tu as pris la quantité formée pour la quantité restante. $x_\\mathrm{f}$ est ce qui s’est formé : l’acide a perdu $x_\\mathrm{f}$.", erreur: "x_f dans la colonne de l’acide (+10)" },
-            { t: "$C_A V$", fb: "Tu as laissé l’acide inchangé. Ce qui a réagi est retiré : $C_A V - x_\\mathrm{f}$.", erreur: "x_f dans la colonne de l’acide (+10)" }]) },
+            { t: "$C_A V$", fb: "Tu as laissé l’acide inchangé. Ce qui a réagi est retiré : $C_A V - x_\\mathrm{f}$.", erreur: "acide inchangé (+10)" }]) },
           { type: "nombre", q: "Calcule $\\alpha$.", reponse: alpha, tol: { rel: 0.01 }, indice: "$\\alpha = 1 - \\tau$, avec $\\tau = 10^{-\\mathrm{pH}}/C_A$.",
             pieges: pieges(alpha, { rel: 0.01 }, [{ v: tau, fb: "Tu as confondu $\\alpha$ et $\\tau$. $\\alpha$ compte l’acide restant, $\\tau$ l’acide qui a réagi : $\\alpha = 1 - \\tau$.", erreur: "α pris pour τ (+10)" }, { v: 1 - hDe(T.pH), fb: "Tu as oublié $C_A$ dans $\\tau$. $\\tau = 10^{-\\mathrm{pH}}/C_A$, pas $10^{-\\mathrm{pH}}$ seul.", erreur: "C oubliée (B-7)" }]) },
         ],

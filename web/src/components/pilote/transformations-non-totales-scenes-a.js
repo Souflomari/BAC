@@ -54,7 +54,7 @@ function unite(parent) {
 scene("solution", {
   p: { jeu: "becher", sub: "",
     flacons: 1, acide: "ethan", ph: 0, ph2: 0, pv: 0, nomx: "", dil: 1,
-    depart: "acide", tic: 0, graph: 0, lisse: 0, ring: -1, hist: 0, cpt: 0, eq: 0, etiq: 0, vol: 1, vign: 0, vtr: 0, leg: 1, gros: 0, tr: 0 },
+    depart: "acide", tic: 0, graph: 0, lisse: 0, ring: -1, hist: 0, cpt: 0, eq: 0, etiq: 0, vol: 1, ymax: 20, vign: 0, vtr: 0, leg: 1, gros: 0, tr: 0 },
   build(g) {
     this.ti = titre(g, "", "");
     this.B = E("g", {}, g);

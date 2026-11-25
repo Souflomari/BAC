@@ -4,9 +4,9 @@
  * Leçon « Transformations non totales », V3 (plan : docs/refonte/specs/transformations-non-totales.md ; la
  * section 0 du plan dit ce qui a été livré). Première leçon de chimie au format v3.
  *
- * Dix parties, 51 étapes : ce qu'il faut savoir (sautable), l'énigme (deux flacons de même concentration, deux
- * pH), Brønsted et l'équation de l'acide avec l'eau, le tableau et τ par le pH, la loupe sur cent molécules
- * (les deux réactions qui se croisent, l'équilibre dynamique, la double flèche), les pièges de l'équilibre, la
+ * Dix parties, 52 étapes : ce qu'il faut savoir (sautable), l'énigme (deux flacons de même concentration, deux
+ * pH), Brønsted et l'équation de l'acide avec l'eau, le tableau et τ par le pH, la solution à la loupe, sur cent
+ * molécules (les deux réactions, l'équilibre dynamique, la double flèche), les pièges de l'équilibre, la
  * dilution, le retour à l'énigme, deux sujets du bac (2022 et 2023), le bilan.
  *
  * Les scènes vivent dans transformations-non-totales-scenes-{a,b,c,d}.js, les données sourcées et les calculs
@@ -18,7 +18,7 @@
 import { monterLecon } from "./noyau";
 import {
   fr, sciH, sciF, TN, outilsTnt, C0, V_ML, V_L, N0, PH_HCL, PH_ETH, H_ETH, XF, TAU, FOIS_H, DIFF_PH, RAP_PH, C_DIL, PH_DIL, TAU_DIL,
-  SAV_N, SAV_PH, FAUX, TF, RP, LIM, DC, S22, S23, S21, S12, PALIER, VIT, DILPAL, SERIE, SERIE_DEFAUTS, RING, CRANS_C, PH_MAX, phMin, hDe, tauDePh, TICS,
+  NM, SAV_N, SAV_PH, FAUX, TF, TF2, RP, LIM, DC, S22, S23, S21, S12, PALIER, VIT, DILPAL, SERIE, SERIE_DEFAUTS, RING, CRANS_C, PH_MAX, phMin, hDe, tauDePh, TICS,
 } from "./transformations-non-totales-outils";
 import { scenesA } from "./transformations-non-totales-scenes-a";
 import { scenesC } from "./transformations-non-totales-scenes-c";
@@ -36,8 +36,8 @@ if(SERIE_DEFAUTS.length)throw new Error('série de tics invalide : '+SERIE_DEFAU
 /* ---------- les nombres du texte, tous calculés ---------- */
 const Cv=sciH(C0,1), Vml=fr(V_ML,0), Vl=fr(V_L,3), n0=sciH(N0,1), phE=fr(PH_ETH,1), phC=fr(PH_HCL,1), hE=sciH(H_ETH,1), xfv=sciH(XF,1);
 const tauS=fr(TAU,3), tauP=fr(TAU*100,1), tau2=fr(TAU,2), pc4=fr(TAU*100,0), fois=fr(FOIS_H,0), dph=fr(DIFF_PH,1), rph=fr(RAP_PH,1);
-const nP=fr(PALIER.n,0), tauPal=fr(PALIER.tau,2), restePal=fr(PALIER.fauxReste*100,0), nvit=fr(VIT.F,0);
-const CdilS=sciH(C_DIL,1), phD=fr(PH_DIL,2), tauD=fr(TAU_DIL,2), pcD=fr(TAU_DIL*100,0), tauDfx=sciH(DC.fauxAvant,1), nDil=fr(DILPAL.apres,0), nAvant=fr(DILPAL.avant,0);
+const nQ=fr(SERIE.n[35],0), nvitB=fr(VIT.B,0), nP=fr(PALIER.n,0), tauPal=fr(PALIER.tau,2), restePal=fr(PALIER.fauxReste*100,0), nvit=fr(VIT.F,0);
+const CdilS=sciH(C_DIL,1), phD=fr(PH_DIL,2), tauD=fr(TAU_DIL,2), pcD=fr(TAU_DIL*100,0), tauDfx=fr(DC.fauxAvant,3), nDil=fr(DILPAL.apres,0), nAvant=fr(DILPAL.avant,0);
 const n0sav=sciH(SAV_N.n,1), phS=fr(SAV_PH.pH,1), hS=sciH(SAV_PH.h,1), hSx=sciH(SAV_PH.fauxInv,1), hEth=sciH(hDe(PH_ETH),1);
 const rapT=fr(RP.tau,2), rapPh=fr(RP.pH,1);
 const CaS=sciH(S22.Ca,0), hS22=sciH(S22.h,1), tauS22=sciH(S22.tau,1), tauS22p=fr(S22.tau*100,1), pH22=fr(S22.pH,1), tauInv22=fr(S22.inv,0), hS22s=sciH(Number(S22.h.toPrecision(2)),1);
@@ -47,9 +47,9 @@ const bq=(a,d)=>fr(a,d);
 
 /* ---------- les pièges des copies qui se jouent sur la scène « quiz » ---------- */
 const QUIZ=[
-  {titre:'Piège n° 1 des copies',tag:'sujet 2022, question 1.2',big:`*τ* = *C* / [H_{3}O^{+}] = ${sciF(S22.Ca,0)} / ${sciF(Number(S22.h.toPrecision(2)),1)} ≈ ${tauInv22}`,sub:'la copie',r1:'le rapport est inversé : *τ* ≤ 1 l’aurait signalé',r2:`*τ* = [H_{3}O^{+}]_{f} / *C* ≈ ${sciF(S22.tau,1)}`},
-  {titre:'Piège n° 2 des copies',tag:'Brønsted',big:'CH_{3}COO^{−} est une base',sub:'au sens de Brønsted',r1:'elle peut capter un proton',r2:'H_{3}O^{+} est un acide : il peut en céder un'},
-  {titre:'Piège n° 3 des copies',tag:'sujet 2021 : « montrer que τ ≈ 1,32 % »',big:`*τ* = ${tauS21}`,sub:'on trouve une fraction, le sujet écrit un pourcentage',r1:`${tauS21} × 100 = ${tauS21p} %`,r2:'la même valeur : *τ* est un rapport, sans unité'},
+  {titre:'Piège de copie',tag:'sujet 2022, question 1.2',big:`*τ* = *C* / [H_{3}O^{+}] = ${sciF(S22.Ca,0)} / ${sciF(Number(S22.h.toPrecision(2)),1)} ≈ ${tauInv22}`,sub:'la copie',r1:'le rapport est inversé : *τ* ≤ 1 l’aurait signalé',r2:`*τ* = [H_{3}O^{+}]_{f} / *C* ≈ ${sciF(S22.tau,1)}`},
+  {titre:'Piège de copie',tag:'Brønsted',big:'CH_{3}COO^{−} ou H_{3}O^{+} ?',sub:'laquelle est une base, au sens de Brønsted',r1:'CH_{3}COO^{−} : elle peut capter un proton',r2:'H_{3}O^{+} est un acide : il peut en céder un'},
+  {titre:'Piège de copie',tag:`sujet 2021 : « montrer que τ ≈ ${tauS21p} % »`,big:`*τ* = ${tauS21}`,sub:'le résultat du calcul',r1:`${tauS21} × 100 = ${tauS21p} %`,r2:'la même valeur : *τ* est un rapport, sans unité'},
 ];
 scenesA(ctx,O);
 scenesC(ctx,O);
@@ -71,9 +71,9 @@ const dyn=f=>({get html(){return f();}});
 
 /* les états de scène : chaque étape les donne en entier, rien ne se hérite à l'aveugle */
 const BE=o=>({jeu:'becher',sub:'',flacons:1,acide:'ethan',ph:0,ph2:0,pv:0,nomx:'',dil:1,...o});
-const ZO=o=>({jeu:'zoom',sub:'',acide:'ethan',depart:'acide',tic:0,graph:0,lisse:0,ring:-1,hist:0,cpt:0,eq:0,etiq:0,vol:1,vign:0,vtr:0,leg:1,gros:0,tr:0,...o});
+const ZO=o=>({jeu:'zoom',sub:'',acide:'ethan',depart:'acide',tic:0,graph:0,lisse:0,ring:-1,hist:0,cpt:0,eq:0,etiq:0,vol:1,ymax:20,vign:0,vtr:0,leg:1,gros:0,tr:0,...o});
 const DU=o=>({jeu:'duo',sub:'',...o});
-const AV=o=>({cases:0,lit:0,fx:-1,cache:-1,tete:'generique',conc:'C',squelette:0,sub:'',...o});
+const AV=o=>({cases:0,lit:0,fx:-1,cache:-1,cache2:-1,exces:1,tete:'generique',conc:'C',squelette:0,sub:'',...o});
 const BA=o=>({xm:1,xf:0,tau:0,C:C0,pH:PH_ETH,cur:0,sub:'',...o});
 const BC=o=>({eqn:0,n:0,...o});
 const GROS=o=>ZO({gros:1,leg:0,...o});
@@ -91,7 +91,7 @@ function rappelDilution(){const j=S.first['dilution-pari'];if(j==null)return '';
 /* ---------- le script ---------- */
 const BEATS=[
   {name:'Ce qu’il faut savoir',court:'Savoir'},{name:'L’énigme',court:'Énigme'},{name:'Acide et base',court:'Brønsted'},
-  {name:'Jusqu’où l’acide a réagi',court:'τ'},{name:'Les deux réactions qui se croisent',court:'Loupe'},{name:'L’équilibre et ses pièges',court:'Équilibre'},
+  {name:'Jusqu’où l’acide a réagi',court:'τ'},{name:'La solution à la loupe',court:'Loupe'},{name:'L’équilibre et ses pièges',court:'Équilibre'},
   {name:'La dilution',court:'Dilution'},{name:'Retour à l’énigme',court:'Retour'},{name:'Au bac',court:'Au bac'},{name:'Bilan',court:'Bilan'}];
 
 const STEPS=[
@@ -117,13 +117,13 @@ const STEPS=[
 {cle:'deux-flacons',beat:1,scene:'solution',set:BE({flacons:2,ph:1,ph2:0}),
   text:[`Deux flacons de même concentration, C = ${Cv} mol·L⁻¹ : de l’acide chlorhydrique, et de l’acide éthanoïque, celui du vinaigre.`,'Chaque molécule de l’un comme de l’autre porte un proton qu’elle peut céder.',`Le premier pH-mètre affiche ${phC} (les pH de la leçon sont [[phcalc|calculés]]). Dans l’acide éthanoïque, il affichera…`],
   pari:{reveal:[{p:{ph2:1},d:1400}],...BET([
-    ['2,0 aussi : même concentration, autant de protons à céder','C’est ce que prévoit le calcul si chaque molécule cède son proton. Le pH-mètre dit autre chose.'],
+    ['2,0 aussi','Tu as supposé que chaque molécule cède son proton : le pH serait alors le même. Le pH-mètre dit autre chose.'],
     ['plus de 2,0','Oui : un pH plus grand, c’est moins d’ions H₃O⁺ que dans l’acide chlorhydrique. La suite compte de combien.',1],
-    ['moins de 2,0 : c’est le vinaigre, il est plus acide','Tu as pris « acide » pour « beaucoup d’ions H₃O⁺ ». Le pH-mètre dit le contraire : un pH plus grand, c’est moins d’ions.']])}},
+    ['moins de 2,0','Tu as pris « acide » pour « beaucoup d’ions H₃O⁺ ». Le pH-mètre dit le contraire : un pH plus grand, c’est moins d’ions.']])}},
 {cle:'ecart',beat:1,scene:'solution',set:BE({flacons:2,ph:1,ph2:1}),sujet:'comparer deux pH : un facteur 10 par unité',
   text:[`${phE} au lieu de ${phC}.`,'Combien de fois moins d’ions H₃O⁺ y a-t-il dans l’acide éthanoïque ?'],
   verifie:{...VF([
-    [`environ ${fois} fois moins`,true,`Oui : 10<sup>${phE} − ${phC}</sup> = 10<sup>${dph}</sup> ≈ ${fois}.`],
+    [`${fois} fois moins`,true,`Oui : 10<sup>${phE} − ${phC}</sup> = 10<sup>${dph}</sup> ≈ ${fois}, environ ${fois} fois moins d’ions.`],
     [`${dph} fois moins`,false,'Tu as lu la différence des pH comme un rapport. Une unité de pH, c’est un facteur 10 sur [H₃O⁺].','Une unité de pH de plus change [H₃O⁺] de quel facteur ?'],
     [`${rph} fois moins`,false,`Tu as divisé ${phE} par ${phC} : le pH n’est pas proportionnel à [H₃O⁺]. Compare 10<sup>−${phC}</sup> et 10<sup>−${phE}</sup>.`,'Le pH est-il proportionnel à [H₃O⁺], ou lié par une puissance de 10 ?']]),
     apres:{tex:[[tx`\dfrac{10^{-${TN(PH_HCL,1)}}}{10^{-${TN(PH_ETH,1)}}}=10^{${TN(DIFF_PH,1)}}\approx ${TN(FOIS_H,0)}`,`10^(−${phC}) / 10^(−${phE}) = 10^${dph} ≈ ${fois}`]]}}},
@@ -132,13 +132,13 @@ const STEPS=[
 
 /* ===== 2. acide et base ===== */
 {cle:'bronsted',beat:2,scene:'solution',tag:'1923',set:GROS({acide:'nh3',tr:0}),
-  text:['L’ammoniac NH₃, dissous dans l’eau, donne une solution basique : c’est le chapeau du sujet 2020.','Pourtant, la molécule NH₃ ne contient aucun ion HO⁻.','D’où viennent les ions HO⁻ de la solution ?'],
+  text:['L’ammoniac NH₃, dissous dans l’eau, donne une solution basique : c’est le chapeau du sujet 2020.','D’où viennent les ions HO⁻ de la solution ?'],
   pari:{reveal:[{p:{tr:1},d:1800}],
     apres:{html:'<p>En 1923, Brønsted et Lowry, chacun de son côté, définissent un [[acide]] comme une espèce qui peut céder un proton H⁺, et une [[base]] comme une espèce qui peut en capter un.</p>'},
     ...BET([
-    ['NH₃ en cache dans sa molécule et les libère','Tu as supposé que NH₃ contient des ions HO⁻. Sa formule n’en porte aucun : regarde ce que devient l’eau.'],
-    ['NH₃ arrache un proton H⁺ à une molécule d’eau, qui devient HO⁻','Oui : le proton passe de l’eau à NH₃, qui devient NH₄⁺, et l’eau devient HO⁻.',1],
-    ['de l’eau seule : NH₃ n’y est pour rien','Tu as supposé que l’eau seule rend la solution basique. Sans NH₃, elle ne le fait pas : c’est NH₃ qui lui prend un proton.']])}},
+    ['NH₃ contient des ions HO⁻ et les libère','Tu as supposé que NH₃ contient des ions HO⁻. Sa formule n’en porte aucun : regarde ce que devient l’eau.'],
+    ['NH₃ prend un proton H⁺ à l’eau, qui donne HO⁻','Oui : le proton passe de l’eau à NH₃, qui devient NH₄⁺, et l’eau devient HO⁻.',1],
+    ['l’eau seule en fournit : NH₃ n’y est pour rien','Tu as supposé que l’eau seule rend la solution basique. Sans NH₃, elle ne le fait pas : c’est NH₃ qui lui prend un proton.']])}},
 {cle:'acide',beat:2,scene:'solution',set:GROS({acide:'ethan',tr:0}),sujet:'l’espèce qui reste quand un acide a cédé un proton',
   text:['CH₃COOH est un acide : il peut céder un proton.','L’espèce qui reste est…'],
   verifie:{...VF([
@@ -154,10 +154,9 @@ const STEPS=[
     ['NH₄⁺/HO⁻',false,'Tu as pris HO⁻ pour la base de NH₄⁺. La base du couple est ce qui reste quand NH₄⁺ a cédé H⁺.','Que reste-t-il de NH₄⁺ quand il perd un H⁺ ?']]),
     apres:{html:'<p>A⁻ s’appelle la [[baseconj|base conjuguée]] de AH.</p>'}}},
 {cle:'eau-base',beat:2,scene:'solution',set:GROS({acide:'ethan',tr:0}),sujet:'l’équation de l’acide avec l’eau',
-  text:['Un acide ne cède son proton qu’à une base.','Dans la solution, la base la plus présente est l’eau.'],
+  text:['Un acide ne cède son proton qu’à une base.','Dans la solution, la base la plus présente est l’eau.','Les flèches des équations ci-dessous sont provisoires : la leçon dira plus loin laquelle convient.'],
   deriv:[{tex:tx`\mathrm{CH_3COOH}\rightleftarrows\mathrm{CH_3COO^-}+\mathrm{H^+}`,alt:'CH₃COOH ⇄ CH₃COO⁻ + H⁺',r:'le couple de l’acide'},{tex:tx`\mathrm{H_2O}+\mathrm{H^+}\rightleftarrows\mathrm{H_3O^+}`,alt:'H₂O + H⁺ ⇄ H₃O⁺',r:'l’eau capte le proton : couple H₃O⁺/H₂O, ion [[oxonium]]'}],
   pari:{label:'L’équation de la réaction ?',reveal:[{p:{tr:1},d:1500}],
-    apres:{html:'<p class="small">Flèche provisoire : la partie 4 dira laquelle convient.</p>'},
     ...VF([
     ['CH₃COOH(aq) + H₂O(l) → CH₃COO⁻(aq) + H₃O⁺(aq)',true,'Oui : l’acide cède H⁺ à l’eau, qui devient H₃O⁺.'],
     ['CH₃COOH(aq) → CH₃COO⁻(aq) + H⁺(aq)',false,'Tu as pris la demi-équation du couple pour l’équation de la réaction. Un proton ne reste pas seul : il faut la base qui le capte.','Où va le proton qui part de l’acide ?'],
@@ -169,29 +168,29 @@ const STEPS=[
     ['CH₃COOH/H₂O et CH₃COO⁻/H₃O⁺',false,'Tu as mis les deux réactifs ensemble, puis les deux produits. Un couple, c’est un acide et l’espèce qu’il devient.','Un couple relie-t-il deux espèces qui se transforment l’une en l’autre ?'],
     ['CH₃COOH/H₃O⁺ et H₂O/CH₃COO⁻',false,'Tu as mis deux acides ensemble. Chaque couple a un acide et une base, qui diffèrent d’un H⁺.','Chaque couple a-t-il un acide et une base ?']])}},
 {cle:'ampholyte',beat:2,scene:'solution',set:GROS({acide:'nh3',tr:0}),sujet:'le rôle de l’eau face à une base',
-  text:['Dans NH₃ + H₂O → NH₄⁺ + HO⁻, l’eau joue le rôle…'],
+  text:['Dans NH₃ + H₂O ⇄ NH₄⁺ + HO⁻, l’eau joue le rôle…'],
   verifie:{...VF([
     ['d’acide : elle cède un proton',true,'Oui : H₂O perd un H⁺ et devient HO⁻, du couple H₂O/HO⁻.'],
     ['de base, comme avec l’acide éthanoïque',false,'Tu as gardé le rôle de l’eau d’avant. Face à une base, l’eau cède son proton : elle est acide.','L’eau capte-t-elle ou cède-t-elle un proton face à NH₃ ?'],
     ['de solvant seulement, sans réagir',false,'Tu as pris l’eau pour un simple décor. Elle a perdu un H⁺ : elle a réagi.','L’eau a-t-elle perdu un H⁺ dans cette équation ?']]),
     reveal:[{p:{tr:1},d:1500}],
-    apres:{html:'<p>L’eau est un [[ampholyte]] : acide dans H₂O/HO⁻, base dans H₃O⁺/H₂O.</p>'}}},
+    apres:{html:'<p>L’eau est un [[ampholyte]] : acide dans H₂O/HO⁻, base dans H₃O⁺/H₂O.</p><p class="small">La double flèche ⇄ s’explique plus loin dans la leçon.</p>'}}},
 
 /* ===== 3. jusqu'où l'acide a réagi ===== */
-{cle:'tableau',beat:3,scene:'avancement',set:AV({lit:1,cases:0,sub:'AH + H₂O → A⁻ + H₃O⁺ : une quantité par espèce'}),sujet:'x_max, la quantité de matière de départ',
-  text:[`On met ${Vml} mL de solution d’acide éthanoïque, de concentration C = ${Cv} mol·L⁻¹.`,'L’eau, le solvant, est en excès.'],
-  deriv:[{tex:tx`n_0(\mathrm{AH})=C\,V=${TN(N0*1000,1)}\times10^{-3}\ \mathrm{mol}`,alt:`n₀(AH) = C V = ${n0} mol`,r:'on n’a mis que l’acide : A⁻ et H₃O⁺ valent 0',p:{cases:4}},
+{cle:'tableau',beat:3,scene:'avancement',set:AV({lit:0,cases:0,exces:0,sub:'AH + H₂O ⇄ A⁻ + H₃O⁺ : une quantité par espèce'}),sujet:'x_max, la quantité de matière de départ',
+  text:[`On met ${Vml} mL de solution d’acide éthanoïque, de concentration C = ${Cv} mol·L⁻¹.`,'Le tableau suit la quantité de chaque espèce, de l’état initial à l’état final.'],
+  deriv:[{tex:tx`n_0(\mathrm{AH})=C\,V`,alt:'n₀(AH) = C V',r:'on n’a mis que l’acide : A⁻ et H₃O⁺ valent 0',p:{cases:4}},
     {tex:tx`n(\mathrm{AH})=C\,V-x`,alt:'n(AH) = C V − x',r:'un AH consommé pour un A⁻ et un H₃O⁺ formés',p:{cases:8}}],
-  pari:{label:'x_max = ?',...VF([
-    [`${n0} mol : AH est le réactif limitant`,true,`Oui : x_max épuise AH, la seule espèce qui peut limiter : x_max = C V = ${n0} mol.`],
-    ['on ne peut pas : il faudrait la quantité d’eau',false,'Tu as cherché le réactif limitant du côté de l’eau. L’eau est le solvant, en excès : seul AH peut limiter.','Laquelle des deux espèces ne risque pas de manquer ?'],
-    [`${fr(SAV_N.fauxMl,1)} mol : V a été laissé en mL`,false,`Tu as laissé V en mL. ${Vml} mL = ${Vl} L, donc C V = ${n0} mol.`,'Dans C V, en quelle unité faut-il exprimer V ?']])}},
+  pari:{label:'x_max = ?',reveal:[{p:{lit:1,exces:1},d:700}],...VF([
+    [`${n0} mol`,true,`Oui : AH est le réactif limitant, l’eau est le solvant, en excès. x_max épuise AH : x_max = C V = ${n0} mol.`],
+    ['impossible sans la quantité d’eau',false,'Tu as cherché le réactif limitant du côté de l’eau. L’eau est le solvant, en excès : seul AH peut limiter.','Laquelle des deux espèces ne risque pas de manquer ?'],
+    [`${fr(SAV_N.fauxMl,1)} mol`,false,`Tu as laissé V en mL. ${Vml} mL = ${Vl} L, donc C V = ${n0} mol.`,'Dans C V, en quelle unité faut-il exprimer V ?']])}},
 {cle:'si-totale',beat:3,scene:'barres',set:BA({xm:1,xf:0,tau:0,pH:PH_HCL}),sujet:'le pH d’une réaction totale',
   text:['Si la réaction était totale, [H₃O⁺]_f vaudrait C.','Le pH serait alors…'],
   verifie:{...VF([
-    [`${phC} : celui de l’acide chlorhydrique`,true,`Oui : 10<sup>−pH</sup> = ${Cv} mol·L⁻¹ donne pH = ${phC}, exactement l’acide chlorhydrique.`],
-    [`−${phC}, car l’exposant est négatif`,false,`Tu as recopié le signe de l’exposant. Si [H₃O⁺] = 10<sup>−pH</sup> = ${Cv}, alors pH = ${phC}, pas −${phC}.`,'[H₃O⁺] = 10^(−pH) : quel pH donne 10⁻² ?'],
-    [`${Cv}, la valeur de C`,false,`Tu as donné la concentration à la place du pH. Le pH est un nombre sans unité : ici ${phC}.`,'Le pH s’exprime-t-il en mol·L⁻¹ ?']])}},
+    [`${phC}`,true,`Oui : 10<sup>−pH</sup> = ${Cv} mol·L⁻¹ donne pH = ${phC}, exactement l’acide chlorhydrique.`],
+    [`−${phC}`,false,`Tu as recopié le signe de l’exposant. Si [H₃O⁺] = 10<sup>−pH</sup> = ${Cv}, alors pH = ${phC}, pas −${phC}.`,`[H₃O⁺] = 10^(−pH) : quel pH donne ${Cv} ?`],
+    [`${Cv}`,false,`Tu as donné la concentration à la place du pH. Le pH est un nombre sans unité : ici ${phC}.`,'Le pH s’exprime-t-il en mol·L⁻¹ ?']])}},
 {cle:'xf',beat:3,scene:'solution',set:BE({ph:1}),sujet:'x_f à partir du pH',
   text:[`Le pH vaut ${phE} dans la solution d’acide éthanoïque (C = ${Cv} mol·L⁻¹, V = ${Vml} mL).`,'On néglige les ions H₃O⁺ venus de l’eau seule.'],
   deriv:[{tex:tx`[\mathrm{H_3O^+}]_\mathrm{f}=10^{-\mathrm{pH}}=${TN(H_ETH*1e4,1)}\times10^{-4}\ \mathrm{mol\cdot L^{-1}}`,alt:`[H₃O⁺]_f = 10^(−pH) = ${hE} mol·L⁻¹`,r:'la concentration en ions H₃O⁺ se lit sur le pH'},
@@ -203,30 +202,36 @@ const STEPS=[
 {cle:'comparer',beat:3,scene:'barres',set:BA({xm:1,xf:0,tau:0}),sujet:'comparer x_f et x_max',
   text:[`On compare x_f = ${xfv} mol à x_max = ${n0} mol.`,'Que dire de x_f par rapport à x_max ?'],
   verifie:{...VF([
-    [`x_f < x_max : ${pc4} % seulement de l’acide a réagi`,true,`Oui : x_f vaut ${pc4} % de x_max, et la réaction s’est arrêtée là.`],
-    ['x_f = x_max, à la précision du pH-mètre près',false,`Tu as mis l’écart sur le compte de la mesure. Un facteur ${fois} ne vient pas d’une erreur de mesure : x_f < x_max.`,`Un écart de ${pc4} % contre 100 % est-il une erreur de mesure ?`],
-    ['x_f < x_max : la réaction n’a pas encore fini',false,'Tu as pensé que la réaction est en cours. x_f est celui de l’état final : la partie 4 montre pourquoi elle s’arrête là.','L’état final est-il un état en cours, ou celui où plus rien ne change ?']]),
+    ['x_f < x_max : l’acide n’a pas tout réagi',true,'Oui : x_f est bien plus petit que x_max, et la transformation s’arrête là : x_f ne bouge plus.'],
+    ['x_f = x_max, à la précision du pH-mètre près',false,'Tu as mis l’écart sur le compte de la mesure. Un écart aussi grand ne vient pas d’une erreur de mesure : x_f < x_max.','Un écart aussi grand peut-il venir d’une erreur de mesure ?'],
+    ['x_f < x_max : la réaction n’a pas encore fini',false,'Tu as pensé que la réaction est en cours. x_f est celui de l’état final : la loupe, plus loin, montre pourquoi la transformation s’arrête là.','L’état final est-il un état en cours, ou celui où plus rien ne change ?']]),
     reveal:[{p:{xf:1},d:900}]}},
 {cle:'tau-def',beat:3,scene:'barres',set:BA({xm:1,xf:1,tau:0}),sujet:'le taux d’avancement final, τ = x_f / x_max',
   text:['Le rapport de x_f à x_max a un nom : le [[tauxavancement|taux d’avancement final]], noté τ.','τ = ?'],
   tex:[[tx`\tau=\dfrac{x_\mathrm{f}}{x_\mathrm{max}}`,'τ = x_f / x_max']],
   verifie:{...VF([
-    [`${tauS}, soit ${tauP} %`,true,`Oui : x_f / x_max = ${xfv} / ${n0} = ${tauS}.`],
+    [`${tauS}`,true,`Oui : x_f / x_max = ${xfv} / ${n0} = ${tauS}, soit ${tauP} %.`],
     [`${fr(FAUX.tauInv,0)}`,false,'Tu as inversé le rapport. τ ≤ 1 : x_f, le plus petit, est au numérateur.','x_f et x_max : lequel est le plus petit, et où le met-on ?'],
     [`${sciH(FAUX.tauSurC,1)}`,false,'Tu as divisé x_f par C, une concentration. Une quantité se divise par une quantité : x_max.','x_f est en mol : par quelle grandeur en mol le divise-t-on ?']]),
     reveal:[{p:{tau:1},d:700}],
     apres:{html:`<p>${tauS} et ${tauP} % sont la même valeur ; ${tauS} % serait cent fois moins.</p>`}}},
-{cle:'tau-formule',beat:3,scene:'barres',set:BA({xm:1,xf:0,tau:0,pH:PH_HCL}),sujet:'τ = 10^(−pH) / C',
+{cle:'tau-formule',beat:3,scene:'barres',set:BA({xm:1,xf:0,tau:0,C:TF2.C,pH:TF2.pH}),sujet:'τ = 10^(−pH) / C',
   text:['Avec le tableau, x_f et x_max s’écrivent en fonction de la concentration et du volume.'],
   deriv:[{tex:tx`\tau=\dfrac{x_\mathrm{f}}{x_\mathrm{max}}=\dfrac{[\mathrm{H_3O^+}]_\mathrm{f}\,V}{C\,V}`,alt:'τ = x_f / x_max = [H₃O⁺]_f V / (C V)',r:'le tableau : x_f = [H₃O⁺]_f V et x_max = C V'},
     {tex:tx`\tau=\dfrac{10^{-\mathrm{pH}}}{C}`,alt:'τ = 10^(−pH) / C',r:'V se simplifie'}],
-  pari:{label:`Acide chlorhydrique, C = ${Cv} mol·L⁻¹, pH = ${phC} : τ = ?`,reveal:[{p:{xf:1,tau:1},d:800}],...VF([
-    ['τ = 1 : tout l’acide a réagi',true,`Oui : 10<sup>−${phC}</sup> / ${Cv} = 1. L’acide chlorhydrique réagit totalement.`],
-    [`τ = ${sciH(TF.fauxSansC,1)}, la valeur de 10<sup>−pH</sup>`,false,'Tu as oublié de diviser par C. τ = 10<sup>−pH</sup> / C, pas 10<sup>−pH</sup> seul.','Le rapport est-il 10^(−pH) seul, ou divisé par une autre grandeur ?'],
+  pari:{label:`Un acide, C = ${sciH(TF2.C,1)} mol·L⁻¹ et pH = ${fr(TF2.pH,1)} : τ = ?`,reveal:[{p:{xf:1,tau:1},d:800}],...VF([
+    [`τ = ${fr(TF2.tau,2)}`,true,`Oui : 10<sup>−${fr(TF2.pH,1)}</sup> / ${sciH(TF2.C,1)} = ${fr(TF2.tau,2)} : ${fr(TF2.tau*100,0)} % de l’acide a réagi.`],
+    [`τ = ${sciH(TF2.fauxSansC,1)}`,false,'Tu as oublié de diviser par C. τ = 10<sup>−pH</sup> / C, pas 10<sup>−pH</sup> seul.','Le rapport est-il 10^(−pH) seul, ou divisé par une autre grandeur ?'],
     ['on ne peut pas : le volume V manque',false,'Tu as cru qu’il faut V. Il se simplifie : seuls le pH et C comptent.','V figure-t-il encore dans la formule simplifiée ?']])}},
 {cle:'curseur-ph',beat:3,scene:'barres',ctl:'ph',needLabel:'Bouge les deux curseurs d’abord',set:BA({xm:1,xf:1,tau:1,cur:1,sub:'les deux curseurs, C et pH'}),
-  text:['Bouge les deux curseurs, C et pH.',{t:'Une unité de pH de plus : τ divisé par 10.',fort:true},'Le curseur du pH s’arrête là où τ = 1 : un acide ne fournit pas plus d’ions H₃O⁺ qu’il n’a de molécules.']},
-{cle:'limitee',beat:3,scene:'barres',set:BA({xm:1,xf:1,tau:0,pH:phTau(LIM.tau),sub:'une transformation où 90 % de l’acide a réagi'}),sujet:'limitée ne veut pas dire « presque rien »',
+  text:['Bouge les deux curseurs, C et pH, et regarde ce que devient τ.','Le curseur du pH s’arrête là où τ = 1 : un acide ne fournit pas plus d’ions H₃O⁺ qu’il n’a de molécules.']},
+{cle:'curseur-verifie',beat:3,scene:'barres',set:BA({xm:1,xf:1,tau:1,cur:1,sub:'τ, C et pH'}),sujet:'une unité de pH de plus, à C fixée',
+  text:['À C fixée, le pH augmente d’une unité.','Que devient τ ?'],
+  verifie:{...VF([
+    ['τ est divisé par 10',true,'Oui : τ = 10<sup>−pH</sup> / C, et 10<sup>−(pH+1)</sup> = 10<sup>−pH</sup> / 10.'],
+    ['τ est multiplié par 10',false,'Tu as lu le pH comme un exposant positif. Un pH plus grand, c’est moins d’ions H₃O⁺ : τ baisse.','Un pH plus grand, c’est plus ou moins d’ions H₃O⁺ ?'],
+    ['τ ne change pas',false,'Tu as supposé que τ ne dépend que de l’acide. À C fixée, τ = 10<sup>−pH</sup> / C change avec le pH : tu l’as vu en bougeant le curseur.','τ = 10^(−pH) / C : le pH y figure-t-il ?']])}},
+{cle:'limitee',beat:3,scene:'barres',set:BA({xm:1,xf:1,tau:0,pH:phTau(LIM.tau),sub:`une transformation où ${fr(LIM.tau*100,0)} % de l’acide a réagi`}),sujet:'limitée ne veut pas dire « presque rien »',
   text:[`τ = ${fr(LIM.tau,2)}.`,'La transformation est…'],
   verifie:{...VF([
     [`limitée : τ < 1, même à ${fr(LIM.tau*100,0)} %`,true,`Oui : ${fr(LIM.tau*100,0)} % de l’acide a réagi, mais τ < 1 : la transformation s’arrête avant la fin.`],
@@ -237,7 +242,7 @@ const STEPS=[
 
 /* ===== 4. les deux réactions qui se croisent ===== */
 {cle:'loupe',beat:4,scene:'solution',set:ZO({tic:0,leg:1,sub:SUBETH}),
-  text:['On regarde la solution à la loupe, au moment du mélange : 100 molécules d’acide, notées AH.','Autour d’elles, l’eau, H₂O, que l’on ne dessine pas.','Deux espèces vont apparaître : l’ion A⁻ et l’ion H₃O⁺.']},
+  text:['On regarde la solution à la loupe, au moment du mélange : 100 molécules d’acide, notées AH.','Autour d’elles, l’eau, H₂O, que l’on ne dessine pas.']},
 {cle:'transfert',beat:4,scene:'solution',set:ZO({tic:0,leg:1,sub:SUBETH}),seq:[{p:{tic:1},d:1500,w:500}],sujet:'l’eau qui capte un proton devient H₃O⁺',
   text:['Un proton passe d’une molécule AH à une molécule d’eau.',{t:'La molécule d’eau qui a capté le proton est devenue…',a:1}],
   verifie:{...VF([
@@ -253,59 +258,59 @@ const STEPS=[
     ['A⁻ cède un proton de plus, comme AH',false,'Tu as pris A⁻ pour un acide. Il n’a plus de proton à céder : c’est la base du couple.','Combien de H⁺ A⁻ a-t-il encore à céder ?']]),
     reveal:[{p:{vtr:1},d:1500}],
     apres:{html:'<p>En PC et SM, une rencontre qui réagit s’appelle un [[chocefficace|choc efficace]].</p>'}}},
-{cle:'premiers-tics',beat:4,scene:'solution',ctl:'tic',needLabel:'Fais les cinq tics d’abord',set:ZO({tic:0,leg:3,graph:0,vign:0,sub:SUBETH}),seq:[{p:{graph:1},d:700}],
+{cle:'premiers-tics',beat:4,scene:'solution',ctl:'tic',needLabel:'Fais les cinq tics d’abord',set:ZO({tic:0,leg:3,graph:0,vign:0,ymax:100,sub:SUBETH}),seq:[{p:{graph:1},d:700}],
   text:['À chaque tic, quelques molécules AH cèdent leur proton, et quelques ions A⁻ en reprennent un.','Clique cinq fois sur « Tic suivant » et regarde le compte.']},
-{cle:'attendre',beat:4,scene:'solution',set:ZO({tic:5,graph:1,leg:3,sub:SUBETH}),
+{cle:'attendre',beat:4,scene:'solution',set:ZO({tic:5,graph:1,leg:3,ymax:100,sub:SUBETH}),
   text:['On laisse tourner 25 tics de plus.','Le nombre d’ions A⁻…'],
-  pari:{reveal:[{p:{tic:30},d:3000}],
-    apres:{html:'<p>Plus il y a de A⁻ et de H₃O⁺, plus ils se rencontrent : le retour finit par compenser l’aller.</p>'},
+  pari:{reveal:[{p:{tic:30,ymax:20},d:3000}],
     ...BET([
-    ['monte jusqu’à 100 : chaque AH finira par céder son proton','Plus il y a de A⁻ et de H₃O⁺, plus ils se rencontrent : le retour finit par compenser l’aller.'],
-    ['monte encore un peu, puis reste autour d’une même valeur','Oui : le retour grandit avec le nombre de A⁻ et de H₃O⁺, jusqu’à compenser l’aller.',1],
-    ['redescend à 0 : le sens inverse finit par tout défaire','Tu as supposé que le retour l’emporte. Au début, aucun A⁻ n’est là pour revenir : le retour rattrape l’aller, sans le dépasser.']])}},
-{cle:'palier',beat:4,scene:'solution',set:ZO({tic:30,graph:1,leg:3,lisse:0,sub:SUBETH}),sujet:'τ au palier, 4 molécules sur 100',
-  text:[`Au palier, en moyenne ${nP} molécules sur ${100} ont cédé leur proton.`,'Quel est le taux d’avancement final τ ?'],
+    ['monte régulièrement jusqu’à 100',`Tu as supposé que seul le sens direct agit. Le compte s’arrête à ${nP} sur 100, loin de 100.`],
+    ['monte encore un peu, puis se stabilise',`Oui : le compte monte, puis se stabilise autour de ${nP} sur 100.`,1],
+    ['redescend peu à peu jusqu’à 0',`Tu as supposé que le sens inverse l’emporte. Le compte ne redescend pas à 0 : il se stabilise autour de ${nP} sur 100.`]])}},
+{cle:'palier',beat:4,scene:'solution',set:ZO({tic:30,graph:1,leg:3,lisse:0,sub:SUBETH}),sujet:`τ au palier, ${nP} molécules sur ${NM}`,
+  text:[`Au palier, en moyenne ${nP} molécules sur ${NM} ont cédé leur proton.`,'Quel est le taux d’avancement final τ ?'],
   verifie:{...VF([
-    [`${tauPal} : ${nP} molécules sur 100`,true,`Oui : τ = ${nP}/100 = ${tauPal}, la valeur que le pH donnait dans la partie 3.`],
-    [`${nP} : le nombre de molécules`,false,'Tu as donné un nombre de molécules, pas un rapport. τ se divise par les 100 du départ.','τ est-il un nombre de molécules, ou un rapport entre deux nombres ?'],
-    [`${fr(PALIER.fauxReste,2)} : la part des AH restés`,false,`Tu as donné la part des AH restés. τ compte ce qui a réagi : ${nP} sur 100.`,'τ compte-t-il les molécules qui ont réagi, ou celles qui restent ?']]),
+    [`${tauPal}`,true,`Oui : τ = ${nP}/${NM} = ${tauPal}, la valeur que le pH donnait dans la partie 4.`],
+    [`${nP}`,false,'Tu as donné un nombre de molécules, pas un rapport. τ se divise par les 100 du départ.','τ est-il un nombre de molécules, ou un rapport entre deux nombres ?'],
+    [`${fr(PALIER.fauxReste,2)}`,false,`Tu as donné la part des AH restés. τ compte ce qui a réagi : ${nP} sur 100.`,'τ compte-t-il les molécules qui ont réagi, ou celles qui restent ?']]),
     reveal:[{p:{lisse:1},d:1500}],
     apres:{html:'<p>Dans un vrai bécher, il y a des milliards de milliards de molécules : le compte ne fluctue plus, c’est la courbe lisse.</p>'}}},
 {cle:'qui',beat:4,scene:'solution',set:ZO({tic:30,graph:1,leg:3,lisse:1,ring:RING.i,sub:SUBETH}),
   text:['Une molécule A⁻ est encadrée au tic 30.','Au tic 35, cette molécule…'],
   pari:{reveal:[{p:{tic:35,hist:1},d:2600}],...BET([
-    ['est encore A⁻ : le compte ne bouge plus, donc plus rien ne réagit','Tu as lu un compte stable comme des molécules figées. Le compte garde sa valeur, pas les mêmes molécules.'],
-    ['a pu redevenir AH, et une autre a pris sa place','Oui : le compte reste autour de 4, mais les molécules, elles, changent.',1],
-    ['a quitté la solution','Aucune molécule ne sort : les 100 sont toujours là, et chacune est AH ou A⁻.']])}},
+    ['est restée A⁻ : le compte ne bouge plus','Tu as lu un compte stable comme des molécules figées. Le compte garde sa valeur, pas les mêmes molécules.'],
+    ['est redevenue AH, et une autre l’a remplacée',`Oui : au tic 35, la molécule encadrée est redevenue AH. Le compte, lui, est à ${nQ}, comme au tic 30.`,1],
+    ['est redevenue AH : le compte a baissé de 1',`Tu as suivi le retour d’une molécule sans regarder le compte : au tic 35, il est resté à ${nQ}.`]])}},
 {cle:'vitesses',beat:4,scene:'solution',set:ZO({tic:35,graph:1,leg:3,lisse:1,ring:-1,hist:0,cpt:0,sub:SUBETH}),
   text:['Pendant dix tics au palier, on compte les protons cédés par AH (sens direct) et les protons repris par A⁻ (sens inverse).','Combien de chaque ?'],
   pari:{reveal:[{p:{cpt:1},d:300},{p:{tic:45},d:4000}],
     apres:{html:'<p><b>Au palier, les deux réactions continuent, à la même vitesse.</b></p>'},
     ...BET([
-    ['plus de cédés : la réaction directe gagne toujours','Tu as supposé que le sens direct l’emporte. Au palier, les deux se compensent : le compte ne monte plus.'],
-    ['autant, à un près','Oui : le compte est stable, donc autant de protons cédés que de protons repris.',1],
-    ['zéro et zéro : tout est arrêté','Tu as lu un compte stable comme un arrêt. Il reste stable parce que chaque sens continue, à la même vitesse.']])}},
+    ['plus de cédés que de repris','Tu as supposé que le sens direct l’emporte. Au palier, le compte ne monte plus : il n’y a pas plus de protons cédés que de protons repris.'],
+    ['autant de cédés que de repris, à un près',`Oui : ${nvit} cédés et ${nvitB} repris en dix tics, et le compte est stable.`,1],
+    ['aucun de chaque : tout est arrêté','Tu as lu un compte stable comme un arrêt. Il reste stable parce que chaque sens continue, à la même vitesse.']])}},
 {cle:'double-fleche',beat:4,scene:'solution',set:ZO({tic:45,graph:1,leg:3,lisse:1,eq:1,sub:SUBETH}),sujet:'la double flèche ⇄',
-  text:['Les deux réactions ont lieu en même temps.','Comment écrire l’équation ?'],
+  text:['Comment écrire l’équation de ce que tu viens de compter ?'],
   verifie:{...VF([
     ['avec ⇄ : les deux réactions ont lieu en même temps',true,'Oui : ⇄ dit qu’il y a deux sens, ici simultanés.'],
     ['avec → : le sens direct l’a emporté au début',false,`Tu n’as gardé que le sens direct. → dit que l’acide disparaît : ici, il en reste ${restePal} %.`,'La flèche simple dit-elle que l’acide disparaît ? Qu’en reste-t-il ici ?'],
-    ['avec ⇄ : la réaction est lente',false,'Tu as pris ⇄ pour un signe de lenteur. La double flèche ne dit rien de la vitesse.','⇄ parle-t-elle d’un nombre de sens, ou d’une vitesse ?']]),
+    ['avec ⇄ : la réaction est lente, donc inachevée',false,'Tu as pris ⇄ pour un signe de lenteur. La double flèche ne dit rien de la vitesse.','⇄ parle-t-elle d’un nombre de sens, ou d’une vitesse ?']]),
     reveal:[{p:{eq:2},d:700}],
     apres:{tex:[[tx`\mathrm{CH_3COOH_{(aq)}}+\mathrm{H_2O_{(l)}}\ \overset{1}{\underset{2}{\rightleftarrows}}\ \mathrm{CH_3COO^-_{(aq)}}+\mathrm{H_3O^+_{(aq)}}`,'CH₃COOH(aq) + H₂O(l) ⇄ CH₃COO⁻(aq) + H₃O⁺(aq)']],html:'<p>Le sens 1 est le sens direct, le sens 2 le sens inverse : c’est la forme du sujet 2012.</p>'}}},
-{cle:'equilibre',beat:4,scene:'solution',set:ZO({tic:45,graph:1,leg:3,lisse:1,eq:2,etiq:1,sub:SUBETH}),sujet:'ce qui ne change plus à l’équilibre',
-  text:['Le compte ne change plus : le système est dans un [[equilibre|état d’équilibre]].','À l’état d’équilibre, ce qui ne change plus, c’est…'],
+{cle:'equilibre',beat:4,scene:'solution',set:ZO({tic:45,graph:1,leg:3,lisse:1,eq:2,etiq:0,sub:SUBETH}),sujet:'ce qui ne change plus à l’équilibre',
+  text:['Le système est dans un [[equilibre|état d’équilibre]].','À l’état d’équilibre, ce qui ne change plus, c’est…'],
   verifie:{...VF([
     ['la quantité de chaque espèce',true,'Oui : les quantités sont constantes, parce que les deux vitesses sont égales.'],
     ['chaque molécule : celle qui est A⁻ le reste',false,'Tu as pris les molécules pour figées. Tu l’as vu : la molécule encadrée a changé, ce sont les quantités qui se stabilisent.','La molécule encadrée est-elle restée A⁻ ?'],
     ['rien : les vitesses sont devenues nulles',false,'Tu as confondu égales et nulles. Les deux vitesses restent positives, et elles sont égales.','Au palier, les protons cédés et repris étaient-ils nuls ?']]),
+    reveal:[{p:{etiq:1},d:600}],
     apres:{html:'<p class="small">En PC et SM, c’est une capacité de ce chapitre. En SVT, c’est l’idée du chapitre suivant : l’équilibre dynamique.</p>'}}},
 {cle:'hcl-zoom',beat:4,scene:'solution',set:ZO({acide:'hcl',tic:0,graph:0,leg:3,sub:'HCl ; l’eau n’est pas dessinée'}),sujet:'l’acide chlorhydrique à la loupe : τ = 1',
   text:[`La même loupe sur l’acide chlorhydrique, dont τ = ${fr(TF.tau,0)}.`,'Au palier, combien d’ions Cl⁻ sur 100 ?'],
   verifie:{...VF([
-    ['100 : tout a cédé, on écrit →',true,'Oui : τ = 1, toutes les molécules ont cédé leur proton. L’équation s’écrit avec →.'],
-    [`${nP}, comme l’acide éthanoïque`,false,'Tu as repris la valeur de l’acide éthanoïque. Ici τ = 1 : toutes les molécules ont cédé.','Quel est τ pour l’acide chlorhydrique ?'],
-    ['50 : moitié aller, moitié retour',false,'Tu as lu l’équilibre comme « moitié-moitié ». Il est l’égalité des vitesses, pas celle des quantités.','L’équilibre partage-t-il les quantités en deux moitiés, ou égalise-t-il les vitesses ?']]),
+    ['100',true,'Oui : τ = 1, toutes les molécules ont cédé leur proton. L’équation s’écrit avec →.'],
+    [`${nP}`,false,'Tu as repris la valeur de l’acide éthanoïque. Ici τ = 1 : toutes les molécules ont cédé.','Quel est τ pour l’acide chlorhydrique ?'],
+    ['50',false,'Tu as lu l’équilibre comme « moitié-moitié ». Il est l’égalité des vitesses, pas celle des quantités.','L’équilibre partage-t-il les quantités en deux moitiés, ou égalise-t-il les vitesses ?']]),
     reveal:[{p:{tic:10},d:2200}]}},
 
 /* ===== 5. l'équilibre et ses pièges ===== */
@@ -317,54 +322,54 @@ const STEPS=[
     [`${fr(RP.fauxInv,0)}`,false,'Tu as inversé le rapport. τ ≤ 1 : 10<sup>−pH</sup> est au numérateur.','Un taux peut-il dépasser 1 ?']]),
     reveal:[{p:{xf:1,tau:1,pH:RP.pH},d:800}]}},
 {cle:'catalyseur',beat:5,scene:'solution',set:ZO({tic:45,graph:1,leg:3,lisse:1,eq:2,sub:SUBETH}),sujet:'un catalyseur ne change pas τ',
-  text:['Un [[catalyseur]] accélère une réaction sans être consommé.','Peut-il rendre τ égal à 1 pour une transformation limitée ?'],
+  text:['Un [[catalyseur]] accélère une réaction sans être consommé.','Qu’advient-il de τ, pour une transformation limitée ?'],
   verifie:{...VF([
-    ['non : il fait atteindre l’équilibre plus vite, sans le déplacer',true,'Exactement : il accélère les deux sens autant, donc il ne déplace pas l’équilibre.'],
-    ['oui, s’il y en a assez : il aide la réaction à aller au bout',false,'Tu as supposé qu’une grande quantité de catalyseur change τ. Il accélère les deux sens autant : τ reste le même.','Un catalyseur accélère-t-il un sens plus que l’autre ?'],
-    ['oui, mais il faut attendre assez longtemps pour le voir',false,'Tu as pensé qu’il suffit d’attendre. Un catalyseur raccourcit l’attente, il ne change pas le palier.','Attendre plus longtemps change-t-il le palier du compte ?']]),
+    ['τ ne change pas : l’équilibre est atteint plus vite',true,'Exactement : il accélère les deux sens autant, donc il ne déplace pas l’équilibre.'],
+    ['τ augmente : le catalyseur aide la réaction à aller au bout',false,'Tu as supposé qu’une grande quantité de catalyseur change τ. Il accélère les deux sens autant : τ reste le même.','Un catalyseur accélère-t-il un sens plus que l’autre ?'],
+    ['τ finit par valoir 1, mais il faut attendre plus longtemps',false,'Tu as pensé qu’il suffit d’attendre. Un catalyseur raccourcit l’attente, il ne change pas le palier.','Attendre plus longtemps change-t-il le palier du compte ?']]),
     apres:{html:'<p class="small">Tu le reverras avec l’estérification.</p>'}}},
 {cle:'vitesse-avancement',beat:5,scene:'solution',set:ZO({tic:45,graph:1,leg:3,lisse:1,eq:2,sub:SUBETH}),sujet:'la vitesse et τ sont deux questions séparées',
   text:['Une réaction atteint son équilibre très vite.','Qu’en conclure sur τ ?'],
   verifie:{...VF([
     ['rien : la vitesse et τ sont deux questions séparées',true,'Exactement : la vitesse dit à quel rythme on avance, τ dit jusqu’où on va.'],
-    ['qu’elle est totale : rapide, donc elle va au bout',false,'Tu as lié rapidité et fin de réaction. Rapide ou lente, une transformation peut s’arrêter à τ = 0,04 ou aller jusqu’à τ = 1.','Une réaction rapide va-t-elle forcément jusqu’au bout ?'],
+    ['qu’elle est totale : rapide, donc elle va au bout',false,`Tu as lié rapidité et fin de réaction. Rapide ou lente, une transformation peut s’arrêter à τ = ${tau2} ou aller jusqu’à τ = 1.`,'Une réaction rapide va-t-elle forcément jusqu’au bout ?'],
     ['qu’elle s’écrit avec ⇄ parce qu’elle est rapide',false,'Tu as lié ⇄ à la rapidité. ⇄ dit « deux sens », pas une vitesse.','⇄ parle-t-elle d’un nombre de sens, ou d’une vitesse ?']])}},
-{cle:'quasi-totale',beat:5,scene:'barres',set:BA({xm:1,xf:1,tau:0,pH:phTau(S12.tau),sub:'sujet 2012 : une transformation presque totale'}),sujet:'⇄ et transformation presque totale',
-  text:['Bac PC 2012, session normale, chimie, question 1-3 (1 pt) : l’équation de l’acide éthanoïque avec l’ammoniac est écrite avec ⇄.',`Le sujet demande de « s’assurer que la transformation est totale » ; son calcul donne τ ≈ ${tauS12}, que l’on cite ici.`,'⇄ dans l’équation, et pourtant « totale » : une contradiction ?'],
+{cle:'quasi-totale',beat:5,scene:'barres',set:BA({xm:1,xf:1,tau:0,pH:phTau(S12.tau),sub:'sujet 2012 : l’acide éthanoïque et l’ammoniac'}),sujet:'⇄ et transformation presque totale',
+  text:['Bac PC 2012, session normale, chimie, question 1-3 (1 pt) : l’équation de l’acide éthanoïque avec l’ammoniac est écrite avec ⇄.',`Le sujet demande de « s’assurer que la transformation est totale » ; son calcul donne τ ≈ ${tauS12}, que l’on cite ici.`,'⇄ dans l’équation, et pourtant « totale » : qu’en dire ?'],
   verifie:{...VF([
-    [`non : ⇄ dit deux sens, τ dit jusqu’où ; τ ≈ ${tauS12}`,true,`Oui : τ ≈ ${tauS12} est pratiquement totale, et l’équation reste écrite avec ⇄.`],
-    ['oui : avec ⇄, τ reste forcément loin de 1',false,'Tu as lu ⇄ comme « τ est petit ». τ ne se lit pas sur la flèche, il se calcule.','⇄ donne-t-elle la valeur de τ ?'],
-    ['oui : le sujet s’est trompé en écrivant ⇄',false,'Tu as cru le sujet fautif. Il n’y a pas de contradiction : c’est τ qui tranche.','Qui décide si une transformation est totale : la flèche ou τ ?']])}},
+    ['ils vont ensemble : ⇄ dit deux sens, τ dit jusqu’où',true,`Oui : τ ≈ ${tauS12} est pratiquement totale, et l’équation reste écrite avec ⇄.`],
+    ['ils s’excluent : avec ⇄, τ reste forcément petit',false,'Tu as lu ⇄ comme « τ est petit ». τ ne se lit pas sur la flèche, il se calcule.','⇄ donne-t-elle la valeur de τ ?'],
+    ['le sujet se trompe : il fallait écrire → ici',false,'Tu as cru le sujet fautif. Il n’y a pas de contradiction : c’est τ qui tranche.','Qui décide si une transformation est totale : la flèche ou τ ?']])}},
 {cle:'sens',beat:5,scene:'solution',set:ZO({depart:'ions',tic:0,graph:0,leg:3,sub:'on mélange des ions A⁻ et des ions H₃O⁺'}),sujet:'le sens d’évolution dépend de ce qu’on met',
   text:['On mélange de l’éthanoate de sodium (des ions A⁻) et de l’acide chlorhydrique (des ions H₃O⁺), ajouté en dernier.','Aucune molécule AH au départ. Il se forme…'],
   verifie:{...VF([
     ['de l’acide éthanoïque : A⁻ et H₃O⁺ réagissent',true,'Oui : A⁻ et H₃O⁺ sont les réactifs du sens 2, il se forme AH et H₂O.'],
-    ['des ions éthanoate en plus : un acide ajouté fait avancer le sens direct',false,'Tu as suivi l’ordre des ajouts. Regarde les réactifs présents : ici A⁻ et H₃O⁺, pas AH.','Quelles espèces sont présentes au départ : AH, ou A⁻ et H₃O⁺ ?'],
+    ['des ions éthanoate en plus : l’acide ajouté en dernier impose le sens direct',false,'Tu as cru que l’espèce ajoutée en dernier impose le sens. Regarde les réactifs présents : ici A⁻ et H₃O⁺, pas AH.','Quelles espèces sont présentes au départ : AH, ou A⁻ et H₃O⁺ ?'],
     ['rien : la réaction va de l’acide vers sa base, jamais l’inverse',false,'Tu as cru le sens fixé par l’équation. Il dépend de ce qu’on met : ici, A⁻ et H₃O⁺ réagissent.','Peut-on écrire ⇄ si la réaction ne va que dans un sens ?']]),
     reveal:[{p:{tic:15},d:3200}],
     apres:{html:'<p class="small">Prévoir ce sens par le calcul, c’est le chapitre sur l’évolution spontanée.</p>'}}},
 
 /* ===== 6. la dilution ===== */
 {cle:'dilution-pari',beat:6,scene:'solution',set:ZO({tic:45,graph:1,leg:3,lisse:1,vol:1,sub:'mêmes molécules, bocal dix fois plus grand'}),seq:[{p:{vol:10},d:1800}],
-  text:['On dilue la solution 10 fois : les mêmes molécules AH, dans un bocal dix fois plus grand.','C’est un enrichissement en PC et SM, une capacité du programme en SVT.','Le taux d’avancement final…'],
+  text:['On dilue la solution 10 fois : les mêmes molécules AH, dans un bocal dix fois plus grand.','Le taux d’avancement final…'],
   pari:{reveal:[{p:{tic:80},d:4000}],
-    apres:dyn(()=>`<p>${rappelDilution()?rappelDilution()+' ':''}Le compte passe de ${nAvant} à environ ${nDil} sur 100 : τ passe de ${tau2} à environ ${tauD}.</p>`),
+    apres:dyn(()=>`<p>${rappelDilution()?rappelDilution()+' ':''}Le compte passe de ${nAvant} à environ ${nDil} sur ${NM}.</p><p class="small">En PC et SM, c’est un enrichissement ; en SVT, une capacité du programme.</p>`),
     ...BET([
-    ['ne change pas : c’est le même acide','Tu as supposé que τ ne dépend que de l’acide. Ici, A⁻ et H₃O⁺ se rencontrent moins souvent : le retour ralentit.'],
-    ['augmente','Oui : le même acide, mais A⁻ et H₃O⁺ se rencontrent moins souvent : le retour ralentit.',1],
-    ['diminue : il y a moins d’acide par litre','Tu as compté l’acide par litre : il y en a moins, mais la part qui réagit grandit. Le retour ralentit.']])}},
+    ['ne change pas',`Tu as supposé que τ ne dépend que de l’acide. Le compte passe de ${nAvant} à environ ${nDil} sur ${NM} : τ a changé.`],
+    ['augmente',`Oui : le compte passe de ${nAvant} à environ ${nDil} sur ${NM}.`,1],
+    ['diminue',`Tu as compté l’acide par litre. Le compte ne baisse pas : il monte de ${nAvant} à environ ${nDil} sur ${NM}.`]])}},
 {cle:'dilution-calc',beat:6,scene:'solution',set:BE({dil:10,ph:1}),sujet:'τ après dilution',
   text:[`Après dilution, C = ${CdilS} mol·L⁻¹ et le pH vaut ${phD}.`,'τ = ?'],
   verifie:{...VF([
-    [`${tauD}, soit ${pcD} %`,true,`Oui : τ = 10<sup>−${phD}</sup> / ${CdilS} = ${tauD}.`],
+    [`${tauD}`,true,`Oui : τ = 10<sup>−${phD}</sup> / ${CdilS} = ${tauD}, soit ${pcD} %.`],
     [`${tauDfx}`,false,`Tu as gardé la concentration d’avant la dilution. C a été divisée par 10 : C = ${CdilS} mol·L⁻¹.`,'Quelle est la concentration après dilution ?'],
-    [`${tauS}, comme avant`,false,'Tu as repris τ d’avant. Recalcule avec le nouveau pH et la nouvelle concentration.','Le pH et C ont-ils changé ?']])}},
+    [`${tauS}`,false,'Tu as repris τ d’avant. Recalcule avec le nouveau pH et la nouvelle concentration.','Le pH et C ont-ils changé ?']])}},
 {cle:'dilution-pourquoi',beat:6,scene:'solution',set:ZO({tic:80,graph:1,leg:3,lisse:1,vol:10,sub:'dix fois plus de place, les mêmes 100 molécules'}),sujet:'pourquoi τ augmente quand on dilue',
   text:[`Après la dilution, τ passe de ${tau2} à ${tauD}.`,'Pourquoi τ augmente-t-il ?'],
   verifie:{...VF([
-    ['A⁻ et H₃O⁺ se rencontrent plus rarement : le sens 2 ralentit',true,'Oui : le retour ralentit, l’équilibre s’établit plus loin vers les produits.'],
-    ['l’eau ajoutée cède des protons en plus à la solution',false,'Tu as pensé que l’eau fournit des H₃O⁺. Ils viennent de l’acide : l’eau les capte.','D’où viennent les ions H₃O⁺ : de l’eau ou de l’acide ?'],
-    ['l’acide devient plus fort quand on le dilue avec de l’eau',false,'Tu as changé la nature de l’acide. Il est le même : c’est l’état de départ, plus dilué, qui a changé.','La dilution change-t-elle l’acide, ou seulement sa concentration ?']])}},
+    ['A⁻ et H₃O⁺ se rencontrent plus rarement',true,'Oui : le retour ralentit, l’équilibre s’établit plus loin vers les produits.'],
+    ['l’eau ajoutée cède des protons en plus',false,'Tu as pensé que l’eau fournit des H₃O⁺. Ils viennent de l’acide : l’eau les capte.','D’où viennent les ions H₃O⁺ : de l’eau ou de l’acide ?'],
+    ['l’acide devient plus fort quand on le dilue',false,'Tu as changé la nature de l’acide. Il est le même : c’est l’état de départ, plus dilué, qui a changé.','La dilution change-t-elle l’acide, ou seulement sa concentration ?']])}},
 
 /* ===== 7. retour à l'énigme ===== */
 {cle:'retour',beat:7,scene:'solution',set:DU({sub:'chaque molécule a un proton à céder'}),
@@ -373,23 +378,24 @@ const STEPS=[
   text:[`Une solution d’acide éthanoïque a un pH de ${phC}.`,`Sa concentration est… (celle de l’acide chlorhydrique de même pH : ${Cv} mol·L⁻¹)`],
   verifie:{...VF([
     [`plus grande que ${Cv} mol·L⁻¹`,true,'Oui : τ < 1, il faut plus d’acide pour obtenir autant d’ions H₃O⁺.'],
-    [`égale à ${Cv} mol·L⁻¹, comme l’acide chlorhydrique`,false,'Tu as repris le raisonnement de l’énigme : il n’est vrai que si τ = 1. L’acide éthanoïque a τ < 1.','Une même concentration donne-t-elle le même pH si τ ≠ 1 ?'],
+    [`égale à ${Cv} mol·L⁻¹`,false,'Tu as repris le raisonnement de l’énigme : il n’est vrai que si τ = 1. L’acide éthanoïque a τ < 1.','Une même concentration donne-t-elle le même pH si τ ≠ 1 ?'],
     [`plus petite que ${Cv} mol·L⁻¹`,false,'Tu as supposé que l’acide éthanoïque cède plus de protons. Il en cède moins : il en faut plus pour le même pH.','L’acide éthanoïque cède-t-il plus ou moins de protons que l’acide chlorhydrique ?']])}},
 
 /* ===== 8. au bac ===== */
-{cle:'bac',beat:8,scene:'bac',set:BC({eqn:0,n:0}),
-  text:[`Bac PC 2022, session normale, exercice 1, partie 2, question 1.2 (${fr(S22.bareme[1],2)} pt) : calculer τ. Que peut-on conclure ?`,`On donne C_a = ${CaS} mol·L⁻¹ et pH = ${pH22}, mais aucun volume.`,'Quel est ton premier geste ?'],
-  pari:{reveal:[{p:{n:1},d:800}],...BET([
-    ['Écrire la définition τ = x_f / x_max, puis exprimer x_f et x_max avec le tableau, V en lettres','Oui : on part de la définition, et V, laissé en lettres, se simplifiera.',1],
-    ['Il manque le volume V : on ne peut pas calculer','Tu as cru qu’il faut V. Il se simplifie dans τ : c’est pour cela que le sujet ne le donne pas.'],
-    ['Poser τ = pH / C_a','Cette formule n’existe pas : τ se définit par des avancements, x_f / x_max. Pose la définition d’abord.']])}},
-{cle:'bac-eq',beat:8,scene:'bac',set:BC({eqn:0,n:1}),sujet:'l’équation de l’acide avec l’eau, sujet 2022',
-  text:[`Question 1.1 (${fr(S22.bareme[0],1)} pt) : écrire l’équation de la réaction de l’acide propanoïque avec l’eau.`,'Laquelle est juste ?'],
+{cle:'bac-eq',beat:8,scene:'bac',set:BC({eqn:0,n:0}),sujet:'l’équation de l’acide avec l’eau, sujet 2022',
+  text:[`Bac PC 2022, session normale, exercice 1, partie 2 : une solution d’acide propanoïque, C_a = ${CaS} mol·L⁻¹ et pH = ${pH22}.`,`Question 1.1 (${fr(S22.bareme[0],1)} pt) : écrire l’équation de la réaction de l’acide propanoïque avec l’eau.`,'Laquelle est juste ?'],
   verifie:{...VF([
     ['C₂H₅COOH(aq) + H₂O(l) ⇄ C₂H₅COO⁻(aq) + H₃O⁺(aq)',true,'Oui : l’acide cède H⁺ à l’eau, qui devient H₃O⁺.'],
     ['C₂H₅COOH(aq) ⇄ C₂H₅COO⁻(aq) + H⁺(aq)',false,'Tu as écrit la demi-équation du couple. Dans l’équation, le proton passe à l’eau, qui devient H₃O⁺.','Un proton H⁺ reste-t-il seul dans une équation de réaction ?'],
     ['C₂H₅COOH(aq) + HO⁻(aq) ⇄ C₂H₅COO⁻(aq) + H₂O(l)',false,'C’est l’équation du dosage, question 2.1 du même sujet. Ici, la base qui capte le proton est l’eau.','Y a-t-il des ions HO⁻ dans la solution d’acide au départ ?']]),
     reveal:[{p:{eqn:1},d:700}]}},
+{cle:'bac',beat:8,scene:'bac',set:BC({eqn:1,n:0}),
+  text:[`Question 1.2 (${fr(S22.bareme[1],2)} pt) : calculer τ. Que peut-on conclure ?`,'On ne donne aucun volume.','Quel est ton premier geste ?'],
+  verifie:{...VF([
+    ['Poser τ = x_f / x_max, puis exprimer x_f et x_max',true,'Oui : on part de la définition, et V, laissé en lettres, se simplifiera.'],
+    ['Dire qu’on ne peut pas calculer : le volume V manque',false,'Tu as cru qu’il faut V. Il se simplifie dans τ : c’est pour cela que le sujet ne le donne pas.','x_f et x_max contiennent-ils V tous les deux ?'],
+    ['Poser directement τ = pH / C_a, puis calculer',false,'Tu as pris le pH pour une concentration. Cette formule n’existe pas : τ se définit par des avancements, x_f / x_max.','Le pH est-il une concentration ?']]),
+    reveal:[{p:{n:1},d:800}]}},
 {cle:'bac-ed',beat:8,scene:'bac',set:BC({eqn:1,n:1}),
   text:['Voici la rédaction de la question 1.2, avec la pensée de celui qui l’écrit.',`Lis chaque ligne, avec sa raison. Barème imprimé en marge du sujet : ${fr(S22.bareme[0],1)} + ${fr(S22.bareme[1],2)} pt.`],
   deriv:[{tex:tx`\tau=\dfrac{x_\mathrm{f}}{x_\mathrm{max}}`,alt:'τ = x_f / x_max',r:'je commence par la définition : τ est un rapport d’avancements',p:{n:1}},
@@ -401,48 +407,47 @@ const STEPS=[
   verifie:{...VF([
     ['τ < 1 : la transformation est limitée (non totale)',true,'Oui : τ < 1, donc x_f < x_max.'],
     ['τ ≈ 0 : l’acide ne réagit pas avec l’eau',false,`Tu as lu « petit » comme « nul ». ${tauS22p} % des molécules ont réagi : peu, mais pas rien.`,`τ = ${tauS22} est-il égal à 0 ?`],
-    ['la réaction est lente',false,'Tu as lu τ comme une vitesse. τ ne dit rien de la vitesse.','τ parle-t-il de durée, ou de proportion ?']]),
+    ['la réaction est lente, puisque τ est petit',false,'Tu as lu τ comme une vitesse. τ ne dit rien de la vitesse.','τ parle-t-il de durée, ou de proportion ?']]),
     reveal:[{p:{n:5},d:800}],
     apres:{html:`<div class="tn-copie"><p><b>Équation.</b> C₂H₅COOH(aq) + H₂O(l) ⇄ C₂H₅COO⁻(aq) + H₃O⁺(aq)</p><p><b>Définition.</b> τ = x_f / x_max, avec x_max = C_a V et x_f = [H₃O⁺]_f V = 10<sup>−pH</sup> V.</p><p><b>Littéral.</b> τ = 10<sup>−pH</sup> / C_a : V se simplifie.</p><p><b>Numérique.</b> τ = 10<sup>−${pH22}</sup> / (${CaS}) ≈ ${tauS22}, soit ${tauS22p} %.</p><p><b>Conclusion.</b> τ < 1 : la transformation est limitée (non totale).</p></div><p class="small">Barème imprimé du sujet : ${fr(S22.bareme[0],1)} + ${fr(S22.bareme[1],2)} pt. Consigne imprimée sur les sujets : « On donnera les expressions littérales avant de passer aux applications numériques. »</p>`}}},
-{cle:'bac-2a',beat:8,scene:'avancement',set:AV({lit:0,cases:12,cache:8,tete:'ethan',conc:'CA',sub:'sujet 2023 : CH₃COOH + H₂O ⇄ CH₃COO⁻ + H₃O⁺'}),sujet:'la ligne finale du tableau, sujet 2023',
+{cle:'bac-2a',beat:8,scene:'avancement',set:AV({lit:0,cases:12,cache:8,cache2:4,tete:'ethan',conc:'CA',sub:'sujet 2023 : CH₃COOH + H₂O ⇄ CH₃COO⁻ + H₃O⁺'}),sujet:'la ligne finale du tableau, sujet 2023',
   text:[`À toi. Bac PC 2023, session normale, exercice 1, §1, question 1.2 (${fr(S23.bareme[1],2)} pt) : « En vous aidant du tableau d’avancement, montrer que α = 1 − τ. »`,`C_A = ${CAS} mol·L⁻¹ ; pH = ${pH23}. Dans la ligne finale, n(CH₃COOH) vaut…`],
   tex:[[tx`\alpha=\dfrac{[\mathrm{CH_3COOH}]_{\text{éq}}}{[\mathrm{CH_3COOH}]_{\text{éq}}+[\mathrm{CH_3COO^-}]_{\text{éq}}}`,'α = [CH₃COOH]_éq / ([CH₃COOH]_éq + [CH₃COO⁻]_éq)']],
   verifie:{...VF([
     ['C_A V − x_f',true,'Oui : on retire à la quantité de départ ce qui a réagi.'],
     ['x_f',false,'Tu as pris la quantité formée pour la quantité restante. x_f est ce qui s’est formé : l’acide, lui, a perdu x_f.','x_f est-il ce qui reste de l’acide, ou ce qui s’est formé ?'],
     ['C_A V',false,'Tu as laissé l’acide inchangé. Ce qui a réagi est retiré : C_A V − x_f.','L’acide a-t-il perdu quelque chose entre l’état initial et l’état final ?']]),
-    reveal:[{p:{cache:-1,fx:8},d:700}]}},
+    reveal:[{p:{cache:-1,cache2:-1,fx:8},d:700}]}},
 {cle:'bac-2b',beat:8,scene:'avancement',set:AV({lit:0,cases:12,cache:-1,fx:8,tete:'ethan',conc:'CA',sub:'sujet 2023 : CH₃COOH + H₂O ⇄ CH₃COO⁻ + H₃O⁺'}),sujet:'α = 1 − τ, sujet 2023',
-  text:['Les concentrations de α sont prises dans le même volume : elles deviennent des quantités.'],
-  deriv:[{tex:tx`\alpha=\dfrac{C_A V-x_\mathrm{f}}{(C_A V-x_\mathrm{f})+x_\mathrm{f}}`,alt:'α = (C_A V − x_f) / ((C_A V − x_f) + x_f)',r:'même volume partout : les concentrations deviennent des quantités'},
-    {tex:tx`\alpha=1-\dfrac{x_\mathrm{f}}{C_A V}`,alt:'α = 1 − x_f / (C_A V)',r:'le dénominateur vaut C_A V'}],
-  pari:{label:'Donc α = ? et sa valeur ?',...VF([
-    [`α = 1 − τ ≈ ${alpha23}`,true,`Oui : τ = 10<sup>−${pH23}</sup> / ${CAS} ≈ ${tauS23}, donc α ≈ ${alpha23}.`],
-    [`α = τ ≈ ${tauFx23}`,false,'Tu as confondu α et τ. α compte l’acide restant, τ l’acide qui a réagi : α = 1 − τ.','α compte-t-il l’acide qui reste, ou l’acide qui a réagi ?'],
-    [`α = 1 − 10<sup>−pH</sup> ≈ ${sansC23}`,false,'Tu as oublié C_A dans τ. τ = 10<sup>−pH</sup> / C_A, pas 10<sup>−pH</sup> seul.','Par quoi divise-t-on 10^(−pH) pour obtenir τ ?']]),
+  text:['On reprend α avec les quantités de la ligne finale du tableau.'],
+  deriv:[{tex:tx`\alpha=\dfrac{C_A V-x_\mathrm{f}}{(C_A V-x_\mathrm{f})+x_\mathrm{f}}`,alt:'α = (C_A V − x_f) / ((C_A V − x_f) + x_f)',r:'même volume partout : les concentrations deviennent des quantités'}],
+  pari:{label:'Simplifie, puis calcule α',...VF([
+    [`${alpha23}`,true,`Oui : α = 1 − x_f / (C_A V) = 1 − τ, avec τ = 10<sup>−${pH23}</sup> / ${CAS} ≈ ${tauS23}, donc α ≈ ${alpha23}.`],
+    [`${tauFx23}`,false,'Tu as confondu α et τ. α compte l’acide restant, τ l’acide qui a réagi : α = 1 − τ.','α compte-t-il l’acide qui reste, ou l’acide qui a réagi ?'],
+    [`${sansC23}`,false,'Tu as oublié C_A dans τ. τ = 10<sup>−pH</sup> / C_A, pas 10<sup>−pH</sup> seul.','Par quoi divise-t-on 10^(−pH) pour obtenir τ ?']]),
     apres:{tex:[[tx`\alpha=1-\tau`,'α = 1 − τ']],html:'<p class="small">La question 1.3 de ce sujet (le pK_A) et les questions 1.3 et 1.4 du sujet 2022 sont la suite du chapitre : elles viennent après.</p>'}}},
 
 /* ===== 9. bilan ===== */
 {cle:'q1',beat:9,scene:'quiz',set:{qi:0,rv:0},sujet:'τ inversé dans une copie',
   text:[`Une copie écrit : τ = C / [H₃O⁺] = ${sciH(S22.Ca,0)} / ${hS22s} ≈ ${tauInv22}. Son erreur ?`],
   verifie:{...VF([
-    [`le rapport est inversé : τ = [H₃O⁺]_f / C ≈ ${tauS22}`,true,`Oui : τ ≤ 1 aurait dû alerter. τ = [H₃O⁺]_f / C ≈ ${tauS22}.`],
-    ['elle a oublié V : il faut le volume',false,'Tu as cru que V manque. V se simplifie : τ = [H₃O⁺]_f / C.','V figure-t-il encore dans τ = [H₃O⁺]_f / C ?'],
-    ['aucune : un grand τ veut dire une réaction totale',false,'Tu as lu un grand τ comme une réaction totale. τ ne dépasse jamais 1.','Un taux d’avancement peut-il dépasser 1 ?']]),
+    ['le rapport est inversé',true,`Oui : τ ≤ 1 aurait dû alerter. τ = [H₃O⁺]_f / C ≈ ${tauS22}.`],
+    ['le volume V est oublié',false,'Tu as cru que V manque. V se simplifie : τ = [H₃O⁺]_f / C.','V figure-t-il encore dans τ = [H₃O⁺]_f / C ?'],
+    ['aucune : le calcul est juste',false,'Tu as lu un grand τ comme une réaction totale. τ ne dépasse jamais 1.','Un taux d’avancement peut-il dépasser 1 ?']]),
     reveal:[{p:{rv:1},d:1200}]}},
 {cle:'q2',beat:9,scene:'quiz',set:{qi:1,rv:0},sujet:'une base selon Brønsted',
   text:['Parmi CH₃COO⁻ et H₃O⁺, laquelle est une base selon Brønsted ?'],
   verifie:{...VF([
     ['CH₃COO⁻ : elle peut capter un proton',true,'Oui : une base capte un proton, elle n’a pas à contenir HO⁻.'],
-    ['H₃O⁺ : il peut capter un proton',false,'Tu as pris H₃O⁺ pour une base. Il peut céder un proton : c’est un acide.','H₃O⁺ cède-t-il ou capte-t-il un proton ?'],
+    ['H₃O⁺ : elle peut capter un proton',false,'Tu as pris H₃O⁺ pour une base. Il peut céder un proton : c’est un acide.','H₃O⁺ cède-t-il ou capte-t-il un proton ?'],
     ['aucune des deux, faute d’ion HO⁻',false,'Tu as cherché HO⁻ dans la formule. Une base capte un proton ; elle n’a pas à contenir HO⁻.','Qu’est-ce qui définit une base selon Brønsted ?']]),
     reveal:[{p:{rv:1},d:1200}]}},
 {cle:'q3',beat:9,scene:'quiz',set:{qi:2,rv:0},sujet:'fraction et pourcentage',
   text:[`2021 : « Montrer que τ ≈ ${fr(S21.tau*100,2)} % ». On trouve ${tauS21}. C’est…`],
   verifie:{...VF([
-    [`la même valeur : ${tauS21} = ${tauS21p} %`,true,`Oui : ${tauS21} × 100 = ${tauS21p}. Une fraction et un pourcentage sont la même valeur.`],
-    ['cent fois trop petit',false,`Tu as oublié que le pourcentage multiplie par 100. ${tauS21} × 100 = ${tauS21p} : c’est la même valeur écrite autrement.`,'Que donne 0,0132 × 100 ?'],
-    ['faux : τ s’exprime en mol',false,'Tu as donné une unité à τ. C’est un rapport de deux quantités : il n’a pas d’unité.','τ est-il le rapport de deux quantités de même unité ?']]),
+    ['une valeur identique, écrite autrement',true,`Oui : ${tauS21} × 100 = ${tauS21p}. Une fraction et un pourcentage sont la même valeur.`],
+    ['une valeur cent fois trop petite',false,`Tu as oublié que le pourcentage multiplie par 100. ${tauS21} × 100 = ${tauS21p} : c’est la même valeur écrite autrement.`,`Que donne ${tauS21} × 100 ?`],
+    ['une valeur fausse : τ s’exprime en mol',false,'Tu as donné une unité à τ. C’est un rapport de deux quantités : il n’a pas d’unité.','τ est-il le rapport de deux quantités de même unité ?']]),
     reveal:[{p:{rv:1},d:1200}]}},
 {cle:'fin',beat:9,scene:'end',seq:[{p:{n:5},d:3200,w:300}],
   text:['Fin de la séance.'],html:()=>profileHTML()}
@@ -473,7 +478,7 @@ const mots={
   baseconj:{t:'base conjuguée',d:'La base d’un couple : ce qui reste d’un acide quand il a cédé son proton. A⁻ est la base conjuguée de AH.'},
   oxonium:{t:'ion oxonium',d:'L’ion H₃O⁺ : une molécule d’eau qui a capté un proton. Son couple est H₃O⁺/H₂O.'},
   ampholyte:{t:'ampholyte',d:'Une espèce à la fois acide et base. L’eau est acide dans le couple H₂O/HO⁻, base dans le couple H₃O⁺/H₂O.'},
-  tauxavancement:{t:'taux d’avancement final',d:'τ = x<sub>f</sub> / x<sub>max</sub>, avec τ ≤ 1. Les sujets l’écrivent en fraction (0,072) ou en pourcentage (1,32 %) : c’est la même grandeur, sans unité. La concentration s’écrit C, mais aussi C<sub>a</sub> ou C<sub>A</sub> selon les sujets.'},
+  tauxavancement:{t:'taux d’avancement final',d:`τ = x<sub>f</sub> / x<sub>max</sub>, avec τ ≤ 1. Les sujets l’écrivent en fraction (${tauS21}) ou en pourcentage (${tauS21p} %) : c’est la même grandeur, sans unité. La concentration s’écrit C, mais aussi C<sub>a</sub> ou C<sub>A</sub> selon les sujets.`},
   limitee:{t:'transformation limitée',d:'Une transformation non totale : x<sub>f</sub> < x<sub>max</sub>, donc τ < 1. Elle s’arrête avant que le réactif limitant soit épuisé, même si une grande part a réagi.'},
   chocefficace:{t:'choc efficace',d:'En PC et SM : une rencontre entre deux espèces qui aboutit à une réaction. Le cadre officiel demande d’interpréter l’équilibre avec les chocs efficaces entre les espèces réactives d’une part, entre les espèces produites d’autre part.'},
   equilibre:{t:'état d’équilibre',d:'Un état où les quantités de chaque espèce ne changent plus, parce que les deux réactions, en sens inverse, ont lieu à la même vitesse. Les sujets écrivent [H₃O⁺]<sub>éq</sub> ; la leçon écrit [H₃O⁺]<sub>f</sub> dans le tableau, l’état final.'},

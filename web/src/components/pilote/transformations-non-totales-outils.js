@@ -105,6 +105,10 @@ export const FAUX = {
 export const TF = { C: C0, pH: PH_HCL };
 TF.tau = tauDePh(TF.C, TF.pH);                              // 1 : l'acide chlorhydrique
 TF.fauxSansC = hDe(TF.pH);                                  // 1,0 × 10⁻² : C oubliée
+/* l'application de la formule (étape `tau-formule`) : un acide à 1,0 × 10⁻³ mol·L⁻¹ dont le pH vaut 3,7 */
+export const TF2 = { C: 1.0e-3, pH: 3.7 };
+TF2.tau = tauDePh(TF2.C, TF2.pH);                           // 0,20
+TF2.fauxSansC = hDe(TF2.pH);                                // 2,0 × 10⁻⁴ : C oubliée
 export const RP = { C: C0, pH: 3.0 };
 RP.tau = tauDePh(RP.C, RP.pH);                              // 0,10
 RP.fauxSansC = hDe(RP.pH);                                  // 1,0 × 10⁻³
@@ -166,6 +170,50 @@ export function simuler(graine, depart, pd, krep, tics = TICS) {
   }
   return { etats, fwd, bwd, n };
 }
+/**
+ * Les jetons H₃O⁺ de la loupe. Un jeton n'appartient à aucune molécule : il occupe une place libre de la grille
+ * (en bas à droite d'un glyphe) ; il y a toujours autant de jetons que d'ions A⁻. Quand un AH cède son proton
+ * (sens direct), un jeton apparaît à sa place, ou à la place libre la plus proche. Quand un A⁻ en reprend un
+ * (sens inverse), le proton vient du jeton le plus proche qui n'est pas « le sien » : un autre H₃O⁺, celui d'une
+ * molécule voisine (le sien seulement s'il n'y en a pas d'autre). C'est une image : la probabilité de reprise
+ * du modèle ne dépend pas du jeton choisi, et le palier ne change pas.
+ *   tok[k][s]  1 si une place s porte un jeton au tic k ;  slot[k][i]  la place du jeton engagé dans le transfert
+ *   de la molécule i entre les tics k − 1 et k (−1 s'il n'y en a pas).
+ */
+export function jetons(S, depart) {
+  const dist = (a, b) => Math.hypot((a % 10) - (b % 10), Math.floor(a / 10) - Math.floor(b / 10));
+  const tok = [new Uint8Array(NM).fill(depart === "ions" ? 1 : 0)], slot = [new Int16Array(NM).fill(-1)];
+  for (let k = 1; k < S.etats.length; k++) {
+    const t = tok[k - 1].slice(), sl = new Int16Array(NM).fill(-1), pris = new Uint8Array(NM);
+    for (const i of S.bwd[k]) {
+      let best = -1, bd = Infinity;
+      for (let j = 0; j < NM; j++) if (t[j] && !pris[j]) { const d = dist(i, j) + (j === i ? 1000 : 0); if (d < bd) { bd = d; best = j; } }
+      if (best >= 0) { t[best] = 0; pris[best] = 1; sl[i] = best; }
+    }
+    for (const i of S.fwd[k]) {
+      let best = -1, bd = Infinity;
+      for (let j = 0; j < NM; j++) if (!t[j] && !pris[j]) { const d = dist(i, j); if (d < bd) { bd = d; best = j; } }
+      if (best >= 0) { t[best] = 1; pris[best] = 1; sl[i] = best; }
+    }
+    tok.push(t); slot.push(sl);
+  }
+  return { tok, slot };
+}
+const avecJetons = (S, depart) => Object.assign(S, jetons(S, depart));
+export function controlesJetons(S) {
+  const f = [];
+  for (let k = 0; k < S.etats.length; k++) {
+    if (S.tok[k].reduce((a, v) => a + v, 0) !== S.n[k]) f.push(`le tic ${k} compte ${S.tok[k].reduce((a, v) => a + v, 0)} jetons pour ${S.n[k]} ions A⁻`);
+    if (k === 0) continue;
+    for (const i of S.bwd[k]) {
+      if (S.slot[k][i] < 0 || !S.tok[k - 1][S.slot[k][i]]) f.push(`tic ${k} : la reprise de la molécule ${i} n'a pas de jeton`);
+      else if (S.slot[k][i] === i && S.n[k - 1] >= 2) f.push(`tic ${k} : la molécule ${i} reprend son propre proton alors qu'il y a ${S.n[k - 1]} jetons`);
+    }
+    for (const i of S.fwd[k]) if (S.slot[k][i] < 0 || S.tok[k - 1][S.slot[k][i]]) f.push(`tic ${k} : le jeton de la molécule ${i} n'a pas de place libre`);
+  }
+  return f;
+}
+
 /** la molécule encadrée par `qui` : A⁻ au tic 30, redevenue AH entre les tics 31 et 35, et qui le reste jusqu'au tic 35 */
 export function ringDe(S) {
   let best = -1, bt = -1;
@@ -206,11 +254,11 @@ export function controlesIons(S) {
 /* les graines, choisies une fois (scripts de recherche : on garde la première qui passe les contraintes) puis figées */
 export const SEED_ETH = 2929;
 export const SEED_IONS = 1;
-export const SERIE = simuler(SEED_ETH, "acide", PD, KREP);
-export const SERIE_IONS = simuler(SEED_IONS, "ions", PD, KREP, 16);
-export const SERIE_HCL = simuler(1, "acide", 1, 0, 12);
+export const SERIE = avecJetons(simuler(SEED_ETH, "acide", PD, KREP), "acide");
+export const SERIE_IONS = avecJetons(simuler(SEED_IONS, "ions", PD, KREP, 16), "ions");
+export const SERIE_HCL = avecJetons(simuler(1, "acide", 1, 0, 12), "acide");
 export const RING = ringDe(SERIE);
-export const SERIE_DEFAUTS = [...controlesSerie(SERIE), ...controlesIons(SERIE_IONS)];
+export const SERIE_DEFAUTS = [...controlesSerie(SERIE), ...controlesIons(SERIE_IONS), ...controlesJetons(SERIE), ...controlesJetons(SERIE_IONS), ...controlesJetons(SERIE_HCL)];
 /** la courbe lisse « dans un bécher » : le compte moyen (infiniment de molécules : plus de fluctuation) */
 export const LISSE = (() => { const a = [0]; for (let k = 0; k < TICS; k++) { const n = a[k], v = volDe(k); a.push(n + (NM - n) * PD - n * probReprise(n, v)); } return a; })();
 /** le pH-mètre couplé à la courbe lisse : C·n/100 à ce tic, dans le bocal de volume vol */
