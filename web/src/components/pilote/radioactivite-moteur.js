@@ -39,6 +39,7 @@ import {
 import { scenesA } from "./radioactivite-scenes-a";
 import { scenesB } from "./radioactivite-scenes-b";
 import { scenesC } from "./radioactivite-scenes-c";
+import { scenesD } from "./radioactivite-scenes-d";
 
 export function monterPilote(root) {
 return monterLecon(root, ctx => {
@@ -69,6 +70,7 @@ const QUIZ=[
 scenesA(ctx,O);
 scenesB(ctx,O,D,AUTRES,GRANDES);
 scenesC(ctx,O,QUIZ);
+scenesD(ctx,O);
 
 /* ---------- gestes : lancer les dés ---------- */
 // Prendre la main : arrêter toute animation du noyau, poser la scène à l'état de l'étape, garder les clés tenues par l'élève.
@@ -180,14 +182,14 @@ const STEPS=[
     ['Chaque sorte de noyau a son propre rythme','Garde cette idée : la leçon va lui donner un nom et un nombre. Réponse à la fin.',1]])},
 
 /* ===== 2. écrire la désintégration ===== */
-{cle:'c14',beat:2,scene:'atome',set:{atom:1,zoom:1,q:0,nota:0,iso:0,emit:0,c14:1},
+{cle:'c14',beat:2,scene:'transmutation',set:{u:0,cas:0},
   text:['Que se passe-t-il dans un noyau qui « émet » ? Regarde un noyau instable, le carbone 14.',`Sans aucune cause extérieure, un de ses neutrons se change en proton, et une [[betamoins|particule ${bm}]], un électron, est émise. Que devient le noyau ?`],
-  pari:{reveal:[{p:{emit:0.5},d:900},{p:{emit:1},d:1700}],...BET([
+  pari:{reveal:[{p:{u:1},d:3200}],...BET([
     ['Toujours du carbone 14','Il a maintenant 7 protons : ce n’est plus du carbone. C’est de l’azote 14, un autre élément.'],
     ['De l’azote 14 : 7 protons, 7 neutrons','Oui : un proton de plus, c’est un autre élément ; le nombre de nucléons, 14, ne change pas.',1],
     ['Du carbone 13 : il a perdu un nucléon','Aucun nucléon ne part : un neutron devient un proton. 14 nucléons, dont 7 protons : de l’azote 14.']]),
-    apres:{html:'<p class="small">Noyau père → noyau fils + particule : c’est une [[desintegration|désintégration]], spontanée et [[aleatoire|aléatoire]]. On l’appelle la [[radioactivite|radioactivité]].</p>'}}},
-{cle:'spontanee',beat:2,scene:'atome',sujet:'une désintégration spontanée',
+    apres:{html:'<p class="small">Sur le diagramme (<i>N</i> neutrons en abscisse, <i>Z</i> protons en ordonnée), le point du noyau saute d’une case. Noyau père → noyau fils + particule : c’est une [[desintegration|désintégration]], spontanée et [[aleatoire|aléatoire]]. On l’appelle la [[radioactivite|radioactivité]].</p>'}}},
+{cle:'spontanee',beat:2,scene:'atome',set:{atom:1,zoom:1,q:0,nota:0,iso:0,emit:1,c14:1},sujet:'une désintégration spontanée',
   text:['« Spontanée » : rien ne la déclenche. Mets-le à l’épreuve.','On chauffe un échantillon radioactif à 1 000 °C. Ses noyaux se désintègrent…'],
   pari:VF([['Au même rythme',true,'Oui : la désintégration vient du noyau. Ni la température, ni la pression, ni une réaction chimique ne changent son rythme.'],
     ['Plus vite',false,'La chaleur agite les atomes, mais elle n’atteint pas le noyau : le rythme ne change pas.','La chaleur agite les atomes entiers. Atteint-elle l’intérieur du noyau ?'],
@@ -206,9 +208,9 @@ const STEPS=[
     ['Il perd 4 nucléons, dont 2 protons','Oui : <i>A</i> = 238 − 4 = 234 et <i>Z</i> = 92 − 2 = 90. Le noyau fils est le thorium 234.',1],
     ['Il perd 2 nucléons, dont 2 protons','α compte 4 nucléons : <i>A</i> baisse de 4, <i>Z</i> de 2. Le noyau fils est le thorium 234.']]),
     apres:{tex:[[tx`${nucT(238,92,'U')}\longrightarrow ${nucT(234,90,'Th')}+${nucT(4,2,'He')}`,'uranium 238 donne thorium 234 plus hélium 4']]}}},
-{cle:'betaplus',beat:2,scene:'desint',set:{ty:2,rv:0},
+{cle:'betaplus',beat:2,scene:'transmutation',set:{u:0,cas:1},
   text:[`Le fluor 18 (imagerie médicale) émet un [[positon]] ${nuc(0,'+1','e')} : comme un électron, mais de charge +1. C’est la radioactivité ${bp}. Que devient <i>Z</i> ?`],
-  pari:{reveal:[{p:{rv:1},d:1100}],...BET([
+  pari:{reveal:[{p:{u:1},d:3200}],...BET([
     ['<i>Z</i> augmente de 1',`Ce serait vrai en ${bm}. Ici la particule emporte +1 : <i>Z</i> passe de 9 à 8, de l’oxygène 18.`],
     ['<i>Z</i> diminue de 1','Oui : la charge se conserve, 9 = 8 + 1, et <i>A</i> ne change pas. De l’oxygène 18.',1],
     ['<i>Z</i> ne change pas','La particule emporte une charge +1 : pour que la charge se conserve, <i>Z</i> passe de 9 à 8.']]),

@@ -29,6 +29,7 @@ import {
 import { scenesA } from "./noyaux-scenes-a";
 import { scenesB, CI, NOM_N } from "./noyaux-scenes-b";
 import { scenesC } from "./noyaux-scenes-c";
+import { scenesD } from "./noyaux-scenes-d";
 
 export function monterPilote(root) {
 return monterLecon(root, ctx => {
@@ -62,6 +63,7 @@ const QUIZ=[
 scenesA(ctx,O);
 scenesB(ctx,O);
 scenesC(ctx,O,QUIZ);
+scenesD(ctx,O);
 
 /* ---------- les nucléides, écrits dans le panneau ---------- */
 // A au-dessus de Z, alignés à droite ; insécable, et balisé de séparateurs invisibles pour que la voix lise « C 14 » et non « 146C »
@@ -173,16 +175,16 @@ const STEPS=[
       [`<i>E</i> ≈ ${sciH(U_KG*C*C/EV_J,2)} MeV`,false,`Tu as divisé par ${sciH(EV_J,3)} J, la valeur de 1 eV, pas celle de 1 MeV : ${sciH(U_KG*C*C/EV_J,2)} est un nombre d’eV.`,'Quelle valeur as-tu mise au dénominateur : 1 eV ou 1 MeV ?']])}},
 
 /* ===== 3. le défaut de masse ===== */
-{cle:'peser',beat:3,scene:'niveaux',set:NIV({jeu:'He',lvA:1}),
-  text:['Prends 2 protons et 2 neutrons, séparés, loin les uns des autres.','C’est la pesée d’Aston, refaite avec les vrais constituants de l’hélium.','Assemble-les en un noyau d’hélium 4. Il pèse…'],
-  pari:{reveal:[{p:{lvB:1},d:900},{p:{dm:1},d:700}],...BET([
+{cle:'peser',beat:3,scene:'assemblage',set:{u:0,dm:0,val:0},
+  text:['Sur chaque plateau, 2 protons et 2 neutrons, séparés, loin les uns des autres.','C’est la pesée d’Aston, refaite avec les vrais constituants de l’hélium.','Assemble ceux de droite en un noyau d’hélium 4. Il pèse…'],
+  pari:{reveal:[{p:{u:2},d:2600}],...BET([
     ['autant : ce sont les mêmes nucléons',`Tu as supposé que la masse se conserve, comme en chimie. Le noyau pèse ${pHe} % de moins : ${fg(MHE,5)} u au lieu de ${fg(M_SEP_HE,5)} u.`],
     ['moins, de moins de 1 %',`Oui : le noyau pèse ${fg(MHE,5)} u pour ${fg(M_SEP_HE,5)} u de nucléons séparés, soit ${pHe} % de moins. Aston comparait 4 protons ; ici, ce sont 2 protons et 2 neutrons.`,1],
     ['moins, d’environ un quart',`L’écart est de ${pHe} %, pas de 25 % : un quart de la masse serait un nucléon entier qui manque.`]])}},
-{cle:'dm-def',beat:3,scene:'niveaux',set:NIV({jeu:'He',lvA:1,lvB:1,dm:1}),
+{cle:'dm-def',beat:3,scene:'assemblage',set:{u:2,dm:1,val:0},
   text:['Cet écart est le [[defautmasse|défaut de masse]] Δ<i>m</i> du noyau.',{t:'Un noyau de plusieurs nucléons a un défaut de masse positif.',fort:true}],
   tex:[[tx`\begin{aligned}\Delta m&=Z\,m_{\mathrm p}+(A-Z)\,m_{\mathrm n}\\&\quad-m\!\left({}^{A}_{Z}\mathrm{X}\right)\end{aligned}`,'Δm = Z mp + (A − Z) mn − m(noyau)']]},
-{cle:'calc-dm',beat:3,scene:'niveaux',set:NIV({jeu:'He',lvA:1,lvB:1,dm:1}),ctl:'dm',needLabel:'Calcule d’abord',sujet:'le défaut de masse',
+{cle:'calc-dm',beat:3,scene:'assemblage',set:{u:2,dm:1,val:0},ctl:'dm',needLabel:'Calcule d’abord',sujet:'le défaut de masse',
   text:[`Avec <i>m</i><sub>p</sub> = ${fg(MP,5)} u, <i>m</i><sub>n</sub> = ${fg(MN,5)} u et la [[massenoyau|masse du noyau]] <i>m</i>(${nh('4He')}) = ${fg(MHE,5)} u, calcule Δ<i>m</i> pour l’hélium 4, en u.`]},
 {cle:'v-dm',beat:3,scene:'calcul',set:{ci:CI.tritium,ok:0,ok2:0},sujet:'le défaut de masse d’un noyau',
   text:[`Défaut de masse du tritium ${nh('3H')}, de masse <i>m</i> = ${fg(MT,5)} u ?`],
@@ -558,7 +560,7 @@ const nucReste=()=>[nucBas()?null:'le noyau le plus bas',S.nucvus.includes(iC)?n
 const CTL={
   dm:{html:()=>`<div class="ctl"><label class="saisie"><span>Δ<i>m</i> =</span><input id="dmin" type="text" inputmode="text" autocomplete="off" spellcheck="false" placeholder="par exemple 0,0123"><span>u</span></label><div class="ctl-btns"><button type="button" class="ctl-btn" id="dmok" disabled>Vérifier</button><button type="button" class="ctl-btn alt" id="dmvoir">Voir le calcul</button></div></div><p class="ctl-note" id="dmfb"></p>`,
     init(){const inp=$('#dmin'),ok=$('#dmok'),voir=$('#dmvoir'),fb=$('#dmfb'),sc=scenes.niveaux;
-      const fini=()=>{inp.disabled=true;ok.disabled=true;voir.disabled=true;ok.hidden=true;voir.hidden=true;ctx.stop();sc.p.dmv=1;sc.render();ctx.majNav();};
+      const fini=()=>{inp.disabled=true;ok.disabled=true;voir.disabled=true;ok.hidden=true;voir.hidden=true;ctx.stop();sc.p.dmv=1;sc.render();ctx.tween(scenes.assemblage,{val:1},700);ctx.majNav();};
       if(S.dmok){inp.value=S.dmval||'';fb.innerHTML=DM_BON;fini();}
       inp.addEventListener('input',()=>{ok.disabled=!inp.value.trim();});
       const tester=()=>{const v=lireNombre(inp.value);

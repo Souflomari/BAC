@@ -25,6 +25,7 @@ import {
 import { scenesA } from "./transmission-scenes-a";
 import { scenesB } from "./transmission-scenes-b";
 import { scenesC, CARTE_MAX } from "./transmission-scenes-c";
+import { scenesD } from "./transmission-scenes-d";
 
 const pc = (x, d = 1) => `${fr(x, d)}${NB}%`;
 
@@ -72,6 +73,7 @@ const FIN = [
 scenesA(ctx, O);
 scenesB(ctx, O);
 scenesC(ctx, O, QUIZ, FIN);
+scenesD(ctx, O);
 
 /* ---------- les états de scène ---------- */
 const EC = (o) => ({ crx: 0, v1: 0, v2: 0, v3: 0, fcnt: 0, grille: 0, fill: 99, phe: 0, cls: "", aire: 0, obs: 0, tot: 0, leg: 0, hd: 1, sel: -1, wl: 1, gn: 0, xb: 1, ...o });
@@ -79,6 +81,8 @@ const CX = (o) => EC({ crx: 1, v1: 1, ...o });
 const GR = (cas, o) => EC({ grille: 1, G: cas, ...o });
 const MEI = (lab, o) => ({ ph: 0, plq: 0, tet: 0, al: 0, or2: 0, gam: 0, co: 0, chi: 0, lab, gm: 1, ...o });
 const D = (cas, extra) => ({ ...cas, ...extra });
+// la scène `rencontre` (l'échiquier F1 × F1 animé) : tout à zéro, puis ce que l'étape change
+const RC = (o) => ({ fill: 0, c0: 0, c1: 0, c2: 0, c3: 0, man: 0, phe: 0, wl: 0, cls: "", ...o });
 const G2 = (cas) => D(cas, { sub: "F1 × F1 : L//ℓ × L//ℓ" });
 
 // les schémas de croisement (scène `echiquier`, mode `crx`)
@@ -154,30 +158,30 @@ const STEPS = [
     ["L//ℓ", true, "Oui : chaque F1 a reçu L du parent lisse et ℓ du parent ridé. Elle est [[hybride]] : deux allèles différents."],
     ["L//L", false, "Tu as repris le phénotype comme génotype. Chaque graine F1 a reçu ℓ du parent ridé : elle est L//ℓ.", "De quel parent la graine F1 a-t-elle reçu un allèle ℓ ?"],
     ["L", false, "Tu as oublié que la cellule a deux exemplaires de chaque chromosome. Deux homologues, deux allèles : L//ℓ.", "Une cellule a-t-elle un seul ou deux chromosomes de chaque paire ?"]]) } },
-{ cle: "echiquier", beat: 2, scene: "echiquier", set: GR(G2(CAS.f2), { fill: -1, wl: 0 }), ctl: "case", need: () => S.cases.size >= 3, needLabel: "Remplis trois cases", sujet: "l’échiquier de croisement",
+{ cle: "echiquier", beat: 2, scene: "rencontre", set: RC({ man: 1 }), ctl: "case", need: () => S.cases.size >= 3, needLabel: "Remplis trois cases", sujet: "l’échiquier de croisement",
   text: ["À la méiose, les deux allèles d’un gène se séparent : c’est la [[disjonction|disjonction des allèles]]. Chaque parent F1 donne ½ L/ et ½ ℓ/.",
-    "Un gamète n’a qu’un chromosome de la paire : on écrit L/, avec un seul trait. L’[[echiquier|échiquier de croisement]] réunit chaque gamète d’un parent avec chaque gamète de l’autre.", { t: "Remplis trois cases.", fort: true }] },
-{ cle: "derniere-case", beat: 2, scene: "echiquier", set: GR(G2(CAS.f2), { fill: 3, wl: 0 }), sujet: "la case ℓ//ℓ",
+    "Un gamète n’a qu’un chromosome de la paire : on écrit L/, avec un seul trait. L’[[echiquier|échiquier de croisement]] réunit chaque gamète d’un parent avec chaque gamète de l’autre.", { t: "Remplis trois cases : chacune naît de la rencontre de deux gamètes.", fort: true }] },
+{ cle: "derniere-case", beat: 2, scene: "rencontre", set: RC({ fill: 3 }), sujet: "la case ℓ//ℓ",
   text: ["Dernière case : le pollen porte ℓ/ et l’ovule porte ℓ/.", { t: "Que contient cette case ?", fort: true }],
-  verifie: { reveal: [{ p: { fill: 4 }, d: 700 }], ...VF([
+  verifie: { reveal: [{ p: { fill: 4 }, d: 2200 }], ...VF([
     ["ℓ//ℓ, ridée", true, "Oui : un ℓ de chaque parent donne ℓ//ℓ, et sans L la graine est ridée."],
     ["L//ℓ, lisse", false, "Tu as gardé un L. Le pollen et l’ovule portent tous les deux ℓ : la graine est ℓ//ℓ.", "Quel allèle le pollen et l’ovule apportent-ils ?"],
     ["ℓ, ridée", false, "Tu as oublié qu’une graine a deux allèles, un de chaque parent. Le pollen donne ℓ et l’ovule ℓ : ℓ//ℓ.", "Une graine reçoit-elle un allèle ou deux ?"]]) } },
-{ cle: "rapports", beat: 2, scene: "echiquier", set: GR(G2(CAS.f2), { fill: 4, phe: 0, wl: 0 }), sujet: "les phénotypes de la F2",
+{ cle: "rapports", beat: 2, scene: "rencontre", set: RC({ fill: 4 }), sujet: "les phénotypes de la F2",
   text: [{ t: "Les phénotypes de la F2 ?", fort: true }],
   pari: { label: "Réponds", reveal: [{ p: { phe: 1 }, d: 800 }], apres: { html: `Pour ${ent(M_F2)} graines, on attend ${ent(ATT_LIS)} lisses et ${ent(ATT_RID)} ridées. Mendel en a compté ${ent(lis)} et ${ent(rid)}.` }, ...VF([
     ["¾ [L] et ¼ [ℓ]", true, "Oui : trois cases sur quatre ont au moins un L, donc sont lisses. L//ℓ est lisse, comme L//L."],
     ["¼ L//L, ½ L//ℓ et ¼ ℓ//ℓ", false, "Ce rapport est juste, pour les génotypes. La question porte sur les phénotypes : L//ℓ est lisse, comme L//L.", "L//ℓ a-t-elle le même aspect que L//L ?"],
     ["½ [L] et ½ [ℓ]", false, "C’est le rapport d’un test-cross, que tu verras juste après. Ici les deux parents sont hybrides : ¾ et ¼.", "Les deux parents donnent-ils ici tous les deux ℓ/ et L/ ?"]]) } },
-{ cle: "lisses-purs", beat: 2, scene: "echiquier", set: GR(G2(CAS.f2), { fill: 4, phe: 1, cls: "[L]", wl: 0 }), sujet: "les génotypes parmi les lisses",
+{ cle: "lisses-purs", beat: 2, scene: "rencontre", set: RC({ fill: 4, phe: 1, cls: "[L]" }), sujet: "les génotypes parmi les lisses",
   text: ["Les trois cases lisses sont allumées.", { t: "Parmi les graines lisses de F2, quelle part est de lignée pure, L//L ?", fort: true }],
   pari: { label: "Réponds", ...VF([
     ["1 sur 3", true, "Oui : trois cases lisses, dont une seule L//L. Les deux autres sont L//ℓ."],
     ["toutes", false, "Tu as repris le phénotype comme génotype. Deux des trois cases lisses sont L//ℓ.", "Combien de cases lisses portent ℓ ?"],
     ["1 sur 4", false, "Tu as compté sur les 4 cases. La question ne porte que sur les graines lisses : 3 cases.", "Sur combien de cases porte la question ?"]]) } },
-{ cle: "produit", beat: 2, scene: "echiquier", set: GR(G2(CAS.f2), { fill: 0, wl: 0 }), sujet: "multiplier pour « et »",
+{ cle: "produit", beat: 2, scene: "rencontre", set: RC({ fill: 0 }), sujet: "multiplier pour « et »",
   text: () => [{ 0: "Tu avais parié sur des ridées absentes : en F2, elles reviennent.", 1: "Tu avais vu juste : les ridées reviennent, en minorité.", 2: "Tu avais parié sur la moitié : la part est plus petite." }[ctx.rep("f2")] || "Reviens à l’énigme : le ridé revient en F2.", { t: "Quelle est la probabilité qu’une graine F2 soit ℓ//ℓ ?", fort: true }],
-  verifie: { reveal: [{ p: { fill: 4, cls: "[ℓ]", phe: 1, wl: 1 }, d: 900 }], apres: { html: `Un quart : c’est ce que Mendel a compté, ${ent(rid)} ÷ ${ent(M_F2)} ≈ ${pc(M_PART_RIDEES * 100)}. Le ridé n’avait pas disparu : chaque F1, L//ℓ, gardait ℓ. Deux questions de l’énigme sont résolues.` }, ...VF([
+  verifie: { reveal: [{ p: { fill: 4, cls: "[ℓ]", phe: 1, wl: 1 }, d: 3600 }], apres: { html: `Un quart : c’est ce que Mendel a compté, ${ent(rid)} ÷ ${ent(M_F2)} ≈ ${pc(M_PART_RIDEES * 100)}. Le ridé n’avait pas disparu : chaque F1, L//ℓ, gardait ℓ. Deux questions de l’énigme sont résolues.` }, ...VF([
     ["½ × ½ = ¼", true, "Oui : il faut ℓ venu du pollen et ℓ venu de l’ovule, deux conditions à la fois."],
     ["½", false, "Tu n’as regardé qu’un parent. Les deux doivent donner ℓ : la probabilité est ½ × ½.", "Combien de parents doivent donner ℓ ?"],
     ["½ + ½ = 1", false, "Tu as additionné pour « et ». Deux conditions à la fois se multiplient : ½ × ½.", "Une probabilité peut-elle atteindre 1 pour un seul génotype sur quatre ?"]]) } },
@@ -531,13 +535,14 @@ const CTL = {
   // case : l'élève remplit les quatre cases de l'échiquier, une par une (boutons, ou un toucher sur la case)
   case: { html: () => { const c = CAS.f2.cells; return `<div class="ctl">${c.slice(0, 3).map((x, i) => `<button type="button" class="ctl-btn alt" data-case="${i}">${gl(CAS.f2.cols[x.ci].h, "un")} avec ${gl(CAS.f2.rows[x.ri].h, "un")}</button>`).join("")}</div><p class="ctl-note" id="casefb" aria-live="polite"></p>`; },
     init() {
-      const sc = scenes.echiquier, c = CAS.f2.cells;
-      sc.manual = new Set([...S.cases].map((i) => `0:${i}`));
+      const sc = scenes.rencontre, c = CAS.f2.cells;
+      sc.manual = new Set(S.cases);
       const sync = (i) => {
         root.querySelectorAll("[data-case]").forEach((b) => { const k = +b.dataset.case, fait = S.cases.has(k); b.disabled = fait; b.classList.toggle("fait", fait); });
         $("#casefb").innerHTML = ty(i == null ? "Touche une case, ou un bouton." : `Case remplie : ${c[i].geno}.${S.cases.size >= 3 ? " Il reste la dernière case, à l’étape suivante." : ""}`);
       };
-      const remplir = (i) => { if (S.cases.has(i)) return; S.cases.add(i); sc.manual.add(`0:${i}`); sc.render(); sync(i); ctx.majNav(); };
+      // une case se remplit en glissant : les deux gamètes quittent leurs en-têtes, se rejoignent, le génotype naît
+      const remplir = (i) => { if (S.cases.has(i)) return; S.cases.add(i); ctx.stop(); ctx.tween(sc, { ["c" + i]: 1 }, 1700).then(() => { sc.manual.add(i); sc.render(); }); sync(i); ctx.majNav(); };
       root.querySelectorAll("[data-case]").forEach((b) => b.addEventListener("click", () => remplir(+b.dataset.case)));
       sc.onCell = (i) => { if (i < 3 && ctx.etape() && ctx.etape().cle === "echiquier") remplir(i); };
       sync(null);
