@@ -36,6 +36,17 @@ migrations (`backend/supabase/migrations/048` à `051`) que la production n'a ja
 la vérification supervisée de la synchronisation (règle 7, `docs/pipeline/production-sync-session.md`),
 `scripts/branch-test.ps1` vert contre staging, et la décision du propriétaire.
 
+## Le cap jusqu'au lancement (décidé le 2026-11-25)
+
+Lancement fin décembre sur le **premier semestre** seulement (ce que les classes ont vu, plus deux à
+trois semaines d'avance), le reste s'ajoutant pendant l'année : [ADR 0047](decisions/0047-lancement-decembre-premier-semestre.md).
+Maths et physique-chimie pour SM, PC et SVT ; SVT pour SVT et SM ; sciences de l'ingénieur, philosophie
+et anglais après. Les leçons d'abord, puis les exercices (à refaire, plus visuels) ; examens tels quels ;
+collecte anonyme branchée avant le lancement. Antigravity écrit les leçons à partir des plans, avec les
+règles de [`AGENTS.md`](../AGENTS.md) et les flux de `.agents/workflows/` ; rien n'entre sans relecture
+critique. **À faire en premier à la reprise** : la liste des notions du premier semestre par filière,
+tirée du programme officiel, et ce qu'il reste à écrire dedans.
+
 ## Décisions attendues du propriétaire
 
 1. **Les matières annoncées au lancement** : sciences de l'ingénieur (vide), anglais (absent),
