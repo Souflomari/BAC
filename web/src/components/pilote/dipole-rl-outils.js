@@ -88,6 +88,12 @@ export const uRPas = (k) => R_OHM * iPas(k);                  // u_R après k pa
 export const rIPas = (k) => R_BOB * iPas(k);                  // r·i après k pas
 export const I_10 = iPas(N_PAS), I_10_EXACT = iEt(TAU);       // 65,1 mA contre 63,2 mA
 
+/* « et si i sautait ? » : un saut de 50 mA en 1 µs (choix d'auteur) */
+export const SAUT = { i: 50e-3, dt: 1e-6 };
+SAUT.pente = SAUT.i / SAUT.dt;                                // 5 × 10⁴ A·s⁻¹
+SAUT.u = L_H * SAUT.pente;                                    // 15 000 V : L·Δi/Δt, bien plus que E
+export const SEUIL_PCT = 1;                                   // « sous 1 % » : le seuil de la fin du régime transitoire
+
 /* ---------- la surtension : un conducteur ohmique de plus dans la maille de rupture ---------- */
 export const R2_OHM = 1000;                                   // Ω
 export const UL_RUP0 = uLRup(0);                              // −5,0 V
@@ -100,6 +106,8 @@ export const R_MAILLE_SURT = R_OHM + R2_OHM;                  // 1 050 Ω (sans 
 export const energie = (L, i) => 0.5 * L * i * i;             // J
 export const EM_1 = energie(L_H, I0), EM_2 = energie(L_H, 2 * I0);   // 1,50 mJ ; 6,00 mJ
 export const FOIS_ENERGIE = EM_2 / EM_1;                      // 4
+export const I_CALC = 0.15;                                   // A : le courant de l'étape de calcul (autre que 100 mA et 200 mA, déjà vus)
+export const EM_CALC = energie(L_H, I_CALC);                  // 3,4 mJ
 
 /* ---------- le courant triangulaire du TP (choix d'auteur) ---------- */
 export const TRI = { imax: 20e-3, demi: 5e-3 };

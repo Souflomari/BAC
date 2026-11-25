@@ -25,17 +25,17 @@
 
 ## 0. La leçon livrée (état au 2026-11-25)
 
-La leçon livrée (`web/src/components/pilote/dipole-rl-moteur.js`) compte **50 étapes**, dans l'ordre et sous les clés du plan : **le fichier de la leçon fait foi** ; les sections 1 à 9 ci-dessous restent le plan d'origine (raisons, sources, leurres). Route `/pilote/dipole-rl`, 15 gabarits d'exercices (`exercices/dipole-rl.js`), catalogue d'apprentissage `dipole-rl.ts` (45 questions, 15 gabarits, 8 conceptions propres à la leçon : `rl.*`).
+La leçon livrée (`web/src/components/pilote/dipole-rl-moteur.js`) compte **51 étapes** (la relecture pédagogique du 2026-11-25 a ajouté `i-saute`, a placé `influence-E` avant `curseurs`), dans l'ordre et sous les clés du plan : **le fichier de la leçon fait foi** ; les sections 1 à 9 ci-dessous restent le plan d'origine (raisons, sources, leurres). Route `/pilote/dipole-rl`, 15 gabarits d'exercices (`exercices/dipole-rl.js`), catalogue d'apprentissage `dipole-rl.ts` (47 questions, 15 gabarits, 8 conceptions propres à la leçon : `rl.*`).
 
 | # | Partie | Étapes (clés, dans l'ordre) |
 |---|---|---|
 | 0 | Ce qu’il faut savoir | `sav-test`, `sav-rappel` |
 | 1 | L’énigme | `deux-lampes`, `etincelle` |
 | 2 | La bobine | `bobine`, `convention`, `pente-tension`, `bobine-reelle`, `triangle`, `triangle-L` |
-| 3 | L’établissement du courant | `allure`, `u0`, `pas-pari`, `permanent` |
+| 3 | L’établissement du courant | `allure`, `u0`, `i-saute`, `pas-pari`, `permanent` |
 | 4 | L’équation | `ed-maille`, `ed-forme`, `meme-equation` |
 | 5 | La solution | `verif`, `dim`, `uL-t` |
-| 6 | La constante de temps | `rappel`, `tau-63`, `double-L`, `double-R`, `curseurs`, `influence-E`, `r-palier` |
+| 6 | La constante de temps | `rappel`, `tau-63`, `double-L`, `double-R`, `influence-E`, `curseurs`, `r-palier` |
 | 7 | La rupture | `rupture-pari`, `ed-rupture`, `rupture-tau`, `uL-rupture`, `surtension` |
 | 8 | L’énergie | `energie-pari`, `energie-etablir`, `energie-calc` |
 | 9 | Mesurer | `oscillo`, `oscillo-voies` |
@@ -43,7 +43,7 @@ La leçon livrée (`web/src/components/pilote/dipole-rl-moteur.js`) compte **50 
 | 11 | Au bac | `bac`, `bac-ed`, `bac-AB`, `bac-L`, `bac-uL`, `bac-2a`, `bac-2b`, `bac-2c` |
 | 12 | Bilan | `q1`, `q2`, `q3`, `fin` |
 
-Le rappel est la 21ᵉ étape sur 50 (42 %). Les quatre adaptations de scènes du §9 (question 1) sont acceptées comme copies adaptées de celles de RC : jeux `lampes` et `henry` de `circuit`, jeu `triangle` de `couple`, lignes de champ dans la bobine. Aucune scène n'importe quoi de la leçon RC (les outils de scène `outilsRl` sont copiés dans `dipole-rl-outils.js`).
+Le rappel est la 22ᵉ étape sur 51 (43 %). Les quatre adaptations de scènes du §9 (question 1) sont acceptées comme copies adaptées de celles de RC : jeux `lampes` et `henry` de `circuit`, jeu `triangle` de `couple`, lignes de champ dans la bobine. Aucune scène n'importe quoi de la leçon RC (les outils de scène `outilsRl` sont copiés dans `dipole-rl-outils.js`).
 
 **Écarts au plan, et pourquoi.**
 
@@ -56,6 +56,8 @@ Le rappel est la 21ᵉ étape sur 50 (42 %). Les quatre adaptations de scènes d
 7. **Un curseur de temps** (`temps`, comme en RC) sur six étapes de `couple` (`permanent`, `uL-t`, `rupture-pari`, `rupture-tau`, `uL-rupture`, `surtension`), non prévu au plan ; il paraît quand la question est résolue, paris compris.
 8. **`bac-ed`** reste une dérivation commentée de cinq lignes sans ligne choisie (le plan : « sans action ») : la cible « une ligne choisie » du contrôle `pilotes-regles` reste non atteinte, sans bloquer.
 9. **Histoire.** Henry : le récit est paraphrasé, jamais cité ni traduit comme une citation ; aucune tension de claquage ; les deux lampes sont un schéma de principe, sans valeur. Les valeurs (« de 30 à 40 pieds, soit de 9 à 12 mètres ») sont calculées dans `dipole-rl-outils.js`.
+
+**Reprise du 2026-11-25 (relecture pédagogique).** Sept étapes où la réponse précédait la question sont corrigées à la source : le sous-titre de `couple` dépend de l'étape (`sub` ; il ne donne pas L au triangle, ni r à `r-palier`), `rupture-pari` ne montre plus u_L (`ul:0`), `energie-pari` ne nomme la parabole qu'au `reveal`, `influence-E` passe avant `curseurs`, `bobine` ne nomme r qu'au `reveal` (paramètre `nr`), `oscillo` n'affiche son sous-titre qu'au `reveal`, et les leurres de `q3`, `rappel` et `q1` ne portent plus d'étiquette. Nouvelle étape `i-saute` (pari : L di/dt si i sautait de 0 à 50 mA en 1 µs, soit 15 000 V) après `u0`, qui explique pourquoi i est continu. `verif` fait choisir la condition L/τ − (R + r) = 0, `bac-ed` fait choisir la ligne 4 de la rédaction, `energie-calc` change de courant (150 mA, pas 100 ni 200 mA vus au pari) et sa scène n'a plus la parabole. Exercice 10 : trois courbes tracées (capacité 1.3.2.11 tenue) ; `tau-63` et `permanent` ne reçoivent plus la valeur par une étape précédente (`dim`, `u0`). Non faits, à discuter : `ed-forme` (forme cible affichée), `triangle-L` (lire la pente), `sav-rappel` (deux idées), bilan (u_L(0⁺), lecture de τ, forme 2026 en u_R) ; `oscillo-voies` garde sa question (la voie inversée reste à vérifier, §8.2 point 8).
 
 **Conceptions → étapes (B5).** Les tableaux du §5 valent, aux écarts près ci-dessus ; le fichier `web/scripts/apprentissage-gen/spec-dipole-rl.mjs` donne, option par option, l'étiquette de chaque leurre (conception `rl.*` du registre, « inattention » ou « aucune »).
 

@@ -74,7 +74,8 @@ scene("solution", {
     const aff = (v, on, dec) => (on > 0.5 ? fr(v, dec) : "- - , -");
     if (p.flacons === 2) {
       const [a, b] = this.u;
-      a.g.setAttribute("transform", "translate(190 380)"); b.g.setAttribute("transform", "translate(670 380)");
+      // chaque flacon s'étend de −205 (l'étiquette « 100 mL ») à +210 (le pH-mètre) : deux flacons de 415 et 40 d'écart, centrés sur la toile de 1 000
+      a.g.setAttribute("transform", "translate(265 380)"); b.g.setAttribute("transform", "translate(720 380)");
       show(a.g, 1); show(b.g, 1); show(a.fl, 0); show(b.fl, 0);
       setFx(a.nom, NOMS.hcl); setFx(b.nom, NOMS.ethan);
       setFx(a.conc, `*C* = ${sciF(C0, 1)} mol·L^{−1}`); setFx(b.conc, `*C* = ${sciF(C0, 1)} mol·L^{−1}`);

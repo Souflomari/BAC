@@ -19,6 +19,7 @@
 import { frTex, sciTex } from "./nombre.js";
 import { P63, P37, energie } from "../dipole-rl-outils.js";
 
+const PC63 = Math.round(P63 * 100), PC37 = Math.round(P37 * 100);   // 63 et 37, jamais écrits à la main dans un texte
 const MAP_SVT = { "1.3.2.13": "1.3.2.14", "1.3.2.14": "1.3.2.15" };
 /** les capacités d'un gabarit dans les trois cadres (PC et SM : mêmes identifiants ; SVT : décalés) */
 const CAPR = (...ids) => ids.flatMap((id) => [`pc-pc ${id}`, `pc-sm ${id}`, ...(id === "1.3.2.15" ? [] : [`pc-svt ${MAP_SVT[id] || id}`])]);
@@ -73,13 +74,14 @@ function pas(max) {
   return 10 ** (e + 1);
 }
 /** un repère : axes gradués (l'axe horizontal passe par y = 0), des courbes (listes de points) et des points */
-function figure({ x1, y0 = 0, y1, xs, ys, xn, yn, courbes, droites = [], points = [], aria }) {
+function figure({ x1, y0 = 0, y1, xs, ys, xn, yn, courbes, droites = [], points = [], etiq = [], aria }) {
   const L = 84, R = 600, T = 26, B = 262, X = (x) => L + ((R - L) * x) / x1, Y = (y) => B - ((B - T) * (y - y0)) / (y1 - y0), Z = Y(0);
   let g = `<line x1="${L}" x2="${R + 8}" y1="${f1(Z)}" y2="${f1(Z)}" stroke="${encre}" stroke-width="1.5"/><line x1="${L}" x2="${L}" y1="${T - 8}" y2="${B}" stroke="${encre}" stroke-width="1.5"/>`;
   for (const v of xs) g += `<line x1="${f1(X(v))}" x2="${f1(X(v))}" y1="${f1(Z)}" y2="${f1(Z + 5)}" stroke="${encre}"/><text x="${f1(X(v))}" y="${f1(Math.max(Z, B) + 22)}" text-anchor="middle" font-size="14" fill="${gris}">${lbl(v)}</text>`;
   for (const v of ys) g += `<line x1="${L - 5}" x2="${L}" y1="${f1(Y(v))}" y2="${f1(Y(v))}" stroke="${encre}"/><text x="${L - 9}" y="${f1(Y(v) + 5)}" text-anchor="end" font-size="14" fill="${gris}">${lbl(v)}</text>`;
   for (const c of courbes) g += `<path d="${c.map(([x, y], i) => `${i ? "L" : "M"}${f1(X(x))} ${f1(Y(y))}`).join("")}" fill="none" stroke="${encre}" stroke-width="2.5"/>`;
   for (const [xa, ya, xb, yb] of droites) g += `<line x1="${f1(X(xa))}" y1="${f1(Y(ya))}" x2="${f1(X(xb))}" y2="${f1(Y(yb))}" stroke="${accent}" stroke-width="2" stroke-dasharray="6 5"/>`;
+  for (const [x, y, t] of etiq) g += `<text x="${f1(X(x) + 8)}" y="${f1(Y(y) + 20)}" font-size="16" font-weight="600" fill="${encre}">${t}</text>`;
   for (const [x, y] of points) g += `<circle cx="${f1(X(x))}" cy="${f1(Y(y))}" r="4" fill="${accent}"/>`;
   g += `<text x="${R + 8}" y="${B + 46}" text-anchor="end" font-size="14" fill="${encre}">${et(xn)}</text><text x="${L + 8}" y="${T - 10}" font-size="14" fill="${encre}">${et(yn)}</text>`;
   return `<svg viewBox="0 0 640 ${B + 56}" role="img" aria-label="${aria}">${g}</svg>`;
@@ -161,9 +163,9 @@ export const EXERCICES = [
           { type: "nombre", q: `Calcule la tension $u$ une fois le courant constant, $i = ${num(ib, 3)}\\ \\text{A}$, en V.`, reponse: uPal, tol, unite: "V", indice: "Quand $i$ est constant, $\\mathrm{d}i/\\mathrm{d}t = 0$ : que reste-t-il dans $u = r\\,i + L\\,\\mathrm{d}i/\\mathrm{d}t$ ?",
             pieges: pieges(uPal, tol, [{ v: 0, fb: "Tu as oublié $r\\,i$. En courant constant, il reste $u = r\\,i$ : la bobine se comporte comme un conducteur ohmique de résistance $r$.", erreur: "r·i oublié" }, { v: T.L * ib, fb: "Tu as multiplié $L$ par $i$. $L$ multiplie $\\mathrm{d}i/\\mathrm{d}t$, qui est nul ici.", erreur: "L·i au lieu de L·di/dt" }]) },
           { type: "qcm", q: "À la fin de la rampe, quand $i$ devient constant, la tension $u$…", options: h.melange([
-            { t: `saute de $${num(saut, 3)}\\ \\text{V}$ : $i$ est continu, $u$ ne l’est pas`, ok: true },
-            { t: "est continue, comme $i$", fb: "Tu as fait de $u$ une grandeur continue. C’est $i$ qui l’est : $u$ peut sauter, car $L\\,\\mathrm{d}i/\\mathrm{d}t$ passe d’une valeur non nulle à 0.", erreur: "u continue" },
-            { t: "ne change pas, la bobine garde sa tension", fb: "Tu as supposé que $u$ ne dépend pas de la pente. Le terme $L\\,\\mathrm{d}i/\\mathrm{d}t$ disparaît quand $i$ devient constant : $u$ saute.", erreur: "L·i au lieu de L·di/dt" }]) },
+            { t: `saute de $${num(saut, 3)}\\ \\text{V}$`, ok: true },
+            { t: `reste à $${num(uRamp, 3)}\\ \\text{V}$ : elle est continue`, fb: "Tu as fait de $u$ une grandeur continue. C’est $i$ qui l’est : $u$ peut sauter, car $L\\,\\mathrm{d}i/\\mathrm{d}t$ passe d’une valeur non nulle à 0.", erreur: "u continue" },
+            { t: "tombe à $0\\ \\text{V}$ : plus de variation", fb: `Tu as oublié $r\\,i$. En courant constant, il reste $u = r\\,i = ${num(uPal, 3)}\\ \\text{V}$ : $u$ ne s’annule pas.`, erreur: "r·i oublié" }]) },
         ],
         correction: [
           { tex: `\\dfrac{\\mathrm{d}i}{\\mathrm{d}t} = \\dfrac{${num(ib - ia, 3)}}{${num(T.dt * 1e-3, 3)}} = ${num(p, 3)}\\ \\text{A·s}^{-1}`, r: "La pente de $i$ sur la rampe, avec la durée en secondes." },
@@ -180,7 +182,7 @@ export const EXERCICES = [
     titre: "Un courant triangulaire : la tension en créneaux et L",
     niveau: 2,
     capacites: CAPR("1.3.2.4", "1.3.2.2"),
-    erreurs: ["Δt oublié", "rapport inversé", "u lue en bout de rampe", "u triangle comme i"],
+    erreurs: ["durée laissée en ms", "Δi pris égal à I_m", "Δt oublié", "rapport inversé", "u lue en bout de rampe", "u triangle comme i", "u lue comme la moyenne de i"],
     gen(h) {
       const T = tire(() => ({ L: h.pick([0.1, 0.2, 0.3, 0.5, 1]), r: h.pick([5, 10, 20]), im: h.pick([10, 20, 30, 40]), dm: h.pick([2, 4, 5, 10]) }), (t) => {
         const pente = (2 * t.im * 1e-3) / (t.dm * 1e-3), u = t.L * pente, ur = t.r * t.im * 1e-3;
@@ -195,13 +197,13 @@ export const EXERCICES = [
         figure: fig,
         questions: [
           { type: "nombre", q: "Calcule la pente $\\mathrm{d}i/\\mathrm{d}t$ de $i$ sur une rampe montante, en A·s⁻¹.", reponse: pente, tol, unite: "A·s⁻¹", indice: "La variation de $i$ est de $-I_m$ à $+I_m$ ; la durée de la rampe est donnée en ms.",
-            pieges: pieges(pente, tol, [{ v: di / T.dm, fb: "Tu as laissé la durée en ms. Pour une pente en A·s⁻¹, il faut des secondes.", erreur: "Δt oublié" }, { v: T.im * 1e-3 / (T.dm * 1e-3), fb: "Tu as pris $I_m$ au lieu de la variation $2I_m$ : sur la rampe, $i$ passe de $-I_m$ à $+I_m$.", erreur: "Δt oublié" }]) },
+            pieges: pieges(pente, tol, [{ v: di / T.dm, fb: "Tu as laissé la durée en ms. Pour une pente en A·s⁻¹, il faut des secondes.", erreur: "durée laissée en ms" }, { v: T.im * 1e-3 / (T.dm * 1e-3), fb: "Tu as pris $I_m$ au lieu de la variation $2I_m$ : sur la rampe, $i$ passe de $-I_m$ à $+I_m$.", erreur: "Δi pris égal à I_m" }]) },
           { type: "nombre", q: "Détermine l’inductance $L$ de la bobine, en H.", reponse: T.L, tol, unite: "H", indice: "Là où $i = 0$ : $u = L\\,\\mathrm{d}i/\\mathrm{d}t$, donc $L$ est $u$ divisée par la pente.",
             pieges: pieges(T.L, tol, [{ v: u0 / di, fb: "Tu as divisé $u$ par la variation $\\Delta i$ sans la durée. $L$ est $u$ divisée par la pente $\\Delta i/\\Delta t$, en A·s⁻¹.", erreur: "Δt oublié" }, { v: pente / u0, fb: "Tu as inversé le rapport. L’unité tranche : V divisé par A·s⁻¹ donne des henrys.", erreur: "rapport inversé" }, { v: ubout / pente, fb: "Tu as lu $u$ en bout de rampe, où $r\\,i$ s’ajoute. Lis $u$ là où $i = 0$.", erreur: "u lue en bout de rampe" }]) },
           { type: "qcm", q: "La tension $u$ aux bornes de la bobine est…", options: h.melange([
-            { t: "faite de créneaux : elle change de signe quand la pente de $i$ change", ok: true },
-            { t: "un triangle aussi, comme $i$", fb: "Tu as supposé que $u$ suit $i$. $u = r\\,i + L\\,\\mathrm{d}i/\\mathrm{d}t$ dépend surtout de la pente de $i$, pas de sa valeur.", erreur: "u triangle comme i" },
-            { t: "presque nulle, car $i$ revient à zéro", fb: "Tu as lu la valeur moyenne de $i$. La pente de $i$ est constante sur chaque rampe : $L\\,\\mathrm{d}i/\\mathrm{d}t$ ne s’annule pas.", erreur: "u triangle comme i" }]) },
+            { t: "faite de créneaux : elle suit la pente de $i$", ok: true },
+            { t: "un triangle aussi : elle suit $i$", fb: "Tu as supposé que $u$ suit $i$. $u = r\\,i + L\\,\\mathrm{d}i/\\mathrm{d}t$ dépend surtout de la pente de $i$, pas de sa valeur.", erreur: "u triangle comme i" },
+            { t: "presque nulle : $i$ revient à zéro", fb: "Tu as lu la valeur moyenne de $i$. La pente de $i$ est constante sur chaque rampe : $L\\,\\mathrm{d}i/\\mathrm{d}t$ ne s’annule pas, et $u$ change de signe quand la pente change.", erreur: "u lue comme la moyenne de i" }]) },
         ],
         correction: [
           { tex: `\\dfrac{\\mathrm{d}i}{\\mathrm{d}t} = \\dfrac{${num(di, 3)}}{${num(T.dm * 1e-3, 3)}} = ${num(pente, 3)}\\ \\text{A·s}^{-1}`, r: "La pente d’une rampe, avec la durée en secondes." },
@@ -252,7 +254,7 @@ export const EXERCICES = [
     titre: "L’équation différentielle de l’établissement et de la rupture",
     niveau: 2,
     capacites: CAPR("1.3.2.5", "1.3.2.2"),
-    erreurs: ["r oubliée dans l’équation", "signe perdu", "E gardé à la rupture", "multiplié par L au lieu de divisé"],
+    erreurs: ["r oubliée dans l’équation", "signe perdu", "E gardé à la rupture", "multiplié par L au lieu de divisé", "a pris pour τ = L/(R + r)", "I₀ pris pour b"],
     gen(h) {
       const etab = h.int(0, 1) === 0;
       const T = tire(() => ({ L: h.pick([0.05, 0.1, 0.2, 0.5, 1]), R: Rserie(h), r: h.pick([5, 10, 20, 30]), E: h.pick([3, 6, 9, 12, 24]) }), (t) => t.r / (t.R + t.r) >= 0.06 && t.R + t.r >= 40);
@@ -264,10 +266,10 @@ export const EXERCICES = [
         etab ? { t: "$L\\,\\dfrac{\\mathrm{d}i}{\\mathrm{d}t} - (R + r)\\,i = E$", fb: "Tu as perdu un signe. Les tensions $u_R$ et $u_L$ s’ajoutent : $u_R + u_L = E$, donc $+(R + r)\\,i$.", erreur: "signe perdu" }
              : { t: "$L\\,\\dfrac{\\mathrm{d}i}{\\mathrm{d}t} + (R + r)\\,i = E$", fb: "Tu as gardé $E$. Le générateur a quitté la maille : le second membre est nul.", erreur: "E gardé à la rupture" }]) };
       const q2 = { type: "nombre", q: `On écrit l’équation sous la forme $\\dfrac{\\mathrm{d}i}{\\mathrm{d}t} + a\\,i = ${etab ? "b" : "0"}$. Calcule $a$, en s⁻¹.`, reponse: a, tol, unite: "s⁻¹", indice: "On divise les deux membres par $L$ : le coefficient de $i$ devient $(R + r)/L$.",
-        pieges: pieges(a, tol, [{ v: T.R / T.L, fb: "Tu as oublié $r$. Le coefficient de $i$ est $(R + r)/L$.", erreur: "r oubliée dans l’équation" }, { v: Rt * T.L, fb: "Tu as multiplié par $L$ au lieu de diviser. L’unité tranche : $(R + r)/L$ est en s⁻¹.", erreur: "multiplié par L au lieu de divisé" }, { v: T.L / Rt, fb: "Tu as calculé $L/(R + r)$, qui est une durée (la constante de temps). Le coefficient $a$ est son inverse.", erreur: "multiplié par L au lieu de divisé" }]) };
+        pieges: pieges(a, tol, [{ v: T.R / T.L, fb: "Tu as oublié $r$. Le coefficient de $i$ est $(R + r)/L$.", erreur: "r oubliée dans l’équation" }, { v: Rt * T.L, fb: "Tu as multiplié par $L$ au lieu de diviser. L’unité tranche : $(R + r)/L$ est en s⁻¹.", erreur: "multiplié par L au lieu de divisé" }, { v: T.L / Rt, fb: "Tu as calculé $L/(R + r)$, qui est une durée (la constante de temps). Le coefficient $a$ est son inverse.", erreur: "a pris pour τ = L/(R + r)" }]) };
       const qs = [q1, q2];
       if (etab) qs.push({ type: "nombre", q: "Calcule le second membre $b$, en A·s⁻¹.", reponse: b, tol, unite: "A·s⁻¹", indice: "Après division par $L$, le second membre est $E/L$.",
-        pieges: pieges(b, tol, [{ v: T.E / Rt, fb: "Tu as divisé $E$ par $R + r$ : cela donne $I_0$, en ampères. Le second membre de cette forme est $E/L$.", erreur: "multiplié par L au lieu de divisé" }, { v: T.E * T.L, fb: "Tu as multiplié par $L$ au lieu de diviser.", erreur: "multiplié par L au lieu de divisé" }]) });
+        pieges: pieges(b, tol, [{ v: T.E / Rt, fb: "Tu as divisé $E$ par $R + r$ : cela donne $I_0$, en ampères. Le second membre de cette forme est $E/L$.", erreur: "I₀ pris pour b" }, { v: T.E * T.L, fb: "Tu as multiplié par $L$ au lieu de diviser.", erreur: "multiplié par L au lieu de divisé" }]) });
       return {
         enonce: `<p>Une bobine d’inductance $L = ${num(T.L, 3)}\\ \\text{H}$ et de résistance $r = ${num(T.r, 3)}\\ \\Omega$ est en série avec un conducteur ohmique $R = ${num(T.R, 3)}\\ \\Omega$ et un générateur $E = ${num(T.E, 3)}\\ \\text{V}$, par un interrupteur à deux positions. ${etab ? "À $t = 0$, on place K en position 1 : le générateur est dans la maille." : "Le régime permanent est atteint ; à $t = 0$, on place K en position 2."} Les flèches de $u_R$ et de $u_L$ sont à l’opposé de $i$.</p>`,
         questions: qs,
@@ -285,7 +287,7 @@ export const EXERCICES = [
     titre: "La solution i = A + B e^(−t/τ) : A, B et τ",
     niveau: 2,
     capacites: CAPR("1.3.2.5", "1.3.2.6", "1.3.2.9"),
-    erreurs: ["B = +A (i ne part pas de 0)", "A = 0 : le courant de RC", "r oubliée", "τ = (R + r)/L"],
+    erreurs: ["B = +A (i ne part pas de 0)", "B = 0 : i reste égal à A", "A = 0 : le courant de RC", "r oubliée", "τ = (R + r)/L"],
     gen(h) {
       const T = tire(() => ({ E: h.pick([6, 12, 24]), R: Rserie(h), r: h.pick([5, 10, 20, 30]), L: h.pick([0.05, 0.1, 0.2, 0.5, 1]) }), (t) => { const Rt = t.R + t.r; return t.r / Rt >= 0.06 && !memeChiffre(t.E, (t.E / Rt) * 1e3) && (t.E / Rt) * 1e3 >= 5 && t.L / Rt >= 2e-5; });
       const Rt = T.R + T.r, A = (T.E / Rt) * 1e3, B = -A, tau = T.L / Rt, [tv, tu] = tSI(tau), tol = { rel: 0.02 };
@@ -295,7 +297,7 @@ export const EXERCICES = [
           { type: "nombre", q: "Détermine $A$, en mA (la valeur vers laquelle tend $i$ en régime permanent).", reponse: A, tol, unite: "mA", indice: "Quand $t$ est très grand, $e^{-t/\\tau}$ tend vers 0 : $i$ tend vers $A = E/(R + r)$.",
             pieges: pieges(A, tol, [{ v: (T.E / T.R) * 1e3, fb: "Tu as oublié $r$. En régime permanent, la résistance totale est $R + r$.", erreur: "r oubliée" }, { v: 0, fb: "Tu as pris le courant de RC, qui décroît vers 0. Ici $i$ monte vers $E/(R + r)$ : $A$ n’est pas nul.", erreur: "A = 0 : le courant de RC" }]) },
           { type: "nombre", q: "Détermine $B$, en mA, avec son signe.", reponse: B, tol, unite: "mA", indice: "La bobine rend $i$ continu : $i(0) = A + B = 0$.",
-            pieges: pieges(B, tol, [{ v: A, fb: "Tu as oublié que $i(0) = 0$. $i(0) = A + B$ doit être nul : $B = -A$.", erreur: "B = +A (i ne part pas de 0)" }, { v: 0, fb: "Tu as pris $B$ nul : $i$ resterait égal à $A$ dès $t = 0$, ce que la bobine interdit. $i(0) = 0$ donne $B = -A$.", erreur: "B = +A (i ne part pas de 0)" }]) },
+            pieges: pieges(B, tol, [{ v: A, fb: "Tu as oublié que $i(0) = 0$. $i(0) = A + B$ doit être nul : $B = -A$.", erreur: "B = +A (i ne part pas de 0)" }, { v: 0, fb: "Tu as pris $B$ nul : $i$ resterait égal à $A$ dès $t = 0$, ce que la bobine interdit. $i(0) = 0$ donne $B = -A$.", erreur: "B = 0 : i reste égal à A" }]) },
           { type: "nombre", q: `Détermine la constante de temps $\\tau$, en ${tu}.`, reponse: tv, tol, unite: tu, indice: "$\\tau = L/(R + r)$, avec $L$ en henrys.",
             pieges: pieges(tv, tol, [{ v: Rt / T.L, fb: "Tu as calculé $(R + r)/L$, qui est en s⁻¹. $\\tau$ est son inverse, une durée.", erreur: "τ = (R + r)/L" }, { v: T.L / T.R / UT[tu], fb: "Tu as oublié $r$ : $\\tau = L/(R + r)$.", erreur: "r oubliée" }]) },
         ],
@@ -325,13 +327,13 @@ export const EXERCICES = [
             pieges: pieges(T.E, tol, [{ v: 0, fb: "Tu as copié $i$. $u_L = E - u_R$, et $u_R = R\\,i = 0$ : toute la tension $E$ est sur la bobine.", erreur: "u_L(0) = 0 comme i" }, { v: uInf, fb: "Tu as pris la valeur de fin, $r\\,I_0$. $r\\,i$ est nul tant que $i = 0$ : c’est $L\\,\\mathrm{d}i/\\mathrm{d}t$ qui vaut $E$.", erreur: "u_L(0) = r·I₀" }]) },
           { type: "nombre", q: "Que vaut $u_L$ en régime permanent, en V ?", reponse: uInf, tol, unite: "V", indice: "En courant constant, $\\mathrm{d}i/\\mathrm{d}t = 0$ : $u_L = r\\,I_0$.",
             pieges: pieges(uInf, tol, [{ v: 0, fb: "Tu as oublié $r$. Une bobine réelle garde $u_L = r\\,I_0$ en courant constant.", erreur: "u_L(∞) = 0 (r oubliée)" }, { v: T.E, fb: "Tu as pris la valeur de départ. En régime permanent, $R\\,I_0$ de la tension est sur le conducteur ohmique.", erreur: "u_L monte comme i" }]) },
-          { type: "nombre", q: "Que vaut $u_L$ à $t = \\tau$, en V ?", reponse: uTau, tol, unite: "V", indice: "$u_L = E - R\\,i$, avec $i(\\tau) = 0{,}63\\,I_0$ ; ou $u_L = r\\,I_0 + R\\,I_0\\,e^{-1}$.",
+          { type: "nombre", q: "Que vaut $u_L$ à $t = \\tau$, en V ?", reponse: uTau, tol, unite: "V", indice: `$u_L = E - R\\,i$, avec $i(\\tau) = ${num(P63, 2)}\\,I_0$ ; ou $u_L = r\\,I_0 + R\\,I_0\\,e^{-1}$.`,
             pieges: pieges(uTau, tol, [{ v: T.E * Math.exp(-1), fb: "Tu as supposé $r$ nulle : $E\\,e^{-t/\\tau}$ est la tension d’une bobine idéale. Avec $r$, $u_L$ finit à $r\\,I_0$.", erreur: "u_L(∞) = 0 (r oubliée)" }, { v: uInf + T.R * I0 * (1 - Math.exp(-1)), fb: "Tu as fait monter $u_L$ comme $i$. $u_L$ part de $E$ et descend : le terme en exponentielle est $R\\,I_0\\,e^{-t/\\tau}$.", erreur: "u_L monte comme i" }]) },
         ],
         correction: [
           { tex: `u_L(0^+) = E - R\\,i(0) = ${num(T.E, 3)}\\ \\text{V}`, r: "$i$ est continu : $i(0) = 0$." },
           { tex: `u_L(\\infty) = r\\,I_0 = ${num(T.r, 3)} \\times ${num(I0, 3)} = ${num(uInf, 3)}\\ \\text{V}`, r: "En régime permanent, $\\mathrm{d}i/\\mathrm{d}t = 0$." },
-          { tex: `u_L(\\tau) = r\\,I_0 + R\\,I_0\\,e^{-1} = ${num(uInf, 3)} + ${num(T.R * I0, 3)} \\times 0{,}368 \\approx ${num(uTau, 3)}\\ \\text{V}`, r: "$u_L(t) = r\\,I_0 + R\\,I_0\\,e^{-t/\\tau}$." },
+          { tex: `u_L(\\tau) = r\\,I_0 + R\\,I_0\\,e^{-1} = ${num(uInf, 3)} + ${num(T.R * I0, 3)} \\times ${num(P37, 3)} \\approx ${num(uTau, 3)}\\ \\text{V}`, r: "$u_L(t) = r\\,I_0 + R\\,I_0\\,e^{-t/\\tau}$." },
         ],
       };
     },
@@ -343,7 +345,7 @@ export const EXERCICES = [
     titre: "Lire τ sur la courbe de i(t), puis déduire L",
     niveau: 3,
     capacites: CAPR("1.3.2.7", "1.3.2.9", "1.3.2.11"),
-    erreurs: ["lecture à la moitié", "63 % lu sur une descente", "37 % lu sur une montée", "τ = fin de la rupture ou de l’établissement"],
+    erreurs: ["lecture à la moitié", "63 % lu sur une descente", "37 % lu sur une montée", "τ = fin de la rupture ou de l’établissement", "L = τ/(R + r) au lieu de τ (R + r)"],
     gen(h) {
       const monte = h.int(0, 1) === 0, tang = h.int(0, 1) === 0;
       const T = tire(() => ({ I0: h.pick([40, 50, 60, 80, 100, 120, 150, 200]), tau: h.pick([0.5, 1, 2, 4, 5, 8, 10, 20]), Rt: h.pick([20, 30, 50, 60, 100, 150, 200, 500]) }), (t) => !memeChiffre(t.I0, t.tau) && !memeChiffre(t.I0, t.Rt));
@@ -352,15 +354,15 @@ export const EXERCICES = [
       const lu37 = monte ? -T.tau * Math.log(1 - P37) : T.tau, luFauxPct = monte ? -T.tau * Math.log(1 - P37) : -T.tau * Math.log(P63);
       const moitie = T.tau * Math.LN2;
       const fig = figure({ x1: tmax, y1: T.I0 * 1.1, xs: Array.from({ length: 7 }, (_, k) => Number((k * T.tau).toPrecision(4))), ys: [0, T.I0 / 2, T.I0].map((v) => Number(v.toPrecision(4))), xn: "t (ms)", yn: "i (mA)", courbes: [echant(fn, 0, tmax)], droites: tang ? [monte ? [0, 0, T.tau, T.I0] : [0, T.I0, T.tau, 0]] : [], aria: "L’intensité du courant en fonction du temps" });
-      const lecture = monte ? "où $i$ atteint 63 % de $I_0$" : "où il reste 37 % de la valeur de départ";
+      const lecture = monte ? `où $i$ atteint ${PC63} % de $I_0$` : `où il reste ${PC37} % de la valeur de départ`;
       return {
         enonce: `<p>On visualise l’intensité $i(t)$ dans un circuit RL, ${monte ? "à la fermeture de K" : "à la rupture, K étant basculé en position 2"}${tang ? " ; la tangente à l’origine est tracée en pointillés" : ""}. La résistance totale vaut $R + r = ${num(T.Rt, 3)}\\ \\Omega$.</p>`,
         figure: fig,
         questions: [
           { type: "nombre", q: "Détermine graphiquement la constante de temps $\\tau$, en ms.", reponse: tauU, tol, unite: "ms", indice: `Lis ${lecture}${tang ? monte ? ", ou l’abscisse où la tangente coupe le palier" : ", ou l’abscisse où la tangente coupe l’axe des temps" : ""}.`,
-            pieges: pieges(tauU, tol, [{ v: luFauxPct, fb: monte ? "Tu as lu à 37 % de $I_0$ sur une courbe qui monte. 37 % est le repère d’une courbe qui descend : sur une montée, on lit 63 %." : "Tu as lu à 63 % de la valeur de départ sur une courbe qui descend. Sur une descente, on lit où il reste 37 %.", erreur: monte ? "37 % lu sur une montée" : "63 % lu sur une descente" }, { v: moitie, fb: "Tu as lu à la moitié de la valeur finale ou de départ. C’est $\\tau \\ln 2$, pas $\\tau$.", erreur: "lecture à la moitié" }, { v: 5 * T.tau, fb: "Tu as pris la fin du régime transitoire, environ $5\\tau$. $\\tau$ se lit là où la courbe a fait 63 % (montée) ou perdu 63 % (descente).", erreur: "τ = fin de la rupture ou de l’établissement" }]) },
+            pieges: pieges(tauU, tol, [{ v: luFauxPct, fb: monte ? `Tu as lu à ${PC37} % de $I_0$ sur une courbe qui monte. ${PC37} % est le repère d’une courbe qui descend : sur une montée, on lit ${PC63} %.` : `Tu as lu à ${PC63} % de la valeur de départ sur une courbe qui descend. Sur une descente, on lit où il reste ${PC37} %.`, erreur: monte ? "37 % lu sur une montée" : "63 % lu sur une descente" }, { v: moitie, fb: "Tu as lu à la moitié de la valeur finale ou de départ. C’est $\\tau \\ln 2$, pas $\\tau$.", erreur: "lecture à la moitié" }, { v: 5 * T.tau, fb: `Tu as pris la fin du régime transitoire, environ $5\\tau$. $\\tau$ se lit là où la courbe a fait ${PC63} % (montée) ou perdu ${PC63} % (descente).`, erreur: "τ = fin de la rupture ou de l’établissement" }]) },
           { type: "nombre", q: "Déduis l’inductance $L$ du circuit, en mH.", reponse: L, tol: { rel: 0.05 }, unite: "mH", indice: "$\\tau = L/(R + r)$ : $L = \\tau\\,(R + r)$, avec $\\tau$ en secondes ; le résultat en henrys, puis en mH.",
-            pieges: pieges(L, { rel: 0.05 }, [{ v: luFauxPct * T.Rt, fb: "Tu es parti d’une lecture à 37 % sur une montée (ou 63 % sur une descente) : $\\tau$ est faux, donc $L$ aussi.", erreur: monte ? "37 % lu sur une montée" : "63 % lu sur une descente" }, { v: moitie * T.Rt, fb: "Tu es parti de la moitié : $\\tau$ est faux, donc $L$ aussi.", erreur: "lecture à la moitié" }, { v: T.tau / T.Rt, fb: "Tu as divisé au lieu de multiplier. $\\tau = L/(R + r)$ donne $L = \\tau\\,(R + r)$.", erreur: "τ = fin de la rupture ou de l’établissement" }]) },
+            pieges: pieges(L, { rel: 0.05 }, [{ v: luFauxPct * T.Rt, fb: `Tu es parti d’une lecture à ${PC37} % sur une montée (ou ${PC63} % sur une descente) : $\\tau$ est faux, donc $L$ aussi.`, erreur: monte ? "37 % lu sur une montée" : "63 % lu sur une descente" }, { v: moitie * T.Rt, fb: "Tu es parti de la moitié : $\\tau$ est faux, donc $L$ aussi.", erreur: "lecture à la moitié" }, { v: T.tau / T.Rt, fb: "Tu as divisé au lieu de multiplier. $\\tau = L/(R + r)$ donne $L = \\tau\\,(R + r)$.", erreur: "L = τ/(R + r) au lieu de τ (R + r)" }]) },
         ],
         correction: [
           { t: `Sur une courbe ${monte ? "qui monte" : "qui descend"}, on lit $\\tau$ ${lecture}.` },
@@ -405,7 +407,7 @@ export const EXERCICES = [
     titre: "L’influence de R, de L et de E sur la réponse",
     niveau: 2,
     capacites: CAPR("1.3.2.14", "1.3.2.11"),
-    erreurs: ["L change le palier", "R ne change que τ (comme en RC)", "E change τ"],
+    erreurs: ["L change le palier", "R ne change que τ (comme en RC)", "R ne change que le palier", "E change τ", "E sans effet sur le palier", "r oubliée dans le palier", "r oubliée dans τ", "τ de référence gardé"],
     gen(h) {
       const mode = h.pick(["E", "L", "R"]);
       const base = { E: 6, R: 50, r: 10, L: 0.3 };
@@ -426,26 +428,34 @@ export const EXERCICES = [
         qs.push({ type: "qcm", q: "Les trois courbes $i(t)$ ont-elles le même palier et la même constante de temps ?", options: h.melange([
           { t: "même $\\tau$, paliers différents : $E$ règle la hauteur", ok: true },
           { t: "$E$ change $\\tau$ : plus de tension, montée plus rapide", fb: "Tu as cru que $E$ change $\\tau$. $\\tau = L/(R + r)$ ne contient pas $E$ : la courbe monte plus haut dans le même temps.", erreur: "E change τ" },
-          { t: "même palier, $\\tau$ différents", fb: "Le palier $E/(R + r)$ contient $E$ : il change avec $E$. $\\tau$, lui, ne change pas.", erreur: "E change τ" }]) });
+          { t: "même palier, $\\tau$ différents", fb: "Le palier $E/(R + r)$ contient $E$ : il change avec $E$. $\\tau$, lui, ne change pas.", erreur: "E sans effet sur le palier" }]) });
         qs.push({ type: "nombre", q: `Quel est le palier de la courbe ${k + 1}, en mA ?`, reponse: pal(S), tol, unite: "mA", indice: "Le palier est $I_0 = E/(R + r)$.",
-          pieges: pieges(pal(S), tol, [{ v: (S.E / S.R) * 1e3, fb: "Tu as oublié $r$ : le palier est $E/(R + r)$.", erreur: "E change τ" }]) });
+          pieges: pieges(pal(S), tol, [{ v: (S.E / S.R) * 1e3, fb: "Tu as oublié $r$ : le palier est $E/(R + r)$.", erreur: "r oubliée dans le palier" }]) });
       } else if (mode === "L") {
         qs.push({ type: "qcm", q: "Les trois courbes $i(t)$ ont-elles le même palier ?", options: h.melange([
           { t: "oui : le palier $E/(R + r)$ ne contient pas $L$, seule la durée change", ok: true },
           { t: "non : plus $L$ est grand, plus le palier est haut", fb: "Tu as cru que $L$ change le palier. En courant constant, $\\mathrm{d}i/\\mathrm{d}t = 0$ : $L$ disparaît.", erreur: "L change le palier" },
           { t: "non : plus $L$ est grand, plus le palier est bas", fb: "Tu as cru qu’une bobine plus grande limite le courant final. Elle ne fait que freiner la montée : le palier ne dépend pas de $L$.", erreur: "L change le palier" }]) });
         qs.push({ type: "nombre", q: `Quelle est la constante de temps de la courbe ${k + 1}, en ms ?`, reponse: tau(S), tol, unite: "ms", indice: "$\\tau = L/(R + r)$, avec $L$ en henrys.",
-          pieges: pieges(tau(S), tol, [{ v: (S.L / S.R) * 1e3, fb: "Tu as oublié $r$ : $\\tau = L/(R + r)$.", erreur: "L change le palier" }]) });
+          pieges: pieges(tau(S), tol, [{ v: (S.L / S.R) * 1e3, fb: "Tu as oublié $r$ : $\\tau = L/(R + r)$.", erreur: "r oubliée dans τ" }]) });
       } else {
         qs.push({ type: "qcm", q: "Quand $R$ change, que changent les courbes $i(t)$ ?", options: h.melange([
           { t: "le palier et $\\tau$ : $R + r$ figure dans les deux", ok: true },
           { t: "seulement $\\tau$, comme pour un dipôle RC", fb: "Tu as transféré RC. Ici, $R$ figure aussi dans le palier $E/(R + r)$ : il change avec $\\tau$.", erreur: "R ne change que τ (comme en RC)" },
-          { t: "seulement le palier", fb: "Tu as pensé que $R$ ne règle que la hauteur. $R$ figure aussi dans $\\tau = L/(R + r)$.", erreur: "R ne change que τ (comme en RC)" }]) });
+          { t: "seulement le palier", fb: "Tu as pensé que $R$ ne règle que la hauteur. $R$ figure aussi dans $\\tau = L/(R + r)$.", erreur: "R ne change que le palier" }]) });
         qs.push({ type: "nombre", q: `Quelle est la constante de temps de la courbe ${k + 1}, en ms ?`, reponse: tau(S), tol, unite: "ms", indice: "$\\tau = L/(R + r)$, avec $L$ en henrys.",
-          pieges: pieges(tau(S), tol, [{ v: (S.L / S.R) * 1e3, fb: "Tu as oublié $r$ : $\\tau = L/(R + r)$.", erreur: "R ne change que τ (comme en RC)" }, { v: (base.L / (base.R + base.r)) * 1e3, fb: "Tu as gardé la valeur de $\\tau$ pour $R = 50\\ \\Omega$. $R$ change la résistance totale, donc $\\tau$.", erreur: "R ne change que τ (comme en RC)" }]) });
+          pieges: pieges(tau(S), tol, [{ v: (S.L / S.R) * 1e3, fb: "Tu as oublié $r$ : $\\tau = L/(R + r)$.", erreur: "r oubliée dans τ" }, { v: (base.L / (base.R + base.r)) * 1e3, fb: "Tu as gardé la valeur de $\\tau$ pour $R = 50\\ \\Omega$. $R$ change la résistance totale, donc $\\tau$.", erreur: "τ de référence gardé" }]) });
       }
+      // les trois courbes i(t), numérotées : le document que l'élève exploite (pc 1.3.2.11)
+      const etats = v.map((x) => etat(x)), tmax = 6 * Math.max(...etats.map(tau)), pmax = Math.max(...etats.map(pal));
+      const pasT = pas(tmax), pasI = pas(pmax * 1.1);
+      const grad = (max, d) => Array.from({ length: Math.floor(max / d + 1e-9) + 1 }, (_, k) => Number((k * d).toPrecision(6)));
+      const fig = figure({ x1: tmax, y1: pmax * 1.1, xs: grad(tmax, pasT), ys: grad(pmax * 1.1, pasI), xn: "t (ms)", yn: "i (mA)",
+        courbes: etats.map((s) => echant((t) => pal(s) * (1 - Math.exp(-t / tau(s))), 0, tmax)),
+        etiq: etats.map((s, j) => [2.2 * tau(s), (1 - Math.exp(-2.2)) * pal(s), String(j + 1)]), aria: "Trois courbes numérotées de l’intensité i en fonction du temps" });
       return {
-        enonce: `<p>On étudie l’établissement du courant dans un dipôle RL, trois fois, en ne changeant que ${mode === "E" ? "la tension $E$" : mode === "L" ? "l’inductance $L$" : "la résistance $R$"} : ${desc}. Les autres grandeurs : ${fixe}.</p>`,
+        enonce: `<p>On étudie l’établissement du courant dans un dipôle RL, trois fois, en ne changeant que ${mode === "E" ? "la tension $E$" : mode === "L" ? "l’inductance $L$" : "la résistance $R$"} : ${desc}. Les autres grandeurs : ${fixe}. La figure montre les trois courbes $i(t)$, numérotées.</p>`,
+        figure: fig,
         questions: qs,
         correction: [{ t: `Palier : $I_0 = E/(R + r)$ ; constante de temps : $\\tau = L/(R + r)$. $E$ ne change que le palier, $L$ ne change que $\\tau$, $R$ change les deux.` }, { tex: `\\text{courbe } ${k + 1}\\ :\\ I_0 = ${num(pal(S), 3)}\\ \\text{mA}\\ ,\\ \\tau = ${num(tau(S), 3)}\\ \\text{ms}`, r: "Les valeurs de la courbe interrogée." }],
       };
@@ -518,7 +528,7 @@ export const EXERCICES = [
     titre: "Mesurer à l’oscilloscope : u_R, u_L et τ",
     niveau: 1,
     capacites: CAPR("1.3.2.13", "1.3.2.11"),
-    erreurs: ["u_L prise pour l’image de i", "divisions lues comme des unités", "division par la sensibilité", "deux voies confondues"],
+    erreurs: ["u_L prise pour l’image de i", "l’oscilloscope donne i directement", "divisions lues comme des unités", "division par la sensibilité", "division par la base de temps"],
     gen(h) {
       const sv = h.pick([0.5, 2, 5]), shU = h.pick([["ms", 1e-3], ["µs", 1e-6]]), sh = h.pick([0.5, 2, 5, 10, 20]), hNe = h.pick([4, 5, 6]);
       const divTau = h.pick([1.6, 2, 2.4, 3.2, 4]), tauU = divTau * sh, unite = shU[0], uniteTex = uTex(unite), tolT = { rel: 0.05 };
@@ -530,9 +540,9 @@ export const EXERCICES = [
           { type: "qcm", q: "Que montre l’oscilloscope avec ce branchement, et que peut-on en déduire ?", options: h.melange([
             { t: "la tension $u_R = R\\,i$ : l’allure de $i$, à $R$ près", ok: true },
             { t: "la tension $u_L$ : l’allure de $i$", fb: "Tu as pris $u_L$ pour l’image de $i$. $u_L = r\\,i + L\\,\\mathrm{d}i/\\mathrm{d}t$ n’est pas proportionnelle à $i$ : c’est $u_R$ qui l’est.", erreur: "u_L prise pour l’image de i" },
-            { t: "directement l’intensité $i$ en ampères", fb: "Un oscilloscope ne montre que des tensions. Pour voir l’allure de $i$, il faut visualiser $u_R = R\\,i$.", erreur: "u_L prise pour l’image de i" }]) },
+            { t: "directement l’intensité $i$ en ampères", fb: "Un oscilloscope ne montre que des tensions. Pour voir l’allure de $i$, il faut visualiser $u_R = R\\,i$.", erreur: "l’oscilloscope donne i directement" }]) },
           { type: "nombre", q: `Lis le nombre de divisions entre l’origine et l’abscisse où la tangente coupe l’asymptote : calcule $\\tau$, en ${unite}.`, reponse: tauU, tol: tolT, unite, indice: `$\\tau$ = divisions × base de temps (${num(sh, 3)} ${unite} par division). Ici, la tangente coupe l’asymptote à ${num(divTau, 2)} divisions.`,
-            pieges: pieges(tauU, tolT, [{ v: divTau, fb: `Tu as lu des divisions comme des ${unite}. Multiplie par la base de temps.`, erreur: "divisions lues comme des unités" }, { v: divTau / sh, fb: "Tu as divisé par la base de temps. $\\tau$ = divisions × base de temps.", erreur: "division par la sensibilité" }]) },
+            pieges: pieges(tauU, tolT, [{ v: divTau, fb: `Tu as lu des divisions comme des ${unite}. Multiplie par la base de temps.`, erreur: "divisions lues comme des unités" }, { v: divTau / sh, fb: "Tu as divisé par la base de temps. $\\tau$ = divisions × base de temps.", erreur: "division par la base de temps" }]) },
           { type: "nombre", q: "Quelle est la valeur de $u_R$ en régime permanent, lue sur l’asymptote, en V ?", reponse: E, tol: { rel: 0.03 }, unite: "V", indice: "Hauteur de l’asymptote en divisions, fois la sensibilité verticale.",
             pieges: pieges(E, { rel: 0.03 }, [{ v: hNe, fb: "Tu as lu des divisions comme des volts. Multiplie par la sensibilité verticale.", erreur: "divisions lues comme des unités" }, { v: hNe / sv, fb: "Tu as divisé par la sensibilité verticale. $u_R$ = divisions × sensibilité.", erreur: "division par la sensibilité" }]) },
         ],
@@ -550,7 +560,7 @@ export const EXERCICES = [
     titre: "Au bac : la réponse d’un dipôle RL (forme du sujet 2023)",
     niveau: 3,
     capacites: CAPR("1.3.2.5", "1.3.2.6", "1.3.2.7", "1.3.2.8", "1.3.2.9"),
-    erreurs: ["τ/R au lieu de Rτ", "τ lu à 37 %", "τ laissé en ms", "u_L monte comme i", "B = +A"],
+    erreurs: ["τ/R au lieu de Rτ", "τ lu à 37 %", "τ laissé en ms", "u_L monte comme i", "B = +A", "I₀ laissé en mA", "R = I₀/E (rapport inversé)", "r ajoutée alors qu’elle est négligeable"],
     gen(h) {
       const T = tire(() => ({ E: h.pick([6, 12, 24]), I0: h.pick([20, 30, 40, 48, 60, 80]), tau: h.pick([1, 2, 4, 5]) }), (t) => !memeChiffre(t.E, t.I0) && !memeChiffre(t.E, t.tau) && !memeChiffre(t.I0, t.tau));
       const R = T.E / (T.I0 * 1e-3), L = R * T.tau * 1e-3, t37 = -T.tau * Math.log(1 - P37), tol = { rel: 0.03 }, k = 1e3 / T.tau;
@@ -560,13 +570,13 @@ export const EXERCICES = [
         figure: fig,
         questions: [
           { type: "qcm", q: "Quelle est l’expression de $B$ en fonction de $E$ et $R$ ?", options: h.melange([
-            { t: "$B = -\\dfrac{E}{R}$, car $i(0) = A + B = 0$", ok: true },
+            { t: "$B = -\\dfrac{E}{R}$", ok: true },
             { t: "$B = +\\dfrac{E}{R}$", fb: "Tu as oublié que $i(0) = 0$. $i(0) = A + B$ doit être nul : $B = -A$.", erreur: "B = +A" },
-            { t: "$B = 0$ : $i$ est constant", fb: "Tu as pris $i$ constant. $i$ part de 0 : $B = -A \\ne 0$.", erreur: "B = +A" }]) },
+            { t: "$B = -\\dfrac{E}{R + r}$", fb: "Tu as repris le cas général. Ici la bobine est de résistance négligeable : $r = 0$, donc $A = E/R$ et $B = -E/R$.", erreur: "r ajoutée alors qu’elle est négligeable" }]) },
           { type: "nombre", q: "Détermine la résistance $R$ du conducteur ohmique, en Ω.", reponse: R, tol, unite: "Ω", indice: "En régime permanent, $I_0 = E/R$, avec $I_0$ en ampères.",
-            pieges: pieges(R, tol, [{ v: T.E / T.I0, fb: "Tu as laissé $I_0$ en mA. Convertis en ampères : $R = E/I_0$.", erreur: "τ laissé en ms" }, { v: T.I0 * 1e-3 / T.E, fb: "Tu as divisé $I_0$ par $E$. Une résistance est une tension divisée par un courant.", erreur: "τ/R au lieu de Rτ" }]) },
+            pieges: pieges(R, tol, [{ v: T.E / T.I0, fb: "Tu as laissé $I_0$ en mA. Convertis en ampères : $R = E/I_0$.", erreur: "I₀ laissé en mA" }, { v: T.I0 * 1e-3 / T.E, fb: "Tu as divisé $I_0$ par $E$. Une résistance est une tension divisée par un courant.", erreur: "R = I₀/E (rapport inversé)" }]) },
           { type: "nombre", q: "Montre puis calcule l’inductance $L$ de la bobine, en H.", reponse: L, tol, unite: "H", indice: "$\\tau = L/R$ : $L = R\\,\\tau$, avec $\\tau$ lu où la tangente coupe le palier, en secondes.",
-            pieges: pieges(L, tol, [{ v: (T.tau * 1e-3) / R, fb: "Tu as inversé le rapport. $\\tau = L/R$ donne $L = R\\,\\tau$.", erreur: "τ/R au lieu de Rτ" }, { v: R * t37 * 1e-3, fb: "Tu as lu $\\tau$ là où $i = 37\\ \\%$ de $I_0$. Sur une montée, $\\tau$ se lit à 63 %, ou là où la tangente coupe le palier.", erreur: "τ lu à 37 %" }, { v: R * T.tau, fb: "Tu as laissé $\\tau$ en ms. Convertis en secondes avant de multiplier.", erreur: "τ laissé en ms" }]) },
+            pieges: pieges(L, tol, [{ v: (T.tau * 1e-3) / R, fb: "Tu as inversé le rapport. $\\tau = L/R$ donne $L = R\\,\\tau$.", erreur: "τ/R au lieu de Rτ" }, { v: R * t37 * 1e-3, fb: `Tu as lu $\\tau$ là où $i = ${PC37}\\ \\%$ de $I_0$. Sur une montée, $\\tau$ se lit à ${PC63} %, ou là où la tangente coupe le palier.`, erreur: "τ lu à 37 %" }, { v: R * T.tau, fb: "Tu as laissé $\\tau$ en ms. Convertis en secondes avant de multiplier.", erreur: "τ laissé en ms" }]) },
           { type: "qcm", q: "Quelle est l’expression numérique de $u_L(t)$, en unités SI ?", options: h.melange([
             { t: `$u_L = ${num(T.E, 3)}\\,e^{-${num(k, 3)}\\,t}$`, ok: true },
             { t: `$u_L = ${num(T.E, 3)}\\,e^{-${num(k * 1e-3, 3)}\\,t}$`, fb: "Tu as laissé $\\tau$ en ms. En unités SI, $1/\\tau$ s’exprime en s⁻¹.", erreur: "τ laissé en ms" },
@@ -599,9 +609,9 @@ export const EXERCICES = [
             { t: "$p = L\\,\\dfrac{\\mathrm{d}i}{\\mathrm{d}t}$", fb: "Tu as oublié de multiplier par $i$. La puissance est $p = u_L\\,i$.", erreur: "puissance prise pour l’énergie" },
             { t: "$p = r\\,i + L\\,i\\,\\dfrac{\\mathrm{d}i}{\\mathrm{d}t}$", fb: "Tu as oublié de multiplier $r\\,i$ par $i$ : $p = (r\\,i + L\\,\\mathrm{d}i/\\mathrm{d}t)\\,i$.", erreur: "puissance prise pour l’énergie" }]) },
           { type: "qcm", q: "La part de la puissance qui est emmagasinée est la dérivée de…", options: h.melange([
-            { t: "$\\dfrac{1}{2}\\,L\\,i^{2}$ : $r\\,i^{2}$ est perdue par effet Joule", ok: true },
+            { t: "$\\dfrac{1}{2}\\,L\\,i^{2}$", ok: true },
             { t: "$L\\,i^{2}$", fb: "Tu as oublié le ½ : la dérivée de $i^{2}$ est $2i\\,\\mathrm{d}i/\\mathrm{d}t$.", erreur: "½ oublié dans la dérivée" },
-            { t: "$\\dfrac{1}{2}\\,L\\,i^{2} + r\\,i^{2}$", fb: "Tu as compté toute la puissance reçue. $r\\,i^{2}$ chauffe le fil : ce n’est pas une dérivée, donc pas emmagasiné.", erreur: "r i² compté" }]) },
+            { t: "$\\dfrac{1}{2}\\,L\\,i^{2} + r\\,i^{2}$", fb: "$r\\,i^{2}$ est la puissance perdue en chaleur ; seul $L\\,i\\,\\mathrm{d}i/\\mathrm{d}t = \\mathrm{d}(\\tfrac{1}{2}\\,L\\,i^{2})/\\mathrm{d}t$ est stocké.", erreur: "r i² compté" }]) },
         ],
         correction: [
           { tex: `p = u_L\\,i = r\\,i^{2} + L\\,i\\,\\dfrac{\\mathrm{d}i}{\\mathrm{d}t}`, r: "La puissance reçue, en convention récepteur." },

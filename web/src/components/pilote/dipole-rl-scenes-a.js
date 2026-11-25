@@ -22,7 +22,9 @@
  *   fi fu fr fe   les flèches i, u_L, u_R, E (0 ou 1), avec leur étiquette
  *   fa     la flèche mise en évidence, en accent : 'i' | 'uL' | 'uR' | 'E' | ''
  *   ch     les lignes de champ dans la bobine : 0 aucune, 1 oui (leur nombre suit i)
- *   osc    le branchement d'oscilloscope : la voie Y₁ de l'autre côté de R, la masse entre R et la bobine
+ *   osc    le branchement d'oscilloscope : la voie Y₁ de l'autre côté de R, la masse entre R et la bobine ; tant qu'il vaut 0,
+ *          le sous-titre ne le décrit pas (la question demande justement ce qu'on visualise)
+ *   nr     'bobine' : 0 → 1, la résistance r du fil est nommée (à 0, seule l'inductance L l'est)
  *   rv     'henry' : 0 le fil hors du mercure, 1 il plonge (contact), 2 on le retire (rupture, étincelle)
  *   sub    un sous-titre imposé (sinon celui du jeu)
  * Couleurs : des classes seulement (k-ink, k-a, k-dim, s-ink, s-a, s-dim, s-bg, f-a, f-c).
@@ -87,7 +89,7 @@ function lampe(parent, x, y, r) {
 }
 
 scene("circuit", {
-  p: { jeu: "rl", K: 1, t: 0, fi: 0, fu: 0, fr: 0, fe: 0, fa: "", ch: 1, osc: 0, rv: 0, sub: "" },
+  p: { jeu: "rl", K: 1, t: 0, fi: 0, fu: 0, fr: 0, fe: 0, fa: "", ch: 1, osc: 0, rv: 0, nr: 1, sub: "" },
   build(g) {
     this.ti = titre(g, "", "");
 
@@ -142,8 +144,9 @@ scene("circuit", {
     lab(B, BX - 175, bY0 + (bT * bP) / 2, "fil enroulé", "rl-l s-ink", "end", 26);
     lab(B, BX - 175, bY0 + (bT * bP) / 2 + 34, "en spires", "rl-l s-ink", "end", 26);
     lab(B, BX + 175, bY0 + (bT * bP) / 2 - 8, "inductance *L*", "rl-l s-ink", "start", 26);
-    lab(B, BX + 175, bY0 + (bT * bP) / 2 + 26, "résistance *r*", "rl-l s-ink", "start", 26);
-    lab(B, BX + 175, bY0 + (bT * bP) / 2 + 60, "du fil", "rl-l s-ink", "start", 26);
+    this.bR = E("g", {}, B);
+    lab(this.bR, BX + 175, bY0 + (bT * bP) / 2 + 26, "résistance *r*", "rl-l s-ink", "start", 26);
+    lab(this.bR, BX + 175, bY0 + (bT * bP) / 2 + 60, "du fil", "rl-l s-ink", "start", 26);
 
     /* ----- les deux lampes en parallèle (schéma de principe) ----- */
     const P = this.P = E("g", {}, g);
@@ -205,6 +208,7 @@ scene("circuit", {
   render() {
     const p = this.p, jeu = p.jeu;
     show(this.L, jeu === "rl" || jeu === "oscillo" ? 1 : 0); show(this.B, jeu === "bobine" ? 1 : 0);
+    show(this.bR, p.nr);
     show(this.P, jeu === "lampes" ? 1 : 0); show(this.Y, jeu === "henry" ? 1 : 0);
     const K = p.K, t = clamp(p.t, 0, 1), e5 = Math.exp(-5 * t);
     if (jeu === "rl" || jeu === "oscillo") {
@@ -244,7 +248,7 @@ scene("circuit", {
       lampes: ["Deux lampes, deux branches", "schéma de principe"],
       henry: ["L’expérience de Henry", "schéma de principe"],
     }[jeu] || ["", ""];
-    this.ti.set(T[0], p.sub || T[1]);
+    this.ti.set(T[0], p.sub || (jeu === "oscillo" && p.osc < 0.5 ? "" : T[1]));
   },
 });
 }

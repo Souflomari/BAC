@@ -32,6 +32,8 @@
  *   ech    0 → 1 : l'échelle de u_L, ±6 V puis ±120 V (le changement est animé)
  *   tau1   0 → 1 : le repère τ (un trait vertical) ; lect : le point de i à τ et sa lecture à 37 % de I₀
  *   trans  le régime transitoire (0 à 5τ) et le régime permanent
+ *   sub    un sous-titre imposé (sinon : les valeurs du montage, ou, au triangle, la phrase sans valeur) : une étape qui
+ *          demande une de ces valeurs (r, L) impose un sous-titre qui ne la donne pas
  * Couleurs : des classes seulement. Le rouge n'est donné qu'à i (la flèche, la courbe, le point, la lecture).
  */
 import {
@@ -75,9 +77,9 @@ const setC = (c, x, y) => { c.setAttribute("cx", x.toFixed(1)); c.setAttribute("
 const setY = (t, y) => t.setAttribute("y", y.toFixed(1));
 
 scene("couple", {
-  p: { jeu: "etab", t: 0, dis: 0, ic: 0, ul: 1, r2: 0, ech: 0, tau1: 0, lect: 0, trans: 0 },
+  p: { jeu: "etab", t: 0, dis: 0, ic: 0, ul: 1, r2: 0, ech: 0, tau1: 0, lect: 0, trans: 0, sub: "" },
   build(g) {
-    this.ti = titre(g, "Le circuit et les courbes, au même instant", `*E* = ${fr(E_V, 0)} V · *R* = ${fr(R_OHM, 0)} Ω · *r* = ${fr(R_BOB, 0)} Ω · *L* = ${fr(L_H, 2)} H`);
+    this.ti = titre(g, "Le circuit et les courbes, au même instant", "");
     this.mode = "";
 
     /* ----- les deux courbes, sur le même axe des temps ----- */
@@ -198,6 +200,7 @@ scene("couple", {
     const TMs = tri ? TMT : T_MAX, X = (s) => X0 + ((X1 - X0) * s) / TMs;
     const t = clamp(p.t, 0, TMs), ic = clamp(p.ic, 0, 1), ul = clamp(p.ul, 0, 1), dis = tri ? 0 : clamp(p.dis, 0, 1), ech = clamp(p.ech, 0, 1);
     const dec = dis >= 0.5, R2 = p.r2 > 0.5 ? R2_OHM : 0;
+    this.ti.set("Le circuit et les courbes, au même instant", p.sub || (tri ? "un courant triangulaire dans une bobine (*L*, *r*)" : `*E* = ${fr(E_V, 0)} V · *R* = ${fr(R_OHM, 0)} Ω · *r* = ${fr(R_BOB, 0)} Ω · *L* = ${fr(L_H, 2)} H`));
     // les lois du jeu : i en mA, u_L en V
     const iF = tri ? (s) => triI(s) * 1e3 : dec ? (s) => iRup(s, R2) * 1e3 : (s) => iEt(s) * 1e3;
     const uF = tri ? triU : dec ? (s) => uLRup(s, R2) : uLt;

@@ -18,6 +18,7 @@
  *   p63     le point (τ ; 63 % de I₀)
  *   ghL     0 → 1 : la courbe de L × 2 ; ghR : la courbe de R × 2 ; base : la courbe de référence, en gris
  *   L R r E les valeurs des curseurs ; live : les valeurs et τ affichés dans le sous-titre, ym suit le palier
+ *   saut    0 → 1 : l'hypothèse « i saute de 0 à SAUT.i » : un trait vertical en pointillés à t = 0, puis la ligne horizontale
  *   pts     (jeu 'energie') les deux points, 100 mA et 200 mA
  *   rep     (jeu 'bac23') 1 : le point où (T) coupe le palier ; 2 : la lecture à 37 % de I₀ (la mauvaise)
  *   sub     un sous-titre imposé
@@ -25,7 +26,7 @@
  * (la tangente, les pas, la courbe fantôme, le point lu).
  */
 import {
-  E_V, R_OHM, R_BOB, L_H, TAU, I0, P63, N_PAS, DT_PAS, iPas, dIPas, iEt, uRt, uLt, T_MAX, tauDe, energie, S23, fr,
+  E_V, R_OHM, R_BOB, L_H, TAU, I0, P63, N_PAS, DT_PAS, iPas, dIPas, iEt, uRt, uLt, T_MAX, tauDe, energie, S23, SAUT, fr,
 } from "./dipole-rl-outils";
 
 export function scenesB(ctx, O) {
@@ -43,7 +44,7 @@ const fi = (t, E = E_V, R = R_OHM, r = R_BOB, L = L_H) => iEt(t / MS, E, R, r, L
 const echelle = (pal) => [60, 120, 240, 500, 1000, 1500].find((y) => pal * 1.12 <= y) || 1500;
 
 scene("courbe", {
-  p: { jeu: "etab", xmax: 30, ym: 120, curve: 0, exact: 0, Pline: 0, pas: 0, tan: 0, p63: 0, ghL: 0, ghR: 0, base: 0, L: L_H, R: R_OHM, r: R_BOB, E: E_V, live: 0, pts: 0, rep: 0, sub: "" },
+  p: { jeu: "etab", xmax: 30, ym: 120, curve: 0, exact: 0, Pline: 0, pas: 0, tan: 0, p63: 0, ghL: 0, ghR: 0, base: 0, L: L_H, R: R_OHM, r: R_BOB, E: E_V, live: 0, pts: 0, rep: 0, saut: 0, sub: "" },
   build(g) {
     this.ti = titre(g, "", "");
     const T0 = this.tm = E("g", {}, g);
@@ -59,6 +60,11 @@ scene("courbe", {
     this.st = Array.from({ length: N_PAS }, () => ({ l: line(this.stG, "k-a", 4.5), d: E("circle", { r: 7, class: "s-a" }, this.stG) }));
     this.stT1 = lab(this.stG, 0, 0, "", "rl-l s-ink", "start", 26);
     this.stT2 = lab(this.stG, 0, 0, "", "rl-l s-ink", "start", 26);
+    // l'hypothèse d'un saut de i : un trait vertical en pointillés, puis une ligne horizontale
+    this.sjG = E("g", {}, T0);
+    this.sjV = line(this.sjG, "k-ink", 3.5, { "stroke-dasharray": "9 8" });
+    this.sjH = line(this.sjG, "k-ink", 3.5, { "stroke-dasharray": "9 8" });
+    this.sjT = lab(this.sjG, 0, 0, "", "rl-l s-ink", "start", 26);
     // la tangente à l'origine
     this.tgG = E("g", {}, T0);
     this.tgL = line(this.tgG, "k-a", 3.5, { "stroke-dasharray": "10 8" });
@@ -136,6 +142,8 @@ scene("courbe", {
       setFx(this.stT1, `+ ${fr(d1, 0)} mA`); setT(this.stT1, X(dt) + 16, Y(d1 / 2) + 12);
       setFx(this.stT2, `+ ${fr(d2, 1)} mA`); setT(this.stT2, X(2 * dt) + 16, Y(d1 + d2 / 2) + 12);
       show(this.stT1, clamp(p.pas, 0, 1) * (p.pas < 3 ? 1 : 0)); show(this.stT2, clamp(p.pas - 1, 0, 1) * (p.pas < 3 ? 1 : 0));
+      // le saut hypothétique de i
+      { const is = SAUT.i * MA; setL(this.sjV, X(0), Y(0), X(0), Y(is)); setL(this.sjH, X(0), Y(is), X(p.xmax), Y(is)); setT(this.sjT, X(0) + 22, Y(is) - 16); setFx(this.sjT, `de 0 à ${fr(is, 0)} mA en ${fr(SAUT.dt * 1e6, 0)} µs`); show(this.sjG, p.saut); }
       // la tangente
       setL(this.tgL, X(0), Y(0), X(tau), Y(pal)); setL(this.tgV, X(tau), Y(pal), X(tau), Y(0)); setC(this.tgD, X(tau), Y(pal));
       setT(this.tgT, X(tau), Y(0) + 76); setT(this.tgN, X(tau) + 18, Y(pal) + 40); show(this.tgG, p.tan); show(this.tgN, p.tan);
@@ -144,7 +152,8 @@ scene("courbe", {
       setL(this.pH, X(0), Y(i63), X(tau), Y(i63)); setL(this.pV, X(tau), Y(i63), X(tau), Y(0)); setC(this.pD, X(tau), Y(i63));
       setFx(this.pT, `${fr(i63, 0)} mA`); setT(this.pT, X(tau) + 16, Y(i63) + 36); show(this.pG, p.p63);
       // les titres
-      if (p.live) { a = "Les quatre curseurs"; b = `*L* = ${fr(p.L, 2)} H · *R* = ${fr(p.R, 0)} Ω · *r* = ${fr(p.r, 0)} Ω · *E* = ${fr(p.E, 0)} V`; }
+      if (p.saut > 0.5) { a = "Et si *i* sautait ?"; b = "une hypothèse, tracée en pointillés"; }
+      else if (p.live) { a = "Les quatre curseurs"; b = `*L* = ${fr(p.L, 2)} H · *R* = ${fr(p.R, 0)} Ω · *r* = ${fr(p.r, 0)} Ω · *E* = ${fr(p.E, 0)} V`; }
       else if (p.pas > 0.05) { a = "L’établissement, pas à pas"; b = `un pas dure ${fr(DT_PAS * MS, 1)} ms`; }
       else if (og > 0.5) { a = "Deux montages, deux courbes"; b = gh === "L" ? `trait plein : *L* = ${fr(p.L, 2)} H · trait discontinu : *L* × 2` : `trait plein : *R* = ${fr(p.R, 0)} Ω · trait discontinu : *R* × 2`; }
       else if (p.tan > 0.5) { a = "La tangente à l’origine"; b = "elle rejoint le palier en *τ*"; }
@@ -158,7 +167,7 @@ scene("courbe", {
         setL(q.h, X(0), Y(e), X(ix), Y(e)); setL(q.v, X(ix), Y(e), X(ix), Y(0)); setC(q.d, X(ix), Y(e));
         setFx(q.t, `${fr(e, 1)} mJ`); setT(q.t, X(ix) - 16, Y(e) - 4); show(q.g, clamp(p.pts * 2 - j, 0, 1));
       });
-      a = "L’énergie emmagasinée"; b = "*E*_{m} en fonction de *i* : une parabole";
+      a = "L’énergie emmagasinée"; b = p.curve > 0.5 ? "*E*_{m} en fonction de *i* : une parabole" : "*E*_{m} en fonction de *i*";
     } else if (jeu === "voies") {
       const X = (t) => 110 + (790 * t) / 30, Y = (v) => 590 - (440 * v) / 7;
       if (this._kv !== "v") { this._kv = "v"; axes(this.vAx, X, Y, 0, 30, 5, 7, 1, (v) => String(v), (v) => String(v), "*t* (ms)", "*u* (V)", 56); }
