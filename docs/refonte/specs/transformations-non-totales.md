@@ -21,6 +21,46 @@
 
 ---
 
+## 0. La leçon livrée (état au 2026-11-25)
+
+La leçon livrée (`web/src/components/pilote/transformations-non-totales-moteur.js`) compte **51 étapes**, dans l'ordre et sous les clés du plan : **le fichier de la leçon fait foi** ; les sections 1 à 8 ci-dessous restent le plan d'origine (raisons, sources, leurres). Route `/pilote/transformations-non-totales`, 10 gabarits d'exercices (`exercices/transformations-non-totales.js`), catalogue d'apprentissage `transformations-non-totales.ts` (43 questions, 10 gabarits, 24 conceptions propres à la leçon : `tnt.*`). Première leçon de chimie au format v3 ; onzième leçon.
+
+| # | Partie | Étapes (clés, dans l'ordre) |
+|---|---|---|
+| 0 | Ce qu'il faut savoir | `sav-test`, `sav-ph`, `sav-rappel` |
+| 1 | L'énigme | `deux-flacons`, `ecart`, `question` |
+| 2 | Acide et base | `bronsted`, `acide`, `couple`, `eau-base`, `couples-eq`, `ampholyte` |
+| 3 | Jusqu'où l'acide a réagi | `tableau`, `si-totale`, `xf`, `comparer`, `tau-def`, `tau-formule`, `curseur-ph`, `limitee` |
+| 4 | Les deux réactions qui se croisent | `loupe`, `transfert`, `inverse`, `premiers-tics`, `attendre`, `palier`, `qui`, `vitesses`, `double-fleche`, `equilibre`, `hcl-zoom` |
+| 5 | L'équilibre et ses pièges | `rappel`, `catalyseur`, `vitesse-avancement`, `quasi-totale`, `sens` |
+| 6 | La dilution | `dilution-pari`, `dilution-calc`, `dilution-pourquoi` |
+| 7 | Retour à l'énigme | `retour`, `retour-ph` |
+| 8 | Au bac | `bac`, `bac-eq`, `bac-ed`, `bac-conclure`, `bac-2a`, `bac-2b` |
+| 9 | Bilan | `q1`, `q2`, `q3`, `fin` |
+
+Le rappel est la 32ᵉ étape sur 51 (63 %). La scène `solution` (jeux `becher`, `zoom`, `duo`) est la scène nouvelle acceptée par le propriétaire ; `avancement`, `barres`, `bac`, `quiz`, `end` sont des copies adaptées. Aucune scène n'importe quoi d'une autre leçon (les outils de scène `outilsTnt` sont copiés dans `transformations-non-totales-outils.js`, le générateur de hasard `mulberry32` est le seul import, comme pour `outilsScene`, depuis `radioactivite-outils.js`, dont le plan prévoyait déjà l'import).
+
+**Écarts au plan, et pourquoi.**
+
+1. **Le pH de l'énigme est présenté comme calculé** (décision du propriétaire, §8.2 point 1) : l'étape `deux-flacons` dit « les pH de la leçon sont calculés », et la fiche `phcalc` précise qu'ils viennent d'une donnée de l'acide (son pK_A, enseigné au chapitre suivant) et non d'une mesure ; le mot « mesuré » n'apparaît nulle part. Les étapes disent « le pH vaut » ou « le pH-mètre affiche » (l'afficheur de la scène), jamais « on a mesuré ».
+2. **Deux affirmations non sourcées (§8.2 point 3) ne sont pas affichées comme des faits.** `vitesse-avancement` pose une hypothèse (« une réaction atteint son équilibre très vite ») au lieu d'affirmer que la réaction de l'acide éthanoïque est rapide ; le retour de `comparer` pour « la réaction n'a pas encore fini » ne dit pas « le pH reste 3,4 quand on attend » : il renvoie à la loupe (« x_f est celui de l'état final »).
+3. **Ostwald n'est pas affiché** : ni tag `1888`, ni pari daté sur `dilution-pari` (décision du propriétaire). Brønsted et Lowry (1923) reste sur `bronsted` (source : Wikipédia, deux pages) ; Sørensen (1909) est la fiche `pH`.
+4. **Le modèle de la loupe est calé sur la chimie exacte** : la probabilité de reprise k est déduite de τ = 3,95 % à 1,0 × 10⁻² mol·L⁻¹ (k = 0,0617 au lieu de 0,06 du plan, p_d = 0,01) ; le palier dilué vaut alors exactement 11,95 % (`VERIF_MODELE`). La graine de la série (2929) est **choisie par recherche puis figée** : le code vérifie ses contraintes (un seul transfert au tic 1 ; compte de 2 à 3 au tic 5 ; de 2 à 7 de 10 à 40 ; exactement 4 aux tics 30 et 45 ; une molécule redevenue AH au tic 35 ; 10 cédés et 10 repris sur la fenêtre de `vitesses` ; 12 au tic 80) et le moteur refuse de se monter si l'une manque. L'étape `sens` a sa propre série (100 ions au départ, graine 1) avec une probabilité de reprise plafonnée à 0,5. Les sept paris et questions de la figure-clé affichent ces valeurs, calculées par les outils.
+5. **L'axe des tics du graphe défile** (30 tics visibles, qui avancent avec `tic`) au lieu d'un axe fixe de 0 à 30 : `qui`, `vitesses` et `dilution-pari` vont jusqu’aux tics 35, 45 et 80. L'axe des ordonnées va de 0 à 20 molécules.
+6. **`vol` espace peu les molécules** : la grille ne peut pas s'étendre dix fois (surface) sans sortir de la scène ; le bocal dilué est dit par le cadre de la loupe qui s'agrandit, des molécules un peu plus espacées (pas de 40 à 44 unités), des jetons H₃O⁺ plus rares, la mention « dix fois plus grand » et le pH-mètre couplé à la courbe lisse (4,40 au moment de la dilution, puis 3,92). Les glyphes gardent 30 unités.
+7. **`sav-test` et `sav-rappel` montrent le tableau en squelette** (lignes et cases vides, sans noms d'espèces) au lieu d'une scène vide (`cases:0`) : un rappel de la forme du tableau. La scène `avancement` a donc deux paramètres de plus (`squelette`, `cache`, ce dernier pour `bac-2a` : la case de la ligne finale reste masquée jusqu'à la réponse).
+8. **`quasi-totale` sur la scène `barres`** (deux barres presque égales, τ non écrit) : le plan ne donnait pas de scène. `retour-ph` et `sav-ph` utilisent le jeu `becher` avec un pH imposé (`pv`) et, pour `sav-ph`, un flacon sans nom (`nomx`) : le pH 3,0 n'est pas celui de l'acide éthanoïque de la scène.
+9. **Le jeu `zoom` gagne deux gros plans** que le plan décrivait en une phrase : le gros plan de `bronsted`, `acide`, `couple`, `eau-base`, `couples-eq`, `ampholyte` (le proton passe de l'acide à l'eau, ou de l'eau à NH₃ ; paramètres `gros`, `tr`), et la vignette de `inverse` (paramètres `vign`, `vtr`). Le jeu `duo` (deux loupes côte à côte) sert `retour`.
+10. **`curseur-ph`** : le curseur du pH commence à −log C (borne imposée) et la note affiche τ en fraction et en pourcentage ; la phrase en gras (« Une unité de pH de plus : τ divisé par 10 ») est dans le texte de l'étape, comme dans le plan, bien qu'elle nomme ce que le geste révèle.
+11. **Exercices** : `tnt-equilibre` ne porte que `pc-pc` et `pc-sm 2.2.1.6` et `filieres: ["PC", "SM"]` (pas de tiret en SVT dans ce chapitre) ; il ne contient aucune question « choc efficace ». `tnt-dilution` ne porte que `pc-svt 2.2.3.6` : en PC et SM, son titre dit « enrichissement ». Dans `tnt-bac`, les valeurs imprimées (2022, 2021, 2023) sont rejouées une fois sur trois ; le sujet 2021 ne nomme pas l'acide (non relevé dans le dépôt).
+12. **`bac-ed`** reste une dérivation commentée de quatre lignes sans ligne choisie (la conclusion est la question suivante, `bac-conclure`) : la cible « une ligne choisie » du contrôle `pilotes-regles` reste non atteinte, sans bloquer.
+
+**Conceptions → étapes (B5).** Les tableaux du §5 valent, aux écarts ci-dessus près ; `web/scripts/apprentissage-gen/spec-transformations-non-totales.mjs` donne, option par option, l'étiquette de chaque leurre (conception `tnt.*` du registre de `graphe-transversal.ts`, « inattention » ou « aucune »). Le tirage des cinq exercices de calcul rejette les coïncidences (leurre dans deux tolérances de la bonne réponse, deux leurres entre eux) ; aucun tirage n'a été rejeté à la main.
+
+**Reste à vérifier (non affiché comme un fait).** Les points 1 à 11 du §8.2 : le pH 3,4 (calculé), le pH 2,0 de l'acide chlorhydrique (valeur idéale), « le pH reste 3,4 quand on attend » et « l'équilibre est atteint très vite » (réécrits en hypothèses), Brønsted et Lowry (deux pages Wikipédia), Ostwald (non utilisé), Arrhenius et Berthollet (non utilisés), les états physiques et la flèche au barème, les prérequis de 1ère Bac, la lecture de `2.2.1.3`, le modèle de la loupe. Les animations n'ont été contrôlées que dans leur état final (captures) ; le geste « Tic suivant » et les curseurs de `curseur-ph` ont été parcourus par le script de parcours, pas jugés à la main.
+
+---
+
 ## 1. Périmètre
 
 ### 1.1 Le nom et les capacités officielles

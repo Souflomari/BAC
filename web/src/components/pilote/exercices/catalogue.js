@@ -15,6 +15,7 @@ import { EXERCICES as noyaux } from "./noyaux.js";
 import { EXERCICES as suites } from "./suites.js";
 import { EXERCICES as dipoleRc } from "./dipole-rc.js";
 import { EXERCICES as dipoleRl } from "./dipole-rl.js";
+import { EXERCICES as transformationsNonTotales } from "./transformations-non-totales.js";
 
 export const CATALOGUE = {
   logarithme,
@@ -27,6 +28,7 @@ export const CATALOGUE = {
   suites,
   "dipole-rc": dipoleRc,
   "dipole-rl": dipoleRl,
+  "transformations-non-totales": transformationsNonTotales,
 };
 
 /** Les séances au-delà de la première, quand une notion en a plusieurs : leur titre. */

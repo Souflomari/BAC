@@ -124,7 +124,7 @@ jobs:
           examens=$(node scripts/routes-examens.mjs)
           test -n "$routes" && test -n "$examens"
           pages="/ /examens /matieres/pc /matieres/maths /matieres/svt /matieres/philo /commencer /connexion"
-          lecons=$(for p in logarithme radioactivite expression-genetique exponentielle meiose transmission noyaux suites dipole-rc dipole-rl; do echo "/pilote/$p /pilote/$p/exercices"; done)
+          lecons=$(for p in logarithme radioactivite expression-genetique exponentielle meiose transmission noyaux suites dipole-rc dipole-rl transformations-non-totales; do echo "/pilote/$p /pilote/$p/exercices"; done)
           node scripts/latex-nu.mjs --porte $routes $examens $pages
           node scripts/typo-francaise.mjs --porte $routes $examens $pages $lecons
 

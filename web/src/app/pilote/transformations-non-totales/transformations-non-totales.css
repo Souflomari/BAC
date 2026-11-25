@@ -1,0 +1,61 @@
+/* Leçon « Transformations non totales » (V3) : ce qui lui est propre, par-dessus ../logarithme/pilote.css
+   (commun aux leçons). Tout est scopé sous [data-pilote="transformations-non-totales"] ; couleurs : jetons seulement. */
+
+/* contrôles du script : un geste (quatre curseurs), un saut (« Passer à la suite ») */
+.pilote[data-pilote="transformations-non-totales"] .ctl-btns { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 4px; }
+.pilote[data-pilote="transformations-non-totales"] .ctl-btn { font: 700 1rem var(--font-ui); min-height: 48px; padding: 12px 18px; cursor: pointer; background: var(--color-text-primary); color: var(--color-surface-base); border: 1px solid var(--color-text-primary); }
+.pilote[data-pilote="transformations-non-totales"] .ctl-btn.alt { background: transparent; color: var(--color-text-primary); }
+.pilote[data-pilote="transformations-non-totales"] .ctl-btn[hidden] { display: none; }
+.pilote[data-pilote="transformations-non-totales"] .ctl-btn:disabled { opacity: .45; cursor: default; }
+.pilote[data-pilote="transformations-non-totales"] .ctl-btn:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+.pilote[data-pilote="transformations-non-totales"] .saut { margin-top: 4px; }
+.pilote[data-pilote="transformations-non-totales"] .saisie { display: flex; align-items: baseline; gap: 10px; font-size: 1.0625rem; }
+.pilote[data-pilote="transformations-non-totales"] .saisie input { font: 1.0625rem var(--font-ui); padding: 10px 12px; border: 1px solid var(--color-text-primary); background: var(--color-surface-base); color: var(--color-text-primary); width: min(16rem, 100%); }
+.pilote[data-pilote="transformations-non-totales"] .saisie input:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 1px; }
+.pilote[data-pilote="transformations-non-totales"] .saisie input:disabled { color: var(--color-text-secondary); }
+.pilote[data-pilote="transformations-non-totales"] .apres:empty { display: none; }
+.pilote[data-pilote="transformations-non-totales"] .apres { margin-top: 14px; }
+.pilote[data-pilote="transformations-non-totales"] .apres .small { margin: 0 0 6px; }
+.pilote[data-pilote="transformations-non-totales"] sup, .pilote[data-pilote="transformations-non-totales"] sub { line-height: 0; }
+
+/* scène SVG : styles repris de la leçon voisine (étiquettes en gras, indices) */
+.pilote[data-pilote="transformations-non-totales"] .rd-fort { font-size: 18px; font-weight: 700; }
+.pilote[data-pilote="transformations-non-totales"] .rd-ind { font-size: 16px; }
+
+/* dix parties dans la barre du haut : des noms courts, jamais tronqués */
+.pilote[data-pilote="transformations-non-totales"] .beats { gap: 6px; }
+@media (max-width: 1500px) and (min-width: 900px) {
+  .pilote[data-pilote="transformations-non-totales"] .pilote-barre { gap: 20px; }
+}
+
+/* la rédaction attendue au bac : une copie, ligne à ligne */
+.pilote[data-pilote="transformations-non-totales"] .tn-copie { margin: 4px 0 16px; padding: 12px 16px; border-left: 3px solid var(--color-text-primary); background: var(--color-surface-container-low); display: grid; gap: 8px; font-size: 1.0625rem; line-height: 1.45; }
+.pilote[data-pilote="transformations-non-totales"] .tn-copie p { margin: 0; }
+.dark .pilote[data-pilote="transformations-non-totales"] .tn-copie { background: var(--color-surface-container-high); }
+.pilote[data-pilote="transformations-non-totales"] .mot-carte svg text { font-family: var(--font-ui); }
+
+/* un mot à trait d'union ou à fiche ne se coupe pas à la ligne */
+.pilote[data-pilote="transformations-non-totales"] .nw { white-space: nowrap; }
+
+/* scène SVG : tailles des étiquettes (lisibles à 390 px) */
+.pilote[data-pilote="transformations-non-totales"] [data-pilote-scene] .tn-t { font-size: 26px; font-weight: 700; }
+.pilote[data-pilote="transformations-non-totales"] [data-pilote-scene] .tn-s { font-size: 22px; }
+.pilote[data-pilote="transformations-non-totales"] [data-pilote-scene] .tn-l { font-size: 26px; }
+.pilote[data-pilote="transformations-non-totales"] [data-pilote-scene] .tn-g { font-size: 30px; font-weight: 700; }
+.pilote[data-pilote="transformations-non-totales"] [data-pilote-scene] .t-sous { font-size: 22px; }
+.pilote[data-pilote="transformations-non-totales"] [data-pilote-scene] .t-tick { font-size: 22px; }
+
+/* les molécules de la loupe : AH plein et son proton, A⁻ ouvert, le jeton H₃O⁺, le proton en vol, les points du compte */
+.pilote[data-pilote="transformations-non-totales"] [data-pilote-scene] .tn-ah { fill: var(--st-fb); stroke: var(--st-ink); stroke-width: 2.5px; }
+.pilote[data-pilote="transformations-non-totales"] [data-pilote-scene] .tn-an { fill: var(--st-bg); stroke: var(--st-ink); stroke-width: 2.5px; }
+.pilote[data-pilote="transformations-non-totales"] [data-pilote-scene] .tn-pr { fill: var(--st-ink); stroke: var(--st-bg); stroke-width: 1.5px; }
+.pilote[data-pilote="transformations-non-totales"] [data-pilote-scene] .tn-tok { fill: var(--st-ink); }
+.pilote[data-pilote="transformations-non-totales"] [data-pilote-scene] .tn-fly { fill: var(--st-ink); stroke: var(--st-bg); stroke-width: 2px; }
+.pilote[data-pilote="transformations-non-totales"] [data-pilote-scene] .tn-pt { fill: var(--st-a); }
+.pilote[data-pilote="transformations-non-totales"] [data-pilote-scene] .tn-pn { fill: var(--st-ink); }
+
+/* les deux curseurs de la figure `barres` : C et pH */
+.pilote[data-pilote="transformations-non-totales"] .tn-cur { display: grid; gap: 4px; margin: 8px 0 4px; }
+.pilote[data-pilote="transformations-non-totales"] .tn-cur label { display: grid; grid-template-columns: 2.4rem 1fr 9.5rem; align-items: center; gap: 10px; font-size: 1.0625rem; }
+.pilote[data-pilote="transformations-non-totales"] .tn-cur input[type="range"] { min-width: 0; height: 44px; accent-color: var(--color-text-primary); }
+.pilote[data-pilote="transformations-non-totales"] .tn-cur output { font: 700 1.0625rem var(--font-ui); text-align: right; font-variant-numeric: tabular-nums; }
