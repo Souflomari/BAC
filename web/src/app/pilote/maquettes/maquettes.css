@@ -15,7 +15,6 @@
   --mq-ink-soft: color-mix(in srgb, var(--color-text-primary) 10%, transparent);
   --mq-line: var(--color-border-subtle);
   --mq-line-strong: var(--color-border-soft);
-  --mq-grid: color-mix(in srgb, var(--color-text-primary) 5%, transparent);
   color: var(--color-text-primary);
 }
 
@@ -23,7 +22,6 @@
   --mq-ink: color-mix(in srgb, var(--color-text-primary) 90%, var(--color-surface-base));
   --mq-sig-soft: color-mix(in srgb, var(--color-signal) 26%, transparent);
   --mq-ink-soft: color-mix(in srgb, var(--color-text-primary) 18%, transparent);
-  --mq-grid: color-mix(in srgb, var(--color-text-primary) 6%, transparent);
 }
 
 .mq-card {
@@ -34,10 +32,6 @@
 .mq-stage-box {
   position: relative;
   background-color: var(--mq-stage);
-  background-image:
-    linear-gradient(var(--mq-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--mq-grid) 1px, transparent 1px);
-  background-size: 32px 32px;
   border-bottom: 1px solid var(--mq-line);
 }
 

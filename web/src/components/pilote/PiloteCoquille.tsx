@@ -8,40 +8,13 @@
  * Le moteur impératif de chaque leçon (`*-moteur.js`, sur `noyau.js`) se
  * monte dans ce squelette après l'hydratation et rend son démontage.
  *
- * Le quadrillé de la scène ne montre que des carrés entiers (retour du
- * propriétaire, 2026-10-26) : il est posé dans une zone d'un nombre entier
- * de carrés, centrée, recalculée quand la scène change de taille.
+ * La scène n'a plus de quadrillé de fond (retour du propriétaire, 2026-11-25) :
+ * un fond uni, la figure seule.
  */
 
 import Link from "next/link";
 import { useEffect, useRef, type ReactNode } from "react";
 import { useHydrated } from "@/lib/useHydrated";
-
-const CARRE = 40;
-
-function Quadrille() {
-  const zone = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = zone.current;
-    const parent = el?.parentElement;
-    if (!el || !parent) return;
-    const ajuster = () => {
-      const w = parent.clientWidth;
-      const h = parent.clientHeight;
-      const nx = Math.max(1, Math.floor((w - 1) / CARRE));
-      const ny = Math.max(1, Math.floor((h - 1) / CARRE));
-      el.style.width = `${nx * CARRE + 1}px`;
-      el.style.height = `${ny * CARRE + 1}px`;
-      el.style.left = `${Math.floor((w - nx * CARRE - 1) / 2)}px`;
-      el.style.top = `${Math.floor((h - ny * CARRE - 1) / 2)}px`;
-    };
-    ajuster();
-    const obs = new ResizeObserver(ajuster);
-    obs.observe(parent);
-    return () => obs.disconnect();
-  }, []);
-  return <div ref={zone} className="quadrille" aria-hidden="true" />;
-}
 
 export function PiloteCoquille({
   nom,
@@ -114,7 +87,6 @@ export function PiloteCoquille({
       </div>
       <div className="pilote-main">
         <section className="stage-wrap" aria-label="Scène animée">
-          <Quadrille />
           <div className="plaque" id="plaque" />
           <svg
             data-pilote-scene=""
