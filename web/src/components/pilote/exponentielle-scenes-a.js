@@ -93,7 +93,7 @@ const US = []; for (let i = 0; i <= 400; i++) US.push(-3.6 + ((Math.log(7.6) + 3
 const GLIDE = [-1.5, 0, 1];
 scene("miroir", {
   p: { lnc: 0, diag: 0, a: A_PT, pA: 0, pA2: 0, perp: 0, refl: 0, expc: 0, pts: 0, ptsR: 0, zone: 0, zoneR: 0, asym: 0, k: 0, kOn: 0,
-    b: B_TAN, tanB: 0, tanB2: 0, xt: 0, tanX: 0, tg0: 0, tgp: 0, zm: 0 },
+    b: B_TAN, tanB: 0, tanB2: 0, rb: 0, xt: 0, tanX: 0, mr: 0, tg0: 0, tgp: 0, zm: 0 },
   // le chemin de la courbe à l'instant r du pliage : (eᵘ ; u) pour r = 0 (ln), (u ; eᵘ) pour r = 1 (exp)
   pathAt(r, X, Y) {
     let d = "";
@@ -122,6 +122,9 @@ scene("miroir", {
     this.tcL = E("line", { class: "k-ink", "stroke-width": 2.6 }, cg); this.tcT = E("path", { class: "k-c nofill", "stroke-width": 2, "stroke-dasharray": "6 4" }, cg);
     this.pr = E("line", { class: "k-dim", "stroke-dasharray": "5 5", "stroke-width": 2 }, cg);
     this.xV = E("line", { class: "k-ink", "stroke-dasharray": "6 5", "stroke-width": 2 }, cg);
+    // « derivee » : le segment M M′ (perpendiculaire à y = x) et la tangente à ln au point reflété M′
+    this.mS = E("line", { class: "k-dim", "stroke-dasharray": "5 5", "stroke-width": 1.8 }, cg);
+    this.mT = E("line", { class: "k-ink", "stroke-dasharray": "7 5", "stroke-width": 2.4 }, cg);
     this.xT = E("line", { class: "k-a", "stroke-width": 3.4 }, cg);
     this.tgL = E("line", { class: "k-a", "stroke-width": 3 }, cg);
     // les graduations (réutilisées à chaque image)
@@ -148,12 +151,19 @@ scene("miroir", {
     this.tbA = fx(g, 0, 0, "", "t-lab2 s-ink", "middle"); this.tbB = fx(g, 0, 0, "1", "t-lab2 s-ink"); this.tbS = fx(g, 0, 0, "", "t-lab2 s-ink", "middle");
     this.tcP = E("circle", { r: 7, class: "s-ink" }, g);
     this.tcS = fx(g, 0, 0, "", "t-lab2 s-ink");
+    // les cotes du triangle reflété : Δx et Δy ont changé de rôle (1 sur l'horizontale, B sur la verticale)
+    this.tcA = fx(g, 0, 0, "1", "t-lab2 s-ink", "middle"); this.tcB = fx(g, 0, 0, "", "t-lab2 s-ink", "end");
     // un point courant de exp : hauteur et pente
     this.xD = E("circle", { r: 8, class: "s-a" }, g);
+    this.mD = E("circle", { r: 7, class: "s-ink" }, g);
     this.lg = E("g", {}, g);
-    E("line", { x1: 574, x2: 574, y1: 586, y2: 612, class: "k-ink", "stroke-dasharray": "6 5", "stroke-width": 2.4 }, this.lg);
-    E("line", { x1: 560, x2: 590, y1: 654, y2: 636, class: "k-a", "stroke-width": 3.4 }, this.lg);
-    this.lgH = fx(this.lg, 608, 606, "", "t-lab2 s-ink"); this.lgP = fx(this.lg, 608, 650, "", "t-lab2 s-ink");
+    E("line", { x1: 574, x2: 574, y1: 546, y2: 572, class: "k-ink", "stroke-dasharray": "6 5", "stroke-width": 2.4 }, this.lg);
+    E("line", { x1: 560, x2: 590, y1: 614, y2: 596, class: "k-a", "stroke-width": 3.4 }, this.lg);
+    this.lgH = fx(this.lg, 608, 566, "", "t-lab2 s-ink"); this.lgP = fx(this.lg, 608, 610, "", "t-lab2 s-ink");
+    // la pente de ln au point reflété : l'inverse
+    this.lm = E("g", {}, g);
+    E("line", { x1: 560, x2: 590, y1: 654, y2: 642, class: "k-ink", "stroke-dasharray": "7 5", "stroke-width": 2.4 }, this.lm);
+    this.lgM = fx(this.lm, 608, 654, "", "t-lab2 s-ink");
     // la tangente en 0 : y = x + 1, et le zoom
     this.tgP = E("circle", { r: 7, class: "s-ink" }, g); this.tgPT = fx(g, 0, 0, "(0 ; 1)", "t-lab2 s-ink", "end");
     this.tgT = fx(g, 0, 0, "*y* = *x* + 1", "t-lab2 s-ink", "middle");
@@ -229,16 +239,28 @@ scene("miroir", {
     at(this.tbA, X(B * 0.62), Y(lB - 1) - 12); setFx(this.tbA, ent(B)); show(this.tbA, p.tanB * so);
     at(this.tbB, X(B) + 12, Y(lB - 0.5) + 7); show(this.tbB, p.tanB * so);
     at(this.tbS, X(B + 1.5), Y(lB + 1.5 * sB) - 26); setFx(this.tbS, `pente 1/${ent(B)}`); show(this.tbS, p.tanB * so);
-    // son reflet : la tangente à exp en (ln b ; b), de pente b : avancer de 1, monter de b (sans cotes : la pente seule)
-    seg(this.tcL, lB - 1.6, B - 1.6 * B, lB + 0.7, B + 0.7 * B); show(this.tcL, p.tanB2 * so);
-    this.tcT.setAttribute("d", `M${f(X(lB - 1))} ${f(Y(0))}V${f(Y(B))}H${f(X(lB))}`); show(this.tcT, p.tanB2 * so);
-    pt(this.tcP, lB, B); show(this.tcP, p.tanB2 * so);
-    at(this.tcS, X(lB) + 18, Y(B) + 34); setFx(this.tcS, `pente ${ent(B)}`); show(this.tcS, p.tanB2 * so);
+    // son reflet : la tangente et son triangle glissent de ln vers exp, (x ; y) devient (y ; x) à l'instant rb ;
+    // à rb = 1 : la tangente à exp en (ln b ; b), de pente b (avancer de 1, monter de b)
+    const rf = (x, y) => [X(x + (y - x) * p.rb), Y(y + (x - y) * p.rb)], von = p.tanB2 * (p.rb > 0.01 ? 1 : 0) * so;
+    const ra = rf(B - 3.6, lB - 3.6 * sB), rz = rf(B + 3.4, lB + 3.4 * sB);
+    set(this.tcL, { x1: ra[0], y1: ra[1], x2: rz[0], y2: rz[1] }); show(this.tcL, von);
+    const t0 = rf(0, lB - 1), t1 = rf(B, lB - 1), t2 = rf(B, lB);
+    this.tcT.setAttribute("d", `M${f(t0[0])} ${f(t0[1])}L${f(t1[0])} ${f(t1[1])}L${f(t2[0])} ${f(t2[1])}`); show(this.tcT, von);
+    const rp = rf(B, lB); set(this.tcP, { cx: rp[0], cy: rp[1] }); show(this.tcP, von);
+    const fin = clamp((p.rb - 0.85) / 0.15, 0, 1) * p.tanB2 * so;
+    at(this.tcS, rp[0] + 18, rp[1] + 34); setFx(this.tcS, `pente ${ent(B)}`); show(this.tcS, fin);
+    at(this.tcA, X(lB - 0.5), Y(B) - 12); show(this.tcA, fin);
+    at(this.tcB, X(lB - 1) - 10, Y(B / 2) + 7); setFx(this.tcB, ent(B)); show(this.tcB, fin);
     // un point courant de exp : sa hauteur, sa pente
     const xt = p.xt, ex = Math.exp(xt);
     seg(this.xT, xt - 1.2, ex - 1.2 * ex, xt + 1.2, ex + 1.2 * ex); show(this.xT, p.tanX * so);
     seg(this.xV, xt, 0, xt, ex); show(this.xV, p.tanX * so); pt(this.xD, xt, ex); show(this.xD, p.tanX * so);
     setFx(this.lgH, `hauteur ${fr(ex, 2)}`); setFx(this.lgP, `pente ${fr(ex, 2)}`); show(this.lg, p.tanX * so);
+    // le reflet M′ = (eˣ ; x) sur ln : la tangente y est de pente 1/eˣ, l'inverse de la hauteur
+    seg(this.mS, xt, ex, ex, xt); show(this.mS, p.mr * p.tanX * so);
+    seg(this.mT, 0.35 * ex, xt + (0.35 * ex - ex) / ex, ex + 1.4, xt + 1.4 / ex); show(this.mT, p.mr * p.tanX * so);
+    pt(this.mD, ex, xt); show(this.mD, p.mr * p.tanX * so);
+    setFx(this.lgM, `pente de ln ${fr(1 / ex, 2)}`); show(this.lm, p.mr * p.tanX * so);
     // la tangente y = x + 1 : d'abord le point (0 ; 1), puis la droite, puis le zoom
     seg(this.tgL, -2.4, -1.4, 4.2, 5.2); show(this.tgL, p.tg0);
     pt(this.tgP, 0, 1); const sp = Math.max(p.tg0, p.tgp); show(this.tgP, sp); at(this.tgPT, X(0) - 14, Y(1) - 14); show(this.tgPT, sp * so);

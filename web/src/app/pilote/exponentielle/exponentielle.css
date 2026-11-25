@@ -28,3 +28,6 @@
 
 /* « ln » et « exp » en romain : dans la police condensée du panneau et des scènes, « ln » se lit « In » */
 .pilote[data-pilote="exponentielle"] .fn { font-family: KaTeX_Main, "Latin Modern Roman", "Times New Roman", serif; font-style: normal; letter-spacing: .01em; }
+
+/* le curseur de « la dérivée » attend le pari : caché (pas seulement grisé) jusque-là */
+.pilote[data-pilote="exponentielle"] .ctl[hidden] { display: none; }

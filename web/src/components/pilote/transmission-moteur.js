@@ -26,6 +26,7 @@ import { scenesA } from "./transmission-scenes-a";
 import { scenesB } from "./transmission-scenes-b";
 import { scenesC, CARTE_MAX } from "./transmission-scenes-c";
 import { scenesD } from "./transmission-scenes-d";
+import { scenesE } from "./transmission-scenes-e";
 
 const pc = (x, d = 1) => `${fr(x, d)}${NB}%`;
 
@@ -74,10 +75,13 @@ scenesA(ctx, O);
 scenesB(ctx, O);
 scenesC(ctx, O, QUIZ, FIN);
 scenesD(ctx, O);
+scenesE(ctx, O);
 
 /* ---------- les états de scène ---------- */
 const EC = (o) => ({ crx: 0, v1: 0, v2: 0, v3: 0, fcnt: 0, grille: 0, fill: 99, phe: 0, cls: "", aire: 0, obs: 0, tot: 0, leg: 0, hd: 1, sel: -1, wl: 1, gn: 0, xb: 1, ...o });
 const CX = (o) => EC({ crx: 1, v1: 1, ...o });
+// la scène `lies` : l'état de repos (méiose grande, pas de barre), puis ce que l'étape change
+const LI = (o) => ({ u: 0, al: 0, tet: 0, gam: 0, rc: 0, bar: 0, tc: 0, sum: 0, ...o });
 const GR = (cas, o) => EC({ grille: 1, G: cas, ...o });
 const MEI = (lab, o) => ({ ph: 0, plq: 0, tet: 0, al: 0, or2: 0, gam: 0, co: 0, chi: 0, lab, gm: 1, ...o });
 const D = (cas, extra) => ({ ...cas, ...extra });
@@ -301,21 +305,21 @@ const STEPS = [
     ["non : liés, car les classes sont très inégales", true, "Oui : des gènes indépendants donneraient quatre classes égales."],
     ["oui, car il y a quatre classes", false, "Tu as cru que quatre classes disent « indépendants ». Des gènes indépendants donnent quatre classes égales, pas deux grandes et deux petites.", "Quatre classes égales ou inégales pour des gènes indépendants ?"],
     ["liés, sans crossing-over : l’hypothèse est vérifiée", false, `Les ${pc(SV24R_REC, 0)} de souris recombinées ne viennent ni de G L ni de g ℓ. L’hypothèse est réfutée : c’est un linkage relatif, avec crossing-over.`, "Sans crossing-over, existerait-il des souris G ℓ ou g L ?"]]) } },
-{ cle: "crossing-over", beat: 6, scene: "meiose", set: MEI(LAB.souris, { ph: 2, al: 1, tet: 1, chi: 1, co: 0 }), sujet: "d’où vient un gamète recombiné",
+{ cle: "crossing-over", beat: 6, scene: "lies", set: LI({ u: 0, al: 1, tet: 1 }), sujet: "d’où vient un gamète recombiné",
   text: ["Dans le test-cross, des souris [G, ℓ] existent : chacune a reçu de F1 un gamète G ℓ. Or les chromosomes de F1 portent G L et g ℓ.", { t: "D’où vient un gamète G ℓ ?", fort: true }],
-  pari: { label: LB("Ton pari"), reveal: [{ p: { co: 1 }, d: 2200, w: 300 }, { p: { ph: 8, tet: 0, chi: 0 }, d: 4000, w: 300 }, { p: { gam: 1 }, d: 500 }], apres: { html: "Cet échange de segments est le [[crossing-over]]. Les gamètes G ℓ et g L, absents des chromosomes de F1, sont <b>recombinés</b> : c’est le brassage intrachromosomique. Les deux autres, G L et g ℓ, sont <b>parentaux</b>. Des gènes liés qui donnent des recombinés sont en [[linkage-relatif|linkage relatif]]." }, opts: [
+  pari: { label: LB("Ton pari"), reveal: [{ p: { u: 2 }, d: 3200, w: 300 }, { p: { u: 4 }, d: 4200, w: 300 }, { p: { gam: 1, rc: 1 }, d: 600 }], apres: { html: "Cet échange de segments est le [[crossing-over]]. Les gamètes G ℓ et g L, absents des chromosomes de F1, sont <b>recombinés</b> : c’est le brassage intrachromosomique. Les deux autres, G L et g ℓ, sont <b>parentaux</b>. Des gènes liés qui donnent des recombinés sont en [[linkage-relatif|linkage relatif]]." }, opts: [
     { t: "d’un échange entre les deux homologues", fb: "Tu avais vu juste : c’est ce que montre la figure, un échange de segments entre homologues en prophase I." },
     { t: "d’une mutation : L devenu ℓ", fb: `Une mutation est bien trop rare pour donner ${pc(SV24R_REC, 0)} des gamètes. Regarde ce que font les deux homologues en prophase I.` },
     { t: "du testeur, qui a donné son ℓ", fb: "Le testeur donne toujours g ℓ : son ℓ ne dit rien. Pour être [G, ℓ], la souris a reçu G ℓ de F1." }] } },
-{ cle: "deux-sur-quatre", beat: 6, scene: "meiose", set: MEI(LAB.souris, { ph: 8, al: 1, co: 1, gam: 0 }), sujet: "deux gamètes sur quatre sont recombinés",
+{ cle: "deux-sur-quatre", beat: 6, scene: "lies", set: LI({ u: 4, al: 1 }), sujet: "deux gamètes sur quatre sont recombinés",
   text: ["Une méiose avec un crossing-over entre G et L donne quatre gamètes.", { t: "Combien sont recombinés ?", fort: true }],
-  verifie: { reveal: [{ p: { gam: 1 }, d: 600 }], ...VF([
+  verifie: { reveal: [{ p: { gam: 1, rc: 1 }, d: 600 }], ...VF([
     ["2 sur 4", true, "Oui : le crossing-over échange 2 chromatides non sœurs sur 4. Les deux autres restent parentales."],
     ["les 4", false, "Tu as cru que tout est échangé. Le crossing-over ne concerne que 2 des 4 chromatides.", "Combien de chromatides participent à un échange ?"],
     ["1 sur 4", false, "Tu n’as compté qu’une chromatide. L’échange modifie les deux qui se croisent.", "Un échange concerne-t-il une chromatide ou deux ?"]]) } },
-{ cle: "pourcentage", beat: 6, scene: "echiquier", set: GR(D(CAS.sourisTC, { sub: "test-cross : les cases recombinées sont allumées" }), { fill: 4, aire: 1, phe: 1, cls: "rec", leg: 0 }), sujet: "la part de recombinés",
+{ cle: "pourcentage", beat: 6, scene: "lies", set: LI({ u: 4, al: 1, gam: 1, rc: 1 }), seq: [{ p: { bar: 1 }, d: 1400, w: 300 }, { p: { tc: 1 }, d: 1300 }], sujet: "la part de recombinés",
   text: ["Le sujet ne demande pas ce calcul, mais la suite en a besoin.", { t: "Dans le test-cross des souris, quelle est la part de recombinés ?", fort: true }],
-  pari: { label: "Réponds", ...VF([
+  pari: { label: "Réponds", reveal: [{ p: { sum: 1 }, d: 900 }], ...VF([
     [`${pc(SV24R_REC, 0)} : ${pc(SV24R.Gl, 2)} + ${pc(SV24R.gL, 2)}`, true, "Oui : les recombinés sont les deux classes ensemble."],
     [`${pc(SV24R_REC / 2, 1)} : la moyenne de ${fr(SV24R.Gl, 2)} et ${fr(SV24R.gL, 2)}`, false, "Tu as pris la moyenne des deux classes, ou une seule. Les recombinés sont les deux classes ensemble.", "Combien de classes sont recombinées ?"],
     [`${pc(SV24R_PAR, 0)} : ${pc(SV24R.GL, 2)} + ${pc(SV24R.gl, 2)}`, false, "Ce sont les parentaux : G L et g ℓ. Les recombinés sont les deux petites classes.", "Les parentaux sont-ils les petites classes ?"]]) } },

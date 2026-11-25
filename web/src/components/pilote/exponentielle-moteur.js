@@ -143,7 +143,7 @@ const STEPS=[
     ['exp(<i>x</i>) devient de plus en plus négative',false,'Tu as gardé la limite de ln. Le miroir change les rôles : la descente le long de l’axe vertical devient un rapprochement de l’axe horizontal.','Tu as repris la limite de ln. Après le miroir, quel axe la courbe longe-t-elle ?'],
     ['exp s’arrête en <i>x</i> = 0, sans suite à gauche',false,'exp est définie partout : ln prend toutes les valeurs réelles. Pour <i>x</i> &lt; 0, la courbe continue, tout près de l’axe.','Chaque réel <i>x</i> est une valeur prise par ln. exp peut-elle s’arrêter ?']]),
     reveal:[{p:{asym:1},d:900}],apres:{tex:[['\\lim_{x\\to-\\infty}\\exp x=0','lim exp x = 0 quand x → −∞'],['\\lim_{x\\to+\\infty}\\exp x=+\\infty','lim exp x = +∞ quand x → +∞']]}}},
-{cle:'pliage',beat:3,scene:'miroir',set:{refl:0,expc:0,diag:1,pA:0,pA2:0,perp:0,zone:0,zoneR:0,asym:0},seq:[{p:{refl:1},d:2400,w:300},{p:{expc:1},d:600}],
+{cle:'pliage',beat:3,scene:'miroir',set:{refl:0,expc:0,diag:1,pA:0,pA2:0,perp:0,zone:0,zoneR:0,asym:0},seq:[{p:{refl:1},d:2400,w:300},{p:{expc:1},d:600}],ctl:'plie',
   text:['Plie la figure le long de <i>y</i> = <i>x</i>.',{t:'Chaque point (<i>x</i> ; ln <i>x</i>) glisse vers (ln <i>x</i> ; <i>x</i>).',a:0},{t:'La courbe de exp est le reflet de celle de ln dans la droite <i>y</i> = <i>x</i>.',a:1,fort:true},{t:'exp est strictement croissante : c’est le reflet d’une courbe croissante.',a:1}]},
 {cle:'passage',beat:3,scene:'miroir',set:{pts:0,ptsR:0},seq:[{p:{pts:1},d:700,w:300}],sujet:'les points de la courbe de exp',
   text:['Quelques points se lisent directement.','Le point (1 ; 0) est sur la courbe de ln, car ln 1 = 0 ; le point (e ; 1), car ln e = 1.',{t:'Par quel point passe à coup sûr la courbe de exp ?',fort:true}],
@@ -231,23 +231,23 @@ const STEPS=[
     [ent(R_RAPPEL),true,`Oui : 3 ln 2 = ln(2<sup>3</sup>) = ln ${ent(R_RAPPEL)}, donc e<sup>3 ln 2</sup> = e<sup>ln ${ent(R_RAPPEL)}</sup> = ${ent(R_RAPPEL)}.`],
     [ent(3*2),false,`Tu as lu 3 ln 2 comme ln(3 × 2). L’exposant 3 descend devant : 3 ln 2 = ln(2<sup>3</sup>) = ln ${ent(R_RAPPEL)}, pas ln ${ent(3*2)}.`,'Le 3 devant ln 2 vient d’un exposant. Dans quel nombre était-il ?'],
     [ent(3**2),false,`L’exposant 3 porte sur 2 : 2<sup>3</sup> = ${ent(2**3)}, pas 3<sup>2</sup> = ${ent(3**2)}.`,'Dans ln(<i>a</i><sup><i>n</i></sup>) = <i>n</i> ln <i>a</i>, qui est la base : <i>a</i> ou <i>n</i> ?']]),reveal:[{p:{pt:1},d:900}]}},
-{cle:'reflet-pente',beat:6,scene:'miroir',set:{lnc:1,expc:1,refl:1,diag:1,zone:0,zoneR:0,asym:0,pts:0,ptsR:0,pA:0,pA2:0,perp:0,kOn:0,b:B_TAN,tanB:1,tanB2:0,tanX:0,tg0:0,tgp:0,zm:0},sujet:'la pente de exp, par le miroir',
+{cle:'reflet-pente',beat:6,scene:'miroir',set:{lnc:1,expc:1,refl:1,diag:1,zone:0,zoneR:0,asym:0,pts:0,ptsR:0,pA:0,pA2:0,perp:0,kOn:0,b:B_TAN,tanB:1,tanB2:0,rb:0,tanX:0,mr:0,tg0:0,tgp:0,zm:0},sujet:'la pente de exp, par le miroir',
   text:[`En (${B_TAN} ; ln ${B_TAN}), la tangente à ln a pour pente ln′(${B_TAN}) = 1/${B_TAN}.`,`Elle avance de ${B_TAN} quand elle monte de 1.`,{t:'Reflétée dans <i>y</i> = <i>x</i>, sa pente devient…',fort:true}],
   pari:{...VF([
     [ent(PENTE_EXP),true,`Oui : avancer de ${B_TAN} et monter de 1 devient avancer de 1 et monter de ${B_TAN}. La pente devient ${ent(PENTE_EXP)}, et le point reflété est à la hauteur ${ent(PENTE_EXP)}.`],
     [`−1/${B_TAN}`,false,'Tu as pensé que le reflet renverse le sens de la montée. Mais la droite reste montante : sa pente reste positive.','Le reflet échange <i>x</i> et <i>y</i>. Une droite qui monte peut-elle se mettre à descendre ?'],
-    [`1/${B_TAN}`,false,'Tu as gardé la pente. Le miroir échange avancer et monter : la droite change de direction.',`Dans le reflet, « avancer de ${B_TAN}, monter de 1 » devient quoi ?`]]),reveal:[{p:{tanB2:1},d:1300}]}},
+    [`1/${B_TAN}`,false,'Tu as gardé la pente. Le miroir échange avancer et monter : la droite change de direction.',`Dans le reflet, « avancer de ${B_TAN}, monter de 1 » devient quoi ?`]]),reveal:[{p:{tanB2:1},d:60},{p:{rb:1},d:2600}],apres:{html:'Le triangle a été reflété : ses deux côtés ont échangé leurs rôles. Avancer de 1 et monter de '+ent(B_TAN)+', c’est la pente '+ent(B_TAN)+'.'}}},
 {cle:'pente-hauteur',beat:6,scene:'expo',set:{ex:1,u3:0,kOn:0,kPt:0,ki:0,nl:0,sol:0,pt:1,px:X_PH,ptk:2,tg:0,ratio:0,fcn:0},sujet:'la pente de exp, selon la hauteur',
   text:[`Même miroir, autre point : sur la courbe de exp, le point de hauteur ${ent(H_PH)}.`,{t:'Quelle est sa pente ?',fort:true}],
   pari:{...VF([
     [ent(H_PH),true,`Oui : son point miroir sur ln est en <i>x</i> = ${ent(H_PH)}, de pente 1/${ent(H_PH)}. Le reflet inverse la pente.`],
     [`1/${ent(H_PH)}`,false,'Tu as gardé la pente de ln. Le miroir échange avancer et monter : la pente s’inverse.',`Le point miroir est sur ln, de pente 1/${ent(H_PH)}. Que fait le miroir d’une pente ?`],
     [`ln ${ent(H_PH)}`,false,`ln ${ent(H_PH)} ≈ ${fr(X_PH,2)} est l’abscisse du point, pas sa pente.`,`ln ${ent(H_PH)} se lit sur l’axe horizontal. Est-ce une pente ?`]]),reveal:[{p:{tg:1},d:1000}]}},
-{cle:'derivee',beat:6,scene:'miroir',set:{tanB:0,tanB2:0,diag:1,lnc:1,expc:1,refl:1,xt:-1.5,tanX:0},sujet:'la dérivée de exp',
+{cle:'derivee',beat:6,scene:'miroir',ctl:'xt',set:{tanB:0,tanB2:0,rb:0,diag:1,lnc:1,expc:1,refl:1,xt:-1.5,tanX:0,mr:0},sujet:'la dérivée de exp',
   text:[`À la hauteur ${ent(B_TAN)}, la pente est ${ent(B_TAN)} ; à la hauteur ${ent(H_PH)}, elle est ${ent(H_PH)}.`,'Au point (<i>x</i> ; eˣ), la hauteur est eˣ : son point miroir sur ln a pour abscisse eˣ.'],
   deriv:[{tex:'\\exp\'(x)=\\dfrac{1}{\\ln\'\\left(e^{x}\\right)}',alt:'exp′(x) = 1 / ln′(eˣ)',r:'La pente de exp est l’inverse de la pente de ln au point miroir. C’est la formule de ton cours : (<i>f</i><sup>−1</sup>)′(<i>y</i>) = 1/<i>f</i> ′(<i>f</i><sup>−1</sup>(<i>y</i>)), avec <i>f</i> = ln.'}],
   pari:{label:'La ligne suivante ?',apres:{tex:[['\\left(e^{x}\\right)\'=e^{x}','(eˣ)′ = eˣ']],html:'Regarde : en chaque point, la pente est égale à la hauteur.'},
-    reveal:[{p:{tanX:1,xt:-1.5},d:700},{p:{xt:1.6},d:5200}],opts:[
+    reveal:[{p:{tanX:1,mr:1,xt:-1.5},d:700},{p:{xt:1.6},d:5200}],opts:[
     {t:'= 1/(1/e<sup><i>x</i></sup>) = e<sup><i>x</i></sup>',ok:true,fb:'Oui : ln′(e<sup><i>x</i></sup>) = 1/e<sup><i>x</i></sup>, donc exp′(<i>x</i>) = 1/(1/e<sup><i>x</i></sup>) = e<sup><i>x</i></sup>.'},
     {t:'= 1/(1/<i>x</i>) = <i>x</i>',indice:'Dans 1/ln′(eˣ), en quel nombre calcule-t-on ln′ : x ou eˣ ?',fb:'Tu as évalué ln′ en <i>x</i>. Elle l’est au point reflété e<sup><i>x</i></sup> : ln′(e<sup><i>x</i></sup>) = 1/e<sup><i>x</i></sup>, pas 1/<i>x</i>.'},
     {t:'= <i>x</i> e<sup><i>x</i>−1</sup>',indice:'Dans eˣ, la variable est-elle la base ou l’exposant ? La règle des puissances sert-elle ?',fb:'Tu as appliqué la règle de <i>x</i><sup><i>n</i></sup>. Mais eˣ n’est pas une puissance de <i>x</i> : la base e est fixe, l’exposant varie.'}]}},
@@ -485,6 +485,25 @@ const CTL={
         $('#kfb').innerHTML=ty(`La droite coupe la courbe en un seul point, d’abscisse <i>x</i> ≈ ${fr(Math.exp(sc.p.k),2)}.`);};
       rk.addEventListener('input',()=>{ctx.stop();sc.p.k=+rk.value;sc.p.kOn=1;sc.render();sync();});
       hooks.frame=sync;sync();}},
+  // le pliage : un seul curseur, r de 0 (courbe de ln) à 1 (courbe de exp) ; il suit la scène pendant l'animation d'entrée
+  plie:{html:()=>`<div class="ctl"><label class="sl"><span>Pliage : <output id="opl"></output></span><input id="rpl" type="range" min="0" max="1" step="0.01" aria-label="Pliage le long de y = x, de 0 à 1"></label></div><p class="ctl-note">Fais glisser le pli : chaque point (<i>x</i> ; ln <i>x</i>) rejoint (ln <i>x</i> ; <i>x</i>).</p>`,
+    init(){const sc=scenes.miroir,r=$('#rpl');
+      const sync=()=>{if(document.activeElement!==r)r.value=sc.p.refl;$('#opl').textContent=sc.p.refl>0.995?'courbe de exp':sc.p.refl<0.005?'courbe de ln':fr(sc.p.refl,2);};
+      r.addEventListener('input',()=>{ctx.stop();sc.p.refl=+r.value;sc.p.expc=sc.p.refl>0.995?1:0;sc.render();sync();});
+      hooks.frame=sync;sync();}},
+  // le point (x ; eˣ) de exp : la pente se lit égale à la hauteur ; libre une fois le pari résolu (avant, glisser donnerait la réponse)
+  xt:{html:()=>`<div class="ctl" id="xctl" hidden><label class="sl"><span><i>x</i> = <output id="oxt"></output></span><input id="rxt" type="range" min="-2" max="1.6" step="0.02" aria-label="Abscisse x du point de exp"></label><p class="ctl-note" id="xfb"></p></div>`,
+    init(st){const sc=scenes.miroir,r=$('#rxt'),z=$('#xctl');
+      const lu=()=>{const ex=Math.exp(sc.p.xt);$('#oxt').textContent=fr(sc.p.xt,2);r.setAttribute('aria-valuetext',`x = ${fr(sc.p.xt,2)}`);
+        $('#xfb').innerHTML=ty(`Hauteur ${fr(ex,2)}, pente de exp ${fr(ex,2)} ; la pente de ln au point reflété vaut 1/${fr(ex,2)} ≈ ${fr(1/ex,2)}.`);};
+      const libre=()=>{const a=ctx.rep(st.cle),ok=a!=null&&(ctx.juste(st.cle)===true||(S.essais[st.cle]||[]).length>=2);if(ok&&z.hidden)z.hidden=false;};
+      libre();root.querySelectorAll('#body .opt').forEach(o=>o.addEventListener('click',()=>setTimeout(libre,0)));
+      hooks.frame=()=>{if(document.activeElement!==r){r.value=sc.p.xt;}lu();};
+      r.value=sc.p.xt;lu();
+      r.addEventListener('input',()=>{ctx.stop();
+        // l'élève prend la main : la révélation s'achève d'un coup, puis x suit le curseur
+        const pr=st.pari&&st.pari.reveal;if(pr)pr.forEach(q=>Object.assign(sc.p,q.p));
+        sc.p.xt=+r.value;sc.render();lu();});}},
 /*__CTL__*/
 };
 // « Passer à l'énigme » ; après un choix (clic ou touche), le noyau a rendu la réponse
