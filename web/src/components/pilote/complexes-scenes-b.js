@@ -23,8 +23,8 @@
  * (z z̄ pour trois crans de z : l'un après l'autre, aux tiers de u). Sous prefers-reduced-motion, le
  * noyau saute d'un palier à l'autre.
  * Garde (M9) : avant `quart`, ni axe vertical ni i ; avant `fois-i`, ni iz ni l'équerre ; avant
- * `ou-zzbar`, z z̄ n'est pas placé ; avant `cercle` et `conjuguees`, ni cercle ni racines ; pendant
- * `bac`, le point −4 reste caché jusqu'à `bac-c`.
+ * `ou-zzbar`, z z̄ n'est pas placé ; avant `cercle` et `conjuguees`, ni cercle ni racines ; de `bac` à `bac-c`,
+ * ni les cercles (ils se touchent en −4, la réponse de `bac-c`) ni le point −4 : ils sont tracés à la révélation de `bac-c`.
  */
 import { C, ci, cnum, cmul, cconj, cneg, cadd, S as Ssvg, ENSEMBLES, CERCLES, OPTS_FOIS, ABC, fr, ent, rotation, zzbar, ZZBAR_CRANS, ZZBAR_VALEURS, racMod, modNum, AB, AB_TEX, qnum } from "./complexes-outils";
 

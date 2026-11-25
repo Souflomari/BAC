@@ -1,7 +1,7 @@
 /* eslint-disable */
 // @ts-nocheck
 /**
- * Scènes de « Nombres complexes, première partie », troisième partie : les trois pièges du bilan
+ * Scènes de « Nombres complexes, première partie », troisième partie : les trois questions du bilan
  * (`quiz`) et ce que l'élève a compris (`end`). Copies adaptées de suites-scenes-c.js. Aucune
  * couleur écrite en dur : les classes de pilote.css seulement.
  */
@@ -9,7 +9,7 @@ export function scenesC(ctx, O, PIEGES) {
 const { E, clamp, show, scene } = ctx;
 const { fx, setFx } = O;
 
-/* ---------- trois pièges des copies ---------- */
+/* ---------- trois questions du bilan ---------- */
 scene("quiz", {
   p: { qi: 0, rv: 0 },
   build(g) {

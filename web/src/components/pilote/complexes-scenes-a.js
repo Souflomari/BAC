@@ -64,7 +64,7 @@ scene("cardan", {
     let d = "";
     for (let i = 0; i <= 300; i++) { const x = -XM + (2 * XM * i) / 300, y = clamp(f_cub(x), -90, 90); d += (i ? "L" : "M") + X(x).toFixed(1) + " " + Y(y).toFixed(1); }
     this.cv = E("path", { d, class: "k-ink nofill", "stroke-width": 3.2, pathLength: 1000, "stroke-dasharray": "1000 1000", "stroke-linejoin": "round" }, cg);
-    this.cvT = fx(g, X(-4.85), Y(27), "*y* = *x*^{3} − 15*x* − 4", "t-lab s-ink");
+    this.cvT = fx(g, X(-4.85), Y(27), `*y* = *x*^{3} − ${CARDAN.p}*x* − ${CARDAN.q}`, "t-lab s-ink");
     // le point (4 ; 0), puis les deux autres solutions : ce sont les abscisses où la courbe coupe l'axe
     this.g4 = E("g", {}, g);
     this.r4 = E("circle", { cx: X(CUB_RAC[2]), cy: Y(0), r: 20, class: "k-a nofill", "stroke-width": 3 }, g);

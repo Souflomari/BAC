@@ -172,6 +172,7 @@ export function resoudre(a, b, c) {
 export const SAV = { a: 1, b: -2, c: 5 };
 export const SAV_DELTA = SAV.b * SAV.b - 4 * SAV.a * SAV.c;                    // −16
 export const SAV_DELTA_SIGNE = SAV.b * SAV.b + 4 * SAV.a * SAV.c;              // 24 : le signe de −4ac perdu
+export const SAV_DELTA_CARRE = -SAV.b * SAV.b - 4 * SAV.a * SAV.c;                  // −24 : (−2)² pris pour −4
 export const SAV_ABS = -SAV_DELTA;                                             // 16 : Δ négatif traité comme positif
 export const SAV_X_FAUX = [(-SAV.b + Math.sqrt(SAV_ABS)) / (2 * SAV.a), (-SAV.b - Math.sqrt(SAV_ABS)) / (2 * SAV.a)];   // 3 et −1
 export const SAV_TEST = SAV_X_FAUX[0] * SAV_X_FAUX[0] + SAV.b * SAV_X_FAUX[0] + SAV.c;   // 9 − 6 + 5 = 8 ≠ 0
@@ -181,6 +182,9 @@ export function polyScene(a, b, c) {
   const s = t(a, "*x*^{2}", true) + t(b, "*x*", !a) + t(c, "", !a && !b);
   return s;
 }
+/** le même trinôme en TeX (z^{2}-2z+5) et en texte brut (z² − 2z + 5), pour les formules et les fiches */
+export const polyTex = (a, b, c, v = "x") => polyScene(a, b, c).replace(/\*x\*\^\{2\}/g, `${v}^{2}`).replace(/\*x\*/g, v).replace(/ − /g, "-").replace(/ \+ /g, "+").replace(/−/g, "-");
+export const polyPlain = (a, b, c, v = "x") => polyScene(a, b, c).replace(/\*x\*\^\{2\}/g, `${v}²`).replace(/\*x\*/g, v);
 export const polyHtml = (a, b, c, v = "x") => polyScene(a, b, c).replace(/\*x\*\^\{2\}/g, `<i>${v}</i><sup>2</sup>`).replace(/\*x\*/g, `<i>${v}</i>`);
 
 /* ---------- partie 1 : l'énigme de Cardan, x³ = 15x + 4 ---------- */
@@ -208,6 +212,7 @@ export const Z_DROITE = C(2);                                    // ×(−1) sur
 export const Z_QUART = C(1);                                     // le point 1 qui tourne
 export const QUART_DEMI2 = qmul(Q(1, 2), Q(1, 2));               // (½)² = ¼ : i = ½ sur la droite ?
 export const QUART_MDEMI2 = qmul(Q(-1, 2), Q(-1, 2));            // (−½)² = ¼
+export const QUART_MOITIE = cscal(Q(1, 2), Z_QUART);             // ½ : la réduction de moitié du point 1
 export const FOIS_I = { z: Z0, ok: cmul(ci, Z0), echange: C(cim(Z0), cre(Z0)), demi: cneg(Z0) };   // −2 + 3i ; 2 + 3i ; −3 − 2i
 export const FOIS_I_LIGNE = { terme: cmul(ci, C(0, 2)), i2: cmul(ci, ci) };              // 3i + 2i² : 2i² = −2
 export const CRANS_Z = [C(3, 2), C(1, 1), C(-2, 1), C(2, -3), C(4, 0), C(0, 2)];            // le curseur de z
@@ -215,7 +220,7 @@ export const IM_Q = C(4, -6);                                    // Im(4 − 6i)
 export const EGAL = { p: 2, q: -1, r: 1, s: 3, u: 5, v: -2 };    // (2x − 1) + (y + 3)i = 5 − 2i
 export const EGAL_X = (EGAL.u - EGAL.q) / EGAL.p, EGAL_Y = (EGAL.v - EGAL.s) / EGAL.r;                 // 3 ; −5
 export const EGAL_ECHANGE = [qdiv(Q(EGAL.v - EGAL.q), Q(EGAL.p)), Q((EGAL.u - EGAL.s) / EGAL.r)];               // −½ ; 2 (fractions)
-export const EGAL_IGARDE = C(-EGAL.s, EGAL.v);                   // y = −3 − 2i
+export const EGAL_SIGNE = [qdiv(Q(EGAL.u + EGAL.q), Q(EGAL.p)), Q((EGAL.v + EGAL.s) / EGAL.r)];   // 2 ; 1 : le signe des constantes perdu en changeant de membre
 
 /* ---------- partie 3 : calculer ---------- */
 export const W_SOMME = C(1, -4);
@@ -240,7 +245,7 @@ DIV.cd = cconj(DIV.d); DIV.num = cmul(DIV.n, DIV.cd); DIV.den = cmul(DIV.d, DIV.
 DIV.ok = cdiv(DIV.n, DIV.d);                                                              // −4/5 + (7/5)i
 DIV.denFaux = C(cre(DIV.d) ** 2 - cim(DIV.d) ** 2);                                       // 1 − 4 = −3 : le i² oublié
 DIV.faux1 = cdiv(DIV.num, DIV.denFaux);                                                   // 4/3 − (7/3)i
-DIV.faux2 = cdiv(DIV.n, DIV.den);                                                         // (2 + 3i)/5
+DIV.sansDiv = DIV.num;                                                                    // −4 + 7i : le numérateur laissé tel quel, sans le diviser par 5
 
 /* ---------- partie 5 : le module et la distance ---------- */
 export const RAPPEL = { z: C(1, 2) };
@@ -272,7 +277,9 @@ export const CANON_K = SAV.c - CANON_H ** 2;                                    
 export const CANON_M = sqrtInt(CANON_K)[0];                                                   // 2
 export const CANON_ROUTE = [C(CANON_H, CANON_M), C(CANON_H, -CANON_M)];                       // 1 ± 2i
 export const CANON_FAUX = [C(-CANON_H, CANON_M), C(-CANON_H, -CANON_M)];                      // −1 ± 2i
-export const CONJ_OPPOSE = cneg(CANON_ROUTE[0]);                                              // −1 − 2i : le symétrique par rapport à O
+export const CANON_K_BRUT = [C(CANON_H, CANON_K), C(CANON_H, -CANON_K)];                       // 1 ± 4i : (z − 1)² = (2i)² lu z − 1 = 4i, la racine de 4 oubliée
+export const CONJ_OPPOSE = cneg(CANON_ROUTE[0]);
+export const CONJ_VERTICAL = cneg(CANON_ROUTE[1]);                                           // −1 + 2i : le symétrique par rapport à l'axe des imaginaires                                              // −1 − 2i : le symétrique par rapport à O
 export const BICARREE = { a: 1, b: 5, c: 4 };                                                 // Z² + 5Z + 4
 export const BI_DELTA = BICARREE.b ** 2 - 4 * BICARREE.a * BICARREE.c;                        // 9
 export const BI_Z = [(-BICARREE.b + Math.sqrt(BI_DELTA)) / 2, (-BICARREE.b - Math.sqrt(BI_DELTA)) / 2];   // −1 ; −4
@@ -294,11 +301,10 @@ export const SM_EQ = { a: 1, b: C(-3, -1), c: C(2, 2) };                        
 export const SM_SOL = resoudre(SM_EQ.a, SM_EQ.b, SM_EQ.c);                                    // Δ = −2i, δ = 1 − i ; z = 2 et 1 + i
 export const SM_ROUTE = [SM_SOL.z1, SM_SOL.z2];
 export const SM_CONJ = [SM_SOL.z2, cconj(SM_SOL.z2)];                                         // 1 + i et 1 − i
-const SM_DL2 = cconj(SM_SOL.dl);                                                              // 1 + i (δ² = 2i : le signe de xy)
-export const SM_FAUX_DL = SM_DL2;
-export const SM_FAUX_DL_CARRE = cmul(SM_DL2, SM_DL2);                                         // 2i
-export const SM_FAUX_Z = [cscal(Q(1, 2), cadd(cneg(SM_EQ.b), SM_DL2)), cscal(Q(1, 2), csub(cneg(SM_EQ.b), SM_DL2))];   // 2 + i et 1
+export const SM_SANS_DEMI = [cadd(cneg(SM_EQ.b), SM_SOL.dl), csub(cneg(SM_EQ.b), SM_SOL.dl)];   // 4 et 2 + 2i : la division par 2a oubliée
 export const SM_VIETE = { b: C(0, -2), somme: cneg(C(0, -2)) };                               // z² − 2iz + α : somme = −b/a = 2i
+export const VIETE_CTRL = { a: 1, r1: 1, r2: 2 };                                              // contrôle : (z − 1)(z − 2) = z² − 3z + 2, somme 3
+VIETE_CTRL.b = -VIETE_CTRL.a * (VIETE_CTRL.r1 + VIETE_CTRL.r2); VIETE_CTRL.c = VIETE_CTRL.a * VIETE_CTRL.r1 * VIETE_CTRL.r2; VIETE_CTRL.somme = VIETE_CTRL.r1 + VIETE_CTRL.r2;
 
 /* ---------- partie 8 : le retour à l'énigme ---------- */
 export const CUBE = { z: C(2, 1) };
@@ -337,15 +343,13 @@ export const BAC2_MOINSB = [C(Q(BAC2.b, 2 * BAC2.a), Q(Math.sqrt(-BAC2_DELTA), 2
 
 /* ---------- partie 10 : le bilan ---------- */
 export const BQ1 = { n: 9, rac: sqrtInt(9)[0] };                                              // √(−9) : ±3i
-export const BQ2 = { a: C(1, 1), b: C(1, -1) };
-BQ2.somme = cadd(BQ2.a, BQ2.b);                                                               // 2
-export const BQ2_TOTAL_NUM = modNum(BQ2.a) + modNum(BQ2.b);                                   // 2√2
-export const BQ2_TOTAL = rac(Math.round(BQ2_TOTAL_NUM ** 2));                                 // 2√2 : √8
-export const BQ2_SOMME = modNum(BQ2.somme);                                                   // 2
-export const BQ2_SANS_RACINE = qnum(cmod2(BQ2.a)) + qnum(cmod2(BQ2.b));                       // 2 + 2 = 4
+export const BQ2 = { a: C(2, -3), b: C(3, 1) };                                               // (2 − 3i)(3 + i)
+BQ2.ok = cmul(BQ2.a, BQ2.b); BQ2.i2plus = prodI2Plus(BQ2.a, BQ2.b); BQ2.sans = prodSansI2(BQ2.a, BQ2.b);   // 9 − 7i ; 3 − 7i ; 6 − 7i
+BQ2.bd = cim(BQ2.a) * cim(BQ2.b);                                                              // −3 : le terme bd i² vaut −bd
 export const BQ3 = { a: 1, b: 6, c: 13 };                                                     // z² + 6z + 13
 export const BQ3_SOL = resoudre(BQ3.a, C(BQ3.b), C(BQ3.c));                                   // Δ = −16 ; −3 ± 2i
 export const BQ3_DELTA = BQ3.b ** 2 - 4 * BQ3.a * BQ3.c;
+export const BQ3_SANS_2A = [cadd(C(-BQ3.b), BQ3_SOL.dl), csub(C(-BQ3.b), BQ3_SOL.dl)];         // −6 ± 4i : la division par 2a oubliée
 export const BQ3_SIGNE = [C(-cre(BQ3_SOL.z1), cim(BQ3_SOL.z1)), C(-cre(BQ3_SOL.z2), cim(BQ3_SOL.z2))];   // 3 ± 2i
 
 /* ---------- les points, les cercles et les crans de la scène `plan` (liste fermée) ---------- */

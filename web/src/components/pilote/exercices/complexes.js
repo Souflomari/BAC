@@ -56,12 +56,16 @@ const D = (s) => `$${s}$`;
 const dz = (z) => D(ct(z));
 /** k√m en TeX : 5, \sqrt{13}, 2\sqrt{2} */
 const racTex = (n) => { const [k, m] = sqrtInt(n); return m === 1 ? `${k}` : `${k === 1 ? "" : k}\\sqrt{${m}}`; };
+/** n^e, avec des parenthèses autour d'un négatif : (-6)^2 */
+const pw = (n, e) => (n < 0 ? `(${n})^${e}` : `${n}^${e}`);
 const sgn = (k) => (k < 0 ? `- ${-k}` : `+ ${k}`);
-/** un complexe de la forme p + q√r i, p et q fractions, r = 1 ou 3 (racines des gabarits 8) */
-const rootTex = (p, qc, r, signe) => {
+/** la longueur q√r écrite : 1, 2, \sqrt{3}, 2\sqrt{3}, \dfrac{3}{2} (jamais vide) */
+const mag = (qc, r) => { const k = absCoef(qc); return r === 1 ? k : (k === "1" ? "" : k) + `\\sqrt{${r}}`; };
+/** un complexe de la forme p ± q√r i (p et q fractions, r = 1 ou 3), ou sans le i quand `avecI` est faux */
+const rootTex = (p, qc, r, signe, avecI = true) => {
   const re = qt(p) === "0" ? "" : qt(p);
-  const k = absCoef(qc), im = (k === "1" ? "" : k) + (r === 1 ? "" : `\\sqrt{${r}}`) + "i";
-  const s = signe < 0 ? "-" : "+";
+  const m = mag(qc, r), s = signe < 0 ? "-" : "+";
+  const im = avecI ? (m === "1" ? "" : m) + "i" : m;
   return re ? `${re}${s}${im}` : (signe < 0 ? "-" : "") + im;
 };
 /** toutes les options, textes distincts : sinon le tirage est refait */
@@ -210,7 +214,7 @@ export const EXERCICES = [
     titre: "Le conjugué : $z\\bar z$, $z + \\bar z$, produit",
     niveau: 2,
     capacites: ["maths-sexp 2.4.1", "maths-sm 2.2.1"],
-    erreurs: ["z + z̄ et z − z̄ confondus", "z z̄ calculé comme a² − b²", "z² pris pour z z̄", "conjugué d’un produit mal formé"],
+    erreurs: ["z + z̄ et z − z̄ confondus", "conjugué pris pour l’opposé", "z z̄ calculé comme a² − b²", "z² pris pour z z̄", "conjugué d’un produit mal formé"],
     gen(h) {
       const [a, b] = tirer(h, () => [nonNul(h, -6, 6), nonNul(h, -6, 6)], ([a, b]) => Math.abs(a) !== Math.abs(b));
       const z = C(a, b), zz = C(a * a + b * b), moins = C(a * a - b * b), carre = cmul(z, z);
@@ -220,7 +224,7 @@ export const EXERCICES = [
       ]);
       const q2 = opts(h, dz(C(2 * a)), [
         { t: dz(C(0, 2 * b)), fb: "Tu as calculé $z - \\bar z$. Dans la somme, ce sont les parties imaginaires qui s’annulent.", erreur: "z + z̄ et z − z̄ confondus" },
-        { t: dz(C(0)), fb: "Tu as pris le conjugué pour l’opposé. $z + \\bar z = 2a$ : les parties réelles s’ajoutent.", erreur: "z + z̄ et z − z̄ confondus" },
+        { t: dz(C(0)), fb: "Tu as pris le conjugué pour l’opposé. $z + \\bar z = 2a$ : les parties réelles s’ajoutent.", erreur: "conjugué pris pour l’opposé" },
       ]);
       const [c, d] = tirer(h, () => [nonNul(h, -4, 4), nonNul(h, -4, 4)], ([c, d]) => {
         const w = C(c, d), p = cmul(z, w), ok = cconj(p);
@@ -239,7 +243,7 @@ export const EXERCICES = [
           { type: "qcm", q: "Que vaut $\\overline{zw}$ ?", options: q3 },
         ],
         correction: [
-          { tex: `z\\bar z = ${a}^2 + ${b}^2 = ${a * a + b * b}`, r: "$(a + ib)(a - ib) = a^2 + b^2$ : un réel positif." },
+          { tex: `z\\bar z = ${pw(a, 2)} + ${pw(b, 2)} = ${a * a + b * b}`, r: "$(a + ib)(a - ib) = a^2 + b^2$ : un réel positif." },
           { tex: `z + \\bar z = 2a = ${2 * a}`, r: "Les parties imaginaires s’annulent : un réel." },
           { tex: `\\overline{zw} = \\bar z\\,\\bar w = ${ct(cconj(pr))}`, r: "Le conjugué d’un produit est le produit des conjugués." },
         ],
@@ -285,13 +289,13 @@ export const EXERCICES = [
     },
   },
 
-  /* 6 — module, distance, milieu, module d'un produit */
+  /* 6 — module, distance, module d'un produit */
   {
     id: "module-distance",
-    titre: "Module, distance et milieu",
+    titre: "Module et distance",
     niveau: 2,
     capacites: ["maths-sexp 2.4.4", "maths-sm 2.2.3"],
-    erreurs: ["module = a + b", "module sans la racine", "distance lue sur |z_B| au lieu de |z_B − z_A|", "milieu sans la moyenne", "module d’un produit lu comme une somme"],
+    erreurs: ["module = a + b", "module sans la racine", "distance lue sur |z_B| au lieu de |z_B − z_A|", "module d’un produit lu comme une somme"],
     gen(h) {
       const T = [[3, 4], [4, 3], [5, 12], [12, 5], [6, 8], [8, 6], [8, 15], [15, 8]];
       const [a0, b0] = h.pick(T), a = a0 * h.pick([1, -1]), b = b0 * h.pick([1, -1]);
@@ -299,7 +303,7 @@ export const EXERCICES = [
       // AB = |z_B − z_A|
       const g = tirer(h, () => ({ xa: h.int(-5, 5), ya: nonNul(h, -5, 5), xb: h.int(-5, 5), yb: nonNul(h, -5, 5) }), (g) => {
         const dx = g.xb - g.xa, dy = g.yb - g.ya;
-        if (!dx || !dy || (!(g.xa + g.xb) && !(g.ya + g.yb))) return false;
+        if (!dx || !dy) return false;
         const ok = racTex(dx * dx + dy * dy), ob = racTex(g.xb * g.xb + g.yb * g.yb), somme = String(Math.abs(dx) + Math.abs(dy));
         return distincts([ok, ob, somme]);
       });
@@ -307,11 +311,6 @@ export const EXERCICES = [
       const dist = opts(h, D(racTex(cmod2(df)[0])), [
         { t: D(racTex(cmod2(B)[0])), fb: "Tu as calculé $OB = |z_B|$, la distance de $B$ à l’origine. $AB$ est la distance de $A$ à $B$ : il faut la différence $z_B - z_A$.", erreur: "distance lue sur |z_B| au lieu de |z_B − z_A|" },
         { t: D(String(Math.abs(df.re[0]) + Math.abs(df.im[0]))), fb: "Tu as additionné les valeurs absolues des parties réelle et imaginaire. Le module est une racine de somme de carrés, comme Pythagore.", erreur: "module = a + b" },
-      ]);
-      const milieu = cscal(Q(1, 2), cadd(A, B));
-      const mil = opts(h, dz(milieu), [
-        { t: dz(cadd(A, B)), fb: "Tu as additionné sans diviser par 2. Le milieu est la moyenne : $\\frac{z_A + z_B}{2}$.", erreur: "milieu sans la moyenne" },
-        { t: dz(cscal(Q(1, 2), df)), fb: "Tu as divisé la différence par 2 : c’est le vecteur de $A$ au milieu, pas l’affixe du milieu. Le milieu est $\\frac{z_A + z_B}{2}$.", erreur: "milieu sans la moyenne" },
       ]);
       const [u0, w0] = tirer(h, () => [h.pick([[3, 4], [5, 12], [8, 6]]), h.pick([[4, 3], [12, 5], [6, 8], [15, 8]])], ([x, y]) => Math.hypot(...x) !== Math.hypot(...y));
       const mz = Math.hypot(...u0), mw = Math.hypot(...w0);
@@ -321,14 +320,12 @@ export const EXERCICES = [
           { type: "nombre", q: "Que vaut $|z|$ ?", reponse: mod, tol: { abs: 0.01 }, indice: "Le module est la distance de $O$ au point : un théorème de Pythagore.",
             pieges: [{ v: Math.abs(a) + Math.abs(b), fb: "Tu as additionné $|a|$ et $|b|$. Le module est $\\sqrt{a^2 + b^2}$, pas $|a| + |b|$.", erreur: "module = a + b" }, { v: a * a + b * b, fb: "Tu as oublié la racine : $a^2 + b^2$ est le carré du module.", erreur: "module sans la racine" }] },
           { type: "qcm", q: "Quelle est la distance $AB$ ?", options: dist },
-          { type: "qcm", q: "Quelle est l’affixe du milieu de $[AB]$ ?", options: mil },
           { type: "nombre", q: `On donne $|u| = ${mz}$ et $|w| = ${mw}$. Que vaut $|uw|$ ?`, reponse: mz * mw, tol: { abs: 0.01 }, indice: "Le module d’un produit est le produit des modules.",
             pieges: [{ v: mz + mw, fb: "Tu as additionné les modules. Le module d’un produit est le produit des modules : $|uw| = |u|\\,|w|$.", erreur: "module d’un produit lu comme une somme" }] },
         ],
         correction: [
-          { tex: `|z| = \\sqrt{${a}^2 + ${b}^2} = ${mod}`, r: "Le module est la racine de $a^2 + b^2$." },
+          { tex: `|z| = \\sqrt{${pw(a, 2)} + ${pw(b, 2)}} = ${mod}`, r: "Le module est la racine de $a^2 + b^2$." },
           { tex: `AB = |z_B - z_A| = |${ct(df)}| = ${racTex(cmod2(df)[0])}`, r: "La distance est le module de la différence des affixes." },
-          { tex: `z_I = \\dfrac{z_A + z_B}{2} = ${ct(milieu)}`, r: "Le milieu est la moyenne des affixes." },
           { tex: `|uw| = |u|\\,|w| = ${mz} \\times ${mw} = ${mz * mw}`, r: "Pour un produit, les modules se multiplient." },
         ],
       };
@@ -378,7 +375,7 @@ export const EXERCICES = [
     titre: "Une équation du second degré à coefficients réels, $\\Delta < 0$",
     niveau: 2,
     capacites: ["maths-sexp 2.4.8", "maths-sm 2.2.5"],
-    erreurs: ["Δ < 0 : aucune solution", "a oublié au dénominateur", "signe de −b perdu", "√(−Δ) écrit sans le i", "a oublié dans 4ac"],
+    erreurs: ["Δ < 0 : aucune solution", "a oublié au dénominateur", "signe de −b perdu", "√(−Δ) écrit sans le i", "a oublié dans 4ac", "signe de −4ac perdu dans Δ"],
     gen(h) {
       const T = tirer(h, () => {
         const p2 = h.int(-6, 6), p = Q(p2, 2), irr = h.pick([false, false, true]);
@@ -398,12 +395,11 @@ export const EXERCICES = [
       const fautes = [{ t: "aucune solution", fb: "Tu as conclu comme dans $\\mathbb{R}$ : $\\Delta < 0$, aucune solution. Dans $\\mathbb{C}$, il y a deux solutions conjuguées.", erreur: "Δ < 0 : aucune solution" }];
       if (p[0] !== 0) fautes.push({ t: sol(qneg(p), qc, r3), fb: "Tu as perdu le signe de $-b$ : la partie réelle est $-\\dfrac{b}{2a}$.", erreur: "signe de −b perdu" });
       if (a > 1) fautes.push({ t: sol(qmul(p, Q(a)), qmul(qc, Q(a)), r3), fb: "Tu as oublié $a$ au dénominateur : les solutions sont $\\dfrac{-b \\pm i\\sqrt{-\\Delta}}{2a}$, pas $\\dfrac{\\dots}{2}$.", erreur: "a oublié au dénominateur" });
-      const reel = (s) => rootTex(p, qc, r3, s).replace(/i$/, "");
-      fautes.push({ t: `$z = ${reel(-1)} \\text{ ou } z = ${reel(1)}$`, fb: "Tu as écrit $\\sqrt{-\\Delta}$ sans le $i$ : les solutions ne sont pas réelles. Elles s’écrivent $\\dfrac{-b \\pm i\\sqrt{-\\Delta}}{2a}$.", erreur: "√(−Δ) écrit sans le i" });
+      fautes.push({ t: `$z = ${rootTex(p, qc, r3, -1, false)} \\text{ ou } z = ${rootTex(p, qc, r3, 1, false)}$`, fb: "Tu as écrit $\\sqrt{-\\Delta}$ sans le $i$ : les solutions ne sont pas réelles. Elles s’écrivent $\\dfrac{-b \\pm i\\sqrt{-\\Delta}}{2a}$.", erreur: "√(−Δ) écrit sans le i" });
       const vus = new Set([bonne]);
       const sols = fautes.filter((f) => !vus.has(f.t) && vus.add(f.t));
       const q1 = opts(h, bonne, sols.slice(0, 3));
-      const pieges = [{ v: b * b + 4 * a * c, fb: "Tu as perdu le signe de $-4ac$ : $\\Delta = b^2 - 4ac$.", erreur: "Δ < 0 : aucune solution" }];
+      const pieges = [{ v: b * b + 4 * a * c, fb: "Tu as perdu le signe de $-4ac$ : $\\Delta = b^2 - 4ac$.", erreur: "signe de −4ac perdu dans Δ" }];
       if (a > 1) pieges.push({ v: b * b - 4 * c, fb: "Tu as oublié $a$ dans $4ac$ : ici $a = " + a + "$.", erreur: "a oublié dans 4ac" });
       return {
         enonce: "<p>On résout dans $\\mathbb{C}$ une équation du second degré à coefficients réels.</p>",
@@ -412,7 +408,7 @@ export const EXERCICES = [
           { type: "qcm", q: `Quelles sont les solutions de $${polBon} = 0$ dans $\\mathbb{C}$ ?`, options: q1 },
         ],
         correction: [
-          { tex: `\\Delta = ${b}^2 - 4 \\times ${a} \\times ${c} = ${delta}`, r: "Le discriminant est négatif." },
+          { tex: `\\Delta = ${pw(b, 2)} - 4 \\times ${a} \\times ${c} = ${delta}`, r: "Le discriminant est négatif." },
           { tex: `z = \\dfrac{${-b} \\pm i\\sqrt{${-delta}}}{${2 * a}}`, r: "$\\sqrt{-\\Delta}$ est la racine d’un nombre positif, devant le $i$." },
           { tex: `z = ${rootTex(p, qc, r3, -1)} \\text{ ou } z = ${rootTex(p, qc, r3, 1)}`, r: "Deux solutions conjuguées." },
         ],
@@ -475,7 +471,7 @@ export const EXERCICES = [
     niveau: 3,
     filieres: ["SM"],
     capacites: ["maths-sm 2.2.5"],
-    erreurs: ["le signe de xy perdu", "Δ/2 pris pour une racine carrée", "x² + y² pris pour la partie réelle de Δ"],
+    erreurs: ["le signe de xy perdu", "Δ/2 pris pour une racine carrée", "partie réelle de Δ prise pour son module"],
     gen(h) {
       const [x, y] = tirer(h, () => [nonNul(h, -4, 4), nonNul(h, -4, 4)], ([x, y]) => Math.abs(x) !== Math.abs(y) && x > 0);
       const dl = C(x, y), Dd = cmul(dl, dl), re = x * x - y * y, im = 2 * x * y, mod = x * x + y * y;
@@ -489,7 +485,7 @@ export const EXERCICES = [
         questions: [
           { type: "qcm", q: "Quelle est une racine carrée de $\\Delta$ ?", options: q1 },
           { type: "nombre", q: "Que vaut $|\\Delta|$ ?", reponse: mod, tol: { abs: 0.01 }, indice: "$|\\delta|^2 = |\\Delta|$, et $|\\delta|^2 = x^2 + y^2$.",
-            pieges: [{ v: re, fb: "Tu as donné la partie réelle $x^2 - y^2$ au lieu du module. Le module de $\\Delta$ est $\\sqrt{\\mathrm{Re}^2 + \\mathrm{Im}^2}$, et il vaut $x^2 + y^2$.", erreur: "x² + y² pris pour la partie réelle de Δ" }].filter((p) => p.v !== mod) },
+            pieges: [{ v: re, fb: "Tu as donné la partie réelle $x^2 - y^2$ au lieu du module. Le module de $\\Delta$ est $\\sqrt{\\mathrm{Re}^2 + \\mathrm{Im}^2}$, et il vaut $x^2 + y^2$.", erreur: "partie réelle de Δ prise pour son module" }].filter((p) => p.v !== mod) },
         ],
         correction: [
           { tex: `x^2 - y^2 = ${re} \\quad\\text{et}\\quad 2xy = ${im}`, r: "On égale parties réelles et parties imaginaires de $\\delta^2 = \\Delta$." },
@@ -509,26 +505,40 @@ export const EXERCICES = [
     capacites: ["maths-sm 2.2.5", "maths-sm 2.2.6"],
     erreurs: ["racines supposées conjuguées malgré des coefficients complexes", "somme et produit échangés ou −b/a lu b/a", "δ mal choisi : son carré n’est pas Δ"],
     gen(h) {
-      const [z1, z2] = tirer(h, () => [C(nonNul(h, -3, 3), nonNul(h, -3, 3)), C(nonNul(h, -3, 3), nonNul(h, -3, 3))], ([u, v]) => !ceq(u, v) && !ceq(v, cconj(u)) && !ceq(u, cconj(v)) && v.im[0] !== 0 && u.im[0] !== 0 && !ceq(cadd(u, v), C(0)) && !ceq(cmul(u, v), cadd(u, v)) && !ceq(cmul(u, v), cneg(cadd(u, v))));
+      // le jeu de solutions est un ensemble : {z1, z2} et {z2, z1} sont le même, et chaque leurre est comparé à la bonne réponse par ses VALEURS
+      const ens = (a, b) => [ckey(a), ckey(b)].sort().join(" ; ");
+      const jeu = (z1, z2) => {
+        const S_ = cadd(z1, z2), dl = csub(z1, z2);
+        return {
+          bonne: [z1, z2],
+          conj: [z1, cconj(z1)],
+          signe: [cneg(z1), cneg(z2)],
+          dlConj: [cscal(Q(1, 2), cadd(S_, cconj(dl))), cscal(Q(1, 2), csub(S_, cconj(dl)))],
+        };
+      };
+      const [z1, z2] = tirer(h, () => [C(nonNul(h, -3, 3), nonNul(h, -3, 3)), C(nonNul(h, -3, 3), nonNul(h, -3, 3))], ([u, v]) => {
+        if (ceq(u, v) || ceq(v, cconj(u)) || ceq(cadd(u, v), C(0)) || ceq(cmul(u, v), cadd(u, v)) || ceq(cmul(u, v), cneg(cadd(u, v)))) return false;
+        const J = jeu(u, v), cles = Object.values(J).map((x) => ens(...x));
+        return new Set(cles).size === cles.length;
+      });
       const S_ = cadd(z1, z2), P = cmul(z1, z2), bb = cneg(S_), dl = csub(z1, z2), Dl = cmul(dl, dl);
+      const J = jeu(z1, z2);
       const sol = (a, b) => D(`${ct(a)} \\text{ et } ${ct(b)}`);
-      const bonne = sol(z1, z2);
+      const bonne = sol(...J.bonne);
       const fautes = [
-        { t: sol(z1, cconj(z1)), fb: "Tu as cherché des racines conjuguées par réflexe. Elles ne le sont que si les coefficients sont réels.", erreur: "racines supposées conjuguées malgré des coefficients complexes" },
-        { t: sol(cneg(z1), cneg(z2)), fb: "Tu as perdu le signe de $-b$ : $z = \\dfrac{-b \\pm \\delta}{2a}$.", erreur: "somme et produit échangés ou −b/a lu b/a" },
-        { t: sol(cscal(Q(1, 2), cadd(S_, cconj(dl))), cscal(Q(1, 2), csub(S_, cconj(dl)))), fb: "Tu as employé le conjugué de $\\delta$. Vérifie $\\delta^2$ avant de l’employer : $\\delta^2 = \\Delta$ exige $\\delta = z_1 - z_2$ ou son opposé.", erreur: "δ mal choisi : son carré n’est pas Δ" },
+        { t: sol(...J.conj), fb: "Tu as cherché des racines conjuguées par réflexe. Elles ne le sont que si les coefficients sont réels.", erreur: "racines supposées conjuguées malgré des coefficients complexes" },
+        { t: sol(...J.signe), fb: "Tu as perdu le signe de $-b$ : $z = \\dfrac{-b \\pm \\delta}{2a}$.", erreur: "somme et produit échangés ou −b/a lu b/a" },
+        { t: sol(...J.dlConj), fb: "Tu as employé le conjugué de $\\delta$. Vérifie $\\delta^2$ avant de l’employer : $\\delta^2 = \\Delta$ exige $\\delta = z_1 - z_2$ ou son opposé.", erreur: "δ mal choisi : son carré n’est pas Δ" },
       ];
-      const vus = new Set([bonne]);
-      const ok = fautes.filter((f) => !vus.has(f.t) && vus.add(f.t));
       const sp = opts(h, dz(S_), [
         { t: dz(bb), fb: "Tu as lu la somme comme $\\dfrac{b}{a}$ au lieu de $-\\dfrac{b}{a}$. Contrôle sur $z^2 - 3z + 2 = 0$ : la somme des racines 1 et 2 vaut 3.", erreur: "somme et produit échangés ou −b/a lu b/a" },
         { t: dz(P), fb: "Tu as donné le produit à la place de la somme. Le terme constant est le produit des racines ; le coefficient de $z$ donne la somme.", erreur: "somme et produit échangés ou −b/a lu b/a" },
       ]);
-      const eq = `z^2 ${ct(bb).startsWith("-") ? "" : "+ "}(${ct(bb)})z + (${ct(P)})`;
+      const eq = `z^2 - (${ct(S_)})z + (${ct(P)})`;
       return {
         enonce: `<p>On considère l’équation $(E)$ : $${eq} = 0$, d’inconnue complexe $z$. On admet que $\\Delta = (${ct(dl)})^2$.</p>`,
         questions: [
-          { type: "qcm", q: "Quelles sont les solutions de $(E)$ ?", options: opts(h, bonne, ok.slice(0, 3)) },
+          { type: "qcm", q: "Quelles sont les solutions de $(E)$ ?", options: opts(h, bonne, fautes) },
           { type: "qcm", q: "Que vaut la somme $z_1 + z_2$ des solutions ?", options: sp },
         ],
         correction: [
@@ -563,7 +573,7 @@ export const EXERCICES = [
           { type: "qcm", q: "Quel est le point commun des deux cercles ?", options: q2 },
         ],
         correction: [
-          { tex: `|z - ${d}|^2 = (z ${sgn(-d)})(\\bar z ${sgn(-d)}) = z\\bar z ${d < 0 ? "+" : "-"} ${Math.abs(d)}(z + \\bar z) + ${d * d}`, r: "$|w|^2 = w\\bar w$, et le conjugué d’un réel est lui-même." },
+          { tex: `|z ${sgn(-d)}|^2 = (z ${sgn(-d)})(\\bar z ${sgn(-d)}) = z\\bar z ${d < 0 ? "+" : "-"} ${Math.abs(d)}(z + \\bar z) + ${d * d}`, r: "$|w|^2 = w\\bar w$, et le conjugué d’un réel est lui-même." },
           { tex: `${r1 * r1} = ${r2 * r2} ${d < 0 ? "+" : "-"} ${Math.abs(d)}(z + \\bar z) + ${d * d} \\iff z + \\bar z = ${s}`, r: `On remplace $z\\bar z$ par $|z|^2 = ${r2 * r2}$.` },
           { tex: `\\mathrm{Re}(z) = ${re}, \\quad \\mathrm{Im}(z)^2 = ${r2 * r2} - ${re * re} = 0`, r: "$|z|^2 = \\mathrm{Re}(z)^2 + \\mathrm{Im}(z)^2$." },
           { tex: `z = ${pt}`, r: "Un seul point : les cercles sont tangents." },
