@@ -81,7 +81,7 @@ scenesE(ctx, O);
 const EC = (o) => ({ crx: 0, v1: 0, v2: 0, v3: 0, fcnt: 0, grille: 0, fill: 99, phe: 0, cls: "", aire: 0, obs: 0, tot: 0, leg: 0, hd: 1, sel: -1, wl: 1, gn: 0, xb: 1, ...o });
 const CX = (o) => EC({ crx: 1, v1: 1, ...o });
 // la scène `lies` : l'état de repos (méiose grande, pas de barre), puis ce que l'étape change
-const LI = (o) => ({ u: 0, al: 0, tet: 0, gam: 0, rc: 0, bar: 0, tc: 0, sum: 0, ...o });
+const LI = (o) => ({ u: 0, al: 0, tet: 0, gam: 0, rc: 0, bar: 0, tc: 0, sum: 0, inv: 0, nx: 0, ...o });
 const GR = (cas, o) => EC({ grille: 1, G: cas, ...o });
 const MEI = (lab, o) => ({ ph: 0, plq: 0, tet: 0, al: 0, or2: 0, gam: 0, co: 0, chi: 0, lab, gm: 1, ...o });
 const D = (cas, extra) => ({ ...cas, ...extra });
@@ -275,15 +275,15 @@ const STEPS = [
     ["½ [L] et ½ [ℓ]", true, "Oui : la suite aura besoin de cette idée, car le test-cross montre les gamètes du parent testé."],
     ["¾ [L] et ¼ [ℓ]", false, "C’est la F2, L//ℓ × L//ℓ. Ici le testeur ne donne que ℓ/.", "Le testeur ℓ//ℓ donne-t-il aussi des gamètes L ?"],
     ["toutes [L]", false, "La moitié des descendants reçoit ℓ/ du parent testé. Elle est ridée.", "Combien de gamètes ℓ la plante L//ℓ donne-t-elle ?"]]) } },
-{ cle: "souris-f1", beat: 6, scene: "meiose", set: MEI(LAB.souris, { ph: 1, al: 1 }), sujet: "écrire un génotype de gènes liés",
+{ cle: "souris-f1", beat: 6, scene: "lies", set: LI({ u: 0, al: 0 }), sujet: "écrire un génotype de gènes liés",
   text: [`${REF.svt24r} : des souris grises à pelage lisse, croisées avec des souris blanches à pelage crépu, donnent une F1 grise et lisse.`, "Symboles du sujet : G (gris), g (blanc) ; L (lisse), ℓ (crépu). Ici le gris est dominant ; dans l’exercice des souris jaunes, il était récessif.", { t: "Si les deux gènes sont sur le même chromosome, F1 s’écrit…", fort: true }],
-  pari: { label: "Réponds", ...VF([
+  pari: { label: "Réponds", reveal: [{ p: { al: 1 }, d: 600 }], ...VF([
     [GF(["G", "L"], ["g", "ℓ"]), true, "Oui : chaque chromosome porte un allèle de chaque gène, celui d’un parent."],
     ["G//g L//ℓ", false, "Tu as écrit deux paires. Sur un même chromosome, chaque chromosome porte un allèle de chaque gène : G L // g ℓ.", "Combien de paires de chromosomes portent les deux gènes ?"],
     [GF(["G", "ℓ"], ["g", "L"]), false, "Tu as mélangé les parents. F1 a reçu G L du parent gris lisse et g ℓ du parent blanc crépu : chaque chromosome garde la combinaison d’un parent.", "Quels allèles le parent gris lisse a-t-il donnés ensemble ?"]]) } },
-{ cle: "absolu-tc", beat: 6, scene: "meiose", set: MEI(LAB.souris, { ph: 3, al: 1, plq: 1, co: 0 }), sujet: "les gamètes en linkage absolu",
+{ cle: "absolu-tc", beat: 6, scene: "lies", set: LI({ u: 2, al: 1, nx: 1 }), sujet: "les gamètes en linkage absolu",
   text: ["Le sujet propose une hypothèse : les deux gènes sont complètement liés, sans crossing-over lors de la formation des gamètes. On dit [[linkage-absolu|linkage absolu]].", { t: "Sous cette hypothèse, F1 produit…", fort: true }],
-  pari: { label: "Réponds", reveal: [{ p: { ph: 8 }, d: 3600 }, { p: { gam: 1 }, d: 500 }], ...VF([
+  pari: { label: "Réponds", reveal: [{ p: { u: 4 }, d: 3600 }, { p: { gam: 1 }, d: 500 }], ...VF([
     ["½ G L et ½ g ℓ", true, "Oui : les chromosomes passent entiers dans les gamètes, deux types seulement."],
     ["¼ de chacun des quatre types", false, "Tu as repris le cas de deux paires. L’orientation d’une paire ne sépare pas deux gènes d’un même chromosome.", "Une paire qui s’oriente sépare-t-elle deux gènes d’un même chromosome ?"],
     ["½ G g et ½ L ℓ", false, "Un gamète porte un seul allèle de chaque gène, pas les deux allèles d’un gène.", "Un gamète porte-t-il G et g à la fois ?"]]) } },
@@ -323,13 +323,13 @@ const STEPS = [
     [`${pc(SV24R_REC, 0)} : ${pc(SV24R.Gl, 2)} + ${pc(SV24R.gL, 2)}`, true, "Oui : les recombinés sont les deux classes ensemble."],
     [`${pc(SV24R_REC / 2, 1)} : la moyenne de ${fr(SV24R.Gl, 2)} et ${fr(SV24R.gL, 2)}`, false, "Tu as pris la moyenne des deux classes, ou une seule. Les recombinés sont les deux classes ensemble.", "Combien de classes sont recombinées ?"],
     [`${pc(SV24R_PAR, 0)} : ${pc(SV24R.GL, 2)} + ${pc(SV24R.gl, 2)}`, false, "Ce sont les parentaux : G L et g ℓ. Les recombinés sont les deux petites classes.", "Les parentaux sont-ils les petites classes ?"]]) } },
-{ cle: "parentaux-recombines", beat: 6, scene: "meiose", set: MEI(LAB.sourisInv, { ph: 1, al: 1 }), sujet: "parentaux et recombinés",
+{ cle: "parentaux-recombines", beat: 6, scene: "lies", set: LI({ u: 0, al: 1, inv: 1 }), sujet: "parentaux et recombinés",
   text: ["Les gamètes [[parentaux]] portent les combinaisons des chromosomes du parent hybride ; les [[recombines|recombinés]], les autres.", `Une souris ${GF(["G", "ℓ"], ["g", "L"])}, née d’un parent gris crépu et d’un parent blanc lisse, fait un test-cross.`, { t: "Quelles classes sont recombinées ?", fort: true }],
-  pari: { label: LB("Réponds"), apres: { html: "Les recombinées restent les deux petites classes, ici [G, L] et [g, ℓ]." }, ...VF([
+  pari: { label: LB("Réponds"), reveal: [{ p: { u: 2 }, d: 2400, w: 300 }, { p: { u: 4 }, d: 3200, w: 300 }, { p: { gam: 1, rc: 1 }, d: 600 }], apres: { html: "Les recombinées restent les deux petites classes, ici [G, L] et [g, ℓ]." }, ...VF([
     ["[G, L] et [g, ℓ]", true, "Oui : ni G ℓ ni g L ne sont sur ses chromosomes, il a fallu un crossing-over."],
     ["[G, ℓ] et [g, L]", false, "Tu as pris les phénotypes qui « mélangent » les caractères pour des recombinés. On juge par rapport aux chromosomes du parent hybride.", "Quelles combinaisons ses chromosomes portent-ils ?"],
     ["les quatre", false, "Deux classes seulement demandent un crossing-over. Les deux autres portent les combinaisons de ses chromosomes.", "Combien de combinaisons ses chromosomes portent-ils ?"]]) } },
-{ cle: "cinquante", beat: 6, scene: "meiose", set: MEI(LAB.souris, { ph: 8, al: 1, co: 1, gam: 1 }), sujet: "la part de recombinés par méiose",
+{ cle: "cinquante", beat: 6, scene: "lies", set: LI({ u: 4, al: 1, gam: 1 }), sujet: "la part de recombinés par méiose",
   text: [`Les souris n’ont que ${pc(SV24R_REC, 0)} de recombinés.`, { t: "Le crossing-over entre G et L a donc lieu…", fort: true }],
   verifie: { apres: { html: `Avec un crossing-over à chaque méiose, 2 gamètes sur 4 seraient recombinés : 50${NB}%. Pour des gènes liés, on n’observe pas plus de 50${NB}% de recombinés.` }, ...VF([
     ["dans peu de méioses", true, `Oui : un crossing-over donne 2 gamètes recombinés sur 4, et on n’en compte que ${pc(SV24R_REC, 0)}.`],

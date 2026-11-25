@@ -26,6 +26,9 @@
  *   gam  garde : 1 écrit sous chaque cellule le lot d'allèles qu'elle contient
  *   cmp  0, 1, 2 : la comparaison des orientations (1 : la première ; 2 : la première et la seconde)
  *   frz  garde : 1 écrit la frise 2n → n → n
+ *   rep  0 → 1, la réplication : 0, chaque chromosome n'a qu'une chromatide (les deux arcs se confondent) ; 1, deux chromatides (défaut)
+ *   alc  garde : 1 écrit l'allèle au-dessus de chaque chromatide (avant la séparation des chromatides)
+ *   pt   0 → 1, la petite paire : 0 la cache (figure à une seule paire)
  *   mit  garde : 1 réduit la méiose et dessine à côté la mitose (les chromosomes alignés un par un)
  * Couleurs : des classes seulement ; le chromosome d'origine paternelle est en `k-a`, celui de la mère en `k-ink`.
  */
@@ -99,7 +102,7 @@ export function scenesD(ctx, O) {
   };
 
   scene("division", {
-    p: { u: 0, o: 0, al: 0, tet: 0, cnt: 0, gam: 0, cmp: 0, frz: 0, mit: 0 },
+    p: { u: 0, o: 0, al: 0, tet: 0, cnt: 0, gam: 0, cmp: 0, frz: 0, mit: 0, rep: 1, alc: 0, pt: 1 },
     build(g) {
       this.ti = titre(g, "Méiose d’une cellule à 2*n* = 4", "");
       this.frz = E("g", {}, g);
@@ -145,9 +148,9 @@ export function scenesD(ctx, O) {
       this.capT = fx(g, 795, 520, "mitose : un par un", "t-titre s-ink", "middle");
     },
     render() {
-      const p = this.p, u = clamp(p.u, 0, 6), o = p.o, mit = clamp(p.mit, 0, 1), al = clamp(p.al, 0, 1);
+      const p = this.p, u = clamp(p.u, 0, 6), rp = clamp(p.rep, 0, 1), alc = clamp(p.alc, 0, 1), pt = clamp(p.pt, 0, 1), o = p.o, mit = clamp(p.mit, 0, 1), al = clamp(p.al, 0, 1);
       const s = lerp(1, 0.7, mit), X = (x) => 500 + (x - 500) * s - 170 * mit, Y = (y) => CY + (y - CY) * s, Ls = (l) => l * s;
-      this.ti.set("Méiose d’une cellule à 2*n* = 4", SOUS(u));
+      this.ti.set("Méiose d’une cellule à 2*n* = 4", u < 0.5 && rp < 0.5 ? "Avant la phase S : chromosomes non copiés" : u < 0.5 && rp < 1 ? "Phase S : l’ADN est copié" : SOUS(u));
       show(this.MG, mit); show(this.capM, mit); show(this.capT, mit);
       show(this.frz, clamp(p.frz, 0, 1));
       /* les cellules : une, deux (cytocinèse de la division I), quatre (division II) */
@@ -175,7 +178,7 @@ export function scenesD(ctx, O) {
       const wt = clamp(p.tet, 0, 1) * clamp((u - 0.6) / 0.3, 0, 1) * clamp((1.6 - u) / 0.3, 0, 1);
       [[Q.G1, Q.G2, LG], [Q.P1, Q.P2, LP]].forEach(([a, b, L], i) => {
         const cx = (a.x + b.x) / 2, cy = (a.y + b.y) / 2, w = Math.abs(a.x - b.x) + 2 * (SPR + WCH / 2) + 22, h = 2 * L + 26, r = this.tetR[i];
-        r.setAttribute("x", f1(X(cx) - Ls(w) / 2)); r.setAttribute("y", f1(Y(cy) - Ls(h) / 2)); r.setAttribute("width", f1(Ls(w))); r.setAttribute("height", f1(Ls(h))); r.style.opacity = wt;
+        r.setAttribute("x", f1(X(cx) - Ls(w) / 2)); r.setAttribute("y", f1(Y(cy) - Ls(h) / 2)); r.setAttribute("width", f1(Ls(w))); r.setAttribute("height", f1(Ls(h))); r.style.opacity = wt * (i ? pt : 1);
         if (i === 0) { this.tetT.setAttribute("x", f1(X(cx))); this.tetT.setAttribute("y", f1(Y(cy) - Ls(h) / 2 - 9)); }
       });
       show(this.tetT, wt);
@@ -190,27 +193,29 @@ export function scenesD(ctx, O) {
       this.polII.forEach((c, i) => { c.setAttribute("cx", f1(X(PII[i]))); c.setAttribute("cy", f1(Y(CY))); c.style.opacity = opII; });
       const sepF = clamp(u - 4, 0, 1), cenOp = clamp(1 - (u - 4) * 10, 0, 1), sepOp = clamp((u - 4) * 10, 0, 1), bul = BUL * clamp(1 - (u - 4) * 3, 0, 1);
       this.ch.forEach((ob) => {
-        const q = Q[ob.c.id], L = ob.c.big ? LG : LP, xc = X(q.x), yc = Y(q.y), d = q.d;
+        const q = Q[ob.c.id], L = ob.c.big ? LG : LP, xc = X(q.x), yc = Y(q.y), d = q.d * (u < 4 ? rp : 1), fp = ob.c.big ? 1 : pt;
+        ob.g.style.opacity = fp;
         // les fibres : division I (une par chromosome, vers le pôle de son côté), division II (une par chromatide, vers l'un et l'autre pôle de sa cellule)
         if (u < 3.3) {
-          setL(ob.fib[0], X(q.x < PL ? pI[0] : pI[1]), Y(CY), xc, yc); ob.fib[0].style.opacity = opI; ob.fib[1].style.opacity = 0;
+          setL(ob.fib[0], X(q.x < PL ? pI[0] : pI[1]), Y(CY), xc, yc); ob.fib[0].style.opacity = opI * fp; ob.fib[1].style.opacity = 0;
         } else {
           const pr = q.x < PL ? [PII[0], PII[1]] : [PII[2], PII[3]];
           setL(ob.fib[0], X(pr[0]), Y(CY), X(q.x - d), yc); setL(ob.fib[1], X(pr[1]), Y(CY), X(q.x + d), yc);
-          ob.fib[0].style.opacity = opII; ob.fib[1].style.opacity = opII;
+          ob.fib[0].style.opacity = opII * fp; ob.fib[1].style.opacity = opII * fp;
         }
         // les chromatides : deux arcs joints par un seul centromère, qui ne se clive qu'après la métaphase II
-        ob.arcs.forEach((a, i) => a.setAttribute("d", arcD(xc, yc, Ls(L), i ? d : -d, bul, 0)));
+        ob.arcs.forEach((a, i) => a.setAttribute("d", arcD(xc, yc, Ls(L), i ? d : -d, bul * rp, 0)));
         ob.cen.setAttribute("cx", f1(xc)); ob.cen.setAttribute("cy", f1(yc)); ob.cen.style.opacity = cenOp;
         ob.cen2.forEach((c, i) => { c.setAttribute("cx", f1(X(q.x + (i ? d : -d)))); c.setAttribute("cy", f1(yc)); c.style.opacity = sepOp; });
         // l'allèle : au-dessus de la grande paire, sous la petite ; une lettre par chromatide quand elles sont séparées
         const ly = ob.c.big ? yc - Ls(L) - 10 : yc + Ls(L) + 30;
-        ob.lab[0].setAttribute("x", f1(lerp(xc, X(q.x - d), sepOp))); ob.lab[1].setAttribute("x", f1(X(q.x + d)));
+        const ac = Math.max(sepOp, alc), dl = lerp(20 * alc, d, sepOp);
+        ob.lab[0].setAttribute("x", f1(lerp(xc, xc - dl, ac))); ob.lab[1].setAttribute("x", f1(xc + dl));
         ob.lab.forEach((t) => t.setAttribute("y", f1(ly)));
-        ob.lab[0].style.opacity = al; ob.lab[1].style.opacity = al * sepOp;
+        ob.lab[0].style.opacity = al * fp; ob.lab[1].style.opacity = al * ac * fp;
       });
       /* le compteur sous chaque cellule */
-      const L3 = lignesCompteur(phOf(u)), cn = clamp(p.cnt, 0, 1);
+      const L3 = lignesCompteur(u < 0.5 && rp < 0.5 ? 0 : phOf(u)), cn = clamp(p.cnt, 0, 1);
       this.cnt.forEach((t, j) => { setFx(t, L3[j]); t.style.opacity = cn * (1 - mit); });
       show(this.cntH, cn * (1 - mit) * cc[2].op);
       /* les lots d'allèles : deux cellules après la division I, quatre après la division II */

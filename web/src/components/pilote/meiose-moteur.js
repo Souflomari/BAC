@@ -83,7 +83,7 @@ const NOTE_PARI = "Pari noté. La méiose va répondre, et tu le verras toi-mêm
 const NOTE_PARI_O = "Pari noté. À l’étape suivante, tu retournes la petite paire toi-même, et la figure tranche.";
 // l'état de base de la scène `meiose` : tout ce que les étapes précédentes ont pu laisser est remis à zéro
 // l'état de base de la scène `division` (les deux divisions d'une cellule à 2n = 4) : `u` est le palier, 0 à 6 ; `o` l'orientation de la petite paire
-const DV = (o) => ({ u: 0, o: 0, al: 0, tet: 0, cnt: 0, gam: 0, cmp: 0, frz: 0, mit: 0, ...o });
+const DV = (o) => ({ u: 0, o: 0, al: 0, tet: 0, cnt: 0, gam: 0, cmp: 0, frz: 0, mit: 0, rep: 1, alc: 0, pt: 1, ...o });
 const MEIOSE_0 = { kar: 0, fec: 0, ph: 0, plq: 0, tet: 0, al: 0, or2: 0, gam: 0, co: 0, chi: 0, cnt: 0, mit: 0, zyg: 0, fcnt: 0, rg: 0, idm: 1, pt: 1, nlab: 1, hap: 0, ori: 1, frz: 0, rc: 0, dbl: 0 };
 
 const STEPS = [
@@ -94,7 +94,7 @@ const STEPS = [
     ["un chromosome dupliqué", true, "Oui : les deux bras du X sont deux chromatides identiques, les copies l’une de l’autre."],
     ["deux chromosomes collés", false, "Tu as pris les deux bras du X pour deux chromosomes. Ce sont les deux chromatides d’un seul chromosome dupliqué.", "Les deux bras du X sont-ils des copies l’un de l’autre ?"],
     ["la forme de tout chromosome", false, "Tu as cru que tout chromosome a la forme d’un X. Avant la copie de l’ADN, il n’a qu’une chromatide.", "Un chromosome qui n’a pas encore été copié a-t-il deux bras ?"]]) },
-{ cle: "sav-chromatides", beat: 0, scene: "meiose", set: { ...MEIOSE_0, ph: 0 }, seq: [{ p: { ph: 1 }, d: 2400, w: 700 }],
+{ cle: "sav-chromatides", beat: 0, scene: "division", set: DV({ u: 0, rep: 0 }), seq: [{ p: { rep: 1 }, d: 2400, w: 700 }],
   text: ["Voici une cellule à 4 chromosomes. Avant de se diviser, elle copie son ADN : c’est la phase S.",
     { t: "Un chromosome non copié n’a qu’une [[chromatide]], une seule molécule d’ADN.", a: 0 },
     { t: "Après la copie, il en a deux : des chromatides sœurs, identiques tant qu’il n’y a pas eu de crossing-over, reliées par le [[centromere|centromère]].", a: 0, fort: true }] },
@@ -128,7 +128,7 @@ const STEPS = [
 { cle: "homologues", beat: 2, scene: "meiose", set: { ...MEIOSE_0, kar: 1, esp: "droso8", al: 1 },
   text: ["Chaque paire réunit deux [[homologue|chromosomes homologues]] : l’un vient du père, en rouge, l’autre de la mère.",
     { t: "Ils portent les mêmes gènes, aux mêmes places, mais pas forcément les mêmes [[allele|allèles]] : A sur l’un, a sur l’autre.", fort: true }] },
-{ cle: "homo-soeurs", beat: 2, scene: "meiose", set: { ...MEIOSE_0, ph: 1, al: 1, rg: 1, idm: 0 }, sujet: "homologues et chromatides sœurs",
+{ cle: "homo-soeurs", beat: 2, scene: "division", set: DV({ u: 0, al: 1, alc: 1 }), sujet: "homologues et chromatides sœurs",
   text: ["Voici une cellule après la phase S : la figure écrit l’allèle de chaque chromatide, pour deux gènes.", { t: "Qui porte forcément les mêmes allèles : les deux chromatides d’un chromosome, ou les deux chromosomes d’une paire ?", fort: true }],
   pari: { label: "Réponds", ...VF([
     ["les deux chromatides sœurs", true, "Oui : les chromatides sœurs sont des copies, identiques avant tout crossing-over. Les deux homologues, eux, peuvent porter A et a."],
@@ -147,9 +147,9 @@ const STEPS = [
     ...BET([["toujours celui du père", NOTE_PARI], ["au hasard, paire par paire", NOTE_PARI], ["soit tous ceux du père, soit tous ceux de la mère", NOTE_PARI]]) } },
 
 /* ===== 3. la première division ===== */
-{ cle: "interphase", beat: 3, scene: "meiose", set: { ...MEIOSE_0, ph: 0, cnt: 1 }, sujet: "l’ADN après la phase S",
+{ cle: "interphase", beat: 3, scene: "division", set: DV({ u: 0, rep: 0, cnt: 1 }), sujet: "l’ADN après la phase S",
   text: ["Avant la [[meiose|méiose]], comme avant une mitose, la cellule copie son ADN : c’est la phase S.", `On compte l’ADN en <i>q</i> : un gamète en vaut <i>q</i>, et la cellule de départ (2<i>n</i> = ${N2}), avant la copie, en vaut ${ADN_G1}<i>q</i>.`, { t: "Que vaut-elle après la phase S ?", fort: true }],
-  pari: { label: "Réponds", reveal: [{ p: { ph: 1 }, d: 1600 }], ...VF([
+  pari: { label: "Réponds", reveal: [{ p: { rep: 1 }, d: 1600 }], ...VF([
     [`${ADN_S}<i>q</i>`, true, `Oui : le nombre de chromosomes reste ${N2}, mais chaque chromosome a doublé : ${etat(1).chromatides} chromatides, ${ADN_S}<i>q</i>.`],
     [`${ADN_G1}<i>q</i>`, false, `Tu as cru que l’ADN suit le nombre de chromosomes, qui reste ${N2}. La réplication double l’ADN : ${ADN_S}<i>q</i>.`, "Le nombre de chromosomes ne change pas en phase S. Et chaque chromosome ?"],
     ["<i>q</i>", false, `Tu as cru que la cellule se prépare déjà à diviser par deux. La réplication double toujours l’ADN : ${ADN_S}<i>q</i>.`, "La phase S copie l’ADN : la quantité monte-t-elle ou baisse-t-elle ?"]]) } },
@@ -325,7 +325,7 @@ const STEPS = [
     [`1 chance sur ${sup(2, N_HOMME)}, soit 1 sur ${millions(T23)}`, true, `Oui : chaque paire donne ½, y compris la paire sexuelle, et les ${N_HOMME} se multiplient : ½ × ½ × … , ${N_HOMME} fois.`],
     ["1 chance sur 2, comme pour une seule paire", false, `Tu as raisonné sur une seule paire. Les ${N_HOMME} paires s’orientent chacune au hasard : ½ × ½ × … , ${N_HOMME} fois.`, "Combien de paires doivent s’orienter comme la première fois ?"],
     [`1 chance sur ${N_HOMME}, une par paire`, false, `Tu as pris une chance par paire. Chaque paire donne ½, et les ${N_HOMME} se multiplient.`, "Une probabilité de ½ par paire : additionne-t-on ou multiplie-t-on pour 23 paires ?"]]) } },
-{ cle: "retour-mendel", beat: 8, scene: "meiose", set: { ...MEIOSE_0, ph: 3, al: 1, plq: 1, pt: 0, ori: 0 }, sujet: "un parent A//a",
+{ cle: "retour-mendel", beat: 8, scene: "division", set: DV({ u: 2, al: 1, pt: 0 }), sujet: "un parent A//a",
   text: ["Un individu porte A sur un chromosome et a sur son homologue : on le note A//a.", { t: "Un parent A//a produit des gamètes…", fort: true }],
   pari: { label: "Réponds", ...VF([
     ["½ A et ½ a", true, "Oui : un gamète a un chromosome de chaque paire, donc A ou a, à égalité. C’est la loi des croisements de la prochaine leçon."],
@@ -333,16 +333,16 @@ const STEPS = [
     ["tous A, si A est dominant", false, "Tu as appliqué la dominance à la méiose. La dominance concerne l’individu ; la méiose donne ½ A et ½ a.", "La méiose « voit »-elle quel allèle est dominant ?"]]) } },
 
 /* ===== 9. au bac ===== */
-{ cle: "bac-qcm", beat: 9, scene: "meiose", set: { ...MEIOSE_0, ph: 0 }, sujet: "ce que donne la méiose",
+{ cle: "bac-qcm", beat: 9, scene: "division", set: DV({ u: 0 }), sujet: "ce que donne la méiose",
   text: ["Un vrai item du bac : Sciences Physiques, rattrapage 2024, première partie, II.3 (0,5 pt).", { t: "À partir d’une cellule mère diploïde, la méiose donne…", fort: true }],
-  pari: { label: "Réponds", reveal: [{ p: { ph: 8 }, d: 4200 }, { p: { cnt: 1 }, d: 500 }], ...VF([
+  pari: { label: "Réponds", reveal: [{ p: { u: 6 }, d: 4200 }, { p: { cnt: 1 }, d: 500 }], ...VF([
     ["quatre cellules haploïdes avec des chromosomes monochromatidiens", true, "Oui : la division I réduit 2n à n, la division II sépare les chromatides : quatre cellules haploïdes, à une chromatide."],
     ["deux cellules diploïdes avec des chromosomes bichromatidiens", false, "Tu as arrêté au milieu de la méiose. Après la division I, il y a deux cellules, mais elles sont déjà haploïdes ; la division II en fait quatre.", "Après la division I, les cellules ont-elles encore leurs paires ?"],
     ["quatre cellules diploïdes avec des chromosomes bichromatidiens", false, "Tu as gardé 2n. La division I a séparé les homologues : les quatre cellules finales sont haploïdes.", "Les homologues restent-ils ensemble après la division I ?"],
     ["deux cellules haploïdes avec des chromosomes monochromatidiens", false, "Tu as oublié la division II. Elle partage chaque cellule en deux : quatre cellules, et non deux.", "Combien de divisions la méiose comporte-t-elle ?"]]) } },
-{ cle: "bac-vf", beat: 9, scene: "meiose", set: { ...MEIOSE_0, ph: 3, al: 1, plq: 1, pt: 0, ori: 1 }, sujet: "des cellules filles différentes",
+{ cle: "bac-vf", beat: 9, scene: "division", set: DV({ u: 2, al: 1 }), sujet: "des cellules filles différentes",
   text: ["Un autre vrai item : SVT, rattrapage 2024, première partie, III.a (0,25 pt).", { t: "Vrai ou faux : « Les cellules filles issues de la division réductionnelle de la méiose ont la même information génétique. »", fort: true }],
-  pari: { label: "Réponds", reveal: [{ p: { ph: 5 }, d: 2400 }], apres: { html: "À l’examen, la méiose tombe surtout en première partie ; les brassages, dans les croisements de la leçon suivante." }, ...VF([
+  pari: { label: "Réponds", reveal: [{ p: { u: 3 }, d: 2400 }, { p: { gam: 1 }, d: 500 }], apres: { html: "À l’examen, la méiose tombe surtout en première partie ; les brassages, dans les croisements de la leçon suivante." }, ...VF([
     ["Faux : elles reçoivent chacune un homologue différent", true, "Oui : chaque cellule fille reçoit un homologue de chaque paire, A ou a."],
     ["Vrai : les deux viennent de la même cellule mère", false, "Tu as confondu l’origine et le contenu. Les deux cellules viennent de la même mère, mais chacune reçoit un homologue différent de chaque paire.", "Les deux homologues d’une paire partent-ils dans la même cellule fille ?"],
     ["Vrai : elles ont toutes deux le même nombre n", false, "Tu as confondu le nombre de chromosomes et leur contenu. Les deux cellules ont <i>n</i> chromosomes, mais pas les mêmes allèles.", "Avoir le même nombre de chromosomes, est-ce avoir les mêmes allèles ?"]]) } },
