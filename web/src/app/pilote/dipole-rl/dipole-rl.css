@@ -1,0 +1,56 @@
+/* Leçon « Le dipôle RL » (V3) : ce qui lui est propre, par-dessus ../logarithme/pilote.css
+   (commun aux leçons). Tout est scopé sous [data-pilote="dipole-rl"] ; couleurs : jetons seulement. */
+
+/* contrôles du script : un geste (quatre curseurs), un saut (« Passer à la suite ») */
+.pilote[data-pilote="dipole-rl"] .ctl-btns { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 4px; }
+.pilote[data-pilote="dipole-rl"] .ctl-btn { font: 700 1rem var(--font-ui); min-height: 48px; padding: 12px 18px; cursor: pointer; background: var(--color-text-primary); color: var(--color-surface-base); border: 1px solid var(--color-text-primary); }
+.pilote[data-pilote="dipole-rl"] .ctl-btn.alt { background: transparent; color: var(--color-text-primary); }
+.pilote[data-pilote="dipole-rl"] .ctl-btn[hidden] { display: none; }
+.pilote[data-pilote="dipole-rl"] .ctl-btn:disabled { opacity: .45; cursor: default; }
+.pilote[data-pilote="dipole-rl"] .ctl-btn:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+.pilote[data-pilote="dipole-rl"] .saut { margin-top: 4px; }
+.pilote[data-pilote="dipole-rl"] .saisie { display: flex; align-items: baseline; gap: 10px; font-size: 1.0625rem; }
+.pilote[data-pilote="dipole-rl"] .saisie input { font: 1.0625rem var(--font-ui); padding: 10px 12px; border: 1px solid var(--color-text-primary); background: var(--color-surface-base); color: var(--color-text-primary); width: min(16rem, 100%); }
+.pilote[data-pilote="dipole-rl"] .saisie input:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 1px; }
+.pilote[data-pilote="dipole-rl"] .saisie input:disabled { color: var(--color-text-secondary); }
+.pilote[data-pilote="dipole-rl"] .apres:empty { display: none; }
+.pilote[data-pilote="dipole-rl"] .apres { margin-top: 14px; }
+.pilote[data-pilote="dipole-rl"] .apres .small { margin: 0 0 6px; }
+.pilote[data-pilote="dipole-rl"] sup, .pilote[data-pilote="dipole-rl"] sub { line-height: 0; }
+
+/* scène SVG : styles repris de la leçon voisine (étiquettes en gras, indices) */
+.pilote[data-pilote="dipole-rl"] .rd-fort { font-size: 18px; font-weight: 700; }
+.pilote[data-pilote="dipole-rl"] .rd-ind { font-size: 16px; }
+
+/* treize parties dans la barre du haut : des noms courts, jamais tronqués */
+.pilote[data-pilote="dipole-rl"] .beats { gap: 6px; }
+@media (max-width: 1500px) and (min-width: 900px) {
+  .pilote[data-pilote="dipole-rl"] .pilote-barre { gap: 20px; }
+}
+
+/* la rédaction attendue au bac : une copie, ligne à ligne */
+.pilote[data-pilote="dipole-rl"] .rl-copie { margin: 4px 0 16px; padding: 12px 16px; border-left: 3px solid var(--color-text-primary); background: var(--color-surface-container-low); display: grid; gap: 8px; font-size: 1.0625rem; line-height: 1.45; }
+.pilote[data-pilote="dipole-rl"] .rl-copie p { margin: 0; }
+.dark .pilote[data-pilote="dipole-rl"] .rl-copie { background: var(--color-surface-container-high); }
+.pilote[data-pilote="dipole-rl"] .mot-carte svg text { font-family: var(--font-ui); }
+
+/* un mot à trait d'union ou à fiche ne se coupe pas à la ligne */
+.pilote[data-pilote="dipole-rl"] .nw { white-space: nowrap; }
+
+/* scène SVG : tailles des étiquettes du schéma et des courbes (lisibles à 390 px) */
+.pilote[data-pilote="dipole-rl"] [data-pilote-scene] .rl-t { font-size: 26px; font-weight: 700; }
+.pilote[data-pilote="dipole-rl"] [data-pilote-scene] .rl-s { font-size: 22px; }
+.pilote[data-pilote="dipole-rl"] [data-pilote-scene] .rl-l { font-size: 26px; }
+.pilote[data-pilote="dipole-rl"] [data-pilote-scene] .rl-g { font-size: 36px; font-weight: 700; }
+.pilote[data-pilote="dipole-rl"] [data-pilote-scene] .rl-tt { font-size: 32px; }
+.pilote[data-pilote="dipole-rl"] [data-pilote-scene] .rl-halo { paint-order: stroke; stroke: var(--st-bg); stroke-width: 7px; stroke-linejoin: round; }   /* le repère vertical passe derrière le mot, pas dedans */   /* les repères τ, 2τ… : la lettre grecque est basse, elle reste lisible à 11 px */
+.pilote[data-pilote="dipole-rl"] [data-pilote-scene] .t-sous { font-size: 22px; }
+.pilote[data-pilote="dipole-rl"] [data-pilote-scene] .t-tick { font-size: 22px; }
+.pilote[data-pilote="dipole-rl"] .band { fill: var(--st-fa); }
+
+/* les trois curseurs de la figure-clé : L, R, r et E, à crans */
+.pilote[data-pilote="dipole-rl"] .rl-cur { display: grid; gap: 4px; margin: 8px 0 4px; }
+.pilote[data-pilote="dipole-rl"] .rl-cur label { display: grid; grid-template-columns: 2.4rem 1fr 5.4rem; align-items: center; gap: 10px; font-size: 1.0625rem; }
+.pilote[data-pilote="dipole-rl"] .rl-cur input[type="range"] { min-width: 0; height: 44px; accent-color: var(--color-text-primary); }
+.pilote[data-pilote="dipole-rl"] .rl-tctl[hidden] { display: none; }
+.pilote[data-pilote="dipole-rl"] .rl-cur output { font: 700 1.0625rem var(--font-ui); text-align: right; font-variant-numeric: tabular-nums; }

@@ -12,7 +12,7 @@ import { listEpreuves } from "@/lib/examens";
 import { DEFAULT_SUBJECT_ORDER } from "@/lib/curriculum";
 import { SITE_URL } from "@/lib/site";
 
-const PILOTES = ["logarithme", "radioactivite", "expression-genetique", "exponentielle", "meiose", "transmission", "noyaux", "suites", "dipole-rc"];
+const PILOTES = ["logarithme", "radioactivite", "expression-genetique", "exponentielle", "meiose", "transmission", "noyaux", "suites", "dipole-rc", "dipole-rl"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [

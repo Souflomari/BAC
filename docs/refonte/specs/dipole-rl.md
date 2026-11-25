@@ -23,6 +23,44 @@
 
 ---
 
+## 0. La leçon livrée (état au 2026-11-25)
+
+La leçon livrée (`web/src/components/pilote/dipole-rl-moteur.js`) compte **50 étapes**, dans l'ordre et sous les clés du plan : **le fichier de la leçon fait foi** ; les sections 1 à 9 ci-dessous restent le plan d'origine (raisons, sources, leurres). Route `/pilote/dipole-rl`, 15 gabarits d'exercices (`exercices/dipole-rl.js`), catalogue d'apprentissage `dipole-rl.ts` (45 questions, 15 gabarits, 8 conceptions propres à la leçon : `rl.*`).
+
+| # | Partie | Étapes (clés, dans l'ordre) |
+|---|---|---|
+| 0 | Ce qu’il faut savoir | `sav-test`, `sav-rappel` |
+| 1 | L’énigme | `deux-lampes`, `etincelle` |
+| 2 | La bobine | `bobine`, `convention`, `pente-tension`, `bobine-reelle`, `triangle`, `triangle-L` |
+| 3 | L’établissement du courant | `allure`, `u0`, `pas-pari`, `permanent` |
+| 4 | L’équation | `ed-maille`, `ed-forme`, `meme-equation` |
+| 5 | La solution | `verif`, `dim`, `uL-t` |
+| 6 | La constante de temps | `rappel`, `tau-63`, `double-L`, `double-R`, `curseurs`, `influence-E`, `r-palier` |
+| 7 | La rupture | `rupture-pari`, `ed-rupture`, `rupture-tau`, `uL-rupture`, `surtension` |
+| 8 | L’énergie | `energie-pari`, `energie-etablir`, `energie-calc` |
+| 9 | Mesurer | `oscillo`, `oscillo-voies` |
+| 10 | Retour à l’énigme | `retour-lampes` |
+| 11 | Au bac | `bac`, `bac-ed`, `bac-AB`, `bac-L`, `bac-uL`, `bac-2a`, `bac-2b`, `bac-2c` |
+| 12 | Bilan | `q1`, `q2`, `q3`, `fin` |
+
+Le rappel est la 21ᵉ étape sur 50 (42 %). Les quatre adaptations de scènes du §9 (question 1) sont acceptées comme copies adaptées de celles de RC : jeux `lampes` et `henry` de `circuit`, jeu `triangle` de `couple`, lignes de champ dans la bobine. Aucune scène n'importe quoi de la leçon RC (les outils de scène `outilsRl` sont copiés dans `dipole-rl-outils.js`).
+
+**Écarts au plan, et pourquoi.**
+
+1. **M9 : la scène ne donne pas la réponse avant la question.** `rappel` n'affiche i(t) et u_L(t) qu'après la réponse (`ic:0, ul:0`, `reveal`) : le repère à t = 0 et ses lectures auraient donné « i = 0 et u_L = E ». Même règle pour `oscillo` (le branchement de la voie Y₁ paraît au `reveal`), `rupture-tau` (le repère τ seul avant la réponse, la lecture à 37 % au `reveal`), `influence-E` (la courbe de 12 V se trace au `reveal`, la courbe de 6 V est en pointillés), et `surtension` (les lectures de la tension de la maille de rupture n'existent qu'à la rupture).
+2. **`oscillo` : une seule voie.** Y₁ de l'autre côté de R, masse entre R et la bobine : c'est la décision du §8.2, point 8 (aucune voie inversée à montrer). `oscillo-voies` utilise un jeu nouveau de `courbe`, `voies` (u_R et u_L sur un même écran, d'abord nommées « voie 1 » et « voie 2 »), parce que `couple` nomme ses axes.
+3. **`bac` sur la scène `circuit`** (le `reveal` pose les flèches), comme en RC ; la scène `courbe` (jeu `bac23`) sert `bac-AB`, `bac-L` et `bac-uL`. **`bac-2b` sans quadrillage** : la règle « pas de quadrillé de fond » l'emporte sur l'imitation de la figure imprimée ; les valeurs lues sont celles du plan.
+4. **Le rapport des constantes de temps de `surtension`** est calculé : τ/τ′ = 1 060/60 ≈ 18, non « vingt » comme l'écrivait le plan ; le texte dit « environ 18 fois ».
+5. **`triangle`** : « un générateur impose le courant » (symbole du générateur de courant), non « GBF » ; `ghost` du plan devient deux paramètres numériques, `ghL` et `ghR` (la superposition s'anime).
+6. **Un 15ᵉ gabarit, `rl-energie-etablir`** (`filieres: ["PC", "SM"]`, capacité `1.3.2.15`), parce que les filières se portent par gabarit : la question « établir » ne peut pas rester dans `rl-energie`. Le jeu `rupture` de `courbe` n'est pas écrit : aucune étape ne le demande (la rupture se montre dans `couple`).
+7. **Un curseur de temps** (`temps`, comme en RC) sur six étapes de `couple` (`permanent`, `uL-t`, `rupture-pari`, `rupture-tau`, `uL-rupture`, `surtension`), non prévu au plan ; il paraît quand la question est résolue, paris compris.
+8. **`bac-ed`** reste une dérivation commentée de cinq lignes sans ligne choisie (le plan : « sans action ») : la cible « une ligne choisie » du contrôle `pilotes-regles` reste non atteinte, sans bloquer.
+9. **Histoire.** Henry : le récit est paraphrasé, jamais cité ni traduit comme une citation ; aucune tension de claquage ; les deux lampes sont un schéma de principe, sans valeur. Les valeurs (« de 30 à 40 pieds, soit de 9 à 12 mètres ») sont calculées dans `dipole-rl-outils.js`.
+
+**Conceptions → étapes (B5).** Les tableaux du §5 valent, aux écarts près ci-dessus ; le fichier `web/scripts/apprentissage-gen/spec-dipole-rl.mjs` donne, option par option, l'étiquette de chaque leurre (conception `rl.*` du registre, « inattention » ou « aucune »).
+
+---
+
 ## 1. Périmètre
 
 ### 1.1 Ce que l'élève sait déjà, et ce que la leçon ne refait pas

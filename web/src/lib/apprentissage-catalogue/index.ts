@@ -13,6 +13,7 @@ import { SUITES } from "./suites";
 import { RADIOACTIVITE } from "./radioactivite";
 import { NOYAUX } from "./noyaux";
 import { DIPOLE_RC } from "./dipole-rc";
+import { DIPOLE_RL } from "./dipole-rl";
 import { EXPRESSION_GENETIQUE } from "./expression-genetique";
 import { MEIOSE } from "./meiose";
 import { TRANSMISSION } from "./transmission";
@@ -24,6 +25,7 @@ export const LECONS: CatalogueLecon[] = [
   RADIOACTIVITE,
   NOYAUX,
   DIPOLE_RC,
+  DIPOLE_RL,
   EXPRESSION_GENETIQUE,
   MEIOSE,
   TRANSMISSION,
