@@ -8,6 +8,7 @@ export const TITRES_LECONS: Record<string, string> = {
   "dipole-rc": "Le dipôle RC",
   "dipole-rl": "Le dipôle RL",
   "transformations-non-totales": "Transformations non totales",
+  complexes: "Nombres complexes : forme algébrique et équations",
   "expression-genetique": "Du gène à la protéine",
   meiose: "La méiose, la fécondation et les brassages",
   transmission: "Les lois de la transmission des caractères",

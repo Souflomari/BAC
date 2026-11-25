@@ -27,6 +27,40 @@
 
 ---
 
+## 0. La leçon livrée (état au 2026-11-25)
+
+La leçon livrée (`web/src/components/pilote/complexes-moteur.js`) compte **55 étapes**, dans l'ordre et sous les clés du plan : **le fichier de la leçon fait foi** ; les sections 1 à 9 ci-dessous restent le plan d'origine (raisons, sources, leurres). Route `/pilote/complexes`, titre « Nombres complexes : forme algébrique et équations », 12 gabarits d'exercices (`exercices/complexes.js`, la médiatrice retirée), catalogue d'apprentissage `complexes` (43 questions, 12 gabarits, 37 conceptions `cx.*` dans `graphe-transversal.ts`). Le rappel (`rappel`) est la 25ᵉ étape sur 55 (45 %).
+
+| # | Partie | Étapes (clés, dans l'ordre) |
+|---|---|---|
+| 0 | Ce qu'il faut savoir | `savoir`, `sav-rappel` |
+| 1 | L'énigme | `cubique`, `formule`, `fausse`, `bombelli` |
+| 2 | Où vivent ces nombres | `droite`, `quart`, `axe-i`, `quatre-quarts`, `point-z`, `partie-imag`, `egalite`, `fois-i`, `fois-i-curseur` |
+| 3 | Calculer | `somme`, `produit`, `carre` |
+| 4 | Le conjugué | `conjugue`, `ou-zzbar`, `zzbar`, `z-plus-zbar`, `conj-prop`, `diviser` |
+| 5 | Le module et la distance | `rappel`, `module`, `module-calc`, `module-somme`, `distance`, `cercle` |
+| 6 | Le second degré | `somme-carres`, `x2-moins`, `canonique`, `formule-delta`, `conjuguees`, `bicarree` |
+| 7 | Filière SM : coefficients complexes | `sm-signe`, `sm-delta`, `sm-resoudre`, `sm-somme-produit` |
+| 8 | Retour à l'énigme | `retour-cube`, `retour-conj`, `retour-somme`, `retour-pourquoi` |
+| 9 | Au bac | `bac`, `bac-a`, `bac-b`, `bac-c`, `bac-copie`, `bac-2`, `bac-2-racines` |
+| 10 | Bilan | `q1`, `q2`, `q3`, `fin` |
+
+**Écarts au plan** (chacun a une raison : la relecture « la réponse ne se lit nulle part avant la question », ou une décision du propriétaire).
+
+- **Histoire.** Seuls Cardan, 1545, √−121 et x = 4 s'affichent. Les plaques `1572` et `1797`, le nom de Bombelli, Wessel, Argand et Descartes, la phrase « plus sophistique que vrai » : retirés (`bombelli` ne nomme personne ; `axe-i` n'a plus de phrase d'histoire).
+- **Titre de la partie 2.** « Où vivent ces nombres » (nom court « Lieu ») et non « Le plan et le quart de tour » : le titre, toujours visible dans la barre, nommait la réponse du pari `quart`. Les noms courts « Conjugué » et « Équation » deviennent « Miroir » et « Racines » (onze parties et un titre long ne tenaient pas dans la barre à 1280 px ; un resserrement CSS propre à la leçon couvre aussi 1100 à 1599 px).
+- **Scène `plan`.** Écrite comme prévu : repère orthonormé, un geste par étape. L'état est une fonction de paramètres : discrets (`geste`, `pts`, `cercles`, `vue`, lectures `t1`/`t2`), numériques, et trois paramètres animés, un seul à la fois dans une étape (`u` pour le point, `cu` pour le cercle, `su` pour le segment AB) au lieu du seul `u` de la spécification. Deux cadres (`vue` 0 : x de −5,5 à 7,5 ; `vue` 1 : x de −3 à 14,5, nécessaire pour z z̄ = 13, que la fenêtre de la spécification ne contenait pas). Le cadre large n'est posé qu'à la révélation de `ou-zzbar` : la fenêtre ne dit pas où tombe le produit. `cardan` : copie de `loi`, courbe de x³ − 15x − 4 ; `savoir`, `quiz`, `end` : copies.
+- **Réponse lue avant la question.** `quatre-quarts` : l'animation s'arrête en −1, le cycle s'achève à la révélation, et la formule i³ = −i passe de `tex` à `apres`. `zzbar` : la figure ne montre plus le produit (13) avant la réponse, et `ou-zzbar` n'écrit plus 13 ; 2 ; 13 (étiquette chiffrée à la révélation de `zzbar`). `bac` : la révélation s'arrête à |z − d| = 2 (le plan donnait DM = |z + 2|, réponse de `bac-a`). `somme-carres` : x² + 16 au lieu de x² + 4 (la factorisation donnait les solutions de la question suivante, z² = −4). `partie-imag` : Im(4 − 6i) au lieu de Im(3 − 5i) (y = −5 à la question suivante). `module-calc` : |−5 + 12i| = 13 (point non dessiné) et `distance` : A(−2 + 4i), B(4 − 4i), AB = 10, au lieu de 5 et 5 (le 5 de `module-somme`, vu à l'étape d'avant). `retour-somme` : la phrase « Le détour par l'impossible ramène à 4 » passe à `retour-pourquoi`. `bac-2-racines` : la consigne ne nomme plus les deux pièges.
+- **Questions sans oui/non.** `savoir`, `module-somme`, `sm-signe`, `q2` : « Quelles sont… », « Que valent… », « Que dire de… » (la spécification posait des questions auxquelles on répond par oui ou non).
+- **Leurres.** `bombelli` : conflit entre deux règles (le texte pose (√−1)² = −1), mêmes erreurs. `module-somme` : trois paires de valeurs (5 et 7 ; 7 et 7 ; 25 et 7). `bac-b` : le pari porte sur la première ligne (le conjugué du réel 2, Pythagore appliqué à une somme) ; les lignes suivantes sont dans `apres`. `bac-c`, `q1` : options de même longueur. `q2` : le troisième leurre est « 4 et 2 » (module sans racine). `q3` : z² + 6z + 13 (la spécification donnait z² + 2z + 10, dont les solutions −1 ± 3i sont le leurre de `bac-2-racines`).
+- **Ordre des options des paris de prédiction** (`fausse`, `quart`, `fois-i`, `ou-zzbar`, `conjuguees`) : la vraie n'est jamais la première. `fois-i` : A échange, B quart de tour, C demi-tour.
+- **`retour-somme` / `cardan`** : la phrase du plan « puis scène `cardan`, `quatre:1` » est portée par `retour-pourquoi` (une étape n'a qu'une scène).
+- **Exercices.** Gabarit 7 : cercles seulement, centres réels ou imaginaires purs ou généraux. Gabarit 9 : options de forme semblable (écriture ±), pour que la bonne ne soit ni la plus longue ni l'union des leurres. Gabarit 11 : un leurre « δ mal choisi ».
+
+**Ce qui reste « à vérifier »** (la liste complète est dans le rapport de remise) : la forme exacte de la formule de Cardan telle qu'il l'écrit (l'écran la donne en notation moderne) ; l'ordre « le plan est venu après le calcul avec √−1 » (`retour-pourquoi`, sans date) ; les quatre points de programme du §8 ; la lecture à voix haute de z̄ (le mot « barre » est lu).
+
+---
+
 ## 1. Périmètre
 
 ### 1.1 Capacités officielles couvertes (cadres 2025, mot pour mot)
