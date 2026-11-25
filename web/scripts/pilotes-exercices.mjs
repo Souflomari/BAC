@@ -12,6 +12,9 @@
  *     identiques, ou une mauvaise réponse sans explication ;
  *   - une réponse numérique non finie, sans tolérance, ou une valeur
  *     « piège » qui se confond avec la bonne réponse ;
+ *   - une écriture mal formée (deux signes de suite, signe en fin de terme,
+ *     carré d'un négatif sans parenthèses, valeur non calculée) ou deux options
+ *     égales à l'ordre près ;
  *   - une formule que KaTeX refuse ;
  *   - un tirage qui change d'une fois sur l'autre avec la même graine.
  * C'est RULES 15 appliqué aux exercices des pilotes.

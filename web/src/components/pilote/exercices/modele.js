@@ -51,6 +51,24 @@ export function normaliser(s) {
  * Les défauts d'un tirage, en clair (liste vide = tirage sain).
  * `capacitesConnues` : Set des identifiants du référentiel ; `rendre(s, strict)` : le rendu KaTeX strict.
  */
+/* Les malfaçons d'écriture qu'un tirage peut produire sans que rien ne plante (leçon « complexes », 2026-11-25 :
+ * « z² (−3−i)z », « z = 1- », « 2² + −6² »). On les cherche dans l'énoncé, les intitulés et les options. */
+const MOINS = "[-−]";
+const MALFACONS = [
+  ["deux signes de suite", new RegExp(`[+×·]\\s*${MOINS}\\s*\\d|${MOINS}\\s*${MOINS}\\s*\\d`)],
+  ["signe en fin de terme", new RegExp(`\\d\\s*[+]\\s*(?:$|[,;.)]|\\bet\\b|\\bou\\b)|\\d${MOINS}\\s*(?:$|[,;)]|\\bet\\b|\\bou\\b)`)],
+  ["parenthèses vides", /\(\s*\)/],
+  ["carré d'un négatif sans parenthèses", new RegExp(`[+×(=]\\s*${MOINS}\\d+(?:,\\d+)?\\s*(?:\\^\\{?2|²)`)],
+  ["valeur non calculée", /NaN|undefined|Infinity|\[object/],
+];
+const aPlat = (s) => String(s).replace(/\\[;,! ]/g, " ").replace(/\s+/g, " ").trim();
+export function malfacons(s) {
+  const t = aPlat(s);
+  return MALFACONS.filter(([, re]) => re.test(t)).map(([nom]) => `${nom} (« ${t.slice(0, 80)} »)`);
+}
+/** Deux options qui disent la même chose dans un autre ordre (« z₁ et z₂ » / « z₂ et z₁ »). */
+const aOrdrePres = (s) => aPlat(s).replace(/\$/g, "").split(/\s+(?:et|ou)\s+|\s*;\s*/).map((x) => x.trim()).sort().join(" & ");
+
 export function defautsTirage(ex, t, { capacitesConnues, rendre, formule }) {
   const d = [];
   const essai = (quoi, f) => {
@@ -63,11 +81,13 @@ export function defautsTirage(ex, t, { capacitesConnues, rendre, formule }) {
   if (!t || typeof t !== "object") return ["le gabarit ne rend rien"];
   if (!t.enonce) d.push("énoncé vide");
   essai("énoncé", () => rendre(t.enonce, true));
+  if (t.enonce) malfacons(t.enonce).forEach((m) => d.push(`énoncé : ${m}`));
   if (!Array.isArray(t.questions) || !t.questions.length) d.push("aucune question");
   (t.questions || []).forEach((q, i) => {
     const n = `question ${i + 1}`;
     if (!q.q) d.push(`${n} : intitulé vide`);
     essai(`${n} (intitulé)`, () => rendre(q.q, true));
+    if (q.q) malfacons(q.q).forEach((m) => d.push(`${n} (intitulé) : ${m}`));
     if (q.indice) essai(`${n} (indice)`, () => rendre(q.indice, true));
     if (q.type === "qcm") {
       const o = q.options || [];
@@ -76,8 +96,11 @@ export function defautsTirage(ex, t, { capacitesConnues, rendre, formule }) {
       if (justes !== 1) d.push(`${n} : ${justes} bonne(s) réponse(s) au lieu d'une`);
       const textes = o.map((x) => String(x.t).replace(/\s+/g, " ").trim());
       if (new Set(textes).size !== textes.length) d.push(`${n} : deux options identiques (${textes.join(" | ")})`);
+      const cles = o.map((x) => aOrdrePres(x.t));
+      if (new Set(cles).size !== cles.length && new Set(textes).size === textes.length) d.push(`${n} : deux options égales à l'ordre près (${textes.join(" | ")})`);
       o.forEach((x, j) => {
         essai(`${n} option ${j + 1}`, () => rendre(x.t, true));
+        malfacons(x.t).forEach((m) => d.push(`${n} option ${j + 1} : ${m}`));
         if (!x.ok && !x.fb) d.push(`${n} option ${j + 1} : mauvaise réponse sans explication`);
         if (x.fb) essai(`${n} option ${j + 1} (explication)`, () => rendre(x.fb, true));
       });
