@@ -31,3 +31,10 @@
 
 /* la zone f(x) > x ou f(x) < x : un aplat d'accent très léger ; un peu plus soutenu en sombre, pour ne pas virer au brun */
 .dark .pilote[data-pilote="suites"] .su-zone { fill-opacity: 0.18; }
+
+/* au téléphone (390 px de large, la toile mesure 1 000 unités), le texte de la scène part de 28 unités, soit 11 px réels :
+   le noyau remonte déjà chaque texte à 11 px, mais il en rabat un dès que deux se touchent, et il ne s'en souvient plus d'une
+   étape à l'autre. Avec une taille d'origine à 28, aucun ne redescend sous 11 px. */
+@media (max-width: 639px) {
+  .pilote[data-pilote="suites"] [data-pilote-scene] :is(.t-tick, .t-sous, .t-lab, .t-lab2) { font-size: 28.4px; }
+}

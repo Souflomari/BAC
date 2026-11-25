@@ -27,6 +27,7 @@ import { scenesA } from "./meiose-scenes-a";
 import { scenesB } from "./meiose-scenes-b";
 import { scenesC, REPERES } from "./meiose-scenes-c";
 import { scenesD } from "./meiose-scenes-d";
+import { scenesE } from "./meiose-scenes-e";
 
 const sup = (b, n) => `${b}<sup>${n}</sup>`;
 
@@ -45,6 +46,8 @@ const G_SANS = typesDe(0, 0, 1), G_SANS2 = typesDe(0, 0, 2), G_AVEC = gametes(0,
 const NOUVEAUX = G_AVEC.filter((g) => !G_SANS2.some((s) => s.split(" ")[0] === g.split(" ")[0]));   // les types qui n'existent pas sans crossing-over
 const TYPES_GRANDE = [...new Set(G_AVEC.map((g) => g.split(" ")[0]))];                             // les types de la grande paire après un échange : AD, Ad, aD, ad
 const TOUS = G_AVEC.join(", ");
+const gp = (g) => g.split(" ")[0];   // le gamète réduit à la grande paire, comme le dessine la scène « crossing »
+const TOUS_GP = G_AVEC.map(gp).join(", "), NOUVEAUX_GP = NOUVEAUX.map(gp).join(" et "), SANS_GP = G_SANS2.map(gp).join(" et ");
 // le bilan : les trois pièges, une figure chacun (la scène `quiz` la montre avec la réponse)
 const QUIZ = [
   { cap: `*n* = ${N}, à 2 chromatides`, sub: "haploïde : on compte les chromosomes, pas les chromatides" },
@@ -64,6 +67,7 @@ scenesA(ctx, O);
 scenesB(ctx, O);
 scenesC(ctx, O, QUIZ, FIN);
 scenesD(ctx, O);
+scenesE(ctx, O);
 
 /* ---------- le script ---------- */
 const BEATS = [
@@ -168,7 +172,7 @@ const STEPS = [
     ["les homologues de chaque paire", true, "Oui : chaque homologue part vers un pôle, avec ses deux chromatides."],
     ["les chromatides sœurs de chaque chromosome", false, "Tu as appliqué ce que fait la mitose. En métaphase I, ce sont les paires qui sont à cheval sur la plaque : on les sépare.", "Dans la figure, que voit-on de part et d’autre de la plaque : des chromosomes seuls ou des paires ?"],
     ["rien : les paires restent entières", false, "Alors aucune cellule ne serait haploïde. Pour réduire le nombre de chromosomes, il faut séparer les paires.", `Si les paires restent entières, chaque cellule garde-t-elle ses ${N2} chromosomes ?`]]) } },
-{ cle: "telophase1", beat: 3, scene: "division", set: DV({ u: 2.6 }), seq: [{ p: { u: 3 }, d: 2200, w: 500 }], sujet: "la division réductionnelle",
+{ cle: "telophase1", beat: 3, scene: "division", set: DV({ u: 2.85 }), seq: [{ p: { u: 3 }, d: 1000, w: 300 }], sujet: "la division réductionnelle",
   text: ["Fin de la division I : la cellule s’est partagée en deux.", { t: "Chaque cellule obtenue contient…", fort: true }],
   verifie: { reveal: [{ p: { cnt: 1 }, d: 700 }], apres: { html: "C’est la [[reductionnelle|division réductionnelle]] : 2<i>n</i> devient <i>n</i>. Une première question de l’énigme est résolue : la moitié exacte, c’est un chromosome de chaque paire. Ces chromosomes à 2 chromatides sont [[bichromatidien|bichromatidiens]]." }, ...VF([
     [`<i>n</i> = ${etat(5).chrom} chromosomes à 2 chromatides`, true, `Oui : un chromosome de chaque paire, encore à deux chromatides : ${etat(5).chrom} chromosomes, ${etat(5).adn}<i>q</i>.`],
@@ -203,9 +207,9 @@ const STEPS = [
     [`<i>n</i> = ${H.auto}A + X (ou Y)`, true, `Oui : X et Y sont homologues, ils se séparent à la division I comme les autres paires. Un spermatozoïde porte X ou Y.`],
     [`<i>n</i> = ${H.auto}A + XY`, false, "Tu as gardé la paire XY ensemble. X et Y sont homologues : ils se séparent à la division I, comme les autres paires.", "X et Y forment une paire : que devient une paire dans un gamète ?"],
     [`<i>n</i> = ${H.n}A + X`, false, `Tu as divisé ${H.n2} au lieu de ${H.n2 - 2}. Les ${H.n2 - 2} autosomes donnent ${H.auto} ; le gonosome se compte à part.`, "Combien d’autosomes dans la cellule ? Et dans le gamète ?"]]) } },
-{ cle: "courbe", beat: 4, scene: "adn", set: { seg: 0, mit: 0, hl: 0, pal: 0, fec: 0 }, seq: [{ p: { seg: 3 }, d: 3000, w: 300 }, { p: { seg: 5 }, d: 2200, w: 300 }], sujet: "la courbe de l’ADN",
+{ cle: "courbe", beat: 4, scene: "adn", set: { seg: 0, mit: 0, hl: 0, pal: 0, fec: 0, lab2: 0 }, seq: [{ p: { seg: 3 }, d: 3000, w: 300 }, { p: { seg: 5 }, d: 2200, w: 300 }], sujet: "la courbe de l’ADN",
   text: [{ t: `La quantité d’ADN double en phase S, puis la division I la partage : ${ADN_G1}<i>q</i>, ${ADN_S}<i>q</i>, ${ADN_DIV1}<i>q</i>.`, a: 0 }, { t: "Elle descend encore une fois.", a: 1 }, { t: `Que représente la chute de ${ADN_DIV1}<i>q</i> à <i>q</i> ?`, a: 1, fort: true }],
-  pari: { label: "Réponds", reveal: [{ p: { hl: 1 }, d: 900 }], ...VF([
+  pari: { label: "Réponds", reveal: [{ p: { hl: 1, lab2: 1 }, d: 900 }], ...VF([
     ["la division II : chromatides sœurs séparées", true, "Oui : la seconde chute est la division II, où les chromatides sœurs se séparent et se partagent entre deux cellules."],
     ["la réduction du nombre de chromosomes", false, "Tu as confondu quantité d’ADN et nombre de chromosomes. La réduction a eu lieu à la première chute, à la division I.", "Combien de chromosomes avant et après cette seconde chute ?"],
     ["la phase S, qui copie l’ADN", false, "La phase S fait monter la courbe, de 2<i>q</i> à 4<i>q</i>. Une chute est un partage de l’ADN entre deux cellules.", "La phase S fait-elle monter ou descendre la quantité d’ADN ?"]]) } },
@@ -260,31 +264,31 @@ const STEPS = [
     ["de nouveaux chromosomes", false, "Chaque chromosome passe entier dans un gamète, sans changer, en l’absence de crossing-over. Seules les combinaisons changent.", "Un chromosome est-il modifié quand une paire s’oriente ?"]]) },
 
 /* ===== 6. le crossing-over ===== */
-{ cle: "chiasma", beat: 6, scene: "meiose", tag: "1909 · Janssens", set: { ...MEIOSE_0, ph: 2, al: 2, tet: 1, chi: 1, co: 0, pt: 0 }, sujet: "entre quelles chromatides",
+{ cle: "chiasma", beat: 6, scene: "crossing", tag: "1909 · Janssens", set: { u: 0, al: 1, tet: 1, gam: 0, rc: 0 }, sujet: "entre quelles chromatides",
   text: ["En prophase I, deux chromatides de la tétrade peuvent se croiser : un [[chiasma]].", { t: "Pour créer une combinaison d’allèles nouvelle, l’échange de segments doit se faire entre…", fort: true }],
-  pari: { label: "Réponds", reveal: [{ p: { co: 0.5 }, d: 1800 }], ...VF([
+  pari: { label: "Réponds", reveal: [{ p: { u: 1 }, d: 1800 }], ...VF([
     ["deux chromatides non sœurs", true, "Oui : une chromatide de chaque homologue. Le segment portant D passe sur la chromatide de la mère, d sur celle du père."],
     ["deux chromatides sœurs", false, "Tu as confondu homologues et chromatides sœurs. Échanger deux copies identiques ne changerait rien.", "Deux chromatides sœurs portent-elles des allèles différents ?"],
     ["deux chromosomes de paires différentes", false, "Seuls les homologues sont accolés en prophase I : on n’échange pas entre paires différentes.", "Qui est accolé à qui dans une tétrade ?"]]) } },
-{ cle: "echange", beat: 6, scene: "meiose", set: { ph: 2, co: 0.5, chi: 1, tet: 1, al: 2, pt: 0, rc: 0, gam: 0 }, sujet: "les types de gamètes après un échange",
+{ cle: "echange", beat: 6, scene: "crossing", set: { u: 1, al: 1, tet: 1, gam: 0, rc: 0 }, seq: [{ p: { u: 2 }, d: 1800, w: 400 }], sujet: "les types de gamètes après un échange",
   text: ["Le chiasma se dénoue : les deux chromatides ont échangé un segment. La méiose continue avec cette tétrade.", { t: "Pour la grande paire, cette seule cellule donne…", fort: true }],
-  pari: { label: "Réponds", reveal: [{ p: { pt: 1, co: 1 }, d: 1200 }, { p: { ph: 8 }, d: 4200 }, { p: { gam: 1, rc: 1 }, d: 600 }],
+  pari: { label: "Réponds", reveal: [{ p: { u: 4 }, d: 4200 }, { p: { gam: 1, rc: 1 }, d: 600 }],
     apres: { html: "C’est le [[crossing-over]], ou [[brassage-intra|brassage intrachromosomique]] : il crée des combinaisons qui n’existent sur aucun des deux chromosomes de la cellule." }, ...VF([
     [`${TYPES_GRANDE.length} types : ${TYPES_GRANDE.join(", ")}`, true, `Oui : les quatre chromatides sont différentes, et chaque gamète en reçoit une.`],
     [`${G_SANS2.length} types, comme sans crossing-over`, false, `Tu as gardé la règle d’avant. Après l’échange, les deux chromatides sœurs ne sont plus des copies : la division II sépare ${TYPES_GRANDE[0]} et ${TYPES_GRANDE[1]}.`, "Après l’échange, les deux chromatides d’un même chromosome sont-elles encore identiques ?"],
     [`${TYPES_GRANDE.length} types, tous nouveaux`, false, `Seules les deux chromatides du croisement ont changé : ${G_SANS2.map((g) => g.split(" ")[0]).join(" et ")} restent.`, "Combien de chromatides ont pris part à l’échange ?"]]) } },
-{ cle: "quand-co", beat: 6, scene: "meiose", set: { ph: 8, co: 1, gam: 0, rc: 0, pt: 1, chi: 0, tet: 0, al: 2 }, sujet: "quand a lieu le crossing-over",
+{ cle: "quand-co", beat: 6, scene: "crossing", set: { u: 4, al: 1, tet: 0, gam: 0, rc: 0 }, sujet: "quand a lieu le crossing-over",
   text: ["Un vrai item du bac : Sciences Physiques, rattrapage 2024, première partie, II.1 (0,5 pt).", { t: "Au cours de la méiose, le crossing-over se déroule lors de…", fort: true }],
   verifie: VF([
     ["la prophase I", true, "Oui : c’est quand les homologues sont accolés en tétrades."],
     ["l’anaphase I", false, "En anaphase I, les homologues se séparent : ils ne sont plus accolés, donc rien ne s’échange.", "À l’anaphase I, les homologues sont-ils encore accolés ?"],
     ["l’anaphase II", false, "En division II, il n’y a plus d’homologues dans la cellule : il n’y a personne avec qui échanger.", "Y a-t-il encore des paires en division II ?"],
     ["la prophase II", false, "En prophase II, la cellule est haploïde : il n’y a plus de paires, donc plus d’échange possible.", "Y a-t-il encore des homologues accolés en prophase II ?"]]) },
-{ cle: "v-intra", beat: 6, scene: "meiose", set: { ph: 8, co: 1, gam: 1, rc: 0, al: 2, pt: 1 }, sujet: "les gamètes recombinés",
-  text: [`Voici les gamètes d’une cellule avec crossing-over : ${TOUS}.`, { t: "Lesquels n’existeraient pas sans crossing-over ?", fort: true }],
+{ cle: "v-intra", beat: 6, scene: "crossing", set: { u: 4, al: 1, tet: 0, gam: 1, rc: 0 }, sujet: "les gamètes recombinés",
+  text: [`Voici, pour la grande paire, les gamètes d’une cellule avec crossing-over : ${TOUS_GP}.`, { t: "Lesquels n’existeraient pas sans crossing-over ?", fort: true }],
   verifie: { reveal: [{ p: { rc: 1 }, d: 600 }], apres: { html: `Les deux brassages se cumulent. Le premier donne ${sup(2, "<i>n</i>")} combinaisons de chromosomes, ${ent(T23)} chez l’Homme. Le second recombine en plus chaque chromosome : chaque gamète est presque unique.` }, ...VF([
-    [NOUVEAUX.join(" et "), true, `Oui : ${NOUVEAUX.join(" et ")} portent A avec d, ou a avec D, des combinaisons absentes de la cellule de départ.`],
-    [G_SANS2.join(" et "), false, `Tu as pris les combinaisons des chromosomes parentaux. ${G_SANS2[0].split(" ")[0]} et ${G_SANS2[1].split(" ")[0]} existent sans crossing-over : ce sont les chromosomes reçus du père et de la mère.`, "Quelles combinaisons de A, D existaient déjà dans la cellule de départ ?"],
+    [NOUVEAUX_GP, true, `Oui : ${NOUVEAUX_GP} portent A avec d, ou a avec D, des combinaisons absentes de la cellule de départ.`],
+    [SANS_GP, false, `Tu as pris les combinaisons des chromosomes parentaux. ${G_SANS2[0].split(" ")[0]} et ${G_SANS2[1].split(" ")[0]} existent sans crossing-over : ce sont les chromosomes reçus du père et de la mère.`, "Quelles combinaisons de A, D existaient déjà dans la cellule de départ ?"],
     ["les quatre", false, `${G_SANS2[0].split(" ")[0]} et ${G_SANS2[1].split(" ")[0]} existent sans crossing-over : ce sont les chromosomes du père et de la mère.`, "Combien de combinaisons existaient déjà dans la cellule de départ ?"]]) } },
 
 /* ===== 7. la fécondation ===== */

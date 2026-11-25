@@ -58,7 +58,7 @@ export const MEIOSE: CatalogueLecon = {
     chiasma: { capacites: ROLE, juste: 0, options: [{ t: "deux chromatides non sœurs", e: "aucune" }, { t: "deux chromatides sœurs", e: "meiose.soeurs-homologues" }, { t: "deux chromosomes de paires diffé", e: "aucune" }] },
     echange: { capacites: ROLE, juste: 0, options: [{ t: "4 types : AD, Ad, aD, ad", e: "aucune" }, { t: "2 types, comme sans crossing-ove", e: "aucune" }, { t: "4 types, tous nouveaux", e: "aucune" }] },
     "quand-co": { capacites: PHASES, juste: 0, options: [{ t: "la prophase I", e: "aucune" }, { t: "l’anaphase I", e: "aucune" }, { t: "l’anaphase II", e: "aucune" }, { t: "la prophase II", e: "aucune" }] },
-    "v-intra": { capacites: ROLE, juste: 0, options: [{ t: "Ad B et aD b", e: "aucune" }, { t: "AD B et ad b", e: "aucune" }, { t: "les quatre", e: "aucune" }] },
+    "v-intra": { capacites: ROLE, juste: 0, options: [{ t: "Ad et aD", e: "aucune" }, { t: "AD et ad", e: "aucune" }, { t: "les quatre", e: "aucune" }] },
     fecondation: { capacites: ROLE, juste: 0, options: [{ t: "une cellule-œuf à 2n = 46", e: "aucune" }, { t: "23 chromosomes, comme un gamète", e: "aucune" }, { t: "92 chromosomes", e: "aucune" }] },
     "hasard-fec": { capacites: ROLE, juste: 0, options: [{ t: "223 × 223 ≈ 7,0 × 1013", e: "aucune" }, { t: "2 × 223 ≈ 1,7 × 107", e: "meiose.additionner-choix" }, { t: "223 ≈ 8,4 millions", e: "aucune" }] },
     "v-cycle": { capacites: ROLE, juste: 0, options: [{ t: "elle le doublerait à chaque géné", e: "aucune" }, { t: "rien : il resterait le même", e: "aucune" }, { t: "elle le diviserait par deux", e: "aucune" }] },

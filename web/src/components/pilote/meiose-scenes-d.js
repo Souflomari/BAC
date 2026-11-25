@@ -45,7 +45,7 @@ const CHR = [
   { id: "P1", big: false, pat: true, all: "B" },
   { id: "P2", big: false, pat: false, all: "b" },
 ];
-const DISP = { G1: [440, 278], G2: [565, 312], P1: [455, 420], P2: [570, 405] };   // dans le noyau
+const DISP = { G1: [440, 278], G2: [565, 268], P1: [455, 420], P2: [570, 428] };   // dans le noyau
 const BIV = { G1: 368, G2: 412, P1: 588, P2: 632 };                                  // les tétrades, avant la plaque
 const PII = [126, 458, 542, 874];                                                    // les pôles de la division II
 const lerp = (a, b, t) => a + (b - a) * t;

@@ -60,7 +60,7 @@ export function scenesC(ctx, O, QUIZ, FIN) {
     build(g) {
       this.ti = titre(g, "Exercice type : ce n’est pas un sujet du bac", "animal à 2*n* = 4 : la quantité d’ADN par cellule, puis trois cellules");
       this.d = E("g", {}, g);
-      fx(this.d, 60, 126, "Document 1", "t-lab2 s-ink", "start");
+      fx(this.d, 112, 126, "Document 1", "t-lab2 s-ink", "start");   // à droite du « 4q » : les deux textes ne se touchent plus, le téléphone peut les agrandir
       E("line", { x1: 100, x2: 100, y1: 140, y2: 330, class: "k-ink", "stroke-width": 2 }, this.d);
       E("line", { x1: 100, x2: 900, y1: 330, y2: 330, class: "k-ink", "stroke-width": 2 }, this.d);
       [1, 2, 4].forEach((v) => { E("line", { x1: 100, x2: 900, y1: Yb(v), y2: Yb(v), class: "k-line", "stroke-width": 1.5, "stroke-dasharray": "3 6" }, this.d); fx(this.d, 90, Yb(v) + 7, v === 1 ? "*q*" : `${v}*q*`, "t-lab2 s-ink", "end"); });

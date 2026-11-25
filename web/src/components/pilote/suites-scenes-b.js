@@ -51,7 +51,7 @@ scene("doses", {
     this.plT = fx(this.pl, 0, 0, "", "t-lab2 s-ink");
     this.bs = E("g", {}, g);
     this.bsL = E("line", { class: "k-dim", "stroke-dasharray": "5 6", "stroke-width": 1.8 }, this.bs);
-    this.bsT = fx(this.bs, 0, 0, "", "t-lab s-dim");
+    this.bsT = fx(this.bs, 0, 0, "", "t-lab s-dim", "end");
     // la dent de scie, les sommets
     this.sw = E("path", { class: "k-ink nofill", "stroke-width": 3.2, "stroke-linejoin": "round" }, g);
     this.dots = Array.from({ length: 30 }, () => E("circle", { r: 5.5, class: "s-a" }, g));
@@ -75,10 +75,10 @@ scene("doses", {
     this.dots.forEach((c, i) => { const k = i + 1; c.setAttribute("cx", f(X(k))); c.setAttribute("cy", f(Y(u[k]))); show(c, p.pts * (k <= nn ? 1 : 0)); });
     // les droites
     this.plL.setAttribute("x1", f(X(0))); this.plL.setAttribute("x2", f(X(30))); this.plL.setAttribute("y1", f(Y(pl))); this.plL.setAttribute("y2", f(Y(pl)));
-    this.plT.setAttribute("x", f(X(30) - 56)); this.plT.setAttribute("y", f(Y(pl) - 12)); setFx(this.plT, `plafond ${ent(pl)}`); show(this.pl, p.plaf);
+    this.plT.setAttribute("x", f(X(0) + 12)); this.plT.setAttribute("y", f(Y(pl) - 12)); setFx(this.plT, `plafond ${ent(pl)}`); show(this.pl, p.plaf);
     const bas = d2 ? 2 : 1;
     this.bsL.setAttribute("x1", f(X(0))); this.bsL.setAttribute("x2", f(X(30))); this.bsL.setAttribute("y1", f(Y(bas))); this.bsL.setAttribute("y2", f(Y(bas)));
-    this.bsT.setAttribute("x", f(X(30) - 150)); this.bsT.setAttribute("y", f(Y(bas) + 24)); setFx(this.bsT, "les creux se rapprochent de " + ent(bas)); show(this.bs, p.bas);
+    this.bsT.setAttribute("x", f(X(30))); this.bsT.setAttribute("y", f(Y(bas) + 24)); setFx(this.bsT, "les creux se rapprochent de " + ent(bas)); show(this.bs, p.bas);
     // la valeur au dernier sommet
     const k = Math.max(1, Math.round(n)), uk = u[k];
     setFx(this.fn, `jour ${k} : *u*_{${k}} ≈ ${fmt6(uk)}`); show(this.fn, p.fin * clamp(p.saw * 2 - 1, 0, 1));

@@ -122,7 +122,7 @@ export function scenesA(ctx, O) {
       this.chi = E("g", {}, this.W);
       this.chiL = ln(this.chi, "k-ink", 1.8);
       this.chiT = fx(this.chi, 0, 0, "chiasma", "t-lab s-ink", "start");
-      this.cnt = [0, 1, 2, 3].map(() => [0, 1, 2].map((i) => fx(this.W, 0, 584 + 24 * i, "", i === 2 ? "me-cnt s-ink" : "me-cnt s-dim", "middle")));
+      this.cnt = [0, 1, 2, 3].map(() => [0, 1, 2].map((i) => fx(this.W, 0, 584 + 32 * i, "", i === 2 ? "me-cnt s-ink" : "me-cnt s-dim", "middle")));
       this.gen = [0, 1, 2, 3].map(() => fx(this.W, 0, 548, "", "me-gen s-ink", "middle"));
       /* la vignette de mitose, à droite : les quatre chromosomes alignés un par un sur la plaque */
       this.MG = E("g", {}, this.D);

@@ -74,7 +74,7 @@ export function scenesB(ctx, O) {
   const MITOSE = [[150, ADN_G1], [270, ADN_G1], [350, ADN_S], [520, ADN_S], [550, ADN_G1], [700, ADN_G1]];
   const XFIN_MITOSE = [150, 270, 350, 550, 700];
   scene("adn", {
-    p: { seg: 0, mit: 0, fec: 0, hl: 0, pal: 0 },
+    p: { seg: 0, mit: 0, fec: 0, hl: 0, pal: 0, lab2: 1 },
     build(g) {
       this.ti = titre(g, "La quantité d’ADN d’une cellule", "");
       // axes et graduations : q, 2q, 4q
@@ -116,7 +116,8 @@ export function scenesB(ctx, O) {
       show(this.cm, m ? 0 : 1); show(this.ct, m ? 1 : 0);
       this.ti.set("La quantité d’ADN d’une cellule", m ? "au cours d’un cycle d’une cellule somatique (en *q*, celle d’un gamète)" : "au cours de la formation des gamètes (en *q*, celle d’un gamète)");
       const at = m ? [0.2, 1.2, 2.2, 3.5] : [0.2, 1.2, 2.2, 3.2, 4.5], aff = (j) => clamp((p.seg - at[j]) * 3, 0, 1);
-      this.labM.forEach((t, j) => (t.style.opacity = m ? 0 : j < 5 ? aff(j) : clamp(p.fec * 3, 0, 1) * (p.seg >= 5 ? 1 : 0)));
+      // lab2 : 0 cache « division II », « gamètes » et « fécondation » (la question sur la seconde chute, tant qu'elle n'a pas de réponse)
+      this.labM.forEach((t, j) => (t.style.opacity = (m ? 0 : j < 5 ? aff(j) : clamp(p.fec * 3, 0, 1) * (p.seg >= 5 ? 1 : 0)) * (j >= 3 ? clamp(p.lab2, 0, 1) : 1)));
       this.labT.forEach((t, j) => (t.style.opacity = m ? aff(j) : 0));
       this.sep.forEach((s, j) => (s.style.opacity = (m ? j < 4 : true) ? clamp((p.seg - (j + 0.6)) * 3, 0, 1) * (j === 4 && !m ? 1 : 1) : 0));
       show(this.hlG, p.hl * (m ? 0 : 1)); show(this.palG, p.pal * (m ? 0 : 1));

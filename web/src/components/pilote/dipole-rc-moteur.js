@@ -90,8 +90,9 @@ const dyn=f=>({get html(){return f();}});
 const CI=o=>({jeu:'rc',K:1,t:0,fi:0,fu:0,fr:0,fe:0,fa:'',ch:1,qq:0.67,nm:0,osc:0,rv:0,gen:0,k2:1,real:0,sub:'',...o});
 const CV=o=>({jeu:'charge',xmax:T_MAX,ym:14,curve:0,exact:0,Eline:0,trans:0,pas:0,tan:0,p63:0,lect:0,uR:0,p37:0,taus:0,ghost:0,base:0,R:R_OHM,C:C_F,E:E_V,live:0,osc:0,pts:0,rep:0,sub:'',...o});
 const DR=o=>({jeu:'qu',line:1,pt:0,tri:0,sub:'',...o});
-// la scène couplée (circuit + u_C(t) + i(t)) : l'instant t pilote tout ; `ic` : ce qui dit i, caché tant qu'une question le demande
-const CP=o=>({t:0,ic:0,taus:0,tau1:0,trans:0,...o});
+// la scène couplée (circuit + u_C(t) + i(t)) : l'instant t pilote tout ; `dis` : 0 la charge, 1 la décharge (K en position 2) ;
+// `ic` : ce qui dit i, `cu` : la courbe u_C, `lect` : la lecture à 37 %, cachés tant qu'une question les demande
+const CP=o=>({t:0,dis:0,ic:0,cu:1,lect:0,taus:0,tau1:0,trans:0,...o});
 const T6=6*TAU;
 const FL=(...n)=>Object.fromEntries(['fi','fu','fr','fe'].map(k=>[k,n.includes(k)?1:0]));
 const ALL=FL('fi','fu','fr','fe');
@@ -209,13 +210,13 @@ const STEPS=[
     [`${fr(reste(2)-dUPas(1),2)} V : encore ${fr(dUPas(1),1)} V de moins`,false,`Tu as retranché la montée du premier pas. Elle a diminué depuis : le reste est multiplié par ${fr(REDUC,1)}, pas réduit d’une valeur fixe.`,'La montée du premier pas est-elle encore la bonne au troisième pas ?']])}},
 {cle:'pas',beat:3,scene:'courbe',ctl:'pas',needLabel:'Fais les pas d’abord',set:CV({jeu:'charge',xmax:2.6,Eline:1,pas:2}),
   text:['Clique sur « Pas suivant » : chaque pas ajoute ce que le courant apporte pendant '+dtp+' s.',{t:`À chaque pas, ce qui reste à charger est multiplié par ${redP}.`,fort:true}]},
-{cle:'permanent',beat:3,scene:'couple',set:CP({t:0,trans:1}),seq:[{p:{t:T6},d:4500}],sujet:'le courant en régime permanent',
+{cle:'permanent',beat:3,scene:'couple',set:CP({t:0}),seq:[{p:{t:T6},d:4500}],sujet:'le courant en régime permanent',
   text:[`Longtemps après, ${uCh} est pratiquement égale à ${Eh}. Le courant…`],
   verifie:{...VF([
     ['est nul',true,`Oui : ${uRh} = ${Eh} − ${uCh} ≈ 0, donc ${ih} ≈ 0.`],
     [`vaut encore ${Eh}/${Rh}`,false,`Tu as cru qu’un condensateur chargé laisse passer le courant. Quand ${uCh} ≈ ${Eh}, ${uRh} ≈ 0, donc ${ih} ≈ 0.`,'Que vaut la tension aux bornes de R quand u_C = E ?'],
     [`devient négatif, car ${uCh} dépasse ${Eh}`,false,`Tu as supposé que ${uCh} dépasse ${Eh}. La montée ralentit en approchant ${Eh} et ne le franchit pas : ${uRh} reste positive.`,'La courbe franchit-elle la droite u = E ?']]),
-    reveal:[{p:{ic:1},d:1300}],
+    reveal:[{p:{ic:1,trans:1},d:1300}],
     apres:dyn(()=>`<p>Le [[regime|régime transitoire]] précède le régime permanent.</p>${rappelLampe()?`<p>${rappelLampe()} Le condensateur chargé ne laisse plus passer de courant : la lampe s’éteint.</p>`:'<p>Dans l’énigme, la lampe s’éteint : le condensateur est chargé, il ne passe plus de courant.</p>'}`)}},
 {cle:'courant-constant',beat:3,scene:'droite',set:DR({jeu:'courant',line:1,pt:1,tri:1}),sujet:'la capacité avec un générateur de courant',
   text:[`Et si on imposait le courant ? Sujet 2025, session normale, exercice 3, questions 1-1 et 1-2 (${fr(S25.bareme[0],1)} pt chacune) : un générateur de courant débite <i>I</i><sub>0</sub> = ${fr(S25.I0*1e6,0)} µA dans un condensateur vide.`,`La droite de ${uCh}(<i>t</i>) a pour pente ${fr(S25.pente,0)} V·s<sup>−1</sup>. Que vaut la capacité ?`],
@@ -355,13 +356,13 @@ const STEPS=[
     [`0 : la tangente touche l’axe en ${th_}`,false,`Tu as pris la tangente pour la courbe. ${uRh} ne s’annule pas en ${th_} : seule sa tangente coupe l’axe des temps en ${th_}.`,'Une exponentielle atteint-elle 0 ?']]),
     reveal:[{p:{ic:1},d:1100}],
     apres:{tex:[[tx`u_R(t)=E\,e^{-t/\tau}`,'uR(t) = E e^(−t/τ)']],html:`<p>Courbe qui monte : ${p63} % atteints. Courbe qui descend (${uRh}, ${ih}, décharge) : ${pc(dechPart(1))} % restants.</p><p>La courbe de ${ih} le montre : ${ih}(${th_}) ≈ ${iTau} mA, soit ${pc(dechPart(1))} % de sa valeur de départ.</p>`}}},
-{cle:'cinq-tau',beat:6,scene:'couple',ctl:'temps',set:CP({t:0,ic:1}),seq:[{p:{t:T6},d:4500}],sujet:'la durée de la charge, environ 5τ',
+{cle:'cinq-tau',beat:6,scene:'couple',ctl:'temps',set:CP({t:0,ic:1}),sujet:'la durée de la charge, environ 5τ',
   text:['Au bout de combien de temps la charge est-elle pratiquement finie, à plus de 99 % ?'],
   verifie:{fixe:true,...VF([
     [`${th_} = ${tauS} s`,false,`À ${th_}, seulement ${p63} % sont atteints. Il faut environ 5${th_} pour dépasser 99 %.`,'Quelle part est atteinte à τ ?'],
     [`2${th_} = ${tau2} s`,false,`À 2${th_}, ${p86} % seulement sont atteints. Il faut environ 5${th_} pour dépasser 99 %.`,'Quelle part est atteinte à 2τ ?'],
     [`environ 5${th_} = ${t5} s`,true,`Oui : à 5${th_}, ${p99} % de la charge est faite.`]]),
-    reveal:[{p:{taus:1,trans:1},d:1500}],
+    reveal:[{p:{t:T6},d:4500},{p:{taus:1,trans:1},d:1500}],
     apres:{html:'<p>Le [[regime|régime transitoire]] dure environ 5τ ; ensuite, le régime est permanent.</p>'}}},
 {cle:'double',beat:6,scene:'courbe',set:CV({jeu:'charge',Eline:1,exact:1}),
   text:[`On double ${Rh} et on divise ${Ch} par deux.`,`La courbe ${uCh}(<i>t</i>)…`],
@@ -380,7 +381,7 @@ const STEPS=[
   text:[`Mets ${Eh} à ${fr(2*E_V,0)} V et regarde la valeur de ${uCh} à <i>t</i> = ${th_}.`,`Puis cherche un autre couple (${Rh}, ${Ch}) qui garde ${th_} = ${tauS} s.`]},
 
 /* ===== 7. la décharge ===== */
-{cle:'ed-decharge',beat:7,scene:'circuit',set:CI({jeu:'rc',K:2,t:0,...FL('fi','fu','fr')}),sujet:'l’équation de la décharge',
+{cle:'ed-decharge',beat:7,scene:'couple',set:CP({dis:1,t:0}),sujet:'l’équation de la décharge',
   text:[`Le condensateur est chargé : ${uCh} = ${Eh}. À <i>t</i> = 0, on bascule K en position 2 : le générateur sort de la maille, les flèches ne changent pas.`,'Sans générateur, la somme des tensions vaut 0. Avec les mêmes relations qu’à la charge, l’équation est…'],
   tex:[[tx`u_R+u_C=0`,'uR + uC = 0'],[tx`u_R=R\,i\quad\text{et}\quad i=C\,\dfrac{\mathrm{d}u_C}{\mathrm{d}t}`,'uR = R i et i = C duC/dt']],
   pari:{label:'L’équation ?',
@@ -389,25 +390,25 @@ const STEPS=[
     [`${RCh} ${dudt} + ${uCh} = 0`,true,`Oui : ${uRh} + ${uCh} = 0 avec ${uRh} = ${RCh} ${dudt}.`],
     [`${RCh} ${dudt} − ${uCh} = 0`,false,`Tu as écrit ${uRh} = ${uCh}. Avec ce signe, ${uCh} grandirait sans fin : ${uRh} + ${uCh} = 0.`,'Que vaut la somme u_R + u_C sans générateur ?'],
     [`${RCh} ${dudt} + ${uCh} = ${Eh}`,false,`Tu as gardé ${Eh}. Le générateur a quitté la maille : le second membre est nul.`,'Le générateur est-il encore dans la maille ?']])}},
-{cle:'sol-decharge',beat:7,scene:'courbe',set:CV({jeu:'decharge',curve:0}),sujet:'la solution de la décharge',
+{cle:'sol-decharge',beat:7,scene:'couple',ctl:'temps',set:CP({dis:1,t:0,cu:0}),sujet:'la solution de la décharge',
   text:[`${uCh}(0) = ${Eh}. La solution de ${RCh} ${dudt} + ${uCh} = 0 est…`],
   verifie:{...VF([
     [`${Eh} ${eRC}`,true,`Oui : elle vaut ${Eh} à <i>t</i> = 0 et décroît vers 0.`],
     [`${Eh}(1 − ${eRC})`,false,'Tu as repris la solution de la charge. Elle vaut 0 à t = 0, pas E.','Que vaut cette expression à t = 0 ?'],
     [`${Eh} e<sup>+<i>t</i>/<i>RC</i></sup>`,false,'Tu as changé le signe de l’exposant. e<sup>+t/RC</sup> grandit sans fin.','Une tension qui se décharge grandit-elle ?']]),
-    reveal:[{p:{curve:1,tan:1,p37:1},d:1400}],
+    reveal:[{p:{cu:1},d:600},{p:{t:TAU},d:2400},{p:{tau1:1},d:600}],
     apres:{html:`<p class="small">C’est N<sub>0</sub> e<sup>−λ<i>t</i></sup>, avec ${Eh} pour N<sub>0</sub> et 1/${th_} pour λ. Même ${th_} qu’à la charge.</p>`}}},
-{cle:'i-decharge',beat:7,scene:'circuit',set:CI({jeu:'rc',K:2,t:0,fi:1,fu:1,fa:'i'}),sujet:'le signe de i à la décharge',
+{cle:'i-decharge',beat:7,scene:'couple',ctl:'temps',set:CP({dis:1,t:0}),sujet:'le signe de i à la décharge',
   text:[`Pendant la décharge, ${ih}(<i>t</i>) = ?`],
   verifie:{...VF([
     [`−(${Eh}/${Rh}) ${eRC}`,true,`Oui : ${ih} = ${Ch} ${dudt} et ${uCh} décroît, donc ${ih} < 0.`],
     [`+(${Eh}/${Rh}) ${eRC}`,false,`Tu as oublié le signe. ${ih} = ${Ch} ${dudt} et ${uCh} décroît : ${ih} est négatif.`,'u_C croît-elle ou décroît-elle ? Quel est le signe de i ?'],
     [`nul à <i>t</i> = 0⁺, comme ${uCh} est continue`,false,`Tu as confondu ${ih} et ${uCh}. ${uCh} est continue, mais ${ih} saute de 0 à −${Eh}/${Rh}.`,'Qu’est-ce qui est continu : u_C ou i ?']]),
-    reveal:[{p:{real:1},d:700}],
+    reveal:[{p:{ic:1},d:700},{p:{t:TAU},d:2600}],
     apres:{html:`<p class="small">Un courant négatif circule à l’inverse de sa flèche.</p>`}}},
-{cle:'v-37',beat:7,scene:'courbe',set:CV({jeu:'decharge',curve:1,lect:Math.round(U37*10)/10}),sujet:'lire τ à 37 %',
+{cle:'v-37',beat:7,scene:'couple',ctl:'temps',set:CP({dis:1,t:0,lect:1}),sujet:'lire τ à 37 %',
   text:[`Décharge depuis ${Ev} V : lis ${th_} sur l’axe des temps.`],
-  verifie:{fixe:true,...VF([
+  verifie:{fixe:true,reveal:[{p:{t:TAU},d:2400},{p:{tau1:1},d:600}],...VF([
     [`${d1(T_FAUX37)} s`,false,`Tu as lu à ${u63} V, le repère de la montée. Sur une courbe qui descend, on lit où il reste 37 %.`,'Où lit-on τ quand la courbe descend : à 37 % ou à 63 % ?'],
     [`${th} s`,false,`Tu as lu à la moitié de ${Eh}, soit ${dn(MOITIE)} V. C’est τ ln 2, pas τ.`,'La moitié de E est-elle le repère de τ ?'],
     [`${tauS} s`,true,`Oui : il reste ${pc(1-chargePart(1))} % de ${Ev} V, soit ${u37} V, à <i>t</i> = ${th_} = ${tauS} s.`]])}},

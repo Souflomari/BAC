@@ -148,6 +148,8 @@ scene("toile", {
     // (pour la dose : I et son image f(I), sur l'axe vertical)
     const I = F.I, J = F.J || F.I;
     if (I) { set(this.bX, { x1: X(I[0]), x2: X(I[1]), y1: yA, y2: yA }); set(this.bY, { x1: xA, x2: xA, y1: Y(J[0]), y2: Y(J[1]) }); at(this.bXt, X(I[0] + 0.25 * (I[1] - I[0])), yA - 16); at(this.bYt, xA - 14, Y((J[0] + J[1]) / 2) + 6); setFx(this.bYt, F.J ? "*f*(*I*)" : "*I*"); }
+    // les graduations de l'axe vertical qui toucheraient l'étiquette I (ou f(I)) s'effacent : sinon le texte du téléphone ne peut pas grandir
+    if (I && p.bornes > 0.3) { const yb = Y((J[0] + J[1]) / 2); this.tys.forEach((q, i) => { if (Math.abs(Y((jlo + i) * st) - yb) < 36) q.t.style.opacity = 0; }); }
     show(this.bg, I ? p.bornes : 0);
     // l'escalier : de (u_k ; 0) à (u_k ; f(u_k)), puis (f(u_k) ; f(u_k)) sur la droite…
     const V = [[p.u0, 0]];
@@ -245,7 +247,7 @@ scene("toile", {
     this.fp.forEach((q, j) => {
       const v = F.fix[j], ok = v != null;
       if (ok) { set(q.c, { cx: X(v), cy: Y(v) }); const ex = p.f === "bac22" ? (j ? "ln 4" : "0") : p.f === "bac19" ? "e" : (Math.abs(v - Math.round(v)) < 1e-9 ? `ℓ = ${ent(v)}` : `ℓ ≈ ${fr(v, 3)}`);
-        const dx = p.f === "expm" ? 74 : p.f === "bac22" && j === 0 ? 18 : 16, dy = p.f === "expm" ? 14 : p.f === "bac22" && j === 0 ? 32 : 36; at(q.t, X(v) + dx, Y(v) + dy); setFx(q.t, ex); }
+        const dx = p.f === "expm" ? 74 : p.f === "bac22" && j === 0 ? 18 : 16, dy = p.f === "expm" ? 14 : p.f === "double" ? 8 : p.f === "bac22" && j === 0 ? 32 : 36; at(q.t, p.f === "double" ? xA - 14 : X(v) + dx, Y(v) + dy); q.t.setAttribute("text-anchor", p.f === "double" ? "end" : "start"); setFx(q.t, ex); }
       show(q.g, ok ? p.fixe : 0);
     });
     this.wl.forEach((t, i) => show(t, clamp(p.wr * 3 - i, 0, 1)));
