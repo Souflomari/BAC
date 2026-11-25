@@ -628,6 +628,8 @@ export type DiagnosticConception = {
   etat: EtatConception;
   /** répétée (3 fois ou plus), revenue après plusieurs jours, ou rouverte après avoir été écartée */
   tenace: boolean;
+  /** tenace PARCE QUE l'erreur est revenue après plusieurs jours (et non parce qu'elle est fréquente le même jour) */
+  revenueApresDesJours?: boolean;
   /** lieux distincts du catalogue qui piègent cette conception ; sous le plancher, on ne conclut pas */
   lieux: number;
   /** occasions (premiers essais sur une question qui la piégeait) et exhibitions fortes */
@@ -711,7 +713,7 @@ export function diagnostiquer(ts: Tentative[], cat: Catalogue): DiagnosticConcep
     else etat = "non_evaluee";
     const tenace = etat === "active" && (toutesFortes >= 3 || ecartTenace || rouverte);
     const libelle = cat.conceptions[id]?.libelle ?? id;
-    sortie.push({ conception: id, libelle, etat, tenace, lieux, occasions, observations: obs, phrase: phraseConception(etat, libelle, lieux) });
+    sortie.push({ conception: id, libelle, etat, tenace, revenueApresDesJours: tenace && ecartTenace, lieux, occasions, observations: obs, phrase: phraseConception(etat, libelle, lieux) });
   }
   return sortie;
 }
@@ -830,11 +832,13 @@ function libelleNoeud(cle: string, cat: Catalogue): string {
 }
 
 function phraseHypothese(h: Hypothese, cat: Catalogue): string {
-  const lecons = [...new Set(h.explique.map((x) => x.lecon))].join(", ");
+  const noms = [...new Set(h.explique.map((x) => x.lecon))];
+  // les noms de leçon restent ceux du journal (`dipole-rc`) : l'interface les remplace par leurs titres
+  const lecons = `${noms.length > 1 ? "les leçons" : "la leçon"} ${noms.join(", ")}`;
   const quoi = libelleNoeud(h.amont, cat);
-  if (h.statut === "ecartee") return `Les erreurs vues en ${lecons} ne viennent pas de ce point, réussi seul : ${quoi}.`;
-  if (h.statut === "confirmee") return `Les erreurs vues en ${lecons} ont une même source, déjà vue dans sa leçon : ${quoi}. On reprend ce point d’abord.`;
-  return `Plusieurs erreurs en ${lecons} viennent peut-être d’un même point : ${quoi}. Un court exercice pour le vérifier.`;
+  if (h.statut === "ecartee") return `Les erreurs vues dans ${lecons} ne viennent pas de ce point, réussi seul : ${quoi}.`;
+  if (h.statut === "confirmee") return `Les erreurs vues dans ${lecons} ont une même source, déjà vue dans sa leçon : ${quoi}. On reprend ce point d’abord.`;
+  return `Plusieurs erreurs dans ${lecons} viennent peut-être d’un même point : ${quoi}. Un court exercice pour le vérifier.`;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -899,7 +903,7 @@ export function prochainesActions(diags: DiagnosticConception[], suivis: SuiviCa
     const gabs = gabaritsQuiPiegent(cat, d.conception);
     const cible = gabs.find((g) => g.type === "gabarit" && !vus.has(g.gabarit) && (cat.lecons[g.lecon]?.gabarits[g.gabarit]?.niveau ?? 1) <= niv) ?? gabs.find((g) => g.type === "gabarit" && !vus.has(g.gabarit)) ?? etapesDe(cat, d.conception)[0] ?? gabs[0];
     if (cible)
-      ajoute({ motif: "conception", cible, raison: d.tenace ? `Cette erreur est revenue après quelques jours : ${d.libelle}. Un exercice neuf, fait pour la déjouer.` : `Deux fois la même erreur : ${d.libelle}. Voici un exercice fait pour la déjouer.`, regle: d.tenace ? "conception:tenace" : "conception:active" });
+      ajoute({ motif: "conception", cible, raison: d.tenace ? `${d.revenueApresDesJours ? "Cette erreur est revenue après quelques jours" : "Cette erreur revient souvent"} : ${d.libelle}. Un exercice neuf, fait pour la déjouer.` : `Deux fois la même erreur : ${d.libelle}. Voici un exercice fait pour la déjouer.`, regle: d.tenace ? "conception:tenace" : "conception:active" });
   }
   // 3. les révisions dues, la plus en retard d'abord
   const auj = jourDe(maintenant.getTime());

@@ -20,7 +20,7 @@ import { FILIERE_KEY } from "@/lib/useFiliere";
 import { frenchTypography as fr } from "@/lib/frenchTypography";
 import { useHydrated } from "@/lib/useHydrated";
 import { cn } from "@/lib/utils";
-import { titreLecon } from "./titres";
+import { TITRES_LECONS, titreLecon } from "./titres";
 
 type Instantane = { journal: unknown[]; maintenant: Date; filiere: string | undefined };
 
@@ -35,6 +35,46 @@ const CATEGORIES: { id: Categorie; titre: string; marque: string }[] = [
   { id: "compris", titre: "Compris", marque: "bg-success" },
   { id: "reste_a_voir", titre: "Reste à voir", marque: "border border-text-secondary bg-transparent" },
 ];
+
+/** Un libellé officiel rendu lisible : majuscules accentuées, indices et exposants écrits comme tels. */
+const INDICES: Record<string, string> = { "0": "₀", "1": "₁", "2": "₂", n: "ₙ", "+": "₊", "-": "₋" };
+function lisible(s: string): string {
+  return s
+    .replace(/^E(tudier|tablir|crire|noncer|valuer|tre\b)/, "É$1")
+    .replace(/_\{([0-9n+-]+)\}/g, (_, x: string) => [...x].map((c) => INDICES[c] ?? c).join(""))
+    .replace(/_([0-9n])/g, (_, c: string) => INDICES[c] ?? c)
+    .replace(/\^x\b/g, "ˣ");
+}
+
+/** Dans une phrase du modèle, le nom technique d'une leçon (`dipole-rc`) devient son titre. */
+const nommer = (s: string) =>
+  s.replace(/(les leçons|la leçon) ([a-z-]+(?:, [a-z-]+)*)/g, (_, tete: string, noms: string) =>
+    `${tete} ${noms.split(", ").map((n) => (TITRES_LECONS[n] ? `« ${TITRES_LECONS[n]} »` : n)).join(", ")}`,
+  );
+
+/** Sans filière choisie, une même capacité figure dans deux ou trois programmes sous le même libellé :
+ *  on n'en garde qu'une ligne (la mieux renseignée), et les comptes sont refaits sur ce qui est affiché. */
+const RANG: Record<string, number> = { compris: 0, fragile: 1, reste_a_voir: 2 };
+function sansDoublons(b: Bilan, libelles: Record<string, string>): Bilan {
+  const parLecon: Bilan["parLecon"] = {};
+  for (const [nom, v] of Object.entries(b.parLecon)) {
+    const vus = new Map<string, LigneBilan>();
+    for (const l of [...v.lignes].sort((x, y) => RANG[x.categorie] - RANG[y.categorie] || Number(x.etat === "jamais_vue") - Number(y.etat === "jamais_vue"))) {
+      const cle = libelles[l.capacite] ?? l.capacite;
+      if (!vus.has(cle)) vus.set(cle, l);
+    }
+    const lignes = [...vus.values()];
+    const n = (c: string) => lignes.filter((l) => l.categorie === c).length;
+    parLecon[nom] = { ...v, lignes, compris: n("compris"), fragile: n("fragile"), reste_a_voir: n("reste_a_voir") };
+  }
+  const parMatiere: Bilan["parMatiere"] = {};
+  for (const [m, pm] of Object.entries(b.parMatiere)) {
+    const ls = Object.values(parLecon).filter((v) => v.matiere === m);
+    const s = (k: "compris" | "fragile" | "reste_a_voir") => ls.reduce((x, v) => x + v[k], 0);
+    parMatiere[m] = { ...pm, compris: s("compris"), fragile: s("fragile"), reste_a_voir: s("reste_a_voir"), total: ls.reduce((x, v) => x + v.lignes.length, 0) };
+  }
+  return { ...b, parLecon, parMatiere };
+}
 
 const pluriel = (n: number, un: string, plusieurs: string) => `${n} ${n > 1 ? plusieurs : un}`;
 
@@ -63,8 +103,8 @@ function ActionBloc({ action, premiere, libelles }: { action: Action; premiere: 
     >
       <p className="font-mono text-caption text-secondary">{fr(ou)}</p>
       <p className={cn("mt-1 font-display font-bold text-primary", premiere ? "text-h3" : "text-body-lg")}>{fr(quoi)}</p>
-      {point && <p className="mt-2 max-w-reading text-body-sm text-primary">{fr(point)}</p>}
-      <p className="mt-2 max-w-reading text-body-sm text-secondary">{fr(action.raison)}</p>
+      {point && <p className="mt-2 max-w-reading text-body-sm text-primary">{fr(lisible(point))}</p>}
+      <p className="mt-2 max-w-reading text-body-sm text-secondary">{fr(nommer(action.raison))}</p>
       <div className="mt-4">
         {premiere ? (
           <Link href={lienCible(action)} className="btn-primary" aria-label={fr(`${verbe} : ${titre}`)}>
@@ -122,7 +162,7 @@ function Ligne({ l, libelles, maintenant }: { l: LigneBilan; libelles: Record<st
   const date = l.etat === "a_revoir" ? dateRevision(l.prochaineRevision, maintenant) : null;
   return (
     <li className="border-t border-subtle py-2 first:border-t-0" data-state-source={`capacite:${l.etat}`}>
-      <p className="text-body-sm text-primary">{fr(libelle)}</p>
+      <p className="text-body-sm text-primary">{fr(lisible(libelle))}</p>
       {l.etat !== "jamais_vue" && (
         <p className="text-caption text-secondary">
           {fr(l.phrase)}
@@ -188,7 +228,10 @@ function Lecon({ nom, b, libelles, maintenant }: { nom: string; b: Bilan["parLec
 }
 
 function Bilans({ analyse, libelles, maintenant, filiere }: { analyse: Analyse; libelles: Record<string, string>; maintenant: Date; filiere: string | undefined }) {
-  const b = useMemo(() => bilan(analyse, CATALOGUE, filiere), [analyse, filiere]);
+  const b = useMemo(() => {
+    const brut = bilan(analyse, CATALOGUE, filiere);
+    return filiere ? brut : sansDoublons(brut, libelles);
+  }, [analyse, filiere, libelles]);
   const leconsSansMatiere = Object.entries(b.parLecon).filter(([, v]) => !v.matiere);
   return (
     <section aria-labelledby="h-bilan" className="mt-14">
@@ -197,7 +240,7 @@ function Bilans({ analyse, libelles, maintenant, filiere }: { analyse: Analyse; 
       </h2>
       <p className="mt-2 max-w-reading text-body-sm text-secondary">
         {fr("Point par point, d’après les capacités du programme officiel. « Compris » n’apparaît que lorsque tu as réussi seul, sur des énoncés différents.")}
-        {!filiere && fr(" Ta filière n’est pas choisie : les points des deux programmes (SM et PC ou SVT) sont tous listés.")}
+        {!filiere && fr(" Ta filière n’est pas choisie : les points de tous les programmes sont listés, chacun une seule fois.")}
       </p>
       {MATIERES.map((m) => {
         const lecons = Object.entries(b.parLecon).filter(([, v]) => v.matiere === m.id);
@@ -272,6 +315,10 @@ function Erreurs({ analyse }: { analyse: Analyse }) {
   // « surmontée » n'a de sens que si l'erreur a vraiment été vue avant : sinon on ne dit rien
   const ecartees = analyse.conceptions.filter((d) => d.etat === "ecartee" && d.observations.some((o) => o.nature === "forte"));
   const hyps = analyse.hypotheses.filter((h) => h.statut !== "ecartee");
+  // les cinq premières d'abord (celles qui reviennent, puis les plus observées) ; le reste se déplie
+  const triees = [...ouvertes].sort((x, y) => Number(y.etat === "active") - Number(x.etat === "active") || Number(y.tenace) - Number(x.tenace) || y.observations.length - x.observations.length);
+  const premieres = triees.slice(0, 5);
+  const suivantes = triees.slice(5);
   return (
     <section aria-labelledby="h-erreurs" className="mt-14">
       <h2 id="h-erreurs" className="font-display text-h2 font-bold text-primary">
@@ -285,14 +332,26 @@ function Erreurs({ analyse }: { analyse: Analyse }) {
         <>
           {hyps.map((h) => (
             <p key={h.amont} className="mt-3 max-w-reading text-body text-primary" data-state-source={`transversal:${h.statut}`}>
-              {fr(h.phrase)}
+              {fr(nommer(h.phrase))}
             </p>
           ))}
           <ul className="mt-4">
-            {ouvertes.map((d) => (
+            {premieres.map((d) => (
               <Erreur key={d.conception} d={d} aPrerequis={!!d.expliqueePar && hyps.length > 0} />
             ))}
           </ul>
+          {suivantes.length > 0 && (
+            <details className="mt-2">
+              <summary className="flex min-h-touch cursor-pointer list-none items-center text-body-sm font-semibold text-accent underline underline-offset-4 [&::-webkit-details-marker]:hidden">
+                {fr(`Voir les ${suivantes.length} autres erreurs repérées`)}
+              </summary>
+              <ul>
+                {suivantes.map((d) => (
+                  <Erreur key={d.conception} d={d} aPrerequis={!!d.expliqueePar && hyps.length > 0} />
+                ))}
+              </ul>
+            </details>
+          )}
           {ecartees.length > 0 && (
             <ul className="border-t border-subtle pt-4">
               {ecartees.map((d) => (
