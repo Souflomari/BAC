@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 import { PageShell } from "@/components/ui/PageShell";
 import { manifesteEpreuves } from "@/lib/palette-epreuves";
 import { manifestePourHeader } from "@/lib/palette-notions";
-import { libellesCapacites } from "@/lib/referentiel-libelles";
+import { libellesLisibles } from "@/lib/referentiel-libelles";
 import { capacitesConnues } from "@/lib/apprentissage";
 import { CATALOGUE } from "@/lib/apprentissage-catalogue";
 import { OuJEnSuis } from "./OuJEnSuis";
@@ -27,7 +27,7 @@ export default function OuJEnSuisPage() {
   for (const k of Object.values(CATALOGUE.conceptions)) k.capacites.forEach((c) => ids.add(c));
   return (
     <PageShell epreuves={manifesteEpreuves()} notions={manifestePourHeader()} width="content">
-      <OuJEnSuis libelles={libellesCapacites(ids)} />
+      <OuJEnSuis libelles={libellesLisibles(ids)} />
     </PageShell>
   );
 }

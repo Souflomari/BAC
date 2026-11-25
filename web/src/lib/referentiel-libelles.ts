@@ -6,6 +6,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import yaml from "js-yaml";
+import { lisible } from "./libelle-lisible";
 
 const cache = new Map<string, Map<string, string>>();
 
@@ -38,4 +39,9 @@ export function libellesCapacites(ids: Iterable<string>): Record<string, string>
     if (l) r[id] = l;
   }
   return r;
+}
+
+/** Les mêmes libellés, tels que l'élève les lit (accents, indices, listes : voir `libelle-lisible.ts`). */
+export function libellesLisibles(ids: Iterable<string>): Record<string, string> {
+  return Object.fromEntries(Object.entries(libellesCapacites(ids)).map(([k, v]) => [k, lisible(v)]));
 }

@@ -10,7 +10,7 @@ import { SiteHeader } from "@/components/ui/SiteHeader";
 import { LienEvitement } from "@/components/ui/LienEvitement";
 import { ExercicesPilote } from "@/components/pilote/ExercicesPilote";
 import { CATALOGUE } from "@/components/pilote/exercices/catalogue";
-import { libellesCapacites } from "@/lib/referentiel-libelles";
+import { libellesLisibles } from "@/lib/referentiel-libelles";
 import { manifesteEpreuves } from "@/lib/palette-epreuves";
 import { manifestePourHeader } from "@/lib/palette-notions";
 import { cn } from "@/lib/utils";
@@ -38,7 +38,7 @@ export default function ExercicesRadioactivitePage() {
           nom="radioactivite"
           matiere="Physique-chimie · 2ᵉ Bac"
           titre="Décroissance radioactive"
-          libelles={libellesCapacites(ids)}
+          libelles={libellesLisibles(ids)}
           lecon="/pilote/radioactivite"
         />
       </div>

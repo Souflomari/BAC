@@ -10,6 +10,7 @@
  * Aucune requête réseau.
  */
 
+import { lisible } from "@/lib/libelle-lisible";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "@/components/ui/Lien";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
@@ -35,16 +36,6 @@ const CATEGORIES: { id: Categorie; titre: string; marque: string }[] = [
   { id: "compris", titre: "Compris", marque: "bg-success" },
   { id: "reste_a_voir", titre: "Reste à voir", marque: "border border-text-secondary bg-transparent" },
 ];
-
-/** Un libellé officiel rendu lisible : majuscules accentuées, indices et exposants écrits comme tels. */
-const INDICES: Record<string, string> = { "0": "₀", "1": "₁", "2": "₂", n: "ₙ", "+": "₊", "-": "₋" };
-function lisible(s: string): string {
-  return s
-    .replace(/^E(tudier|tablir|crire|noncer|valuer|tre\b)/, "É$1")
-    .replace(/_\{([0-9n+-]+)\}/g, (_, x: string) => [...x].map((c) => INDICES[c] ?? c).join(""))
-    .replace(/_([0-9n])/g, (_, c: string) => INDICES[c] ?? c)
-    .replace(/\^x\b/g, "ˣ");
-}
 
 /** Dans une phrase du modèle, le nom technique d'une leçon (`dipole-rc`) devient son titre. */
 const nommer = (s: string) =>
