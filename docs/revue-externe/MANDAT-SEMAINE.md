@@ -48,7 +48,7 @@ Pour /pilote/dipole-rl, /pilote/transformations-non-totales et /pilote/complexes
 5. Fais 30 tirages de chaque exercice de ces trois leçons : deux réponses égales en valeur, énoncé mal
    formé, rétroaction qui ne correspond pas à la réponse choisie.
 
-À rendre : docs/revue-externe/rapports/17-seconde-relecture.md, trié « bloquant / à corriger / à
+À rendre : un rapport neuf, « 17-seconde-relecture », dans le dossier des rapports de la revue externe, trié « bloquant / à corriger / à
 discuter », avec un décompte par leçon.
 ```
 
@@ -69,8 +69,8 @@ docs/refonte/09-regles-du-mouvement.md).
    courbes de Q_r qui rejoignent la même valeur.
 
 Pour chacune : l'état est une fonction d'un seul paramètre ; ce que la question demandera reste caché
-derrière un paramètre « garde ». À rendre : les trois maquettes et un rapport
-docs/revue-externe/rapports/18-maquettes-chimie.md (étape visée par sa clé, captures 1280 et 390,
+derrière un paramètre « garde ». À rendre : les trois maquettes et un rapport neuf,
+« 18-maquettes-chimie », dans le dossier des rapports de la revue externe (étape visée par sa clé, captures 1280 et 390,
 taille de texte mesurée au téléphone).
 ```
 
