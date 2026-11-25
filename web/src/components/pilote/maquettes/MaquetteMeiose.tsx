@@ -1,7 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { clamp, easeCalm, lerp, ty, useReducedMotion } from "./outils";
+import { clamp, easeCalm, lerp, SVG_FS, trouverPalier, ty, useLectureAnimee } from "./outils";
 
 /**
  * Maquette 1 — La première division de méiose (méiose I) et sa seconde orientation équiprobable.
@@ -187,7 +186,7 @@ function ChromosomeBichromatidien({ c }: { c: ChromState }) {
       />
       {/* Centromère unique reliant les deux chromatides sœurs */}
       <circle cx={x} cy={y} r={6.5} className={`mq-f-stage ${strokeCls}`} strokeWidth={3} />
-      <text x={x} y={labelY} textAnchor="middle" fontSize={23} fontWeight={700} className={fillCls}>
+      <text x={x} y={labelY} textAnchor="middle" fontSize={SVG_FS} fontWeight={700} className={fillCls}>
         {allele}
       </text>
     </g>
@@ -195,86 +194,36 @@ function ChromosomeBichromatidien({ c }: { c: ChromState }) {
 }
 
 export function MaquetteMeiose() {
-  const reducedMotion = useReducedMotion();
-  const [u, setU] = useState(0);
-  const [playing, setPlaying] = useState(false);
-  const targetRef = useRef<number | null>(null);
-  const rafRef = useRef<number | null>(null);
-  const lastTsRef = useRef<number | null>(null);
-
-  const stopAnim = useCallback(() => {
-    setPlaying(false);
-    targetRef.current = null;
-    lastTsRef.current = null;
-    if (rafRef.current != null) {
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = null;
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!playing) return;
-    const tick = (ts: number) => {
-      if (lastTsRef.current == null) lastTsRef.current = ts;
-      const dt = Math.min(0.06, (ts - lastTsRef.current) / 1000);
-      lastTsRef.current = ts;
-      setU((prev) => {
-        const limit = targetRef.current ?? 5;
-        const next = prev + dt * 0.62;
-        if (next >= limit) {
-          setPlaying(false);
-          targetRef.current = null;
-          lastTsRef.current = null;
-          return limit;
-        }
-        return next;
-      });
-      rafRef.current = requestAnimationFrame(tick);
-    };
-    rafRef.current = requestAnimationFrame(tick);
-    return () => {
-      if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
-    };
-  }, [playing]);
+  const {
+    valeur: u,
+    playing,
+    reduced: reducedMotion,
+    togglePlay: basculerLecture,
+    lancerVers,
+    fixer,
+  } = useLectureAnimee({
+    initial: 0,
+    min: 0,
+    max: 5,
+    vitesse: 0.62,
+    palierSuivant: (prev) => Math.min(5, Math.floor(prev) + 1),
+  });
 
   const allerAuPalier = (k: number) => {
     const dest = clamp(k, 0, 5);
-    stopAnim();
     if (reducedMotion || Math.abs(dest - u) > 1.05 || dest < u) {
-      setU(dest);
+      fixer(dest);
       return;
     }
-    targetRef.current = dest;
-    setPlaying(true);
-  };
-
-  const basculerLecture = () => {
-    if (playing) {
-      stopAnim();
-      return;
-    }
-    if (reducedMotion) {
-      setU((prev) => (prev >= 5 ? 0 : Math.min(5, Math.floor(prev) + 1)));
-      return;
-    }
-    if (u >= 4.98) setU(0);
-    targetRef.current = 5;
-    lastTsRef.current = null;
-    setPlaying(true);
+    lancerVers(dest);
   };
 
   const rejouer = () => {
-    stopAnim();
-    setU(0);
-    if (!reducedMotion) {
-      targetRef.current = 5;
-      lastTsRef.current = null;
-      setPlaying(true);
-    }
+    if (reducedMotion) fixer(0);
+    else lancerVers(5, 0);
   };
 
-  const palierIdx = Math.min(5, Math.round(u));
-  const palier = PALIERS[palierIdx];
+  const { index: palierIdx, palier } = trouverPalier(PALIERS, u);
   const st = computeMeioseState(u);
 
   // Contour cellulaire : passe continûment d'une cellule mère unique (split=0) à deux cellules filles (split=1)
@@ -293,7 +242,7 @@ export function MaquetteMeiose() {
       </div>
 
       <div className="grid grid-cols-1 bp-large:grid-cols-12">
-        <div className="mq-stage-box px-2 py-2 bp-medium:px-4 bp-medium:py-4 bp-large:col-span-7 bp-large:border-b-0 bp-large:border-r bp-large:border-subtle">
+        <div className="mq-stage-box px-1 py-2 bp-medium:px-4 bp-medium:py-4 bp-large:col-span-7 bp-large:border-b-0 bp-large:border-r bp-large:border-subtle">
           <svg
             viewBox="0 0 760 500"
             className="mq-svg"
@@ -303,10 +252,10 @@ export function MaquetteMeiose() {
             )}
           >
             {/* Bandeau d'état en haut de scène */}
-            <text x={24} y={34} fontSize={23} fontWeight={700} className="mq-f-ink">
+            <text x={24} y={34} fontSize={SVG_FS} fontWeight={700} className="mq-f-ink">
               {ty(st.isCas2 ? "2e orientation équiprobable (50 %)" : "1re orientation équiprobable (50 %)")}
             </text>
-            <text x={736} y={34} textAnchor="end" fontSize={23} className="mq-f-sec mq-mono">
+            <text x={736} y={34} textAnchor="end" fontSize={SVG_FS} className="mq-f-sec mq-mono">
               {ty(st.split > 0.75 ? "2 cellules à n = 2" : "1 cellule à 2n = 4")}
             </text>
 
@@ -355,7 +304,7 @@ export function MaquetteMeiose() {
                   strokeWidth={2}
                   strokeDasharray="8 6"
                 />
-                <text x={380} y={96} textAnchor="middle" fontSize={23} className="mq-f-dim">
+                <text x={380} y={96} textAnchor="middle" fontSize={SVG_FS} className="mq-f-dim">
                   {ty("enveloppe nucléaire")}
                 </text>
               </g>
@@ -373,7 +322,7 @@ export function MaquetteMeiose() {
                   strokeWidth={2}
                   strokeDasharray="7 6"
                 />
-                <text x={380} y={96} textAnchor="middle" fontSize={23} className="mq-f-sec">
+                <text x={380} y={96} textAnchor="middle" fontSize={SVG_FS} className="mq-f-sec">
                   {ty("plan équatorial")}
                 </text>
                 <circle cx={poleL} cy={244} r={7} className="mq-f-ink" />
@@ -404,10 +353,10 @@ export function MaquetteMeiose() {
             {/* Étiquettes des lots haploïdes formés en fin de division I */}
             {st.split > 0.82 && (
               <g>
-                <text x={195} y={398} textAnchor="middle" fontSize={23} fontWeight={700} className="mq-f-ink mq-mono">
+                <text x={195} y={398} textAnchor="middle" fontSize={SVG_FS} fontWeight={700} className="mq-f-ink mq-mono">
                   {st.isCas2 ? "(A, b)" : "(A, B)"}
                 </text>
-                <text x={565} y={398} textAnchor="middle" fontSize={23} fontWeight={700} className="mq-f-ink mq-mono">
+                <text x={565} y={398} textAnchor="middle" fontSize={SVG_FS} fontWeight={700} className="mq-f-ink mq-mono">
                   {st.isCas2 ? "(a, B)" : "(a, b)"}
                 </text>
               </g>
@@ -418,7 +367,7 @@ export function MaquetteMeiose() {
             <text
               x={24}
               y={474}
-              fontSize={23}
+              fontSize={SVG_FS}
               fontWeight={st.cas1Done && !st.isCas2 ? 700 : 500}
               className={st.cas1Done ? "mq-f-ink mq-mono" : "mq-f-dim mq-mono"}
             >
@@ -428,7 +377,7 @@ export function MaquetteMeiose() {
               x={736}
               y={474}
               textAnchor="end"
-              fontSize={23}
+              fontSize={SVG_FS}
               fontWeight={st.isCas2 ? 700 : 500}
               className={st.cas2Done || st.isCas2 ? "mq-f-sig mq-mono" : "mq-f-dim mq-mono"}
             >
@@ -509,8 +458,7 @@ export function MaquetteMeiose() {
                 step={0.02}
                 value={u}
                 onChange={(e) => {
-                  stopAnim();
-                  setU(Number(e.target.value));
+                  fixer(Number(e.target.value));
                 }}
                 className="mq-slider"
               />
