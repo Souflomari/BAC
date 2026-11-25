@@ -192,6 +192,21 @@ un fondu au bas du panneau dit qu'il reste du texte ; au téléphone, les textes
 casse les téléphones d'avant 2023, et seul `syntaxe-vieux-moteurs.mjs` le voit ; il se lance avant
 chaque poussée de leçon.
 
+**Les faits en attente, vérifiés par Antigravity (2026-11-25,
+[`rapport 12`](../revue-externe/rapports/12-faits-lecons.md))** sur les sources premières :
+- **établis** : les effectifs de Mendel (5 474 et 1 850 ; 6 022 et 2 001 ; 315, 101, 108, 32) sur le
+  mémoire de 1866 ; Sutton 1903 (orientation au hasard des paires, 2ⁿ) sur le scan d'origine ; le
+  fluor 18 en imagerie TEP et l'iode 131 pour la thyroïde ; la notation E_e des sujets nationaux ; la
+  figure 1 du sujet de physique 2022 ; la question 8 (suites) et la question 4 (variations de f) du
+  problème de Sciences expérimentales 2022 ;
+- **établi avec une nuance, corrigée dans la leçon** : le stimulateur au plutonium 238 est un emploi
+  des années 1970, abandonné depuis pour les piles au lithium ; `noyaux` le dit maintenant ;
+- **établi pour Sciences mathématiques seulement** : le programme de 2006 présente exp comme réciproque
+  de ln (ou par y′ = y, ou par l'équation fonctionnelle, au choix) ; la partie Sciences expérimentales
+  du document n'a pas pu être ouverte ;
+- **restent ouverts** : le mot « admis » pour le théorème des suites monotones bornées ; l'emploi de
+  « tétrade » et de « bivalent » dans les manuels marocains agréés (à voir sur un exemplaire).
+
 ## 5. Avant le lancement : les bloquants
 
 Inventaire vérifié dans le dépôt le 2026-11-23. Trois faits qui cadrent tout :
