@@ -18,7 +18,31 @@
 
 ---
 
-## 0. La décision de périmètre : C6 seule, C5 supposée acquise
+## 0. La leçon livrée
+
+- **Route et titre** : `/pilote/dosage`, « Le dosage acido-basique » (`DosagePilote.tsx`, `dosage-moteur.js`, `dosage-outils.js`, `dosage-scenes-{a,b,c}.js`, `exercices/dosage.js`, catalogue `web/src/lib/apprentissage-catalogue/dosage.ts` généré par `spec-dosage.mjs`).
+- **Périmètre retenu** : 11 parties, **48 étapes** (partie optionnelle de conductimétrie écartée ; aucun gabarit de conductimétrie). Valeurs de la leçon : acide éthanoïque ($pK_A = 4{,}75$, $C_A = 6{,}0 \times 10^{-2}\ \mathrm{mol\cdot L^{-1}}$, $V_A = 20{,}0\ \mathrm{mL}$) titré par la soude ($C_B = 0{,}10\ \mathrm{mol\cdot L^{-1}}$, $V_E = 12{,}0\ \mathrm{mL}$), pH calculé par électroneutralité exacte.
+- **Ordre réel des 48 étapes** :
+  - Partie 0 (Savoir) : `sav-test`, `sav-rappel`
+  - Partie 1 (Énigme) : `goutte`, `combien`, `question`
+  - Partie 2 (Réaction) : `equation`, `fleche-K`, `totale`, `montage`
+  - Partie 3 (Bécher) : `avant-E`, `tableau-avant`, `pari-E`, `equivalence`, `ca`, `apres-E`
+  - Partie 4 (Courbe) : `allure`, `lent`, `saut`, `pHE`, `base-faible`
+  - Partie 5 (Repérer) : `rappel` (pause + curseur libre $V_B$), `tangentes`, `derivee`, `demi`, `rapport`, `pourcent`
+  - Partie 6 (Indicateur) : `indicateur`, `bande`, `choix`, `bbt`
+  - Partie 7 (Exploiter) : `dilution`, `masse`, `etiquette`, `ceq`
+  - Partie 8 (Retour) : `retour-goutte`, `retour-volume`
+  - Partie 9 (Au bac) : `bac`, `bac-lecture`, `bac-ca`, `bac-ind`, `bac-rapport` (2018 N) ; `bac-2a`, `bac-2b`, `bac-2c` (2024 N)
+  - Partie 10 (Bilan) : `q1` (figure 2022 sur scène `phv`), `q2`, `q3`, `fin`
+- **Écarts au plan** :
+  - `q1` utilise la scène `phv` (jeu `s22`, pic à 20,0 mL et flèche pointant vers 21,7 mL) plutôt que `quiz`, afin de montrer la figure réelle du sujet 2022.
+  - Les teintes d'indicateurs sont écrites en toutes lettres (« incolore », « rose ») sans aucune couleur nouvelle hors jetons.
+  - Les points « à vérifier » du §8.2 (goutte = 0,05 mL, pH-mètre « étalonné », rédaction exacte d'étiquette, notation des états au barème, conductimétrie) ne sont pas affirmés comme faits à l'élève.
+- **Statut** : à relire par le flux `relire-lecon` dans une conversation neuve.
+
+---
+
+## 0 bis. La décision de périmètre : C6 seule, C5 supposée acquise
 
 Les deux fiches ne tiennent pas dans une leçon de 45 à 55 étapes. C5 compte neuf tirets de nature différente
 (K_e et pK_e, nature d'une solution, pH ↔ [H₃O⁺] et [HO⁻], K_A et pK_A, K d'une réaction entre deux couples,
