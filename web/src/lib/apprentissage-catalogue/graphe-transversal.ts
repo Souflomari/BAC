@@ -38,6 +38,7 @@ export const MATIERES: Record<string, Matiere> = {
   "dipole-rc": "physique",
   "dipole-rl": "physique",
   "transformations-non-totales": "physique",
+  "acides-bases": "physique",
   complexes: "maths",
   "expression-genetique": "svt",
   meiose: "svt",
@@ -54,6 +55,10 @@ const CX_EQ = ["maths-sexp 2.4.8", "maths-sm 2.2.5"];
 const CX_RAM = ["maths-sexp 2.4.9", "maths-sm 2.2.6"];
 const CX_SM = ["maths-sm 2.2.5"];
 const SRC_CX = "docs/refonte/specs/nombres-complexes-1.md §5";
+const SRC_AB = "docs/refonte/specs/acides-bases.md §5";
+const AB_C4 = (r: number) => [`pc-pc 2.2.2.${r}`, `pc-sm 2.2.2.${r}`, `pc-svt 2.2.4.${r}`];
+const AB_C5 = (r: number) => [`pc-pc 2.2.3.${r}`, `pc-sm 2.2.3.${r}`, `pc-svt 2.2.5.${r}`];
+const AB_DIST = ["pc-pc 2.2.3.9", "pc-sm 2.2.3.9"];
 const BIBLE_LN = "docs/bible/01-maths.md A6 (conceptions erronées)";
 
 export const CONCEPTIONS: Conception[] = [
@@ -185,6 +190,51 @@ export const CONCEPTIONS: Conception[] = [
   { id: "tnt.dilution-diminue", lecon: "transformations-non-totales", libelle: "diluer fait baisser τ parce qu’il y a moins d’acide par litre", capacites: ["pc-svt 2.2.3.6"], exercices: [["transformations-non-totales", "tnt-dilution", "τ diminue (+11)"]], source: "docs/refonte/specs/transformations-non-totales.md §5 (+11)" },
   { id: "tnt.acide-plus-fort", lecon: "transformations-non-totales", libelle: "la dilution change la nature de l’acide : c’est l’état de départ qui change", capacites: ["pc-svt 2.2.3.6"], etapes: ["dilution-pourquoi"], exercices: [["transformations-non-totales", "tnt-dilution", "la nature de l’acide change (+12)"]], source: "docs/refonte/specs/transformations-non-totales.md §5 (+12)" },
   { id: "tnt.meme-ph", lecon: "transformations-non-totales", libelle: "même concentration, même pH : la force d’un acide et sa concentration confondues", capacites: ["pc-pc 2.2.1.5", "pc-sm 2.2.1.5", "pc-svt 2.2.3.5", "pc-pc 2.2.1.6", "pc-sm 2.2.1.6"], etapes: ["hcl-zoom", "retour-ph"], exercices: [], source: "docs/refonte/specs/transformations-non-totales.md §5 (+1) ; bible C5" },
+
+  // ── état d'équilibre, acides et bases (leçon stable : étapes et exercices) ──
+  { id: "ab.qr-inverse", lecon: "acides-bases", libelle: "quotient de réaction renversé : les réactifs mis au numérateur et les produits au dénominateur", capacites: AB_C4(3), etapes: ["qr-valeur", "qr-solides", "dilution-k"], exercices: [["acides-bases", "ab-qr", "quotient renversé"]], source: `${SRC_AB} (mc.qr-construction-erronee)` },
+  { id: "ab.qr-solides", lecon: "acides-bases", libelle: "un solide écrit dans le quotient de réaction, où ne figurent que les espèces dissoutes", capacites: AB_C4(3), etapes: ["qr-solides"], exercices: [["acides-bases", "ab-qr", "solide écrit dans Q_r"]], source: `${SRC_AB} ; bible C4` },
+  { id: "ab.eau-negligeable", lecon: "acides-bases", libelle: "l’eau solvant écrite dans Q_r ou jugée trop peu abondante pour compter", capacites: AB_C4(3), etapes: ["qr-nom"], exercices: [["acides-bases", "ab-qr", "eau solvant écrite dans Q_r"]], source: `${SRC_AB} ; bible C4` },
+  { id: "ab.qr-carre-oublie", lecon: "acides-bases", libelle: "un seul facteur mis au numérateur de Q_r alors que les deux ions produits ont la même concentration", capacites: AB_C4(3), etapes: ["qr-valeur", "meme-k-calc"], exercices: [["acides-bases", "ab-ka-ph", "carré oublié au numérateur"]], source: `${SRC_AB} ; bible C4` },
+  { id: "ab.coef-facteur", lecon: "acides-bases", libelle: "un nombre stœchiométrique écrit en facteur devant la concentration au lieu de passer en exposant", capacites: AB_C4(3), etapes: ["qr-exposants"], exercices: [["acides-bases", "ab-qr", "coefficient mis en facteur"]], source: `${SRC_AB} ; bible C4` },
+  { id: "ab.coef-oublie", lecon: "acides-bases", libelle: "un nombre stœchiométrique oublié en exposant dans le quotient de réaction", capacites: AB_C4(3), etapes: ["qr-exposants"], exercices: [["acides-bases", "ab-qr", "coefficient oublié"]], source: `${SRC_AB} ; bible C4` },
+  { id: "ab.k-depend-etat-initial", lecon: "acides-bases", libelle: "la constante d’équilibre K supposée dépendre de la concentration initiale ou de la dilution", capacites: AB_C4(4), etapes: ["trois-flacons", "k-nom", "rappel"], exercices: [["acides-bases", "ab-k", "K dépendrait de C"]], source: `${SRC_AB} (mc.k-depend-etat-initial) ; bible C4` },
+  { id: "ab.confond-qr-et-k", lecon: "acides-bases", libelle: "le quotient de réaction Q_r confondu avec K et supposé constant hors de l’équilibre", capacites: AB_C4(4), etapes: ["dilution-k"], exercices: [["acides-bases", "ab-k", "Q_r confondu avec K"]], source: `${SRC_AB} (mc.confond-qr-et-k) ; bible C4` },
+  { id: "ab.equilibre-arret", lecon: "acides-bases", libelle: "l’état d’équilibre pris pour un arrêt définitif qui figerait Q_r après une dilution", capacites: AB_C4(2), etapes: ["dilution-sens"], exercices: [["acides-bases", "ab-k", "équilibre pris pour un arrêt"]], source: `${SRC_AB} (mc.equilibre-est-un-arret) ; bible C4` },
+  { id: "ab.dilution-effet-universel", lecon: "acides-bases", libelle: "l’augmentation de τ par dilution généralisée aux équations ayant autant d’espèces dissoutes des deux côtés", capacites: AB_C4(5), etapes: ["q3"], source: `${SRC_AB} (mc.dilution-effet-universel) ; bible C4` },
+  { id: "ab.k-sans-effet", lecon: "acides-bases", libelle: "le taux d’avancement final τ supposé fixé par la seule concentration C, sans dépendre de K", capacites: AB_C4(5), etapes: ["tau-k"], source: `${SRC_AB}` },
+  { id: "ab.acide-intact", lecon: "acides-bases", libelle: "un acide faible supposé intact à l’équilibre : [AH]_éq remplacé par C sans retirer ce qui a réagi", capacites: AB_C5(5), etapes: ["sav-eq", "meme-k-calc", "ka-tau", "bac"], exercices: [["acides-bases", "ab-ka-ph", "acide faible supposé intact"], ["acides-bases", "ab-ka-tau", "acide faible supposé intact"], ["acides-bases", "ab-bac", "acide faible supposé intact"]], source: `${SRC_AB} (AB-CHAIN-1) ; bible C5` },
+  { id: "ab.c-simplifiee", lecon: "acides-bases", libelle: "la concentration C simplifiée deux fois dans K_A = C τ² / (1 − τ)", capacites: AB_C5(5), etapes: ["ka-tau"], exercices: [["acides-bases", "ab-ka-tau", "C simplifiée à tort"], ["acides-bases", "ab-bac", "C simplifiée à tort"]], source: `${SRC_AB}` },
+  { id: "ab.ampholyte-une-molecule", lecon: "acides-bases", libelle: "l’autoprotolyse de l’eau écrite avec une seule molécule H₂O à gauche au lieu de deux", capacites: AB_C5(1), etapes: ["autoprotolyse"], source: `${SRC_AB}` },
+  { id: "ab.neutre-pke", lecon: "acides-bases", libelle: "le pH d’une solution neutre pris égal à pK_e tout entier au lieu de la moitié de pK_e", capacites: AB_C5(2), etapes: ["neutre"], exercices: [["acides-bases", "ab-ke", "pH neutre pris égal à pK_e"]], source: `${SRC_AB}` },
+  { id: "ab.ho-donc-basique", lecon: "acides-bases", libelle: "une solution dite basique dès qu’elle contient des ions HO⁻, sans comparer à [H₃O⁺]", capacites: AB_C5(3), etapes: ["nature"], exercices: [["acides-bases", "ab-ke", "contient HO⁻ donc basique"]], source: `${SRC_AB} (AB-BASE-6)` },
+  { id: "ab.coexistence-neutre", lecon: "acides-bases", libelle: "la coexistence des ions H₃O⁺ et HO⁻ prise pour la neutralité, qui exige leur égalité", capacites: AB_C5(3), etapes: ["nature"], exercices: [["acides-bases", "ab-ke", "deux ions présents donc neutre"]], source: `${SRC_AB}` },
+  { id: "ab.ho-pris-pour-h3o", lecon: "acides-bases", libelle: "−log[HO⁻] pris pour le pH, ou 10^(−pH) pris pour [HO⁻] sans passer par K_e", capacites: AB_C5(4), etapes: ["ho-ph", "bac-2a"], exercices: [["acides-bases", "ab-ke", "−log[HO⁻] pris pour le pH"], ["acides-bases", "ab-bac", "−log[HO⁻] pris pour le pH"]], source: `${SRC_AB}` },
+  { id: "ab.ph-concentration", lecon: "acides-bases", libelle: "le pH et une concentration confondus, ou le signe de log[HO⁻] perdu dans pK_e + log[HO⁻]", capacites: AB_C5(4), etapes: ["neutre", "ho-ph", "bac-2a"], exercices: [["acides-bases", "ab-ke", "pH et concentration confondus"], ["acides-bases", "ab-bac", "pH et concentration confondus"]], source: `${SRC_AB} (AB-BASE-2) ; bible C5` },
+  { id: "ab.pk-signe", lecon: "acides-bases", libelle: "le signe moins oublié dans pK_A = −log K_A", capacites: AB_C5(6), etapes: ["ka-nom", "rapport", "bac-pka"], exercices: [["acides-bases", "ab-ka-ph", "signe moins oublié dans pK_A"], ["acides-bases", "ab-bac", "signe moins oublié dans pK_A"]], source: `${SRC_AB}` },
+  { id: "ab.pk-exposant", lecon: "acides-bases", libelle: "seul l’exposant de 10 retenu dans −log K_A en ignorant la mantisse", capacites: AB_C5(6), etapes: ["ka-nom"], exercices: [["acides-bases", "ab-ka-tau", "mantisse ignorée dans −log K_A"]], source: `${SRC_AB}` },
+  { id: "ab.pka-ph-solution", lecon: "acides-bases", libelle: "le pK_A du couple pris égal au pH de la solution", capacites: AB_C5(6), etapes: ["bac", "bac-pka", "bac-2c"], exercices: [["acides-bases", "ab-ka-ph", "pK_A pris égal au pH"], ["acides-bases", "ab-bac", "pK_A pris égal au pH"]], source: `${SRC_AB}` },
+  { id: "ab.force-concentration", lecon: "acides-bases", libelle: "la force d’un acide ou d’une base confondue avec sa concentration apportée", capacites: AB_C5(6), etapes: ["comparer-acides", "bases-comparer"], exercices: [["acides-bases", "ab-comparer", "force et concentration confondues"]], source: `${SRC_AB} (AB-BASE-3) ; bible C5` },
+  { id: "ab.pka-envers", lecon: "acides-bases", libelle: "K_A et pK_A comparés à l’envers, ou la règle des acides recopiée sur les bases", capacites: AB_C5(6), etapes: ["comparer-acides", "bases-comparer", "q2"], exercices: [["acides-bases", "ab-comparer", "échelle de pK_A lue à l’envers"], ["acides-bases", "ab-bac", "échelle de pK_A lue à l’envers"]], source: `${SRC_AB} (AB-BASE-4) ; bible C5` },
+  { id: "ab.ka-pka-melanges", lecon: "acides-bases", libelle: "une constante K_A comparée directement à un pK_A sans conversion préalable", capacites: AB_C5(6), etapes: ["q2"], exercices: [["acides-bases", "ab-comparer", "K_A et pK_A comparés sans conversion"]], source: `${SRC_AB} ; bible C5` },
+  { id: "ab.echelle-ph-envers", lecon: "acides-bases", libelle: "le rapport [A⁻]/[AH] lu à l’envers sur l’échelle de pH", capacites: AB_C5(5), etapes: ["rapport"], exercices: [["acides-bases", "ab-predom", "échelle de pH lue à l’envers"]], source: `${SRC_AB} (AB-BASE-1) ; bible C5` },
+  { id: "ab.log-un", lecon: "acides-bases", libelle: "log 1 pris égal à 1 au lieu de 0 lorsque les deux formes ont la même concentration", capacites: AB_C5(8), etapes: ["egalite"], exercices: [["acides-bases", "ab-predom", "log 1 pris égal à 1"]], source: `${SRC_AB}` },
+  { id: "ab.nature-forme", lecon: "acides-bases", libelle: "la nature de la solution (jugée face à 7) confondue avec la forme prédominante du couple (jugée face au pK_A)", capacites: AB_C5(8), etapes: ["predom", "indicateur"], exercices: [["acides-bases", "ab-predom", "nature de la solution et forme confondues"], ["acides-bases", "ab-indicateur", "nature de la solution et forme confondues"]], source: `${SRC_AB}` },
+  { id: "ab.egalite-a-sept", lecon: "acides-bases", libelle: "l’égalité des concentrations [A⁻] = [AH] placée à pH 7 au lieu de pH = pK_A", capacites: AB_C5(9), etapes: ["egalite", "croisement"], exercices: [["acides-bases", "ab-predom", "égalité des formes placée à pH 7"], ["acides-bases", "ab-distribution", "croisement placé à pH 7"]], source: `${SRC_AB} (AB-DIST-3) ; bible C5` },
+  { id: "ab.bascule-totale", lecon: "acides-bases", libelle: "le franchissement du pK_A lu comme une disparition totale de l’autre forme", capacites: AB_DIST, etapes: ["distribution", "croisement"], exercices: [["acides-bases", "ab-distribution", "bascule supposée totale à 100 %"]], source: `${SRC_AB} (AB-DIST-1) ; bible C5` },
+  { id: "ab.predom-cent", lecon: "acides-bases", libelle: "prédominer (dépasser la moitié) confondu avec représenter la totalité du couple", capacites: AB_DIST, etapes: ["predom-distrib"], exercices: [["acides-bases", "ab-distribution", "prédominance confondue avec 100 %"]], source: `${SRC_AB} (AB-DIST-2) ; bible C5` },
+  { id: "ab.distribution-lineaire", lecon: "acides-bases", libelle: "les parts du couple supposées varier linéairement avec le pH au lieu d’une puissance de 10", capacites: AB_DIST, etapes: ["distribution", "predom-distrib"], exercices: [["acides-bases", "ab-distribution", "variation supposée linéaire"]], source: `${SRC_AB}` },
+  { id: "ab.k-couples-inverse", lecon: "acides-bases", libelle: "la constante K entre deux couples écrite K_A2 / K_A1 ou K_A1 × K_A2 au lieu de K_A1 / K_A2", capacites: AB_C5(7), etapes: ["deux-couples", "q1"], exercices: [["acides-bases", "ab-k-couples", "rapport K_A2 / K_A1 inversé"], ["acides-bases", "ab-melange", "rapport K_A2 / K_A1 inversé"], ["acides-bases", "ab-bac", "rapport K_A2 / K_A1 inversé"]], source: `${SRC_AB} (AB-BASE-7) ; bible C5` },
+  { id: "ab.k-egal-delta-pk", lecon: "acides-bases", libelle: "l’écart des pK_A pris pour K lui-même au lieu de log K", capacites: AB_C5(7), etapes: ["deux-couples"], exercices: [["acides-bases", "ab-k-couples", "écart des pK_A pris pour K"]], source: `${SRC_AB}` },
+  { id: "ab.rapport-inverse", lecon: "acides-bases", libelle: "un rapport d’avancement inversé dans le calcul de τ", capacites: AB_C5(7), etapes: ["k-total", "bac-2b"], source: `${SRC_AB}` },
+  { id: "ab.acide-base-totale", lecon: "acides-bases", libelle: "toute réaction entre un acide et une base supposée totale sans regarder la valeur de K", capacites: AB_C5(7), etapes: ["k-proches"], exercices: [["acides-bases", "ab-k-couples", "toute réaction acide-base dite totale"]], source: `${SRC_AB}` },
+  { id: "ab.k-petit-rien", lecon: "acides-bases", libelle: "K inférieur à 1 lu comme une absence de réaction alors qu’une fraction non négligeable réagit", capacites: AB_C5(7), etapes: ["k-proches"], exercices: [["acides-bases", "ab-k-couples", "K < 1 lu comme réaction nulle"]], source: `${SRC_AB} (AB-BASE-8)` },
+  { id: "ab.ph-melange-faux", lecon: "acides-bases", libelle: "le pH d’un mélange équimolaire calculé par une différence, sans diviser par 2, ou étendu à des quantités inégales", capacites: AB_C5(7), etapes: ["ph-melange"], exercices: [["acides-bases", "ab-melange", "différence des pK_A au lieu de la demi-somme"], ["acides-bases", "ab-melange", "division par 2 oubliée"], ["acides-bases", "ab-melange", "demi-somme appliquée à des quantités inégales"], ["acides-bases", "ab-bac", "différence des pK_A au lieu de la demi-somme"]], source: `${SRC_AB} (AB-BASE-9) ; bible C5` },
+  { id: "ab.indicateur-sept", lecon: "acides-bases", libelle: "un indicateur coloré supposé changer de teinte à la neutralité (pH 7) au lieu de sa zone de virage", capacites: AB_C5(8), etapes: ["helianthine", "retour-transfert"], exercices: [["acides-bases", "ab-indicateur", "indicateur supposé virer à pH 7"]], source: `${SRC_AB} (AB-IND-2) ; bible C5` },
+  { id: "ab.teinte-intermediaire", lecon: "acides-bases", libelle: "la teinte sensible d’un indicateur supposée apparaître en dehors de sa zone de virage", capacites: AB_C5(8), etapes: ["helianthine", "indicateur", "zone-virage", "retour-transfert"], exercices: [["acides-bases", "ab-indicateur", "teinte intermédiaire hors de la zone"]], source: `${SRC_AB}` },
+  { id: "ab.virage-commun", lecon: "acides-bases", libelle: "tous les indicateurs colorés supposés virer dans le même domaine de pH", capacites: AB_C5(8), etapes: ["zone-virage"], exercices: [["acides-bases", "ab-indicateur", "tous les indicateurs vireraient au même pH"]], source: `${SRC_AB}` },
+  { id: "ab.tau-base-h3o", lecon: "acides-bases", libelle: "le taux d’avancement final d’une base avec l’eau calculé avec [H₃O⁺]_éq au lieu de [HO⁻]_éq", capacites: AB_C5(4), etapes: ["bac-2b"], exercices: [["acides-bases", "ab-bac", "τ d’une base calculé avec [H₃O⁺]"]], source: `${SRC_AB}` },
+  { id: "ab.qr-base-pris-pour-ka", lecon: "acides-bases", libelle: "le quotient Q_r,éq d’une base avec l’eau pris directement pour K_A du couple au lieu de K_e / Q_r,éq", capacites: AB_C5(5), etapes: ["bac-2c"], exercices: [["acides-bases", "ab-bac", "Q_r,éq d’une base pris pour K_A"]], source: `${SRC_AB}` },
 
   // ── nombres complexes, première partie (leçon stable : étapes et exercices) ──
   { id: "cx.i-carre-plus-un", lecon: "complexes", libelle: "i² pris pour +1 dans un produit, ou la règle √a·√b = √(ab) étendue aux négatifs", capacites: CX_ALG, etapes: ["bombelli", "produit", "carre", "zzbar", "diviser", "rappel", "retour-cube", "q2"], exercices: [["complexes", "produit", "i² pris pour +1"], ["complexes", "quotient", "dénominateur c² − d² (i² oublié)"], ["complexes", "conjugue", "z z̄ calculé comme a² − b²"]], source: `${SRC_CX} (i² = 1) ; bible B1` },
@@ -371,6 +421,24 @@ export const ARETES: Arete[] = [
     raison: "Savoir qu’une mutation crée un nouvel allèle (et rien d’autre) est ce qui permet de dire que le brassage, lui, n’en crée aucun : il combine ceux qui existent.",
     exemple: "GAG → GTG crée l’allèle βS ; la méiose d’un parent βA//βS ne donne que des gamètes βA ou βS.",
     source: "leçon expression-genetique, étape q3 ; meiose.js brassage-identifier ; leçon meiose, étapes v-inter, bac-copie",
+  },
+  {
+    amont: { conception: "tnt.ph-concentration" }, aval: "ab.ph-concentration", statut: P,
+    raison: "Relier le pH à [HO⁻] avec K_e = [H₃O⁺][HO⁻] suppose de remplacer [H₃O⁺] par 10^(−pH) et non par le nombre pH.",
+    exemple: "À pH = 10,6, [HO⁻] = K_e / 10^(−10,6) ≈ 4,0 × 10^(−4) mol·L⁻¹, et non K_e / 10,6.",
+    source: "docs/refonte/specs/acides-bases.md partie 0 et §5 (AB-BASE-2) ; bible C5",
+  },
+  {
+    amont: { conception: "tnt.equilibre-fige" }, aval: "ab.equilibre-arret", statut: P,
+    raison: "Comprendre que Q_r remonte jusqu’à K après une dilution suppose que les réactions directe et inverse continuent toutes les deux à l’équilibre.",
+    exemple: "Après une dilution par 10, Q_r tombe à K / 10 puis remonte jusqu’à K parce que l’équilibre était dynamique.",
+    source: "docs/refonte/specs/acides-bases.md §1.1 (2.2.2.2) et étape dilution-sens ; bible C4",
+  },
+  {
+    amont: { conception: "tnt.x-colonne-acide" }, aval: "ab.acide-intact", statut: P,
+    raison: "Écrire [AH]_éq = C − [H₃O⁺]_éq ou C(1 − τ) au dénominateur de K_A repose sur la ligne finale C·V − x_f du tableau d’avancement.",
+    exemple: "Dans Q_r,éq = [H₃O⁺]²_éq / (C − [H₃O⁺]_éq), oublier − x_f remplace [AH]_éq par C.",
+    source: "docs/refonte/specs/acides-bases.md partie 0 (sav-eq) et §5 (AB-CHAIN-1)",
   },
 ];
 
