@@ -414,7 +414,7 @@ ok("une seule erreur en aval", "une erreur d'aval isolée ne fait remonter aucun
 // lisent les neuf catalogues, comme l'interface (apprentissage-catalogue/index.ts).
 
 const NEUF = [];
-for (const f of ["logarithme", "exponentielle", "suites", "radioactivite", "noyaux", "dipole-rc", "dipole-rl", "transformations-non-totales", "complexes", "expression-genetique", "meiose", "transmission"]) {
+for (const f of ["logarithme", "exponentielle", "suites", "radioactivite", "noyaux", "dipole-rc", "dipole-rl", "transformations-non-totales", "complexes", "dosage", "expression-genetique", "meiose", "transmission"]) {
   NEUF.push(...Object.values(await import(path.join(WEB, `src/lib/apprentissage-catalogue/${f}.ts`))));
 }
 const CAT9 = A.composerCatalogue(NEUF, GRAPHE);

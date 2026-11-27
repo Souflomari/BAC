@@ -1,0 +1,47 @@
+/* Leçon « Le dosage acido-basique » (V3) : styles scopés sous [data-pilote="dosage"], jetons seulement. */
+
+.pilote[data-pilote="dosage"] .ctl-btns { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 4px; }
+.pilote[data-pilote="dosage"] .ctl-btn { font: 700 1rem var(--font-ui); min-height: 48px; padding: 12px 18px; cursor: pointer; background: var(--color-text-primary); color: var(--color-surface-base); border: 1px solid var(--color-text-primary); }
+.pilote[data-pilote="dosage"] .ctl-btn.alt { background: transparent; color: var(--color-text-primary); }
+.pilote[data-pilote="dosage"] .ctl-btn[hidden] { display: none; }
+.pilote[data-pilote="dosage"] .ctl-btn:disabled { opacity: .45; cursor: default; }
+.pilote[data-pilote="dosage"] .ctl-btn:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+.pilote[data-pilote="dosage"] .saut { margin-top: 4px; }
+.pilote[data-pilote="dosage"] .apres:empty { display: none; }
+.pilote[data-pilote="dosage"] .apres { margin-top: 14px; }
+.pilote[data-pilote="dosage"] .apres .small { margin: 0 0 6px; }
+.pilote[data-pilote="dosage"] sup, .pilote[data-pilote="dosage"] sub { line-height: 0; }
+
+/* onze parties dans la barre du haut : noms courts */
+.pilote[data-pilote="dosage"] .beats { gap: 5px; }
+@media (max-width: 1500px) and (min-width: 900px) {
+  .pilote[data-pilote="dosage"] .pilote-barre { gap: 18px; }
+}
+
+/* copie rédigée au bac */
+.pilote[data-pilote="dosage"] .ds-copie { margin: 4px 0 16px; padding: 12px 16px; border-left: 3px solid var(--color-text-primary); background: var(--color-surface-container-low); display: grid; gap: 8px; font-size: 1.0625rem; line-height: 1.45; }
+.pilote[data-pilote="dosage"] .ds-copie p { margin: 0; }
+.dark .pilote[data-pilote="dosage"] .ds-copie { background: var(--color-surface-container-high); }
+
+/* scène SVG : tailles lisibles à 390 px */
+.pilote[data-pilote="dosage"] [data-pilote-scene] .ds-t { font-size: 26px; font-weight: 700; }
+.pilote[data-pilote="dosage"] [data-pilote-scene] .ds-s { font-size: 22px; }
+.pilote[data-pilote="dosage"] [data-pilote-scene] .ds-l { font-size: 26px; }
+.pilote[data-pilote="dosage"] [data-pilote-scene] .ds-g { font-size: 30px; font-weight: 700; }
+.pilote[data-pilote="dosage"] [data-pilote-scene] .t-sous { font-size: 22px; }
+.pilote[data-pilote="dosage"] [data-pilote-scene] .t-tick { font-size: 22px; }
+
+/* jetons et remplissages (aucune couleur nouvelle : jetons --st-* uniquement) */
+.pilote[data-pilote="dosage"] [data-pilote-scene] .ds-liq { fill: var(--st-fb); fill-opacity: .55; }
+.pilote[data-pilote="dosage"] [data-pilote-scene] .ds-liq-vir { fill: var(--st-a); fill-opacity: .24; }
+.pilote[data-pilote="dosage"] [data-pilote-scene] .ds-ah { fill: var(--st-ink); stroke: var(--st-ink); stroke-width: 2px; }
+.pilote[data-pilote="dosage"] [data-pilote-scene] .ds-am { fill: var(--st-bg); stroke: var(--st-ink); stroke-width: 2.5px; }
+.pilote[data-pilote="dosage"] [data-pilote-scene] .ds-ho { fill: var(--st-a); stroke: var(--st-a); stroke-width: 2px; }
+.pilote[data-pilote="dosage"] [data-pilote-scene] .ds-bande { fill: var(--st-a); fill-opacity: .16; stroke: var(--st-a); stroke-width: 1.5px; }
+.pilote[data-pilote="dosage"] [data-pilote-scene] .ds-bande-v { fill: var(--st-a); fill-opacity: .10; }
+
+/* curseur V_B libre à `rappel` */
+.pilote[data-pilote="dosage"] .ds-cur { display: grid; gap: 4px; margin: 8px 0 4px; }
+.pilote[data-pilote="dosage"] .ds-cur label { display: grid; grid-template-columns: 2.4rem 1fr 10.5rem; align-items: center; gap: 10px; font-size: 1.0625rem; }
+.pilote[data-pilote="dosage"] .ds-cur input[type="range"] { min-width: 0; height: 44px; accent-color: var(--color-text-primary); }
+.pilote[data-pilote="dosage"] .ds-cur output { font: 700 1.0625rem var(--font-ui); text-align: right; font-variant-numeric: tabular-nums; }
