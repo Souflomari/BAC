@@ -1,0 +1,448 @@
+notion: controle-catalyse
+skill_code: pc_controle_catalyse
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — controle-catalyse)
+#
+# FORMATIVE, calm-core probes placed INSIDE the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong CHEMICAL model, not just the fact of being wrong.
+# The end-bank per-misconception floor lives in items.yaml and is NOT altered
+# by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict          (in R0)     — COMMIT gate: turns the rhetorical
+#                                        "prends position" (a/b/c) into a real
+#                                        MCQ before the R1 reveal. Probes
+#                                        anhydride-mal-compris.
+#   cp-r2-catalyseur-bilan (in R2)      — rupture gate: a catalyseur n'apparaît
+#                                        pas dans le bilan (au-dessus de la
+#                                        flèche). Clone of CTC-11's stem.
+#   cp-r2-facteurs-cinetiques (in R2)   — rupture gate: what IS a facteur
+#                                        cinétique (T, concentration, catalyse)
+#                                        vs. what changes the état final.
+#   cp-r2-catalyseur-equilibre (after R2)— rupture gate: un catalyseur accélère
+#                                        mais ne déplace pas l'équilibre. Clone
+#                                        of CTC-3's stem.
+#   cp-r3-types-catalyse   (after R3)   — rupture gate: homogène / hétérogène /
+#                                        enzymatique — le critère est la PHASE.
+#                                        Clone of CTC-4's stem.
+#   cp-r4-vitesse-avancement (after R4) — rupture gate: totale ≠ rapide
+#                                        (vitesse vs avancement). Clone of
+#                                        CTC-15's stem.
+#
+# Clone note: cp-r2-catalyseur-bilan clones CTC-11, cp-r2-catalyseur-equilibre
+# clones CTC-3, cp-r3-types-catalyse clones CTC-4, cp-r4-vitesse-avancement
+# clones CTC-15. cp-r0-predict and cp-r2-facteurs-cinetiques are ORIGINAL commit
+# items (not in the end bank). Distractors are curated so EVERY distractor
+# carries a named misconception tag, the correct choice is never the longest,
+# and no end-bank tally is adjusted (inline surfacing does not double-count).
+#
+# Boundary guard: 2ème Bac PC. Facteurs cinétiques (T, concentration,
+# catalyse), catalyse (homogène/hétérogène/enzymatique), contrôle par un
+# réactif (anhydride), saponification. Vitesse ≠ avancement final ; un
+# catalyseur ne déplace pas l'équilibre et n'entre pas dans le bilan.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns "engage-toi sur une des trois" into a real MCQ commit
+  #        before the R1 reveal. Probes anhydride-mal-compris.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_controle_catalyse
+    tags: [checkpoint, formative, misconception_driven, pc_controle_catalyse, hook_commit]
+    primary_misconception: mc.physics.pc_controle_catalyse.anhydride-mal-compris
+    item_source: original
+    lesson_placement: after_R0
+
+    stem: |
+      Le parfumeur fabrique son ester par estérification (acide éthanoïque +
+      éthanol) : lente, et limitée à $\tau \approx 2/3$. On lui propose de
+      remplacer l'acide par son **anhydride** (l'anhydride éthanoïque), plus
+      réactif. **Que va-t-il obtenir ?** Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          On retombe sur le même équilibre limité à $\tau \approx 2/3$ ; l'anhydride ne fait que l'atteindre plus vite, un peu comme le ferait un catalyseur.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.anhydride-mal-compris
+        feedback: |
+          Modèle détecté : « changer de réactif ne fait que gagner du temps »,
+          comme un catalyseur. Non : l'anhydride change aussi *l'état final*.
+          Sa réaction avec l'alcool s'écrit avec une **seule flèche** — elle est
+          **totale** ($\tau = 1$), pas un équilibre à $2/3$. Un catalyseur, lui,
+          ne changerait que la vitesse ; l'anhydride change les deux.
+
+      - id: B
+        text: |-
+          On obtient un peu plus d'ester qu'avec l'acide, mais la transformation reste un équilibre : une partie de l'alcool n'est jamais convertie.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.anhydride-mal-compris
+        feedback: |
+          Modèle détecté : « l'anhydride améliore un peu, mais reste limité ».
+          Non : anhydride + alcool est **totale**, pas un équilibre déplacé.
+          Le sous-produit est un acide carboxylique (pas de l'eau) et le
+          carboxylate ne reforme pas l'anhydride : rien ne fait marche arrière,
+          tout l'alcool y passe.
+
+      - id: C
+        text: |-
+          La réaction devient rapide **et** totale : tout l'alcool est converti en ester, sans le moindre plafond d'équilibre à respecter.
+        correct: true
+        feedback: |
+          Exact — c'est la proposition (c). L'anhydride réagit vite **et** sa
+          réaction est totale (une seule flèche, sous-produit = acide et non
+          eau). C'est ce qu'aucun réglage de température ni de catalyseur ne
+          ferait : eux ne touchent qu'à la vitesse. Changer de réactif, c'est
+          changer l'état final.
+
+      - id: D
+        text: |-
+          La transformation devient totale, mais elle reste aussi lente que la voie de l'acide : il faut toujours attendre plusieurs jours pour y arriver.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+        feedback: |
+          Tu as vu juste sur l'état final (totale), mais tu lies à tort vitesse
+          et avancement. L'anhydride est aussi **rapide** : il réagit en
+          quelques minutes, souvent sans chauffer. « Rapide » et « total » sont
+          deux propriétés indépendantes — ici, l'anhydride gagne sur les deux.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r2-catalyseur-bilan | placed IN R2
+  #        Rupture gate: le catalyseur n'apparaît pas dans le bilan
+  #        (au-dessus de la flèche). Clone of CTC-11's stem.
+  #        Probes catalyseur-dans-bilan.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-catalyseur-bilan
+    rung: "R2"
+    habilete: restitution
+    skill_code: pc_controle_catalyse
+    tags: [checkpoint, formative, misconception_driven, pc_controle_catalyse]
+    primary_misconception: mc.physics.pc_controle_catalyse.catalyseur-dans-bilan
+    item_source: clone_of_CTC-11
+    lesson_placement: in_R2
+
+    stem: |
+      La réaction entre les ions peroxodisulfate $S_2O_8^{2-}$ et les ions
+      iodure $I^-$ est catalysée par les ions $Fe^{3+}$. Comment doit-on faire
+      figurer le catalyseur $Fe^{3+}$ dans l'équation de la réaction ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          Parmi les réactifs, affecté d'un coefficient stœchiométrique, puisqu'il participe activement au déroulement de la transformation.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-dans-bilan
+        feedback: |
+          Modèle détecté : « le catalyseur est un réactif ». Il participe au
+          mécanisme mais **n'est pas consommé** : il ressort en même quantité
+          qu'au départ, donc pas de coefficient stœchiométrique parmi les
+          réactifs.
+
+      - id: B
+        text: |-
+          Au-dessus de la flèche de l'équation, ni parmi les réactifs ni parmi les produits, puisqu'il ressort intact.
+        correct: true
+        feedback: |
+          Exact. $Fe^{3+}$ intervient dans le mécanisme (deux étapes rapides
+          qui, additionnées, redonnent le bilan) mais ressort intact : ni
+          réactif, ni produit. On l'écrit donc **au-dessus de la flèche**, jamais
+          dans le bilan matière.
+
+      - id: C
+        text: |-
+          Parmi les produits, puisqu'il est régénéré et qu'on le retrouve intact une fois la réaction terminée.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-dans-bilan
+        feedback: |
+          Modèle détecté : « régénéré = produit ». Être régénéré signifie que
+          son bilan net est **nul** : autant à la fin qu'au départ. Il
+          n'appartient donc ni aux produits ni aux réactifs — il se note
+          au-dessus de la flèche.
+
+      - id: D
+        text: |-
+          Nulle part dans l'écriture, car un catalyseur n'intervient jamais dans la réaction chimique elle-même.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-dans-bilan
+        feedback: |
+          Modèle détecté : « le catalyseur ne fait rien ». Au contraire, il
+          participe bel et bien au **mécanisme** (c'est ainsi qu'il accélère) —
+          c'est justement pour ça qu'on l'indique, au-dessus de la flèche. Il
+          n'entre simplement pas dans le bilan matière.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-facteurs-cinetiques | placed IN R2
+  #        Rupture gate: reconnaître les FACTEURS CINÉTIQUES (T,
+  #        concentration, catalyse) — des leviers de VITESSE, à ne pas
+  #        confondre avec ce qui fixe l'état final (K, rendement).
+  #        Probes vitesse-avancement-confondus.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-facteurs-cinetiques
+    rung: "R2"
+    habilete: restitution
+    skill_code: pc_controle_catalyse
+    tags: [checkpoint, formative, misconception_driven, pc_controle_catalyse]
+    primary_misconception: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+    item_source: original
+    lesson_placement: in_R2
+
+    stem: |
+      Le catalyseur n'est que **l'un** des facteurs cinétiques d'une réaction —
+      les leviers qui changent sa **vitesse**. Parmi les propositions, laquelle
+      ne réunit **que** de vrais facteurs cinétiques ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          La température, la concentration des réactifs et l'ajout d'un catalyseur — trois leviers qui agissent sur la vitesse.
+        correct: true
+        feedback: |
+          Exact — ce sont les trois facteurs cinétiques au programme. Élever la
+          température, augmenter la concentration des réactifs ou ajouter un
+          catalyseur : chacun **accélère** la réaction, sans toucher à son état
+          final (à $K$, au rendement).
+
+      - id: B
+        text: |-
+          La température, un catalyseur, et la constante d'équilibre $K$ — car augmenter $K$ ferait aussi aller la réaction plus vite vers son terme.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+        feedback: |
+          Modèle détecté : on range $K$ parmi les leviers de vitesse. $K$
+          caractérise **l'état final** (la position de l'équilibre), pas la
+          vitesse — et ce n'est même pas un paramètre qu'on « règle ». Les
+          facteurs cinétiques agissent sur le *temps*, pas sur le *où*.
+
+      - id: C
+        text: |-
+          La concentration des réactifs, un catalyseur et le rendement final visé — trois leviers qui accélèrent la réaction et augmentent son avancement.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+        feedback: |
+          Modèle détecté : le rendement final compté comme un facteur
+          cinétique. Le rendement est une grandeur **d'état final**, pas un
+          levier de vitesse. Un facteur cinétique change *quand* on atteint
+          l'état final, jamais *quel* est cet état final.
+
+      - id: D
+        text: |-
+          La température et la concentration seules ; un catalyseur, lui, déplace l'équilibre au lieu de changer la vitesse de la réaction.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final
+        feedback: |
+          Modèle détecté : « le catalyseur déplace l'équilibre ». C'est
+          l'inverse : le catalyseur est justement un facteur **cinétique** — il
+          accélère les deux sens dans les mêmes proportions et laisse $K$
+          intact. Il change la vitesse, pas l'état final.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r2-catalyseur-equilibre | placed AFTER R2
+  #        Rupture gate: un catalyseur accélère mais ne déplace pas
+  #        l'équilibre (ni K, ni rendement). Clone of CTC-3's stem.
+  #        Probes catalyseur-deplace-etat-final.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-catalyseur-equilibre
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_controle_catalyse
+    tags: [checkpoint, formative, misconception_driven, pc_controle_catalyse]
+    primary_misconception: mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final
+    item_source: clone_of_CTC-3
+    lesson_placement: after_R2
+
+    stem: |
+      Pour l'estérification $CH_3COOH + C_2H_5OH \rightleftharpoons
+      CH_3COOC_2H_5 + H_2O$, catalysée par l'acide sulfurique, un élève affirme :
+      « En ajoutant plus d'acide sulfurique, on déplace l'équilibre vers la
+      droite et on obtient plus d'ester. » Que répondre ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          Faux : $H_2SO_4$ est un catalyseur ; il accélère les deux sens sans changer $K$ ni la quantité d'ester à l'équilibre.
+        correct: true
+        feedback: |
+          Exact. Le catalyseur multiplie les vitesses directe et inverse par le
+          **même** facteur : l'égalité des deux vitesses (l'équilibre) se produit
+          pour le même rapport de concentrations qu'avant — même $K$, même
+          quantité d'ester. Seul le *temps* pour l'atteindre diminue.
+
+      - id: B
+        text: |-
+          Vrai : un catalyseur n'accélère que la réaction directe (l'estérification), ce qui pousse le système à fabriquer davantage d'ester.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final
+        feedback: |
+          Modèle détecté : « le catalyseur n'agit que dans un sens ». Un vrai
+          catalyseur accélère la réaction directe **et** l'inverse (l'hydrolyse)
+          dans les mêmes proportions — c'est le même chemin, parcouru dans les
+          deux sens. S'il n'accélérait qu'un sens, ce ne serait plus un
+          catalyseur.
+
+      - id: C
+        text: |-
+          Vrai : plus il y a de catalyseur, plus il y a de chocs efficaces vers le produit, donc un meilleur rendement une fois l'équilibre atteint.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final
+        feedback: |
+          Modèle détecté : « plus de catalyseur = plus de produit ». Plus de
+          catalyseur accélère l'**arrivée** à l'équilibre, dans les deux sens,
+          mais pas sa **position**. Le rendement à l'équilibre dépend de $K$ et
+          des quantités initiales, jamais de la quantité de catalyseur.
+
+      - id: D
+        text: |-
+          Faux, mais seulement parce qu'il y a déjà assez de catalyseur : en rajouter finirait au contraire par faire reculer la réaction.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyseur-deplace-etat-final
+        feedback: |
+          Modèle détecté : un effet de « surdose » qui ferait reculer la
+          réaction. Il n'existe pas. La vraie raison est structurelle : $K$ ne
+          dépend que de la réaction et de la température, jamais de la quantité
+          de catalyseur présente.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r3-types-catalyse | placed AFTER R3
+  #        Rupture gate: homogène / hétérogène / enzymatique — le
+  #        critère de classement est la PHASE, pas la nature chimique.
+  #        Clone of CTC-4's stem. Probes catalyse-classee-hors-phase.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-types-catalyse
+    rung: "R3"
+    habilete: restitution
+    skill_code: pc_controle_catalyse
+    tags: [checkpoint, formative, misconception_driven, pc_controle_catalyse]
+    primary_misconception: mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase
+    item_source: clone_of_CTC-4
+    lesson_placement: after_R3
+
+    stem: |
+      On distingue trois types de catalyse — homogène, hétérogène,
+      enzymatique. Sur quel critère repose la distinction entre catalyse
+      **homogène** et **hétérogène** ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          La phase du catalyseur par rapport aux réactifs : même phase (homogène), ou phase séparée, souvent solide (hétérogène).
+        correct: true
+        feedback: |
+          Exact. Le seul critère est la **phase** : catalyseur dissous avec les
+          réactifs (homogène), ou dans une phase séparée — typiquement un solide,
+          la réaction se faisant à sa surface (hétérogène). C'est tout.
+
+      - id: B
+        text: |-
+          La nature chimique du catalyseur : minérale pour l'hétérogène, organique ou biologique pour l'homogène et l'enzymatique.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase
+        feedback: |
+          Modèle détecté : classer par la nature chimique. TOUS les catalyseurs
+          sont des espèces différentes des réactifs ; leur nature (minérale,
+          organique…) ne tranche rien. Ce qui compte, c'est la **phase**.
+
+      - id: C
+        text: |-
+          Le fait que le catalyseur soit consommé ou non : consommé en catalyse hétérogène, régénéré en catalyse homogène.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase
+        feedback: |
+          Modèle détecté : classer par la consommation. Aucun catalyseur n'est
+          consommé — homogène comme hétérogène, il ressort intact. Ce n'est donc
+          pas le critère : c'est la **phase**.
+
+      - id: D
+        text: |-
+          La vitesse d'accélération obtenue : forte pour l'hétérogène grâce à sa surface active, plus faible pour l'homogène dispersée dans tout le volume.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.catalyse-classee-hors-phase
+        feedback: |
+          Modèle détecté : classer par l'efficacité. Le classement homogène /
+          hétérogène ne dit rien de la vitesse obtenue — il ne porte que sur la
+          **phase** du catalyseur par rapport aux réactifs.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r4-vitesse-avancement | placed AFTER R4
+  #        Rupture gate: totale ≠ rapide (vitesse vs avancement final).
+  #        Clone of CTC-15's stem. Probes vitesse-avancement-confondus.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-vitesse-avancement
+    rung: "R4"
+    habilete: utilisation
+    skill_code: pc_controle_catalyse
+    tags: [checkpoint, formative, misconception_driven, pc_controle_catalyse]
+    primary_misconception: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+    item_source: clone_of_CTC-15
+    lesson_placement: in_R4
+
+    stem: |
+      Un élève affirme : « La saponification est **totale**, donc elle est
+      forcément **rapide**. » A-t-il raison ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |-
+          Non : « totale » décrit l'avancement final, « rapide » la vitesse — l'un ne dit jamais rien de l'autre. La saponification est lente mais totale.
+        correct: true
+        feedback: |
+          Exact. « Totale » (l'état final) et « rapide » (la vitesse) sont deux
+          axes indépendants. La saponification en est la preuve : totale, mais
+          lente (chauffage à reflux prolongé). Et l'anhydride + alcool du chapitre 2 est
+          l'autre cas : rapide **et** totale.
+
+      - id: B
+        text: |-
+          Oui : une réaction totale va forcément plus vite qu'une réaction limitée, puisque aucune réaction inverse ne vient la freiner au cours du temps.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+        feedback: |
+          Modèle détecté : « total ⟹ rapide ». L'absence de réaction inverse fixe
+          l'**avancement final** (elle rend la réaction totale), pas la vitesse.
+          La saponification est totale et pourtant lente : contre-exemple direct.
+
+      - id: C
+        text: |-
+          Oui : dès qu'une réaction est totale, c'est la preuve qu'un catalyseur agit efficacement, donc qu'elle est nécessairement rapide.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+        feedback: |
+          Modèle détecté : on relie « totale » à un catalyseur, donc à la
+          vitesse. Mais il n'y a aucun catalyseur dans la saponification (la
+          soude $HO^-$ est un réactif, consommé). Totale et rapide restent
+          indépendantes.
+
+      - id: D
+        text: |-
+          Non, c'est même l'inverse : une réaction totale est toujours plus lente qu'une réaction limitée, par principe général.
+        correct: false
+        misconception: mc.physics.pc_controle_catalyse.vitesse-avancement-confondus
+        feedback: |
+          Modèle détecté : on relie encore vitesse et avancement, mais dans
+          l'autre sens. Il n'y a aucun lien imposé : l'anhydride + alcool est
+          totale **et** rapide ; la saponification est totale **et** lente. Les
+          deux propriétés varient indépendamment.

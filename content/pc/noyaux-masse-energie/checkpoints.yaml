@@ -1,0 +1,355 @@
+notion: noyaux-masse-energie
+skill_code: pc_noyaux_masse_energie
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS (summit-conversion campaign — noyaux-masse-energie)
+#
+# FORMATIVE, calm-core probes placed inside the lesson — NOT the end bank
+# (items.yaml). Same item schema, but NO score/streak/tally. Wrong-answer
+# feedback names the wrong PHYSICAL model, not just the fact of being wrong.
+# The end-bank ≥3-per-misconception floor lives in items.yaml and is NOT
+# altered by these checkpoints (clones are surfaced inline, not re-counted).
+#
+# Placement (ids match the [[checkpoint:…]] markers in lesson.md):
+#   cp-r0-predict     (in R0)     — COMMIT gate: turns the rhetorical
+#                                   « engage-toi sur un chiffre » of the hook
+#                                   into a real MCQ commit before the reveal.
+#                                   Probes unites-et-ordres-de-grandeur (the
+#                                   « le chimique suffit » prediction).
+#   cp-r1-unites      (after R1)  — rupture gate: MeV/u UNIT HANDLING, the
+#                                   931,5 factor (multiply, don't drop it).
+#   cp-r2-defaut-masse (after R2) — rupture gate: DÉFAUT DE MASSE Δm & E=Δmc²
+#                                   (assembled nucleus is lighter, Δm > 0).
+#   cp-r3-par-nucleon (after R3)  — rupture gate: ÉNERGIE DE LIAISON PAR
+#                                   NUCLÉON (compare E_l/A, not E_l totale).
+#   cp-r4-conservation (after R4) — rupture gate: CONSERVATION A/Z (the two
+#                                   Soddy laws, applied together).
+#
+# Clone note: cp-r1-unites clones NME-5's stem (fresh numbers), cp-r2-defaut-
+# masse clones NME-1's, cp-r3-par-nucleon clones NME-3's, cp-r4-conservation
+# clones NME-14's. Distractors are curated so EVERY distractor carries a named
+# misconception tag. cp-r0-predict is an original commit item (not in the end
+# bank). No end-bank tally is adjusted — inline surfacing does not double-count.
+#
+# Boundary guard: masse-énergie only (E=mc², défaut de masse, énergie de
+# liaison et E_l/A, courbe d'Aston, bilan fission/fusion, conservation A/Z).
+# The décroissance machinery (λ, activité, demi-vie) is NOT probed here — it
+# belongs to decroissance-radioactive, even though the source sujet mixes both.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the hook's commit)
+  #        Turns « engage-toi vraiment sur un chiffre » into a real MCQ
+  #        commit before the reveal that a chemical Sun lasts a few
+  #        thousand years. Probes unites-et-ordres-de-grandeur.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: pc_noyaux_masse_energie
+    tags: [checkpoint, formative, misconception_driven, pc_noyaux_masse_energie, hook_commit]
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      Imagine le Soleil comme une gigantesque boule du meilleur combustible
+      **chimique** imaginable, brûlant dans tout l'oxygène nécessaire. Combien
+      de temps pourrait-il briller à sa puissance actuelle avant de s'éteindre ?
+      Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Quelques milliers d'années — bien trop peu pour ses 4,6 milliards d'années réels."
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe. Le calcul d'ordre de grandeur (masse
+          du Soleil × énergie chimique par kilogramme, divisé par sa puissance)
+          ne donne que quelques milliers d'années. C'est un facteur de l'ordre
+          du **million** trop court : aucune réaction chimique ne peut combler
+          un tel écart. La vraie source est ailleurs — c'est toute la leçon.
+
+      - id: B
+        text: "Environ 4,6 milliards d'années : une combustion chimique suffirait à expliquer son âge."
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
+        feedback: |
+          Modèle détecté : « le chimique suffit ». Le calcul le réfute : une
+          combustion, même idéale, ne tient que quelques milliers d'années à la
+          puissance du Soleil — un facteur d'environ $10^{6}$ en dessous de ses
+          4,6 milliards d'années réels.
+
+      - id: C
+        text: "Quelques millions d'années : en dessous de son âge, mais du même ordre de grandeur."
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
+        feedback: |
+          Tu sous-estimes l'écart. Ce n'est pas « quelques millions contre
+          quelques milliards » (un facteur mille) : le chimique ne tient que
+          quelques **milliers** d'années, soit un facteur de l'ordre du million
+          trop court, pas mille.
+
+      - id: D
+        text: "Indéfiniment : tant qu'il reste du combustible à brûler, le Soleil brille."
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
+        feedback: |
+          Une réserve chimique n'est pas inépuisable : à la puissance colossale
+          que rayonne le Soleil, le meilleur combustible chimique serait consommé
+          en quelques milliers d'années. C'est justement cette durée ridiculement
+          courte qui oblige à chercher une source d'un tout autre ordre.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-unites | placed AFTER R1
+  #        Rupture gate: MeV/u unit handling — the 931,5 factor must be
+  #        applied (u is NOT already MeV; MeV is NOT eV). Clone of NME-5.
+  #        Probes unites-et-ordres-de-grandeur.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-unites
+    rung: "R1"
+    habilete: utilisation
+    skill_code: pc_noyaux_masse_energie
+    tags: [checkpoint, formative, misconception_driven, pc_noyaux_masse_energie]
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
+    item_source: clone_of_NME-5
+    lesson_placement: after_R1
+
+    stem: |
+      On vient d'établir le facteur $1\ \text{u} \approx 931{,}5\ \text{MeV}/c^2$.
+      Un noyau a un défaut de masse $\Delta m = 0{,}040\ \text{u}$.
+      Quelle est, en ordre de grandeur, son énergie de liaison $E_l$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$\\approx 37\\ \\text{MeV}$ : on multiplie $0{,}040$ par le facteur $931{,}5$."
+        correct: true
+        feedback: |
+          Exact : $E_l = \Delta m \times 931{,}5 = 0{,}040 \times 931{,}5 \approx
+          37\ \text{MeV}$. Le facteur convertit directement une masse en $\text{u}$
+          en son énergie équivalente en MeV, sans repasser par le kilogramme et
+          le joule.
+
+      - id: B
+        text: "$\\approx 0{,}040\\ \\text{MeV}$ : la valeur en $\\text{u}$ est déjà une énergie en MeV."
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
+        feedback: |
+          Modèle détecté : le facteur $931{,}5$ a été oublié. Une valeur en
+          $\text{u}$ est une **masse**, pas une énergie : il faut la multiplier
+          par $931{,}5$ pour obtenir des MeV. Ici $0{,}040\ \text{u}$ vaut
+          $\approx 37\ \text{MeV}$, pas $0{,}040\ \text{MeV}$.
+
+      - id: C
+        text: "$\\approx 37\\ \\text{eV}$ : le facteur $931{,}5$ s'applique, mais le résultat est en eV."
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
+        feedback: |
+          Erreur d'unité d'un facteur $10^{6}$ : le facteur $931{,}5$ est en
+          **MeV** par $\text{u}$, pas en eV. Le produit donne $\approx 37\ \text{MeV}$,
+          soit $37\times10^{6}\ \text{eV}$ — l'échelle nucléaire est bien celle du
+          méga-électronvolt.
+
+      - id: D
+        text: "$\\approx 931{,}5\\ \\text{MeV}$ : c'est le facteur de conversion lui-même."
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.unites-et-ordres-de-grandeur
+        feedback: |
+          $931{,}5\ \text{MeV}$ est l'énergie équivalente à $1\ \text{u}$ tout
+          entier, pas à $\Delta m = 0{,}040\ \text{u}$. Il faut multiplier le
+          facteur par la valeur réelle de $\Delta m$ : $0{,}040 \times 931{,}5
+          \approx 37\ \text{MeV}$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-defaut-masse | placed AFTER R2
+  #        Rupture gate: défaut de masse — the assembled nucleus is
+  #        LIGHTER than its separated nucleons (Δm > 0), and E_l = Δm·c².
+  #        Clone of NME-1. Probes defaut-masse-et-equivalence.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-defaut-masse
+    rung: "R2"
+    habilete: utilisation
+    skill_code: pc_noyaux_masse_energie
+    tags: [checkpoint, formative, misconception_driven, pc_noyaux_masse_energie]
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
+    item_source: clone_of_NME-1
+    lesson_placement: after_R2
+
+    stem: |
+      On pèse séparément les nucléons d'un noyau (protons et neutrons isolés),
+      puis on pèse le noyau une fois assemblé. Que trouve-t-on, pour n'importe
+      quel noyau lié ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Le noyau assemblé est plus léger : la différence $\\Delta m > 0$ est le défaut de masse."
+        correct: true
+        feedback: |
+          Exact. L'assemblage libère de l'énergie (l'énergie de liaison), et par
+          $E = mc^2$ cette énergie libérée se paie d'une perte de masse :
+          $\Delta m = Z m_p + N m_n - m_{\text{noyau}} > 0$, reliée à l'énergie
+          de liaison par $E_l = \Delta m\,c^2$. Le noyau assemblé est toujours
+          plus léger que ses nucléons séparés.
+
+      - id: B
+        text: "Le noyau assemblé est plus lourd : l'assemblage ajoute de la masse au système."
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
+        feedback: |
+          C'est l'inverse. Assembler des nucléons **libère** de l'énergie ; par
+          $E = mc^2$, une énergie libérée correspond à une **perte** de masse,
+          pas à un gain. Le noyau assemblé est plus léger, jamais plus lourd.
+
+      - id: C
+        text: "Les deux masses sont exactement égales : la masse se conserve à l'assemblage."
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
+        feedback: |
+          Ce serait vrai si l'assemblage ne mettait aucune énergie en jeu. Or il
+          y a toujours une énergie de liaison $E_l > 0$ pour un noyau réellement
+          lié : c'est précisément elle qui crée l'écart de masse $\Delta m =
+          E_l/c^2$. Les masses ne sont pas égales.
+
+      - id: D
+        text: "Ça dépend du noyau : certains sont plus lourds, d'autres plus légers que leurs nucléons."
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.defaut-masse-et-equivalence
+        feedback: |
+          Non : le défaut de masse est positif pour **tout** noyau lié, sans
+          exception — l'assemblage libère toujours de l'énergie, donc fait
+          toujours perdre de la masse. Le noyau assemblé est systématiquement
+          plus léger que la somme de ses nucléons séparés.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-par-nucleon | placed AFTER R3
+  #        Rupture gate: to compare the stability of two nuclei of
+  #        different sizes, use E_l/A (per nucleon), not E_l totale.
+  #        Clone of NME-3. Probes energie-liaison-par-nucleon-et-aston.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-par-nucleon
+    rung: "R3"
+    habilete: utilisation
+    skill_code: pc_noyaux_masse_energie
+    tags: [checkpoint, formative, misconception_driven, pc_noyaux_masse_energie]
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
+    item_source: clone_of_NME-3
+    lesson_placement: after_R3
+
+    stem: |
+      Le noyau X a une énergie de liaison **totale** $E_l$ deux fois plus grande
+      que celle du noyau Y. Peut-on en conclure que X est plus stable, nucléon
+      pour nucléon, que Y ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Non : il faut comparer $E_l/A$, pas $E_l$ totale — X peut simplement être plus gros."
+        correct: true
+        feedback: |
+          Exact. L'énergie de liaison totale grandit presque automatiquement
+          avec la taille du noyau (plus de nucléons, plus de liaisons). Pour
+          comparer honnêtement deux noyaux, on divise par $A$ : c'est $E_l/A$,
+          l'énergie de liaison **par nucléon**, qui mesure la solidité de
+          chaque liaison.
+
+      - id: B
+        text: "Oui : une énergie de liaison totale plus grande signifie toujours un noyau plus stable."
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
+        feedback: |
+          Modèle détecté : $E_l$ totale prise pour une mesure de stabilité. Elle
+          ne l'est pas : un gros noyau a une grande $E_l$ totale simplement parce
+          qu'il a beaucoup de nucléons. C'est $E_l/A$, pas $E_l$, qui compare la
+          solidité par nucléon.
+
+      - id: C
+        text: "Oui : $E_l$ est proportionnelle à $A$, donc $E_l/A$ serait aussi deux fois plus grand pour X."
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
+        feedback: |
+          $E_l$ n'est pas proportionnelle à $A$ : c'est exactement pourquoi la
+          courbe d'Aston n'est pas une droite, mais monte puis redescend. On ne
+          peut pas déduire $E_l/A$ de $E_l$ seule sans connaître $A$ de chaque
+          noyau.
+
+      - id: D
+        text: "On ne peut rien conclure sans connaître le rapport $N/Z$ de chaque noyau."
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.energie-liaison-par-nucleon-et-aston
+        feedback: |
+          Le rapport $N/Z$ renseigne sur la stabilité vis-à-vis de la
+          radioactivité (chapitre précédent), pas sur l'énergie de liaison par
+          nucléon. Ici la comparaison de solidité se fait avec $E_l/A$, qu'on
+          peut évaluer sans connaître $N/Z$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r4-conservation | placed AFTER R4
+  #        Rupture gate: identify a fission product by applying BOTH Soddy
+  #        laws together (conservation of A AND of Z, incident neutron
+  #        counted). Clone of NME-14. Probes conservation-A-Z.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-conservation
+    rung: "R4"
+    habilete: résolution
+    skill_code: pc_noyaux_masse_energie
+    tags: [checkpoint, formative, misconception_driven, pc_noyaux_masse_energie]
+    primary_misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
+    item_source: clone_of_NME-14
+    lesson_placement: after_R4
+
+    stem: |
+      Une fission de l'uranium 235 s'écrit
+      $^{1}_{0}\text{n} + \ ^{235}_{92}\text{U} \longrightarrow \ ^{140}_{54}\text{Xe} + X + 2\,^{1}_{0}\text{n}$.
+      Quel noyau $X$ complète correctement cette équation ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$^{94}_{38}\\text{Sr}$"
+        correct: true
+        feedback: |
+          Exact. Conservation de $A$ : $1 + 235 = 140 + A_X + 2 \Rightarrow A_X =
+          94$. Conservation de $Z$ : $0 + 92 = 54 + Z_X + 0 \Rightarrow Z_X = 38$.
+          Les deux lois de Soddy, appliquées ensemble, donnent $^{94}_{38}\text{Sr}$.
+
+      - id: B
+        text: "$^{93}_{38}\\text{Sr}$"
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
+        feedback: |
+          Le bilan de $A$ oublie le neutron incident côté réactifs :
+          $A_X = 1 + 235 - 140 - 2 = 94$, pas $235 - 140 - 2 = 93$. Le neutron qui
+          percute l'uranium fait partie des réactifs, au même titre que l'uranium.
+
+      - id: C
+        text: "$^{94}_{36}\\text{Kr}$"
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
+        feedback: |
+          Le bilan de $Z$ est faux : les neutrons ont une charge nulle ($Z = 0$),
+          donc les « $2\,\text{n}$ » de droite ne retranchent rien à $Z$. Il faut
+          $Z_X = 92 - 54 = 38$, pas $92 - 54 - 2 = 36$.
+
+      - id: D
+        text: "$^{94}_{40}\\text{Zr}$"
+        correct: false
+        misconception: mc.physics.pc_noyaux_masse_energie.conservation-A-Z
+        feedback: |
+          $A_X = 94$ est correct, mais on a négligé la conservation de $Z$ : les
+          deux lois doivent être vérifiées **ensemble**. Ici $Z_X = 92 - 54 = 38$
+          (le strontium), pas $40$ (le zirconium) — $A = 94$ seul ne suffit pas à
+          identifier le noyau.

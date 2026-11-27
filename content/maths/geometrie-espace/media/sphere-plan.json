@@ -1,0 +1,197 @@
+{
+  "slug": "sphere-plan",
+  "tool": "scene3d",
+  "scene": "sphere-plan-droite",
+  "title_fr": "La sphère coupée par un plan, puis par une droite",
+  "caption_fr": "La sphère de l'exemple travaillé — centre S(0, 0, 2), rayon 3 — et un plan (P) : z = k que tu fais glisser. Quatre étapes : à chaque fois tu paries d'abord, puis tu regardes.",
+  "etapes": [
+    {
+      "id": "plan",
+      "titre": "Un plan à mi-rayon",
+      "consigne": "La sphère (S) de l'exemple travaillé : centre S(0, 0, 2), rayon R = 3. Le plan (P) : z = 0,5 est à la distance d = 1,5 de son centre — la moitié du rayon. Il coupe la sphère selon un cercle.",
+      "pari": {
+        "question": "Le rayon de ce cercle vaut…",
+        "choix": [
+          {
+            "id": "d",
+            "texte": "1,5 — la distance $d$",
+            "juste": false,
+            "retour": "Non : 1,5, c'est $d$, la distance de $S$ au plan. Le rayon du cercle se lit dans le triangle $SHM$, rectangle en $H$ : l'hypoténuse est $SM = R = 3$, un côté est $SH = d = 1{,}5$, et le rayon est l'AUTRE côté, $HM$."
+          },
+          {
+            "id": "plus",
+            "texte": "environ 3,35",
+            "juste": false,
+            "misconception": "mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur",
+            "retour": "Non : c'est $\\sqrt{R^2 + d^2}$ — un rayon plus grand que celui de la sphère elle-même, impossible pour un cercle tracé SUR la sphère. Dans le triangle $SHM$, l'hypoténuse est $R$ : $HM^2 = R^2 - d^2$, un moins, jamais un plus."
+          },
+          {
+            "id": "juste",
+            "texte": "environ 2,60",
+            "juste": true,
+            "retour": "Oui : dans le triangle $SHM$ rectangle en $H$, $HM^2 = R^2 - d^2 = 9 - 2{,}25 = 6{,}75$, donc $r = \\sqrt{6{,}75} \\approx 2{,}60$. Plus près de 3 que de 1,5 : un plan à mi-rayon coupe encore un grand cercle."
+          }
+        ]
+      },
+      "suite": "Fais glisser le plan. À quelle distance $d$ le cercle se réduit-il à un point ? Et au-delà ?",
+      "controles": [
+        "position"
+      ],
+      "lectures": [
+        "d",
+        "r"
+      ],
+      "etat": {
+        "objet": "plan",
+        "k": 0.5,
+        "R": 3,
+        "vue": "biais"
+      }
+    },
+    {
+      "id": "droite",
+      "titre": "Et avec une droite ?",
+      "consigne": "Même sphère, même distance d = 1,5 — mais on coupe cette fois par une droite (D), parallèle à (Ox), qui passe par le point (0, 0, 0,5). Elle est dans le plan de l'étape précédente.",
+      "pari": {
+        "question": "À la même distance que le plan, la droite $(\\mathcal D)$ et la sphère ont en commun…",
+        "choix": [
+          {
+            "id": "cercle",
+            "texte": "un cercle de rayon environ 2,6",
+            "juste": false,
+            "retour": "Non : un cercle, c'est ce que donnait le PLAN — dans un plan, $M$ peut s'éloigner de $H$ dans toutes les directions. Sur une droite, il ne peut s'éloigner de $H$ que dans deux sens : deux points, chacun à environ 2,60 de $H$."
+          },
+          {
+            "id": "deux",
+            "texte": "deux points, chacun à environ 2,6 de $H$",
+            "juste": true,
+            "retour": "Oui : le même Pythagore, $HM = \\sqrt{R^2 - d^2} \\approx 2{,}60$ — mais sur une droite, $M$ ne peut s'éloigner de $H$ qu'en avant ou en arrière. Deux points, et entre eux une corde d'environ 5,20. C'est la dimension de l'objet qui coupe qui décide de la forme du résultat."
+          },
+          {
+            "id": "un",
+            "texte": "un seul point, $H$",
+            "juste": false,
+            "retour": "Non : un seul point, c'est le cas tangent, $d = R$. Ici $d = 1{,}5 < R = 3$ : la droite traverse la sphère, en deux points symétriques par rapport à $H$."
+          }
+        ]
+      },
+      "suite": "Passe du plan à la droite et reviens : même distance, même Pythagore, deux résultats de nature différente.",
+      "controles": [
+        "objet"
+      ],
+      "lectures": [
+        "d",
+        "r",
+        "hm",
+        "corde"
+      ],
+      "etat": {
+        "objet": "droite",
+        "k": 0.5,
+        "R": 3,
+        "vue": "biais"
+      }
+    },
+    {
+      "id": "rayon",
+      "titre": "C'est la comparaison qui compte",
+      "consigne": "Retour au plan de l'exemple travaillé, (P) : z = 0, à la distance d = 2 du centre. Cette fois, c'est le rayon R de la sphère que tu vas faire varier.",
+      "pari": {
+        "question": "Pour quel rayon $R$ le plan $z = 0$ est-il tangent à la sphère ?",
+        "choix": [
+          {
+            "id": "r3",
+            "texte": "$R = 3$",
+            "juste": false,
+            "misconception": "mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur",
+            "retour": "Non : avec $R = 3 > d = 2$, le plan coupe la sphère selon un cercle de rayon $\\sqrt 5$ — c'est l'exemple de la leçon. Tangent veut dire $d = R$ exactement, pas $d < R$."
+          },
+          {
+            "id": "r2",
+            "texte": "$R = 2$",
+            "juste": true,
+            "retour": "Oui : tangent quand $d = R$, et ici $d = 2$. Ce n'est pas la valeur de $d$ qui décide, c'est sa comparaison avec $R$ — plus petite, un cercle ; égale, un point ; plus grande, rien."
+          },
+          {
+            "id": "r4",
+            "texte": "$R = 4$",
+            "juste": false,
+            "retour": "Non : plus la sphère est grande, plus le plan la coupe franchement ($r = \\sqrt{16 - 4} = \\sqrt{12} \\approx 3{,}46$). Tangent seulement pour $R = d = 2$."
+          }
+        ]
+      },
+      "suite": "Fais varier R et regarde l'intersection changer de nature : un cercle, un point, puis plus rien. Tout se joue dans la comparaison de d et de R.",
+      "controles": [
+        "rayon"
+      ],
+      "lectures": [
+        "d",
+        "r"
+      ],
+      "etat": {
+        "objet": "plan",
+        "k": 0,
+        "R": 3,
+        "vue": "face"
+      }
+    },
+    {
+      "id": "libre",
+      "titre": "À toi",
+      "consigne": "Tous les réglages sont ouverts : la position, ce qui coupe la sphère, et son rayon.",
+      "pari": {
+        "question": "Avant de toucher aux réglages : un plan à la distance $d = 3{,}5$ du centre d'une sphère de rayon $R = 3$…",
+        "choix": [
+          {
+            "id": "point",
+            "texte": "la touche en un point",
+            "juste": false,
+            "misconception": "mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur",
+            "retour": "Non : un seul point, c'est $d = R$ exactement. Ici $d = 3{,}5 > R = 3$ : le plan passe au-dessus de la sphère sans la toucher."
+          },
+          {
+            "id": "vide",
+            "texte": "ne la touche pas",
+            "juste": true,
+            "retour": "Oui : $d = 3{,}5 > R = 3$, l'équation $HM^2 = R^2 - d^2 < 0$ n'a pas de solution — aucun point commun."
+          },
+          {
+            "id": "cercle",
+            "texte": "la coupe selon un petit cercle",
+            "juste": false,
+            "retour": "Non : pour qu'il y ait un cercle, il faudrait $d < R$. Ici $d = 3{,}5 > R = 3$ : $R^2 - d^2 < 0$, pas de rayon possible, aucun point commun."
+          }
+        ]
+      },
+      "suite": "Retrouve les trois cas avec un plan, puis avec une droite. Et le cercle de l'exemple travaillé, de rayon exactement √5 : quel plan le donne ? Il y en a deux.",
+      "controles": [
+        "position",
+        "objet",
+        "rayon"
+      ],
+      "lectures": [
+        "d",
+        "r",
+        "hm",
+        "corde"
+      ],
+      "etat": {
+        "objet": "plan",
+        "k": 5.5,
+        "R": 3,
+        "vue": "biais"
+      }
+    }
+  ],
+  "boundary": "Géométrie analytique de l'espace du programme 2ème Bac SM : sphère sous forme centre-rayon, distance d'un point à un plan (formule du chapitre 9, ici sans racine au dénominateur), intersection sphère/plan et sphère/droite par le Pythagore du triangle SHM. Plans horizontaux et droites parallèles à (Ox) seulement : ce sont les situations de l'exemple travaillé, et le raisonnement ne dépend pas de l'orientation.",
+  "fit_caveat": "La sphère est à la vraie grandeur de ses coordonnées ; les points S, H, M et les points d'intersection sont grossis pour être visibles. Les curseurs avancent par pas de 0,1 : le cas tangent (d = R) est atteint exactement.",
+  "fallback_note": "Sans WebGL, le panneau le dit et garde les paris, les réglages et les calculs ; la figure sphere-plan, plus bas dans la leçon, montre le cas sécant de l'exemple travaillé. À l'impression, le panneau disparaît et la figure figée reste.",
+  "pedagogy_wiring": {
+    "misconceptions": [
+      "mc.math.maths_geometrie_espace.intersection-sphere-plan-erreur"
+    ],
+    "why_3d": "L'intersection est un CERCLE que la figure plane dessine en ellipse ; et le point clé de R9 — la dimension de l'objet qui coupe décide de la forme du résultat — se VOIT en passant du plan à la droite à distance égale.",
+    "predict_then_reveal": "Chaque étape demande un pari avant toute preuve ; le verdict est immédiat (pas de temps dans cette scène), puis le contrôle de l'étape s'ouvre."
+  },
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md"
+}

@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 290"
+     font-family="'IBM Plex Sans', system-ui, sans-serif" role="img"
+     aria-label="Charge et décharge d’un condensateur RC, sur le même repère u_C en fonction du temps : la tension du générateur E marquée en pointillés, la charge u_C(t) = E(1 − e à la puissance moins t sur RC0) montant de 0 vers E, la décharge u_C(t) = U0 e à la puissance moins t sur RC0 (avec U0 = E ici) descendant de E vers 0, et la lecture — la charge a un palier non nul E que le générateur maintient, la décharge a un palier nul car rien ne le maintient une fois le générateur retiré.">
+  <title>RC : charge et décharge, même E, deux paliers différents</title>
+  <!--
+    rc-charge-decharge.svg — graphe STATIQUE pour le R5
+    (content/maths/equations-differentielles/lesson.md, "Charge et
+    décharge d'un condensateur (dipôle RC)", lignes 330-354) : PAS un
+    doublon de content/pc/rc-charge/media/uc-charge.svg /
+    uc-decharge.svg (ceux-là restent intouchés — cf. consigne) mais une
+    figure NOUVELLE, propre à cette leçon de maths, qui superpose les
+    deux régimes sur UN SEUL repère pour rendre visible le contraste de
+    palier que R5 vient d'établir : charge → palier E (non nul), décharge
+    → palier 0. Portée : RC seul (pas RL/LC, cf. consigne).
+
+    Réutilise EXACTEMENT la géométrie déjà validée de uc-charge.svg /
+    uc-decharge.svg (même fonction normalisée u_C/E, mêmes coordonnées de
+    tracé) — aucune recompute, juste une superposition sur un même repère
+    avec U0 = E (le condensateur qui se décharge est celui-là même que la
+    charge vient de charger à E ; simplification déclarée, pas une
+    approximation graphique) :
+      charge   : u_C(t) = E(1 − e^(−t/RC₀))   — monte de 0 vers E
+      décharge : u_C(t) = U₀e^(−t/RC₀), U₀=E   — descend de E vers 0
+
+    Les deux courbes se croisent à u_C = E/2, quand e^(−t/RC₀) = 1/2, soit
+    t = RC₀·ln2 ≈ 0,693·RC₀ — en pixels (τ_px=84), x ≈ 80 + 0,693×84 ≈ 138,
+    y ≈ 208 − 65 = 143 : cohérent avec le croisement visible des deux
+    tracés entre x=136 et x=150 ci-dessous.
+
+    GÉOMÉTRIE (identique à uc-charge.svg / uc-decharge.svg, non recalculée) :
+      origine (t=0, u_C=0)  : (x0,y0) = (80, 208)
+      asymptote / palier E  : y = 78              → hauteur = 130 px
+      échelle temporelle    : τ_px = 84 px (1 τ = 84 px sur x)
+      courbes échantillonnées à pas régulier de 14px (= τ/6), reprises
+      point pour point des deux fichiers sources.
+
+    Rôle des couleurs :
+      les deux courbes u_C(t) (charge = trait plein, décharge = tirets) :
+        --figure-energy-C — même grandeur physique, seul le tracé
+        (plein/tireté) distingue les deux régimes, jamais la couleur seule
+      palier E (pointillé, step-1) / axes / repères neutres :
+        --figure-ink-soft
+      lecture du contraste de palier (step-3, les deux courtes notes) :
+        --figure-accent — LE sujet de cette figure
+
+    MISE EN ÉTAPES (LESSON-EXPERIENCE-SPEC §2.5, graphe → toujours staged,
+    ordre canonique du texte R5) :
+      step-1 (axes)     : le repère u_C(t), et la tension du générateur E
+                          déjà marquée en pointillés — le palier que la
+                          charge va viser.
+      step-2 (charge)   : la charge se trace, montant de 0 vers E.
+      step-3 (décharge / lecture) : la décharge se trace, à partir du
+                          même E, redescendant vers 0 (qui se confond
+                          avec l'axe — pas de ligne séparée, ce serait
+                          redondant, même raisonnement que
+                          uc-decharge.svg) ; et la lecture : les deux
+                          notes qui nomment le contraste de palier.
+  -->
+
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">Charge et décharge d’un condensateur RC — même E, deux paliers</text>
+
+    <!-- Fond du panneau -->
+    <rect x="40" y="32" width="590" height="200" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Axes ──────────────────────────────────────────────── -->
+    <line x1="80" y1="208" x2="610" y2="208" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,208 598,203.5 598,212.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="208" x2="80" y2="50" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+    <text x="617" y="212" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">t</text>
+    <text x="72" y="54" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="7.5">C</tspan></text>
+    <text x="72" y="212" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Tension du générateur E — palier en pointillés, déjà posé -->
+    <line x1="80" y1="78" x2="610" y2="78" stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <text x="68" y="82" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">E</text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- Légende : charge = trait plein -->
+    <line x1="96" y1="46" x2="116" y2="46" stroke="var(--figure-energy-C)" stroke-width="2.4"/>
+    <text x="122" y="49" font-size="9.5" fill="var(--figure-energy-C)">charge</text>
+
+    <!-- Boîte formule (charge) -->
+    <rect x="260" y="40" width="230" height="32" rx="5" fill="var(--figure-energy-C)" fill-opacity="0.12"/>
+    <text x="375" y="61" text-anchor="middle" font-size="13" font-style="italic" fill="var(--figure-energy-C)">u<tspan
+          dy="4" font-size="9">C</tspan><tspan
+          dy="-4">(t) = E (1 - e</tspan><tspan
+          dy="-5" font-size="9">-t/τ</tspan><tspan
+          dy="5">)</tspan>
+    </text>
+
+    <!-- Charge : u_C(t) = E(1 − e^(−t/RC0)), monte de 0 vers E -->
+    <path d="
+      M80,208
+      L94,188.0 L108,171.2 L122,156.9 L136,144.7 L150,134.5
+      L164,125.8 L178,118.5 L192,112.3 L206,107.0 L220,102.6
+      L234,98.8  L248,95.6  L262,92.9  L276,90.6  L290,88.7
+      L304,87.0  L318,85.7  L332,84.5  L346,83.5  L360,82.6
+      L374,81.9  L388,81.3  L402,80.8  L416,80.4  L430,80.0
+      L444,79.7  L458,79.4  L472,79.2  L486,79.0  L500,78.9
+      L540,78.5  L580,78.3
+    " fill="none" stroke="var(--figure-energy-C)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- Légende : décharge = tirets -->
+    <line x1="96" y1="60" x2="116" y2="60" stroke="var(--figure-energy-C)" stroke-width="2.4" stroke-dasharray="6,3"/>
+    <text x="122" y="63" font-size="9.5" fill="var(--figure-energy-C)">décharge</text>
+
+    <!-- Boîte formule (décharge) -->
+    <rect x="260" y="138" width="230" height="36" rx="5" fill="var(--figure-energy-C)" fill-opacity="0.12"/>
+    <text x="375" y="155" text-anchor="middle" font-size="13" font-style="italic" fill="var(--figure-energy-C)">u<tspan
+          dy="4" font-size="9">C</tspan><tspan
+          dy="-4">(t) = U</tspan><tspan
+          dy="3" font-size="9">0</tspan><tspan
+          dy="-3"> e</tspan><tspan
+          dy="-5" font-size="9">-t/τ</tspan>
+    </text>
+    <text x="375" y="169" text-anchor="middle" font-size="9.5" fill="var(--figure-energy-C)">(ici U₀ = E)</text>
+
+    <!-- Décharge : u_C(t) = U0 e^(−t/RC0), U0=E, descend de E vers 0 —
+         part du MÊME point (80,78) que l'asymptote de la charge. -->
+    <path d="
+      M80,78
+      L94,98.0   L108,114.8 L122,129.1 L136,141.3 L150,151.5
+      L164,160.2 L178,167.5 L192,173.7 L206,179.0 L220,183.4
+      L234,187.2 L248,190.4 L262,193.1 L276,195.4 L290,197.3
+      L304,199.0 L318,200.3 L332,201.5 L346,202.5 L360,203.4
+      L374,204.1 L388,204.7 L402,205.2 L416,205.6 L430,206.0
+      L444,206.3 L458,206.6 L472,206.8 L486,207.0 L500,207.1
+      L540,207.5 L580,207.7
+    " fill="none" stroke="var(--figure-energy-C)" stroke-width="2.4"
+      stroke-dasharray="6,3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Lecture : le contraste de palier -->
+    <text x="505" y="55" font-size="10.5" font-weight="600" fill="var(--figure-accent)">palier = E</text>
+    <text x="505" y="67" font-size="8.5" fill="var(--figure-accent)">le générateur la maintient</text>
+
+    <text x="505" y="182" font-size="10.5" font-weight="600" fill="var(--figure-accent)">palier = 0</text>
+    <text x="505" y="194" font-size="8.5" fill="var(--figure-accent)">rien ne la maintient</text>
+  </g><!-- /step-3 -->
+
+</svg>

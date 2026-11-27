@@ -1,0 +1,40 @@
+# Préparer un job : Node 22, dépendances, cache de build Next, et au besoin Chromium et le build.
+name: preparer
+description: Node, dépendances, cache Next ; Chromium et build si demandés
+inputs:
+  chromium:
+    description: installer Chromium (portes qui pilotent un navigateur)
+    default: "false"
+  build:
+    description: construire le site (npm run build)
+    default: "false"
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: npm
+        cache-dependency-path: web/package-lock.json
+    - shell: bash
+      working-directory: web
+      run: npm ci
+    # next/font/google télécharge les polices au build ; le cache évite l'échec quand le
+    # téléchargement flanche, et accélère les builds suivants.
+    - if: inputs.build == 'true'
+      uses: actions/cache@v4
+      with:
+        path: web/.next/cache
+        key: nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-${{ github.sha }}
+        restore-keys: |
+          nextjs-${{ runner.os }}-${{ hashFiles('web/package-lock.json') }}-
+    - if: inputs.chromium == 'true'
+      shell: bash
+      working-directory: web
+      run: |
+        npx playwright@1.61.1 install --with-deps chromium
+        echo "PW_CHROMIUM_PATH=$(node -e "console.log(require('playwright-core').chromium.executablePath())")" >> "$GITHUB_ENV"
+    - if: inputs.build == 'true'
+      shell: bash
+      working-directory: web
+      run: npm run build || { echo "::warning::build relancé (téléchargement de police)"; npm run build; }

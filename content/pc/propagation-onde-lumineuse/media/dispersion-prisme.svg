@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 390" width="640" height="390"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Dispersion de la lumière blanche par un prisme : le rayon incident polychromatique se sépare, à la sortie, en un spectre ordonné où le violet est dévié plus fortement que le rouge.">
+  <title>Dispersion de la lumière par un prisme</title>
+  <!--
+    dispersion-prisme.svg — figure STAGED (3 étapes), R5 (dispersion).
+
+    Géométrie (calculée, pas devinée) :
+      Prisme : apex(300,80), baseL(230,270), baseR(370,270).
+      Entrée  P_in  = milieu de la face gauche  = (265,175).
+      Sortie  P_out = milieu de la face droite  = (335,175).
+      Simplification classique de manuel : le trajet à l'intérieur du verre
+      est tracé horizontal (P_in → P_out, même altitude) — c'est la
+      configuration de déviation minimale, symétrique, standard dans les
+      schémas didactiques de prisme. La séparation des couleurs est montrée
+      à la sortie, ce qui est le point pédagogique demandé ici (R5).
+
+      Éventail de sortie, de P_out=(335,175) vers l'écran x=560 :
+        rouge  → (560,205)   orange → (560,216)   jaune → (560,227)
+        vert   → (560,238)   bleu   → (560,249)    violet → (560,260)
+      Écart croissant rouge→violet (205 → 260) : le violet, plus réfracté,
+      est dévié plus fortement que le rouge — conforme à n_violet > n_rouge
+      (R5). Le rayon non dévié théorique resterait à y=175 (altitude de
+      P_out) ; tous les rayons colorés s'en écartent vers le bas (vers la
+      base du prisme), le violet le plus.
+
+    Couleurs spectrales : un petit jeu de teintes LITTÉRALES (pas de
+    tokens) est utilisé ici uniquement pour le spectre, car la couleur EST
+    le contenu pédagogique de cette figure (cf. contrat de rendu). Tout le
+    reste (prisme, rayon incident, écran, légendes) reste sur les tokens
+    --figure-*.
+
+    Mise en étapes — le geste d'enseignement suit exactement la prose de R5 :
+      step-1 : le montage — rayon de lumière blanche incident sur le prisme.
+      step-2 : le phénomène — l'éventail de sortie, chaque couleur déviée
+               différemment (le violet plus que le rouge).
+      step-3 : la conséquence observable — l'écran révèle le spectre continu.
+    Chrome non-stepped (defs, titre, fond de panneau) placé AVANT tout
+    step-N — aucun contenu non-stepped n'est intercalé entre des groupes
+    (piège d'assemblage du renderer : StagedFigure.tsx ré-injecte
+    step-1..N, ascendant, juste avant `</svg>` à chaque étape).
+  -->
+
+  <!--
+    COULEURS SÉMANTIQUES : le spectre visible.
+
+    Cette figure enseigne la DISPERSION — le fait qu'un prisme sépare la
+    lumière blanche en ses composantes, chacune déviée selon sa longueur
+    d'onde. Le rouge, l'orangé, le jaune, le vert, le bleu et le violet ne
+    sont pas ici un choix graphique : ce sont les grandeurs elles-mêmes.
+    Les rendre avec les jetons de thème rendrait la figure FAUSSE — un
+    spectre en nuances d'encre n'est plus un spectre. Les étiquettes
+    « Rouge » et « Violet » portent la teinte du rayon qu'elles nomment,
+    pour la même raison.
+
+    Vérifié au rendu dans les deux thèmes le 2026-09-03 : le prisme, les
+    rayons et le spectre restent parfaitement lisibles en sombre, où le
+    reste de la figure (traits, texte, cadre) suit bien les jetons.
+  -->
+
+  <!-- Dégradé du spectre, rouge (haut) → violet (bas) -->
+  <defs>
+    <linearGradient id="spectrum-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="8%"  stop-color="#C0392B"/>
+      <stop offset="25%" stop-color="#C77F2E"/>
+      <stop offset="42%" stop-color="#B7A233"/>
+      <stop offset="58%" stop-color="#3F8F5C"/>
+      <stop offset="75%" stop-color="#3B6FA0"/>
+      <stop offset="92%" stop-color="#6E4E96"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Dispersion de la lumière blanche par un prisme
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="24" y="30" width="592" height="306" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — Le montage : rayon de lumière blanche incident sur le prisme
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- ── Prisme (verre) ───────────────────────────────────────────────── -->
+    <polygon points="300,80 230,270 370,270"
+             fill="var(--figure-grid)" fill-opacity="0.35"
+             stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="300" y="206" text-anchor="middle" font-size="10"
+          fill="var(--figure-ink-soft)">verre (prisme)</text>
+
+    <!-- ── Rayon incident : lumière blanche (polychromatique) ──────────── -->
+    <line x1="90" y1="120" x2="265" y2="175"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="265,175 252,167 255,176" fill="var(--figure-ink)"/>
+    <text x="95" y="108" font-size="11" fill="var(--figure-ink)">lumière blanche (polychromatique)</text>
+
+    <!-- Trajet à l'intérieur du prisme (non séparé — simplification usuelle) -->
+    <line x1="265" y1="175" x2="335" y2="175"
+          stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — Le phénomène : éventail de sortie, chaque couleur déviée
+       différemment (rouge → violet)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="335" y1="175" x2="560" y2="205" stroke="#C0392B" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="335" y1="175" x2="560" y2="216" stroke="#C77F2E" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="335" y1="175" x2="560" y2="227" stroke="#B7A233" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="335" y1="175" x2="560" y2="238" stroke="#3F8F5C" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="335" y1="175" x2="560" y2="249" stroke="#3B6FA0" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="335" y1="175" x2="560" y2="260" stroke="#6E4E96" stroke-width="1.6" stroke-linecap="round"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — La conséquence observable : l'écran révèle le spectre continu
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- ── Écran ────────────────────────────────────────────────────────── -->
+    <line x1="560" y1="190" x2="560" y2="275" stroke="var(--figure-ink)" stroke-width="2"/>
+    <line x1="560" y1="195" x2="552" y2="187" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <line x1="560" y1="270" x2="552" y2="262" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+
+    <!-- Bande du spectre observé -->
+    <rect x="560" y="200" width="12" height="65" rx="2" fill="url(#spectrum-grad)"/>
+
+    <!-- Étiquettes des deux couleurs extrêmes -->
+<!-- PASTILLE + ENCRE, et non le mot peint dans sa teinte (2026-09-04).
+         La teinte reste — elle est l'information — mais elle passe dans un
+         carré, où la norme demande 3:1 (SC 1.4.11) et non 4,5:1. Le MOT, lui,
+         est du texte : mesuré aux pixels, « Rouge » tombait à 3,23:1 et
+         « Violet » à 2,67:1 sur la surface sombre. Et il n'y a pas d'échappée
+         par la couleur : pour tenir 4,5:1 à la fois sur blanc et sur
+         #1A1917, il faudrait une luminance à la fois ≤ 0,18 et ≥ 0,22.
+         L'intervalle est VIDE — aucune teinte fixe ne peut y arriver, quelle
+         qu'elle soit. La note de la veille (« vérifié au rendu dans les deux
+         thèmes ») disait vrai du prisme et des rayons, et faux de ces deux
+         mots : l'œil les voyait, la mesure les refuse. -->
+    <rect x="574" y="201.5" width="9" height="9" rx="1.5" fill="#C0392B"/>
+    <text x="588" y="209" font-size="10.5" fill="var(--figure-ink)">Rouge</text>
+    <rect x="574" y="256.5" width="9" height="9" rx="1.5" fill="#6E4E96"/>
+    <text x="588" y="264" font-size="10.5" fill="var(--figure-ink)">Violet</text>
+  </g><!-- /step-3 -->
+
+</svg>

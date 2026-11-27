@@ -1,0 +1,105 @@
+<svg viewBox="0 0 980 380" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Trois panneaux côte à côte : deux droites parallèles de directions colinéaires ; deux droites sécantes se coupant en un point I ; et, sur un tétraèdre SABC, la droite SA verticale et la droite BC de la base, non parallèles et sans point commun, dont les tracés en deux dimensions se croisent en apparence — le trait de BC est interrompu à cet endroit pour montrer qu’il passe derrière.">
+  <title>Positions relatives de deux droites : parallèles, sécantes, ou non coplanaires</title>
+  <!--
+    positions-droite-droite.svg — figure du R7 (droite/droite).
+    Trois panneaux côte à côte dans un seul viewBox (mécanisme générique
+    StagedFigure : chaque étape AJOUTE un panneau, l'étape précédente
+    reste visible en calque atténué — pas de mécanisme de panneaux
+    empilés spécifique à enregistrer côté application).
+
+    Panneau 1 (parallèles) et panneau 2 (sécantes) : droites génériques,
+    pente quelconque, dessinées en 2D directement (aucune ambiguïté de
+    perspective à gérer pour deux droites qui vivent, par définition,
+    dans un même plan).
+
+    Panneau 3 (non coplanaires / « gauches ») : repris du tétraèdre
+    trirectangle SABC du R3-R4 (A origine, B le long de l'arête
+    horizontale, C le long de l'arête de profondeur à 45° réduite, S
+    vertical au-dessus de A — perspective cavalière, mêmes conventions
+    que cube-diagonales.svg). B est placé à GAUCHE de A (plutôt qu'à
+    droite comme dans les autres figures de cette leçon) précisément
+    pour que le segment (BC), qui va de B à C, traverse visuellement la
+    droite verticale (SA) — un choix de mise en page pour rendre visible
+    le « croisement apparent » que la consigne demande, tout en restant
+    une perspective cavalière valide (juste un axe horizontal orienté en
+    miroir). Le croisement n'existe que sur le DESSIN : dans l'espace,
+    (SA) et (BC) sont des arêtes opposées du tétraèdre, sans point
+    commun (voir l'exemple travaillé du R7). Convention de profondeur :
+    le trait de (BC), la droite « la plus basse » dans le raisonnement du
+    rung (elle vit entièrement dans le plan de base), est interrompu à la
+    traversée — (SA) reste continu.
+
+    Mise en étapes (StagedFigure) — 3 panneaux révélés un par un, l'ordre
+    exact du texte : parallèles, puis sécantes, puis non coplanaires.
+    step-1 : panneau 1 — deux droites parallèles.
+    step-2 : panneau 2 — deux droites sécantes en un point I.
+    step-3 : panneau 3 — (SA) et (BC) du tétraèdre, non coplanaires.
+  -->
+  <rect width="980" height="380" fill="var(--figure-surface)"/>
+
+  <g id="step-1">
+    <text x="180" y="40" font-size="15" fill="var(--figure-ink)" text-anchor="middle">Parallèles</text>
+
+    <line x1="90" y1="260" x2="222" y2="197" stroke="var(--figure-ink)" stroke-width="2"/>
+    <polygon points="230,193 217,192 220,203" fill="var(--figure-ink)"/>
+    <text x="70" y="278" font-size="13" fill="var(--figure-ink-soft)">(<tspan font-style="italic">D</tspan><tspan dy="2" font-size="70%">1</tspan><tspan dy="-2">)</tspan></text>
+
+    <line x1="120" y1="160" x2="252" y2="97" stroke="var(--figure-ink)" stroke-width="2"/>
+    <polygon points="260,93 247,92 250,103" fill="var(--figure-ink)"/>
+    <text x="128" y="145" font-size="13" fill="var(--figure-ink-soft)">(<tspan font-style="italic">D</tspan><tspan dy="2" font-size="70%">2</tspan><tspan dy="-2">)</tspan></text>
+
+    <text x="180" y="340" font-size="13" fill="var(--figure-ink)" text-anchor="middle">u&#8341;<tspan dy="2" font-size="70%">1</tspan><tspan dy="-2"> et u&#8341;</tspan><tspan dy="2" font-size="70%">2</tspan><tspan dy="-2"> colinéaires</tspan></text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <line x1="330" y1="20" x2="330" y2="360" stroke="var(--figure-grid)" stroke-width="1.3"/>
+
+    <text x="490" y="40" font-size="15" fill="var(--figure-ink)" text-anchor="middle">Sécantes</text>
+
+    <line x1="390" y1="150" x2="580" y2="240" stroke="var(--figure-ink)" stroke-width="2"/>
+    <polygon points="590,245 578,238 574,248" fill="var(--figure-ink)"/>
+    <text x="586" y="258" font-size="13" fill="var(--figure-ink-soft)">(<tspan font-style="italic">D</tspan><tspan dy="2" font-size="70%">1</tspan><tspan dy="-2">)</tspan></text>
+
+    <line x1="400" y1="270" x2="570" y2="139" stroke="var(--figure-ink)" stroke-width="2"/>
+    <polygon points="580,131 570,140 578,148" fill="var(--figure-ink)"/>
+    <text x="586" y="130" font-size="13" fill="var(--figure-ink-soft)">(<tspan font-style="italic">D</tspan><tspan dy="2" font-size="70%">2</tspan><tspan dy="-2">)</tspan></text>
+
+    <circle cx="490" cy="200" r="4" fill="var(--figure-accent)"/>
+    <text x="500" y="196" font-size="15" font-style="italic" fill="var(--figure-accent)">I</text>
+
+    <text x="490" y="340" font-size="13" fill="var(--figure-ink)" text-anchor="middle">un point commun — coplanaires</text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <line x1="630" y1="20" x2="630" y2="360" stroke="var(--figure-grid)" stroke-width="1.3"/>
+
+    <text x="800" y="40" font-size="15" fill="var(--figure-ink)" text-anchor="middle">Non coplanaires</text>
+    <text x="800" y="58" font-size="12" fill="var(--figure-ink-soft)" text-anchor="middle">(&#171; gauches &#187;)</text>
+
+    <!-- ── (SA), vertical, continu ────────────────────────────────────────  -->
+    <line x1="850" y1="290" x2="850" y2="180" stroke="var(--figure-ink)" stroke-width="2.2"/>
+
+    <!-- ── (BC), interrompu à la traversée apparente de (SA) ──────────────  -->
+    <line x1="740" y1="290" x2="841.8" y2="256.1" stroke="var(--figure-ink)" stroke-width="2.2"/>
+    <line x1="858.3" y1="250.6" x2="905" y2="235" stroke="var(--figure-ink)" stroke-width="2.2"/>
+
+    <circle cx="850" cy="290" r="3.5" fill="var(--figure-ink)"/>
+    <text x="856" y="310" font-size="15" font-style="italic" fill="var(--figure-ink)">A</text>
+    <circle cx="850" cy="180" r="3.5" fill="var(--figure-ink)"/>
+    <text x="856" y="174" font-size="15" font-style="italic" fill="var(--figure-ink)">S</text>
+    <circle cx="740" cy="290" r="3.5" fill="var(--figure-ink)"/>
+    <text x="718" y="310" font-size="15" font-style="italic" fill="var(--figure-ink)">B</text>
+    <circle cx="905" cy="235" r="3.5" fill="var(--figure-ink)"/>
+    <text x="912" y="232" font-size="15" font-style="italic" fill="var(--figure-ink)">C</text>
+
+    <text x="862" y="222" font-size="13" fill="var(--figure-ink-soft)">(<tspan font-style="italic">SA</tspan>)</text>
+    <!-- REMONTÉE de 14 px (2026-09-04) : posée à y=280, l'étiquette était
+         couchée sur le segment (BC) qu'elle nomme — il passe à y≈275 à cette
+         abscisse — et s'en trouvait rayée sur 54 % de sa largeur. Au-dessus,
+         entre (BC) et l'arête (SA), la place est libre. -->
+    <text x="785" y="266" font-size="13" fill="var(--figure-ink-soft)">(<tspan font-style="italic">BC</tspan>)</text>
+
+    <text x="800" y="340" font-size="12" fill="var(--figure-ink)" text-anchor="middle">se croisent sur le dessin, mais pas dans l’espace</text>
+  </g><!-- /step-3 -->
+</svg>

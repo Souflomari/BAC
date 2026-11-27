@@ -1,0 +1,189 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 760" width="700" height="760"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img"
+     aria-label="Courbe de la fonction exponentielle y = e puissance x : passe par (0,1) et (1,e), tangente à l’origine de pente 1 (y = x+1), asymptote horizontale y = 0 en moins l’infini, et symétrie avec la courbe de ln par rapport à la droite y = x.">
+  <title>Courbe de exp : tangente en 0, asymptote, symétrie avec ln, étape par étape</title>
+  <!--
+    courbe-exponentielle.svg — STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md §2).
+    Graphe → toujours staged (§2.5). Ordre = axes (chrome) -> données (la
+    courbe de exp, step-1) -> lecture (tangente en 0, step-2 ; symétrie avec
+    ln, step-3), suivant exactement l'ordre du rung R5 (tableau de variations
+    implicite dans le tracé -> tangente en 0 -> symétrie avec ln).
+
+    Repère orthonormé (même échelle en x et en y : 70 px / unité) pour que la
+    symétrie par rapport à y = x soit géométriquement exacte.
+
+      origine (0,0)      : (315, 350)
+      unité               : 70 px
+      fenêtre visible     : x ∈ [-3.5, 4.0], y ∈ [-3.5, 4.0]
+      conversion          : px_x = 315 + 70·x       px_y = 350 - 70·y
+
+    Courbe de exp — polyligne calculée à pas RÉGULIER de 0,25 en x (jamais une
+    bézier devinée), de x=-3.5 à x=ln(4)≈1,386294 (point de coupe exact avec le
+    bord haut du cadre, y=4) :
+
+      e^-3.5=0,030197  e^-3.25=0,038774  e^-3=0,049787  e^-2.75=0,063928
+      e^-2.5=0,082085  e^-2.25=0,105399  e^-2=0,135335  e^-1.75=0,173774
+      e^-1.5=0,223131  e^-1.25=0,286505  e^-1=0,367879  e^-0.75=0,472367
+      e^-0.5=0,606531  e^-0.25=0,778801  e^0=1           e^0.25=1,284025
+      e^0.5=1,648721   e^0.75=2,117000   e^1=2,718282   e^1.25=3,490343
+      e^1.386294=4 (coupe)
+
+    Courbe de ln — PAS approximée séparément : dérivée par réflexion géométrique
+    exacte des points de exp à travers la droite y=x. Avec cette échelle et cette
+    origine, la droite y=x s'écrit en pixels px_x+px_y=665 ; réfléchir un point
+    (px,py) donne (665-py, 665-px). C'est l'application directe de la définition
+    de ln comme réciproque de exp (R1) — pas une seconde courbe recalculée à part.
+    Vérification : le reflet de (0,1)=(315,280) donne (385,350)=(1,0) ✓
+    ln(1)=0 ; le reflet de (1,e)=(385,159.7) donne (505.3,280)=(e,1) ✓ ln(e)=1.
+
+    Tangente en 0 : y = e^0 + e^0·(x-0) = x+1 (R5), droite EXACTE de pente 1,
+    tracée de (x=-3.5, y=-2.5) à (x=3, y=4) (bord haut du cadre) — c'est la
+    droite de l'inégalité e^x ≥ x+1 (R4), la propriété caractéristique de exp.
+
+    Asymptotes : l'asymptote horizontale y=0 de exp (x→-∞) et l'asymptote
+    verticale x=0 de ln (y→-∞) sont, à cette échelle, EXACTEMENT les moitiés
+    négatives des axes de coordonnées — pas des lignes distinctes. D'où le
+    choix : chaque axe est tracé plein sur sa moitié "ordinaire" et en tireté
+    sur sa moitié "asymptote" (x<0 pour l'axe des abscisses, y<0 pour l'axe
+    des ordonnées), reflet l'un de l'autre par symétrie R5. Ce tracé fait
+    partie des axes — chrome non-stepped, toujours visible (l'asymptote de
+    exp se lit dès le step-1, avant même la lecture explicite de la tangente).
+
+    Choix éditorial : le texte (R5, "Symétrie avec la courbe de ln") établit
+    explicitement les deux couples de points symétriques et la droite y=x —
+    la courbe de ln et la droite y=x sont donc incluses ici (ink-soft, tiretées,
+    en retrait), jamais au même niveau visuel que exp/tangente qui restent
+    seuls en trait plein / accent.
+
+    Couleurs : exp (trait plein, principal) = --figure-ink ; tangente en 0
+    (le point focal du rung) = --figure-accent ; ln, droite y=x, axes,
+    asymptotes, points miroir = --figure-ink-soft.
+
+    Les captions sont portées par courbe-exponentielle.stages.json — aucun
+    texte de légende baké ici (même convention que tangente-derivee.svg).
+  -->
+
+  <!-- Titre -->
+  <text x="350" y="24" text-anchor="middle" font-size="14" font-weight="600"
+        fill="var(--figure-ink)">
+    Courbe de la fonction exponentielle : <tspan font-style="italic">y</tspan> = <tspan font-style="italic">e</tspan><tspan dy="-5" font-size="10" font-style="italic">x</tspan><tspan dy="5"></tspan>
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="25" y="40" width="650" height="650" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ── Axes — chrome, toujours visibles (portent déjà l'asymptote de exp
+       en tireté sur leur moitié négative, §5) ──────────────────────────── -->
+
+  <!-- Axe des abscisses : plein pour x&gt;0, tireté pour x&lt;0 (l'asymptote y=0 de exp) -->
+  <line x1="315" y1="350" x2="70" y2="350"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <line x1="315" y1="350" x2="598" y2="350"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
+  <text x="616" y="354" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">x</text>
+
+  <!-- Axe des ordonnées : plein pour y&gt;0, tireté pour y&lt;0 (l'asymptote x=0 de ln) -->
+  <line x1="315" y1="350" x2="315" y2="595"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <line x1="315" y1="350" x2="315" y2="58"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="315,46 310.5,58 319.5,58" fill="var(--figure-ink-soft)"/>
+  <text x="300" y="50" text-anchor="end" font-size="11" font-style="italic"
+        fill="var(--figure-ink-soft)">y</text>
+
+  <text x="306" y="366" text-anchor="end" font-size="10"
+        fill="var(--figure-ink-soft)">0</text>
+
+  <!-- Repère x = 1 -->
+  <line x1="385" y1="346" x2="385" y2="354"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="385" y="366" text-anchor="middle" font-size="10"
+        fill="var(--figure-ink-soft)">1</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — données : la courbe de exp, ses deux points clés,
+       la formule
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <path d="M70.0,347.9 L87.5,347.3 L105.0,346.5 L122.5,345.5 L140.0,344.3
+             L157.5,342.6 L175.0,340.5 L192.5,337.8 L210.0,334.4 L227.5,330.0
+             L245.0,324.3 L262.5,316.9 L280.0,307.5 L297.5,295.5 L315.0,280.0
+             L332.5,260.1 L350.0,234.6 L367.5,201.8 L385.0,159.7 L402.5,105.7
+             L412.0,70.0"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Boîte formule.
+         DÉPLACÉE À GAUCHE DE L'AXE (2026-09-04) : posée en x=430, elle était
+         traversée par la tangente y = x+1 (qui passe de x=503 à x=475 sur la
+         hauteur de la boîte) et la formule s'en trouvait rayée sur 38 % de sa
+         largeur. Le quart supérieur gauche du cadre est vide — la courbe y
+         est couchée sur son asymptote — et la boîte s'y arrête juste avant
+         l'axe des ordonnées (x=315). -->
+    <rect x="160" y="92" width="140" height="28" rx="5"
+          fill="var(--figure-ink)" fill-opacity="0.06"/>
+    <text x="230" y="111" text-anchor="middle" font-size="12" fill="var(--figure-ink)">
+      <tspan font-style="italic">y</tspan> = <tspan font-style="italic">e</tspan><tspan
+      dy="-4" font-size="9" font-style="italic">x</tspan><tspan dy="4"></tspan>
+    </text>
+
+    <!-- Point clé (0,1) — point de tangence, colore accent (le focus du step-2) -->
+    <circle cx="315" cy="280" r="3.5" fill="var(--figure-accent)"/>
+    <text x="300" y="268" text-anchor="end" font-size="11" fill="var(--figure-accent)">(0, 1)</text>
+
+    <!-- Point clé (1, e) -->
+    <circle cx="385.0" cy="159.7" r="3.5" fill="var(--figure-ink)"/>
+    <!-- PASSÉES DU CÔTÉ CONCAVE (2026-09-04) : à droite du point (1, e), la
+         tangente passe en x≈431 à la hauteur de la seconde ligne et la rayait
+         sur 21 % de sa largeur. À gauche du point, entre la courbe (x≈385) et
+         l'axe (x=315), la place est libre et rien ne les traverse. -->
+    <text x="372" y="150" text-anchor="end" font-size="11" fill="var(--figure-ink)">(1, <tspan font-style="italic">e</tspan>)</text>
+    <text x="372" y="164" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">
+      <tspan font-style="italic">e</tspan> &#x2248; 2,718
+    </text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — lecture : la tangente en 0, la propriété caractéristique
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="70" y1="525" x2="525" y2="70"
+          stroke="var(--figure-accent)" stroke-width="1.8" stroke-dasharray="6,4"
+          stroke-linecap="round"/>
+    <text x="210" y="405" text-anchor="middle" font-size="10.5"
+          fill="var(--figure-accent)">
+      <tspan font-style="italic">y</tspan> = <tspan font-style="italic">x</tspan> + 1 — tangente en 0
+    </text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : symétrie avec ln par rapport à y = x
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Droite y = x (symétrie) — arrière-plan, la plus discrète -->
+    <line x1="70" y1="595" x2="595" y2="70"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="4,4"/>
+    <text x="95" y="583" font-size="10.5"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">y</tspan> = <tspan font-style="italic">x</tspan></text>
+
+    <!-- Courbe de ln (réflexion exacte de exp à travers y=x) -->
+    <path d="M317.1,595.0 L317.7,577.5 L318.5,560.0 L319.5,542.5 L320.7,525.0
+             L322.4,507.5 L324.5,490.0 L327.2,472.5 L330.6,455.0 L335.0,437.5
+             L340.7,420.0 L348.1,402.5 L357.5,385.0 L369.5,367.5 L385.0,350.0
+             L404.9,332.5 L430.4,315.0 L463.2,297.5 L505.3,280.0 L559.3,262.5
+             L595.0,253.0"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.6"
+          stroke-dasharray="5,3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="558" y="230" font-size="10.5"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">y</tspan> = ln <tspan font-style="italic">x</tspan></text>
+
+    <!-- Points miroir sur ln (symétrie R5) — discrets, sans étiquette propre -->
+    <circle cx="385.0" cy="350.0" r="3" fill="var(--figure-ink-soft)"/>
+    <circle cx="505.3" cy="280.0" r="3" fill="var(--figure-ink-soft)"/>
+  </g><!-- /step-3 -->
+
+</svg>

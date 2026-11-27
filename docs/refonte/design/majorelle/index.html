@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction Majorelle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap">
+<style>
+*{box-sizing:border-box}
+:root{
+  color-scheme:light;
+  --app:#F2F4FA;          /* fond de l'app : lait de chaux froid */
+  --paper:#FFFFFF;        /* surfaces : copie, tuiles */
+  --joint:#D9DEEC;        /* joints de zellige entre les tuiles */
+  --line:#CDD3E4;
+  --ink:#121638;          /* encre : bleu nuit */
+  --ink-2:#4B5275;
+  --ink-3:#626886;
+  --maj:#3341C6;          /* bleu Majorelle (aplats + texte) */
+  --maj-text:#3341C6;
+  --on-maj:#FFFFFF;
+  --on-maj-2:#C9CDF5;
+  --maj-soft:#E7E9FB;
+  --maj-deep:#232E9E;
+  --safran:#F2B01E;       /* signal : à faire, en cours, action */
+  --on-safran:#121638;
+  --safran-text:#8A5A00;
+  --safran-soft:#FDF1D3;
+  --cedre:#17775A;        /* juste, maîtrisé */
+  --cedre-soft:#DDF3EA;
+  --grenade:#C22F40;      /* faux, lacune */
+  --grenade-soft:#FBE3E6;
+  --stage:#F7F8FC;
+  --stage-grid:rgba(18,22,56,.055);
+  --area-a:rgba(242,176,30,.42);
+  --area-b:rgba(51,65,198,.22);
+  --curve:#121638;
+  --focus:#F2B01E;
+  --font:"Readex Pro","Noto Sans Arabic",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --app:#080C26;--paper:#0F1538;--joint:#1E2656;--line:#2A3366;
+    --ink:#EEF0FA;--ink-2:#B3B8D6;--ink-3:#8C92B5;
+    --maj:#2C37A6;--maj-text:#A3ABFF;--on-maj:#FFFFFF;--on-maj-2:#CDD1FA;--maj-soft:#1A2257;--maj-deep:#1F2885;
+    --safran:#F2B01E;--on-safran:#121638;--safran-text:#F5C451;--safran-soft:#3A2F12;
+    --cedre:#5FD0A3;--cedre-soft:#123A30;--grenade:#FF8A96;--grenade-soft:#3D1824;
+    --stage:#0C1234;--stage-grid:rgba(238,240,250,.05);--area-a:rgba(242,176,30,.38);--area-b:rgba(130,142,255,.30);--curve:#EEF0FA;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --app:#080C26;--paper:#0F1538;--joint:#1E2656;--line:#2A3366;
+  --ink:#EEF0FA;--ink-2:#B3B8D6;--ink-3:#8C92B5;
+  --maj:#2C37A6;--maj-text:#A3ABFF;--on-maj:#FFFFFF;--on-maj-2:#CDD1FA;--maj-soft:#1A2257;--maj-deep:#1F2885;
+  --safran:#F2B01E;--on-safran:#121638;--safran-text:#F5C451;--safran-soft:#3A2F12;
+  --cedre:#5FD0A3;--cedre-soft:#123A30;--grenade:#FF8A96;--grenade-soft:#3D1824;
+  --stage:#0C1234;--stage-grid:rgba(238,240,250,.05);--area-a:rgba(242,176,30,.38);--area-b:rgba(130,142,255,.30);--curve:#EEF0FA;
+}
+
+html,body{margin:0;height:100%}
+body{background:var(--app);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;font-feature-settings:"tnum" 0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.tnum{font-variant-numeric:tabular-nums}
+[lang="ar"],[lang="ar-MA"]{font-family:"Readex Pro",sans-serif}
+
+/* coins taillés à 45° : la signature (octogone du zellige) */
+.chf{--c:14px;clip-path:polygon(var(--c) 0,calc(100% - var(--c)) 0,100% var(--c),100% calc(100% - var(--c)),calc(100% - var(--c)) 100%,var(--c) 100%,0 calc(100% - var(--c)),0 var(--c))}
+.chf-s{--c:8px}
+
+/* ---------- coquille ---------- */
+.app{display:grid;grid-template-columns:76px minmax(0,1fr);min-height:calc(100vh - 30px);background:linear-gradient(90deg,var(--maj) 76px,transparent 76px)}
+.rail{background:var(--maj);color:var(--on-maj);display:flex;flex-direction:column;align-items:center;padding:18px 0;gap:6px;position:sticky;top:30px;height:calc(100vh - 30px)}
+.rail .mark{display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:22px;font-weight:700;font-size:15px;letter-spacing:.02em}
+.rail .mark svg{width:30px;height:30px}
+.rail a{width:64px;min-height:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:var(--on-maj-2);text-decoration:none;font-size:11px;font-weight:500;position:relative}
+.rail a svg{width:22px;height:22px}
+.rail a.on{color:var(--on-maj)}
+.rail a.on::before{content:"";position:absolute;left:-6px;top:12px;bottom:12px;width:4px;background:var(--safran)}
+.rail .spacer{flex:1}
+.rail .who{width:40px;height:40px;display:grid;place-items:center;background:var(--maj-deep);font-weight:600;font-size:15px}
+main{min-width:0}
+.screen{display:none;min-height:calc(100vh - 30px)}
+.screen.on{display:block}
+
+/* étoile à huit branches (deux carrés) */
+.star{display:inline-block;vertical-align:middle;flex:none}
+.star .sq{fill:none;stroke:currentColor;stroke-width:1.5;stroke-linejoin:miter}
+.star.done .sq{fill:var(--maj);stroke:var(--maj)}
+.star.now .sq{fill:var(--safran);stroke:var(--on-safran);stroke-width:1.2}
+.star.todo{color:var(--ink-3)}
+
+/* barre d'outils de la maquette (hors produit) */
+.mock{position:fixed;left:0;right:0;top:0;height:30px;z-index:50;display:flex;align-items:center;gap:2px;background:#05071A;padding:0 10px;font-size:12px}
+.mock a,.mock button{color:#E8EAF6;text-decoration:none;padding:5px 10px;background:none;border:0;cursor:pointer;font-weight:500}
+.mock button{margin-left:auto;box-shadow:inset 0 0 0 1px #3A4170}
+body{padding-top:30px}
+.mock a.on{background:#E8EAF6;color:#05071A}
+.mock .lab{color:#8C92B5;padding:5px 8px 5px 0}
+
+/* ---------- ACCUEIL ---------- */
+.home{padding:38px 40px 40px}
+.home-head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:24px;margin-bottom:22px}
+.home-head .date{margin:0;color:var(--ink-2);font-size:14px;font-weight:500;letter-spacing:.02em}
+.home-head h1{margin:2px 0 0;font-size:40px;line-height:1.1;font-weight:600;letter-spacing:-.01em}
+.home-head .sub{margin:6px 0 0;color:var(--ink-2);font-size:15px}
+.count{display:grid;grid-template-columns:auto auto;gap:2px 18px;align-items:baseline;text-align:right}
+.count .k{grid-column:1/-1;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.count strong{font-size:26px;font-weight:600}
+.count .w{font-size:15px;color:var(--ink-2)}
+.weeks{grid-column:1/-1;display:flex;gap:4px;justify-content:flex-end;margin-top:8px}
+.weeks i{width:5px;height:5px;transform:rotate(45deg);background:var(--maj-text);opacity:.55}
+.weeks i.past{background:none;outline:1px solid var(--line);opacity:1}
+/* la grille de tuiles, séparées par des joints */
+.tiles{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:2px;background:var(--joint);border:2px solid var(--joint)}
+.tile{background:var(--paper);padding:26px 28px;min-width:0}
+.t-7{grid-column:span 7}.t-5{grid-column:span 5}
+.kick{font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);margin:0 0 6px}
+.tile h2{margin:0 0 14px;font-size:22px;line-height:1.25;font-weight:600}
+.tile .note{font-size:13px;color:var(--ink-2);margin:14px 0 0}
+/* séance du jour : l'aplat Majorelle */
+.session{background:var(--maj);color:var(--on-maj);display:flex;flex-direction:column}
+.session .kick{color:var(--on-maj-2)}
+.session h2{font-size:30px;line-height:1.15;margin-bottom:18px;max-width:22ch}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.steps li{display:grid;grid-template-columns:30px 1fr auto;gap:14px;align-items:start;padding:12px 0;border-top:1px solid rgba(255,255,255,.18)}
+.steps li:last-child{border-bottom:1px solid rgba(255,255,255,.18)}
+.steps .star{color:var(--on-maj-2);margin-top:1px}
+.steps b{display:block;font-weight:600;font-size:17px}
+.steps span{font-size:14px;color:var(--on-maj-2)}
+.steps .min{font-size:14px;color:var(--on-maj);font-weight:500;white-space:nowrap;padding-top:2px}
+.go{display:flex;align-items:center;gap:18px;margin-top:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border:0;cursor:pointer;font-weight:600;font-size:16px;text-decoration:none}
+.btn-safran{background:var(--safran);color:var(--on-safran)}
+.btn-maj{background:var(--maj);color:var(--on-maj)}
+.btn-line{background:var(--line);color:var(--ink);position:relative;isolation:isolate}
+.btn-line::before{content:"";position:absolute;inset:1.5px;background:var(--paper);z-index:-1;--d:calc(var(--c,0px) - .6px);clip-path:polygon(var(--d) 0,calc(100% - var(--d)) 0,100% var(--d),100% calc(100% - var(--d)),calc(100% - var(--d)) 100%,var(--d) 100%,0 calc(100% - var(--d)),0 var(--d))}
+.btn-line:not(.chf){box-shadow:inset 0 0 0 1.5px var(--line);background:transparent}.btn-line:not(.chf)::before{display:none}
+.btn[disabled]{opacity:.45;cursor:default}
+.go small{font-size:13px;color:var(--on-maj-2)}
+/* où se perdent les points */
+.loss{display:grid;gap:13px;margin-top:4px}
+.lrow{display:grid;grid-template-columns:128px 1fr 46px;gap:12px;align-items:center}
+.lrow .nm{font-size:15px;font-weight:500;line-height:1.2}
+.lrow .nm small{display:block;font-size:12px;color:var(--ink-2);font-weight:400}
+.lbar{height:22px;display:flex;align-items:stretch}
+.lbar .have{background:var(--maj)}
+.lbar .miss{background:repeating-linear-gradient(-45deg,var(--grenade) 0 2px,transparent 2px 6px);box-shadow:inset 0 0 0 1.5px var(--grenade)}
+.lrow .v{text-align:right;font-weight:600;font-size:15px;color:var(--grenade)}
+.legend{display:flex;gap:18px;font-size:12px;color:var(--ink-2);margin-top:14px;align-items:center}
+.legend i{display:inline-block;width:14px;height:10px;margin-right:6px;vertical-align:-1px}
+.legend .h{background:var(--maj)}.legend .m{background:repeating-linear-gradient(-45deg,var(--grenade) 0 2px,transparent 2px 5px);box-shadow:inset 0 0 0 1px var(--grenade)}
+.takeaway{margin:16px 0 0;padding:12px 14px;background:var(--safran-soft);font-size:15px;line-height:1.45}
+/* domaines maths */
+.dom{display:grid;grid-template-columns:minmax(0,50fr) minmax(0,35fr) minmax(196px,15fr);gap:2px;background:var(--joint);border:2px solid var(--joint);margin-top:6px}
+.dom .seg{background:var(--paper);padding:12px 14px 14px;min-width:0}
+.dom .seg b{display:block;font-size:15px;font-weight:600;line-height:1.25}
+.dom .seg .w{font-size:13px;color:var(--ink-2)}
+.dom .fill{height:10px;background:var(--maj-soft);margin:12px 0 8px;position:relative}
+.dom .fill i{position:absolute;left:0;top:0;bottom:0;background:var(--maj)}
+.dom .seg .r{display:flex;justify-content:space-between;font-size:14px;gap:8px;flex-wrap:wrap}
+.dom .seg .r .lost{color:var(--grenade);font-weight:600}
+/* points faibles */
+.weak{list-style:none;margin:0;padding:0}
+.weak li{display:grid;grid-template-columns:14px 1fr auto;gap:12px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.weak li:first-child{border-top:0;padding-top:2px}
+.weak .d{width:9px;height:9px;transform:rotate(45deg);background:var(--grenade);margin-top:8px}
+.weak q{font-weight:500;font-size:15.5px;quotes:"« " " »"}
+.weak small{display:block;color:var(--ink-2);font-size:13px;margin-top:2px}
+.weak .tag{font-size:12px;font-weight:600;color:var(--safran-text)}
+.weak .wk{font-size:14px;font-weight:600;color:var(--maj-text);text-decoration:none;white-space:nowrap;padding-top:2px}
+</style>
+<style>
+/* ---------- LEÇON ---------- */
+.lesson{display:grid;grid-template-rows:auto 1fr;height:calc(100vh - 30px)}
+.l-top{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:20px;padding:0 28px;height:68px;background:var(--paper);border-bottom:2px solid var(--joint)}
+.l-top .crumb{font-size:14px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.l-top .crumb b{color:var(--ink);font-weight:600}
+.parts{display:flex;align-items:center;gap:0;list-style:none;margin:0;padding:0}
+.parts li{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-2);white-space:nowrap}
+.parts li+li::before{content:"";width:22px;height:1px;background:var(--line);margin:0 9px}
+.parts li.now{color:var(--ink);font-weight:600}
+.parts li.done{color:var(--ink-2)}
+.l-top .right{display:flex;justify-content:flex-end;align-items:center;gap:18px;font-size:14px;color:var(--ink-2)}
+.l-top .right b{color:var(--ink);font-weight:600}
+.l-top .right a{color:var(--ink-2);text-decoration:none;font-weight:500}
+.l-main{display:grid;grid-template-columns:minmax(0,1fr) 470px;min-height:0}
+.stagew{position:relative;background-color:var(--stage);background-image:linear-gradient(var(--stage-grid) 1px,transparent 1px),linear-gradient(90deg,var(--stage-grid) 1px,transparent 1px);background-size:36px 36px;display:flex;min-height:0}
+.stagew svg{flex:1;width:100%;height:100%}
+.stagew .foot{position:absolute;left:24px;bottom:16px;right:24px;display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-2)}
+.stagew .foot kbd{font:inherit;font-weight:600;padding:1px 6px;box-shadow:inset 0 0 0 1px var(--line);background:var(--paper)}
+.s-ink{fill:var(--curve)}.s-dim{fill:var(--ink-2)}.k-ink{stroke:var(--curve)}.k-dim{stroke:var(--ink-3)}
+.area-a{fill:var(--area-a)}.area-b{fill:var(--area-b)}
+.script{background:var(--paper);border-left:2px solid var(--joint);display:flex;flex-direction:column;padding:34px 34px 22px;min-height:0;overflow:auto}
+.script .kick{color:var(--maj-text);display:flex;align-items:center;gap:10px}
+.say{font-size:21px;line-height:1.5;margin:6px 0 18px}
+.say b{font-weight:600}
+.darija{display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:12px}
+.darija .lbl{font-size:14px;color:var(--ink-2);line-height:1.35}
+.darija .lbl b{color:var(--ink);font-weight:600}
+.darija .lbl span[lang]{font-size:15px;color:var(--ink)}
+.switch{width:46px;height:26px;background:var(--maj);position:relative;border:0;cursor:pointer}
+.switch::after{content:"";position:absolute;top:4px;right:4px;width:18px;height:18px;background:var(--on-maj)}
+.switch[aria-checked="false"]{background:var(--line)}
+.switch[aria-checked="false"]::after{right:auto;left:4px}
+.gloss{direction:rtl;text-align:right;font-size:19px;line-height:1.7;margin:0 0 18px;padding:10px 14px;background:var(--maj-soft);color:var(--ink)}
+.gloss small{display:block;direction:ltr;text-align:left;font-size:12px;color:var(--ink-2);margin-top:4px}
+.pari .kick{color:var(--ink-2);margin-bottom:10px}
+.opts{display:grid;gap:10px}
+.opt{--c:10px;display:block;padding:1.5px;background:var(--line);border:0;cursor:pointer;text-align:left;width:100%}
+.opt .in{--c:9px;display:flex;align-items:center;gap:14px;min-height:56px;padding:10px 16px;background:var(--paper);font-size:18px}
+.opt .num{width:28px;height:28px;flex:none;display:grid;place-items:center;font-size:13px;font-weight:600;color:var(--maj-text);position:relative}
+.opt .num svg{position:absolute;inset:0;width:28px;height:28px}
+.opt:hover{background:var(--maj)}
+.opt.sel{background:var(--safran)}.opt.sel .in{background:var(--safran-soft)}
+.opt.ok{background:var(--cedre)}.opt.ok .in{background:var(--cedre-soft)}
+.opt.ko{background:var(--grenade)}.opt.ko .in{background:var(--grenade-soft)}
+.l-nav{margin-top:auto;padding-top:20px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line)}
+
+/* ---------- EXAMEN ---------- */
+.exam{display:grid;grid-template-rows:auto 1fr;height:calc(100vh - 30px)}
+.x-head{background:var(--maj);color:var(--on-maj);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:28px;align-items:center;padding:0 28px;min-height:84px}
+.x-head .t b{display:block;font-size:18px;font-weight:600}
+.x-head .t span{font-size:13.5px;color:var(--on-maj-2)}
+.xtabs{display:flex;gap:2px;justify-content:center;min-width:0}
+.xtab{display:grid;gap:1px;padding:9px 12px;white-space:nowrap;background:transparent;border:0;color:var(--on-maj-2);text-align:left;cursor:pointer;box-shadow:inset 0 -3px 0 transparent}
+.xtab b{font-size:14px;color:var(--on-maj);font-weight:600}
+.xtab span{font-size:12px}
+.xtab.on{background:var(--maj-deep);box-shadow:inset 0 -3px 0 var(--safran)}
+.x-head .clock{display:flex;align-items:center;gap:18px}
+.timer{text-align:right}
+.timer b{display:block;font-size:24px;font-weight:600;letter-spacing:.02em}
+.timer span{font-size:12.5px;color:var(--on-maj-2)}
+.x-main{display:grid;grid-template-columns:minmax(0,1fr) 500px;min-height:0;gap:0}
+.paperw{overflow:auto;padding:28px 36px 40px;min-height:0;background:var(--app)}
+.sheet{background:var(--paper);box-shadow:0 0 0 1px var(--joint);padding:34px 40px 36px;max-width:none}
+.sheet .src{display:flex;justify-content:space-between;gap:16px;font-size:13px;color:var(--ink-2);padding-bottom:12px}
+.sheet h2{font-size:22px;font-weight:600;margin:0 0 4px}
+.sheet .lead{font-size:16.5px;line-height:1.65;margin:0 0 18px;max-width:72ch}
+.qs{display:grid;gap:0}
+.q{display:grid;grid-template-columns:52px minmax(0,72ch) 1fr 64px;gap:0 14px;padding:12px 0;border-top:1px solid var(--line);font-size:16.5px;line-height:1.6;align-items:baseline}
+.q .n{font-weight:600;color:var(--maj-text)}
+.q .p{grid-column:4;text-align:right;font-size:14px;font-weight:600;color:var(--ink-2);white-space:nowrap}
+.q .hint{display:block;font-size:14.5px;color:var(--ink-2);font-style:italic;margin-top:2px}
+.q.cur{background:var(--safran-soft);box-shadow:-12px 0 0 var(--safran-soft),12px 0 0 var(--safran-soft),-16px 0 0 var(--safran)}
+.part{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:18px 0 6px}
+.work{background:var(--paper);border-left:2px solid var(--joint);display:flex;flex-direction:column;min-height:0}
+.w-head{padding:20px 26px 0}
+.w-head .kick{margin:0}
+.w-head h3{margin:2px 0 14px;font-size:20px;font-weight:600;display:flex;justify-content:space-between;align-items:baseline}
+.w-head h3 span{font-size:14px;color:var(--ink-2);font-weight:500}
+.wtabs{display:flex;gap:0;border-bottom:2px solid var(--joint)}
+.wtab{padding:10px 14px;background:none;border:0;font-size:14.5px;font-weight:500;color:var(--ink-2);cursor:pointer;box-shadow:inset 0 -3px 0 transparent;margin-bottom:-2px}
+.wtab.on{color:var(--ink);box-shadow:inset 0 -3px 0 var(--maj)}
+.w-body{padding:18px 26px;display:flex;flex-direction:column;gap:14px;flex:1;min-height:0}
+.answer{flex:1;min-height:220px;background-color:var(--paper);background-image:linear-gradient(transparent 31px,var(--line) 31px,var(--line) 32px);background-size:100% 32px;box-shadow:inset 0 0 0 1.5px var(--line);padding:0 14px;font-size:16.5px;line-height:32px;color:var(--ink)}
+.answer .ph{color:var(--ink-3)}
+.answer .caret{display:inline-block;width:2px;height:20px;background:var(--maj-text);vertical-align:-4px}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.tools .btn{min-height:40px;padding:0 14px;font-size:14px}
+.tools .saved{margin-left:auto;font-size:13px;color:var(--ink-2)}
+.lock{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:center;padding:14px 16px;background:var(--maj-soft)}
+.lock b{display:block;font-weight:600;font-size:15px}
+.lock span{font-size:13.5px;color:var(--ink-2)}
+.w-foot{display:flex;justify-content:space-between;gap:10px;padding:14px 26px;border-top:1px solid var(--line)}
+
+/* ---------- SYSTÈME ---------- */
+.sys{padding:30px 40px 60px}
+.sys h1{font-size:34px;font-weight:600;margin:0 0 4px}
+.sys .intro{color:var(--ink-2);margin:0 0 22px;max-width:80ch}
+.sys .tile h2{font-size:18px}
+.sw{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;background:var(--joint);border:2px solid var(--joint)}
+.sw div{background:var(--paper);padding:0 0 10px;font-size:12.5px;min-width:0}
+.sw i{display:block;height:54px;margin-bottom:8px}
+.sw b{display:block;padding:0 10px;font-size:13px}
+.sw span{display:block;padding:0 10px;color:var(--ink-2)}
+.typ{display:grid;gap:10px}
+.typ div{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:baseline;border-top:1px solid var(--line);padding-top:8px}
+.typ small{font-size:12px;color:var(--ink-2)}
+.geo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.geo figure{margin:0}
+.geo figcaption{font-size:13px;color:var(--ink-2);margin-top:6px;line-height:1.4}
+.comps{display:grid;gap:16px}
+.comps .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.bet{list-style:none;margin:0;padding:0;counter-reset:b}
+.bet li{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:11px 0;border-top:1px solid var(--line);font-size:15.5px;line-height:1.5}
+.bet li .star{margin-top:2px}
+.bet li b{font-weight:600}
+.risk{color:var(--grenade);font-weight:600}
+.girih{display:block;width:100%;height:18px;color:var(--line)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:900px){
+  .app{grid-template-columns:1fr;background:none}
+  .mock{overflow-x:auto}.mock .lab{display:none}
+  .rail{position:static;height:auto;flex-direction:row;padding:8px 12px;overflow-x:auto}
+  .rail .mark{margin:0 12px 0 0}.rail .spacer{display:none}
+  .rail a.on::before{left:10px;right:10px;top:auto;bottom:0;width:auto;height:3px}
+  .home,.sys{padding:20px 16px}
+  .home-head{grid-template-columns:1fr}.count{text-align:left}.weeks{justify-content:flex-start;flex-wrap:wrap}
+  .tiles{grid-template-columns:1fr}.t-7,.t-5{grid-column:auto}
+  .lesson,.exam{height:auto}
+  .l-top{grid-template-columns:1fr;height:auto;padding:12px 16px}.parts{flex-wrap:wrap;row-gap:6px}.l-top .right{justify-content:flex-start}
+  .l-main,.x-main{grid-template-columns:1fr}
+  .stagew{height:56vh}
+  .script{border-left:0;border-top:2px solid var(--joint);padding:20px 16px}
+  .x-head{grid-template-columns:1fr;padding:12px 16px;gap:10px}.xtabs{justify-content:flex-start;flex-wrap:wrap}
+  .paperw{padding:16px}.sheet{padding:20px 16px}
+  .q{grid-template-columns:40px minmax(0,1fr) 50px}.q .p{grid-column:3}
+  .work{border-left:0}
+  .sw{grid-template-columns:repeat(2,minmax(0,1fr))}.geo{grid-template-columns:1fr}
+  .lrow{grid-template-columns:96px 1fr 40px}
+  .dom{grid-template-columns:1fr}
+}
+</style>
+<script>
+window.MathJax={startup:{typeset:false,ready(){MathJax.startup.defaultReady();MathJax.startup.promise.then(function(){window.__mj=true;if(window.renderMath)window.renderMath();});}},svg:{fontCache:'local'}};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" async></script>
+<style>
+mjx-container{position:relative}
+mjx-assistive-mml{position:absolute!important;top:0;left:0;clip:rect(1px,1px,1px,1px);padding:1px 0 0!important;border:0!important;height:1px!important;width:1px!important;overflow:hidden!important;display:block!important}
+.m{white-space:nowrap}
+.m svg{vertical-align:middle}
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="rail" aria-label="Navigation principale">
+    <div class="mark"><span class="st" data-s="now" data-z="30"></span>Bac</div>
+    <a href="#accueil" data-r="accueil"><span class="st" data-s="line" data-z="22"></span>Aujourd’hui</a>
+    <a href="#lecon" data-r="lecon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/></svg>Matières</a>
+    <a href="#examen" data-r="examen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 2.5h10l4 4V21.5H5z"/><path d="M15 2.5v4h4M8 11h8M8 14.5h8M8 18h5"/></svg>Examens</a>
+    <a href="#systeme" data-r="systeme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 20V13M10 20V8M16 20V11M22 20H2"/></svg>Parcours</a>
+    <div class="spacer"></div>
+    <div class="who" aria-label="Salma">S</div>
+  </nav>
+  <main>
+
+<!-- ===================== ACCUEIL ===================== -->
+<section class="screen" id="accueil" aria-label="Accueil">
+ <div class="home">
+  <header class="home-head">
+    <div>
+      <p class="date">Mercredi 21 octobre</p>
+      <h1>Salam, Salma.</h1>
+      <p class="sub">2ème Bac Sciences Mathématiques A</p>
+    </div>
+    <div class="count">
+      <span class="k">Examen national</span>
+      <strong>juin 2027</strong><span class="w tnum">≈ 33 semaines</span>
+      <div class="weeks" id="weeks" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <div class="tiles">
+    <section class="tile t-7 session" aria-labelledby="sess-t">
+      <p class="kick">Séance du jour · ≈ 45 min</p>
+      <h2 id="sess-t">Le logarithme, vu comme une aire</h2>
+      <ol class="steps">
+        <li><span class="st" data-s="now" data-z="24"></span><div><b>Rappel</b><span>4 questions sur la dérivation</span></div><span class="min tnum">5 min</span></li>
+        <li><span class="st" data-s="line" data-z="24"></span><div><b>Leçon</b><span>Fonction logarithme, partie 5 « L’aire sous 1/<i>x</i> »</span></div><span class="min tnum">12 min</span></li>
+        <li><span class="st" data-s="line" data-z="24"></span><div><b>Exercices ciblés</b><span>8 exercices sur « ln d’une somme », générés pour toi</span></div><span class="min tnum">15 min</span></li>
+        <li><span class="st" data-s="line" data-z="24"></span><div><b>Exercice type bac</b><span>Étude de fonction avec ln, corrigé pas à pas</span></div><span class="min tnum">13 min</span></li>
+      </ol>
+      <div class="go"><a class="btn btn-safran chf chf-s" href="#lecon">Commencer la séance</a><small>Tu peux t’arrêter après chaque étape.</small></div>
+    </section>
+
+    <section class="tile t-5" aria-labelledby="loss-t">
+      <p class="kick">Examen national · coefficients</p>
+      <h2 id="loss-t">Où se perdent tes points</h2>
+      <div class="loss" id="loss"></div>
+      <div class="legend"><span><i class="h"></i>maîtrisé</span><span><i class="m"></i>à gagner</span><span>largeur = coefficient</span></div>
+      <p class="takeaway"><b>Maths et Physique-Chimie : 65 % de ce qui te manque.</b> Ce sont aussi les deux plus gros coefficients.</p>
+    </section>
+
+    <section class="tile t-7" aria-labelledby="dom-t">
+      <p class="kick">Maths SM · cadre de référence 2025</p>
+      <h2 id="dom-t">Ce que pèse chaque domaine, et où tu en es</h2>
+      <div class="dom" id="dom"></div>
+      <p class="note">Estimation : poids officiel du domaine × part non maîtrisée, ramenée à une note sur 20.</p>
+    </section>
+
+    <section class="tile t-5" aria-labelledby="weak-t">
+      <p class="kick">Erreurs qui reviennent</p>
+      <h2 id="weak-t">Points faibles détectés</h2>
+      <ul class="weak">
+        <li><i class="d"></i><div><q>ln(<i>a</i> + <i>b</i>) traité comme ln <i>a</i> + ln <i>b</i></q><small>3 erreurs cette semaine · <span class="tag">dans ta séance du jour</span></small></div><a class="wk" href="#lecon">Travailler</a></li>
+        <li><i class="d"></i><div><q>primitive de <i>u</i>′/<i>u</i> : valeur absolue oubliée</q><small>Calcul intégral</small></div><a class="wk" href="#lecon">Travailler</a></li>
+        <li><i class="d"></i><div><q>récurrence : hérédité non rédigée</q><small>Suites numériques</small></div><a class="wk" href="#lecon">Travailler</a></li>
+      </ul>
+    </section>
+  </div>
+ </div>
+</section>
+
+<!-- ===================== LEÇON ===================== -->
+<section class="screen" id="lecon" aria-label="Leçon">
+ <div class="lesson">
+  <header class="l-top">
+    <div class="crumb">Maths · <b>Fonction logarithme népérien</b></div>
+    <ol class="parts" id="parts"></ol>
+    <div class="right"><span>étape <b class="tnum">19</b> / 34</span><a href="#accueil">Quitter</a></div>
+  </header>
+  <div class="l-main">
+    <div class="stagew" aria-label="Scène">
+      <svg id="stage" viewBox="0 0 1000 720" preserveAspectRatio="xMidYMid meet" role="img" aria-label="La courbe y = 1/x ; l’aire entre 1 et 2 et l’aire entre 2 et 4 sont coloriées."></svg>
+      <div class="foot"><span>Partie 5 · L’aire</span><span><kbd>←</kbd> <kbd>→</kbd> pour avancer · <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> pour répondre</span></div>
+    </div>
+    <aside class="script">
+      <p class="kick"><span class="st" data-s="now" data-z="16"></span>05 — L’aire</p>
+      <p class="say">Voici l’aire entre 2 et 4&#8239;: deux fois plus large, mais plus basse. <b>Laquelle est la plus grande&#8239;?</b></p>
+      <div class="darija">
+        <div class="lbl"><b>Glose en darija</b> · option <span lang="ar-MA">بالدارجة</span></div>
+        <button class="switch" role="switch" aria-checked="true" aria-label="Afficher la glose en darija"></button>
+      </div>
+      <p class="gloss" lang="ar-MA">هادي هي المساحة بين 2 و 4: عريضة جوج مرات، ولكن قصيرة. شمن وحدة فيهم كبر؟<small>Option d’affichage, à faire relire par un locuteur natif.</small></p>
+      <div class="pari">
+        <p class="kick">Ton pari</p>
+        <div class="opts">
+          <button class="opt chf"><span class="in chf"><span class="num"><span class="st" data-s="line" data-z="28"></span><span style="position:relative">1</span></span>Celle de 2 à 4</span></button>
+          <button class="opt chf"><span class="in chf"><span class="num"><span class="st" data-s="line" data-z="28"></span><span style="position:relative">2</span></span>Elles sont égales</span></button>
+          <button class="opt chf"><span class="in chf"><span class="num"><span class="st" data-s="line" data-z="28"></span><span style="position:relative">3</span></span>Celle de 1 à 2</span></button>
+        </div>
+      </div>
+      <div class="l-nav">
+        <button class="btn btn-line chf chf-s">← Retour</button>
+        <button class="btn btn-maj chf chf-s" disabled>Choisis d’abord</button>
+      </div>
+    </aside>
+  </div>
+ </div>
+</section>
+
+<!-- ===================== EXAMEN ===================== -->
+<section class="screen" id="examen" aria-label="Examen">
+ <div class="exam">
+  <header class="x-head">
+    <div class="t"><b>Maths · Sciences Mathématiques</b><span>Examen national · normale 2024 · /20</span></div>
+    <nav class="xtabs" aria-label="Exercices">
+      <button class="xtab on"><b>Exercice 1</b><span>Analyse · 7,5 pts</span></button>
+      <button class="xtab"><b>Exercice 2</b><span>Calcul intégral · 2,5 pts</span></button>
+      <button class="xtab"><b>Exercice 3</b><span>Complexes · 3,5 pts</span></button>
+      <button class="xtab"><b>Exercice 4</b><span>Structures · 3,5 pts</span></button>
+      <button class="xtab"><b>Exercice 5</b><span>Arithmétique · 3 pts</span></button>
+    </nav>
+    <div class="clock"><div class="timer"><b class="tnum">3:12:47</b><span>restant sur 4 h</span></div><button class="btn btn-safran chf chf-s">Rendre la copie</button></div>
+  </header>
+  <div class="x-main">
+    <div class="paperw">
+      <article class="sheet">
+        <div class="src"><span>Bac SM · session normale 2024 · exercice 1 — transcrit et vérifié</span><span>Calculatrice non autorisée</span></div>
+        <svg class="girih" aria-hidden="true" style="margin:-8px 0 18px"><defs><pattern id="gp1" width="56" height="18" patternUnits="userSpaceOnUse"><path d="M0 9H20.4M35.6 9H56" stroke="currentColor"/><g transform="translate(28 9)"><rect x="-5.4" y="-5.4" width="10.8" height="10.8" fill="none" stroke="currentColor"/><rect x="-5.4" y="-5.4" width="10.8" height="10.8" fill="none" stroke="currentColor" transform="rotate(45)"/></g></pattern></defs><rect width="100%" height="18" fill="url(#gp1)"/></svg>
+        <h2>Exercice 1 — Analyse <span style="color:var(--ink-2);font-weight:500">(7,5 points)</span></h2>
+        <p class="lead">Soit <span class="m" data-tex="f">f</span> la fonction numérique définie sur l’intervalle <span class="m" data-tex="[1,+\infty[">[1, +∞[</span> par&#8239;: <span class="m" data-tex="f(1)=\dfrac12">f(1) = 1/2</span> et, pour tout <span class="m" data-tex="x\in\,]1,+\infty[">x ∈ ]1, +∞[</span>, <span class="m" data-tex="f(x)=\dfrac{\ln x}{x^2-1}">f(x) = ln x / (x² − 1)</span>. Soit <span class="m" data-tex="(C)">(C)</span> la courbe représentative de <span class="m" data-tex="f">f</span> dans un repère orthogonal <span class="m" data-tex="(O,\vec i,\vec j)">(O, i, j)</span>.</p>
+        <div class="qs">
+          <div class="q"><span class="n">1.</span><span>Montrer que <span class="m" data-tex="f">f</span> est continue à droite en <span class="m" data-tex="1">1</span>.</span><span class="p">0,5 pt</span></div>
+          <div class="q"><span class="n">2.</span><span>Calculer <span class="m" data-tex="\displaystyle\lim_{x\to+\infty}f(x)">lim f(x) en +∞</span> puis interpréter graphiquement le résultat obtenu.</span><span class="p">0,5 pt</span></div>
+          <div class="q"><span class="n">3. a)</span><span>Soit <span class="m" data-tex="x\in\,]1,+\infty[">x ∈ ]1, +∞[</span>. En posant <span class="m" data-tex="t=(x-1)^2">t = (x − 1)²</span>, vérifier que&#8239;: <span class="m" data-tex="\dfrac{1-x+\ln(x)}{(x-1)^2}=\dfrac{-\sqrt t+\ln(1+\sqrt t)}{t}">(1 − x + ln x)/(x − 1)² = (−√t + ln(1 + √t))/t</span></span><span class="p">0,25 pt</span></div>
+          <div class="q cur"><span class="n">b)</span><span>Montrer que <span class="m" data-tex="(\forall t\in\,]0,+\infty[),\quad -\dfrac12<\dfrac{-\sqrt t+\ln(1+\sqrt t)}{t}<\dfrac{-1}{2(1+\sqrt t)}">(∀t ∈ ]0, +∞[), −1/2 &lt; (−√t + ln(1 + √t))/t &lt; −1/(2(1 + √t))</span><span class="hint">On pourra utiliser le théorème des accroissements finis sur l’intervalle <span class="m" data-tex="[0\,;t]">[0 ; t]</span>.</span></span><span class="p">0,5 pt</span></div>
+          <div class="q"><span class="n">c)</span><span>En déduire que&#8239;: <span class="m" data-tex="\displaystyle\lim_{x\to1^+}\dfrac{1-x+\ln(x)}{(x-1)^2}=-\dfrac12">lim (1 − x + ln x)/(x − 1)² = −1/2</span></span><span class="p">0,25 pt</span></div>
+          <div class="q"><span class="n">4. a)</span><span>Montrer que&#8239;: <span class="m" data-tex="\forall x\in\,]1,+\infty[,\quad \dfrac{f(x)-\frac12}{x-1}=-\dfrac{\ln(x)}{x-1}\times\dfrac{1}{2(x+1)}+\dfrac{\ln(x)-x+1}{2(x-1)^2}">…</span></span><span class="p">0,5 pt</span></div>
+          <div class="q"><span class="n">b)</span><span>En déduire que <span class="m" data-tex="f">f</span> est dérivable à droite en <span class="m" data-tex="1">1</span> puis interpréter graphiquement le résultat obtenu.</span><span class="p">0,5 pt</span></div>
+          <div class="q"><span class="n">5. a)</span><span>Pour tout <span class="m" data-tex="x\in[1,+\infty[">x ∈ [1, +∞[</span> on pose <span class="m" data-tex="I(x)=\displaystyle\int_1^x\frac{t^2-1}{t^3}\,dt">I(x)</span> et <span class="m" data-tex="J(x)=\displaystyle\int_1^x\frac{t^2-1}{t^2}\,dt">J(x)</span>. Montrer que&#8239;: <span class="m" data-tex="\forall x\in[1,+\infty[,\ 0\le I(x)\le J(x)">0 ≤ I(x) ≤ J(x)</span></span><span class="p">0,5 pt</span></div>
+          <div class="q"><span class="n">b)</span><span>Montrer que pour tout <span class="m" data-tex="x\in[1,+\infty[">x ∈ [1, +∞[</span>, <span class="m" data-tex="I(x)=\ln(x)-\dfrac{x^2-1}{2x^2}">I(x) = ln x − (x² − 1)/(2x²)</span> et <span class="m" data-tex="J(x)=\dfrac{(x-1)^2}{x}">J(x) = (x − 1)²/x</span></span><span class="p">0,5 pt</span></div>
+          <div class="q"><span class="n">c)</span><span>Montrer que&#8239;: <span class="m" data-tex="\forall x\in\,]1,+\infty[,\ f'(x)=\dfrac{-2}{(x+1)^2}\times\dfrac{I(x)}{J(x)}">f′(x) = −2/(x + 1)² × I(x)/J(x)</span></span><span class="p">0,5 pt</span></div>
+          <div class="q"><span class="n">d)</span><span>En déduire que&#8239;: <span class="m" data-tex="\forall x\in\,]1,+\infty[,\ -\dfrac12\le f'(x)\le0">−1/2 ≤ f′(x) ≤ 0</span></span><span class="p">0,5 pt</span></div>
+          <div class="q"><span class="n">6. a)</span><span>Dresser le tableau de variations de la fonction <span class="m" data-tex="f">f</span>.</span><span class="p">0,25 pt</span></div>
+          <div class="q"><span class="n">b)</span><span>Tracer la courbe <span class="m" data-tex="(C)">(C)</span>. <span class="hint" style="display:inline">(On prendra <span class="m" data-tex="\|\vec i\|=1\ \text{cm}">‖i‖ = 1 cm</span> et <span class="m" data-tex="\|\vec j\|=2\ \text{cm}">‖j‖ = 2 cm</span>.)</span></span><span class="p">0,5 pt</span></div>
+          <div class="q"><span class="n">7.</span><span>Montrer que l’équation <span class="m" data-tex="f(x)=x-1">f(x) = x − 1</span> admet une unique solution <span class="m" data-tex="a">a</span> dans <span class="m" data-tex="]1,2[">]1, 2[</span>.</span><span class="p">0,5 pt</span></div>
+          <div class="q"><span class="n">8.</span><span>Soit <span class="m" data-tex="(a_n)_{n\in\mathbb N}">(aₙ)</span> la suite numérique définie par <span class="m" data-tex="a_0\in[1,+\infty[">a₀ ∈ [1, +∞[</span> et, pour tout <span class="m" data-tex="n\in\mathbb N">n ∈ ℕ</span>, <span class="m" data-tex="a_{n+1}=1+f(a_n)">aₙ₊₁ = 1 + f(aₙ)</span>.<br>a) Montrer que&#8239;: <span class="m" data-tex="(\forall n\in\mathbb N),\ |a_{n+1}-a|\le\dfrac12|a_n-a|">|aₙ₊₁ − a| ≤ ½ |aₙ − a|</span></span><span class="p">0,5 pt</span></div>
+          <div class="q"><span class="n">b)</span><span>Montrer par récurrence que&#8239;: <span class="m" data-tex="(\forall n\in\mathbb N),\ |a_n-a|\le\left(\dfrac12\right)^n|a_0-a|">|aₙ − a| ≤ (½)ⁿ |a₀ − a|</span></span><span class="p">0,5 pt</span></div>
+          <div class="q"><span class="n">c)</span><span>En déduire que la suite <span class="m" data-tex="(a_n)_{n\in\mathbb N}">(aₙ)</span> est convergente.</span><span class="p">0,25 pt</span></div>
+        </div>
+      </article>
+    </div>
+    <aside class="work" aria-label="Espace de travail">
+      <div class="w-head">
+        <p class="kick">Espace de travail</p>
+        <h3>Question 3-b <span class="tnum">0,5 pt</span></h3>
+        <div class="wtabs" role="tablist"><button class="wtab on" role="tab" aria-selected="true">Ma réponse</button><button class="wtab" role="tab" aria-selected="false">Brouillon</button><button class="wtab" role="tab" aria-selected="false">Corrigé</button></div>
+      </div>
+      <div class="w-body">
+        <div class="answer" role="textbox" aria-multiline="true" aria-label="Ta réponse"><span class="caret"></span><span class="ph">Rédige ta réponse ici, ou photographie ta copie papier.</span></div>
+        <div class="tools">
+          <button class="btn btn-line chf chf-s">Formule</button>
+          <button class="btn btn-line chf chf-s">Photo de ma copie</button>
+          <button class="btn btn-line chf chf-s">Un indice</button>
+          <span class="saved">Enregistré automatiquement</span>
+        </div>
+        <div class="lock chf"><span class="st" data-s="line" data-z="30"></span><div><b>Corrigé pas à pas — verrouillé jusqu’à ta tentative</b><span>Il s’ouvre quand tu valides cette question.</span></div></div>
+      </div>
+      <div class="w-foot"><button class="btn btn-line chf chf-s">← Question 3-a</button><button class="btn btn-maj chf chf-s">Valider · question 3-c →</button></div>
+    </aside>
+  </div>
+ </div>
+</section>
+
+<!-- ===================== SYSTÈME ===================== -->
+<section class="screen" id="systeme" aria-label="Système">
+ <div class="sys">
+  <h1>Majorelle — la fiche du système</h1>
+  <p class="intro">Un produit qui ne peut être que marocain : le bleu des jardins Majorelle, le safran, la géométrie du zellige. Mais la géométrie structure, elle ne décore jamais : chaque motif a une fonction.</p>
+  <div class="tiles">
+    <section class="tile t-7">
+      <p class="kick">Couleurs · tokens</p>
+      <h2>Huit couleurs, chacune un rôle</h2>
+      <div class="sw" id="sw"></div>
+    </section>
+    <section class="tile t-5">
+      <p class="kick">Typographie · Readex Pro</p>
+      <h2>Une seule famille, latin et arabe</h2>
+      <div class="typ">
+        <div><small>Titre 40/600</small><span style="font-size:34px;font-weight:600;line-height:1.1">Salam, Salma.</span></div>
+        <div><small>Script 21/400</small><span style="font-size:21px">Laquelle est la plus grande&#8239;?</span></div>
+        <div><small>Courant 16,5/400</small><span style="font-size:16.5px">Montrer que <i>f</i> est continue à droite en 1.</span></div>
+        <div><small>Arabe 22/400</small><span lang="ar" dir="rtl" style="font-size:22px;text-align:right">اللوغاريتم النيبيري</span></div>
+        <div><small>Chiffres tabulaires</small><span class="tnum" style="font-size:20px;font-weight:600">3:12:47 · 7,5 pts · 58 %</span></div>
+      </div>
+    </section>
+    <section class="tile t-7">
+      <p class="kick">Géométrie · trois motifs, trois fonctions</p>
+      <h2>Le zellige comme structure</h2>
+      <div class="geo">
+        <figure>
+          <svg viewBox="0 0 220 120" width="100%" aria-hidden="true">
+            <g transform="translate(40 60)" fill="none" stroke="var(--ink-3)" stroke-width="1.4"><rect x="-26" y="-26" width="52" height="52"/><rect x="-26" y="-26" width="52" height="52" transform="rotate(45)" stroke="var(--maj-text)"/></g>
+            <g transform="translate(150 60)" id="geo-states"></g>
+          </svg>
+          <figcaption><b>L’étoile à huit branches</b> — deux carrés, l’un tourné de 45°. Elle marque la progression&#8239;: fait, en cours, à venir.</figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 220 120" width="100%" aria-hidden="true"><path d="M30 14H176L196 34V106H50L30 86Z" fill="var(--maj)"/><path d="M176 14L196 34" stroke="var(--safran)" stroke-width="3"/><text x="44" y="68" fill="var(--on-maj)" font-size="15" font-weight="600" font-family="Readex Pro,sans-serif">coin taillé à 45°</text></svg>
+          <figcaption><b>Le coin taillé</b> — l’octogone du zellige remplace le coin arrondi des interfaces génériques.</figcaption>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 220 120" width="100%" aria-hidden="true"><rect x="14" y="10" width="192" height="100" fill="var(--joint)"/><rect x="17" y="13" width="110" height="46" fill="var(--paper)"/><rect x="130" y="13" width="73" height="46" fill="var(--maj)"/><rect x="17" y="62" width="70" height="45" fill="var(--paper)"/><rect x="90" y="62" width="113" height="45" fill="var(--paper)"/></svg>
+          <figcaption><b>Les joints</b> — les blocs sont séparés par un joint de 2 px, comme des carreaux. Jamais d’ombre portée.</figcaption>
+        </figure>
+      </div>
+      <svg class="girih" style="margin-top:14px" aria-hidden="true"><defs><pattern id="gp2" width="56" height="18" patternUnits="userSpaceOnUse"><path d="M0 9H20.4M35.6 9H56" stroke="currentColor"/><g transform="translate(28 9)"><rect x="-5.4" y="-5.4" width="10.8" height="10.8" fill="none" stroke="currentColor"/><rect x="-5.4" y="-5.4" width="10.8" height="10.8" fill="none" stroke="currentColor" transform="rotate(45)"/></g></pattern></defs><rect width="100%" height="18" fill="url(#gp2)"/></svg>
+      <p class="note" style="margin-top:4px">Le filet girih&#8239;: un séparateur fin, utilisé avec parcimonie (en-tête de copie d’examen).</p>
+    </section>
+    <section class="tile t-5">
+      <p class="kick">Composants</p>
+      <h2>Boutons, choix, interrupteur</h2>
+      <div class="comps">
+        <div class="row"><button class="btn btn-safran chf chf-s">Commencer</button><button class="btn btn-maj chf chf-s">Valider</button><button class="btn btn-line chf chf-s">Retour</button></div>
+        <div class="opts">
+          <button class="opt chf"><span class="in chf" style="min-height:44px;font-size:15px">Neutre</span></button>
+          <button class="opt chf sel"><span class="in chf" style="min-height:44px;font-size:15px">Choisi (pari)</span></button>
+          <button class="opt chf ok"><span class="in chf" style="min-height:44px;font-size:15px">Juste</span></button>
+          <button class="opt chf ko"><span class="in chf" style="min-height:44px;font-size:15px">Faux — l’explication suit</span></button>
+        </div>
+        <div class="row" style="justify-content:space-between"><span style="font-size:14px;color:var(--ink-2)">Glose en darija</span><button class="switch" role="switch" aria-checked="true" aria-label="exemple d’interrupteur"></button></div>
+      </div>
+    </section>
+    <section class="tile" style="grid-column:1/-1">
+      <p class="kick">Le pari de cette direction / ses risques</p>
+      <ol class="bet">
+        <li><span class="st" data-s="done" data-z="20"></span><span><b>Une identité qui ne peut être que marocaine</b> — bleu Majorelle, safran, cèdre, géométrie du zellige — sans lanterne, sans arcade, sans faux carrelage en fond d’écran.</span></li>
+        <li><span class="st" data-s="done" data-z="20"></span><span><b>La géométrie structure, elle ne décore pas</b> : l’étoile marque la progression, les joints séparent les blocs, les coins taillés remplacent les coins arrondis. Aucun motif sans fonction.</span></li>
+        <li><span class="st" data-s="done" data-z="20"></span><span><b>Une seule famille pour le français et l’arabe</b> (Readex Pro) : la glose en darija est prête le jour où on la veut, sans changer de voix typographique.</span></li>
+        <li><span class="st" data-s="now" data-z="20"></span><span><span class="risk">Risque :</span> le bleu en aplat fatigue s’il envahit tout. Il est réservé au rail, à la séance du jour et à l’en-tête d’épreuve&#8239;; la scène et la copie restent claires.</span></li>
+        <li><span class="st" data-s="now" data-z="20"></span><span><span class="risk">Risque :</span> glisser vers le folklore dès qu’on ajoute un motif « pour faire marocain ». Règle à tenir : un motif n’entre que s’il porte une information (progression, séparation, état).</span></li>
+      </ol>
+    </section>
+  </div>
+ </div>
+</section>
+
+  </main>
+</div>
+
+<nav class="mock" aria-label="Maquette : écrans">
+  <span class="lab">Maquette · direction Majorelle</span>
+  <a href="#accueil">Accueil</a><a href="#lecon">Leçon</a><a href="#examen">Examen</a><a href="#systeme">Système</a>
+  <button id="theme" aria-label="Basculer clair / sombre">Clair / sombre</button>
+</nav>
+
+<script>
+(function(){
+  /* étoile à huit branches : deux carrés */
+  function star(state,z){
+    var s=7.2,pts=[];
+    for(var k=0;k<16;k++){var a=(k*22.5-90)*Math.PI/180,rr=k%2?s*1.0824:s*Math.SQRT2;pts.push((rr*Math.cos(a)).toFixed(2)+','+(rr*Math.sin(a)).toFixed(2));}
+    var cls='star '+(state==='line'?'todo':state);
+    return '<svg class="'+cls+'" width="'+z+'" height="'+z+'" viewBox="-11 -11 22 22" aria-hidden="true"><polygon class="sq" points="'+pts.join(' ')+'"/></svg>';
+  }
+  document.querySelectorAll('.st').forEach(function(e){e.outerHTML=star(e.dataset.s,+e.dataset.z||20);});
+  var gs=document.getElementById('geo-states');
+  if(gs){gs.innerHTML=['done','now','line'].map(function(s,i){return '<g transform="translate('+(i*46-46)+' -6) scale(1.3)">'+star(s,22).replace(/<svg[^>]*>|<\/svg>/g,'')+'</g>';}).join('')+
+    '<g font-size="10" fill="var(--ink-2)" font-family="Readex Pro,sans-serif" text-anchor="middle"><text x="-46" y="26">fait</text><text x="0" y="26">en cours</text><text x="46" y="26">à venir</text></g>';
+    gs.querySelectorAll('g[transform]').forEach(function(g,i){g.setAttribute('class','star '+['done','now','todo'][i]);});}
+
+  /* semaines restantes */
+  var w=document.getElementById('weeks');for(var i=0;i<33;i++){w.appendChild(document.createElement('i'));}
+
+  /* où se perdent les points : largeur = coefficient, remplissage = maîtrise */
+  var S=[['Mathématiques',9,.58],['Physique-Chimie',7,.46],['SVT',3,.31],['Philosophie',2,.40],['Anglais',2,.62]];
+  var maxC=9,L=document.getElementById('loss');
+  S.forEach(function(r){var lost=r[1]*(1-r[2]);
+    L.insertAdjacentHTML('beforeend','<div class="lrow"><div class="nm">'+r[0]+'<small>coef '+r[1]+' · '+Math.round(r[2]*100)+' % maîtrisé</small></div>'+
+    '<div class="lbar" style="width:'+(r[1]/maxC*100)+'%"><span class="have" style="width:'+(r[2]*100)+'%"></span><span class="miss" style="flex:1"></span></div>'+
+    '<div class="v tnum">−'+lost.toFixed(1).replace('.',',')+'</div></div>');});
+
+  /* domaines maths : poids officiels 2025 */
+  var D=[['Analyse',50,.61],['Nombres complexes et structures algébriques',35,.52],['Arithmétique et probabilités',15,.66]];
+  var dom=document.getElementById('dom');
+  D.forEach(function(d){var lost=20*d[1]/100*(1-d[2]);
+    dom.insertAdjacentHTML('beforeend','<div class="seg"><b>'+d[0]+'</b><span class="w">'+d[1]+' % de l’épreuve</span><div class="fill"><i style="width:'+(d[2]*100)+'%"></i></div>'+
+    '<div class="r"><span>'+Math.round(d[2]*100)+' % maîtrisé</span><span class="lost tnum">≈ −'+lost.toFixed(1).replace('.',',')+' / 20</span></div></div>');});
+
+  /* parties de la leçon */
+  var P=['Le problème','La table','Les trous','La règle','L’aire','Ce que le bac appelle ln','À toi'];
+  var po=document.getElementById('parts');
+  P.forEach(function(p,i){var st=i<4?'done':i===4?'now':'line';po.insertAdjacentHTML('beforeend','<li class="'+(i<4?'done':i===4?'now':'')+'">'+star(st,16)+p+'</li>');});
+
+  /* scène : y = 1/x, aires de 1 à 2 et de 2 à 4 */
+  var NS='http://www.w3.org/2000/svg',sv=document.getElementById('stage');
+  function E(t,a,p){var e=document.createElementNS(NS,t);for(var k in a){if(k==='text')e.textContent=a[k];else e.setAttribute(k,a[k]);}(p||sv).appendChild(e);return e;}
+  var X=function(x){return 80+100*x},Y=function(y){return 590-210*y};
+  function reg(x1,x2){var d='M'+X(x1)+' '+Y(0);for(var i=0;i<=60;i++){var x=x1+(x2-x1)*i/60;d+='L'+X(x).toFixed(1)+' '+Y(1/x).toFixed(1);}return d+'L'+X(x2)+' '+Y(0)+'Z';}
+  E('path',{d:reg(1,2),class:'area-a'});E('path',{d:reg(2,4),class:'area-b'});
+  E('line',{x1:X(0),x2:X(8.9),y1:Y(0),y2:Y(0),class:'k-dim','stroke-width':1.5});
+  E('line',{x1:X(0),x2:X(0),y1:Y(0),y2:Y(2.6),class:'k-dim','stroke-width':1.5});
+  for(var t=1;t<=8;t++){E('line',{x1:X(t),x2:X(t),y1:Y(0),y2:Y(0)+7,class:'k-dim'});E('text',{x:X(t),y:Y(0)+28,'text-anchor':'middle','font-size':16,class:'s-dim',text:t});}
+  [[.5,'0,5'],[1,'1'],[1.5,'1,5'],[2,'2']].forEach(function(v){E('line',{x1:X(0)-7,x2:X(0),y1:Y(v[0]),y2:Y(v[0]),class:'k-dim'});E('text',{x:X(0)-13,y:Y(v[0])+5,'text-anchor':'end','font-size':16,class:'s-dim',text:v[1]});});
+  var d='';for(var i=0;i<=320;i++){var x=.4+8.4*i/320;d+=(i?'L':'M')+X(x).toFixed(1)+' '+Y(1/x).toFixed(1);}
+  E('path',{d:d,fill:'none',class:'k-ink','stroke-width':3});
+  var lab=E('text',{x:X(.62)+16,y:Y(1/.62),'font-size':22,'font-weight':600,class:'s-ink'});
+  [['y',1],[' = 1/',0],['x',1]].forEach(function(p){var s=E('tspan',{text:p[0]},lab);if(p[1])s.setAttribute('font-style','italic');});
+  /* repères sous l'axe : les deux tranches */
+  function brace(x1,x2,txt,col){var y=Y(0)+50;E('path',{d:'M'+X(x1)+' '+(y-8)+'V'+y+'H'+X(x2)+'V'+(y-8),fill:'none',stroke:col,'stroke-width':3});E('text',{x:(X(x1)+X(x2))/2,y:y+26,'text-anchor':'middle','font-size':17,'font-weight':600,class:'s-ink',text:txt});}
+  brace(1,2,'de 1 à 2','#F2B01E');brace(2,4,'de 2 à 4','var(--maj-text)');
+
+  /* couleurs : nuancier lu sur les tokens courants */
+  var SW=[['--maj','Majorelle','rail, séance du jour, en-tête d’épreuve'],['--ink','Encre','texte (bleu nuit en clair)'],['--safran','Safran','action, « en cours »'],['--cedre','Cèdre','juste, maîtrisé'],['--grenade','Grenade','faux, points à gagner'],['--app','Fond','chaux en clair, nuit en sombre'],['--joint','Joint','séparation des blocs'],['--paper','Papier','copie, tuiles']];
+  var swe=document.getElementById('sw');
+  function paintSw(){var cs=getComputedStyle(document.documentElement);swe.innerHTML=SW.map(function(s){var v=cs.getPropertyValue(s[0]).trim();return '<div><i style="background:var('+s[0]+');box-shadow:inset 0 -1px 0 var(--joint)"></i><b>'+s[1]+'</b><span class="tnum">'+v.toUpperCase()+'</span><span>'+s[2]+'</span></div>';}).join('');}
+  paintSw();
+
+  /* routage par hash */
+  var screens=['accueil','lecon','examen','systeme'],rail={accueil:'accueil',lecon:'lecon',examen:'examen',systeme:'systeme'};
+  function route(){var h=(location.hash||'#accueil').slice(1);if(screens.indexOf(h)<0)h='accueil';
+    screens.forEach(function(s){document.getElementById(s).classList.toggle('on',s===h);});
+    document.querySelectorAll('.rail a').forEach(function(a){a.classList.toggle('on',a.dataset.r===rail[h]);if(a.dataset.r===rail[h])a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+    document.querySelectorAll('.mock a').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+h);});
+    window.scrollTo(0,0);}
+  addEventListener('hashchange',route);route();
+
+  /* thème */
+  var root=document.documentElement;
+  try{var t0=localStorage.getItem('majorelle-theme');if(t0)root.dataset.theme=t0;}catch(e){}
+  document.getElementById('theme').addEventListener('click',function(){
+    var dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme=dark?'light':'dark';try{localStorage.setItem('majorelle-theme',root.dataset.theme);}catch(e){}paintSw();});
+
+  /* maths */
+  window.renderMath=function(){if(!window.__mj||!window.MathJax||!MathJax.tex2svg)return;
+    document.querySelectorAll('.m[data-tex]:not([data-done])').forEach(function(n){try{var node=MathJax.tex2svg(n.dataset.tex,{display:false});n.replaceChildren(node);n.dataset.done='1';}catch(e){}});
+    try{MathJax.startup.document.clear();MathJax.startup.document.updateDocument();}catch(e){}};
+  window.renderMath();
+})();
+</script>
+</body>
+</html>

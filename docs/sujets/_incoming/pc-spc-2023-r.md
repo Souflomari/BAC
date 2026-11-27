@@ -1,0 +1,743 @@
+# Examen national PC — SPC — 2023 — session de rattrapage (RS 28F)
+
+> Transcription intégrale du sujet, session **rattrapage 2023**, filière
+> Sciences Physiques (SPC), BIOF (option française). Protocole :
+> `docs/sujets/pc/README.md`. Scan : `course-422/upload-85310`, 6 pages.
+>
+> **Passe de vérification adversariale — 2026-08-23.** Les 6 pages du scan ont
+> été re-fetchées indépendamment et chaque figure re-décrite depuis l'image
+> (mesures au pixel : détection des traits majeurs et du sous-quadrillage,
+> tracé colonne par colonne des courbes), puis toute la physique/chimie
+> re-dérivée. **Le texte des quatre exercices est exact** — nombres, indices,
+> exposants, unités et barèmes recontrôlés caractère par caractère
+> ($7+3+4{,}75+5{,}25 = 20$ ; détail par question conforme au scan).
+> **Les défauts trouvés sont tous dans les figures** : deux lectures d'axe
+> fausses (sous-quadrillage de la figure 2 de l'ex. 3 donné à 5 carreaux au
+> lieu de 10 ; minimum de la figure 3 de l'ex. 4 placé à $t\approx0{,}2$ s au
+> lieu de $\approx 0{,}14$ s), une figure décrite depuis le texte plutôt que
+> depuis le dessin (l'origine de la cote $D$ de l'ex. 4, et l'interrupteur $K$
+> de l'ex. 3 dessiné **ouvert**), et **cinq mentions « lecture à confirmer »,
+> dont trois portaient chacune une question entière** ($\tau = 0{,}35\ \text{ms}$
+> pour la question 1-2 de l'ex. 3, $q(0) = 120\,\mu\text{C}$ pour la 2-3,
+> $T_0 = 0{,}40\ \text{s}$ pour les questions 2 et 3 de l'ex. 4-II) : les cinq
+> sont levées ici, chacune par une mesure au pixel *doublée* d'une re-dérivation
+> concordante. Détail dans chaque entrée sous « Vérification ».
+>
+> **Couverture (page 1 du scan)** : « الدورة الاستدراكية 2023 » (session de
+> rattrapage), code **RS 28F**, épreuve الفيزياء والكيمياء (Physique-Chimie),
+> filière شعبة العلوم التجريبية مسلك العلوم الفيزيائية (خيار فرنسية), durée
+> **3h**, coefficient **7**. Mentions imprimées : « L'usage de la calculatrice
+> scientifique non programmable est autorisé. » ; « On donnera les expressions
+> littérales avant de passer aux applications numériques. » ; « Le sujet
+> comporte quatre exercices. » Carte du sujet (p. 1) :
+> Exercice 1 (7 points) : Électrolyse d'une solution aqueuse de bromure de
+> zinc ; Dosage d'une solution aqueuse de triméthylamine — Exercice 2
+> (3 points) : Ondes lumineuses — Exercice 3 (4,75 points) : Charge d'un
+> condensateur et sa décharge dans un dipôle RL ; Détection d'un signal modulé
+> en amplitude — Exercice 4 (5,25 points) : Mouvement d'un ballon dans un
+> champ de pesanteur uniforme ; Mouvement d'un pendule élastique.
+> Somme : $7+3+4{,}75+5{,}25 = 20$ points.
+
+---
+
+## 2023 — session rattrapage — Exercice 1
+Source: https://www.alloschool.com/element/142484
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : RS 28F · Barème de l'exercice : 7 points
+- Images lues (reproductibilité) :
+  `.../course-422/upload-85310/0001-big.jpg` (couverture),
+  `.../0002-big.jpg`, `.../0003-big.jpg`
+- Pages du scan : 2 et 3 (sur 6)
+
+**EXERCICE 1 (7 points).**
+
+*Cet exercice propose d'étudier une réaction d'oxydo-réduction forcée dans une
+première partie et une réaction acido-basique dans une deuxième partie.*
+
+**Partie I : Electrolyse d'une solution aqueuse de bromure de zinc**
+
+On réalise l'électrolyse d'une solution aqueuse (S) de bromure de zinc
+$\left(\text{Zn}^{2+}_{(aq)} + 2\,\text{Br}^{-}_{(aq)}\right)$ de volume $V$ en
+utilisant un générateur fournissant un courant d'intensité constante $I$ et des
+électrodes en graphite (figure ci-contre). Au cours de cette électrolyse, le
+métal zinc se dépose sur l'une des électrodes.
+
+**Données :**
+- Couples (Ox / Red) intervenant dans cette électrolyse :
+  $\text{Br}_{2(aq)}/\text{Br}^{-}_{(aq)}$ ;
+  $\text{Zn}^{2+}_{(aq)}/\text{Zn}_{(s)}$ ;
+- Le faraday : $1\,\text{F} = 9{,}65\cdot10^{4}\ \text{C.mol}^{-1}$ ;
+- Masse molaire : $M(\text{Zn}) = 65{,}4\ \text{g.mol}^{-1}$ ;
+- $I = 82\ \text{mA}$.
+
+1. (0,5 pt) Parmi les propositions suivantes, choisir la proposition juste.
+
+   | | |
+   |---|---|
+   | **A** | L'électrode (A) est l'anode. |
+   | **B** | L'électrode (B) est le siège d'une oxydation. |
+   | **C** | Au cours de l'électrolyse le système est en équilibre. |
+   | **D** | $\left[\text{Br}^{-}_{(aq)}\right]$ augmente au cours du temps. |
+
+2. (1 pt) Ecrire l'équation de la réaction qui se produit au niveau de la
+   cathode et celle qui se produit au niveau de l'anode.
+3. (0,25 pt) Ecrire l'équation bilan de la réaction de cette électrolyse.
+4. (1 pt) Au bout d'une heure $(\Delta t = 1\,\text{h})$ d'électrolyse, il se
+   dépose une masse $m(\text{Zn})$ de zinc sur l'une des électrodes. Etablir la
+   relation : $m(\text{Zn}) = \dfrac{I.\Delta t.M(\text{Zn})}{2F}$. Calculer la
+   valeur de $m(\text{Zn})$.
+
+*Figure (schéma, sans numéro — « figure ci-contre ») :* cellule d'électrolyse
+en forme de tube en U contenant la solution, avec en haut un générateur
+représenté par un cercle marqué « G » ; le signe « **+** » est imprimé à gauche
+du cercle, le signe « **−** » à sa droite. Le circuit extérieur est tracé comme
+un cadre : depuis G, le fil part à gauche et à droite jusqu'aux deux angles
+supérieurs, redescend, puis revient horizontalement vers l'intérieur — la
+silhouette générale est celle d'un **T** posé sur le tube en U. À l'extrémité
+intérieure de chacun de ces deux retours commence une **électrode** : un trait
+vertical épais qui descend dans la branche correspondante du tube et plonge
+dans la solution. Chaque branche du U est dessinée par deux traits fins (ses
+parois) et porte, à mi-hauteur, un **court trait horizontal marquant le niveau
+du liquide** ; les électrodes traversent ce niveau et s'arrêtent au-dessus du
+coude. Une flèche horizontale venant de la gauche pointe sur l'électrode de la
+branche gauche avec la légende « Electrode (B) en graphite » — cette électrode
+est donc celle qui est reliée à la borne **+** ; une flèche venant de la droite
+pointe sur l'électrode de la branche droite, légende « Electrode (A) en
+graphite » (reliée à la borne **−**). Une troisième flèche, en bas à droite,
+pointe vers le flanc droit du coude du tube en U avec la légende « Solution
+aqueuse de bromure de zinc ».
+
+**Vérification (2026-08-23).** *Texte* : exact (couples, $1\,\text{F}$,
+$M(\text{Zn})$, $I = 82\ \text{mA}$, tableau des indicateurs, coordonnées de
+$Q$ et de $E$, seuil $2{,}2\cdot10^{-10}\ \text{mol.L}^{-1}$ — tous recontrôlés
+sur `0002-big.jpg` et `0003-big.jpg`). *Figure* : re-décrite depuis le dessin ;
+la topologie du câblage est confirmée (le retour de gauche part bien du côté
+« + »), et la description a été enrichie du niveau de liquide et de la géométrie
+réelle du circuit extérieur, qui manquaient. *Absence de courbe de dosage
+confirmée* : la page 3 ne porte aucun graphe, seuls les points $Q$ et $E$ sont
+donnés dans le texte — le transcripteur avait raison de le signaler.
+*Re-dérivations* : $m(\text{Zn}) = 0{,}082\times3600\times65{,}4/193000
+= 0{,}100\ \text{g}$ ; $C_B = C_A V_{AE}/V_B = 4\cdot10^{-2}\ \text{mol.L}^{-1}$
+d'où $C_0 = 10\,C_B = 0{,}4\ \text{mol.L}^{-1}$ ; $V_A = 10\ \text{mL}
+= V_{AE}/2$ est la **demi-équivalence**, donc le rapport de la question 7 vaut
+$1$ et $\text{pK}_A = \text{pH} = 9{,}9$ — exactement l'ordonnée du point $Q$ :
+le sujet est cohérent avec lui-même. $\text{pH}_E = 5{,}8$ tombe bien dans la
+zone de virage du rouge de méthyle (4,2–6,2). *Signalé sans être « réparé »* :
+$C_0 = 0{,}4\ \text{mol.L}^{-1}$ de triméthylamine dans une urine, et un seuil
+diagnostique posé à $2{,}2\cdot10^{-10}\ \text{mol.L}^{-1}$, sont l'un et
+l'autre hors de toute réalité physiologique (l'écart est de neuf ordres de
+grandeur, ce qui rend la question 4 vraie de façon triviale). C'est le choix du
+sujet officiel, transcrit tel quel ; ne pas en tirer un exercice qui prétendrait
+à un dosage réaliste.
+
+**Partie II : Dosage d'une solution aqueuse de triméthylamine**
+
+*La triméthylamine, de formule brute $(\text{CH}_3)_3\text{N}$, est une
+molécule présente dans quelques aliments. Elle a une odeur caractéristique de
+poisson pourri. Elle est également associée à une maladie génétique appelée
+syndrome de l'odeur de poisson pourri. La triméthylamine est éliminée par les
+urines, les sueurs …*
+
+On admet qu'un patient est atteint de syndrome de l'odeur de poisson pourri si
+la concentration en triméthylamine dans son urine est supérieure à
+$2{,}2\cdot10^{-10}\ \text{mol.L}^{-1}$.
+
+**Données :**
+- Toutes les mesures sont effectuées à $25\,^{\circ}\text{C}$ ;
+- Couple acide-base lié à la triméthylamine :
+  $(\text{CH}_3)_3\text{NH}^{+}_{(aq)}\,/\,(\text{CH}_3)_3\text{N}_{(aq)}$.
+
+Pour doser une solution $S_0$ d'urine d'un patient dont la concentration en
+triméthylamine est $C_0$, on la dilue 10 fois pour obtenir une solution $S_B$
+de concentration $C_B$.
+
+On prend le volume $V_B = 20\ \text{mL}$ de la solution $S_B$ auquel on ajoute
+progressivement un volume $V_A$ d'une solution aqueuse $S_A$ d'acide
+chlorhydrique $\left(\text{H}_3\text{O}^{+}_{(aq)} +
+\text{Cl}^{-}_{(aq)}\right)$ de concentration
+$C_A = 4\cdot10^{-2}\ \text{mol.L}^{-1}$. On suppose que l'acide chlorhydrique
+réagit seulement avec la triméthylamine.
+
+*(Page 3 du scan.)* La courbe représentant la variation du pH du mélange
+réactionnel en fonction du volume $V_A$ de la solution acide $S_A$ ajoutée
+présente deux points remarquables :
+- le point Q de coordonnées ($V_A = 10\ \text{mL}$, $\text{pH} = 9{,}9$) ;
+- le point d'équivalence E de coordonnées ($V_{AE} = 20\ \text{mL}$,
+  $\text{pH}_E = 5{,}8$).
+
+*(Aucune courbe n'est imprimée pour cette partie : les deux points
+remarquables sont donnés dans le texte.)*
+
+1. (0,5 pt) Définir une base selon Bronsted.
+2. (0,5 pt) Ecrire l'équation modélisant la réaction qui a lieu lors du
+   dosage.
+3. (0,5 pt) Déterminer la valeur de $C_B$.
+4. (0,5 pt) Déduire que le patient est atteint du syndrome de l'odeur de
+   poisson pourri.
+5. (0,5 pt) Justifier la nature acide $(\text{pH}_E < 7)$ du mélange
+   réactionnel à l'équivalence.
+6. (0,5 pt) Parmi les indicateurs colorés cités dans le tableau ci-dessous,
+   indiquer en justifiant celui qui convient le mieux pour ce dosage.
+
+   | Indicateur coloré | Hélianthine | Rouge de méthyle | phénolphtaléine |
+   |---|---|---|---|
+   | Zone de virage | 3,1- 4,4 | 4,2- 6,2 | 8,2- 10,0 |
+
+7. (0,75 pt) En se basant sur le tableau d'avancement de la réaction de
+   dosage, trouver la valeur du rapport
+   $\dfrac{\left[(\text{CH}_3)_3\text{NH}^{+}_{(aq)}\right]}{\left[(\text{CH}_3)_3\text{N}_{(aq)}\right]}$
+   pour $V_A = 10\ \text{mL}$.
+8. (0,5 pt) Déduire que la valeur du $\text{pK}_A$ du couple
+   $(\text{CH}_3)_3\text{NH}^{+}_{(aq)}/(\text{CH}_3)_3\text{N}_{(aq)}$ est
+   $\text{pK}_A = 9{,}9$.
+
+---
+
+## 2023 — session rattrapage — Exercice 2
+Source: https://www.alloschool.com/element/142484
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : RS 28F · Barème de l'exercice : 3 points
+- Images lues (reproductibilité) : `.../course-422/upload-85310/0003-big.jpg`,
+  `.../0004-big.jpg`
+- Pages du scan : 3 (bas) et 4 (haut) (sur 6)
+
+**EXERCICE 2 (3 points).**
+
+*La diffraction est l'un des phénomènes physiques qui met en évidence la
+nature ondulatoire de la lumière. On se propose dans cet exercice d'étudier ce
+phénomène de diffraction pour déterminer la largeur d'une fente et les
+caractéristiques de certaines radiations lumineuses.*
+
+Une source lumineuse émet, dans l'air, une radiation jaune, de longueur d'onde
+$\lambda_{0j} = 580\ \text{nm}$, vers une fente horizontale de largeur $a$. On
+observe, sur un écran situé à la distance $D = 1{,}4\ \text{m}$ de la fente,
+des taches lumineuses réparties sur une ligne verticale.
+
+La tache centrale a la largeur $L_j = 2{,}7\ \text{cm}$ (figure ci-contre).
+
+**Donnée** : On prend la célérité d'une onde lumineuse dans le vide et dans
+l'air $c = 3\cdot10^{8}\ \text{m.s}^{-1}$.
+
+1. (0,5 pt) Choisir, parmi les propositions suivantes, celle qui est juste :
+
+   | | |
+   |---|---|
+   | **A** | La longueur d'onde d'une radiation monochromatique ne dépend pas du milieu de propagation. |
+   | **B** | Dans un milieu dispersif, la célérité d'une onde lumineuse ne varie pas avec la fréquence. |
+   | **C** | Une onde lumineuse monochromatique est caractérisée par sa fréquence. |
+   | **D** | Les limites des longueurs d'onde dans le vide du spectre visible sont $400\,\mu\text{m}$ et $800\,\mu\text{m}$. |
+
+2. (0,75 pt) Sachant que l'écart angulaire $\theta$ est petit pour prendre
+   $\tan\theta \approx \theta$, trouver l'expression de la largeur $a$ de la
+   fente en fonction de $L_j$, $D$ et $\lambda_{0j}$. Calculer la valeur de
+   $a$.
+3. (0,75 pt) *(page 4)* Dans l'expérience de diffraction décrite précédemment,
+   la source de radiation jaune est remplacée par une source de radiation
+   rouge ayant une longueur d'onde $\lambda_{0R}$. Montrer que l'expression de
+   $\lambda_{0R}$ s'écrit :
+   $\lambda_{0R} = \dfrac{L_R.\lambda_{0j}}{L_j}$ avec $L_R$ la largeur de la
+   tache centrale obtenue dans ce cas.
+   Calculer $\lambda_{0R}$ sachant que $L_R = 3{,}4\ \text{cm}$.
+4. On considère que la radiation jaune se propage dans un milieu d'indice de
+   réfraction $n_1 = 1{,}5$. Calculer dans ce milieu :
+   1. **4-1.** (0,5 pt) La vitesse $V_{1j}$ de propagation de la radiation
+      jaune.
+   2. **4-2.** (0,5 pt) La longueur d'onde $\lambda_{1j}$ de cette radiation.
+
+*Figure (schéma, sans numéro — « figure ci-contre », p. 3) :* dispositif de
+diffraction vu en perspective. À gauche, une flèche horizontale épaisse
+étiquetée « Source lumineuse » (texte sur deux lignes, à gauche de la flèche)
+pointe vers un petit plan incliné (parallélogramme) étiqueté « Fente »
+au-dessus à gauche ; **la fente elle-même est tracée** : un court trait
+horizontal au milieu du parallélogramme, exactement là où arrive la flèche.
+Depuis ce point, deux droites divergent — l'une vers le haut, l'autre vers le
+bas — jusqu'à un grand plan incliné à droite étiqueté « Ecran » en haut. Sur
+l'écran, **cinq taches** dessinées en **aplat noir** (ellipses verticales
+pleines — c'est la convention typographique du sujet : ce sont les taches
+*lumineuses*) sont alignées sur une même verticale : deux au-dessus, la tache
+centrale, deux au-dessous. La tache centrale est nettement plus **allongée**
+que les quatre autres, et les deux droites issues de la fente viennent en
+toucher précisément l'extrémité haute et l'extrémité basse. Un axe horizontal
+en pointillés joint la fente au centre de l'écran ; l'angle $\theta$ est marqué
+par un petit arc entre cet axe et la droite supérieure, près de l'écran. Une
+double flèche verticale, placée à droite de la tache centrale, en mesure la
+hauteur et porte l'étiquette « $L_j$ ». En bas, une double flèche horizontale
+étiquetée « $D$ » court de la verticale en pointillés abaissée sous la fente
+jusqu'au plan de l'écran (sa pointe droite remonte obliquement rejoindre le bas
+de la colonne de taches).
+
+**Vérification (2026-08-23).** *Texte* : exact ($\lambda_{0j} = 580\ \text{nm}$,
+$D = 1{,}4\ \text{m}$, $L_j = 2{,}7\ \text{cm}$, $L_R = 3{,}4\ \text{cm}$,
+$n_1 = 1{,}5$, les quatre propositions du QCM et les barèmes
+$0{,}5+0{,}75+0{,}75+0{,}5+0{,}5 = 3$). *Figure* : re-décrite depuis le dessin ;
+le décompte exact des taches (5, dont la centrale plus longue), le tracé de la
+fente et la convention « taches en noir » manquaient à la description initiale —
+un auteur de figure les aurait inventés, voire aurait inversé le contraste.
+*Re-dérivations* : $a = 2\lambda_{0j}D/L_j = 6{,}0\cdot10^{-5}\ \text{m}
+= 60\ \mu\text{m}$ (ordre de grandeur correct pour une fente de TP) ;
+$\lambda_{0R} = L_R\lambda_{0j}/L_j = 730\ \text{nm}$ (bien dans le rouge) ;
+$V_{1j} = c/n_1 = 2\cdot10^{8}\ \text{m.s}^{-1}$ ;
+$\lambda_{1j} = \lambda_{0j}/n_1 = 386{,}7\ \text{nm}$. Cohérent de bout en bout,
+et cohérent avec la figure (fente horizontale $\Rightarrow$ taches étalées
+verticalement, ce que le dessin montre bien). Aucun point indécidable.
+
+---
+
+## 2023 — session rattrapage — Exercice 3
+Source: https://www.alloschool.com/element/142484
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : RS 28F · Barème de l'exercice : 4,75 points
+  ($0{,}5+0{,}5+0{,}5$ pour la section 1 ; $0{,}5+0{,}5+0{,}75+0{,}5$ pour la
+  section 2 ; $0{,}25+0{,}75$ pour la section 3)
+- Images lues (reproductibilité) : `.../course-422/upload-85310/0004-big.jpg`,
+  `.../0005-big.jpg`
+- Pages du scan : 4 et 5 (sur 6)
+
+**EXERCICE 3 (4,75 points).**
+
+*On se propose dans cet exercice d'étudier :*
+*- la charge d'un condensateur et sa décharge dans un dipôle RL ;*
+*- la détection d'un signal modulé en amplitude.*
+
+Le montage électrique représenté par le schéma de la figure 1 comporte :
+- un générateur de tension de force électromotrice $E$ ;
+- un condensateur de capacité $C$ ajustable, initialement déchargé ;
+- un conducteur ohmique de résistance $R = 35\ \Omega$ ;
+- un interrupteur $K$ à double position ;
+- une bobine d'inductance $L$ et de résistance négligeable.
+
+**1- Réponse d'un dipôle RC à un échelon de tension**
+
+A un instant choisi comme origine des dates $t_0 = 0$ on met l'interrupteur
+$K$ en position (1).
+Un système d'acquisition informatisé adéquat permet d'obtenir la courbe
+d'évolution temporelle de la charge $q(t)$ du condensateur lors de sa charge.
+$(T)$ représente la tangente à la courbe au point d'abscisse $t_0 = 0$
+(figure 2).
+
+1. **1-1.** (0,5 pt) Etablir l'équation différentielle vérifiée par la charge
+   $q(t)$.
+2. **1-2.** (0,5 pt) En vous aidant du graphe de la figure 2, vérifier que la
+   valeur à laquelle est ajustée la capacité $C$ du condensateur est
+   $C_0 = 10\,\mu\text{F}$.
+3. **1-3.** (0,5 pt) Déterminer la valeur de $E_e$ l'énergie électrique
+   emmagasinée dans le condensateur en régime permanent.
+
+**2- Oscillations libres dans un circuit RLC série**
+
+Lorsque le régime permanent est atteint, on bascule l'interrupteur $K$ en
+position (2) à un instant pris comme nouvelle origine des dates $t_0 = 0$.
+*(Page 5.)* Le même système d'acquisition informatisé, utilisé dans la charge
+du condensateur, a permis d'obtenir la courbe d'évolution temporelle de la
+charge $q(t)$ du condensateur (figure 3).
+
+1. **2-1.** (0,5 pt) Montrer que l'équation différentielle vérifiée par la
+   charge $q(t)$ s'écrit :
+   $\dfrac{d^2q(t)}{dt^2} + \dfrac{R}{L}\,\dfrac{dq(t)}{dt} +
+   \dfrac{1}{LC_0}\,q(t) = 0$.
+2. **2-2.** (0,5 pt) Expliquer la diminution de l'amplitude des oscillations
+   au cours du temps.
+3. **2-3.** (0,75 pt) Calculer $\left|\Delta E\right|$ l'énergie dissipée par
+   effet Joule dans le circuit entre l'instant $t_0 = 0$ et l'instant $t_1$
+   indiqué sur la courbe de la figure 3.
+4. **2-4.** (0,5 pt) Pour entretenir les oscillations amorties obtenues, on
+   introduit en série dans le circuit un générateur délivrant une tension
+   $u_g = k.i(t)$ avec $u_g$ exprimée en volt (V) et $i(t)$ exprimée en
+   ampère (A) et $k$ une constante positive. Déterminer la valeur de $k$.
+
+**3- Détection d'un signal modulé en amplitude**
+
+On réalise un circuit d'accord (circuit bouchon) par le condensateur de
+capacité $C$ ajustable et par la bobine d'inductance $L = 0{,}1\,\text{H}$
+précédemment utilisés. Ce circuit est schématisé avec une antenne réceptrice
+d'ondes électromagnétiques (figure 4).
+
+1. **3-1.** (0,25 pt) Donner le rôle de ce circuit bouchon LC.
+2. **3-2.** (0,75 pt) Trouver les valeurs limites $C_1$ et $C_2$ de la
+   capacité $C$ du condensateur pour balayer la plage de fréquences qui va en
+   modulation d'amplitude de $f_1 = 150\ \text{kHz}$ à $f_2 = 280\ \text{kHz}$
+   (on prend $\pi^2 = 10$).
+
+*Figure 1 (schéma, p. 4) :* circuit à deux mailles. Branche **de gauche** : le
+générateur, symbole cercle traversé verticalement par le fil, avec à sa gauche
+une flèche verticale montante étiquetée « E ». Branche **du haut** : le fil
+part du sommet du générateur vers la droite et s'arrête sur une borne marquée
+d'un gros point, étiquetée « (1) » au-dessus ; plus à droite, une seconde borne
+à point étiquetée « (2) », d'où le fil repart vers le coin supérieur droit.
+**L'interrupteur $K$ est dessiné en position OUVERTE** : son levier part du
+sommet de la branche centrale et monte obliquement vers le **haut-gauche**, en
+passant *au-dessus et à droite* de la borne (1) sans la toucher (il ne touche
+pas davantage (2)) ; l'étiquette « K » est imprimée au-dessus de l'extrémité
+libre du levier, entre les étiquettes « (1) » et « (2) ». Branche **centrale**
+(verticale, du pivot de $K$ jusqu'au fil du bas) : de haut en bas, le
+conducteur ohmique (rectangle vertical, étiquette « R » à droite), puis le
+condensateur ajustable (deux armatures horizontales barrées d'une flèche
+oblique, étiquette « C » à droite) avec la tension $u_C$ fléchée vers le haut à
+sa gauche, puis la flèche du courant « i » orientée vers le bas sous le
+condensateur. Branche **de droite** : la bobine (spires), étiquette « L » à sa
+gauche, reliant la borne (2) (via le coin supérieur droit) au coin inférieur
+droit. Branche **du bas** : fil refermant les deux mailles. Légende :
+« Figure 1 », sous le cadre.
+
+*Figure 2 (courbe, p. 4) :* $q\,(\mu\text{C})$ en fonction de
+$t\,(\text{ms})$, sur quadrillage à double graduation (traits majeurs sombres,
+sous-quadrillage fin bleu à **10 petits carreaux par division majeure** —
+mesuré : pas fin $5{,}9$ px contre $59{,}4$ px pour la division majeure). Axe
+des ordonnées : seules les valeurs $20$ et $40$ sont chiffrées (traits majeurs
+tous les $20\,\mu\text{C}$, donc **un petit carreau $= 2\,\mu\text{C}$**) ; six
+traits majeurs au-dessus de zéro, le sixième valant $120\,\mu\text{C}$, et le
+bord supérieur du cadre passe juste au-dessus de ce trait ($\approx
+122\,\mu\text{C}$). Axe des abscisses : seules les valeurs $0{,}5$ et $1$ sont
+chiffrées (traits majeurs tous les $0{,}5\ \text{ms}$, donc **un petit carreau
+$= 0{,}05\ \text{ms}$**) ; le cadre s'étend sur $5$ divisions majeures, soit
+jusqu'à $2{,}5\ \text{ms}$. Courbe croissante, concave, partant de l'origine et
+tendant vers un palier **confondu avec le trait majeur $q = 120\,\mu\text{C}$**
+(à partir de $t \approx 1{,}8\ \text{ms}$ le tracé se superpose exactement à
+cette gridline). La tangente $(T)$ à l'origine, en pointillés, étiquetée
+« (T) » en haut à gauche, monte raide et **coupe le niveau du palier à
+$t = 0{,}35\ \text{ms}$** — lecture ferme : l'intersection tombe sur le 7ᵉ trait
+fin après l'origine, à moins d'un demi-pixel du repère $0{,}35\ \text{ms}$.
+Légende : « Figure 2 ».
+
+*Figure 3 (courbe, p. 5) :* $q\,(\mu\text{C})$ en fonction de $t$ (axe des
+abscisses étiqueté « t » et terminé par une flèche, **sans aucune graduation
+numérique ni unité imprimée**), sur quadrillage à double graduation
+(sous-quadrillage bleu à **5 petits carreaux par division majeure**, soit
+$8\,\mu\text{C}$ par petit carreau). Axe des ordonnées : seules les valeurs
+$40$, $0$ et $-40$ sont chiffrées (traits majeurs tous les $40\,\mu\text{C}$) ;
+trois traits majeurs au-dessus de zéro ($+40$, $+80$, $+120$) et deux
+au-dessous ($-40$, $-80$) ; le **bord inférieur du cadre coïncide avec le
+niveau $-80\,\mu\text{C}$**, tandis que le bord supérieur passe légèrement
+au-dessus du trait $+120$. Horizontalement le cadre couvre $6{,}5$ divisions
+majeures. Oscillations amorties : la courbe part à $t=0$ **exactement sur le
+trait majeur $+120\,\mu\text{C}$**, $q(0) = 120\,\mu\text{C}$ (le tracé sort de
+l'axe des ordonnées confondu avec cette gridline) ; elle décroît, coupe l'axe,
+et passe par un premier minimum à $\approx -68\,\mu\text{C}$ (fond arrondi,
+entre les traits $-40$ et $-80$, sans tomber sur une gridline — valeur
+indicative, aucune question n'en dépend) ; elle remonte vers un maximum qui
+**affleure exactement le trait $+40\,\mu\text{C}$**, repéré par un segment
+vertical en pointillés descendant jusqu'à l'axe des abscisses, où l'instant est
+étiqueté « $t_1$ » sous l'axe. La courbe continue ensuite : deuxième minimum à
+$\approx -22\,\mu\text{C}$, puis remontée jusqu'à $\approx +13\,\mu\text{C}$,
+sommet atteint au bord droit du cadre (amplitudes décroissantes, lectures
+indicatives). Légende : « Figure 3 », sous le cadre.
+
+**Vérification (2026-08-23).** *Texte* : exact ($R = 35\ \Omega$,
+$L = 0{,}1\ \text{H}$, $C_0 = 10\,\mu\text{F}$, $f_1 = 150\ \text{kHz}$,
+$f_2 = 280\ \text{kHz}$, $\pi^2 = 10$, l'équation différentielle de 2-1 et les
+barèmes $0{,}5+0{,}5+0{,}5\,|\,0{,}5+0{,}5+0{,}75+0{,}5\,|\,0{,}25+0{,}75
+= 4{,}75$). *Trois défauts de figure corrigés :*
+
+1. **Sous-quadrillage de la figure 2 faux d'un facteur 2** — annoncé « 5 petits
+   carreaux par division majeure », il en compte **10**. C'est précisément le
+   facteur qui permet de lire $0{,}35\ \text{ms}$ *sur un trait* plutôt qu'au
+   jugé entre deux traits.
+2. **$\tau = 0{,}35\ \text{ms}$ n'est plus « à confirmer »** — et c'était le
+   défaut grave, car **toute la question 1-2 repose dessus**. Mesure au pixel :
+   la tangente $(T)$ coupe le palier à l'abscisse $866{,}8$ px, le repère
+   $0{,}35\ \text{ms}$ étant à $866{,}6$ px. Deux re-dérivations concordantes :
+   $\tau = RC_0 = 35\times10\cdot10^{-6} = 0{,}35\ \text{ms}$, et la courbe
+   passe à cet instant par $0{,}632\,q_{\max} = 75{,}8\,\mu\text{C}$ (mesuré
+   $75{,}9$). La lecture est donc verrouillée par trois voies indépendantes.
+3. **$q(0) = 120\,\mu\text{C}$ de la figure 3 n'est plus « à confirmer »** —
+   même gravité : sans elle, la question 2-3 est inexploitable. Mesure au
+   pixel : à la sortie de l'axe le tracé occupe les lignes 418–420, le trait
+   majeur $+120$ étant en 418. Recoupement entre figures : le palier de la
+   figure 2 vaut lui aussi $120\,\mu\text{C}$, et la décharge de la figure 3
+   part du condensateur *chargé en régime permanent* — les deux valeurs
+   **doivent** être égales, et elles le sont.
+
+*Quatrième correction, plus discrète :* l'interrupteur $K$ de la figure 1 était
+décrit comme « pivotant depuis cette zone », formule tirée de l'idée d'un
+va-et-vient, pas du dessin. Sur le scan, le levier est **ouvert** et ne touche
+aucun des deux contacts — une figure refaite « en position (1) » trahirait le
+sujet. Les extrema secondaires de la figure 3 ont aussi été re-mesurés
+($-22$ et $+13\,\mu\text{C}$ au lieu de $-25$ et $+15$).
+
+*Re-dérivations numériques* : $C_0 = \tau/R = 0{,}35\cdot10^{-3}/35
+= 10\,\mu\text{F}$ ✓ ; $E = q_{\max}/C_0 = 12\ \text{V}$ ;
+$E_e = \tfrac12 C_0E^2 = 0{,}72\ \text{mJ}$ ;
+$|\Delta E| = \big(q(0)^2 - q(t_1)^2\big)/(2C_0)
+= (120^2-40^2)\cdot10^{-12}/(2\cdot10^{-5}) = 0{,}64\ \text{mJ}$ ;
+$k = R = 35\ \Omega$ (dimensionnellement $\text{V.A}^{-1}$) ;
+$C = 1/(4\pi^2Lf^2)$ donne $C_1 = 3{,}2\ \text{pF}$ pour $f_2$ et
+$C_2 = 11{,}1\ \text{pF}$ pour $f_1$. Cohérent également avec la figure 3 :
+$T_0 = 2\pi\sqrt{LC_0} = 6{,}3\ \text{ms}$, et $t_1$ — premier maximum après
+$t=0$, où $i(0)=0$ — vaut une pseudo-période. **Attention pour la conversion :
+l'axe des temps de la figure 3 n'étant pas gradué, $t_1$ n'est pas lisible ; un
+exercice de banque ne doit demander que $q(t_1)$, jamais la valeur de $t_1$.**
+
+*Incohérence du sujet officiel, signalée sans être « réparée »* : le même
+« condensateur de capacité $C$ ajustable » est réglé à $10\,\mu\text{F}$ dans la
+partie 1 et doit valoir $3$ à $11\ \text{pF}$ dans la partie 3 — six ordres de
+grandeur d'écart, hors d'atteinte d'un condensateur variable réel. Le sujet
+enchaîne les trois sections comme si c'était le même composant ; les sections
+restent exploitables séparément, mais aucune leçon ne doit présenter ce montage
+comme un dispositif unique physiquement réalisable.
+
+*Figure 4 (schéma, p. 5) :* en haut, une antenne (mât vertical surmonté d'un
+V), étiquetée « antenne » au-dessus. En dessous, le circuit bouchon : une
+boucle rectangulaire avec, sur la branche de gauche, la bobine en spires
+étiquetée « L » à sa gauche et, sur la branche de droite, le condensateur
+ajustable (armatures barrées d'une flèche oblique) étiqueté « C » à sa
+droite. Des segments en tirets relient le haut de la boucle au mât de
+l'antenne et prolongent le bas de la boucle vers la droite (vers le reste du
+récepteur, non représenté). Légende : « Figure 4 ».
+
+---
+
+## 2023 — session rattrapage — Exercice 4
+Source: https://www.alloschool.com/element/142484
+Statut: vérifié — re-fetch indépendant + re-dérivation (vérificateur adversarial, 2026-08-23)
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : RS 28F · Barème de l'exercice : 5,25 points
+  (Partie I : $1+0{,}5+0{,}75+0{,}75 = 3$ ; Partie II :
+  $0{,}5+0{,}75+0{,}5+0{,}5 = 2{,}25$)
+- Images lues (reproductibilité) : `.../course-422/upload-85310/0005-big.jpg`,
+  `.../0006-big.jpg`
+- Pages du scan : 5 et 6 (sur 6)
+
+**EXERCICE 4 (5,25 points).**
+
+**Les parties I et II sont indépendantes**
+
+**Partie I : Etude du mouvement d'un ballon dans un champ de pesanteur
+uniforme**
+
+Lors d'un service, un joueur de volley-ball, se trouvant à une distance D du
+filet, frappe le ballon à une hauteur $h$ du sol et lui communique une vitesse
+$\vec{V}_0$ faisant un angle $\alpha$ par rapport à l'horizontale.
+
+A cet instant choisi comme origine des dates $t_0 = 0$, le centre d'inertie G
+du ballon est au point A (figure 1).
+
+**Données** :
+- $V_0 = 16\ \text{m.s}^{-1}$ ; $\alpha = 18^{0}$ ;
+- Hauteur du filet : $H_f = 2{,}4\ \text{m}$ ;
+- Distance entre le filet et la ligne de fond : $d = 9\ \text{m}$ ;
+- $D = 11\ \text{m}$ ;
+- $h = OA = 3\ \text{m}$ ;
+- Intensité de la pesanteur : $g = 10\ \text{m.s}^{-2}$.
+
+On étudie le mouvement du centre d'inertie G du ballon dans le repère
+$(O, \vec{i}, \vec{j})$ lié à un référentiel terrestre considéré galiléen.
+L'origine O est situé au niveau du sol (figure 1).
+
+*(Page 6.)* On considère que le ballon est en chute libre.
+
+1. (1 pt) En appliquant la deuxième loi de Newton, établir les équations
+   horaires $x(t)$ et $y(t)$ du mouvement de G.
+2. (0,5 pt) Déduire que l'équation de la trajectoire du mouvement de G
+   s'écrit : $y = -\dfrac{1}{2}\dfrac{g}{(V_0\cos\alpha)^2}\,x^2 +
+   (\tan\alpha).x + h$.
+3. (0,75 pt) Montrer que le ballon passe au-dessus du filet (on néglige le
+   rayon du ballon devant $H_f$).
+4. (0,75 pt) Le ballon atteindra le sol à l'instant $t_s = 1{,}41\,\text{s}$.
+   Le ballon tombe-t-il entre le filet et la ligne du fond du camp adverse ?
+   Justifier.
+
+*Photographie (p. 5, en haut à droite, dans son propre cadre) :* photo couleur
+d'une joueuse de volley-ball sautant pour frapper le ballon, terrain en
+arrière-plan ; une flèche bleue étiquetée « Ligne de fond » (texte en gras à
+droite de la photo) pointe vers la ligne arrière du terrain.
+
+*Figure 1 (schéma, p. 5, dans un cadre rectangulaire) :* repère orthogonal au
+sol. Axe vertical $y$ vers le haut à gauche (flèche + étiquette « y »), axe
+horizontal $x$ vers la droite (flèche + étiquette « x » à l'extrémité droite),
+origine O au sol ; les vecteurs unitaires sont dessinés en bleu près de O —
+$\vec{i}$ court le long de $x$ (étiquette sous l'axe) et $\vec{j}$ monte le
+long de $y$. Le point A est un **point bleu posé sur l'axe $y$** à la hauteur
+$h$ ; une double flèche verticale en pointillés étiquetée « h », tracée **à
+gauche de l'axe**, va du niveau du sol au niveau de A. Du point A part le
+vecteur $\vec{V}_0$ (flèche inclinée vers le haut et la droite) faisant l'angle
+$\alpha$ — arc marqué « $\alpha$ » — avec l'horizontale en pointillés bleus
+passant par A. Au sol, **juste à droite de O** (à environ un quinzième de la
+distance O–filet), un point étiqueté « C », marqué par un petit **tiret oblique
+bleu** traversant l'axe des $x$ ; c'est **sur ce point C** que pointe la flèche
+bleue de la légende « Ligne de fond » écrite en bas à gauche. Plus loin sur
+l'axe $x$, le filet : trait vertical épais, étiquette « filet » à sa gauche,
+surmonté d'un court trait horizontal en pointillés ; sa hauteur $H_f$ est cotée
+par une double flèche verticale placée **à sa droite**. Encore plus à droite,
+un point E sur l'axe $x$, marqué du même tiret oblique bleu, avec la légende
+« Ligne de fond » fléchée vers E depuis le bas à droite. **La cote $D$**
+(double flèche horizontale bleue en pointillés, tout en bas) va de la verticale
+en pointillés abaissée **depuis O** jusqu'à la verticale en pointillés du
+filet — elle **ne part pas de C** ; la cote « d », un cran plus haut, va de
+cette même verticale du filet jusqu'à E. Légende : « Figure 1 », dans le cadre
+en bas au centre.
+
+**Partie II** : **Etude du mouvement d'un pendule élastique**
+
+*On étudie dans cette partie le mouvement oscillatoire d'un système mécanique
+(solide –ressort).*
+
+Ce système est constitué d'un solide (S) de centre d'inertie G et de masse
+$m = 200\,\text{g}$, et d'un ressort à spires non jointives, de masse
+négligeable et de raideur $k$. L'une des extrémités du ressort est fixée à un
+support fixe et l'autre extrémité est liée au solide (S).
+
+Ce solide peut osciller sans frottement sur le plan horizontal.
+
+On étudie le mouvement de G dans le repère $(O, \vec{i}\,)$ lié à un
+référentiel terrestre considéré galiléen.
+
+On repère la position de G à un instant $t$ par l'abscisse $x$ sur l'axe
+$(O, \vec{i}\,)$.
+
+A l'équilibre, l'abscisse de G est $x = 0$ (figure 2).
+
+On écarte (S) de sa position d'équilibre dans le sens positif et on l'envoie à
+l'instant $t_0 = 0$ avec une vitesse initiale dans le sens négatif.
+
+La courbe de la figure 3 représente l'évolution temporelle de l'abscisse
+$x(t)$ de G.
+
+1. (0,5 pt) En appliquant la deuxième loi de Newton, établir l'équation
+   différentielle vérifiée par l'abscisse x(t).
+2. (0,75 pt) La solution de cette équation différentielle s'écrit
+   $x(t) = X_m\cos\left(\dfrac{2\pi}{T_0}t + \varphi\right)$ avec $T_0$ la
+   période propre de l'oscillateur.
+   En vous aidant du graphe de la figure 3, déterminer les valeurs de :
+   $X_m$, $T_0$ et $\varphi$.
+3. (0,5 pt) Vérifier que la constante de raideur $k$ a pour valeur
+   $k = 50\ \text{N.m}^{-1}$ (on prend $\pi^2 = 10$).
+4. (0,5 pt) Déterminer la valeur de la variation $\Delta E_{pe}$ de l'énergie
+   potentielle élastique entre l'instant $t_0 = 0$ et l'instant $t_1$ indiqué
+   sur la courbe de la figure 3.
+
+*Figure 2 (schéma, p. 6) :* pendule élastique horizontal. À gauche, un mur fixe
+figuré par un court trait vertical **hachuré en oblique** ; un petit segment
+horizontal en part et porte le ressort, dessiné en hélice à **spires bien
+séparées** (une quinzaine de boucles), qui se relie à droite au solide (S) —
+un rectangle grisé, à base épaissie, posé sur le **plan horizontal** (long trait
+horizontal courant sous le ressort et le solide). À l'intérieur du rectangle, la
+lettre « G » et, à sa droite, le point matérialisant G ; l'étiquette « (S) » est
+au-dessus du rectangle. **Le solide est dessiné écarté vers la droite de sa
+position d'équilibre** ($x>0$), et une verticale en pointillés descend de G
+jusqu'à l'axe. En dessous, l'axe horizontal : il porte l'étiquette « x′ » sous
+son extrémité gauche (**sans pointe de flèche de ce côté**) et « x » sous son
+extrémité droite, **fléchée**. Sur cet axe, l'origine « O » est marquée par un
+petit trait vertical gras, le vecteur unitaire $\vec{i}$ est la courte flèche
+tracée juste à droite de O, et l'abscisse « x » est écrite au pied de la
+verticale en pointillés issue de G. Légende : « Figure 2 », sous la figure.
+
+*Figure 3 (courbe, p. 6) :* $x\,(\text{cm})$ en fonction de $t\,(\text{s})$,
+sur quadrillage à double graduation ; le sous-quadrillage bleu est **grossier :
+un seul trait intermédiaire par division majeure**, dans les deux directions —
+le plus petit carreau vaut donc $0{,}05\ \text{s}\times0{,}5\ \text{cm}$. Axe
+des ordonnées : valeurs chiffrées $1$, $0$ et $-1$ (traits majeurs tous les
+$1\ \text{cm}$) ; le trait $+2$ est à l'intérieur du cadre, tandis que **le
+niveau $-2\ \text{cm}$ coïncide avec le bord inférieur du cadre** (le bord
+supérieur, lui, passe un peu au-dessus de $+2$, vers $+2{,}2\ \text{cm}$). Axe
+des abscisses : seules les valeurs $0{,}1$ et $0{,}2$ sont chiffrées (traits
+majeurs tous les $0{,}1\ \text{s}$) ; le cadre couvre $8{,}5$ divisions, soit
+jusqu'à $t = 0{,}85\ \text{s}$, et l'axe se prolonge au-delà par une flèche
+étiquetée « t(s) ». Sinusoïde non amortie : à $t = 0$ la courbe part **du trait
+chiffré « 1 »**, $x(0) = 1\ \text{cm}$, **en décroissant** (elle quitte l'axe
+des ordonnées confondue avec cette gridline) ; elle descend jusqu'à un premier
+minimum **tangent au trait $-2\ \text{cm}$**, atteint vers
+$t \approx 0{,}14\ \text{s}$ (fond arrondi centré entre $0{,}12$ et
+$0{,}15\ \text{s}$ — soit **avant** le repère $0{,}15$, et non vers $0{,}2$) ;
+elle remonte, coupe l'axe, et atteint un premier maximum **tangent au trait
+$+2\ \text{cm}$** : l'amplitude est $X_m = 2\ \text{cm}$. Ce maximum est repéré
+par un segment vertical en pointillés descendant jusqu'à l'axe des abscisses,
+étiqueté « $t_1$ » sous l'axe, à $t_1 \approx 0{,}33\ \text{s}$. Suivent un
+deuxième minimum (à $\approx 0{,}53\ \text{s}$) et un deuxième maximum de même
+hauteur à $\approx 0{,}73\ \text{s}$, soit **$4$ divisions — $0{,}40\ \text{s}$
+— après le premier** ; la courbe redescend ensuite et sort du cadre vers
+$x \approx -0{,}4\ \text{cm}$. Légende : « Figure 3 », imprimée **à l'intérieur
+du cadre**, en bas à droite.
+
+**Vérification (2026-08-23).** *Texte* : exact ($V_0 = 16\ \text{m.s}^{-1}$,
+$\alpha = 18^{\circ}$, $H_f = 2{,}4\ \text{m}$, $d = 9\ \text{m}$,
+$D = 11\ \text{m}$, $h = OA = 3\ \text{m}$, $g = 10\ \text{m.s}^{-2}$,
+$t_s = 1{,}41\ \text{s}$, $m = 200\ \text{g}$, $k = 50\ \text{N.m}^{-1}$,
+$\pi^2 = 10$ ; barèmes $1+0{,}5+0{,}75+0{,}75 = 3$ et
+$0{,}5+0{,}75+0{,}5+0{,}5 = 2{,}25$). *Trois défauts de figure corrigés :*
+
+1. **Minimum de la figure 3 mal placé** — annoncé « vers
+   $t \approx 0{,}2\ \text{s}$ », il est mesuré à $t = 0{,}138\ \text{s}$
+   (creux plat sur les colonnes 722–740 px, origine en 651 px, division
+   majeure $57{,}8$ px). Erreur de $\approx 45\%$, et la théorie tranche dans
+   le même sens : le premier minimum tombe à $T_0/3 = 0{,}133\ \text{s}$.
+2. **Origine de la cote $D$ (figure 1) décrite depuis le texte** — la
+   description initiale faisait partir $D$ de « la verticale de la Ligne de
+   fond de gauche ». Mesure au pixel : la pointe gauche de la double flèche est
+   en $637$–$649$ px, sous l'axe $Oy$ qui est en $635$ px, alors que **C** — le
+   point sur lequel pointe réellement la flèche « Ligne de fond » — est en
+   $675$ px, soit $40$ px plus à droite. **$D$ se mesure depuis O**, verticale
+   du point A. C'est ce qui place le filet en $x = D = 11\ \text{m}$ et la
+   ligne de fond adverse en $x = D+d = 20\ \text{m}$ : les questions 3 et 4 en
+   dépendent entièrement.
+3. **$X_m$, $t_1$ et $T_0$ ne sont plus « à confirmer »** — les trois portaient
+   les questions 2, 3 et 4. Mesures : sommets sur la ligne 976 px contre 973 px
+   pour le trait $+2$ (tangence, épaisseur de trait comprise) ; apex du premier
+   maximum en $845$ px $\Rightarrow t_1 = 0{,}336\ \text{s}$ ; second maximum en
+   $1076$ px $\Rightarrow$ écart $= 0{,}400\ \text{s}$. Re-dérivations
+   concordantes : $T_0 = 2\pi\sqrt{m/k} = \sqrt{4\pi^2\times0{,}2/50}
+   = 0{,}40\ \text{s}$ ; $x(0) = X_m\cos\varphi = 1\ \text{cm}$ avec
+   $X_m = 2\ \text{cm}$ donne $\cos\varphi = \tfrac12$, et la vitesse initiale
+   négative impose $\sin\varphi>0$, donc $\varphi = +\pi/3\ \text{rad}$ — angle
+   remarquable, ce qui verrouille $X_m = 2\ \text{cm}$ ; enfin
+   $t_1 = T_0(1-\tfrac16) = \tfrac56 T_0 = 0{,}333\ \text{s}$.
+
+*Re-dérivations numériques* : $V_0\cos\alpha = 15{,}22\ \text{m.s}^{-1}$,
+$V_0\sin\alpha = 4{,}94\ \text{m.s}^{-1}$ ; au filet ($x = 11\ \text{m}$),
+$t = 0{,}723\ \text{s}$ et $y = 3{,}96\ \text{m} > H_f = 2{,}4\ \text{m}$ — le
+ballon passe ✓ ; $y(t)=0$ redonne $t_s = 1{,}413\ \text{s}$, ce qui **confirme
+la valeur $1{,}41\ \text{s}$ imprimée** ; $x(t_s) = 21{,}5\ \text{m} >
+D+d = 20\ \text{m}$, donc le ballon retombe **au-delà** de la ligne de fond
+adverse (la réponse attendue à la question 4 est « non »). Partie II :
+$k = 4\pi^2m/T_0^2 = 40\times0{,}2/0{,}16 = 50\ \text{N.m}^{-1}$ ✓ ;
+$\Delta E_{pe} = \tfrac12 k\,(X_m^2 - x(0)^2)
+= \tfrac12\times50\times(4-1)\cdot10^{-4} = 7{,}5\cdot10^{-3}\ \text{J}$.
+Tout se recoupe ; aucun point ne reste indécidable dans cet exercice.
+
+---
+
+## Classement
+
+| Exercice | Barème | Notion(s) cible(s) (slugs `content/pc/`) |
+|---|---|---|
+| Exercice 1 — Partie I (électrolyse du bromure de zinc) | 2,75 pts | `electrolyse` |
+| Exercice 1 — Partie II (dosage de la triméthylamine) | 4,25 pts | `reactions-acido-basiques` |
+| Exercice 2 (diffraction, dispersion, indice) | 3 pts | `propagation-onde-lumineuse` |
+| Exercice 3 — section 1 (charge du condensateur, échelon de tension) | 1,5 pt | `rc-charge` |
+| Exercice 3 — section 2 (oscillations libres RLC, entretien) | 2,25 pts | `rlc-serie` |
+| Exercice 3 — section 3 (circuit bouchon LC, détection AM) | 1 pt | `ondes-em-modulation` |
+| Exercice 4 — Partie I (projectile dans le champ de pesanteur) | 3 pts | `chute-mouvements-plans` + `lois-de-newton` |
+| Exercice 4 — Partie II (pendule élastique horizontal) | 2,25 pts | `systemes-oscillants` + `aspects-energetiques` |
+
+Notes de classement — **révisées à la vérification (2026-08-23)**, contrôle des
+slugs fait contre `content/pc/` : les huit slugs de la table existent, ainsi que
+`dipole-rl`, `lois-de-newton` et `aspects-energetiques`.
+
+- **`dipole-rl` écarté** pour la section 2 de l'exercice 3, contrairement au
+  « recoupement possible » suggéré à la transcription. Le titre de couverture
+  dit bien « décharge dans un dipôle RL », mais c'est le libellé du sujet, pas
+  la physique : l'énoncé fait établir $\ddot q + \tfrac{R}{L}\dot q +
+  \tfrac{1}{LC_0}q = 0$, c'est-à-dire le RLC série amorti puis entretenu. Il n'y
+  a nulle part de réponse d'un dipôle RL à un échelon. `rlc-serie` seul.
+- **`lois-de-newton` ajouté** sur la partie I de l'exercice 4 : la question 1
+  demande explicitement d'appliquer la deuxième loi de Newton pour établir les
+  équations horaires — même arbitrage que sur le projectile du PC SPC 2021
+  rattrapage.
+- **`aspects-energetiques` ajouté** sur la partie II de l'exercice 4, et non
+  plus « signalé pour mémoire » : le slug existe bien sous `content/pc/`, et sa
+  leçon est recentrée (cf. `spec-extension.md`) sur l'énergie des oscillateurs —
+  la question 4 ($\Delta E_{pe}$ d'un pendule élastique) tombe exactement
+  dedans.
+- L'exercice 3 reste un « composite » électricité : le montage de la figure 1
+  est partagé par les trois sections. Cf. l'incohérence de capacité signalée
+  dans l'entrée de l'exercice 3 — les trois sections doivent être converties en
+  exercices **séparés**.
+- L'énergie dissipée par effet Joule de la section 2 de l'exercice 3 relève de
+  `rlc-serie` (bilan énergétique du circuit) et **non** de
+  `aspects-energetiques`, qui porte sur les oscillateurs mécaniques.

@@ -1,0 +1,121 @@
+{
+  "slug": "onde-qui-avance",
+  "viewBox": "0 0 680 360",
+  "label": "Propagation d'une perturbation sur une corde : le point M oscille sur place, sans être transporté.",
+  "layout": "replace",
+  "regions": {
+    "chrome":     { "x":   0, "y":   0, "w": 680, "h":  48 },
+    "stage":      { "x":  16, "y":  48, "w": 648, "h": 250 },
+    "state-slot": { "x": 450, "y":  58, "w": 212, "h":  40 },
+    "footer":     { "x":   0, "y": 298, "w": 680, "h":  62 }
+  },
+  "replaces": [
+    { "beat": "beat-1", "slot": "state-slot", "enter": "state-1", "exit": "state-0" },
+    { "beat": "beat-2", "slot": "state-slot", "enter": "state-2", "exit": "state-1" },
+    { "beat": "beat-3", "slot": "state-slot", "enter": "state-3", "exit": "state-2" }
+  ],
+  "beats": [
+    {
+      "id": "beat-0",
+      "caption": "Au repos : la corde est immobile. La source, à gauche, est prête à donner une impulsion unique vers le haut ; plus loin, le point M attend.",
+      "tweens": []
+    },
+    {
+      "id": "beat-1",
+      "caption": "La perturbation s'est formée et avance le long de la corde. Le point M, lui, n'a pas bougé : la perturbation voyage, la matière attend.",
+      "tweens": [
+        {
+          "target": "#rope-path",
+          "verb": "morph",
+          "to": "#rope-ref-p1",
+          "duration": 0.7,
+          "ease": "power2.inOut",
+          "at": 0
+        },
+        {
+          "target": "#flick-flash",
+          "verb": "pulse-settle",
+          "settleTo": 0,
+          "duration": 0.4,
+          "at": 0
+        },
+        {
+          "target": "#state-1",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.35,
+          "ease": "power3.out",
+          "at": 0.3
+        }
+      ]
+    },
+    {
+      "id": "beat-2",
+      "caption": "La perturbation atteint M : il monte puis redescend, reproduisant le mouvement donné à la source — pendant que la perturbation, elle, continue son chemin plus loin.",
+      "tweens": [
+        {
+          "target": "#rope-path",
+          "verb": "morph",
+          "to": "#rope-ref-p2a",
+          "duration": 0.6,
+          "ease": "power2.inOut",
+          "at": 0
+        },
+        {
+          "target": "#bead",
+          "verb": "morph",
+          "to": "#bead-peak",
+          "duration": 0.6,
+          "ease": "power2.inOut",
+          "at": 0
+        },
+        {
+          "target": "#state-2",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.35,
+          "ease": "power3.out",
+          "at": 0.2
+        },
+        {
+          "target": "#rope-path",
+          "verb": "morph",
+          "to": "#rope-ref-p2b",
+          "duration": 0.6,
+          "ease": "power2.inOut",
+          "at": 0.6
+        },
+        {
+          "target": "#bead",
+          "verb": "morph",
+          "to": "#bead-rest-ref",
+          "duration": 0.6,
+          "ease": "power2.inOut",
+          "at": 0.6
+        }
+      ]
+    },
+    {
+      "id": "beat-3",
+      "caption": "La perturbation s'est éloignée. M est revenu, à peu de choses près, à sa position de repos : ce qui a voyagé jusqu'ici, c'est la perturbation — et l'énergie qu'elle transporte — pas la matière de la corde.",
+      "tweens": [
+        {
+          "target": "#rope-path",
+          "verb": "morph",
+          "to": "#rope-ref-p3",
+          "duration": 0.6,
+          "ease": "power2.inOut",
+          "at": 0
+        },
+        {
+          "target": "#state-3",
+          "verb": "fade",
+          "from": "none",
+          "duration": 0.35,
+          "ease": "power3.out",
+          "at": 0.3
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 515" width="640" height="515"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img"
+     aria-label="Deux diagrammes en bâtons l’un au-dessus de l’autre, sur le même axe et à la même échelle. En haut, la loi de X, le nombre de « oui » : probabilités 0,32 ; 0,38 et 0,30 pour les valeurs 0, 1 et 2. En bas, une autre variable Y, sur les mêmes valeurs : probabilités 0,46 ; 0,10 et 0,44. Une même ligne verticale marque le centre des deux lois, l’espérance 0,98. Les écarts au centre sont les mêmes pour les deux lois : moins 0,98 pour la valeur 0, plus 0,02 pour la valeur 1, plus 1,02 pour la valeur 2. Mais Y met presque tout son poids sur les deux valeurs éloignées, alors que X en garde une bonne part tout près du centre.">
+  <title>Même espérance, dispersion différente : deux lois sur les valeurs 0, 1, 2</title>
+  <!--
+    deux-lois-meme-esperance.svg — figure STAGED (3 étapes), section « La
+    variance et l'écart-type » (probabilites-conditionnelles, variable
+    aléatoire). Correctif 14 de docs/audits/critiques/cadre-GH-pedagogie.md
+    (P2 : la dispersion autour d'un centre, et aucune figure dans la
+    section).
+
+    PLACEMENT : juste après le tableau de X repris (« Reprenons le tableau du
+    paragraphe précédent… »), AVANT « Pourquoi le carré » — l'étape 3 (des
+    écarts négatifs et positifs autour du centre) amène directement la
+    phrase « un écart peut être positif ou négatif ». Aucun point d'arrêt ni
+    « prends position » de la section ne demande quelle loi est la plus
+    dispersée ; le seul point d'arrêt de la section, cp-r5b-carre-esperance,
+    vient PLUS BAS et porte sur E(X²) : la figure n'écrit ni E(X²), ni aucun
+    carré, ni aucune variance.
+
+    LES DEUX LOIS (recalculées en fractions exactes par gen_lois.py) :
+      X — la loi courante de la leçon : P(X=0) = 0,32 ; P(X=1) = 0,38 ;
+          P(X=2) = 0,30. E(X) = 0,38 + 0,60 = 0,98 (imprimé dans la prose).
+          V(X) = 0,6196 (imprimé dans la prose, plus bas) — NON écrit ici.
+      Y — construite pour cette figure : mêmes valeurs, P(Y=0) = 0,46 ;
+          P(Y=1) = 0,10 ; P(Y=2) = 0,44. Somme 1. E(Y) = 0,10 + 0,88 = 0,98,
+          EXACTEMENT celle de X. V(Y) = 0,46·0,9604 + 0,10·0,0004 +
+          0,44·1,0404 = 0,441784 + 0,00004 + 0,457776 = 0,8996
+          (= E(Y²) − 0,9604 = 1,86 − 0,9604) — NON écrite ici : la prose ne la
+          donne pas. Écarts pondérés de Y : −0,4508 + 0,002 + 0,4488 = 0.
+      Nombres absents de checkpoints.yaml, items.yaml, exercises.yaml et
+      bank.yaml de la notion comme loi de probabilité (grep 2026-10-20 ;
+      0,44 et 0,10 y existent comme résultats sans rapport — produit
+      d'événements indépendants, probabilité conditionnelle d'un test).
+
+    GÉOMÉTRIE :
+      valeur v → x_px = 150 + 180·v  (0 → 150, 1 → 330, 2 → 510) ;
+      centre 0,98 → x_px = 326.4. Même axe horizontal, même échelle,
+      les deux panneaux l'un sous l'autre : la ligne du centre est à la
+      MÊME abscisse dans les deux.
+      probabilité p → hauteur 280·p px ; bâtons de largeur 36 centrés sur
+      la valeur. Axe de X en y = 200, axe de Y en y = 440.
+      La ligne du centre traverse le bâton de la valeur 1 (0,98 est à 0,02
+      de 1, soit 3.6 px) : c'est la vérité de cette loi, pas un défaut.
+      Elle s'arrête à chaque axe pour ne pas rayer la graduation « 1 ».
+
+    Rôle des couleurs :
+      bâtons : jeton figure-ink-soft (remplissage 0,45) · probabilités : jeton
+      figure-ink · axes, graduations : jeton figure-ink-soft (chrome neutre)
+      jeton figure-accent : UNE idée — le centre et les distances au centre
+      (ligne de l'espérance, flèches d'écart et leurs valeurs).
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5 — graphe : axes → données →
+    lecture ; axes en chrome permanent) :
+      step-1 : les deux lois (données).
+      step-2 : le centre commun, E(X) = E(Y) = 0,98 (lecture 1).
+      step-3 : les écarts au centre, identiques pour les deux lois ; seuls
+               les poids diffèrent (lecture 2).
+
+    MOUVEMENT — STATIQUE ÉTAGÉ SUFFIT (règle de décision du gabarit v2,
+    case A) : rien n'évolue dans le temps. La dispersion est une FORME — le
+    poids loin du centre ou près de lui — et elle se lit par comparaison de
+    deux lois immobiles, alignées sur le même axe ; l'étagement contrôlé par
+    l'élève (lois, puis centre, puis écarts) fait l'ordre de lecture.
+
+    Les captions sont portées par deux-lois-meme-esperance.stages.json —
+    aucun texte de légende baké ici.
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="22" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">Même espérance, dispersion différente : deux lois sur les valeurs 0, 1, 2</text>
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="32" width="600" height="473" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Axes et graduations — ink-soft, chrome neutre, toujours visibles -->
+  <line x1="110" y1="200" x2="560" y2="200"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <line x1="150" y1="200" x2="150" y2="205"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="150" y="216" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink-soft)">0</text>
+  <line x1="330" y1="200" x2="330" y2="205"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="330" y="216" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink-soft)">1</text>
+  <line x1="510" y1="200" x2="510" y2="205"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="510" y="216" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink-soft)">2</text>
+  <line x1="110" y1="440" x2="560" y2="440"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <line x1="150" y1="440" x2="150" y2="445"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="150" y="456" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink-soft)">0</text>
+  <line x1="330" y1="440" x2="330" y2="445"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="330" y="456" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink-soft)">1</text>
+  <line x1="510" y1="440" x2="510" y2="445"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="510" y="456" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink-soft)">2</text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les deux lois (données)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <text x="40" y="52" font-size="12" font-weight="600"
+          fill="var(--figure-ink)">Loi de X : le nombre de « oui » du tableau</text>
+    <rect x="132" y="110.4" width="36" height="89.6"
+          fill="var(--figure-ink-soft)" fill-opacity="0.45"
+          stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="150" y="103.4" text-anchor="middle" font-size="11.5"
+          fill="var(--figure-ink)">0,32</text>
+    <rect x="312" y="93.6" width="36" height="106.4"
+          fill="var(--figure-ink-soft)" fill-opacity="0.45"
+          stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="330" y="86.6" text-anchor="middle" font-size="11.5"
+          fill="var(--figure-ink)">0,38</text>
+    <rect x="492" y="116" width="36" height="84"
+          fill="var(--figure-ink-soft)" fill-opacity="0.45"
+          stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="510" y="109" text-anchor="middle" font-size="11.5"
+          fill="var(--figure-ink)">0,30</text>
+    <text x="40" y="286" font-size="12" font-weight="600"
+          fill="var(--figure-ink)">Loi de Y : mêmes valeurs, autres probabilités</text>
+    <rect x="132" y="311.2" width="36" height="128.8"
+          fill="var(--figure-ink-soft)" fill-opacity="0.45"
+          stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="150" y="304.2" text-anchor="middle" font-size="11.5"
+          fill="var(--figure-ink)">0,46</text>
+    <rect x="312" y="412" width="36" height="28"
+          fill="var(--figure-ink-soft)" fill-opacity="0.45"
+          stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="330" y="405" text-anchor="middle" font-size="11.5"
+          fill="var(--figure-ink)">0,10</text>
+    <rect x="492" y="316.8" width="36" height="123.2"
+          fill="var(--figure-ink-soft)" fill-opacity="0.45"
+          stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="510" y="309.8" text-anchor="middle" font-size="11.5"
+          fill="var(--figure-ink)">0,44</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — le centre commun : E(X) = E(Y) = 0,98 (lecture 1)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="326.4" y1="60" x2="326.4" y2="74.6"
+          stroke="var(--figure-accent)" stroke-width="1.8" stroke-dasharray="5,4"/>
+    <line x1="326.4" y1="90.6" x2="326.4" y2="200"
+          stroke="var(--figure-accent)" stroke-width="1.8" stroke-dasharray="5,4"/>
+    <text x="334.4" y="70" font-size="11.5" font-weight="600"
+          fill="var(--figure-accent)">E(X) = 0,98</text>
+    <line x1="326.4" y1="294" x2="326.4" y2="393"
+          stroke="var(--figure-accent)" stroke-width="1.8" stroke-dasharray="5,4"/>
+    <line x1="326.4" y1="409" x2="326.4" y2="440"
+          stroke="var(--figure-accent)" stroke-width="1.8" stroke-dasharray="5,4"/>
+    <text x="334.4" y="304" font-size="11.5" font-weight="600"
+          fill="var(--figure-accent)">E(Y) = 0,98</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — les écarts au centre, les mêmes pour X et pour Y
+       (lecture 2 : seuls les poids diffèrent)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- X : flèches partant du centre (326.4) vers 0 et vers 2 -->
+    <line x1="326.4" y1="234" x2="326.4" y2="246"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <line x1="326.4" y1="240" x2="160" y2="240"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <polygon points="150,240 160,236 160,244" fill="var(--figure-accent)"/>
+    <line x1="326.4" y1="240" x2="500" y2="240"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <polygon points="510,240 500,236 500,244" fill="var(--figure-accent)"/>
+    <text x="238.2" y="231" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">écart −0,98</text>
+    <text x="418.2" y="231" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">écart +1,02</text>
+    <text x="330" y="258" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">écart +0,02</text>
+    <!-- Y : flèches partant du centre (326.4) vers 0 et vers 2 -->
+    <line x1="326.4" y1="474" x2="326.4" y2="486"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <line x1="326.4" y1="480" x2="160" y2="480"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <polygon points="150,480 160,476 160,484" fill="var(--figure-accent)"/>
+    <line x1="326.4" y1="480" x2="500" y2="480"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <polygon points="510,480 500,476 500,484" fill="var(--figure-accent)"/>
+    <text x="238.2" y="471" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">écart −0,98</text>
+    <text x="418.2" y="471" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">écart +1,02</text>
+    <text x="330" y="498" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">écart +0,02</text>
+  </g><!-- /step-3 -->
+
+</svg>

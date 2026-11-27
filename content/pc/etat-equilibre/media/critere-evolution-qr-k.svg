@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Critère qualitatif d’évolution : sur l’axe des quotients de réaction Qr, la constante d’équilibre K = 1875 est la valeur cible. À gauche de K, quand Qr,i est inférieur à K — comme le point Qr,i environ égal à 5,4 fois 10 puissance 2, juste après l’ajout de thiocyanate — le système évolue dans le sens direct, Qr augmentant vers K. À droite de K, quand Qr,i est supérieur à K, le système évolue dans le sens inverse, Qr diminuant vers K. Au point Qr = K, le système est déjà à l’équilibre : il n’évolue plus. Révélation progressive en 3 étapes.">
+  <title>Comparer Qr,i à K : le critère d&#8217;évolution</title>
+  <!--
+    critere-evolution-qr-k.svg — STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md
+    §2), 3 étapes, R5 (le critère qualitatif d'évolution).
+
+    Figure sœur de content/pc/evolution-spontanee/media/critere-qr-k.svg
+    (même famille de schéma : un axe de Qr avec K comme pivot), mais ANCRÉE
+    ici à des valeurs réelles du fil rouge Fe3+/SCN- de ce chapitre — cette
+    leçon a déjà établi K = 1875 (R3/R4) et Qr,i ≈ 5,4×10² (R5, exemple
+    travaillé : ajout de SCN- au mélange à l'équilibre). Contrairement à la
+    figure sœur (délibérément générique, K centré par symétrie), CETTE
+    figure place K et Qr,i à une échelle linéaire calculée depuis ces
+    valeurs réelles — pas une position arbitraire — car l'écart K/Qr,i
+    (1875 contre 540, soit un facteur ≈ 3,5) porte un sens pédagogique :
+    le texte dit lui-même "très inférieur à K" (R5, exemple travaillé). Une
+    position à peine à gauche du pivot aurait affaibli cette lecture.
+
+    Échelle (calculée, pas devinée) :
+      origine (Qr = 0)      : x = 90
+      K = 1875               : x = 390   → échelle choisie : 0,16 px/unité
+                                (300 px pour 1875 unités = 300/1875 = 0,16)
+      Qr,i ≈ 5,4×10² (=540)  : x = 90 + 540×0,16 = 176,4
+      extrémité de l'axe (flèche ouverte, aucune valeur n'y est indiquée —
+        l'axe se poursuit, aucun maximum réel n'est fixé) : x = 592
+    L'échelle n'a pas d'autre vocation que ce rapport K/Qr,i : aucune autre
+    graduation numérique n'est portée sur l'axe (pas de "500", "1000"…) —
+    seuls les deux points qui comptent pour cette leçon sont marqués.
+
+    Rôle des couleurs :
+      le pivot K (tige, disque, étiquette "K" et "valeur cible : K = 1875")
+        + les deux flèches d'évolution (sens direct, sens inverse) + leurs
+        points de départ + la bande teintée de chaque région + l'étiquette
+        finale "Qr,i = K → équilibre"                        : --figure-accent
+        (un même foyer répété : la comparaison Qr,i / K, dans ses trois
+        lectures — avant, cas direct, cas inverse)
+      axe, flèche de l'axe, "0"/"Qr", en-têtes "sens direct"/"sens inverse"
+        et les inégalités Qr,i ⋚ K, étiquette générique du point de droite : --figure-ink
+        / --figure-ink-soft — jamais le focus
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5 — geste d'enseignement,
+    reprend l'ordre du rung R5 : poser K comme cible, puis les deux cas de
+    comparaison dans l'ordre des puces du texte, Qr,i < K puis Qr,i > K) :
+      step-1 : l'axe — l'axe de Qr et le pivot K, posé comme valeur cible
+               (K = 1875), avant toute comparaison.
+      step-2 : la région sous K — Qr,i < K : bande teintée, la flèche du
+               sens direct partant du point réel de l'exemple travaillé
+               (Qr,i ≈ 5,4×10², après l'ajout de SCN-) vers K.
+      step-3 : la région au-dessus de K, et l'équilibre — Qr,i > K : bande
+               teintée, la flèche du sens inverse vers K ; plus l'étiquette
+               du point K lui-même : Qr,i = K → équilibre, plus d'évolution.
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — l'axe : Qr et le pivot K, valeur cible
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Comparer Q<tspan dy="3" font-size="8.5">r,i</tspan><tspan dy="-3"> à K : le critère d&#8217;évolution</tspan>
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="20" y="32" width="600" height="250" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Axe des Qr ────────────────────────────────────────── -->
+    <line x1="90" y1="190" x2="592" y2="190"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="604,190 592,185.5 592,194.5" fill="var(--figure-ink-soft)"/>
+    <line x1="90" y1="186" x2="90" y2="194" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="90" y="206" text-anchor="middle" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+    <text x="612" y="194" font-size="12" fill="var(--figure-ink-soft)"
+          ><tspan font-style="italic">Q</tspan><tspan dy="3" font-size="8">r</tspan></text>
+
+    <!-- ── Pivot K = 1875, valeur cible ─────────────────────────── -->
+    <line x1="390" y1="176" x2="390" y2="204"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <circle cx="390" cy="190" r="3.6" fill="var(--figure-accent)"/>
+    <!-- « K » repère une position SUR l'axe : posée à hauteur d'axe, elle
+         était traversée par l'axe lui-même (mesuré 92 %). Elle passe
+         au-dessus de son point. -->
+    <text x="400" y="182" font-style="italic" font-weight="600"
+          font-size="13" fill="var(--figure-accent)">K</text>
+    <text x="390" y="160" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-accent)">valeur cible : K = 1875</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la région sous K : Qr,i &lt; K, sens direct
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Bande teintée : région Qr,i < K -->
+    <rect x="94" y="176" width="296" height="28" rx="4"
+          fill="var(--figure-accent)" fill-opacity="0.10"/>
+
+    <!-- En-tête -->
+    <text x="240" y="100" text-anchor="middle" font-size="12" font-weight="600"
+          fill="var(--figure-ink)">sens direct</text>
+    <text x="240" y="118" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)"
+          ><tspan font-style="italic">Q</tspan><tspan dy="3" font-size="7.5">r,i</tspan><tspan
+          dy="-3"> &lt; K &#8594; Q</tspan><tspan dy="3" font-size="7.5">r</tspan><tspan
+          dy="-3"> augmente</tspan></text>
+
+    <!-- Flèche : depuis le point réel de l'exemple travaillé vers K -->
+    <line x1="176.4" y1="138" x2="378" y2="138"
+          stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+    <polygon points="378,138 366,133.5 366,142.5" fill="var(--figure-accent)"/>
+    <circle cx="176.4" cy="138" r="3.2" fill="var(--figure-accent)"/>
+    <text x="176.4" y="124" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)"
+          ><tspan font-style="italic">Q</tspan><tspan dy="3" font-size="7.5">r,i</tspan><tspan
+          dy="-3"> &#8776; 5,4×10</tspan><tspan dy="-5" font-size="7.5">2</tspan></text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la région au-dessus de K : Qr,i &gt; K, sens inverse,
+                 et l'équilibre au point K lui-même
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Bande teintée : région Qr,i > K -->
+    <rect x="390" y="176" width="198" height="28" rx="4"
+          fill="var(--figure-accent)" fill-opacity="0.10"/>
+
+    <!-- En-tête -->
+    <text x="491" y="100" text-anchor="middle" font-size="12" font-weight="600"
+          fill="var(--figure-ink)">sens inverse</text>
+    <text x="491" y="118" text-anchor="middle" font-size="10.5" fill="var(--figure-ink)"
+          ><tspan font-style="italic">Q</tspan><tspan dy="3" font-size="7.5">r,i</tspan><tspan
+          dy="-3"> &gt; K &#8594; Q</tspan><tspan dy="3" font-size="7.5">r</tspan><tspan
+          dy="-3"> diminue</tspan></text>
+
+    <!-- Flèche : d'un point illustratif de la région vers K -->
+    <line x1="560" y1="138" x2="402" y2="138"
+          stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+    <polygon points="402,138 414,133.5 414,142.5" fill="var(--figure-accent)"/>
+    <circle cx="560" cy="138" r="3.2" fill="var(--figure-accent)"/>
+    <text x="560" y="124" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink)"><tspan font-style="italic">Q</tspan><tspan
+          dy="3" font-size="7.5">r,i</tspan></text>
+
+    <!-- Le point K lui-même : équilibre, plus d'évolution -->
+    <text x="390" y="222" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-accent)"><tspan font-style="italic">Q</tspan><tspan
+          dy="3" font-size="7.5">r,i</tspan><tspan
+          dy="-3"> = K &#8594; équilibre,</tspan></text>
+    <text x="390" y="238" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-accent)">plus d&#8217;évolution</text>
+  </g><!-- /step-3 -->
+
+</svg>

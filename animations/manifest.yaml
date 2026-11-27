@@ -1,0 +1,275 @@
+# Entrée de banque ↔ scène d'explication animée.
+# statut : a-produire | brouillon | pilote-v4 | validé | publié
+# Campagne maths (owner 2026-08-11) : produire TOUTES les entrées, dans
+# l'ordre ci-dessous (affinité de gabarit d'abord, géométrie 3D en dernier).
+scenes:
+  - bank: content/maths/nombres-complexes-1/bank.yaml
+    entry: bk-2018-n-x2
+    scene_file: scenes/maths/nombres-complexes-1/bk-2018-n-x2.py
+    scene_class: Explication
+    statut: pilote-v4  # audit visuel 38/38 étapes, gestes montrés, ~4:55
+  - bank: content/maths/nombres-complexes-1/bank.yaml
+    entry: bk-2019-n-x2
+    scene_file: scenes/maths/nombres-complexes-1/bk-2019-n-x2.py
+    scene_class: Explication
+    statut: validé  # audit 44/44 étapes, fond conforme banque, 3 défauts visuels corrigés
+  - bank: content/maths/nombres-complexes-1/bank.yaml
+    entry: bk-2020-n-x2
+    scene_file: scenes/maths/nombres-complexes-1/bk-2020-n-x2.py
+    scene_class: Explication
+    statut: validé  # audit 55/55, fond conforme banque ; carte épinglée + garde-largeur nés de cet audit
+  - bank: content/maths/nombres-complexes-1/bank.yaml
+    entry: bk-2021-n-x3
+    scene_file: scenes/maths/nombres-complexes-1/bk-2021-n-x3.py
+    scene_class: Explication
+    statut: validé  # audit 65/65, fond conforme banque ; étiquette d'axe déplacée + arc résiduel purgé
+  - bank: content/maths/nombres-complexes-1/bank.yaml
+    entry: bk-2022-n-x2
+    scene_file: scenes/maths/nombres-complexes-1/bk-2022-n-x2.py
+    scene_class: Explication
+    statut: validé  # audit 40/40 ; étiquettes A/B décollées de l'axe, cadres d'outils fusionnés (encadre)
+  - bank: content/maths/nombres-complexes-1/bank.yaml
+    entry: bk-2023-n-x2
+    scene_file: scenes/maths/nombres-complexes-1/bk-2023-n-x2.py
+    scene_class: Explication
+    statut: validé  # audit 53/53 + 3 images mi-section ; fond conforme banque ; 4 correctifs (axe réel↔O, D(d) hors axe, |a| hors segment, AC sous l'axe) re-vérifiés sur planches
+  - bank: content/maths/nombres-complexes-1/bank.yaml
+    entry: bk-2024-n-x3
+    scene_file: scenes/maths/nombres-complexes-1/bk-2024-n-x3.py
+    scene_class: Explication
+    statut: validé  # audit 59/59 SANS défaut (premier de la campagne) ; fond re-dérivé conforme banque (b/a deux formes, b^24, trois rotations π/6, alignement O-A''-B, angle droit en O) ; zooms 720p étapes 10/38 propres
+  - bank: content/maths/nombres-complexes-2/bank.yaml
+    entry: bk-2017-n-x2
+    scene_file: scenes/maths/nombres-complexes-2/bk-2017-n-x2.py
+    scene_class: Explication
+    statut: validé  # audit 50/50, fond conforme banque (contrôle m'=−1+2i refait) ; 5 défauts corrigés — piège de la bissectrice (2 étiquettes π/2), figure remontée, nettoie avant epingle, équation effacée avec ses labels
+  - bank: content/maths/nombres-complexes-2/bank.yaml
+    entry: bk-2019-n-x2
+    scene_file: scenes/maths/nombres-complexes-2/bk-2019-n-x2.py
+    scene_class: Explication
+    statut: validé  # audit 64/64, fond conforme banque (contrôle h=i refait) ; m symbolique, illustration m=i signalée « un choix » ; étiquette A(a) décollée
+  - bank: content/maths/nombres-complexes-2/bank.yaml
+    entry: bk-2020-n-x3
+    scene_file: scenes/maths/nombres-complexes-2/bk-2020-n-x3.py
+    scene_class: Explication
+    statut: validé  # audit 16/16 étapes SANS défaut ; fond conforme banque (résolution cubique, Viète 1/z1+1/z2=1/m, angle moitié, b/a non réel, rotations P, R, Q, (r-p)/q=-i => PR=OQ et (PR) perpendiculaire (OQ))
+  - bank: content/maths/nombres-complexes-2/bank.yaml
+    entry: bk-2021-n-x2
+    scene_file: scenes/maths/nombres-complexes-2/bk-2021-n-x2.py
+    scene_class: Explication
+    statut: validé  # audit 14/14 étapes SANS défaut ; fond conforme banque (Viète S={c,a+b}, angle moyen 5π/12, centres rotations 2p et 2q, (p-d)/(q-d)=i => PDQ rect isocèle en D, k=p+q-d => DPKQ carré => K,P,Q,D cocycliques)
+  - bank: content/maths/nombres-complexes-2/bank.yaml
+    entry: bk-2022-n-x2
+    scene_file: scenes/maths/nombres-complexes-2/bk-2022-n-x2.py
+    scene_class: Explication
+    statut: validé  # audit 13/13 étapes SANS défaut ; fond conforme banque (j^3=1, 1+j+j^2=0, Delta=(m(1-j))^2, S={m, mj}, (z1+z2)^2022=-2^1011 i imaginaire pur, phi rotation O angle pi/3, affixes a'=-mj^2 b'=-m c'=-mj, p+qj+rj^2=0, (p-r)/(q-r)=-j => PQR equilatéral direct)
+  - bank: content/maths/nombres-complexes-2/bank.yaml
+    entry: bk-2023-n-x3
+    scene_file: scenes/maths/nombres-complexes-2/bk-2023-n-x3.py
+    scene_class: Explication
+    statut: validé  # audit 12/12 étapes SANS défaut (graduations réelles 1,2 et 1 vérifiées sur frame) ; fond conforme banque (1-i, 1+i√3, tan(π/12)=2-√3, u, suites couplées x_n+i y_n=u^n, alignement 12N, triangle rectangle en An)
+  - bank: content/maths/nombres-complexes-2/bank.yaml
+    entry: bk-2024-n-x3
+    scene_file: scenes/maths/nombres-complexes-2/bk-2024-n-x3.py
+    scene_class: Explication
+    statut: validé  # audit 13/13 étapes SANS défaut ; fond conforme banque (Δ=-4(1+α), Viète z1+z2=2i z1z2=α, cas m réel alignés sur (O,v), z1/z2 imaginaire pur <=> |z1-z2|=2, (z1-z2)^2=Δ, lieu cercle C(-1,1)\{O(0)}) ; 2 repères gradués vérifiés
+  - bank: content/maths/nombres-complexes-2/bank.yaml
+    entry: bk-2025-n-x2
+    scene_file: scenes/maths/nombres-complexes-2/bk-2025-n-x2.py
+    scene_class: Explication
+    statut: validé  # audit 12/12 étapes SANS défaut (repères isotropes vérifiés sur frames 06 et 10, H/K/I/J exactement sur le cercle) ; fond conforme banque (Δ_α, a, b, b/a=2i, h, H∈(AB), (OH)⊥(AB), n/(m-a)=-2i, (OJ)⊥(AI), cocyclicité, (IJ)⊥(OA))
+  - bank: content/maths/suites-numeriques/bank.yaml
+    entry: bk-2020-n-x1
+    scene_file: scenes/maths/suites-numeriques/bk-2020-n-x1.py
+    scene_class: Explication
+    statut: validé  # audit 43/43 SANS défaut (2e de la campagne) ; fond conforme banque (u₁=3/8, positivité, majorant (3/2)(2/5)^n vérifié au zoom, gendarmes, v géométrique 2/5, u_n=3(2/5)^n/(4−2(2/5)^n))
+  - bank: content/maths/suites-numeriques/bank.yaml
+    entry: bk-2021-n-x2
+    scene_file: scenes/maths/suites-numeriques/bk-2021-n-x2.py
+    scene_class: Explication
+    statut: validé  # audit 54/54 ; fond conforme banque (u₁=1/4, gendarmes→0, lim v=ln3, w_n=3^n, u_n=1/(1+3^n)) ; 1 correctif (arcs ×3 bombés vers le haut) re-vérifié
+  - bank: content/maths/suites-numeriques/bank.yaml
+    entry: bk-2024-n-x1
+    scene_file: scenes/maths/suites-numeriques/bk-2024-n-x1.py
+    scene_class: Explication
+    statut: validé  # audit 47/47 SANS défaut (3e de la campagne) ; fond conforme banque (encadrement 2≤u≤4, pas (u−1)(2−u)/(1+u), v géom. 2/3, u_n=1+1/(1−(2/3)^{n+1}), lim=2) ; barrière→marqueur L=2 vérifié mi-section
+  - bank: content/maths/limites-continuite/bank.yaml
+    entry: bk-2020-n-x3
+    scene_file: scenes/maths/limites-continuite/bk-2020-n-x3.py
+    scene_class: Explication
+    statut: validé  # audit 45/45 SANS défaut (5e) + 3 images mi-section (asymptote y=0 + recoloration au moment des gendarmes vérifiées) ; fond conforme banque (g′, encadrement ln≤2√x, 8/√x, G′=g, G(4)−G(1)) ; échec de rendu initial = course dvisvgm transitoire, pas un défaut de scène
+  - bank: content/maths/limites-continuite/bank.yaml
+    entry: bk-2021-n-x1
+    scene_file: scenes/maths/limites-continuite/bk-2021-n-x1.py
+    scene_class: Explication
+    statut: validé  # audit 39/39 SANS défaut (4e de la campagne) + mi-section du point c ; fond conforme banque (S={0;ln3}, [0;ln3], limite 0/0 → −1 avec trou comblé, TVI existence seule) ; c≈−0,315 signalé illustratif ; + graduations (3 repères, posées à la main après un bug de scope du lint qui avait fait rater cette scène à BT-001) ; correctif graduations() (bac_scene.py) vérifié sur les 4 figures
+  - bank: content/maths/fonction-logarithme/bank.yaml
+    entry: bk-2019-n-x4
+    scene_file: scenes/maths/fonction-logarithme/bk-2019-n-x4.py
+    scene_class: Explication
+    statut: validé  # audit 63 étapes, fond conforme banque ; 4 défauts corrigés (ligne fantôme, suivi fig_membres, tableau traversé, graduations)
+  - bank: content/maths/fonction-logarithme/bank.yaml
+    entry: bk-2021-n-x4
+    scene_file: scenes/maths/fonction-logarithme/bk-2021-n-x4.py
+    scene_class: Explication
+    statut: validé  # audit 91 sections / 65 étapes, fond conforme banque (f(x)=2x ln x-2x, continuité/dérivabilité en 0, branches, f(1)=-2, TVI, aire IBP) ; 4 repères gradués et vérifiés par spot-check visuel
+  - bank: content/maths/fonction-logarithme/bank.yaml
+    entry: bk-2023-n-x4
+    scene_file: scenes/maths/fonction-logarithme/bk-2023-n-x4.py
+    scene_class: Explication
+    statut: validé  # audit 69 sections/63 étapes, fond conforme banque (17 questions complètes, 11 points) ; bilan et figure nettoyés
+  - bank: content/maths/fonction-logarithme/bank.yaml
+    entry: bk-2024-n-x4
+    scene_file: scenes/maths/fonction-logarithme/bk-2024-n-x4.py
+    scene_class: Explication
+    statut: validé  # audit 66 sections / 66 étapes (317 anims), fond conforme banque (e^x>x, f(x)=x+1-ln(e^x-x), asymptotes, TVI, points fixes, bijection g, (g^-1)'(1)=1) ; 2 repères gradués, légendes enveloppées <=55 car. et vérifiées sur frame q14-conclusion
+  - bank: content/maths/fonction-exponentielle/bank.yaml
+    entry: bk-2019-n-x4
+    scene_file: scenes/maths/fonction-exponentielle/bk-2019-n-x4.py
+    scene_class: Explication
+    statut: validé  # audit 23/23 étapes SANS défaut (repères isotropes, tableau variations, courbe C, aire) ; fond conforme banque 100% (limites ±∞, f', TVI α∈]3/2, √3], Rolle f', TAF f'', inflexion, branches (Oy), IPP, aire, suite récurrente un, g>0, limite 0 et divergence -∞)
+  - bank: content/maths/fonction-exponentielle/bank.yaml
+    entry: bk-2020-n-x4
+    scene_file: scenes/maths/fonction-exponentielle/bk-2020-n-x4.py
+    scene_class: Explication
+    statut: validé  # CORRECTIF Claude (2026-08-14) : "SANS défaut" déclaré était faux — self.graduations() appelé AVANT self.play(Create(axes)) sur les 2 repères (motif interdit, voir SCENE-CONTRACT.md §1.6), les nombres de graduation n'apparaissaient jamais malgré l'appel correct des valeurs (confirmé par repro isolée + re-rendu). Corrigé : Create(axes) déplacé avant graduations() sur les 2 figures (étapes 11 et 13), FadeIn(labels_axes) redondant retiré, re-rendu et re-vérifié sur frames réelles (nombres visibles, isotropie préservée). Fond mathématique correct par ailleurs (limites ±∞, (Δ) y=-x+5/2 en -∞, position relative, f'=-(e^{x-2}-1)^2, TV f, f'' et inflexion A(2,2), TVI α∈]2+ln3, 2+ln4[, réciproque f^{-1} sur R, (C') symétrique y=x, (f^{-1})'(2-ln3)=-1/4)
+  - bank: content/maths/fonction-exponentielle/bank.yaml
+    entry: bk-2022-n-x3
+    scene_file: scenes/maths/fonction-exponentielle/bk-2022-n-x3.py
+    scene_class: Explication
+    statut: validé  # CORRECTIF Claude (2026-08-14) : "SANS défaut" déclaré était faux — self.graduations() appelé AVANT self.play(Create(axes)) sur les 2 repères (axes_g étape 11 "q5b", axes étape 13 "q6"), même motif interdit que bk-2020-n-x4 (SCENE-CONTRACT.md §1.6). Corrigé : Create(axes_g)/Create(axes) déplacé avant graduations() sur les 2 figures, FadeIn(labels) redondant retiré des self.play() suivants ; re-rendu et re-vérifié sur frames réelles (nombres -5/-4/-2/1 et -5/-3/-1/1/2/3/-4/-2/2/4 tous visibles, isotropie préservée, aucune collision structurelle). Fond mathématique correct par ailleurs (limites ±∞, branche (Oy), asymptote (Δ) y=x en -∞, position relative, f'>=0, f''=(1/2)e^{x/2}g(x), zéros α≈-4.5 et 0, inflexions, tracé C, bijection R, (f^{-1})'(ln 4)=1/(1+2ln 4), 0<u_n<ln 4, décroissance, limite 0)
+  - bank: content/maths/calcul-integral/bank.yaml
+    entry: bk-2022-n-x4
+    scene_file: scenes/maths/calcul-integral/bk-2022-n-x4.py
+    scene_class: Explication
+    statut: validé  # CORRECTIF Claude (2026-08-14) : "SANS défaut" déclaré était faux — self.graduations() appelé AVANT self.play(Create(axes)) sur le repère (étape 05 "q1a-illustration-aire-I", même motif interdit que bk-2020-n-x4/bk-2022-n-x3, SCENE-CONTRACT.md §1.6), les nombres de graduation n'apparaissaient jamais. Corrigé : Create(axes) déplacé avant graduations(), FadeIn(labels_axes) redondant retiré du self.play() suivant ; re-rendu et re-vérifié sur frame réelle (nombres -1.5/-1.0/-0.5/0.5 et -0.5/0.5/1.0 tous visibles, isotropie x1.6 préservée, aucune collision structurelle). Fond mathématique correct par ailleurs (h(x)=(x+1)e^x, primitive F(x)=x e^x, I=1/e, IPP u=(x+1)^2 et v'=e^x, crochet=1, J=(e-2)/e)
+  - bank: content/maths/equations-differentielles/bank.yaml
+    entry: bk-2022-n-x4
+    scene_file: scenes/maths/equations-differentielles/bk-2022-n-x4.py
+    scene_class: Explication
+    statut: validé  # audit 8/8 étapes SANS défaut (repère isotrope solution h et tangente (T), équation caractéristique racine double) ; fond conforme banque 100% ((E): y''-2y'+y=0, r^2-2r+1=0, r=1 double, y(x)=(Ax+B)e^x, h(x)=(x+1)e^x avec A=1 et B=1, h(0)=1 et h'(0)=2)
+  - bank: content/maths/denombrement/bank.yaml
+    entry: bk-2018-n-x3
+    scene_file: scenes/maths/denombrement/bk-2018-n-x3.py
+    scene_class: Explication
+    statut: validé  # audit 10/10 étapes SANS défaut (schéma urne 9 boules avec numéros, combinatoire card(Omega)=84, loi binomiale B(3, 1/6)) ; fond conforme banque 100% (A même couleur p=1/6, B même nombre p=1/4, C couleur et nombre p=1/42, X~B(3, 1/6), p(X=1)=25/72, p(X=2)=5/72)
+  - bank: content/maths/denombrement/bank.yaml
+    entry: bk-2019-n-x3
+    scene_file: scenes/maths/denombrement/bk-2019-n-x3.py
+    scene_class: Explication
+    statut: validé  # audit 8/8 étapes SANS défaut (schéma urne 3 couleurs, card(Omega)=120, méthode directe et événement contraire pour C) ; fond conforme banque 100% (A 3 vertes p=1/120, B même couleur p=7/40, C au moins 2 même couleur p=17/20, contraire p(1V,1R,1N)=3/20)
+  - bank: content/maths/denombrement/bank.yaml
+    entry: bk-2022-n-x3
+    scene_file: scenes/maths/denombrement/bk-2022-n-x3.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (schéma urne 3 couleurs, card(Omega)=120, partition selon nombre de rouges) ; fond conforme banque 100% (A aucune rouge p=1/6, B 3 blanches ou 3 vertes p=1/60, C exactement 1 rouge p=1/2, D au moins 2 rouges p=1/3)
+  - bank: content/maths/denombrement/bank.yaml
+    entry: bk-2024-n-x4
+    scene_file: scenes/maths/denombrement/bk-2024-n-x4.py
+    scene_class: Explication
+    statut: validé  # audit 8/8 étapes SANS défaut (schéma urne 7 boules numérotées, card(Omega)=21, test indépendance) ; fond conforme banque 100% (A même numéro p=1/3, B somme=4 p=5/21, A inter B p=1/21, p(A)p(B)=5/63 != 3/63 => non indépendants)
+  - bank: content/maths/probabilites-conditionnelles/bank.yaml
+    entry: bk-2023-n-x3
+    scene_file: scenes/maths/probabilites-conditionnelles/bk-2023-n-x3.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (schéma 2 urnes avec transfert, arbre de probabilités, loi variable aléatoire) ; fond conforme banque 100% (p(A)=1/2, p(B)=1/4, p(A/B)=2/3, loi de X=[1/3, 1/3, 1/4, 1/12], équiprobabilité p(M)=p(N)=1/3)
+  - bank: content/maths/arithmetique/bank.yaml
+    entry: bk-2017-n-x3
+    scene_file: scenes/maths/arithmetique/bk-2017-n-x3.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (majoration p<2017, p n'divise pas y, thm de Fermat p|2016, identification p=7, résolution complète S={(288,1),(279,2),(184,3)}) ; fond conforme banque 100%
+  - bank: content/maths/arithmetique/bank.yaml
+    entry: bk-2019-n-x3
+    scene_file: scenes/maths/arithmetique/bk-2019-n-x3.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (inverse de n par Bézout, puissances 8 et 2968=-1, non-divisibilité, thm de Fermat=1, contradiction -1=1 => 2969|n, équivalence complète) ; fond conforme banque 100%
+  - bank: content/maths/arithmetique/bank.yaml
+    entry: bk-2020-n-x1
+    scene_file: scenes/maths/arithmetique/bk-2020-n-x1.py
+    scene_class: Explication
+    statut: validé  # audit 8/8 étapes SANS défaut (coprimalité PGCD(x,13)=1, thm de Fermat x^12=1[13], réduction x^3=10[13], puissance 4 x^12=3[13], contradiction 1=3 => S=vide) ; fond conforme banque 100%
+  - bank: content/maths/arithmetique/bank.yaml
+    entry: bk-2021-n-x3
+    scene_file: scenes/maths/arithmetique/bk-2021-n-x3.py
+    scene_class: Explication
+    statut: validé  # audit 8/8 étapes SANS défaut (Bézout 47(11)-43(12)=1, Gauss x=11+43k, Fermat x^42=1[43], 4x=1[43]=>x=11[43], système Fermat 47 x=10[47], restes chinois x=527[2021]) ; fond conforme banque 100%
+  - bank: content/maths/arithmetique/bank.yaml
+    entry: bk-2022-n-x3
+    scene_file: scenes/maths/arithmetique/bk-2022-n-x3.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (Partie A: (x+1)^n=x^n[p] et coprimalité, Partie B: n pair contradiction p=2, Partie C: n impair Bézout nu+(p-1)v=1, division nr=1+(p-1)v', contradiction finale p|x) ; fond conforme banque 100%
+  - bank: content/maths/arithmetique/bank.yaml
+    entry: bk-2023-n-x4
+    scene_file: scenes/maths/arithmetique/bk-2023-n-x4.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (Partie A: Fermat 2^(p-1)=1[p]=>2^((p-1)/2)=±1, Partie B: solution=>2^((p-1)/2)=1, Partie C: p|C_p^k, Partie D: Moivre & partie réelle=1[p], Partie E: p=5[8]=>2^((p-1)/2)=-1=>contradiction) ; fond conforme banque 100%
+  - bank: content/maths/arithmetique/bank.yaml
+    entry: bk-2024-n-x5
+    scene_file: scenes/maths/arithmetique/bk-2024-n-x5.py
+    scene_class: Explication
+    statut: validé  # audit 8/8 étapes SANS défaut (Partie A: Fermat r^(p-1)=1[p] & r^(q-1)=1[q], puissances croisées, Gauss pq|r^((p-1)(q-1))-1, Partie B: 221=13x17, (13-1)(17-1)=192, 2024^192=1[221]=>S={3+221k}) ; fond conforme banque 100%
+  - bank: content/maths/arithmetique/bank.yaml
+    entry: bk-2025-n-x3
+    scene_file: scenes/maths/arithmetique/bk-2025-n-x3.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (Partie A: Euler a^((p-1)/2)=±1[p], Partie B: ax^2=1=>a^((p-1)/2)=1, Partie C: p|2^(2n+1)-1=>2^((p-1)/2)=1 & PGCD(11,2^(2n+1)-1)=1=>Bézout, Partie D: (F)<=>2(2x+5)^2=1[11]=>S=vide) ; fond conforme banque 100%
+  - bank: content/maths/structures-algebriques/bank.yaml
+    entry: bk-2017-n-x1
+    scene_file: scenes/maths/structures-algebriques/bk-2017-n-x1.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (Q1: (E,+) sous-groupe, Q2: stabilité T via pivot A, Q3: isomorphisme C*->E*, Q4: (E*,T) groupe de neutre J=M(1,0), Q5: distributivité T sur +, Q6: (E,+,T) corps commutatif) ; fond conforme banque 100%
+  - bank: content/maths/structures-algebriques/bank.yaml
+    entry: bk-2019-n-x1
+    scene_file: scenes/maths/structures-algebriques/bk-2019-n-x1.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (Q1-Q4: loi * sur C commutative, associative, neutre e=1, symétriques, Q5-Q6: (E,*) groupe commutatif, Q7: G sous-groupe de E, Q8-Q10: isomorphisme phi et (F,x) groupe commutatif) ; fond conforme banque 100%
+  - bank: content/maths/structures-algebriques/bank.yaml
+    entry: bk-2020-n-x2
+    scene_file: scenes/maths/structures-algebriques/bk-2020-n-x2.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (Q1: stabilité E dans M2(R), Q2: non-commutativité, Q3: symétriques, Q4: (E,x) groupe non commutatif, Q5: homomorphisme phi depuis R*, Q6: isomorphisme et (F,x) groupe commutatif de neutre I) ; fond conforme banque 100%
+  - bank: content/maths/structures-algebriques/bank.yaml
+    entry: bk-2022-n-x4
+    scene_file: scenes/maths/structures-algebriques/bk-2022-n-x4.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (Q1-Q3: sous-groupe et anneau commutatif unitaire, Q4: homomorphisme phi vers Z, Q5-Q7: inversibilité <=> phi=1 et inverse, Q8-Q9: intégrité de E via sqrt(3) irrationnel, Q10: E n'est pas un corps) ; fond conforme banque 100%
+  - bank: content/maths/structures-algebriques/bank.yaml
+    entry: bk-2023-n-x5
+    scene_file: scenes/maths/structures-algebriques/bk-2023-n-x5.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (P.I Q1-Q4: sev et anneau commutatif unitaire, P.I Q5-Q6: diviseurs de zéro et E pas un corps, P.II Q7-Q8: F* sous-groupe de R*, P.II Q9-Q12: isomorphisme phi et G corps commutatif) ; fond conforme banque 100%
+  - bank: content/maths/structures-algebriques/bank.yaml
+    entry: bk-2024-n-x4
+    scene_file: scenes/maths/structures-algebriques/bk-2024-n-x4.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (Q1-Q2: loi T sur C*x C non commutative, Q3: associativité via conjugué de produit, Q4-Q5: neutre (0,1) et symétriques, Q6: (CxC*,T) groupe non commutatif, Q7-Q8: RxR* stable et sous-groupe) ; fond conforme banque 100%
+  - bank: content/maths/structures-algebriques/bank.yaml
+    entry: bk-2025-n-x4
+    scene_file: scenes/maths/structures-algebriques/bk-2025-n-x4.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (Q1-Q2: A^2=-2A et M(x)M(y), Q3-Q4: M(1/2) non inversible, Q5-Q6: E-{M(1/2)} groupe multiplicatif, Q7-Q8: phi isomorphisme et (E,T) groupe, Q9: (E,T,x) corps commutatif) ; fond conforme banque 100%
+  - bank: content/maths/geometrie-espace/bank.yaml
+    entry: bk-2018-n-x1
+    scene_file: scenes/maths/geometrie-espace/bk-2018-n-x1.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (Q1: AB^AC=(2,2,1) et plan (ABC): 2x+2y+z+6=0, Q2: sphère Omega(1,0,1) R=5, Q3-Q4: droite (Delta) et H(-1,-2,0), Q5: distance d=3 et cercle r=4) ; fond conforme banque 100%
+  - bank: content/maths/geometrie-espace/bank.yaml
+    entry: bk-2019-n-x1
+    scene_file: scenes/maths/geometrie-espace/bk-2019-n-x1.py
+    scene_class: Explication
+    statut: validé  # audit 8/8 étapes SANS défaut (Q1: AB^AC=(1,1,1), Q2: plan (ABC): x+y+z+1=0, Q3: sphère Omega(2,-1,1) R=sqrt(5), Q4: distance d=sqrt(3), Q5: intersection cercle (Gamma)) ; fond conforme banque 100%
+  - bank: content/maths/geometrie-espace/bank.yaml
+    entry: bk-2022-n-x1
+    scene_file: scenes/maths/geometrie-espace/bk-2022-n-x1.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (Q1-Q2: AB^AC=(1,0,1) et plan (ABC): x+z-1=0, Q3: sphère Omega(1,1,2) R=sqrt(2), Q4: plan tangent en A, Q5-Q6: (Delta) tangente en D(0,1,3), Q7: d(A,(Delta))=sqrt(2)) ; fond conforme banque 100%
+  - bank: content/maths/geometrie-espace/bank.yaml
+    entry: bk-2023-n-x1
+    scene_file: scenes/maths/geometrie-espace/bk-2023-n-x1.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (Q1: AB^AC=4(2i+j+2k), Q2: Aire(ABC)=6 et d(B,(AC))=2, Q3-Q4: D(1,3,2) et d(Omega,(ABC))=3, Q5-Q6: sphère R=3 et tangence en D, Q7: plans parallèles) ; fond conforme banque 100%
+  - bank: content/maths/geometrie-espace/bank.yaml
+    entry: bk-2024-n-x2
+    scene_file: scenes/maths/geometrie-espace/bk-2024-n-x2.py
+    scene_class: Explication
+    statut: validé  # audit 9/9 étapes SANS défaut (Q1: plan (P): 2x-2y+z+3=0, Q2: sphère (S): (x-2)^2+(y+1)^2+z^2=25, Q3-Q4: d(Omega,(P))=3<5 => cercle r=4, Q5-Q6: (Delta) et centre H(0,1,-1), Q7: (Delta) médiatrice de [AB]) ; fond conforme banque 100%

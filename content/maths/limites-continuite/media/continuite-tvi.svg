@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img"
+     aria-label="Théorème des valeurs intermédiaires : courbe continue et strictement décroissante de f(x) = x cube moins 3x sur l’intervalle [-1,1], avec f(-1) = 2 et f(1) = -2. La droite y = k = 0,5, comprise entre f(1) et f(-1), coupe la courbe en un point c d’abscisse environ -0,168, projeté sur l’axe des x.">
+  <title>Théorème des valeurs intermédiaires</title>
+  <!--
+    continuite-tvi.svg — graphe STAGED du TVI (docs/design/LESSON-EXPERIENCE-SPEC.md §2),
+    construit sur la branche du R6 déjà donnée dans le texte (pas une fonction inventée) :
+
+      f(x) = x^3 - 3x, strictement DÉCROISSANTE sur [-1,1], avec
+      f(-1) = 2 et f(1) = -2 — ce sont exactement les valeurs du tableau
+      de variations fourni au R6 pour ce sous-intervalle.
+
+    a = -1, b = 1, f(a) = 2, f(b) = -2.
+
+    k choisi strictement entre f(b) et f(a), donc dans ]-2,2[, DIFFÉRENT
+    de 0 pour que la droite y=k (accent) reste visuellement distincte de
+    l'axe des x (qui, lui, passe par le point (0, f(0)=0) de la courbe —
+    un k=0 aurait confondu les deux droites à l'écran).
+    k = 0,5.
+
+    Résolution de x^3 - 3x = 0,5 sur [-1,1] par la méthode de Newton
+    (x_{n+1} = x_n - f(x_n)/f'(x_n), départ x0=-0,17) :
+      converge vers c ≈ -0,168255 (racine réelle unique sur [-1,1] car f
+      y est strictement monotone — pas de forme close simple pour ce k,
+      contrairement au cas k=0 du R5 où c est le nombre étudié dans
+      l'exemple travaillé).
+
+    Repère écran (calculé, pas deviné) :
+      px_x(x) = 80 + (x+1.4) * 178.57   [x affiché de -1,4 à 1,4]
+      px_y(y) = 340 - (y+2.6) * 57.69   [y affiché de -2,6 à 2,6]
+      -> x=0 : px_x=330 (axe des y)      y=0 : px_y=190 (axe des x)
+      -> a=-1 : px_x=151.4  f(a)=2 : px_y=74.6
+      -> b=1  : px_x=508.6  f(b)=-2 : px_y=305.4
+      -> k=0,5 : px_y=161.2             c≈-0,168 : px_x=299.95
+
+    La courbe est une polyligne de 22 points calculés exactement via
+    f(x)=x^3-3x (pas de bézier devinée), incluant le point exact
+    (c, k) où la droite y=k coupe la courbe.
+
+    Rôle des couleurs :
+      la courbe f (le sujet général)        : --figure-ink
+      la droite y=k et le point c (le TVI)   : --figure-accent
+      repères a, b, f(a), f(b), axes         : --figure-ink-soft (neutre)
+
+    Mise en étapes (ordre canonique graphe, §2.5) :
+      step-1 : les axes.
+      step-2 : les données — la courbe, la boîte formule, les repères
+               a, b, f(a), f(b).
+      step-3 : la lecture — la droite y=k et le point c, ajoutés en
+               dernier pour correspondre à la prose du R5 (l'énoncé du
+               TVI se lit APRÈS avoir vu la courbe et ses bornes).
+    Les captions sont portées par continuite-tvi.stages.json — aucun
+    texte de légende baké ici (même convention que asymptotes.svg).
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Théorème des valeurs intermédiaires
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="20" y="32" width="600" height="308" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — les axes
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="50" y1="190" x2="605" y2="190"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="605,190 593,185.5 593,194.5" fill="var(--figure-ink-soft)"/>
+    <line x1="330" y1="335" x2="330" y2="45"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="330,45 325.5,56 334.5,56" fill="var(--figure-ink-soft)"/>
+    <text x="611" y="194" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">x</text>
+    <text x="338" y="52" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">y</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — les données : la courbe, la boîte formule,
+       les repères a, b, f(a), f(b)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Boîte formule (ink : décrit la courbe générale, pas le TVI lui-même) -->
+    <rect x="30" y="38" width="190" height="30" rx="5"
+          fill="var(--figure-ink)" fill-opacity="0.08"/>
+    <text x="125" y="58" text-anchor="middle" font-size="12.5"
+          fill="var(--figure-ink)"><tspan font-style="italic">f</tspan>(<tspan
+          font-style="italic">x</tspan>) = <tspan font-style="italic">x</tspan><tspan
+          dy="-4" font-size="8">3</tspan><tspan dy="4"> - 3</tspan><tspan
+          font-style="italic">x</tspan></text>
+
+    <!-- Repères neutres a et b : chute vers l'axe des x et vers l'axe des y -->
+    <line x1="151.4" y1="74.6" x2="151.4" y2="190"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="151.4" y1="74.6" x2="330" y2="74.6"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="508.6" y1="305.4" x2="508.6" y2="190"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="508.6" y1="305.4" x2="330" y2="305.4"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+
+    <!-- Courbe f(x) = x^3 - 3x sur [-1,1], strictement décroissante -->
+    <path d="
+      M151.4,74.6 L169.3,76.3 L187.1,81.1 L205,88.6 L222.9,98.6
+      L240.7,110.7 L258.6,124.4 L276.4,139.6 L294.3,155.8 L299.95,161.2
+      L312.1,172.7 L330,190 L347.9,207.2 L365.7,224.2 L383.6,240.3
+      L401.4,255.5 L419.3,269.3 L437.1,281.4 L455,291.4 L472.9,298.9
+      L490.7,303.7 L508.6,305.4
+    " fill="none" stroke="var(--figure-ink)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Points a et b sur la courbe (neutres) -->
+    <circle cx="151.4" cy="74.6" r="3" fill="var(--figure-ink)"/>
+    <circle cx="508.6" cy="305.4" r="3" fill="var(--figure-ink)"/>
+
+    <!-- Graduation et étiquette sur l'axe des x : a -->
+    <line x1="151.4" y1="186" x2="151.4" y2="194"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="151.4" y="206" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">a</tspan> = -1</text>
+
+    <!-- Graduation et étiquette sur l'axe des x : b -->
+    <line x1="508.6" y1="186" x2="508.6" y2="194"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="508.6" y="206" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">b</tspan> = 1</text>
+
+    <!-- Graduations et étiquettes sur l'axe des y : f(a), f(b) -->
+    <line x1="326" y1="74.6" x2="334" y2="74.6"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <!-- Les trois étiquettes d'ordonnée passent AU-DESSUS de leur
+         graduation. Centrées dessus, elles étaient traversées par la
+         horizontale de rappel qui va du point à l'axe (mesuré 99 % pour
+         « f(a) = 2 ») et, pour « k = 0,5 », par la droite y = k
+         elle-même, qui court sur toute la largeur du cadre : l'étiquette
+         de la droite était écrite SUR la droite. -->
+    <text x="318" y="69.6" text-anchor="end" font-size="11"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">f</tspan>(<tspan
+          font-style="italic">a</tspan>) = 2</text>
+
+    <line x1="326" y1="305.4" x2="334" y2="305.4"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <text x="318" y="300.4" text-anchor="end" font-size="11"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">f</tspan>(<tspan
+          font-style="italic">b</tspan>) = -2</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la lecture : la droite y=k et le point c
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Droite y = k (accent, le sujet du théorème) -->
+    <line x1="60" y1="161.2" x2="600" y2="161.2"
+          stroke="var(--figure-accent)" stroke-width="1.8"
+          stroke-dasharray="6,4" stroke-linecap="round"/>
+    <line x1="326" y1="161.2" x2="334" y2="161.2"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <!-- « k = 0,5 » nomme la droite y = k : elle se pose donc au BOUT GAUCHE
+         de cette droite, là où rien ne passe. Près de l'axe, elle était
+         d'abord écrite SUR la droite, puis — remontée — traversée par la
+         courbe, qui coupe y = k à deux pas de là. C'est le point même de la
+         figure : cet endroit est occupé. -->
+    <text x="68" y="156.2" text-anchor="start" font-size="11"
+          fill="var(--figure-accent)"><tspan font-style="italic">k</tspan> = 0,5</text>
+
+    <!-- Point c : intersection courbe / droite y=k (accent, le résultat du théorème) -->
+    <line x1="299.95" y1="161.2" x2="299.95" y2="190"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-dasharray="5,3"/>
+    <circle cx="299.95" cy="161.2" r="3.5" fill="var(--figure-accent)"/>
+
+    <!-- Graduation et étiquette sur l'axe des x : c -->
+    <line x1="299.95" y1="186" x2="299.95" y2="194"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <text x="299.95" y="206" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)"><tspan font-style="italic">c</tspan> ≈ -0,168</text>
+  </g><!-- /step-3 -->
+
+</svg>

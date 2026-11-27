@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 460"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Diagramme des niveaux d’énergie de l’atome d’hydrogène : trois niveaux quantifiés (n=1, n=2, n=3) et la limite d’ionisation E=0 en pointillés au sommet. Une flèche d’absorption relie n=1 à n=2 (ΔE=10,2 eV) ; une flèche d’émission relie n=3 à n=2 (ΔE≈1,89 eV). Chaque transition échange un photon d’énergie ΔE = h·ν.">
+  <title>Niveaux d’énergie de l’atome d’hydrogène</title>
+  <!--
+    niveaux-energie.svg — diagramme STATIQUE des niveaux d'énergie quantifiés.
+
+    COMPROMIS ASSUMÉ (à signaler) : la leçon (R4) énonce la quantification de
+    l'énergie et la relation ΔE = h·ν de façon QUALITATIVE — elle "s'arrête au
+    seuil" de la mécanique quantique et ne donne AUCUNE valeur numérique de
+    niveau. Ce diagramme rend ce constat concret en utilisant les vraies
+    valeurs de l'atome d'hydrogène (Z=1 — le même atome analysé en R1/R2/R3 de
+    cette leçon), via la formule usuelle E_n = -13,6/n² eV (résultat standard
+    de la mécanique quantique, hors-programme de ce chapitre mais physiquement
+    exact et réel, pas inventé). C'est le seul écart par rapport au texte : un
+    habillage numérique réel d'un énoncé que la leçon ne fait qu'affirmer en
+    mots.
+
+    Géométrie (calculée, pas devinée) :
+      échelle : y = 90 + (-E) × (290/13,6)   [90 = y à E=0 ; 380 = y à E=-13,6]
+      Vérification des 3 niveaux tracés :
+        n=1  E=-13,6 eV  → y = 90 + 290           = 380
+        n=2  E=-3,4  eV  → y = 90 + 290×(1/4)     = 162,5
+        n=3  E=-1,51 eV  → y = 90 + 290×(1/9)     ≈ 122,2   (-13,6/9 = -1,5111…)
+      n≥4 non tracés : les marches deviennent trop resserrées pour rester
+      lisibles à cette échelle (mentionné en légende, pas dessiné — coherence
+      principle : pas de détail qui ne resterait pas lisible).
+
+      Transitions choisies (réelles, hydrogène) :
+        absorption n=1→n=2 : ΔE = 13,6 - 3,4   = 10,2 eV
+        émission   n=3→n=2 : ΔE = 3,4 - 1,511  ≈ 1,89 eV  (raie Hα, série de Balmer —
+          voir spectre-raies.svg, même atome)
+
+    Rôle des couleurs :
+      niveaux (lignes horizontales) + leurs étiquettes numériques : --figure-ink
+        (structure de fond — pas le point focal de CETTE figure)
+      axe E, limite d'ionisation pointillée + son étiquette : --figure-ink-soft
+        (chrome neutre)
+      flèches de transition (absorption/émission) + leurs étiquettes ΔE=h·ν :
+        --figure-accent (LE point focal unique : l'échange quantifié de photon)
+      encadré formule Eₙ : neutre (--figure-grid), volontairement PAS accent —
+        c'est un rappel de contexte, pas le focus de la figure.
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Niveaux d’énergie de l’atome d’hydrogène — E<tspan dy="3" font-size="8.5">n</tspan><tspan dy="-3"> = -13,6/n² (eV)</tspan>
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="380" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- Axe vertical E — ink-soft, chrome neutre -->
+  <line x1="110" y1="402" x2="110" y2="55"
+        stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+  <polygon points="110,55 105.5,66 114.5,66" fill="var(--figure-ink-soft)"/>
+  <text x="100" y="50" text-anchor="end" font-size="11" fill="var(--figure-ink-soft)">
+    <tspan font-style="italic">E</tspan><tspan> (eV)</tspan>
+  </text>
+
+  <!-- Limite d'ionisation E = 0, pointillée -->
+  <line x1="110" y1="90" x2="490" y2="90"
+        stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <line x1="106" y1="90" x2="114" y2="90" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  <text x="498" y="87" font-size="10.5" fill="var(--figure-ink-soft)">E = 0</text>
+  <text x="498" y="99" font-size="9" fill="var(--figure-ink-soft)">(ionisation, n → ∞)</text>
+
+  <!-- Encadré formule — neutre, volontairement pas accent -->
+  <rect x="300" y="40" width="250" height="28" rx="6" fill="var(--figure-grid)"/>
+  <text x="425" y="59" text-anchor="middle" font-size="11" fill="var(--figure-ink)">
+    E<tspan dy="3" font-size="8">n</tspan><tspan dy="-3"> = -13,6 / n</tspan><tspan dy="-5" font-size="8">2</tspan><tspan dy="5"> (eV)</tspan>
+  </text>
+
+  <g id="step-1">
+    <!-- ══════════════════════════════════════════════════════
+         Niveaux quantifiés — ink (structure, pas le focus)
+         ══════════════════════════════════════════════════════ -->
+
+    <!-- n = 3 -->
+    <line x1="150" y1="122.2" x2="480" y2="122.2" stroke="var(--figure-ink)" stroke-width="2"/>
+    <text x="488" y="126" font-size="10.5" fill="var(--figure-ink)">n = 3  (-1,51 eV)</text>
+
+    <!-- n = 2 -->
+    <line x1="150" y1="162.5" x2="480" y2="162.5" stroke="var(--figure-ink)" stroke-width="2"/>
+    <text x="488" y="166" font-size="10.5" fill="var(--figure-ink)">n = 2  (-3,4 eV)</text>
+
+    <!-- n = 1 — état fondamental : trait plus épais (structure, pas couleur) -->
+    <line x1="150" y1="380" x2="480" y2="380" stroke="var(--figure-ink)" stroke-width="2.6"/>
+    <text x="488" y="384" font-size="10.5" fill="var(--figure-ink)">n = 1  (-13,6 eV)</text>
+  </g>
+
+  <g id="step-2">
+    <!-- Absorption n = 1 → n = 2 -->
+    <line x1="210" y1="375" x2="210" y2="167.5" stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <polygon points="210,167.5 205,179.5 215,179.5" fill="var(--figure-accent)"/>
+    <text x="225" y="262" font-size="10.5" font-weight="600" fill="var(--figure-accent)">absorption : n = 1 → n = 2</text>
+    <text x="225" y="278" font-size="10.5" fill="var(--figure-accent)">ΔE = h·ν = 10,2 eV</text>
+  </g>
+
+  <g id="step-3">
+    <!-- Émission n = 3 → n = 2 -->
+    <line x1="340" y1="127.2" x2="340" y2="157.5" stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <polygon points="340,157.5 335,145.5 345,145.5" fill="var(--figure-accent)"/>
+    <line x1="340" y1="157.5" x2="340" y2="200" stroke="var(--figure-accent)" stroke-width="0.9" stroke-dasharray="3,2"/>
+    <text x="348" y="206" font-size="10.5" font-weight="600" fill="var(--figure-accent)">émission : n = 3 → n = 2</text>
+    <text x="348" y="222" font-size="10.5" fill="var(--figure-accent)">ΔE = h·ν ≈ 1,89 eV</text>
+  </g>
+
+</svg>

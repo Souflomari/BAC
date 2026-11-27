@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Chimiosmose et ATP synthase, sur la membrane interne de la mitochondrie. En haut, l’espace intermembranaire ; en bas, la matrice ; entre les deux, la membrane repliée en crêtes, où sont insérés les complexes de la chaîne respiratoire. Les coenzymes réduits NADH,H+ et FADH2, venus de la matrice, cèdent leurs électrons au premier complexe ; les électrons passent de complexe en complexe, et à chaque transfert des ions H+ sont pompés vers l’espace intermembranaire. Les ions H+ s’accumulent d’un côté de la membrane, denses en haut, rares en bas — un gradient, une énergie potentielle comme l’eau retenue derrière un barrage. Les H+ ne peuvent revenir dans la matrice qu’en traversant l’ATP synthase, dont le flux actionne l’assemblage d’ADP et de phosphate en ATP. Au bout de la chaîne, le dioxygène accepte les électrons et des ions H+ pour former de l’eau — sans cet accepteur final, toute la chaîne se bloquerait ; le dioxygène ne fabrique pas l’ATP lui-même, il ne fait que débloquer la chaîne.">
+  <title>La chimiosmose : le gradient de H⁺ actionne l’ATP synthase</title>
+
+  <!--
+    chimiosmose-atp-synthase.svg — figure STAGÉE, 5 étapes
+    (docs/design/LESSON-EXPERIENCE-SPEC.md §2), R4.
+
+    Placement : après "Le rôle exact du dioxygène" (juste après la phrase
+    qui clôt sur "…distingue la respiration cellulaire de la
+    fermentation (chapitre 7)"), avant "Pourquoi les crêtes mitochondriales".
+
+    Reprend les conventions de mitochondrie de respiration-
+    fermentation.svg (même leçon, R7) — ici recentrées sur la membrane
+    interne (crêtes) elle-même : coupe transversale, espace
+    intermembranaire en haut, matrice en bas.
+
+    BAC-SCOPE : "complexes de la chaîne" — jamais nommés/numérotés
+    I à IV. L'ATP synthase, elle, EST nommée (le texte la nomme aussi).
+
+    Mise en scène :
+      step-1 : la membrane (crêtes), les complexes (génériques, non
+               numérotés), les coenzymes réduits arrivant depuis la
+               matrice et cédant leurs électrons.
+      step-2 : AJOUT — relais d'électrons complexe→complexe, pompage de
+               H+ (3 flèches montantes) vers l'espace intermembranaire.
+      step-3 : AJOUT — H+ denses en haut / rares en bas, + la métaphore
+               du barrage (mur + niveau d'eau retenue).
+      step-4 : AJOUT — l'ATP synthase (structure distincte, rotor), le
+               flux de H+ qui la traverse et assemble ADP + Pi en ATP —
+               la SEULE idée que cette figure marque en accent
+               (DESIGN-BIBLE §6) : le paiement final en ATP.
+      step-5 : AJOUT — le dioxygène accepte électrons + H+ → 2 H2O ;
+               note "sans lui, tout se bloque" ; équation-écho. En ink
+               neutre (PAS accent) — pour que ce ne soit visuellement
+               PAS confondu avec le paiement en ATP de l'étape 4 : O2
+               débloque, il ne fabrique pas l'ATP.
+
+    Classification : WIDE-BAND (pas de plafond 680px) — cette coupe
+    transversale horizontale (3 complexes + ATP synthase + le contraste
+    de densité H+ haut/bas) a besoin de la largeur pleine bande pour
+    rester lisible sur 5 étapes cumulatives, contrairement aux 3 autres
+    figures de cette vague (schémas compacts, plafonnés).
+
+    Simplification pédagogique assumée : les complexes de la chaîne sont
+    des blocs génériques identiques (aucun nommé/numéroté) ; la membrane
+    est une coupe simplifiée (crêtes suggérées par quelques ondulations,
+    pas une reconstitution anatomique) — hors du programme de ce rung,
+    qui porte sur le principe chimiosmotique, pas l'ultrastructure exacte.
+  -->
+
+  <!-- Titre -->
+  <text x="500" y="24" text-anchor="middle"
+        font-size="13" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    La chimiosmose : le gradient de H⁺ actionne l’ATP synthase
+  </text>
+
+  <!-- ══════════════════════════ STEP 1 — la membrane, les complexes, les coenzymes ══════════════════════ -->
+  <g id="step-1">
+    <rect x="40" y="55" width="920" height="110" rx="10"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+    <text x="60" y="75" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">espace intermembranaire</text>
+
+    <rect x="40" y="245" width="920" height="185" rx="10"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+    <text x="60" y="265" font-size="10.5" font-weight="600" fill="var(--figure-ink-soft)">matrice</text>
+
+    <!-- membrane interne, repliée en crêtes -->
+    <path d="M40,205 q38,-18 77,0 q38,18 77,0 q38,-18 77,0 q38,18 77,0 q38,-18 77,0 q38,18 77,0"
+          fill="none" stroke="var(--figure-ink)" stroke-width="2.2"/>
+
+    <!-- 3 complexes génériques (jamais nommés I à IV) -->
+    <rect x="160" y="180" width="60" height="60" rx="8" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <rect x="360" y="180" width="60" height="60" rx="8" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <rect x="560" y="180" width="60" height="60" rx="8" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+
+    <line x1="160" y1="162" x2="620" y2="162" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="4,3"/>
+    <text x="390" y="150" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">complexes de la chaîne respiratoire</text>
+
+    <!-- coenzymes réduits, venus de la matrice -->
+    <polygon points="147,290 169,274 211,274 233,290 211,306 169,306"
+             fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <text x="190" y="294" text-anchor="middle" font-size="9" font-weight="700" fill="var(--figure-ink)"
+          ><tspan font-style="italic">NADH</tspan>,<tspan font-style="italic">H</tspan><tspan dy="-4" font-size="6.5">+</tspan></text>
+
+    <polygon points="147,345 169,329 211,329 233,345 211,361 169,361"
+             fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <text x="190" y="349" text-anchor="middle" font-size="9" font-weight="700" fill="var(--figure-ink)"
+          ><tspan font-style="italic">FADH</tspan><tspan dy="3" font-size="6.5">2</tspan></text>
+
+    <path d="M190,274 L190,240" fill="none" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <polygon points="190,240 184,252 196,252" fill="var(--figure-ink)"/>
+    <path d="M200,329 L210,240" fill="none" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <polygon points="210,240 202,251 213,252" fill="var(--figure-ink)"/>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════ STEP 2 — relais d'électrons, pompage de H+ ══════════════════════ -->
+  <g id="step-2">
+    <path d="M220,210 L360,210" fill="none" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <polygon points="360,210 348,204 348,216" fill="var(--figure-ink)"/>
+    <text x="290" y="200" text-anchor="middle" font-size="9" font-style="italic" fill="var(--figure-ink)">e⁻</text>
+
+    <path d="M420,210 L560,210" fill="none" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <polygon points="560,210 548,204 548,216" fill="var(--figure-ink)"/>
+    <text x="490" y="200" text-anchor="middle" font-size="9" font-style="italic" fill="var(--figure-ink)">e⁻</text>
+
+    <path d="M235,235 L235,120" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <polygon points="235,120 229,132 241,132" fill="var(--figure-ink-soft)"/>
+    <text x="235" y="110" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--figure-ink)">H⁺</text>
+
+    <path d="M435,235 L435,120" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <polygon points="435,120 429,132 441,132" fill="var(--figure-ink-soft)"/>
+    <text x="435" y="110" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--figure-ink)">H⁺</text>
+
+    <path d="M635,235 L635,120" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.5"/>
+    <polygon points="635,120 629,132 641,132" fill="var(--figure-ink-soft)"/>
+    <text x="635" y="110" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--figure-ink)">H⁺</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════ STEP 3 — le gradient : dense en haut, rare en bas ══════════════════════ -->
+  <g id="step-3">
+    <g fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1">
+      <circle cx="100" cy="75" r="6"/><circle cx="140" cy="115" r="6"/><circle cx="200" cy="95" r="6"/>
+      <circle cx="260" cy="135" r="6"/><circle cx="320" cy="75" r="6"/><circle cx="380" cy="120" r="6"/>
+      <circle cx="600" cy="95" r="6"/><circle cx="650" cy="140" r="6"/><circle cx="700" cy="75" r="6"/>
+      <circle cx="750" cy="115" r="6"/><circle cx="800" cy="90" r="6"/><circle cx="840" cy="130" r="6"/>
+    </g>
+    <g font-size="7.5" font-weight="700" fill="var(--figure-ink)" text-anchor="middle">
+      <!-- Le premier H⁺ descend de 30 px : à (100;78) il tombait au milieu de
+           « espace intermembranaire » (60..195 de large) et on lisait
+           « espac⊕intermembranaire » (recouvrement mesuré 67 %). -->
+      <text x="100" y="108">+</text><text x="140" y="118">+</text><text x="200" y="98">+</text>
+      <text x="260" y="138">+</text><text x="320" y="78">+</text><text x="380" y="123">+</text>
+      <text x="600" y="98">+</text><text x="650" y="143">+</text><text x="700" y="78">+</text>
+      <text x="750" y="118">+</text><text x="800" y="93">+</text><text x="840" y="133">+</text>
+    </g>
+    <text x="500" y="75" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--figure-ink-soft)">réservoir de H⁺ (haute concentration)</text>
+
+    <g fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1">
+      <circle cx="350" cy="400" r="6"/><circle cx="650" cy="400" r="6"/>
+    </g>
+    <g font-size="7.5" font-weight="700" fill="var(--figure-ink)" text-anchor="middle">
+      <text x="350" y="403">+</text><text x="650" y="403">+</text>
+    </g>
+    <text x="500" y="410" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--figure-ink-soft)">H⁺ rares (basse concentration)</text>
+
+    <!-- métaphore du barrage -->
+    <rect x="930" y="65" width="10" height="90" fill="var(--figure-ink-soft)"/>
+    <g stroke="var(--figure-ink-soft)" stroke-width="1" opacity="0.55">
+      <line x1="890" y1="80" x2="925" y2="80"/>
+      <line x1="890" y1="100" x2="925" y2="100"/>
+      <line x1="890" y1="120" x2="925" y2="120"/>
+    </g>
+    <text x="935" y="168" font-size="8.5" font-style="italic" fill="var(--figure-ink-soft)">barrage</text>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════ STEP 4 — l'ATP synthase : le paiement ══════════════════════ -->
+  <g id="step-4">
+    <rect x="800" y="170" width="100" height="80" rx="14"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="2.2"/>
+    <circle cx="850" cy="210" r="20" fill="none" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <line x1="850" y1="210" x2="868" y2="210" stroke="var(--figure-ink)" stroke-width="1.2"/>
+    <line x1="850" y1="210" x2="841" y2="225.6" stroke="var(--figure-ink)" stroke-width="1.2"/>
+    <line x1="850" y1="210" x2="841" y2="194.4" stroke="var(--figure-ink)" stroke-width="1.2"/>
+    <text x="850" y="155" text-anchor="middle" font-size="11" font-weight="700" fill="var(--figure-ink)">ATP synthase</text>
+
+    <path d="M850,140 L850,260" fill="none" stroke="var(--figure-accent)" stroke-width="2.6"/>
+    <polygon points="850,260 843,247 857,247" fill="var(--figure-accent)"/>
+    <text x="850" y="128" text-anchor="middle" font-size="10" font-weight="700" fill="var(--figure-accent)">H⁺</text>
+
+    <rect x="800" y="280" width="100" height="32" rx="7"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="850" y="300" text-anchor="middle" font-size="10" fill="var(--figure-ink)">ADP + <tspan font-style="italic">P</tspan><tspan dy="3" font-size="7">i</tspan></text>
+
+    <path d="M850,312 L850,340" fill="none" stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <polygon points="850,340 844,330 856,330" fill="var(--figure-accent)"/>
+
+    <rect x="800" y="344" width="100" height="38" rx="9"
+          fill="var(--figure-accent)" fill-opacity="0.12" stroke="var(--figure-accent)" stroke-width="2.6"/>
+    <text x="850" y="369" text-anchor="middle" font-size="13" font-weight="700" fill="var(--figure-accent)">ATP</text>
+  </g><!-- /step-4 -->
+
+  <!-- ══════════════════════════ STEP 5 — le dioxygène, accepteur final ══════════════════════ -->
+  <g id="step-5">
+    <path d="M620,210 L658,210" fill="none" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <polygon points="658,210 646,204 646,216" fill="var(--figure-ink)"/>
+    <text x="639" y="200" text-anchor="middle" font-size="9" font-style="italic" fill="var(--figure-ink)">e⁻</text>
+
+    <circle cx="680" cy="210" r="22" fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <text x="680" y="214" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-ink)"
+          ><tspan font-style="italic">O</tspan><tspan dy="4" font-size="8">2</tspan></text>
+
+    <path d="M680,232 L685,270" fill="none" stroke="var(--figure-ink)" stroke-width="1.5"/>
+    <polygon points="685,270 678,259 690,258" fill="var(--figure-ink)"/>
+
+    <rect x="650" y="270" width="70" height="30" rx="7"
+          fill="var(--figure-surface)" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="685" y="290" text-anchor="middle" font-size="10" font-weight="700" fill="var(--figure-ink)"
+          >2 <tspan font-style="italic">H</tspan><tspan dy="3" font-size="7">2</tspan><tspan dy="-3" font-style="italic">O</tspan></text>
+
+    <text x="685" y="320" text-anchor="middle" font-size="9" font-style="italic" fill="var(--figure-ink-soft)">sans O₂ : la chaîne se bloque</text>
+
+    <text x="500" y="465" text-anchor="middle" font-size="11.5" font-weight="600" fill="var(--figure-ink)"
+          ><tspan font-style="italic">O</tspan><tspan dy="3" font-size="8">2</tspan><tspan dy="-3"> + 4</tspan><tspan font-style="italic">e</tspan><tspan dy="-4" font-size="8">−</tspan><tspan dy="4"> + 4</tspan><tspan font-style="italic">H</tspan><tspan dy="-4" font-size="8">+</tspan><tspan dy="4"> → 2</tspan><tspan font-style="italic">H</tspan><tspan dy="3" font-size="8">2</tspan><tspan dy="-3" font-style="italic">O</tspan></text>
+  </g><!-- /step-5 -->
+
+</svg>

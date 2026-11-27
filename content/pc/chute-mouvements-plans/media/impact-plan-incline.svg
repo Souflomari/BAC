@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 430" width="600" height="430"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Trajectoire d’une bille lancée horizontalement à 14 m/s depuis le sommet O d’une pente qui descend, d’angle β (tan β = 0,75) : la parabole y = −0,025 x² et la droite de la pente y = −0,75 x se croisent au point de chute E, à x_E = 30 m et y_E = −22,5 m ; la distance parcourue le long de la pente vaut OE = 37,5 m.">
+  <title>Point de chute sur une pente qui descend — chute libre et mouvements plans</title>
+  <!--
+    impact-plan-incline.svg — content/pc/chute-mouvements-plans/lesson.md,
+    R5, "Exemple travaillé : le point de chute sur une pente qui descend".
+    STAGED (LESSON-EXPERIENCE-SPEC.md §2.5 — graphe, toujours stagé, ordre
+    axes → données → lecture) :
+      step-1 : le repère (O,x,y), la pente (angle β) et v0, horizontale, à O.
+      step-2 : la trajectoire — la parabole calculée.
+      step-3 : la lecture — le point de chute E, ses deux guides (x_E, y_E),
+               et la distance réelle le long de la pente, OE.
+
+    Données numériques (texte) :
+      v0 = 14 m/s, horizontal (v0x = v0, v0y = 0)  ⇒  cas α = 0
+      pente : sinβ = 0,60, cosβ = 0,80, tanβ = 0,75
+      trajectoire : y(x) = −g/(2v0²)·x² = −9,8/392·x² = −0,025 x²
+      pente (sol)  : y_plan(x) = −x·tanβ = −0,75 x
+      E : x_E = 0,75/0,025 = 30 m ; y_E = −0,025×30² = −22,5 m
+          (contrôle : −0,75×30 = −22,5 m — les deux courbes s'accordent)
+      OE = x_E/cosβ = 30/0,80 = 37,5 m
+          (contrôle Pythagore : √(30²+22,5²) = √1406,25 = 37,5 m)
+
+    Contrôle des points de la parabole (demandé) :
+      x=10 → y = −0,025×100  = −2,5 m   ✓
+      x=20 → y = −0,025×400  = −10  m   ✓
+      x=30 → y = −0,025×900  = −22,5 m  ✓ (= E, et = la droite de pente en x=30)
+
+    Repère écran (calculé, pas deviné) — échelle ISOTROPE, 12 px/m sur les
+    DEUX axes. Elle était anisotrope (15 px/m en x, 10 px/m en y) : la pente
+    tracée valait alors 0,5 au lieu de 0,75, soit un angle de 26,6° dessiné
+    sous l'étiquette « β » d'un angle de 36,9° — sur la figure même dont
+    cos β = 0,80 est toute la leçon (OE = x_E / cos β). Ici l'angle dessiné
+    EST β : arctan 0,75 = 36,87°.
+      scale = 12 px/m (x et y)
+      origine O (x=0, y=0)          : (95, 85)
+      X(x) = 95 + 12·x
+      Y(y) = 85 − 12·y   (y en mètres, négatif sous le plan de lancement)
+
+    Points de la parabole y=−0,025x² (pas de 2,5 m), convertis par X(x),Y(y) :
+      x=0     y=0         → (95,  85)
+      x=2,5   y=−0,15625  → (125, 86,875)
+      x=5,0   y=−0,625    → (155, 92,5)
+      x=7,5   y=−1,40625  → (185, 101,875)
+      x=10,0  y=−2,5      → (215, 115)
+      x=12,5  y=−3,90625  → (245, 131,875)
+      x=15,0  y=−5,625    → (275, 152,5)
+      x=17,5  y=−7,65625  → (305, 176,875)
+      x=20,0  y=−10,0     → (335, 205)
+      x=22,5  y=−12,65625 → (365, 236,875)
+      x=25,0  y=−15,625   → (395, 272,5)
+      x=27,5  y=−18,90625 → (425, 311,875)
+      x=30,0  y=−22,5     → (455, 355)          ← E
+      (contrôle de l'angle : de (95,85) à (455,355), Δy/Δx = 270/360 = 0,75 ✓)
+
+    La droite de la pente y=−0,75x passe par les DEUX mêmes points (95,85)
+    et (455,355) que la parabole à x=30 — c'est la définition même de E, donc
+    un seul segment sert de tracé "sol" ; le tronçon O→E est repeint plus
+    épais (accent) au stage 3 pour incarner OE. Le sol est prolongé jusqu'à
+    x=32,5 m (point (485, 372,5)) pour montrer que la pente continue au-delà
+    du point de chute réel.
+
+    v0 est tracé HORIZONTAL (cas limite α=0, cf. R3) : ligne (95,76)→(150,76),
+    légèrement au-dessus de l'axe Ox pour rester visuellement distinct de lui
+    (même position logique : à l'origine, horizontal, vers la droite).
+
+    L'angle β est marqué par un petit arc de rayon 28 px entre la référence
+    horizontale pointillée (95,85)-(133,85) et la pente (de 0° à 36,87°) ;
+    l'étiquette « β » est posée juste au-delà de l'arc, dans le coin entre la
+    pente et la parabole — vérifié : en X = 143, la parabole est en Y = 89,8
+    et la pente en Y = 121,0, le glyphe (Y ≈ 96 à 106) tient entre les deux.
+
+    Rôle des couleurs :
+      parabole (trajectoire, donnée)         : --figure-accent
+      OE (segment de lecture, accent, épais) : --figure-accent
+      E (point), ses guides, x_E, y_E        : --figure-ink-soft (guides) /
+                                                --figure-accent (le point E)
+      sol / pente, axes, β                   : --figure-ink-soft
+      v0, « O », « E »                       : --figure-ink
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le repère, la pente (angle β) et v0
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <rect x="25" y="38" width="550" height="345" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <text x="300" y="22" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Le point de chute sur une pente qui descend
+    </text>
+
+    <!-- Sol / pente : y = −0,75 x, de O jusqu'à x=32,5 m (au-delà de E) -->
+    <line x1="95" y1="85" x2="485" y2="372.5"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+
+    <!-- Axe Oy (vertical, vers le haut) -->
+    <line x1="95" y1="375" x2="95" y2="60"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="95,48 90.5,60 99.5,60" fill="var(--figure-ink-soft)"/>
+
+    <!-- Axe Ox (horizontal, vers la droite) -->
+    <line x1="95" y1="85" x2="530" y2="85"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="542,85 530,80.5 530,89.5" fill="var(--figure-ink-soft)"/>
+
+    <!-- Référence horizontale pointillée, pour l'angle β -->
+    <line x1="95" y1="85" x2="133" y2="85"
+          stroke="var(--figure-ink-soft)" stroke-width="1.3" stroke-dasharray="4,3"/>
+
+    <!-- Arc de l'angle β (rayon 28 px, de l'horizontale à la pente : 36,87°) -->
+    <path d="M123,85 L122.64,89.49 L121.56,93.85 L119.80,97.99 L117.40,101.80"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="143" y="106" text-anchor="middle" font-size="12" font-style="italic"
+          fill="var(--figure-ink-soft)">β</text>
+
+    <!-- v0 : horizontal, à O, vers la droite (cas α = 0) -->
+    <line x1="95" y1="76" x2="150" y2="76"
+          stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="162,76 150,71 150,81" fill="var(--figure-ink)"/>
+    <text x="123" y="62" text-anchor="middle" font-size="13" font-style="italic"
+          fill="var(--figure-ink)">v<tspan dy="3" font-size="8.5">0</tspan></text>
+
+    <!-- Étiquettes -->
+    <text x="87" y="58" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">y</text>
+    <text x="550" y="89" text-anchor="start" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">x</text>
+    <text x="83" y="100" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">O</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — la trajectoire : la parabole calculée
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <path d="
+      M95,85
+      L125,86.875 L155,92.5 L185,101.875 L215,115
+      L245,131.875 L275,152.5 L305,176.875 L335,205
+      L365,236.875 L395,272.5 L425,311.875 L455,355
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.6"
+      stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — la lecture : E, ses guides (x_E, y_E), et OE
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Guides pointillés vers les axes -->
+    <line x1="455" y1="355" x2="455" y2="85"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-dasharray="4,3"/>
+    <line x1="455" y1="355" x2="95" y2="355"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-dasharray="4,3"/>
+
+    <!-- Coches sur les axes -->
+    <line x1="455" y1="80" x2="455" y2="90" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="90" y1="355" x2="100" y2="355" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+
+    <!-- Étiquettes x_E, y_E -->
+    <text x="455" y="72" text-anchor="middle" font-size="11"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">x</tspan><tspan
+          dy="3" font-size="7">E</tspan><tspan dy="-3"> = 30 m</tspan></text>
+    <text x="104" y="344" text-anchor="start" font-size="10.5"
+          fill="var(--figure-ink-soft)"><tspan font-style="italic">y</tspan><tspan
+          dy="3" font-size="7">E</tspan><tspan dy="-3"> = −22,5 m</tspan></text>
+
+    <!-- OE : segment de lecture, accent, épais, par-dessus le sol -->
+    <line x1="95" y1="85" x2="455" y2="355"
+          stroke="var(--figure-accent)" stroke-width="3.2" stroke-linecap="round"/>
+    <text x="240" y="255" text-anchor="middle" font-size="12"
+          fill="var(--figure-accent)">OE = 37,5 m</text>
+
+    <!-- Point de chute E -->
+    <circle cx="455" cy="355" r="3.5" fill="var(--figure-accent)"/>
+    <text x="466" y="346" text-anchor="start" font-size="12" font-style="italic"
+          fill="var(--figure-ink)">E</text>
+  </g><!-- /step-3 -->
+
+</svg>

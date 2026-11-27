@@ -1,70 +1,20 @@
-# Documentation structure
+# La documentation
 
-This file explains how the project's documentation is organized and what
-each layer is for. It is a map, not content.
+> Réécrite le 2026-10-22 (ADR 0042). Peu de documents, chacun avec un rôle.
 
-The documentation is layered by *kind of question it answers*. Each
-document has one job; keeping them separate keeps each one stable as the
-others evolve.
-
----
-
-## The layers
-
-### `docs/product/VISION.md` — *why and what*
-The canonical product vision. What the app is, who it serves, how learning
-works, how it should feel. The north star the entire project serves. It is
-**stable** — it changes rarely, and only when the vision itself shifts,
-never to accommodate a build constraint. Every other document and every
-agent answers to this one.
-
-### `docs/RULES.md` — *how we work*
-The build discipline and rules of work: cadence, how agents operate, the
-content pipeline, production safety as operating procedure. It **evolves**
-as the build is figured out. Kept separate from the vision so that changing
-how we work never muddies what we're building.
-*(Status: being defined.)*
-
-### `.claude/agents/*.md` — *who does what*
-The specialist subagents Claude Code uses. Each owns a lane and routes
-rather than reaching outside it. Loaded per task by Claude Code.
-*(Status: roster under revision.)*
-
-### `docs/grounding/` — *where we are*
-Current-state documents, reconciled against the actual repo:
-- `architecture.md` — what exists today (stack, structure, conventions).
-- `schema-reconciliation.md` — the database state and migration path.
-- `known-issues.md` — the catalogued, severity-scored issue list.
-
-These are **not write-once.** They are reconciled whenever they drift, and
-always after a dormancy or a major change. When stale, proposed
-reconciliations live in `docs/reestablish-state/` pending review.
-
-### `docs/decisions/*.md` — *what we decided and why*
-The ADR (Architecture Decision Record) trail. Numbered sequentially,
-append-only. Each records a decision, its context, its consequences, and a
-"Retractions and Corrections" section (present even when empty). This is
-the project's memory of *why* things are the way they are — referenced for
-history, not edited after the fact.
-
-### `CLAUDE.md` (repo root) — *the index*
-Read automatically by Claude Code every session. Short. Orients and points
-to the documents above; carries only the most essential always-on facts
-(the stack, the production-safety non-negotiables, the open decisions).
-Deliberately does not contain the full vision or rules — those are linked,
-not duplicated.
-
----
-
-## The rule of thumb
-
-- Deciding *what to build or why* → `VISION.md`.
-- Deciding *how to do the work* → `RULES.md`.
-- Doing a *specific task* → the relevant agent in `.claude/agents/`.
-- Asking *what's the current state* → `docs/grounding/`.
-- Asking *why was this decided* → `docs/decisions/`.
-- Starting any session → Claude Code reads `CLAUDE.md`, which points here.
-
-When two documents seem to conflict, the order of authority is:
-**VISION → RULES → agents.** The vision wins, or it gets revisited
-deliberately — never overridden by accident.
+| Dossier ou fichier | Rôle |
+|---|---|
+| [`product/VISION.md`](product/VISION.md) | ce que l'application est, et pourquoi : la boussole |
+| [`Rules/RULES.md`](Rules/RULES.md) | les règles de travail, sur une page |
+| [`ETAT.md`](ETAT.md) | où on en est ; les décisions attendues du propriétaire |
+| [`bible/`](bible/README.md) | la bible du bac : chaque notion, ce que l'examen demande et comment l'enseigner |
+| [`referentiel/`](referentiel/README.md) | les cadres de référence officiels 2025, mot pour mot |
+| [`refonte/`](refonte/00-plan.md) | le plan de refonte et ses trois études (programme, compréhension profonde, audit), les 4 directions de design |
+| [`sujets/`](sujets/) | les annales transcrites, rangées par notion (entrées du futur générateur d'exercices) |
+| [`product/DESIGN-BIBLE.md`](product/DESIGN-BIBLE.md), [`design/`](design/) | les règles et spécifications d'interface (jetons, anatomies de page, états des composants, mode examen, modèle apprenant…) |
+| [`grounding/architecture.md`](grounding/architecture.md) | l'architecture de l'application |
+| [`pipeline/`](pipeline/) | les deux procédures de production encore ouvertes : synchronisation et bascule du moteur |
+| [`decisions/`](decisions/) | les ADR, en ajout seul : l'histoire des décisions |
+| [`audits/`](audits/) | deux études gardées pour le futur générateur (ressources arabophones, distracteurs sans étiquette) |
+| [`cadre/`](cadre/) | l'ancien référentiel, en cours de remplacement par `referentiel/` |
+| [`LOCAL-TRANSITION.md`](LOCAL-TRANSITION.md) | installer le projet et travailler en local |

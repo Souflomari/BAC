@@ -1,0 +1,389 @@
+notion: rlc-serie
+skill_code: rlc_serie
+
+# ──────────────────────────────────────────────────────────────────────────────
+# IN-LESSON CHECKPOINT ITEMS  (D4 of spec-design-pass.md)
+#
+# These are FORMATIVE, calm-core probes placed inside the lesson — NOT the end
+# bank. They share the same item schema as items.yaml but carry NO score, streak,
+# or tally fields. Wrong-answer feedback names the wrong physical model, not just
+# the fact of being wrong. The end-bank ≥3-per-misconception floor lives in
+# items.yaml and is NOT altered by these checkpoints.
+#
+# IDs MATCH the lesson-marker ids in spec-design-pass.md §D4:
+#   cp-r3-m1  (after R3) — probes M1
+#   cp-r2-m4  (after R2) — probes M4
+#   cp-r4-m5  (after R4) — probes M5
+#   cp-r7-m8  (after R7) — probes M8
+#
+# Boundary guard (§0.4 / D0) is upheld across all four items:
+#   • No closed-form damped solution, no pseudo-période as f(R,L,C).
+#   • No damping coefficient / decrement / exponential envelope formula.
+#   • No résonance, impédance, phaseurs, notation complexe, puissance alternative.
+#   • Entretien framed strictly as Joule-loss compensation restoring the FREE
+#     regime at T₀ — never as a forced/driven regime.
+#   • Pseudo-période measured off the trace, never computed from R,L,C.
+#
+# Clone / share note (D4 §D4 coverage note):
+#   cp-r3-m1 is a CLONE of RLC-M1-1 (same stem, same choices, same id family).
+#   cp-r2-m4 is a CLONE of RLC-M4-1 (same stem, same choices, same id family).
+#   cp-r7-m8 is a CLONE of RLC-M8-1 (same stem, same choices, same id family).
+#   cp-r4-m5 is NEW (new lightweight item not present in items.yaml).
+#   Coverage tally in items.yaml is NOT adjusted — no double-counting.
+# ──────────────────────────────────────────────────────────────────────────────
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1  |  id: cp-r3-m1  |  placed AFTER R3
+  #        Probes: M1 (resistance-entretient-oscillations)
+  #        Source: REUSE of RLC-M1-1 distinguishing stem (spec §1 M1)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-m1
+    rung: "R3"
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [checkpoint, formative, misconception_driven, rlc_serie]
+    primary_misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
+    item_source: clone_of_RLC-M1-1
+    lesson_placement: after_R3
+
+    stem: |
+      Dans un circuit RLC série en oscillations libres, on diminue progressivement
+      la résistance $R$ jusqu'à la rendre négligeable ($R \to 0$).
+      Que deviennent les oscillations de $u_C(t)$ ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Elles persistent sans s'amortir : le circuit entre en régime périodique."
+        correct: true
+        feedback: |
+          Exact. Sans résistance, le circuit est un LC idéal : l'énergie placée
+          sur le condensateur oscille indéfiniment entre $E_C$ et $E_L$ sans aucune
+          perte. $R$ était le frein — le supprimer libère l'oscillation parfaite.
+
+      - id: B
+        text: "Elles s'arrêtent, car plus rien n'apporte l'énergie qui les entretenait."
+        correct: false
+        misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
+        feedback: |
+          Modèle détecté : « $R$ est le moteur des oscillations. »
+          C'est l'inverse. $R$ ne fournit jamais d'énergie — elle ne fait que
+          dissiper (effet Joule, $P = Ri^2 \geq 0$). Supprimer $R$ supprime
+          l'amortissement, pas les oscillations : sans frein, le circuit oscille
+          parfaitement et indéfiniment.
+
+      - id: C
+        text: "Elles s'amortissent bien plus vite qu'auparavant et disparaissent."
+        correct: false
+        misconception: mc.physics.rlc_serie.plus-de-R-oscille-plus-vite
+        feedback: |
+          Modèle détecté : confusion entre le sens de l'effet de $R$.
+          Moins de $R$ signifie moins de dissipation Joule, donc moins
+          d'amortissement — pas plus. L'amortissement est proportionnel à $Ri^2$ :
+          réduire $R$ vers zéro le réduit vers zéro.
+
+      - id: D
+        text: "Leur période propre $T_0$ augmente fortement avec la baisse de $R$."
+        correct: false
+        misconception: null
+        feedback: |
+          La période propre $T_0 = 2\pi\sqrt{LC}$ dépend uniquement de $L$ et $C$.
+          Modifier $R$ ne change ni $L$ ni $C$, donc ne change pas $T_0$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2  |  id: cp-r2-m4  |  placed AFTER R2
+  #        Probes: M4 (T0-depend-de-R)
+  #        Source: REUSE of RLC-M4-1 distinguishing stem (spec §1 M4)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-m4
+    rung: "R2"
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [checkpoint, formative, misconception_driven, rlc_serie]
+    primary_misconception: mc.physics.rlc_serie.T0-depend-de-R
+    item_source: clone_of_RLC-M4-1
+    lesson_placement: after_R2
+
+    stem: |
+      Dans un circuit RLC série en régime peu amorti, quelle est l'expression
+      de la période propre $T_0$ des oscillations ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "$T_0 = 2\\pi\\sqrt{LC}$"
+        correct: true
+        feedback: |
+          Exact. L'équation du circuit idéal ($R = 0$) donne
+          $L\ddot{q} + \tfrac{q}{C} = 0$ — $R$ n'y figure nulle part.
+          La pulsation propre est $\omega_0 = 1/\sqrt{LC}$,
+          d'où $T_0 = 2\pi\sqrt{LC}$ : seulement $L$ et $C$.
+
+      - id: B
+        text: "$T_0 = 2\\pi\\sqrt{RC}$"
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        feedback: |
+          Modèle détecté : importation de $\tau = RC$ du chapitre RC dans la
+          formule de $T_0$.
+          $\sqrt{RC}$ est la constante de charge du circuit RC — un temps de
+          charge, pas une période d'oscillation. Ici $R$ ne figure pas dans
+          l'équation différentielle idéale ; la période ne peut donc pas en dépendre.
+
+      - id: C
+        text: "$T_0 = 2\\pi\\sqrt{L/C}$"
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        feedback: |
+          Erreur dimensionnelle : $[L/C] = \text{H/F} = \Omega^2$, donc
+          $\sqrt{L/C}$ a les dimensions d'une résistance — pas d'un temps.
+          La formule correcte est $\sqrt{LC}$, dont l'unité est bien la seconde.
+
+      - id: D
+        text: "$T_0 = RC$"
+        correct: false
+        misconception: mc.physics.rlc_serie.T0-depend-de-R
+        feedback: |
+          Modèle détecté : confusion entre $T_0$ et la constante de temps RC.
+          $RC = \tau$ est la constante de temps du circuit RC (chapitre précédent) ;
+          c'est un temps de charge, sans rapport avec la période d'oscillation.
+          De plus, $R$ n'entre pas dans $T_0$.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3  |  id: cp-r4-m5  |  placed AFTER R4
+  #        Probes: M5 (pseudo-periode-egale-periode-propre)
+  #        Source: NEW lightweight checkpoint (spec D4 §CP-3)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-m5
+    rung: "R4"
+    habilete: application_experimentale
+    skill_code: rlc_serie
+    tags: [checkpoint, formative, misconception_driven, rlc_serie, document_experimental]
+    primary_misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+    item_source: new
+    lesson_placement: after_R4
+
+    stem: |
+      Sur une trace pseudo-périodique affichée à l'oscilloscope, on repère deux
+      maximums successifs de $u_C(t)$.
+      Le temps qui les sépare (la pseudo-période $T$) :
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          existe et vaut approximativement $T_0 = 2\pi\sqrt{LC}$
+          pour un faible amortissement.
+        correct: true
+        feedback: |
+          Exact. L'espacement entre deux pics consécutifs est régulier — c'est
+          ce qu'on appelle la pseudo-période $T$. Elle est mesurable sur le
+          graphe, et vaut approximativement $T_0$ quand l'amortissement est faible.
+          Ce n'est pas une égalité exacte : c'est une approximation utile.
+
+      - id: B
+        text: |
+          n'existe pas, car l'amplitude qui diminue empêche de parler de période.
+        correct: false
+        misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        feedback: |
+          Modèle détecté : « une trace amortie n'a pas de période. »
+          C'est faux. Ce qui diminue, c'est l'amplitude des pics — pas leur
+          espacement. Le temps entre deux pics consécutifs est constant : on peut
+          toujours le mesurer et l'appeler pseudo-période. La pseudo-période
+          existe bien.
+
+      - id: C
+        text: |
+          est exactement égale à $2\pi\sqrt{LC}$ quel que soit l'amortissement.
+        correct: false
+        misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        also_reveals: [mc.physics.rlc_serie.cas-amorti-solution-sinusoidale-fermee]
+        feedback: |
+          Modèle détecté : « $T = T_0$ exactement, comme dans le cas idéal. »
+          Ce n'est pas une égalité exacte : $T \approx T_0$ est une approximation
+          valable pour un faible amortissement. Pour un amortissement plus fort,
+          l'écart peut devenir perceptible. On mesure $T$ sur le graphe ; on ne
+          le calcule pas à partir de $R$, $L$, $C$.
+
+      - id: D
+        text: |
+          augmente d'un pic au suivant, car les oscillations ralentissent
+          à mesure que l'amplitude décroît.
+        correct: false
+        misconception: mc.physics.rlc_serie.pseudo-periode-egale-periode-propre
+        also_reveals: [mc.physics.rlc_serie.plus-de-R-oscille-plus-vite]
+        feedback: |
+          Modèle détecté : confusion entre décroissance d'amplitude et ralentissement
+          du rythme.
+          L'espacement entre les pics reste constant tout au long du régime
+          pseudo-périodique : c'est l'amplitude qui décroît, pas la fréquence.
+          Mesurer plusieurs intervalles successifs sur le graphe le confirme.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4  |  id: cp-r7-m8  |  placed AFTER R7
+  #        Probes: M8 (entretien-est-regime-force)
+  #        Source: REUSE of RLC-M8-1 distinguishing stem (spec §1 M8)
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r7-m8
+    rung: "R7"
+    habilete: résolution
+    skill_code: rlc_serie
+    tags: [checkpoint, formative, misconception_driven, rlc_serie, entretien]
+    primary_misconception: mc.physics.rlc_serie.entretien-est-regime-force
+    item_source: clone_of_RLC-M8-1
+    lesson_placement: after_R7
+
+    stem: |
+      On entretient les oscillations d'un circuit RLC à l'aide d'un générateur
+      délivrant une tension $u_G(t) = k \cdot i(t)$.
+      Quel est le rôle de ce dispositif et que vaut la période des oscillations
+      entretenues ?
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: |
+          Il compense l'énergie dissipée par effet Joule ; les oscillations se font
+          à la période propre $T_0 = 2\pi\sqrt{LC}$.
+        correct: true
+        feedback: |
+          Exact. Avec $k = R$, le terme d'amortissement $(R - k)\dot{q} = 0$
+          disparaît de l'équation : le circuit se comporte comme un LC idéal et
+          oscille librement à $T_0 = 2\pi\sqrt{LC}$.
+          Le générateur restitue à chaque cycle exactement l'énergie dissipée
+          dans $R$ — il compense la fuite Joule, il ne fixe aucune fréquence.
+
+      - id: B
+        text: |
+          Il impose sa propre fréquence au circuit (régime forcé) : la période
+          dépend du générateur.
+        correct: false
+        misconception: mc.physics.rlc_serie.entretien-est-regime-force
+        feedback: |
+          Modèle détecté : confusion entre entretien et régime forcé.
+          Le générateur $u_G = k \cdot i$ est proportionnel au courant
+          qui circule déjà dans le circuit — il ne lui impose pas un rythme
+          extérieur. Avec $k = R$, il annule l'amortissement et restaure
+          l'oscillation libre : la période est $T_0 = 2\pi\sqrt{LC}$, déterminée
+          par $L$ et $C$ seuls, pas par $k$.
+
+      - id: C
+        text: "Il augmente la résistance effective du circuit, amplifiant l'amortissement."
+        correct: false
+        misconception: null
+        feedback: |
+          Non. Avec $k = R$, le terme $(R - k) = 0$ dans l'ODE : le générateur
+          annule exactement l'effet de $R$, il ne l'augmente pas.
+
+      - id: D
+        text: |
+          Il rend la période dépendante de $k$ :
+          $T = 2\pi\sqrt{LC} \cdot f(k)$.
+        correct: false
+        misconception: mc.physics.rlc_serie.entretien-est-regime-force
+        also_reveals: [mc.physics.rlc_serie.T0-depend-de-R]
+        feedback: |
+          Modèle détecté : « le générateur ou $k$ modifie la période. »
+          Avec $k = R$, l'ODE devient $L\ddot{q} + \tfrac{q}{C} = 0$ —
+          $k$ a entièrement disparu de l'équation. La période est
+          $T_0 = 2\pi\sqrt{LC}$, indépendante de $k$.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# CHECKPOINT COVERAGE NOTE
+#
+# These 4 items do NOT alter the end-bank coverage floor in items.yaml.
+# The clones (cp-r3-m1, cp-r2-m4, cp-r7-m8) are the same items as
+# RLC-M1-1, RLC-M4-1, RLC-M8-1 surfaced inline; they are NOT counted
+# again in the per-misconception tally. cp-r4-m5 is a new item but is
+# NOT added to the end-bank count either — it exists only as a formative
+# checkpoint. Per-misconception counts in items.yaml remain authoritative:
+#
+#   M1 — 4 end-bank items (floor: ≥3)  ✓
+#   M4 — 5 end-bank items (floor: ≥3)  ✓
+#   M5 — 3 end-bank items (floor: ≥3)  ✓
+#   M8 — 3 end-bank items (floor: ≥3)  ✓
+#
+# All other misconceptions (M2, M3, M6, M7) unaffected; their floor counts
+# from items.yaml stand unchanged.
+#
+# BOUNDARY CHECK (§0.4 / D0):
+#   cp-r3-m1 — correct answer: oscillations persist (régime périodique, free). ✓
+#   cp-r2-m4 — correct answer: T₀ = 2π√(LC), no R, no damped solution. ✓
+#   cp-r4-m5 — correct answer: T exists, ≈ T₀ for weak damping (approximation,
+#               measured off graph). No pseudo-période as f(R,L,C). ✓
+#   cp-r7-m8 — correct answer: Joule-loss compensation, period = T₀ = 2π√(LC)
+#               set by L,C (not k). No forced-regime framing. ✓
+#   No résonance, impédance, phaseurs, complex notation, or AC power in any item. ✓
+# ──────────────────────────────────────────────────────────────────────────────
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0  |  id: cp-r0-predict  |  placed IN R0 (the hook's commit)
+  #        Day-5 hook re-author (audit C5): the predict-COMMIT-confront
+  #        now commits through a real choice instead of a rhetorical
+  #        "garde ta prédiction". Probes: M2 (energie-consommee) — the
+  #        RC-decay carryover model. NOT a clone of any end-bank item.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    habilete: utilisation
+    skill_code: rlc_serie
+    tags: [checkpoint, formative, misconception_driven, rlc_serie, hook_commit]
+    primary_misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |
+      On charge complètement un condensateur, puis on le connecte directement
+      à une bobine (résistance négligeable). Le circuit est fermé.
+      **Que va faire la tension $u_C(t)$ ?** Engage-toi — c'est ta prédiction.
+
+    type: mcq
+
+    choices:
+      - id: A
+        text: "Elle descend progressivement vers zéro et s'y arrête — comme la décharge du circuit RC."
+        correct: false
+        misconception: mc.physics.rlc_serie.energie-consommee-non-conservee
+        feedback: |
+          Modèle détecté : « l'énergie se dépense et disparaît », importé du
+          circuit RC. C'est la prédiction la plus fréquente — et la réalité va
+          dans la direction opposée. Regarde la trace réelle juste en dessous :
+          la tension repasse par zéro et **remonte de l'autre côté**. Il n'y a
+          pas de résistance pour dissiper l'énergie ici — elle doit aller
+          quelque part. Où ? C'est toute la leçon.
+
+      - id: B
+        text: "Elle descend, passe par zéro, remonte de l'autre côté — elle oscille."
+        correct: true
+        feedback: |
+          Exact — et c'est le bon réflexe de ne PAS recopier le RC ici : sans
+          résistance, rien ne dissipe l'énergie, donc elle ne peut pas
+          simplement « s'épuiser ». La vraie question commence maintenant :
+          **pourquoi** ça oscille, et où passe l'énergie à chaque instant ?
+
+      - id: C
+        text: "Elle reste constante à $U_0$ : sans résistance, rien ne peut changer."
+        correct: false
+        # ÉTIQUETÉ le 2026-09-20 (§11.112). Le `null` était explicite mais aucune
+        # raison n'était écrite, et la famille M1 décrit ce choix mot pour mot :
+        # « supprimer R stopperait tout ». Or c'est la PORTE D'ENGAGEMENT — le
+        # seul endroit où l'élève se prononce avant la révélation — et elle ne
+        # produisait qu'un demi-signal.
+        misconception: mc.physics.rlc_serie.resistance-entretient-oscillations
+        feedback: |
+          Le circuit est fermé : le condensateur chargé impose une tension aux
+          bornes de la bobine, donc un courant s'établit — la charge NE PEUT PAS
+          rester immobile. Regarde la trace réelle ci-dessous : il se passe
+          quelque chose, et c'est plus surprenant qu'une décharge.

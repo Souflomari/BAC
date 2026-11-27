@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grille, direction suisse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap">
+<script>
+try{var t=localStorage.getItem('grille-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t);}catch(e){}
+window.MathJax={startup:{typeset:false,ready:function(){MathJax.startup.defaultReady();MathJax.startup.promise.then(function(){window.__mj=true;if(window.renderMath)window.renderMath();});}},svg:{fontCache:'local'}};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" async></script>
+<style>
+:root{
+  color-scheme:light;
+  --paper:#FFFFFF; --ink:#0A0A0A; --red:#E3051B; --grey:#6B6B6B; --band:#0A0A0A; --bandfg:#FFFFFF; --bandrule:transparent;
+  --tint:rgba(10,10,10,.07); --tint2:rgba(10,10,10,.14); --redtint:rgba(227,5,27,.16);--redwash:rgba(227,5,27,.06);
+  --m:48px; --gut:24px;
+  --font:"Archivo","Arial Narrow",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){color-scheme:dark;--paper:#0A0A0A;--ink:#F2F2F2;--red:#FF2A3B;--grey:#999999;--band:#0A0A0A;--bandfg:#F2F2F2;--bandrule:#F2F2F2;--tint:rgba(242,242,242,.08);--tint2:rgba(242,242,242,.16);--redtint:rgba(255,42,59,.24);--redwash:rgba(255,42,59,.10)}
+}
+:root[data-theme="dark"]{color-scheme:dark;--paper:#0A0A0A;--ink:#F2F2F2;--red:#FF2A3B;--grey:#999999;--band:#0A0A0A;--bandfg:#F2F2F2;--bandrule:#F2F2F2;--tint:rgba(242,242,242,.08);--tint2:rgba(242,242,242,.16);--redtint:rgba(255,42,59,.24);--redwash:rgba(255,42,59,.10)}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.45;font-stretch:100%;font-variant-numeric:lining-nums tabular-nums;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ol,ul{margin:0}
+ol,ul{padding:0;list-style:none}
+button{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.screen{min-height:100vh;display:flex;flex-direction:column}
+.screen[hidden]{display:none}
+
+/* la grille : 12 colonnes, marges 48, gouttières 24 */
+.g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gut);padding-left:var(--m);padding-right:var(--m)}
+
+/* typographie */
+.num{font-weight:800;font-stretch:62%;letter-spacing:-.02em;line-height:.82}
+.cond{font-stretch:75%}
+.lab{font-size:13px;font-weight:600;line-height:1.3}
+.mut{color:var(--grey)}
+.red{color:var(--red)}
+.rule-t{border-top:1px solid var(--ink)}
+.rule-b{border-bottom:1px solid var(--ink)}
+.rule-t2{border-top:3px solid var(--ink)}
+i.v,.v{font-style:italic}
+
+/* barre de l'application */
+.chrome{height:64px;align-items:center;border-bottom:1px solid var(--ink)}
+.wordmark{grid-column:1/3;display:flex;align-items:baseline;gap:10px}
+.wordmark b{font-weight:800;font-stretch:62%;font-size:34px;letter-spacing:-.02em;line-height:1}
+.wordmark b span{color:var(--red)}
+.wordmark small{font-size:13px;font-weight:600;color:var(--grey);white-space:nowrap}
+.nav{grid-column:4/10;display:flex;gap:32px;height:64px;align-items:stretch}
+.nav a{display:flex;align-items:center;text-decoration:none;font-weight:600;font-size:15px;border-bottom:3px solid transparent;padding-top:3px}
+.nav a[aria-current="page"]{border-bottom-color:var(--red)}
+.who{grid-column:10/13;justify-self:end;display:flex;gap:16px;align-items:baseline;font-size:15px}
+.who b{font-weight:700}
+
+/* boutons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:0 22px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);font-weight:700;font-size:16px;cursor:pointer;border-radius:0;text-decoration:none}
+.btn.sec{background:transparent;color:var(--ink)}
+.btn[disabled]{background:transparent;color:var(--grey);border-color:var(--grey);cursor:not-allowed}
+.btn .arr{font-weight:400}
+
+/* ======== ACCUEIL ======== */
+.home{padding-top:32px;padding-bottom:40px;row-gap:34px;align-content:start}
+.count{grid-column:1/4}
+.count .num{font-size:208px;color:var(--red);display:block;margin-left:-6px}
+.count p{margin-top:18px;font-size:17px;font-weight:600;line-height:1.3}
+.count p span{display:block;font-weight:400;color:var(--grey)}
+.today{grid-column:4/13;display:flex;flex-direction:column}
+.today-h{display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:14px;border-bottom:3px solid var(--ink)}
+.today-h h1{font-size:46px;font-weight:800;font-stretch:75%;letter-spacing:-.01em;line-height:1}
+.today-h .meta{font-size:15px;color:var(--grey);margin-left:20px}
+.tt li{display:grid;grid-template-columns:96px 170px minmax(0,1fr) 80px;column-gap:24px;align-items:baseline;padding:12px 0 11px;border-bottom:1px solid var(--ink)}
+.tt .t{font-size:15px;font-weight:600;color:var(--grey)}
+.tt .k{font-size:15px;font-weight:700}
+.tt .w{font-size:20px;font-weight:500;line-height:1.25}
+.tt .d{font-size:15px;text-align:right;font-weight:600}
+.tt li.next .t,.tt li.next .k{color:var(--red)}
+.today-f{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.today-f p{font-size:15px;color:var(--grey);max-width:56ch}
+
+.pts{grid-column:1/8}
+.blk-h{display:flex;align-items:baseline;justify-content:space-between;gap:24px;padding-bottom:12px;border-bottom:3px solid var(--ink)}
+.blk-h h2{font-size:28px;font-weight:800;font-stretch:75%;line-height:1.05}
+.blk-h p{font-size:13px;color:var(--grey);text-align:right;max-width:34ch}
+.subj{display:grid;grid-template-columns:minmax(0,1fr) 92px 234px 112px;column-gap:0}
+.subj>div:not(:nth-child(4n)){padding-right:24px}
+.subj>div{border-bottom:1px solid var(--ink);padding-top:6px;padding-bottom:8px;display:flex;align-items:flex-end}
+.subj .hd{border-bottom:1px solid var(--ink);font-size:13px;font-weight:600;color:var(--grey);padding:10px 0 8px}
+.subj .name{font-size:20px;font-weight:600;line-height:1.1}
+.subj .coef .num{font-size:46px}
+.subj .bar{flex-direction:column;align-items:stretch;justify-content:flex-end;gap:6px}
+.track{height:10px;border:1px solid var(--ink);position:relative}
+.track i{position:absolute;inset:0 auto 0 0;background:var(--ink)}
+.subj .bar span{font-size:15px;font-weight:600}
+.subj .loss{justify-content:flex-end}
+.subj .loss b{font-size:34px;font-weight:800;font-stretch:62%}
+.subj .loss.hi b{color:var(--red)}
+.subj .r{justify-content:flex-end;text-align:right}
+
+.side{grid-column:8/13;display:flex;flex-direction:column;gap:26px}
+.dom-bar{display:flex;margin-top:14px;height:84px}
+.dom{position:relative;border:1px solid var(--ink);border-right:0;display:flex;flex-direction:column;justify-content:space-between;padding:8px 10px;overflow:hidden}
+.dom:last-child{border-right:1px solid var(--ink)}
+.dom .fill{position:absolute;left:0;bottom:0;top:0;background:var(--tint2)}
+.dom b,.dom span{position:relative}
+.dom b{font-size:40px;font-weight:800;font-stretch:62%;line-height:.9}
+.dom span{font-size:12px;font-weight:600;line-height:1.2}
+.dom-legend{display:flex;margin-top:8px}
+.dom-legend div{font-size:13px;line-height:1.3}
+.dom-note{margin-top:14px;font-size:17px;line-height:1.35}
+.dom-note b{color:var(--red)}
+.weak li{display:grid;grid-template-columns:44px minmax(0,1fr) auto;column-gap:16px;padding:7px 0;border-bottom:1px solid var(--ink);align-items:baseline}
+.weak .n{font-size:30px;font-weight:800;font-stretch:62%;color:var(--red)}
+.weak p{font-size:17px;font-weight:600;line-height:1.25}
+.weak p span{display:block;font-size:14px;font-weight:400;color:var(--grey);margin-top:2px}
+.weak a{font-size:14px;font-weight:700;white-space:nowrap;text-underline-offset:3px}
+</style>
+<style>
+/* ======== LEÇON ======== */
+#lecon{height:100vh;min-height:720px}
+.l-head{height:96px;align-items:stretch;border-bottom:1px solid var(--ink)}
+.l-back{grid-column:1/4;display:flex;flex-direction:column;justify-content:center;gap:2px}
+.l-back a{font-size:14px;font-weight:600;text-decoration:none;color:var(--grey)}
+.l-back b{font-size:22px;font-weight:800;font-stretch:75%;line-height:1.1}
+.parts{grid-column:4/13;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));column-gap:10px}
+.parts li{border-top:3px solid var(--tint2);padding-top:9px;margin-top:14px;font-size:13px;font-weight:600;line-height:1.2;color:var(--grey)}
+.parts li b{display:block;font-size:22px;font-weight:800;font-stretch:62%;line-height:1;margin-bottom:3px}
+.parts li.done{border-top-color:var(--ink);color:var(--ink)}
+.parts li.now{border-top-color:var(--red);color:var(--red)}
+.l-main{flex:1;min-height:0;align-items:stretch}
+.stage{grid-column:1/9;display:flex;flex-direction:column;border-right:1px solid var(--ink);padding:22px 24px 18px 0;min-height:0}
+.stage svg{flex:1;width:100%;min-height:0;display:block}
+.stage svg text{font-family:var(--font);fill:var(--ink)}
+.ticks{display:flex;align-items:center;gap:18px;padding-top:14px;border-top:1px solid var(--ink)}
+.ticks .lab{white-space:nowrap}
+.ticks .row{flex:1;display:grid;grid-template-columns:repeat(34,1fr);gap:3px;height:14px}
+.ticks .row i{background:var(--tint2)}
+.ticks .row i.d{background:var(--ink)}
+.ticks .row i.c{background:var(--red)}
+.script{grid-column:9/13;display:flex;flex-direction:column;padding:34px 0 22px;min-height:0}
+.script .lab{color:var(--red);margin-bottom:18px}
+.script .say{font-size:31px;font-weight:500;line-height:1.2;letter-spacing:-.005em;font-stretch:88%}
+.bet{margin-top:34px}
+.bet-h{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:8px;border-bottom:3px solid var(--ink)}
+.bet-h b{font-size:15px;font-weight:700}
+.bet-h span{font-size:13px;color:var(--grey)}
+.opt{display:grid;grid-template-columns:48px minmax(0,1fr);align-items:center;width:100%;min-height:66px;background:transparent;border:0;border-bottom:1px solid var(--ink);text-align:left;cursor:pointer;padding:0}
+.opt .k{font-size:36px;font-weight:800;font-stretch:62%;line-height:1}
+.opt .t{font-size:20px;font-weight:500}
+.opt:hover .t{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.opt:hover .k{color:var(--red)}
+.script .why{margin-top:16px;font-size:15px;color:var(--grey);line-height:1.4;max-width:40ch}
+.l-nav{margin-top:auto;display:flex;justify-content:space-between;gap:12px;padding-top:18px}
+.l-nav .btn{flex:1}
+
+/* ======== EXAMEN ======== */
+#examen{height:100vh;min-height:720px}
+.x-band{background:var(--band);color:var(--bandfg);height:104px;align-items:center;border-bottom:3px solid var(--bandrule)}
+.x-title{grid-column:1/6}
+.x-title b{display:block;font-size:40px;font-weight:800;font-stretch:75%;line-height:1}
+.x-title span{font-size:14px;font-weight:600;opacity:.8}
+.x-facts{grid-column:6/9;display:flex;gap:28px;font-size:14px;line-height:1.3}
+.x-facts b{display:block;font-size:22px;font-weight:800;font-stretch:75%}
+.x-clock{grid-column:9/13;justify-self:end;display:flex;align-items:center;gap:18px}
+.x-clock .num{font-size:72px;line-height:.8}
+.x-clock span{font-size:13px;font-weight:600;line-height:1.3;opacity:.8}
+.x-ex{display:flex;height:72px;margin:0 var(--m);border-bottom:1px solid var(--ink)}
+.x-ex a{display:flex;flex-direction:column;justify-content:center;padding:0 12px;border-right:1px solid var(--ink);text-decoration:none;min-width:0}
+.x-ex a:first-child{border-left:1px solid var(--ink)}
+.x-ex a b{font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.x-ex a span{font-size:13px;color:var(--grey);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.x-ex a.on{background:var(--ink);color:var(--paper)}
+.x-ex a.on span{color:var(--paper);opacity:.8}
+.x-main{flex:1;min-height:0;align-items:stretch}
+.paper{grid-column:1/8;overflow:auto;padding:22px 24px 40px 0;border-right:1px solid var(--ink);min-height:0}
+.src{font-size:13px;color:var(--grey);margin-bottom:14px}
+.intro{font-size:18px;line-height:1.55;max-width:68ch;padding-bottom:16px;border-bottom:1px solid var(--ink)}
+.q{display:grid;grid-template-columns:64px minmax(0,1fr) 72px;column-gap:16px;padding:12px 0;border-bottom:1px solid var(--tint2);align-items:baseline}
+.q .qn{font-size:22px;font-weight:800;font-stretch:62%}
+.q .qt{font-size:18px;line-height:1.55;max-width:66ch}
+.q .qp{font-size:14px;font-weight:700;text-align:right;white-space:nowrap}
+.q.done .qn{color:var(--grey)}
+.q.cur{box-shadow:inset 4px 0 0 var(--red);padding-left:14px;margin-left:-14px;background:var(--redwash)}
+.q.cur .qn{color:var(--red)}
+.part{font-size:13px;font-weight:700;padding:18px 0 4px}
+.work{grid-column:8/13;display:flex;flex-direction:column;padding:22px 0 22px;min-height:0}
+.tabs{display:flex;border-bottom:3px solid var(--ink)}
+.tabs button{background:none;border:0;padding:10px 0 9px;margin-right:28px;font-size:15px;font-weight:700;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-3px}
+.tabs button[aria-selected="true"]{border-bottom-color:var(--red)}
+.tabs button.lock{color:var(--grey);font-weight:600}
+.w-q{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px}
+.w-q b{font-size:30px;font-weight:800;font-stretch:62%}
+.w-q span{font-size:14px;font-weight:700}
+.w-ask{font-size:15px;color:var(--grey);margin-top:6px;line-height:1.45}
+.answer{flex:1;min-height:180px;margin-top:16px;border:1px solid var(--ink);padding:16px 18px;font-size:17px;line-height:1.75;overflow:auto}
+.answer .caret{display:inline-block;width:2px;height:1.1em;background:var(--red);vertical-align:-3px;margin-left:2px}
+.w-tools{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.chip{font-size:13px;font-weight:600;border:1px solid var(--ink);padding:6px 10px;background:transparent;cursor:pointer;min-height:32px}
+.w-act{display:flex;gap:12px;margin-top:16px}
+.w-act .btn{flex:1}
+.w-map{margin-top:18px;padding-top:12px;border-top:1px solid var(--ink)}
+.w-map .row{display:grid;grid-template-columns:repeat(17,1fr);gap:3px;margin-top:8px}
+.w-map .row i{height:24px;border:1px solid var(--ink);font-style:normal;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.w-map .row i.d{background:var(--ink);color:var(--paper)}
+.w-map .row i.c{background:var(--red);border-color:var(--red);color:#fff}
+.w-lock{margin-top:12px;font-size:13px;color:var(--grey)}
+
+/* ======== SYSTÈME ======== */
+.sys{padding-top:26px;padding-bottom:40px;row-gap:26px;align-content:start}
+.sys-h{grid-column:1/5}
+.sys-h h1{font-size:96px;font-weight:800;font-stretch:62%;line-height:.85;letter-spacing:-.02em}
+.sys-h p{margin-top:14px;font-size:17px;max-width:36ch}
+.bet5{grid-column:5/13}
+.bet5 h2,.sys-col h2{font-size:13px;font-weight:700;padding-bottom:7px;border-bottom:3px solid var(--ink)}
+.bet5 li{display:grid;grid-template-columns:90px minmax(0,1fr);column-gap:16px;padding:6px 0;border-bottom:1px solid var(--ink);font-size:16px;line-height:1.35}
+.bet5 li b{font-weight:700}
+.bet5 li.risk b{color:var(--red)}
+.sw{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--gut)}
+.sw>div{display:grid;grid-template-columns:56px minmax(0,1fr);column-gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--ink)}
+.sw i{display:block;height:56px;border:1px solid var(--ink)}
+.sw p{font-size:13px;line-height:1.45}
+.sw p b{font-size:15px}
+.scale{display:grid;grid-template-columns:200px minmax(0,1fr);column-gap:var(--gut)}
+.s-num{display:flex;flex-direction:column;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--ink)}
+.s-rest>div{padding:9px 0;border-bottom:1px solid var(--ink);display:flex;flex-direction:column;gap:4px}
+.scale .lab{color:var(--grey)}
+.comp{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gut);padding-top:14px}
+.gridshow{position:absolute;inset:0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gut);pointer-events:none}
+.gridshow i{background:var(--redwash);border-left:1px solid var(--redtint);border-right:1px solid var(--redtint)}
+.comp .cell{position:relative;display:flex;flex-direction:column;align-items:stretch;padding:4px 0 8px}
+.comp .cell .lab{color:var(--grey);margin-bottom:8px;display:block}
+.comp .cell .btn{align-self:flex-start}
+.comp .opt{min-height:50px}
+.comp .opt .k{font-size:28px}
+.pair{display:grid;grid-template-columns:48px minmax(0,1fr) auto;align-items:end;border-bottom:1px solid var(--ink);padding-bottom:6px}
+.pair .num{font-size:48px}
+.pair span:not(.num){font-size:18px;font-weight:600}
+.pair b{font-size:30px;font-weight:800;font-stretch:62%}
+.opt.sel .k,.opt.sel .t{color:var(--red)}
+.opt.sel{border-bottom:3px solid var(--red)}
+.opt.ok .t::after{content:"  — juste";font-size:15px;font-weight:700}
+.opt.ko .t{text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:var(--red)}
+
+/* maths */
+.m:not([data-done]){font-size:.82em;color:var(--grey)}
+mjx-container{position:relative;color:inherit}
+mjx-container svg{overflow:visible}
+mjx-assistive-mml{position:absolute!important;top:0;left:0;clip:rect(1px,1px,1px,1px);padding:1px 0 0!important;border:0!important;height:1px!important;width:1px!important;overflow:hidden!important;display:block!important}
+.qt p,.intro p{margin:0}
+.answer p{margin:0 0 10px}
+.nw{white-space:nowrap}
+
+/* navigation de maquette (hors design) */
+.mock{position:fixed;right:6px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:4px}
+.mock a,.mock button{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--font);font-size:12px;font-weight:700;padding:10px 6px;background:var(--paper);color:var(--ink);border:1px solid var(--ink);text-decoration:none;cursor:pointer;line-height:1}
+.mock a[aria-current="page"]{background:var(--ink);color:var(--paper)}
+
+@media (max-width:900px){
+  :root{--m:16px;--gut:12px}
+  .g{grid-template-columns:minmax(0,1fr)}
+  .g>*{grid-column:1/-1!important}
+  .chrome{height:auto;padding-top:10px;padding-bottom:10px;row-gap:8px}
+  .nav{height:auto;flex-wrap:wrap;gap:16px}.nav a{border-bottom-width:2px}
+  .who{justify-self:start}
+  .count .num{font-size:140px}
+  .tt li{grid-template-columns:64px minmax(0,1fr);row-gap:2px}.tt .k{grid-column:2}.tt .w{grid-column:1/-1}.tt .d{grid-column:1/-1;text-align:left}
+  .today-f{flex-direction:column;align-items:stretch;gap:12px}
+  .subj{grid-template-columns:minmax(0,1fr) 56px 90px 64px;column-gap:10px}.subj .coef .num{font-size:40px}
+  #lecon,#examen{height:auto}
+  .l-head{height:auto;padding-top:10px;padding-bottom:10px}
+  .parts{grid-template-columns:repeat(7,minmax(0,1fr));column-gap:4px}.parts li{font-size:0}.parts li b{font-size:16px}
+  .stage{border-right:0;padding-right:0;height:56vh}
+  .script .say{font-size:24px}
+  .x-band{height:auto;padding-top:14px;padding-bottom:14px;row-gap:10px}.x-clock{justify-self:start}
+  .x-ex{height:auto;flex-wrap:wrap;margin:0 16px}.x-ex a{flex:1 1 45%!important;padding:8px}
+  .paper{border-right:0;padding-right:0;overflow:visible}
+  .qt,.intro,.answer{min-width:0;overflow-x:auto}
+  .today-h,.blk-h{flex-wrap:wrap;gap:12px}.blk-h p{text-align:left}
+  .x-clock .num{font-size:52px}.x-facts{flex-wrap:wrap}
+  .w-map .row{grid-template-columns:repeat(9,1fr)}
+  .dom span{font-size:10px}
+  .q{grid-template-columns:44px minmax(0,1fr)}.q .qp{grid-column:2;text-align:left}
+  .sw,.scale,.comp{grid-template-columns:minmax(0,1fr)}.comp .cell{grid-column:1/-1!important}.gridshow{display:none}
+  .sys-h h1{font-size:64px}
+  .mock{top:auto;bottom:0;right:0;left:0;transform:none;flex-direction:row;justify-content:center;background:var(--paper);border-top:1px solid var(--ink);padding:4px}
+  .mock a,.mock button{writing-mode:horizontal-tb;transform:none;padding:8px}
+}
+</style>
+</head>
+<body>
+<nav class="mock" aria-label="Écrans de la maquette">
+  <a href="#accueil">Accueil</a><a href="#lecon">Leçon</a><a href="#examen">Examen</a><a href="#systeme">Système</a>
+  <button type="button" id="theme">Clair / sombre</button>
+</nav>
+
+<!-- ================= ACCUEIL ================= -->
+<section class="screen" id="accueil" aria-label="Accueil">
+  <header class="g chrome">
+    <div class="wordmark"><b>bac<span>.</span></b><small>Sciences Maths A</small></div>
+    <nav class="nav" aria-label="Principale">
+      <a href="#accueil" aria-current="page">Aujourd’hui</a><a href="#accueil">Matières</a><a href="#examen">Examens blancs</a><a href="#accueil">Progrès</a>
+    </nav>
+    <div class="who"><span class="mut">2ème Bac</span><b>Salma</b></div>
+  </header>
+
+  <main class="g home">
+    <div class="count">
+      <span class="num">33</span>
+      <p>semaines avant l’examen national<span>juin 2027</span></p>
+    </div>
+
+    <div class="today">
+      <div class="today-h">
+        <div style="display:flex;align-items:baseline"><h1>Aujourd’hui</h1><span class="meta">4 étapes · 45 min</span></div>
+        <a class="btn" href="#lecon">Commencer la séance <span class="arr">→</span></a>
+      </div>
+      <ol class="tt">
+        <li><span class="t">00–05</span><span class="k">Rappel</span><span class="w">4 questions sur la dérivation</span><span class="d">5 min</span></li>
+        <li class="next"><span class="t">05–17</span><span class="k">Leçon</span><span class="w">Fonction logarithme — partie 5, « L’aire sous 1/<i class="v">x</i> »</span><span class="d">12 min</span></li>
+        <li><span class="t">17–32</span><span class="k">Exercices ciblés</span><span class="w">8 exercices sur « ln d’une somme », générés pour toi</span><span class="d">15 min</span></li>
+        <li><span class="t">32–45</span><span class="k">Exercice type bac</span><span class="w">Étude de fonction avec ln, corrigé pas à pas</span><span class="d">13 min</span></li>
+      </ol>
+    </div>
+
+    <div class="pts">
+      <div class="blk-h"><h2>Où se perdent tes points</h2><p>Lacune pondérée = coefficient × ce qui reste à maîtriser</p></div>
+      <div class="subj" role="table" aria-label="Matières de l’examen national">
+        <div class="hd" role="columnheader">Matière</div><div class="hd r" role="columnheader">Coef.</div><div class="hd" role="columnheader">Maîtrise estimée</div><div class="hd r" role="columnheader">Lacune</div>
+        <div class="name">Mathématiques</div><div class="coef r"><span class="num">9</span></div><div class="bar"><span>58 %</span><div class="track"><i style="width:58%"></i></div></div><div class="loss hi"><b>3,78</b></div>
+        <div class="name">Physique-Chimie</div><div class="coef r"><span class="num">7</span></div><div class="bar"><span>46 %</span><div class="track"><i style="width:46%"></i></div></div><div class="loss hi"><b>3,78</b></div>
+        <div class="name">SVT</div><div class="coef r"><span class="num">3</span></div><div class="bar"><span>31 %</span><div class="track"><i style="width:31%"></i></div></div><div class="loss"><b>2,07</b></div>
+        <div class="name">Philosophie</div><div class="coef r"><span class="num">2</span></div><div class="bar"><span>40 %</span><div class="track"><i style="width:40%"></i></div></div><div class="loss"><b>1,20</b></div>
+        <div class="name">Anglais</div><div class="coef r"><span class="num">2</span></div><div class="bar"><span>62 %</span><div class="track"><i style="width:62%"></i></div></div><div class="loss"><b>0,76</b></div>
+      </div>
+    </div>
+
+    <div class="side">
+      <div>
+        <div class="blk-h"><h2>Le sujet de maths</h2><p>Poids officiels, cadre 2025</p></div>
+        <div class="dom-bar" aria-label="Analyse 50 %, complexes et structures 35 %, arithmétique et probabilités 15 %">
+          <div class="dom" style="flex:50"><i class="fill" style="width:61%"></i><b>50 %</b><span>Analyse</span></div>
+          <div class="dom" style="flex:35"><i class="fill" style="width:52%"></i><b>35 %</b><span>Complexes + structures</span></div>
+          <div class="dom" style="flex:15"><i class="fill" style="width:66%"></i><b>15 %</b><span>Arithm. + proba</span></div>
+        </div>
+        <div class="dom-legend">
+          <div style="flex:50">maîtrise 61 %</div><div style="flex:35">52 %</div><div style="flex:15">66 %</div>
+        </div>
+        <p class="dom-note"><b>41 % du sujet</b> repose encore sur des notions fragiles — dont 19,5 % en analyse.</p>
+      </div>
+      <div>
+        <div class="blk-h"><h2>Points faibles</h2><p>Détectés sur tes 30 derniers jours</p></div>
+        <ol class="weak">
+          <li><span class="n">1</span><p>ln(<i class="v">a</i> + <i class="v">b</i>) traité comme ln <i class="v">a</i> + ln <i class="v">b</i><span>3 erreurs cette semaine</span></p><a href="#lecon">8 exercices</a></li>
+          <li><span class="n">2</span><p>Primitive de <i class="v">u</i>′/<i class="v">u</i> : valeur absolue oubliée<span>Calcul intégral</span></p><a href="#accueil">6 exercices</a></li>
+          <li><span class="n">3</span><p>Récurrence : hérédité non rédigée<span>Suites numériques</span></p><a href="#accueil">5 exercices</a></li>
+        </ol>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- ================= LEÇON ================= -->
+<section class="screen" id="lecon" aria-label="Leçon" hidden>
+  <header class="g l-head">
+    <div class="l-back"><a href="#accueil">← Aujourd’hui</a><b>Fonction logarithme</b></div>
+    <ol class="parts" aria-label="Parties de la leçon">
+      <li class="done"><b>1</b>Le problème</li>
+      <li class="done"><b>2</b>La table</li>
+      <li class="done"><b>3</b>Les trous</li>
+      <li class="done"><b>4</b>La règle</li>
+      <li class="now" aria-current="step"><b>5</b>L’aire</li>
+      <li><b>6</b>Ce que le bac appelle ln</li>
+      <li><b>7</b>À toi</li>
+    </ol>
+  </header>
+  <div class="g l-main">
+    <div class="stage">
+      <svg id="hyper" viewBox="0 0 820 620" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Courbe de y = 1 sur x, aire de 1 à 2 et aire de 2 à 4"></svg>
+      <div class="ticks"><span class="lab">Étape 19 / 34</span><div class="row" id="ticks"></div></div>
+    </div>
+    <div class="script">
+      <span class="lab">Partie 5 — L’aire</span>
+      <p class="say">Voici l’aire entre 2 et 4&#8239;: deux fois plus large, mais plus basse. Laquelle est la plus grande&#8239;?</p>
+      <div class="bet" role="group" aria-label="Ton pari">
+        <div class="bet-h"><b>Ton pari</b><span>Touches 1, 2, 3</span></div>
+        <button class="opt" type="button"><span class="k">1</span><span class="t">Celle de 2 à 4</span></button>
+        <button class="opt" type="button"><span class="k">2</span><span class="t">Elles sont égales</span></button>
+        <button class="opt" type="button"><span class="k">3</span><span class="t">Celle de 1 à 2</span></button>
+      </div>
+      <p class="why">Parie avant de voir&#8239;: la réponse arrive à l’étape suivante, sans calculer une seule aire.</p>
+      <div class="l-nav">
+        <button class="btn sec" type="button">← Retour</button>
+        <button class="btn" type="button" disabled>Choisis d’abord</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXAMEN ================= -->
+<section class="screen" id="examen" aria-label="Examen" hidden>
+  <header class="g x-band">
+    <div class="x-title"><b>Mathématiques</b><span>Sciences Mathématiques · examen national, session normale 2024</span></div>
+    <div class="x-facts">
+      <div><b>4 h</b>durée</div>
+      <div><b>5</b>exercices<br>indépendants</div>
+      <div><b>Sans</b>calculatrice</div>
+    </div>
+    <div class="x-clock"><span>temps<br>restant</span><span class="num" id="clock">2:47:12</span><span>sur 20<br>points</span></div>
+  </header>
+  <nav class="x-ex" aria-label="Exercices, largeur proportionnelle au barème">
+    <a href="#examen" class="on" style="flex:7.5" aria-current="true"><b>Exercice 1 — Analyse</b><span>7,5 points · question 3-b</span></a>
+    <a href="#examen" style="flex:2.5"><b>Exercice 2</b><span>Analyse · 2,5</span></a>
+    <a href="#examen" style="flex:3.5"><b>Exercice 3</b><span>Nombres complexes · 3,5</span></a>
+    <a href="#examen" style="flex:3.5"><b>Exercice 4</b><span>Structures algébriques · 3,5</span></a>
+    <a href="#examen" style="flex:3"><b>Exercice 5</b><span>Arithmétique · 3</span></a>
+  </nav>
+  <div class="g x-main">
+    <article class="paper" id="paper" aria-label="Énoncé de l’exercice 1">
+      <p class="src">Bac SM, session normale 2024 — exercice 1 (analyse, 7,5 points). Énoncé transcrit du sujet officiel.</p>
+      <div class="intro md" data-md="Soit $f$ la fonction numérique définie sur l'intervalle $[1,+\infty[$ par : $f(1) = \dfrac12$, et pour tout $x\in\,]1,+\infty[$, $f(x) = \dfrac{\ln x}{x^2-1}$. Soit $(C)$ la courbe représentative de $f$ dans un repère orthogonal $(O,\vec i,\vec j)$."></div>
+      <ol id="qs"></ol>
+    </article>
+    <aside class="work" aria-label="Espace de travail">
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" type="button">Ma réponse</button>
+        <button role="tab" aria-selected="false" type="button">Brouillon</button>
+        <button role="tab" aria-selected="false" type="button" class="lock">Corrigé — verrouillé</button>
+      </div>
+      <div class="w-q"><b>Question 3-b</b><span>0,5 point</span></div>
+      <p class="w-ask">Encadrement par le théorème des accroissements finis sur [0&#8239;; <i class="v">t</i>].</p>
+      <div class="answer md" id="answer" data-md="Posons $\varphi(u) = -\sqrt{u} + \ln(1+\sqrt{u})$ pour $u \ge 0$ ; on a $\varphi(0) = 0$.
+
+$\varphi$ est continue sur $[0\,;t]$ et dérivable sur $]0\,;t[$ : d'après le TAF, il existe $c \in\, ]0\,;t[$ tel que $\dfrac{\varphi(t)-\varphi(0)}{t} = \varphi'(c)$.
+
+$\varphi'(u) = -\dfrac{1}{2\sqrt{u}} + \dfrac{1}{2\sqrt{u}\,(1+\sqrt{u})} =$"></div>
+      <div class="w-tools" aria-label="Insérer">
+        <button class="chip" type="button">fraction</button><button class="chip" type="button">√</button><button class="chip" type="button">ln</button><button class="chip" type="button">≤ ≥</button><button class="chip" type="button">∀ ∈</button><button class="chip" type="button">intervalle</button>
+      </div>
+      <div class="w-act"><button class="btn sec" type="button">Un indice</button><button class="btn" type="button">Valider la question</button></div>
+      <div class="w-map">
+        <span class="lab">Exercice 1 — 3 questions faites sur 17</span>
+        <div class="row" id="qmap"></div>
+      </div>
+      <p class="w-lock">Le corrigé pas à pas s’ouvre après ta tentative sur la question.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= SYSTÈME ================= -->
+<section class="screen" id="systeme" aria-label="Système" hidden>
+  <header class="g chrome">
+    <div class="wordmark"><b>bac<span>.</span></b><small>Système</small></div>
+    <nav class="nav" aria-label="Principale"><a href="#systeme" aria-current="page">Direction « Grille »</a></nav>
+  </header>
+  <main class="g sys">
+    <div class="sys-h">
+      <h1>Grille</h1>
+      <p>Style typographique international. Une seule famille, Archivo, du serré au large&#8239;; noir, blanc, un rouge. Douze colonnes portent tout, rien ne décore.</p>
+    </div>
+    <div class="bet5">
+      <h2>Le pari de cette direction / ses risques</h2>
+      <ol>
+        <li><b>Pari</b><span>La clarté vient de l’alignement et de la typographie, jamais d’un ornement.</span></li>
+        <li><b>Pari</b><span>Les chiffres qui décident — coefficients, semaines, points — sont énormes&#8239;; le reste se tait.</span></li>
+        <li><b>Pari</b><span>Le rouge ne signale qu’une chose&#8239;: ce qui demande ton action maintenant.</span></li>
+        <li class="risk"><b>Risque</b><span>Peut sembler froid, administratif, pour un élève de 17 ans qui décroche.</span></li>
+        <li class="risk"><b>Risque</b><span>Ne pardonne rien&#8239;: un alignement raté se voit, et la rigueur doit tenir sur 60 notions.</span></li>
+      </ol>
+    </div>
+
+    <div class="sys-col" style="grid-column:1/6">
+      <h2>Couleurs — quatre jetons, pas un de plus</h2>
+      <div class="sw">
+        <div><i style="background:var(--paper)"></i><p><b>Papier</b><br>#FFFFFF / #0A0A0A<br>Le fond. Ni crème, ni gris.</p></div>
+        <div><i style="background:var(--ink)"></i><p><b>Encre</b><br>#0A0A0A / #F2F2F2<br>Texte, filets, aplats · 19,8&#8239;: 1</p></div>
+        <div><i style="background:var(--red)"></i><p><b>Rouge signal</b><br>#E3051B / #FF2A3B<br>L’action, le présent · 4,9&#8239;: 1</p></div>
+        <div><i style="background:var(--grey)"></i><p><b>Gris</b><br>#6B6B6B / #999999<br>Texte secondaire · 5,3&#8239;: 1</p></div>
+      </div>
+    </div>
+    <div class="sys-col" style="grid-column:6/13">
+      <h2>Typographie — Archivo&#8239;; l’axe de largeur fait la hiérarchie</h2>
+      <div class="scale">
+        <div class="s-num"><span class="num red" style="font-size:112px">33</span><span class="lab">Chiffre-affiche<br>220 · 800 · largeur 62 %</span></div>
+        <div class="s-rest">
+          <div><span class="lab">Titre · 46 · 800 · 75 %</span><span style="font-size:40px;font-weight:800;font-stretch:75%;line-height:1">Aujourd’hui</span></div>
+          <div><span class="lab">Script de leçon · 31 · 500 · 88 %</span><span style="font-size:24px;font-weight:500;font-stretch:88%;line-height:1.2">Voici l’aire entre 2 et 4&#8239;: deux fois plus large.</span></div>
+          <div><span class="lab">Texte · 17 · 400 · interligne 1,45 · mesure ≤ 68 car.</span><span>Soit <i class="v">f</i> la fonction définie sur [1, +∞[. Chiffres tabulaires&#8239;: 3,78 · 0,76 · 2:47:12</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sys-col" style="grid-column:1/13">
+      <h2>Composants — et la grille, montrée ici seulement (12 colonnes, marges 48, gouttières 24)</h2>
+      <div class="comp">
+        <div class="gridshow" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="cell" style="grid-column:1/5"><span class="lab">Boutons — principal, secondaire, indisponible</span><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" type="button">Valider</button><button class="btn sec" type="button">Un indice</button><button class="btn" type="button" disabled>Choisis d’abord</button></div>
+          <span class="lab" style="margin-top:18px">Onglets</span><div class="tabs"><button aria-selected="true" type="button">Ma réponse</button><button aria-selected="false" type="button">Brouillon</button><button aria-selected="false" type="button" class="lock">Corrigé</button></div></div>
+        <div class="cell" style="grid-column:5/9"><span class="lab">Option — repos, choisie, juste, fausse</span><button class="opt" type="button"><span class="k">1</span><span class="t">Celle de 2 à 4</span></button><button class="opt sel" type="button"><span class="k">2</span><span class="t">Elles sont égales</span></button><button class="opt ok" type="button"><span class="k">2</span><span class="t">ln 2 + ln 3</span></button><button class="opt ko" type="button"><span class="k">1</span><span class="t">ln 2 × ln 3</span></button></div>
+        <div class="cell" style="grid-column:9/13"><span class="lab">Progression d’une leçon — 34 étapes</span><div class="ticks" style="border-top:0;padding-top:0"><div class="row" id="ticks2"></div></div>
+          <span class="lab" style="margin-top:22px">Coefficient et lacune</span><div class="pair"><span class="num">9</span><span>Mathématiques</span><b class="red">3,78</b></div></div>
+      </div>
+    </div>
+  </main>
+</section>
+
+<script>
+(function(){
+  /* --- navigation de maquette --- */
+  var SCREENS=['accueil','lecon','examen','systeme'];
+  function route(){
+    var h=(location.hash||'#accueil').slice(1);var s=SCREENS.indexOf(h)>=0?h:'accueil';
+    SCREENS.forEach(function(id){document.getElementById(id).hidden=(id!==s);});
+    document.querySelectorAll('.mock a').forEach(function(a){if(a.getAttribute('href')==='#'+s)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+    window.scrollTo(0,0);
+  }
+  addEventListener('hashchange',route);route();
+  document.getElementById('theme').addEventListener('click',function(){
+    var r=document.documentElement,cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    var t=cur==='dark'?'light':'dark';r.setAttribute('data-theme',t);try{localStorage.setItem('grille-theme',t);}catch(e){}
+  });
+
+  /* --- mini-markdown : $tex$, **gras**, *italique*, paragraphes --- */
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+  function fr(s){return s.replace(/ ([;:!?])/g,' $1');}
+  function md(src){
+    return src.split(/\n\s*\n/).map(function(par){
+      var out='',parts=par.split(/(\$[^$]+\$)/),glue='';
+      parts.forEach(function(p,i){
+        if(p.charAt(0)==='$'&&p.length>2){var t=p.slice(1,-1),nx=parts[i+1]||'',mm=nx.match(/^[.,;:)]+/);glue=mm?mm[0]:'';out+='<span class="nw"><span class="m" data-tex="'+esc(t)+'">'+esc(t)+'</span>'+(glue?fr(esc(glue)):'')+'</span>';}
+        else{if(glue){p=p.slice(glue.length);glue='';}out+=fr(esc(p)).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>');}
+      });
+      return '<p>'+out+'</p>';
+    }).join('');
+  }
+  document.querySelectorAll('.md').forEach(function(el){el.innerHTML=md(el.getAttribute('data-md'));});
+  var ans=document.getElementById('answer');ans.lastElementChild.insertAdjacentHTML('beforeend','<span class="caret" aria-hidden="true"></span>');
+
+  /* --- l'énoncé réel : Bac SM 2024 normale, exercice 1 --- */
+  var Q=[
+    ['1','0,5 pt',String.raw`Montrer que $f$ est continue à droite en $1$.`],
+    ['2','0,5 pt',String.raw`Calculer $\displaystyle\lim_{x \to +\infty} f(x)$ puis interpréter graphiquement le résultat obtenu.`],
+    ['3-a','0,25 pt',String.raw`Soit $x \in\, ]1, +\infty[$. En posant $t = (x-1)^2$, vérifier que : $\dfrac{1 - x + \ln(x)}{(x-1)^2} = \dfrac{-\sqrt{t} + \ln(1+\sqrt{t})}{t}$`],
+    ['3-b','0,5 pt',String.raw`Montrer que $\left(\forall t \in\, ]0, +\infty[\right)$, $\ -\dfrac{1}{2} < \dfrac{-\sqrt{t} + \ln\left(1+\sqrt{t}\right)}{t} < \dfrac{-1}{2(1+\sqrt{t})}$ *(On pourra utiliser le théorème des accroissements finis sur l'intervalle* $[0\,;t]$*.)*`],
+    ['3-c','0,25 pt',String.raw`En déduire que : $\displaystyle\lim_{x \to 1^{+}} \dfrac{1 - x + \ln(x)}{(x-1)^2} = -\dfrac{1}{2}$`],
+    ['4-a','0,5 pt',String.raw`Montrer que : $\forall x \in\, ]1, +\infty[,\ \dfrac{f(x) - \frac{1}{2}}{x - 1} = -\dfrac{\ln(x)}{x-1} \times \dfrac{1}{2(x+1)} + \dfrac{\ln(x) - x + 1}{2(x-1)^2}$`],
+    ['4-b','0,5 pt',String.raw`En déduire que $f$ est dérivable à droite en $1$ puis interpréter graphiquement le résultat obtenu.`],
+    ['5-a','0,5 pt',String.raw`Pour tout $x \in [1, +\infty[$ on pose $I(x) = \displaystyle\int_1^x \frac{t^2-1}{t^3}\,dt$ et $J(x) = \displaystyle\int_1^x \frac{t^2-1}{t^2}\,dt$. Montrer que : $\forall x \in [1, +\infty[,\ 0 \le I(x) \le J(x)$`],
+    ['5-b','0,5 pt',String.raw`Montrer que pour tout $x \in [1, +\infty[$, $I(x) = \ln(x) - \dfrac{x^2-1}{2x^2}$ et $J(x) = \dfrac{(x-1)^2}{x}$`],
+    ['5-c','0,5 pt',String.raw`Montrer que : $\forall x \in\, ]1, +\infty[,\ f'(x) = \dfrac{-2}{(x+1)^2} \times \dfrac{I(x)}{J(x)}$`],
+    ['5-d','0,5 pt',String.raw`En déduire que : $\forall x \in\, ]1, +\infty[,\ -\dfrac{1}{2} \le f'(x) \le 0$`],
+    ['6-a','0,25 pt',String.raw`Dresser le tableau de variations de la fonction $f$.`],
+    ['6-b','0,5 pt',String.raw`Tracer la courbe $(C)$. *(On prendra* $\|\vec{i}\| = 1\ \text{cm}$ *et* $\|\vec{j}\| = 2\ \text{cm}$*.)*`],
+    ['7','0,5 pt',String.raw`Montrer que l'équation $f(x) = x - 1$ admet une unique solution $a$ dans $]1,2[$.`],
+    ['8','',String.raw`Soit $(a_n)_{n \in \mathbb{N}}$ la suite numérique définie par $a_0 \in [1,+\infty[$ et, pour tout $n\in\mathbb{N}$, $a_{n+1} = 1+f(a_n)$.`],
+    ['8-a','0,5 pt',String.raw`Montrer que : $(\forall n \in \mathbb{N}),\ |a_{n+1} - a| \le \dfrac{1}{2}|a_n - a|$`],
+    ['8-b','0,5 pt',String.raw`Montrer par récurrence que : $(\forall n \in \mathbb{N}),\ |a_n - a| \le \left(\dfrac{1}{2}\right)^n |a_0 - a|$`],
+    ['8-c','0,25 pt',String.raw`En déduire que la suite $(a_n)_{n \in \mathbb{N}}$ est convergente.`]
+  ];
+  var DONE={'1':1,'2':1,'3-a':1},CUR='3-b';
+  document.getElementById('qs').innerHTML=Q.map(function(q){
+    var cls='q'+(DONE[q[0]]?' done':'')+(q[0]===CUR?' cur':'');
+    return '<li class="'+cls+'"'+(q[0]===CUR?' aria-current="true"':'')+'><span class="qn">'+q[0]+'</span><div class="qt">'+md(q[2])+'</div><span class="qp">'+q[1]+'</span></li>';
+  }).join('');
+  var map=document.getElementById('qmap');
+  Q.filter(function(q){return q[1];}).forEach(function(q){var i=document.createElement('i');i.textContent=q[0].replace('-','');if(DONE[q[0]])i.className='d';if(q[0]===CUR)i.className='c';map.appendChild(i);});
+
+  /* --- minuteur --- */
+  var left=2*3600+47*60+12,clock=document.getElementById('clock');
+  setInterval(function(){left=Math.max(0,left-1);var h=Math.floor(left/3600),m=Math.floor(left%3600/60),s=left%60;clock.textContent=h+':'+(m<10?'0':'')+m+':'+(s<10?'0':'')+s;},1000);
+
+  /* --- progression 34 étapes --- */
+  ['ticks','ticks2'].forEach(function(id){var row=document.getElementById(id);for(var k=1;k<=34;k++){var i=document.createElement('i');if(k<19)i.className='d';if(k===19)i.className='c';row.appendChild(i);}});
+
+  /* --- la scène : y = 1/x, aires de 1 à 2 et de 2 à 4 --- */
+  var NS='http://www.w3.org/2000/svg',svg=document.getElementById('hyper');
+  function E(t,a,p){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e;}
+  function X(x){return 70+84*x;} function Y(y){return 548-196*y;}
+  var defs=E('defs',{});var pat=E('pattern',{id:'hatch',width:'7',height:'7',patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'},defs);
+  E('line',{x1:'0',y1:'0',x2:'0',y2:'7',style:'stroke:var(--ink);stroke-width:1.6'},pat);
+  function region(a,b){var d='M'+X(a)+' '+Y(0);for(var i=0;i<=60;i++){var x=a+(b-a)*i/60;d+='L'+X(x).toFixed(1)+' '+Y(1/x).toFixed(1);}return d+'L'+X(b)+' '+Y(0)+'Z';}
+  E('path',{d:region(1,2),fill:'url(#hatch)',style:'stroke:var(--ink);stroke-width:1.5'});
+  E('path',{d:region(2,4),style:'fill:var(--redtint);stroke:var(--red);stroke-width:1.5'});
+  E('line',{x1:X(0),x2:X(8.9),y1:Y(0),y2:Y(0),style:'stroke:var(--ink);stroke-width:1.5'});
+  E('line',{x1:X(0),x2:X(0),y1:Y(0),y2:Y(2.6),style:'stroke:var(--ink);stroke-width:1.5'});
+  for(var i=1;i<=8;i++){E('line',{x1:X(i),x2:X(i),y1:Y(0),y2:Y(0)+7,style:'stroke:var(--ink)'});var t=E('text',{x:X(i),y:Y(0)+28,'text-anchor':'middle','font-size':'18','font-weight':'600'});t.textContent=i;}
+  [[.5,'0,5'],[1,'1'],[1.5,'1,5'],[2,'2']].forEach(function(v){E('line',{x1:X(0)-7,x2:X(0),y1:Y(v[0]),y2:Y(v[0]),style:'stroke:var(--ink)'});var t=E('text',{x:X(0)-14,y:Y(v[0])+6,'text-anchor':'end','font-size':'17','font-weight':'600'});t.textContent=v[1];});
+  var d='';for(var j=0;j<=300;j++){var x=0.4+(8.8-0.4)*j/300;d+=(j?'L':'M')+X(x).toFixed(1)+' '+Y(1/x).toFixed(1);}
+  E('path',{d:d,style:'fill:none;stroke:var(--ink);stroke-width:3'});
+  var lab=E('text',{x:X(0.66)+16,y:Y(1/0.66)+4,'font-size':'24','font-weight':'700','font-style':'italic'});lab.textContent='y = 1/x';
+  function bracket(a,b,txt,color,yy){E('path',{d:'M'+X(a)+' '+(yy-8)+'v8H'+X(b)+'v-8',style:'fill:none;stroke:'+color+';stroke-width:2'});var t=E('text',{x:(X(a)+X(b))/2,y:yy+26,'text-anchor':'middle','font-size':'18','font-weight':'700',style:'fill:'+color});t.textContent=txt;}
+  bracket(1,2,'de 1 à 2','var(--ink)',Y(0)+46);
+  bracket(2,4,'de 2 à 4','var(--red)',Y(0)+46);
+
+  /* --- maths --- */
+  window.renderMath=function(){
+    if(!window.__mj||!window.MathJax||!MathJax.tex2svg)return;
+    document.querySelectorAll('.m[data-tex]:not([data-done])').forEach(function(n){try{n.replaceChildren(MathJax.tex2svg(n.getAttribute('data-tex'),{display:false}));n.setAttribute('data-done','1');}catch(e){}});
+    try{MathJax.startup.document.clear();MathJax.startup.document.updateDocument();}catch(e){}
+  };
+  window.renderMath();
+})();
+</script>
+</body>
+</html>

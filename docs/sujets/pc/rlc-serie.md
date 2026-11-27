@@ -1,0 +1,1002 @@
+# `rlc-serie` — Oscillations libres dans un circuit RLC série
+
+> Annales examen national, PC-SPC (BIOF). Transcriptions **non vérifiées** —
+> voir `README.md` §3. Provenance sur chaque entrée.
+>
+> ⚠ Rappel de périmètre (cadre `rlc_serie`, cf.
+> `content/pc/rlc-serie/_mined-reference.md`) : la **seule** solution analytique
+> au programme est le cas **non amorti** (LC idéal / entretenu). Le régime amorti
+> se limite à l'**établissement de l'équation différentielle** et à
+> l'interprétation énergétique (pas de pseudo-période $f(R,L,C)$, pas de
+> coefficient d'amortissement en forme close). Les deux exercices ci-dessous
+> respectent ce périmètre : ils demandent l'équa. diff. du cas amorti puis
+> traitent le cas **sinusoïdal** (LC ou entretenu).
+
+---
+
+## 2019 — session normale — Exercice III (partie II)
+Source: https://www.alloschool.com/element/68300
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-11)
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS28F · Barème de l'exercice complet : 4,5 points
+- Images lues : `.../course-422/upload-54757/0004-big.jpg`, `.../0005-big.jpg`
+- Pages du scan : 4 et 5 (sur 7)
+- Portée : **Partie II (oscillations LC)**. La Partie I (charge RC) et le schéma
+  (figure 1, mêmes $E,R,C,L,K$) sont transcrits sous `rc-charge.md`.
+
+**Charge et décharge d'un condensateur — II. Étude des oscillations électriques
+dans le circuit LC.**
+
+Une fois que le régime permanent est établi, on bascule l'interrupteur $K$ en
+position (2) à un instant choisi comme nouvelle origine des dates ($t=0$). On
+visualise, à l'aide d'un dispositif adéquat, les variations de la tension $u_c$
+aux bornes du condensateur en fonction du temps.
+
+1. (0,25) Montrer que l'équation différentielle vérifiée par la tension
+   $u_c(t)$ aux bornes du condensateur s'écrit :
+   $$\dfrac{d^{2}u_c}{dt^{2}} + \dfrac{1}{LC}\, u_c = 0.$$
+2. L'une des trois courbes (a), (b) ou (c) de la figure 3 représente, pour cette
+   expérience, l'évolution de la tension $u_c(t)$.
+   1. (0,5) Indiquer la courbe qui représente l'évolution de la tension $u_c(t)$
+      lors de cette expérience. Justifier votre réponse.
+   2. (0,25) Trouver la période propre $T_0$ de l'oscillateur LC.
+3. (0,5) Déterminer l'inductance $L$ de la bobine. (On prend $\pi^{2} = 10$).
+4. À l'aide de la courbe représentant l'évolution de la tension $u_c(t)$ pour
+   cette expérience :
+   1. (0,5) Trouver l'énergie totale $E_t$ du circuit.
+   2. (0,5) En déduire l'énergie magnétique $E_{m1}$ emmagasinée dans la bobine
+      à l'instant $t_1 = 12\ \text{ms}$.
+
+*Figure 3 (trois courbes $u_c(\text{V})$ vs $t(\text{ms})$, ordonnées graduées de
+$-10$ à $10$, abscisses avec repères $10$ et $20$) :*
+- **(a)** : part de $u_c = +10\ \text{V}$ à $t=0$, oscillation d'**amplitude
+  décroissante** (allure pseudopériodique) — premier minimum $\approx -6\
+  \text{V}$ vers $t\approx 10$, remontée à $\approx +4\ \text{V}$ vers $t\approx
+  20$.
+- **(b)** : part de $u_c = +10\ \text{V}$ (**maximum**) à $t=0$, sinusoïde
+  d'**amplitude constante** $10\ \text{V}$ ; minimum $-10\ \text{V}$ vers
+  $t\approx 10$, maximum $+10\ \text{V}$ vers $t\approx 20$ (période $\approx 20\
+  \text{ms}$).
+- **(c)** : sinusoïde d'amplitude constante $10\ \text{V}$, mais **déphasée** —
+  à $t=0$ elle **ne part pas d'un extremum** (démarre près de zéro puis croît)
+  *(lecture d'échelle du départ à confirmer)*.
+
+---
+
+## 2018 — session normale — Exercice III (partie II)
+Source: https://www.alloschool.com/element/57726
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK (agent-vérificateur, 2026-07-11)
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS28F · Barème de l'exercice complet : 5 points
+- Images lues : `.../course-422/upload-45118/0006-big.jpg`
+- Pages du scan : 6 (sur 8)
+- Portée : **Partie II (circuit RLC série)**. Les parties I-1 / I-2 (capacité
+  d'un condensateur, décharge RC) sont sous `rc-charge.md`.
+
+**Détermination expérimentale de la capacité d'un condensateur / Étude d'un
+circuit RLC série — II. Étude d'un circuit RLC série.**
+
+Un élève de la même classe réalise le montage représenté sur la figure 5 qui
+comporte :
+- un condensateur, totalement chargé, de capacité $C = 2,5\ \mu\text{F}$ ;
+- une bobine d'inductance $L$ et de résistance $r$ ;
+- un interrupteur $K$.
+
+Après fermeture du circuit, on visualise, à l'aide d'un système d'acquisition
+informatisé, des oscillations pseudopériodiques représentant les variations de la
+charge $q(t)$ du condensateur.
+
+1. (0,25) Pourquoi observe-t-on des oscillations pseudopériodiques ?
+2. Pour obtenir des oscillations électriques entretenues, un générateur $G$
+   délivrant une tension proportionnelle à l'intensité du courant
+   $u_G(t) = k\, i(t)$ est inséré en série dans le circuit précédent.
+   1. (0,5) Établir l'équation différentielle vérifiée par la charge $q(t)$.
+   2. (0,25) En ajustant le paramètre $k$ sur la valeur $k = 5$ (exprimée dans le
+      système d'unités international), les oscillations deviennent sinusoïdales
+      (figure 6). Déterminer la valeur de $r$.
+   3. (0,75) En exploitant la courbe de la figure 6, trouver la valeur de
+      l'inductance $L$ de la bobine.
+
+*Figure 5 (schéma) :* circuit série entre bornes $A$ et $B$ : condensateur $C$,
+interrupteur $K$, et bobine notée $(L, r)$.
+
+*Figure 6 (courbe) :* $q\ (\mu\text{C})$ en fonction de $t\ (\text{ms})$ ;
+sinusoïde d'**amplitude constante** oscillant entre $+q_m$ et $-q_m$ (valeur
+$q_m$ non chiffrée sur l'axe, repérée par un trait). Abscisses graduées $1,\ 2,\
+3,\ 4$ ; les maxima successifs apparaissent vers $t\approx 1\ \text{ms}$ puis
+$t\approx 3\ \text{ms}$ (période $\approx 2\ \text{ms}$) *(lecture d'échelle à
+confirmer)*.
+
+---
+
+## 2020 — session normale — Exercice IV (parties II et III)
+Source: https://www.alloschool.com/element/109742
+Statut: vérifié — 2026-08-06, vérification adverse indépendante par un second
+agent (README §3), **figures re-lues élément par élément sur l'image et
+lectures graphiques arbitrées à la mesure de pixels**. `element/109742`
+re-fetché sans reprendre les URLs citées : `course-422/upload-80870`
+(**7 pages**) re-dérivé et **conforme** ; pp. 5–6 confirmées comme portant
+les parties II et III. En-tête **confirmé sur l'image du scan** (p. 1 :
+« NS 28F » ; « شعبة العلوم التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) » =
+Sciences Physiques BIOF ; مدة الإنجاز 3 h ; المعامل 7 ; « Exercice IV
+(5 points) ») ; le chapeau et le bandeau « **EXERCICE IV ( 5 points)** »
+figurent en bas de la **p. 4** (non transcrits, hors portée RLC) —
+*NB : le résumé HTML d'AlloSchool annonce « 2ème BAC Sciences Mathématiques
+B », ce que l'image dément ; seule l'image fait foi.* Diff caractère par
+caractère des pp. 5–6 (libellés, numérotation, indices/exposants, valeurs et
+unités : $R = 90\ \Omega$, $L = 1\ \text{H}$, $\pi^{2} = 10$,
+$u_G(t) = k.i(t)$, $i(t) = I_m\cos(\frac{2\pi}{T_0}.t + \varphi)$,
+$t_1 = 16\ \text{ms}$, grandeurs $C$, $k_0$, $I_m$, $T_0$, $\varphi$, $E_t$,
+$E_{e1}$) — **aucun écart** (seules différences : accents/espaces
+typographiques, « Etablir » → « Établir »). **Partition du barème vérifiée
+sur la marge du scan** : partie I (p. 5) $0{,}5{+}0{,}5{+}0{,}5 = 1{,}5$ ;
+partie II (p. 6) $0{,}25{+}0{,}5{+}0{,}5 = 1{,}25$ ; partie III (p. 6)
+$0{,}5{+}0{,}75{+}0{,}5{+}0{,}5 = 2{,}25$ ⇒ portée transcrite ici
+$1{,}25 + 2{,}25 = 3{,}5$ pts sur $5{,}0$ — **conforme**, et la partie I est
+bien un échelon de tension sur dipôle RL (portée `dipole-rl.md`).
+**Schémas jugés élément par élément (zooms, jamais d'après la prose de
+l'entrée)** — *fig. 3* : flèche $i$ vers la droite au coin haut-gauche,
+$R$ (rectangle, étiquette sous le rectangle) en haut, bobine $(L,r)$ en
+spires à droite (étiquette à gauche du symbole), condensateur $C$ (deux
+traits parallèles, étiquette à droite) sur la branche gauche, branche basse
+= simple fil : **conforme**, avec la précision ajoutée ci-dessous que la
+figure 3 ne porte **ni interrupteur $K$ ni flèche $u_L$**, contrairement à
+la figure 1 (le raccourci « même disposition que la figure 1, avec $E$
+remplacé par $C$ » pouvait laisser croire le contraire). *Fig. 5* :
+identique à la figure 3 **plus** un générateur $G$ (cercle étiqueté « G »)
+inséré **dans la branche basse**, entre le pied de la branche $C$ et le pied
+de la branche $(L,r)$ : **conforme**. **Lectures graphiques arbitrées**
+(grilles et courbes mesurées au pixel) — *fig. 4* : pas de graduation
+numérique sur l'axe $u_C$ (seul « 0 » est écrit), repères $5/10/15/20/25$
+portés par les traits noirs (pas de 5 ms, quadrillage bleu à mi-carreau) ;
+les extrema tombent **exactement** sur ces repères (maxima $t = 0$ / 10 / 20
+et un dernier vers 30, minima $t = 5$ / 15 / 25 ; passages par zéro à
+$2{,}5$ / $7{,}5$ / $12{,}5$ / $17{,}5$ / $22{,}5$ / $27{,}5$ ms) ⇒
+**pseudo-période $T = 10\ \text{ms}$ confirmée, drapeau levé**. *Fig. 6* :
+ordonnées $8/4/0/-4/-8$ mA, quadrillage fin bleu au pas de $1\ \text{ms}$ et
+$0{,}8\ \text{mA}$ ; amplitude **constante** $\pm 8\ \text{mA}$ ; la courbe
+part de l'axe à $t=0$ en décroissant ; minima à $2{,}5$ / $12{,}5$ /
+$22{,}5$ ms, maxima à $7{,}5$ / $17{,}5$ / $27{,}5$ ms, passages par zéro
+sur $0/5/10/15/20/25$ ⇒ **$T_0 = 10\ \text{ms}$ et $\varphi = \pi/2$ —
+les six drapeaux « lecture à confirmer » sont levés**. **Physique
+re-dérivée et cohérente** : $T = T_0 = 2\pi\sqrt{LC}$ avec $T = 10$ ms,
+$L = 1$ H et $\pi^2 = 10$ ⇒ $C = T^{2}/(4\pi^{2}L) = 2{,}5\ \mu\text{F}$
+(valeur ronde — corrobore indépendamment la lecture $T = 10$ ms) ; la
+période lue sur la fig. 6 est identique à la pseudo-période de la fig. 4,
+comme l'énoncé l'affirme ; entretien ⇔ $k_0 = R + r$, et la partie I donne
+$r = u_L(\infty)/I_0 = 1/0{,}1 = 10\ \Omega$ d'où $k_0 = 100$ SI, cohérent
+avec $\tau = L/(R+r) = 10$ ms lu sur la tangente de la fig. 2 (ce qui
+« vérifie $L = 1$ H ») ; $E_t = \frac12 L I_m^{2} = 3{,}2\times10^{-5}$ J ;
+à $t_1 = 16$ ms, $i = I_m\cos(3{,}7\pi) \approx +4{,}7$ mA (la courbe donne
+$\approx +5$ mA, écart d'un demi-carreau fin, dans l'épaisseur du trait) ⇒
+$E_{e1} \approx 2{,}1\times10^{-5}$ J. Équation de la partie I imprimée sur
+la p. 5 dimensionnellement homogène ($\text{A.s}^{-1}$ partout). **Aucune
+divergence bloquante** ⇒ promue. *(Quatre corrections de précision ont été
+apportées pendant cette passe — descriptions des figures 3, 4 et 6, et la
+ligne de titre, qui présentait l'intitulé de la partie I comme celui de
+l'exercice alors que la page de garde en donne deux ; elles demandent, par
+discipline, une re-lecture par un tiers.)*
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan : « الفيزياء والكيمياء » / « شعبة العلوم التجريبية مسلك
+  العلوم الفيزيائية (خيار فرنسية) »)
+- Code sujet : NS 28F · Barème de l'exercice complet (Ex IV) : 5 points ·
+  Barème de la portée RLC transcrite ici (parties II + III) : 3,5 points
+- Images lues : `.../course-422/upload-80870/0005-big.jpg`,
+  `.../0006-big.jpg` (et `0001-big.jpg` pour la couverture / le barème ;
+  `0004-big.jpg`, relue à la vérification, porte le bandeau « EXERCICE IV
+  ( 5 points) » et le chapeau de l'exercice)
+- Pages du scan : 5 et 6 (sur 7)
+- Portée : Exercice IV du sujet 2020 N est composé de trois parties **I, II,
+  III** partageant le même montage (bobine $(L,r)$, résistance $R = 90\
+  \Omega$). **Partie I — « Réponse d'un dipôle RL à un échelon de tension »**
+  (figures 1-2, questions sur $i(t)$, $u_L(t)$, détermination de $r$ et $L$)
+  est **hors périmètre RLC** et transcrite sous `dipole-rl.md`. **Parties II
+  — « Décharge d'un condensateur dans un dipôle RL »** (oscillations
+  libres/pseudopériodiques, figure 3-4) et **III — « Entretien des
+  oscillations dans un circuit RLC série »** (régime sinusoïdal entretenu,
+  figure 5-6) forment le circuit RLC série proprement dit et sont
+  transcrites intégralement ci-dessous.
+
+**Exercice IV — intitulés de la page de garde : « Réponse d'un dipôle RL à un
+échelon de tension » / « Etude de l'amortissement et de l'entretien des
+oscillations dans un circuit RLC série » — II. Décharge d'un condensateur dans
+un dipôle RL — III. Entretien des oscillations dans un circuit RLC série.**
+
+**II - Décharge d'un condensateur dans un dipôle RL**
+
+On monte en série, à un instant choisi comme nouvelle origine des dates
+$t = 0$, un condensateur de capacité $C$, totalement chargé, avec la bobine
+précédente et un conducteur ohmique de résistance $R = 90\ \Omega$. (figure 3).
+
+La courbe de la figure 4 représente l'évolution de la tension $u_c(t)$ aux
+bornes du condensateur.
+
+1. (0,25) Quel est le régime d'oscillation mis en évidence par la courbe de
+   la figure 4 ?
+2. (0,5) Établir l'équation différentielle vérifiée par la tension $u_c(t)$.
+3. (0,5) Sachant que la pseudopériode est égale à la période propre, trouver
+   la capacité $C$ du condensateur. (On prend : $\pi^{2} = 10$).
+
+**III - Entretien des oscillations dans un circuit RLC série**
+
+Pour entretenir les oscillations électriques dans le circuit précédent
+représenté sur la figure 3, on insère dans ce circuit un générateur $G$
+délivrant une tension proportionnelle à l'intensité du courant :
+$u_G(t) = k \cdot i(t)$. (Figure 5).
+
+La courbe de la figure 6 représente l'évolution de l'intensité $i(t)$ dans le
+circuit dans le cas où $k = k_0$.
+
+1. (0,5) Trouver, dans le système international d'unités, la valeur de $k_0$.
+2. (0,75) Sachant que l'expression de l'intensité $i(t)$ dans le circuit
+   s'écrit ainsi : $i(t) = I_m\cos\!\left(\dfrac{2\pi}{T_0}\, t + \varphi\right)$,
+   déterminer les valeurs de $I_m$, $T_0$ et $\varphi$.
+3. (0,5) Déterminer l'énergie totale $E_t$ du circuit.
+4. (0,5) Trouver l'énergie électrique $E_{e1}$ emmagasinée dans le
+   condensateur à l'instant $t_1 = 16\ \text{ms}$.
+
+*Figure 3 (schéma) :* boucle série : coin haut-gauche, flèche $i$ vers la
+droite ; branche haute = $R$ (rectangle, étiquette « R » sous le rectangle) ;
+coin haut-droit → descend vers la branche de droite = bobine $(L, r)$
+(dessinée en spires, étiquette « (L,r) » à gauche du symbole) ; branche basse
+= **simple fil** qui referme le circuit vers le coin bas-gauche ; branche
+gauche (remontant vers le coin haut-gauche) = condensateur $C$ (symbole à deux
+traits parallèles, étiquette « C » à droite). Même disposition que la figure 1
+de la partie I avec $E$ remplacé par $C$, **mais la figure 3 ne porte ni
+l'interrupteur $K$ ni la flèche de tension $u_L$** qui figurent, eux, sur la
+figure 1.
+
+*Figure 4 (courbe) :* $u_C$ (V) en fonction de $t$ (ms) ; **aucune valeur
+numérique** portée sur l'axe $u_C$ (seul le niveau $0$ est repéré, à gauche de
+l'origine) ; axe des temps gradué avec repères $5, 10, 15, 20, 25$ (traits
+noirs tous les $5\ \text{ms}$, quadrillage bleu secondaire à mi-carreau, soit
+$2,5\ \text{ms}$). Oscillation pseudopériodique d'**amplitude décroissante** :
+la courbe part à $t = 0$ de sa valeur la plus élevée (elle démarre au bord
+supérieur du cadre), descend à un premier minimum — le plus profond de la
+courbe — en $t = 5$, remonte à un maximum (plus bas que celui de départ) en
+$t = 10$, redescend à un second minimum (moins profond que le premier) en
+$t = 15$, remonte à un maximum (plus bas que celui de $t = 10$) en $t = 20$,
+redescend à un troisième minimum (le moins profond des trois) en $t = 25$,
+puis remonte vers un dernier maximum en fin de tracé, au voisinage du bord
+droit du cadre ($t \approx 30$). Les extrema tombent **exactement** sur les
+repères $5, 10, 15, 20, 25$ et les passages par zéro à mi-chemin
+($2,5$ ; $7,5$ ; $12,5$ ; $17,5$ ; $22,5$ ; $27,5\ \text{ms}$) : la
+pseudo-période lue vaut **$T = 10\ \text{ms}$** (lecture confirmée à la mesure
+de pixels lors de la vérification).
+
+*Figure 5 (schéma) :* même boucle série que la figure 3 (condensateur $C$ à
+gauche, $R$ en haut avec flèche $i$, bobine $(L, r)$ à droite), mais la
+branche basse porte en plus un générateur $G$ (cercle libellé « G ») inséré
+en série entre le bas de la branche $C$ et le bas de la branche $(L, r)$.
+
+*Figure 6 (courbe) :* $i$ (mA) en fonction de $t$ (ms) ; axe des ordonnées
+gradué $8, 4, 0, -4, -8$ ; axe des temps gradué avec repères $5, 10, 15, 20,
+25$ ; quadrillage secondaire fin (bleu) au pas de $1\ \text{ms}$ en abscisse
+et $0,8\ \text{mA}$ en ordonnée (5 subdivisions par carreau dans les deux
+directions). Sinusoïde d'**amplitude constante**, oscillant entre $+8$ et
+$-8$ mA. La courbe **part de l'axe à $t = 0$** ($i \approx 0$) en décroissant
+immédiatement, atteint un minimum $-8\ \text{mA}$ en $t = 2,5$, coupe l'axe
+en $t = 5$, atteint un maximum $+8\ \text{mA}$ en $t = 7,5$, coupe l'axe en
+$t = 10$, minimum $-8\ \text{mA}$ en $t = 12,5$, axe en $t = 15$, maximum
+$+8\ \text{mA}$ en $t = 17,5$, axe en $t = 20$, minimum $-8\ \text{mA}$ en
+$t = 22,5$, axe en $t = 25$, puis un dernier maximum $+8\ \text{mA}$ en
+$t = 27,5$ (fin du tracé). Les extrema tombent donc sur les multiples impairs
+de $2,5\ \text{ms}$ et les passages par zéro sur les repères
+$0, 5, 10, 15, 20, 25$ : période **$T_0 = 10\ \text{ms}$** (lectures
+confirmées à la mesure de pixels lors de la vérification).
+
+---
+
+## 2021 — session normale — Exercice IV (Partie II)
+Source: https://www.alloschool.com/element/127287
+Statut: vérifié — re-fetch indépendant AlloSchool + diff OK
+(agent-vérificateur, 2026-08-06) ; **figures re-lues indépendamment (passe 3,
+troisième agent, 2026-08-06) et jugées fidèles ; corrections confirmées.**
+Transcription issue du scan course-422/upload-84195, page(s) 6. Historique :
+vérification adverse (second agent) ayant trouvé et corrigé un **écart de
+figure majeur** ($T_0$) — écart et correction **confirmés par mesure
+indépendante à la passe 3**. `element/127287` re-fetché,
+`course-422/upload-84195` (8 pages) re-dérivé de façon indépendante et
+**conforme** ; en-tête du scan **confirmé** (NS 28F, Sciences Physiques BIOF
+option française, 3 h, coef 7 ; couverture : « Exercice IV (4,75 points) »).
+Diff caractère par caractère de la p. 6 (énoncé, libellés, numérotation,
+expression $q(t) = Q_m\cos(2\pi t/T_0)$, $\pi^2 = 10$, barème en marge) —
+**aucun écart sur le texte**. Barème re-additionné :
+$0{,}25+0{,}5+0{,}5+0{,}25+0{,}5 = 2{,}0$ points ; **partition de l'exercice
+vérifiée** : $1{,}0$ (I) $+\ 2{,}0$ (II) $+\ 1{,}75$ (III) $= 4{,}75$ =
+couverture. **Figure 3 jugée élément par élément au zoom — fidèle** (boucle
+série bobine $L$ dessinée en spires sur la branche gauche + condensateur $D$
+sur la branche droite, flèche $i$ en haut vers la droite, flèche $u_C$ vers le
+haut ; **aucun conducteur ohmique** dans la boucle, cohérent avec le régime
+non amorti).
+**Écart bloquant relevé — figure 4 :** la description précédente affirmait un
+passage par zéro sur le repère $t = 7$, un minimum vers $t = 14$, une remontée
+coupant l'axe vers $t = 21$ et un maximum vers $t = 28$ — c'est-à-dire
+$T_0 = 28$ ms. Le relevé numérique de la courbe sur le scan (repères
+principaux localisés aux colonnes du quadrillage puis tracé échantillonné)
+donne : maximum à $t = 0$, zéro descendant à $t \simeq 5{,}25$ ms, minimum à
+$t \simeq 10{,}5$ ms, zéro montant à $t \simeq 15{,}75$ ms, **maximum
+exactement sur le repère $t = 21$ ms**, zéro descendant à $t \simeq 26{,}25$
+ms, second minimum à $t \simeq 31{,}5$ ms — soit **$T_0 = 21$ ms**, structure
+en quarts de période parfaitement régulière. La description de figure a été
+réécrite en conséquence. *Conséquence pédagogique : la question 4 (« déterminer
+graphiquement $T_0$ ») vaut $21$ ms et non $28$ ms, et la question 5 donne
+$L = T_0^2/(4\pi^2 C) = (21\times10^{-3})^2/(40\times12\times10^{-6})
+\simeq 0{,}92$ H, et non $\simeq 1{,}63$ H.*
+**Drapeau « lecture à confirmer » adjugé et levé** sur l'amplitude : les
+extrema ne sont pas « au-delà de $72$ » de façon indéterminée, ils sont
+**exactement tangents aux traits principaux non chiffrés à $\pm 144\
+\mu\text{C}$** (le pas du quadrillage principal vaut $72\ \mu\text{C}$ ;
+mesure : $108{,}5$ px pour $54{,}5$ px par graduation, soit $2{,}00$
+graduations). Recoupement physique **exact** avec la partie I : $Q_m = C\cdot E
+= 12\ \mu\text{F} \times 12\ \text{V} = 144\ \mu\text{C}$.
+**Passe 3 (re-lecture indépendante, troisième agent, 2026-08-06)** — figure 4
+re-mesurée à partir du scan, sans réutiliser le relevé précédent. Traits
+principaux horizontaux localisés aux ordonnées $+144$, $+72$, $0$, $-72$,
+$-144\ \mu\text{C}$ (pas mesuré $54{,}25$ px $= 72\ \mu\text{C}$, deux traits
+non chiffrés à $\pm 144$ **confirmés**), traits principaux verticaux à $0$,
+$7$, $14$, $21$, $28$, $35$ ms (pas mesuré $54{,}30$ px $= 7$ ms). Repères de
+la courbe relevés indépendamment : maximum tangent à $+144$ en $t = 0$ ; zéro
+descendant $5{,}33$ ms ; minimum tangent à $-144$ vers $10{,}7$ ms ; zéro
+montant $16{,}05$ ms ; **maximum suivant $21{,}25$ ms**, soit sur le repère
+chiffré $21$ ms à $0{,}25$ ms près — moins que l'épaisseur du trait de courbe
+(4–5 px) ; zéro descendant $26{,}65$ ms ; second minimum $\simeq 31{,}9$ ms.
+⇒ **$T_0 = 21$ ms confirmé** (et la lecture antérieure de $28$ ms
+définitivement écartée), $L \simeq 0{,}92$ H confirmé. Figure 3 re-confirmée
+au zoom ×6 (bobine en spires à gauche étiquetée « L », flèche $i$ en haut vers
+la droite, condensateur « D » à droite avec flèche $u_C$ vers le haut, aucun
+conducteur ohmique). ⇒ **entrée promue.**
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS 28F · Barème de l'exercice complet : 4,75 points · Barème de
+  la Partie II transcrite ici : 2,0 points
+- Images lues : `.../course-422/upload-84195/0006-big.jpg`
+- Pages du scan : 6 (sur 8)
+- Portée : **Partie II (oscillations non amorties dans un circuit LC)** de
+  l'exercice IV du sujet 2021 N, transcrite ici. La **Partie I (réponse d'un
+  dipôle RC à un échelon)** est sous `rc-charge.md` ; la **Partie III
+  (modulation d'amplitude)** est sous `ondes-em-modulation.md`. Régime
+  respecté : la courbe (figure 4) est purement sinusoïdale d'amplitude
+  constante (cas non amorti au programme, cf. rappel de périmètre en tête de
+  fichier).
+
+**II- Oscillations électriques non amorties dans un circuit LC.**
+
+On réalise le montage représenté sur le schéma de la figure 3. Ce montage est
+constitué du condensateur précédent $D$, initialement chargé, et d'une bobine
+d'inductance $L$ et de résistance négligeable. Un système d'acquisition
+informatisé permet de tracer la courbe représentant l'évolution de la charge
+$q(t)$ du condensateur (figure 4).
+
+1. (0,25) Préciser, parmi les trois régimes d'oscillations, le régime mis en
+   évidence par la courbe de la figure 4.
+2. (0,5) Établir l'équation différentielle vérifiée par la charge $q(t)$ du
+   condensateur.
+3. (0,5) Trouver l'expression de la période propre $T_0$ de l'oscillateur en
+   fonction de $L$ et de $C$ pour que l'expression $q(t) = Q_m \cos\!\left(
+   \dfrac{2\pi}{T_0}\,t\right)$ soit solution de cette équation différentielle.
+4. (0,25) Déterminer graphiquement la valeur de $T_0$.
+5. (0,5) En déduire la valeur de $L$. (on prend $\pi^{2} = 10$).
+
+*Figure 3 (schéma) :* boucle série ; à gauche, la bobine $L$ (dessinée en
+spires, étiquette « L » à côté) ; flèche de courant $i$ en haut, orientée vers
+la droite ; à droite, le condensateur $D$ (deux traits parallèles) avec une
+flèche $u_C$ orientée vers le haut à côté.
+
+*Figure 4 (courbe) :* ordonnée $q\ (\mu\text{C})$, seules les valeurs $72$,
+$0$ et $-72$ étant chiffrées sur l'axe ; le quadrillage principal horizontal
+est régulier et de pas $72\ \mu\text{C}$, si bien qu'il existe deux traits
+principaux **non chiffrés** à $+144$ et $-144\ \mu\text{C}$. Abscisse
+$t\ (\text{ms})$ : traits principaux chiffrés $7$, $14$, $21$, $28$ (pas
+régulier de $7$ ms ; un dernier trait principal non chiffré ferme le cadre à
+droite, à $t = 35$ ms), avec quadrillage secondaire régulier entre eux.
+
+Courbe sinusoïdale d'allure cosinus, d'**amplitude constante**, tangente
+exactement aux traits principaux $+144$ et $-144\ \mu\text{C}$ : elle part de
+son **maximum** $Q_m = 144\ \mu\text{C}$ à $t = 0$, coupe l'axe des abscisses
+en descendant vers $t \simeq 5{,}25$ ms (soit **avant** le repère $7$),
+atteint son **minimum** $-144\ \mu\text{C}$ vers $t \simeq 10{,}5$ ms (à
+mi-chemin entre les repères $7$ et $14$), recoupe l'axe en montant vers
+$t \simeq 15{,}75$ ms, retrouve son **maximum** $+144\ \mu\text{C}$
+**exactement sur le repère $t = 21$ ms**, puis recoupe l'axe vers
+$t \simeq 26{,}25$ ms et redescend jusqu'à un second minimum vers
+$t \simeq 31{,}5$ ms en fin de tracé.
+
+La **période propre se lit donc $T_0 = 21$ ms** (maximum à $t = 0$ et maximum
+suivant sur le repère $t = 21$ ; écart entre passages par zéro consécutifs
+$\simeq 10{,}5$ ms $= T_0/2$).
+
+---
+
+## 2025 — session normale — Exercice 3 (Partie 2)
+Source: https://www.alloschool.com/element/145796
+Statut: vérifié — **3ᵉ passe, vérificateur indépendant
+(agent-vérificateur-indépendant, 2026-08-07), diff OK.**
+**Élément re-dérivé** : `element/145796` → `course-422/upload-87489`, **6 pages**
+(`0007-big.jpg` = 404), URLs d'images ré-extraites du HTML de la page `element/`
+et non reprises du champ « Images lues » ; couverture p.1 relue — **NS28F**,
+SPC/BIOF (شعبة العلوم التجريبية مسلك العلوم الفيزيائية (خيار فرنسية)), 3 h,
+coef 7 ; carte du sujet $7+2{,}5+5+5{,}5=\mathbf{20}$ ✓.
+**Portée du diff** : `0004-big.jpg` (chapeau EXERCICE 3, figure 1, Partie 1,
+chapeau « 2- Décharge d'un condensateur dans un dipôle RL », $u_C=U_0=10\ \text{V}$,
+position (2), $(t_0=0)$, Q2-1) et `0005-big.jpg` (Q2-2, Q2-2-1, Q2-2-2,
+Q2-3 $\frac{dE_T}{dt}=-r.i^2$, Q2-4 $|E_{th}|$ entre $t=0$ et $t=t_A$, Partie 3
+avec $L=2\ \text{mH}$) — **aucune divergence de valeur, unité, indice ou
+exposant**. Barème marginal recompté au scan : $0{,}5\times5=\mathbf{2{,}5}$ pour
+la Partie 2, $0{,}5+0{,}5=1{,}0$ (P1) et $0{,}25+0{,}75+0{,}5=1{,}5$ (P3), total
+$\mathbf{5}$ ✓. *(Deux normalisations orthographiques bénignes relevées et
+acceptées : le scan imprime « effet joule » et « entre les instant » en Q2-4.)*
+**Figure 3 — re-mesurée intégralement, élément par élément.**
+*Étalonnage refait :* traits principaux **noirs** en abscisse à $x=561$ puis tous
+les $59{,}5$ px jusqu'à $1156$ ⇒ **10 divisions**, cadre confirmé ; en ordonnée
+$y=358\,/\,417{,}5\,/\,477$ (axe épais) $/\,536{,}5\,/\,595{,}5$, étiquettes 4, 0,
+$-4$ ⇒ **1 division $=4$ V** ; sous-quadrillage **bleu** (mesuré : RGB moyen
+$\approx(78,76,133)$) tous les $5{,}95$ px, soit 10 carreaux par division, les
+traits $\pm8$ V étant bien **noirs** ($\approx(60,60,86)$) et non chiffrés ✓.
+*Double flèche « $7\cdot10^{-5}$ s » :* encre relevée colonne par colonne sur les
+rangées $y=355$–$375$ ; pointe gauche à $x=860$, pointe droite à $x=917$
+(**57 px**), entre les deux traits principaux $x=859$ et $x=918$ — donc
+**exactement une division**, jamais deux ni quatre. **La classe de défaut
+« flèche d'étalonnage lue comme période » est confirmée sur cette figure.**
+*Période mesurée indépendamment :* extremums localisés à $x=561/680/799/918/1037/1156$
+px (demi-période constante **119 px**) ⇒ $T=238$ px $=\mathbf{4{,}00}$ divisions
+$\Rightarrow T=4\times7\cdot10^{-5}=\mathbf{2{,}8\cdot10^{-4}\ \text{s}}$.
+*Physique re-dérivée par le vérificateur :* $T_0=2\pi\sqrt{LC_0}
+=2\pi\sqrt{2\cdot10^{-3}\times1\cdot10^{-6}}=2{,}810\cdot10^{-4}$ s, soit
+$0{,}4\,\%$ de l'écart avec la lecture ($C_0=1\ \mu$F de la Partie 1, $L=2$ mH
+donné par le sujet en Partie 3 — relu sur `0005-big.jpg`) ✓ ; la lecture
+« $T=7\cdot10^{-5}$ s » exigerait $L=0{,}124$ mH, exclu.
+*Valeurs relevées (centre du trait, échelle $14{,}875$ px/V)* : $+10{,}0$ /
+$-8{,}3$ / $+7{,}0$ / $-5{,}9$ / $+4{,}9$ / $-4{,}1$ V, décroissance géométrique
+de rapport $0{,}836$ **constant sur les cinq rapports** (auto-cohérence de la
+lecture) ; $u_C(0)$ **au bord gauche = 10,0 V** (ajustement sinusoïdal sur les
+colonnes 566–575 : $9{,}91$–$9{,}95$ V pour $t>0$, extrapolation $10{,}0$) —
+c'est le $U_0$ de l'énoncé ; le maximum $t_A$ **touche le pointillé 7 V**
+($y=373$ mesuré pour le niveau 7, encre du sommet $y=372$–$377$) ; **fin de tracé
+sur le 3ᵉ minimum au bord droit** ($x=1153$–$1156$, $-4{,}05$ V, aucune encre de
+courbe au-delà : ce qui dépasse à droite est la flèche de l'axe $t$) ✓.
+**Drapeaux « lecture à confirmer » adjugés :** (a) $u_C(0)$ — **levée**, valeur au
+trait, $10\ \text{V}$ ; (b) position de $t_B$ — **levée** : le trait pointillé
+$t_B$ est sur le trait principal $x=859$, où la courbe fait son **passage par zéro
+descendant**, exactement **une division ($T/4$) après $t_A$** ($x=799$) —
+cohérent avec Q2-2-2 ($i=C\,du_C/dt<0$ entre $t_A$ et $t_B$) ; (c) premier
+minimum — **maintenue** (valeur hors trait) : brut mesuré $-8{,}40$ V, mais la
+même méthode donne $6{,}89$ V pour un maximum qui est **au trait à 7,00 V**, d'où
+un biais systématique de $-1{,}5$ px ; après correction sur ce repère
+$\Rightarrow \mathbf{-8{,}30\ \text{V}}$, en accord avec l'ajustement géométrique
+($-8{,}36$). **La valeur $-8{,}3$ de l'entrée est confirmée** ; les autres
+extremums hors trait ($-5{,}9$, $+4{,}9$, $-4{,}1$) sont confirmés au même titre
+et gardent leur drapeau.
+**Trait du niveau 7 : NOIR et pointillé — reconfirmé.** Rangée $y=373$ : couverture
+intermittente (148 colonnes sur 230 ⇒ tirets) et encre RGB $(22,24,51)$, contre
+$(78,76,133)$ pour les rangées de sous-quadrillage voisines ($y=364/370/376$),
+franchement bleues. Le niveau 7 **n'est pas** un trait principal (majeurs à
+$+8$ et $+4$).
+**Historique** : 1ʳᵉ passe (six corrections majeures de figure) et 2ᵉ passe (deux
+corrections résiduelles : couleur du pointillé 7 ; profondeur du 1ᵉʳ minimum)
+**toutes confirmées** par cette 3ᵉ passe indépendante, sans nouvelle divergence.
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+- Code sujet : NS28F · Barème de l'exercice complet : 5 points ; **Partie 2**
+  = 2,5 points ($0{,}5+0{,}5+0{,}5+0{,}5+0{,}5$)
+- Images lues (reproductibilité) : `.../course-422/upload-87489/0004-big.jpg`
+  (énoncé), `.../0005-big.jpg` (suite + figure 3)
+- Pages du scan : 4 (fin) et 5 (sur 6)
+- Portée : **2- Décharge d'un condensateur dans un dipôle RL**, deuxième
+  sous-partie de l'exercice III (même circuit, figure 1, que la **Partie 1
+  — charge par générateur de courant**, transcrite sous `rc-charge.md`, où
+  la figure 1 est décrite en détail). Classée ici (et non sous
+  `dipole-rl.md`) car la bobine $(L, r)$ possède une résistance interne $r$
+  non nulle et le circuit de décharge est le condensateur $C_0$ en série
+  avec cette bobine : la courbe obtenue (figure 3) est une oscillation
+  **pseudopériodique amortie**, comportement RLC série libre, pas un régime
+  RL du premier ordre. Même intitulé et même montage physique que le
+  précédent trouvé dans la banque : **2020 N Exercice IV Partie II**, « II -
+  Décharge d'un condensateur dans un dipôle RL », déjà classé sous
+  `rlc-serie.md` ci-dessus — précédent direct pour ce classement.
+
+**2- Décharge d'un condensateur dans un dipôle RL**
+
+Lorsque la tension entre les bornes du condensateur prend la valeur
+$u_C = U_0 = 10\ \text{V}$, on bascule l'interrupteur $K$ en position (2) à
+un instant pris comme nouvelle origine des dates $(t_0 = 0)$. Un système
+d'acquisition informatisé adéquat permet d'obtenir la courbe représentant la
+tension $u_C(t)$ (figure 3).
+
+1. **2-1.** (0,5) Établir l'équation différentielle vérifiée par $u_C(t)$.
+2. **2-2.** En exploitant la courbe de la figure 3, déterminer :
+   1. **2-2-1.** (0,5) la valeur de la pseudopériode des oscillations.
+   2. **2-2-2.** (0,5) le signe de l'intensité du courant $i$ entre l'instant
+      $t_A$ et l'instant $t_B$.
+3. **2-3.** (0,5) Montrer que : $\dfrac{dE_T}{dt} = -r.i^2$, avec $E_T$
+   l'énergie totale du circuit à un instant $t$.
+4. **2-4.** (0,5) Calculer $|E_{th}|$ l'énergie dissipée par effet Joule dans
+   le circuit entre les instants $t = 0$ et $t = t_A$.
+
+*Figure 3 (courbe) :* $u_C\ (\text{V})$ en fonction de $t$ (axe non chiffré
+en unité, flèche horizontale simple « t »), sur quadrillage à double
+graduation (traits principaux noirs, sous-quadrillage fin bleu). Le cadre
+compte **10 divisions principales** en abscisse. Axe des ordonnées : traits
+principaux chiffrés $4$, $0$ et $-4$ (une division $=4\ \text{V}$ ; les traits
+principaux de $+8$ et $-8$ existent mais ne sont pas chiffrés) ; le niveau
+$u_C = 7$ n'est **pas** un trait principal — il est matérialisé par un **trait
+pointillé horizontal noir** (tirets, du même ton que l'axe) portant l'étiquette
+« 7 » et un petit tiret de repère sur l'axe des ordonnées.
+
+Oscillation pseudopériodique d'amplitude **décroissante**, dont **tous les
+extremums tombent sur un trait principal, un trait sur deux** :
+- à $t = 0$ (sur l'axe des ordonnées) : **maximum initial $u_C = 10\ \text{V}$**
+  (2,5 divisions au-dessus de $0$) — c'est le $U_0$ de l'énoncé ;
+- division 1 : passage par zéro descendant ;
+- division 2 : **premier minimum, le plus profond du tracé**, un peu au-dessous
+  du trait principal non chiffré de $-8\ \text{V}$ (≈ $-8{,}3\ \text{V}$ —
+  *valeur non située sur un trait : lecture à confirmer*) ;
+- division 4 : **deuxième maximum, qui touche exactement le pointillé
+  $u_C = 7$** ; c'est ce maximum que repère l'abscisse **$t_A$** (trait vertical
+  pointillé descendant jusqu'à l'axe, où il est étiqueté « $t_A$ ») ;
+- division 5 : **$t_B$**, étiqueté de la même façon sous l'axe — c'est le
+  **passage par zéro descendant** qui suit $t_A$, soit exactement une division
+  ($T/4$) plus loin ;
+- division 6 : deuxième minimum, moins profond que le premier (≈ $-5{,}9\ \text{V}$ —
+  *hors trait : lecture à confirmer*) ;
+- division 8 : troisième maximum, plus bas que celui de $t_A$ (≈ $4{,}9\ \text{V}$ —
+  *hors trait : lecture à confirmer*) ;
+- division 9 : passage par zéro descendant ; division 10 : **troisième minimum,
+  au bord droit du cadre — le tracé s'arrête là** (≈ $-4{,}1\ \text{V}$ —
+  *hors trait : lecture à confirmer* ; il n'y a pas de maximum au-delà).
+
+Un repère à **double flèche horizontale**, étiqueté « $7 \cdot 10^{-5}\ \text{s}$ »
+et tracé au-dessus de la courbe, s'étend **exactement d'un trait principal au
+suivant** (de la verticale de $t_B$ à la suivante) : c'est **l'étalon de
+graduation de l'axe des temps — une division vaut $7 \cdot 10^{-5}\ \text{s}$** —
+et non la pseudopériode. La pseudopériode se lit donc **entre deux maxima
+consécutifs, soit 4 divisions** :
+$T = 4 \times 7\cdot10^{-5} = 2{,}8\cdot10^{-4}\ \text{s}$ (lecture au trait,
+non estimée ; recoupée par $T_0 = 2\pi\sqrt{LC_0} = 2{,}81\cdot10^{-4}\ \text{s}$
+avec $C_0 = 1\ \mu\text{F}$ et $L = 2\ \text{mH}$, la valeur que le sujet donne
+lui-même en Partie 3 pour la même bobine (b)). Légende : « Figure 3 ».
+
+---
+
+## 2024 — session normale — Exercice 4 (Partie 1)
+Source: https://www.alloschool.com/element/145763
+Statut: vérifié — **2ᵉ passe, vérificateur indépendant
+(agent-vérificateur-indépendant, 2026-08-07), diff OK.**
+**Élément re-dérivé** : `element/145763` → `course-422/upload-87465`, **6 pages**
+(`0007-big.jpg` = 404), URLs d'images ré-extraites du HTML de la page `element/` ;
+couverture p.1 relue — **NS 28F**, SPC/BIOF, 3 h, coef 7 ; carte du sujet
+$7+2{,}5+2+3{,}5+5=\mathbf{20}$ ✓.
+**Portée du diff** : `0004-big.jpg` (cadrage « Dans les circuits électriques… en
+cas de besoin. », les deux tirets d'objet, $C=0{,}22$ nF, bobine $(b)$ $(L,r)$,
+$R$ ajustable, $R=R_0$, $t=0$, figures 1 et 2) et `0005-big.jpg` (Q1-1 à Q1-4,
+$E_j=|\Delta E_t|$) — **aucune divergence de valeur, unité, indice ou exposant**.
+Barème marginal recompté au scan : $0{,}25+0{,}5+0{,}5+0{,}75=\mathbf{2{,}0}$ (P1)
+et $0{,}5\times3=1{,}5$ (P2) ⇒ $\mathbf{3{,}5}$ ✓.
+**Figure 1 (circuit) : conforme**, revue élément par élément au zoom ×3 —
+boucle rectangulaire, $K$ puis rhéostat $R$ (rectangle + flèche oblique, « R »
+en dessous) sur la branche supérieure, $C$ à gauche avec la flèche $u_C$
+**vers le haut**, bobine en spires à droite avec « (L,r) » à gauche du symbole et
+« (b) » à droite, fil nu en bas, légende « Figure 1 ». *(Nuance de rédaction, non
+bloquante : $K$ est sur la **branche supérieure, portion gauche**, en série avant
+$R$ — la formule « coin haut-gauche » de la description reste acceptable.)*
+**Figure 2 — re-mesurée intégralement.** Étalonnage refait : traits principaux
+**noirs** en abscisse $x=619{,}5$ (axe) puis tous les $59{,}3$ px jusqu'à
+$1153{,}5$ ⇒ **9 divisions** ; en ordonnée $y=1270$ (cadre haut), $1329{,}5$,
+$1388{,}5$, $1448$ (axe épais), $1507{,}5$, $1566{,}5$, $1626$ (cadre bas),
+étiquettes **2**, **0**, **−2** ⇒ **1 division $=2$ V**, cadre $-6\to+6$ V ✓ ;
+sous-quadrillage **bleu à $11{,}86$ px, soit 5 carreaux par division** ✓
+(à ne pas confondre avec les 10 carreaux de la figure 1 de l'Ex 1 du même sujet).
+**Contrôle de la classe de défaut « flèche d'étalonnage lue comme période » :
+sans objet** — l'axe des temps ne porte **ni graduation ni double flèche**, rien
+qu'une simple flèche « t » (balayage complet du cadre fait).
+**Relevés** : $u_C(0)=\mathbf{+6{,}0\ \text{V}}$ — au zoom ×10 le tracé **naît
+exactement à l'angle formé par l'axe des ordonnées et le trait supérieur du
+cadre** (drapeau levé, lecture au trait) ; extremums aux divisions **paires**
+($x=619{,}5/738/857/975{,}5/1094$) et zéros aux divisions **impaires**
+($x=679{,}6/798/918/1036$, mesurés) ⇒ **pseudopériode $=4$ divisions** ;
+valeurs $+6{,}0$ / $-5{,}4$ / $\mathbf{+4{,}8}$ / $-4{,}3$ / $+3{,}9$ V,
+de rapport $0{,}897$–$0{,}901$ **constant** sur les quatre rapports
+(auto-cohérence) ; le tracé atteint le bord droit (division 9) **en repassant par
+zéro** ✓. **$t_1$** : court trait vertical en pointillés **chevauchant l'axe** à
+la division 1, sur le premier **zéro descendant** ✓ ; **$t_2$** : long trait en
+tirets à la division 6, descendant de l'axe **jusqu'au creux** du second minimum
+✓ — $t_1$ zéro (énergie dans la bobine) et $t_2$ extremum (énergie dans le
+condensateur), ce qui donne son sens à la Q1-3.
+**Physique re-dérivée par le vérificateur** : $E_j=\frac12C\!\left(u_C(0)^2
+-u_C(t_2)^2\right)=\frac12\times0{,}22\cdot10^{-9}\times(36-18{,}5)
+\simeq\mathbf{1{,}9\cdot10^{-9}\ \text{J}}$ ✓ (à $t=0$ comme à $t_2$ le courant
+est nul, donc toute l'énergie est capacitive).
+**Historique** : la correction de 1ʳᵉ passe (maximum de la division 4 à
+$+4{,}8$ V et non « autour de 3 ») est **confirmée** ; aucune nouvelle divergence.
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7 (NB :
+  le résumé HTML d'AlloSchool pour `element/145763` annonce à tort « 2ème BAC
+  Sciences Mathématiques B » ; l'en-tête du scan, lu directement, confirme
+  sans ambiguïté SPC/BIOF — README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 3,5 points ; **Partie 1**
+  = 2,0 points ($0{,}25+0{,}5+0{,}5+0{,}75$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-87465/0004-big.jpg`
+  (chapeau, données, figures 1–2), `.../0005-big.jpg` (questions 1-1 à 1-4)
+- Pages du scan : 4 et 5 (sur 6)
+- Portée : **Partie 1 — Décharge d'un condensateur dans un dipôle RL**
+  (oscillations libres, amortissement, énergétique). Classée ici (et non
+  sous `dipole-rl.md`) car le circuit est un condensateur $C$ en série avec
+  une bobine $(L,r)$ (résistance interne non nulle) et un conducteur ohmique
+  $R$ : la courbe obtenue (figure 2) est une oscillation pseudopériodique
+  amortie — comportement RLC série libre, pas un régime RL du premier ordre.
+  Même intitulé et même montage physique que les précédents déjà classés
+  ici : **2020 N Exercice IV Partie II** et **2025 N Exercice 3 Partie 2**
+  (« Décharge d'un condensateur dans un dipôle RL »), tous deux sous
+  `rlc-serie.md` — précédent direct pour ce classement. La **Partie 2
+  (réponse d'un dipôle RL à un échelon de tension)**, qui suit dans le même
+  exercice, est sous `dipole-rl.md`. Reste dans le périmètre du cadre
+  `rlc_serie` (cf. rappel en tête de fichier) : aucune formule de
+  pseudo-période n'est demandée ici, seulement l'équation différentielle et
+  l'interprétation énergétique du régime amorti.
+
+**EXERCICE 4 (3,5 points) : Electricité.**
+
+*(Cadrage de l'exercice, transcrit intégralement : « Dans les circuits
+électriques, une bobine peut se comporter comme un conducteur ohmique ou
+différemment selon le type du courant électrique utilisé et les
+condensateurs peuvent stocker de l'énergie et la restituer en cas de
+besoin. »)*
+
+On se propose dans cet exercice d'étudier :
+- la décharge d'un condensateur dans un dipôle RL,
+- la réponse d'un dipôle RL à un échelon de tension.
+
+**1- Décharge d'un condensateur dans un dipôle RL.**
+
+Le circuit électrique de la figure 1 comporte :
+- un condensateur de capacité $C = 0{,}22\ \text{nF}$,
+- une bobine $(b)$ d'inductance $L$ et de résistance $r$,
+- un conducteur ohmique de résistance $R$ ajustable,
+- un interrupteur $K$.
+
+Le condensateur est initialement chargé totalement par un générateur de
+tension idéale de force électromotrice $E$. On ajuste la résistance $R$ à
+une valeur $R = R_0$. On ferme l'interrupteur $K$ à l'instant $t = 0$.
+
+La courbe de la figure 2 représente l'évolution temporelle de la tension
+$u_C(t)$ aux bornes du condensateur.
+
+1. **1-1.** (0,25) Expliquer de point de vue énergétique l'amortissement
+   observé des oscillations dans le circuit.
+2. **1-2.** (0,5) Établir l'équation différentielle vérifiée par la tension
+   $u_C(t)$ aux bornes du condensateur.
+3. **1-3.** (0,5) Indiquer, en justifiant, dans quel dipôle est
+   principalement emmagasinée l'énergie totale de l'oscillateur à l'instant
+   $t_1$ puis à l'instant $t_2$ (figure 2).
+4. **1-4.** (0,75) Calculer $E_j = |\Delta E_t|$ l'énergie dissipée par
+   effet Joule dans le circuit entre les instants $t = 0$ et $t = t_2$.
+
+*Figure 1 (schéma, circuit RLC série) :* boucle rectangulaire. Coin
+haut-gauche : interrupteur $K$ (symbole d'interrupteur ouvert). Branche
+supérieure : conducteur ohmique de résistance $R$ réglable (rectangle
+traversé d'une flèche oblique, symbole rhéostat), étiqueté « R » en
+dessous. Branche gauche (verticale) : condensateur $C$ (deux traits
+parallèles), étiqueté « C » à gauche, avec une flèche $u_C$ orientée vers le
+haut à côté. Branche droite (verticale) : bobine dessinée en spires,
+étiquetée « (L,r) » à gauche du symbole et « (b) » à droite. Branche
+inférieure : simple fil refermant la boucle. Légende : « Figure 1 ».
+
+*Figure 2 (courbe) :* $u_C\ (\text{V})$ en fonction de $t$ (**axe des temps non
+gradué et sans étalon** : simple flèche horizontale « t »). Axe des ordonnées
+gradué (traits principaux chiffrés) $2$, $0$ et $-2$ — **1 division principale
+$= 2\ \text{V}$**, les traits de $\pm4$ et $\pm6$ existent mais ne sont pas
+chiffrés ; sous-quadrillage bleu fin (5 carreaux par division). Le cadre compte
+**9 divisions en abscisse** et va de $\mathbf{-6\ \text{V}}$ (trait du bas) à
+$\mathbf{+6\ \text{V}}$ (trait du haut).
+
+Oscillation pseudopériodique d'amplitude **décroissante**, dont les extremums
+tombent sur les divisions **paires** et les passages par zéro sur les divisions
+**impaires** (pseudopériode $= 4$ divisions) :
+- $t = 0$ : la courbe part **exactement du trait supérieur du cadre, soit
+  $u_C(0) = +6\ \text{V}$** (lecture au trait, non estimée) ;
+- division 1 : passage par zéro descendant, marqué par un **court trait vertical
+  en pointillés étiqueté « $t_1$ »** qui chevauche l'axe ;
+- division 2 : premier minimum, $\simeq -5{,}4\ \text{V}$ *(hors trait : lecture
+  à confirmer)* ;
+- division 4 : maximum, $\simeq +4{,}8\ \text{V}$ *(hors trait)* ;
+- division 6 : **second minimum, $\simeq -4{,}3\ \text{V}$**, repéré par un
+  **long trait vertical en tirets étiqueté « $t_2$ »** qui descend de l'axe
+  jusqu'au creux *(hors trait)* ;
+- division 8 : maximum suivant, $\simeq +3{,}9\ \text{V}$ *(hors trait)* ;
+- division 9 : le tracé repasse par zéro et atteint là le bord droit du cadre.
+
+Les amplitudes successives décroissent d'un facteur sensiblement constant
+(≈ $0{,}9$) d'un extremum au suivant, signature de l'amortissement. Noter que
+$t_1$ tombe sur un **zéro** de $u_C$ et $t_2$ sur un **extremum** — c'est ce qui
+fait l'objet de la question 1-3. Légende : « Figure 2 ».
+
+---
+
+## 2023 — session normale — Exercice 3, §2 (Circuit oscillant LC)
+Source: https://www.alloschool.com/element/142476
+Statut: vérifié — **2ᵉ passe : relecture de contrôle du paragraphe de la
+figure 4 laissé ouvert par la 1ʳᵉ passe**, par un re-lecteur indépendant
+(agent-relecteur-indépendant, 2026-08-07), mesures pixel refaites de zéro.
+**La correction de 1ʳᵉ passe sur la figure 4 — coin en L de deux flèches à une
+seule pointe, une division chacune — est CONFIRMÉE au pixel** ⇒ README §3,
+l'entrée passe à `Statut: vérifié`.
+
+**Élément re-dérivé (indépendamment)** : `element/142476` →
+`assets/documents/course-422/upload-85304`, **6 pages** (URLs ré-extraites du
+HTML de la page `element/` ; `<title>` = « Examen National Physique-Chimie
+**SPC 2023 Normale** - Sujet ») ; en-tête de `0004-big.jpg` (1240×1754) relu :
+**NS 28F**, page **4/6**, « EXERCICE 3 (5 points) ».
+
+**✅ Figure 4 — cadre.** Traits principaux en abscisse
+$x=779{,}5\,/\,838{,}5\,/\,898\,/\,957\,/\,1017\,/\,1075{,}5\,/\,1135{,}5$ ⇒
+**6 divisions** (pas $59{,}3$ px) ; en ordonnée $y=1372\,/\,1431\,/\,1490{,}5\,
+/\,1550\,/\,1609{,}5$ ⇒ **4 divisions**, l'axe des temps épais ($y=1489$–$1492$)
+au milieu — **coordonnées identiques** à celles du corps de l'entrée, au pixel.
+
+**✅ Figure 4 — le repère d'échelle : bien un coin en L, deux pointes uniques,
+une division chacune.** *Flèche verticale « 5V » :* fût $x=898$–$901$ montant
+de $y=1429$ à $y\simeq1384$, **une seule pointe pleine** ($y=1376$–$1383$,
+largeur $894$–$905$ au plus large), apex en $y\simeq1373$ — soit le trait
+principal $y=1372$ ⇒ **exactement 1 division**, et **aucune pointe à l'autre
+extrémité** (l'encre s'arrête net sur le trait $y=1431$) ⇒ ce **n'est pas une
+double flèche** ✓. *Flèche horizontale « 0,5 ms » :* fût $y=1429$–$1431$ de
+$x=898$ à $x\simeq950$, **une seule pointe** ($x=950$–$958$, $y=1425$–$1435$),
+apex en $x\simeq960$ — au-delà de $x=962$ il ne reste que l'unique pixel du
+trait principal $y=1431$ ; le trait principal suivant est en $x=957$ ⇒
+**exactement 1 division** ✓. *Sommet du L :* $(898\,;\,1430)$, soit
+**l'intersection de deux traits principaux**, à **2 divisions** à droite de
+l'axe des ordonnées et **1 division** au-dessus de l'axe des temps ✓.
+⇒ **1 div $=5\ \text{V}$ et 1 div $=0{,}5\ \text{ms}$**.
+
+**✅ Figure 4 — tracé.** Sinusoïde relevée colonne par colonne (encre noire
+épaisse, sous-quadrillage bleu écarté) : **maximum à $t=0$**, l'encre restant
+sur le trait supérieur $y\simeq1373$ pour $x=782$–$790$ ⇒ $u_C(0)=+2$ div
+$=\mathbf{+10\ \text{V}}$ ✓ ; passages à zéro relevés en $x\simeq838{,}5$,
+$957$, $1075{,}5$ ⇒ **$t=0{,}5\,/\,1{,}5\,/\,2{,}5\ \text{ms}$** ✓ ; minimum
+sur le trait inférieur ($y\simeq1608$, soit $-10$ V) vers $x\simeq898$
+($t=1{,}0$ ms) et de nouveau **au bord droit** $x=1135{,}5$ ($t=3{,}0$ ms) ;
+second maximum sur le trait supérieur vers $x\simeq1017$ ($t=2{,}0$ ms) ⇒
+**$T_0=4$ divisions $=\mathbf{2{,}0\ \text{ms}}$** et **une période et demie**
+affichée ✓. Referme la Q2-2-1 : $C=T_0^2/(4\pi^2L)=\mathbf{0{,}1\ \mu\text{F}}$.
+
+**✅ Figure 3** re-contrôlée au passage : boucle rectangulaire, condensateur $C$
+(deux traits parallèles) à gauche, flèche $i$ vers la droite au fil supérieur,
+bobine $(b)$ en spires à droite, fil nu en bas ✓.
+
+**Aucune retouche : le paragraphe de la figure 4 est fidèle.**
+
+**Portée du diff (2026-08-07).** Source re-dérivée de zéro :
+`element/142476` → `assets/documents/course-422/upload-85304`, **6 pages**
+(URLs ré-extraites du HTML de `element/`). Couverture p.1 relue : **NS 28F**,
+session normale 2023, 3 h, coef 7, SPC/BIOF ; carte
+$7+2{,}5+5+5{,}5=\mathbf{20}$ ✓. **Texte du §2 : conforme, aucune
+divergence** ($E_0$, « chargé totalement », $u_C(t)$, « On prend
+$\pi^2 = 10$ », $E_m$, $t = 1{,}8\ \text{ms}$). **Barème marginal recompté au
+scan** : $0{,}25+0{,}5+0{,}75=\mathbf{1{,}5}$ ✓ ; et
+$\S1+\S2+\S3 = 1{,}75+1{,}5+1{,}75 = \mathbf{5{,}00}$ = Exercice 3 ✓.
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image : « شعبة العلوم
+  التجريبية مسلك العلوم الفيزيائية (خيار فرنسية) » = Sciences Physiques,
+  BIOF, option française — le résumé HTML d'AlloSchool pour `element/142476`
+  annonce à tort « Sciences Mathématiques B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 5 points ; **§2** =
+  1,5 point ($0{,}25+0{,}5+0{,}75$, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-85304/0004-big.jpg`
+- Pages du scan : 4 (sur 6)
+- Portée : **§2 — Circuit oscillant LC**, réutilisant la bobine $(b)$ du §1
+  (`dipole-rl.md`). Le **§3** (modulation d'amplitude) du même exercice est
+  sous `ondes-em-modulation.md`. Régime respecté : circuit LC pur (pas de
+  conducteur ohmique dans la boucle), cas non amorti au programme (cf.
+  rappel de périmètre en tête de fichier).
+
+**2- Circuit oscillant LC**
+
+On réalise un circuit oscillant LC en associant la bobine (b) précédemment
+utilisée avec un condensateur de capacité $C$ chargé totalement par un
+générateur de tension de force électromotrice $E_0$ (figure 3).
+
+1. **2-1.** (0,25) Établir l'équation différentielle vérifiée par la
+   tension $u_C(t)$ entre les bornes du condensateur.
+2. **2-2.** La courbe de la figure 4 représente les variations de la
+   tension $u_C(t)$ en fonction du temps.
+   1. **2-2-1.** (0,5) Trouver la valeur de la capacité $C$ du condensateur.
+      (On prend $\pi^2 = 10$).
+   2. **2-2-2.** (0,75) Trouver l'énergie magnétique $E_m$ emmagasinée dans
+      la bobine à l'instant $t = 1{,}8\ \text{ms}$.
+
+*Figure 3 (schéma) :* boucle rectangulaire. Branche gauche : condensateur
+$C$ (deux traits parallèles, étiqueté « C »). Branche supérieure : fil
+portant la flèche de courant $i$ orientée vers la droite. Branche droite
+(verticale) : bobine $(b)$ dessinée en spires. Branche inférieure : simple
+fil refermant la boucle. Légende : « Figure 3 ».
+
+*Figure 4 (courbe) :* $u_C\ (\text{V})$ en fonction de $t\ (\text{ms})$, sur
+quadrillage à double graduation (traits principaux, sous-quadrillage fin
+bleu). Aucune valeur numérique n'est portée sur l'axe des ordonnées hormis
+l'origine « $0$ », et l'axe des abscisses n'est pas chiffré du tout (simple
+flèche « t(ms) » à droite) : **toute la lecture passe par le repère
+d'échelle**.
+
+**Le repère d'échelle (mesuré au pixel sur `0004-big.jpg`).** Ce n'est pas
+une double flèche : c'est un **coin en L formé de deux flèches à une seule
+pointe**, dont le sommet est posé sur l'**intersection de deux traits
+principaux**, à 2 divisions à droite de l'axe des ordonnées et 1 division
+au-dessus de l'axe des temps ($x = 898$, $y = 1431$ px) —
+- la **flèche verticale « 5V »** monte de $y = 1431$ à $y \simeq 1373$
+  (pointe), soit **exactement 1 division** (pas $59{,}2$ px) ⇒
+  **1 division $= 5\ \text{V}$** ;
+- la **flèche horizontale « 0,5 ms »** va de $x = 898$ à la pointe
+  $x \simeq 960$, soit **exactement 1 division** (traits principaux à $898$
+  et $957$, pas $59{,}3$ px) ⇒ **1 division $= 0{,}5\ \text{ms}$**.
+
+*(❌→✅ correction 2026-08-07 : l'ancienne description parlait d'une « double
+flèche verticale » et ne donnait pas la portée des flèches. C'est le point
+critique : une flèche d'étalonnage qui couvre **une seule division** n'est
+pas une période — ici elle ne l'est effectivement pas, la période vaut
+4 divisions, voir ci-dessous.)*
+
+**Cadre** : traits principaux en abscisse $x = 779{,}5 / 838{,}5 / 898 /
+957 / 1017 / 1075{,}5 / 1135{,}5$ ⇒ **6 divisions $= 3{,}0\ \text{ms}$** ; en
+ordonnée $y = 1372 / 1431 / 1490{,}5 / 1550 / 1609{,}5$ ⇒ **4 divisions**,
+l'axe des temps (trait gras, $y = 1490{,}5$) au milieu ⇒ le cadre couvre
+$\pm 2$ divisions $= \pm 10\ \text{V}$.
+
+**Tracé** : oscillation sinusoïdale d'amplitude constante, **exactement une
+période et demie**. Elle **part de son maximum à $t = 0$** (le sommet touche
+le trait supérieur du cadre : $u_C(0) = +U_0 = \mathbf{+10\ \text{V}}$,
+cohérent avec « condensateur chargé totalement »), franchit l'axe à
+$t = 0{,}5$ ms, atteint son minimum $-10$ V à $t = 1{,}0$ ms, refranchit
+l'axe à $t = 1{,}5$ ms, atteint son second maximum $+10$ V à
+$t = 2{,}0$ ms, refranchit l'axe à $t \simeq 2{,}5$ ms et redescend vers un
+second minimum atteint **au bord droit du cadre**, $t = 3{,}0$ ms. D'où
+**$T_0 = \mathbf{2{,}0\ \text{ms}} = 4$ divisions** *(le drapeau « positions
+temporelles exactes des extremums — lecture à confirmer » est **tranché** :
+avec 1 division $= 0{,}5$ ms, tous les extremums tombent sur des traits
+principaux)*. Légende : « Figure 4 ».
+
+**Contrôle croisé par la physique (referme la Q2-2-1).** Avec $L = 1$ H (§1)
+et $\pi^2 = 10$ imposé par l'énoncé :
+$C = \dfrac{T_0^2}{4\pi^2 L} = \dfrac{(2\cdot10^{-3})^2}{40} = 10^{-7}\
+\text{F} = \mathbf{0{,}1\ \mu\text{F}}$ — valeur ronde, ce qu'une lecture
+erronée de l'échelle ne donnerait pas. Et $t = 1{,}8\ \text{ms} = 0{,}9\,T_0$
+tombe bien à l'intérieur du tracé (Q2-2-2).
+
+---
+
+## 2022 — session normale — Exercice 3 (2. Oscillations libres dans un circuit RLC série)
+Source: https://www.alloschool.com/element/136621
+Statut: vérifié — **passe de vérification adversariale indépendante**
+(agent-vérificateur-adversarial, 2026-08-07), **diff OK**.
+**Élément re-dérivé** : `element/136621` → `course-422/upload-84516`, **8 pages**,
+URLs ré-extraites du HTML de `element/` (résumé HTML toujours faux sur la
+filière). **Couverture p.1 relue au pixel** : NS 28F, 3 h, coef 7, SPC/BIOF ;
+carte $7+3{,}5+4{,}5+5=\mathbf{20}$ ✓.
+**Portée du diff — `0005-big.jpg` (fin) + `0006-big.jpg`, caractère par
+caractère** : $C = 50\ \mu\text{F}$, bascule sur la position (2), équation
+$\frac{d^2u_C}{dt^2}+\frac{1}{LC}u_C=0$, solution
+$u_C(t)=U_0\cos\!\left(\frac{2\pi}{T_0}t\right)$, $L = 0{,}05\ \text{H}$,
+$\pi^2 = 10$, et — **relu au zoom ×3** — « les instants $t_0 = 0$ et
+$t_1 = 9\ \text{ms}$ » de la question 2.2.2 : **aucune divergence de valeur,
+unité, indice ou exposant**.
+**Barème marginal recompté au pixel** : $0{,}25+0{,}5+0{,}5+0{,}5$ (2.1) et
+$0{,}5+0{,}75$ (2.2) $=\mathbf{3{,}0}$ ✓ (la ligne 2.1.3, en-tête, ne porte
+aucune annotation) ; $1{,}5+3{,}0=\mathbf{4{,}5}$ = total de l'Exercice 3 ✓.
+**Figure 3 (QCM à 3 courbes) — mesurée panneau par panneau, verdict conforme ;
+les étiquettes $(C_1)/(C_2)/(C_3)$ ne sont pas interverties.**
+- **$(C_1)$** : ordonnées chiffrées 12/6/0/−6/−12 (1 carreau = 3 V), abscisses
+  5/10/15 (1 carreau = 2,5 ms). Cosinus **partant de $+12\ \text{V}$**, minimum
+  mesuré $-11{,}75$ à $t = 5$, maximum $+11{,}75$ à $t = 9{,}7$, minimum à
+  $14{,}7$, maximum à $19{,}7$ ⇒ **amplitude constante $\pm12\ \text{V}$,
+  période $T = 10\ \text{ms}$**.
+- **$(C_2)$** : ordonnées 10/5/0/−5/−10, abscisses 5/10/15. **Amplitude
+  constante $\pm9{,}83 \simeq \pm10\ \text{V}$, période 10 ms** ; elle part de
+  $-10\ \text{V}$ (minimum à $t=0$, maximum à $t=5$) — la description, qui ne
+  se prononce pas sur la phase, reste exacte.
+- **$(C_3)$** : ordonnées 12/6/0/−6/−12, abscisses **2,5 / 7,5 / 12,5**.
+  Amortie : extrema successifs mesurés $+12$, $-9$, $+7$, $-5{,}5$.
+**Figure 4 — mesurée au pixel, verdict conforme.** Étalonnage relevé sur les
+traits : $56{,}6\ \text{px} = 2{,}5\ \text{ms}$ ; à gauche
+$57{,}7\ \text{px} = 100\ \text{mA}$, à droite $57{,}7\ \text{px} = 5\ \text{V}$
+(quadrillage fin de 0,5 ms). Ordonnées et abscisses exactement celles décrites.
+$u_C$ part de $12\ \text{V}$ ; $i$ part de $0$. **Précision ajoutée** : les deux
+courbes sont en **quadrature** — les zéros de $i$ (0, 5, 10, 15 ms) coïncident
+avec les extrema de $u_C$, et les zéros de $u_C$ (2,5 / 7,5 / 12,5 ms) avec les
+extrema de $i$ ; ce sont leurs **enveloppes** qui décroissent de concert.
+Pseudo-période mesurée $T \simeq 10\ \text{ms}$.
+**Physique re-dérivée** : $T_0 = 2\pi\sqrt{LC}$ ⇒ avec $\pi^2 = 10$,
+$T_0^2 = 4\pi^2LC = 40\times0{,}05\times50\cdot10^{-6} = 10^{-4}$ ⇒
+$T_0 = \mathbf{10\ \text{ms}}$ — exactement la période mesurée sur $(C_1)$, et
+$U_0 = 12\ \text{V} = E$ (palier de la figure 2 de la section 1). **La réponse
+de 2.1.2 est donc $(C_1)$**, et elle est la seule : $(C_2)$ a la bonne période
+mais $U_0 = 10 \ne 12\ \text{V}$, $(C_3)$ est amortie alors que $r$ est
+supposée négligeable. Le QCM admet ainsi une et une seule solution — les trois
+courbes sont donc transcrites correctement.
+
+- Filière / épreuve : Sciences Physiques (SPC), BIOF — PC, 3 h, coef 7
+  (en-tête du scan confirmé directement sur l'image ; le résumé HTML
+  d'AlloSchool pour `element/136621` annonce à tort « Sciences Mathématiques
+  B », README §3, l'image fait foi)
+- Code sujet : NS 28F · Barème de l'exercice complet : 4,5 points ;
+  **section 2 (oscillations RLC)** = 3,0 points ($0{,}25+0{,}5+0{,}5+0{,}5$
+  pour 2.1, $0{,}5+0{,}75$ pour 2.2, barème en marge)
+- Images lues (reproductibilité) : `.../course-422/upload-84516/0005-big.jpg`
+  (fin, chapeau 2), `.../0006-big.jpg`
+- Pages du scan : 5 (fin) et 6 (sur 8)
+- Portée : **section 2 (oscillations libres dans un circuit RLC série)** de
+  l'exercice 3. La **section 1 (réponse d'un dipôle RC à un échelon de
+  tension)** du même exercice est sous `rc-charge.md` (même montage,
+  figure 1, non reproduite ici).
+
+**2. Oscillations libres dans un circuit RLC série**
+
+Après avoir totalement chargé le condensateur de capacité
+$C = 50\ \mu\text{F}$, on bascule l'interrupteur $K$ sur la position (2) à
+un instant choisi comme nouvelle origine des dates $t = 0$. Ce condensateur
+se décharge alors dans la bobine d'inductance $L$ et de résistance $r$
+(figure 1).
+
+**2.1. Premier cas :**
+
+On suppose, dans ce cas, que la résistance de la bobine est négligeable.
+
+1. **2.1.1.** (0,25) Montrer que l'équation différentielle vérifiée par la
+   tension $u_C(t)$ s'écrit sous la forme :
+   $\dfrac{d^2u_C}{dt^2} + \dfrac{1}{LC}u_C = 0$.
+2. **2.1.2.** (0,5) Choisir, parmi les courbes $(C_1)$, $(C_2)$ et $(C_3)$
+   de la figure 3, la courbe qui représente l'évolution de la tension
+   $u_C(t)$. Justifier votre réponse.
+3. **2.1.3.** La solution de l'équation différentielle précédente est :
+   $u_C(t) = U_0\cos\!\left(\dfrac{2\pi}{T_0}t\right)$ où $U_0$ est la
+   valeur maximale de la tension et $T_0$ la période propre des
+   oscillations.
+   1. **a-** (0,5) Trouver l'expression de $T_0$ en fonction de $L$ et $C$.
+   2. **b-** (0,5) Montrer que la valeur de l'inductance est :
+      $L = 0{,}05\ \text{H}$. (on prend $\pi^2 = 10$).
+
+**2.2. Deuxième cas :**
+
+En réalité, la résistance de la bobine n'est pas négligeable. On visualise
+dans ce cas, à l'aide d'un système d'acquisition informatisé, les courbes
+représentant l'évolution de la tension $u_C(t)$ aux bornes du condensateur
+et celle de l'intensité du courant $i(t)$ qui traverse le circuit
+(figure 4).
+
+1. **2.2.1.** (0,5) Écrire l'expression de l'énergie totale $E_t$ du circuit
+   en fonction de $C$, $u_C(t)$, $L$ et $i(t)$.
+2. **2.2.2.** (0,75) En exploitant les courbes de la figure 4, trouver
+   l'énergie $\Delta E$ dissipée dans le circuit entre les instants
+   $t_0 = 0$ et $t_1 = 9\ \text{ms}$.
+
+*Figure 3 (trois courbes $u_C\ (\text{V})$ en fonction de $t\ (\text{ms})$) :*
+- **$(C_1)$** : axe des ordonnées gradué $12,\ 6,\ 0,\ -6,\ -12$ ; axe des
+  abscisses gradué $5,\ 10,\ 15$. Oscillation sinusoïdale d'**amplitude
+  constante** $\pm 12\ \text{V}$.
+- **$(C_2)$** : axe des ordonnées gradué $10,\ 5,\ 0,\ -5,\ -10$ ; axe des
+  abscisses gradué $5,\ 10,\ 15$. Oscillation sinusoïdale d'**amplitude
+  constante** $\pm 10\ \text{V}$.
+- **$(C_3)$** : axe des ordonnées gradué $12,\ 6,\ 0,\ -6,\ -12$ ; axe des
+  abscisses gradué $2{,}5,\ 7{,}5,\ 12{,}5$. Oscillation d'**amplitude
+  décroissante** (allure pseudopériodique amortie), extrema successifs de
+  moins en moins marqués.
+
+Légende commune : « Figure 3 ».
+
+*Figure 4 (deux courbes côte à côte) :* à gauche, $i\ (\text{mA})$ en
+fonction de $t\ (\text{ms})$ ; axe des ordonnées gradué
+$200,\ 100,\ 0,\ -100,\ -200$ ; axe des abscisses gradué
+$2{,}5,\ 5,\ 7{,}5,\ 10,\ 12{,}5$. Oscillation pseudopériodique d'amplitude
+décroissante, partant de $i = 0$ à $t = 0$. À droite, $u_C\ (\text{V})$ en
+fonction de $t\ (\text{ms})$ ; axe des ordonnées gradué
+$10,\ 5,\ 0,\ -5,\ -10$ ; mêmes graduations d'abscisse
+($2{,}5,\ 5,\ 7{,}5,\ 10,\ 12{,}5$). Oscillation pseudopériodique d'amplitude
+décroissante, partant de $u_C = 12\ \text{V}$ à $t = 0$. **Les deux courbes
+sont en quadrature** (mesuré au pixel, 2026-08-07) : les zéros de $i$
+($0,\ 5,\ 10,\ 15\ \text{ms}$) coïncident avec les extrema de $u_C$, et les
+zéros de $u_C$ ($2{,}5,\ 7{,}5,\ 12{,}5\ \text{ms}$) avec les extrema de $i$ ;
+ce sont leurs **enveloppes** qui décroissent de concert. Pseudo-période mesurée
+$T \simeq 10\ \text{ms}$. *Quadrillage fin de 0,5 ms sur les deux repères.*
+Légende : « Figure 4 ».

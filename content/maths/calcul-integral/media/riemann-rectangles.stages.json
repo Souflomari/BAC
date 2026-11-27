@@ -1,0 +1,17 @@
+{
+  "slug": "riemann-rectangles",
+  "stages": [
+    {
+      "caption": "La courbe de f(x) = x² sur [0, 1], et l'aire grisée sous elle : c'est ∫₀¹ x² dx, la quantité que les deux sommes vont encadrer. Elle est dessinée deux fois, pour comparer deux découpages."
+    },
+    {
+      "caption": "À gauche, 4 tranches de largeur 1/4. Sur chaque tranche, le rectangle gris prend la hauteur du bord gauche, le point le plus bas de la tranche — sur la première, f(0) = 0, il est plat. Il reste sous la courbe, et ces rectangles forment T₄. Le rectangle de S₄ prend la hauteur du bord droit, le point le plus haut : il ajoute la bande colorée et déborde au-dessus. L'aire est coincée entre les deux : T₄ ≤ ∫₀¹ x² dx ≤ S₄."
+    },
+    {
+      "caption": "À droite, 8 tranches : deux fois plus de rectangles, chacun deux fois plus fin. L'encadrement tient toujours, mais les bandes colorées, l'écart entre S₈ et T₈, sont nettement plus minces. Quand n grandit, aucune des deux sommes ne grossit : elles se resserrent autour de l'aire."
+    },
+    {
+      "caption": "À droite de chaque graphe, les bandes colorées ont été glissées à l'horizontale, sans changer de hauteur. Chacune commence exactement là où s'arrête celle de la tranche précédente : elles s'empilent en une seule colonne, de largeur 1/n et de hauteur f(1) − f(0). L'écart Sₙ − Tₙ vaut donc (1/n)(f(1) − f(0)) : quand n double, il est divisé par deux. C'est ce que le calcul qui suit établit terme à terme."
+    }
+  ]
+}

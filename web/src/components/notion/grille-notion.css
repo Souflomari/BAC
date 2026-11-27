@@ -1,0 +1,156 @@
+/*
+ * grille-notion.css — la page de notion en direction GRILLE (refonte 2026-10).
+ *
+ * Pourquoi un fichier à part, importé par NotionPageView, plutôt qu'une
+ * retouche de globals.css : la mise en page de la page de notion y était
+ * écrite en sélecteurs d'une classe (.notion-page-grid, .notion-rail…), et ce
+ * fichier les surcharge sous l'attribut [data-grille-notion] — spécificité
+ * (0,2,0) contre (0,1,0), donc indépendant de l'ordre de chargement. Tout ce
+ * qui n'est pas réécrit ici (impression, pagination, compteurs, bandes
+ * larges) continue de venir de globals.css.
+ *
+ * Ce qui change :
+ *   · la bande passe à la largeur de page (PageShell width="page") et la
+ *     grille l'occupe : rail numéroté | contenu | « à retenir » ;
+ *   · la zone « à retenir » s'ouvre dès 1400 px — elle n'attendait que
+ *     1600 px, et laissait donc vide la droite de l'écran de portable courant
+ *     (1440) ;
+ *   · la prose garde sa mesure (≤ 68 caractères) mais s'aligne à GAUCHE dans
+ *     sa colonne, au fer — la composition suisse est asymétrique ; les
+ *     figures, scènes et questions prennent toute la colonne ;
+ *   · les titres de chapitre passent en Archivo serrée (75 %), le numéro au
+ *     rouge signal au-dessus du titre.
+ * Seuls des jetons (var(--…)) : jamais de valeur de couleur ici.
+ */
+
+/* ── La grille ─────────────────────────────────────────────────────────── */
+@media (min-width: 600px) {
+  .notion-page-grid[data-grille-notion] {
+    grid-template-columns: 56px 24px minmax(0, 1fr);
+  }
+}
+
+@media (min-width: 840px) {
+  .notion-page-grid[data-grille-notion] {
+    grid-template-columns: 220px 40px minmax(0, 1fr);
+  }
+}
+
+/* La zone « à retenir » s'ouvre à 1400 px — l'écran de portable courant
+   (1440) l'a, et en dessous la colonne de contenu garde toute la largeur :
+   à 1280 px, l'ouvrir faisait tomber la colonne (scènes 3D comprises) de 943
+   à 643 px, et la scène Lorentz ne savait plus dessiner son glyphe ⊙
+   lisiblement (porte scene-lorentz, famille « glyphe »). */
+@media (min-width: 1400px) {
+  .notion-page-grid[data-grille-notion] {
+    grid-template-columns: 220px 40px minmax(0, 1fr) 40px 260px;
+  }
+  [data-grille-notion] .notion-retenir {
+    display: block;
+    grid-column: 5;
+    position: sticky;
+    top: 5rem;
+    align-self: start;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1600px) {
+  .notion-page-grid[data-grille-notion] {
+    grid-template-columns: 240px 48px minmax(0, 1fr) 48px 300px;
+  }
+}
+
+/* Le rail : plus de filet vertical décoratif ni de décalage optique — la
+   liste numérotée porte seule la structure. */
+@media (min-width: 600px) {
+  [data-grille-notion] .notion-rail {
+    border-right: 0;
+    padding-right: 0;
+    margin-top: 0;
+    top: 5rem;
+  }
+}
+
+/* La prose : mesure inchangée, mais au fer à gauche dans sa colonne. */
+[data-grille-notion] .notion-prose {
+  max-width: 68ch;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* ── Titres de chapitre ───────────────────────────────────────────────── */
+[data-grille-notion] .prose-lesson h2 {
+  font-size: 2.125rem;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  font-variation-settings: "wdth" 75;
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--color-text-primary);
+}
+
+[data-grille-notion] .prose-lesson h3 {
+  font-size: 1.375rem;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  font-variation-settings: "wdth" 88;
+}
+
+/* Le numéro de chapitre : au-dessus du titre, en rouge signal, deux chiffres.
+   Le compteur reste celui de globals.css (counter-reset sur .notion-content,
+   counter-increment sur h2[data-rung]) — seule sa présentation change. */
+[data-grille-notion] .prose-lesson h2[data-rung]::before {
+  content: counter(rung, decimal-leading-zero);
+  display: block;
+  margin-bottom: 0.625rem;
+  font-size: 0.9375rem;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-variation-settings: "wdth" 100;
+  color: var(--color-signal);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Le premier titre d'un chapitre ouvre la colonne : pas de marge au-dessus
+   du filet (la page paginée montre un chapitre à la fois). */
+[data-grille-notion] .chapter-view > .notion-prose:first-child .prose-lesson > h2:first-child {
+  margin-top: 0;
+}
+
+/* ── Fin de chapitre : le transport est séparé par un filet, pas par du vide. */
+[data-grille-notion] .chapter-transport {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+/* ── Impression : la grille revient à une colonne (globals.css garde la main
+   sur le reste — rail et zone y sont déjà masqués). */
+@media print {
+  .notion-page-grid[data-grille-notion] {
+    grid-template-columns: 1fr;
+  }
+  [data-grille-notion] .notion-retenir {
+    display: none !important;
+  }
+  [data-grille-notion] .prose-lesson h2 {
+    border-top-width: 1px;
+  }
+}
+
+/* ── Les scènes manipulables gardent leur largeur VÉRIFIÉE ──────────────────
+   Toute la colonne de contenu (943 px à 1 280) élargissait le plateau des
+   scènes de 482 à 554 px, et le plan complexe passait alors dans un mode
+   d'affichage que sa porte n'a jamais mesuré (graduation à chaque unité,
+   vecteurs u et v) : 280 manquements sur 646 en CI (2026-10-21). Les quinze
+   portes de scène sont calibrées sur un panneau de 823 px (DÉCISIONS §25.14,
+   plateau de 482 px de 1 280 à 1 920) ; on garde ce panneau, au fer à gauche
+   comme la prose. Agrandir les scènes est un chantier à part : chaque porte
+   devra être relancée — et rendue rouge — à la nouvelle largeur. */
+[data-grille-notion] section[data-scene] {
+  max-width: 823px;
+}

@@ -1,0 +1,1343 @@
+# bank.yaml — la banque « S'entraîner » de esterification-hydrolyse (BANK-SPEC v1).
+#
+# Sujets réels d'examen national, cartes attempt-first (BANK-SPEC §2/§3). CE
+# N'EST PAS exercises.yaml : aucune entrée ici ne porte de marqueur
+# [[exercise:…]] dans lesson.md — c'est la couche de VOLUME derrière le sommet
+# de leçon (r-bac + r-variation, exercises.yaml), pas la rampe embarquée.
+#
+# `sourcing` est AUTHORING-SIDE UNIQUEMENT (jamais rendu — même contrat que
+# exercises.yaml). Les deux entrées ci-dessous sont des transcriptions
+# FIDÈLES des deux entrées « vérifié » de
+# docs/sujets/pc/esterification-hydrolyse.md : le sujet 2018 (re-fetch
+# AlloSchool + diff indépendant, agent-vérificateur 2026-07-11) et le sujet
+# 2023 (passe de vérification adversariale indépendante,
+# agent-vérificateur-adversarial, 2026-08-07, PUIS relecture de contrôle
+# indépendante d'un second vérificateur adversarial confirmant la figure
+# point par point, 2026-08-07). Raisonnement rédigé à la voix experte de la
+# maison, en citant les rungs R1–R5 de la leçon (lesson.md) là où c'est
+# naturel ; barème transcrit tel quel dans les énoncés (tag « (x,xx pt) »
+# ajouté — la source docs/sujets ne porte que « (x,xx) ») ; conventions KaTeX
+# (block scalars pour la prose, KaTeX brut entre apostrophes simples dans
+# steps[].math, notes sans backslash).
+#
+# NOTES ÉDITORIALES (pour la revue) : docs/sujets/pc/esterification-hydrolyse.md
+# compte à ce jour DEUX entrées « vérifié ». La première, le sujet 2018 N,
+# Exercice I (Partie 2, sous-partie 2, « Réaction entre l'acide lactique et le
+# méthanol »), sous-tend AUSSI le sommet de leçon r-bac (exercises.yaml,
+# marqueur [[exercise:r-bac]] à R6) : mêmes données, mêmes réponses
+# numériques (n0 = 1e-3 mol, n_E = 6e-4 mol, r = 60 %), reprises ici à
+# l'identique pour rester cohérentes avec le sommet — y compris les mêmes
+# regroupements « part » (Partie 1 — Caractériser la réaction / Partie 2 —
+# Équation et rendement), qui étaient déjà une structuration ajoutée par
+# exercises.yaml et non un intitulé verbatim du sujet (celui-ci ne numérote
+# que 4 questions sous un unique sous-titre « 2. Réaction entre l'acide
+# lactique et le méthanol »). Recoupement assumé, même disposition que
+# rc-charge bk-2019-n-x3 — à l'arbitrage de l'owner si l'on préfère l'écarter
+# de la banque pour éviter le recoupement sur la même page. La seconde, le
+# sujet 2023 N, Exercice 1 (Chimie) §3 (« Étude de la réaction de l'acide
+# éthanoïque avec le méthanol »), ne recoupe ni r-bac (2018, acide lactique)
+# ni r-variation (acide butanoïque) : couple, lecture graphique de
+# l'équilibre, comparaison catalysée/non catalysée et déplacement par ajout
+# ponctuel de réactif à l'équilibre sont inédits dans le corpus de cette
+# notion.
+#
+# SCOPE NOTE (technique mobilisée au-delà de ce que la leçon montre
+# explicitement pas à pas — pontée au point d'usage dans le raisonnement de
+# la question concernée, PAS corrigée ni simplifiée ici) :
+#   - bk-2023-n-x1, q4 : le temps de demi-réaction $t_{1/2}$ n'est défini par
+#     aucun rung de cette leçon (lesson.md) — R1–R6 portent sur l'écriture,
+#     la position et le déplacement de l'équilibre, jamais sur un repère de
+#     vitesse comme $t_{1/2}$ (compétence de la notion suivi-temporel-vitesse,
+#     signalée comme telle par le fichier source lui-même). Sa définition
+#     générale (l'instant où l'avancement atteint la moitié de sa valeur à
+#     l'équilibre) est mobilisée au point d'usage dans le raisonnement de la
+#     question, avec la lecture graphique correspondante. Signalé pour
+#     l'orchestrateur / pedagogy-architect : soit un futur rung de cette
+#     leçon (ou un renvoi explicite vers suivi-temporel-vitesse) introduit
+#     $t_{1/2}$, soit la question reste balisée hors rung comme telle. Pas
+#     corrigé unilatéralement ici.
+#
+# La sous-partie voisine du sujet 2018 (dosage pH-métrique de l'acide
+# lactique, Partie 2 sous-partie 1) n'est pas transcrite dans docs/sujets/pc/
+# esterification-hydrolyse.md (hors périmètre de cette notion) ; sa Partie 1
+# (électrolyse du bromure de plomb) est cross-listée sous la notion
+# `electrolyse`. Le sujet 2023 (bk-2023-n-x1) couvre désormais, en plus des
+# compétences déjà exercées par le sujet 2018, ce qui manquait à la banque :
+# une lecture graphique directe de la composition à l'équilibre (avec
+# contrôle croisé $K=4$) et un déplacement d'équilibre par ajout ponctuel de
+# réactif à l'équilibre (Qr/K, rung R5) — sur un couple différent de celui du
+# rung R5 (acide éthanoïque + méthanol, pas un excès initial mais un ajout en
+# cours de réaction, qui exige un nouveau tableau d'avancement reparti d'un
+# état déjà avancé plutôt que de zéro).
+#
+# Le 2025 R (bk-2025-r-x1b, ajouté le 2026-08-27) est la TROISIÈME entrée de
+# cette banque — première de session rattrapage. C'est le §2 de l'exercice 1
+# de l'examen 2025 R (étude d'une réaction d'estérification avec l'acide
+# éthanoïque : équation, quantité d'acide restant dosée par la soude,
+# rendement ; 2,0 pt) ; ses deux autres sous-parties, indépendantes, vivent
+# sous content/pc/reactions-acido-basiques (bk-2025-r-x1) et
+# content/pc/suivi-temporel-vitesse (bk-2025-r-x1c). Elle porte une SCOPE
+# NOTE : la relation d'équivalence du dosage de l'acide restant n'est
+# enseignée par aucun rung de cette leçon-ci (qui ne traite que l'équilibre
+# estérification/hydrolyse, jamais un titrage) — elle est nommée et pontée
+# au point d'usage vers le rung R9 de « Réactions acido-basiques », voir le
+# commentaire au-dessus de l'entrée. Aucun flag de jumelage : le geste
+# dominant — un rendement retrouvé via un acide restant DOSÉ, plutôt que
+# donné (bk-2018-n-x1) ou lu sur une courbe (bk-2023-n-x1) — est inédit dans
+# cette banque.
+
+notion: pc/esterification-hydrolyse
+
+entries:
+  # ── bk-2018-n-x1 — 2018 N, Exercice I (Partie 2, sous-partie 2) : estérification acide lactique + méthanol ──
+  - id: bk-2018-n-x1
+    title: "Estérification de l'acide lactique par le méthanol : caractéristiques, facteurs cinétiques et rendement"
+    source:
+      year: 2018
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice I — Partie 2, sous-partie 2 : Réaction entre l'acide lactique et le méthanol"
+    bareme_total: 2.25
+    duration_min: 14
+    sourcing:
+      status: sourced
+      note: >-
+        2018 session normale — examen national PC BIOF (Sciences Physiques, SPC),
+        code NS28F, AlloSchool element/57726 (Exercice I, Partie 2, sous-partie 2
+        — réaction entre l'acide lactique et le méthanol ; barème de la
+        sous-partie ≈ 2,25 pt sur les 7 pt de l'exercice complet, qui comporte
+        aussi une sous-partie dosage pH-métrique de l'acide lactique — Partie 2,
+        sous-partie 1, non transcrite dans docs/sujets/pc — et une Partie 1 sur
+        l'électrolyse du bromure de plomb, cross-listée sous la notion
+        `electrolyse`). Transcription vérifiée : re-fetch indépendant AlloSchool
+        + diff OK (docs/sujets/pc/esterification-hydrolyse.md, statut
+        « vérifié » agent-vérificateur 2026-07-11). NB : ce même sujet
+        sous-tend le sommet de leçon r-bac (exercises.yaml, marqueur
+        [[exercise:r-bac]] à R6) — recoupement assumé, à arbitrer en revue.
+    intro: |-
+      **Réaction entre l'acide lactique et le méthanol (examen national, session normale 2018).**
+
+      On mélange dans un ballon la quantité $n_0 = 10^{-3}\ \text{mol}$ d'acide lactique $CH_3-CH(OH)-COOH$ avec la même quantité $n_0 = 10^{-3}\ \text{mol}$ de méthanol pur $CH_3-OH$, puis on chauffe à reflux le mélange réactionnel pendant une certaine durée.
+
+      On obtient à la fin de la réaction la quantité $n_E = 6\times10^{-4}\ \text{mol}$ d'un ester E.
+    questions:
+      - id: q1
+        part: "Partie 1 — Caractériser la réaction"
+        stem: |-
+          **(0,5 pt)** Citer deux caractéristiques de cette réaction.
+        reasoning: |-
+          On demande la « carte d'identité » de l'estérification, celle que la leçon construit dès les chapitres 3 et 5. Deux traits suffisent :
+
+          - **Elle est lente** : à température ambiante et sans catalyseur, plusieurs jours seraient nécessaires pour atteindre l'état d'équilibre (chapitre 5) — c'est précisément pourquoi l'énoncé chauffe à reflux au lieu de laisser le ballon à froid.
+          - **Elle est limitée (non totale)** : l'acide et l'alcool ne disparaissent jamais complètement, parce que l'hydrolyse inverse coexiste en permanence avec l'estérification dans le même mélange (chapitre 3). Le rendement $r < 1$ trouvé à la question 4 en sera la confirmation chiffrée.
+
+          (Un troisième trait accepté : la réaction est **athermique** — son effet thermique est presque négligeable, chapitre 5.)
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Proposer deux facteurs cinétiques pour accélérer la réaction d'estérification.
+        reasoning: |-
+          Un **facteur cinétique** change la vitesse à laquelle on atteint l'équilibre, jamais sa position (chapitre 5). Les deux facteurs cinétiques au programme, ici disponibles, sont :
+
+          - **La température** : chauffer (le reflux de l'énoncé) augmente l'agitation thermique, donc la fréquence et l'énergie des chocs efficaces entre l'acide lactique et le méthanol.
+          - **La concentration des réactifs** : partir de réactifs plus concentrés augmente elle aussi la fréquence de ces chocs.
+
+          Le piège à éviter, formulé explicitement au chapitre 5 : ces deux leviers ne déplacent pas l'équilibre. Le rendement final resterait le même qu'on les actionne ou non — seule la durée pour l'atteindre change. (Un catalyseur acide accélère également la réaction, par un mécanisme distinct — ce n'est pas, au sens strict du programme, un facteur cinétique.)
+      - id: q3
+        part: "Partie 2 — Équation et rendement"
+        stem: |-
+          **(0,5 pt)** Écrire, en utilisant les formules semi-développées, l'équation de la réaction ayant lieu entre l'acide lactique et le méthanol.
+        reasoning: |-
+          On applique le geste du chapitre 2 : le groupe $-COOH$ de l'acide et le groupe $-OH$ de l'alcool se combinent, une molécule d'eau en part, et ce qui reste des deux chaînes se relie par le groupe ester $-COO-$. Ici, c'est le $-OH$ du méthanol qui réagit avec le $-COOH$ de l'acide lactique ; le $-OH$ porté par le carbone central de l'acide lactique (un alcool secondaire, sur la chaîne elle-même) ne participe pas à cette estérification. Avec la double flèche de la réaction limitée (chapitre 3) :
+
+          $$CH_3-CH(OH)-COOH + CH_3-OH \rightleftharpoons CH_3-CH(OH)-COO-CH_3 + H_2O$$
+
+          (L'ester ainsi formé se nomme, par la règle du chapitre 2, le 2-hydroxypropanoate de méthyle — non demandé ici, mais utile à vérifier : le radical de l'acide lactique donne « 2-hydroxypropanoate », celui du méthanol donne « méthyle ».)
+      - id: q4
+        stem: |-
+          **(0,75 pt)** Calculer le rendement $r$ à la fin de la réaction.
+        reasoning: |-
+          Le rendement rapporte l'ester réellement obtenu à celui qu'aurait donné une réaction **totale** : $r = \dfrac{n_E}{n_{max}}$ — le même geste qu'au chapitre 4, où $\tau$ rapporte l'avancement réel à l'avancement maximal. Il faut donc d'abord $n_{max}$. Le mélange est équimolaire et tous les coefficients stoechiométriques valent $1$ : si la réaction était totale, acide et alcool s'épuiseraient exactement ensemble, donc $x_{max} = n_0$ et l'ester maximal $n_{max} = x_{max} = n_0$. Il ne reste qu'à rapporter l'ester réellement formé à ce maximum.
+        steps:
+          - math: 'x_{max} = n_0 = 10^{-3}\ \text{mol} \implies n_{max} = x_{max} = 10^{-3}\ \text{mol}'
+            note: "Mélange équimolaire, coefficients tous égaux à 1 : les deux réactifs s'épuiseraient en même temps si la réaction était totale, donc l'ester maximal vaut n0."
+          - math: 'r = \frac{n_E}{n_{max}} = \frac{6\times10^{-4}}{10^{-3}}'
+            note: "On rapporte l'ester réellement formé (6e-4 mol) à l'ester maximal possible (1e-3 mol)."
+          - math: '\boxed{r = 0{,}60 = 60\ \%}'
+            note: "r < 1 confirme le trait 'limitée' de la question 1 : la réaction n'a pas épuisé les réactifs, l'hydrolyse inverse a toujours été présente."
+
+  # ── bk-2023-n-x1 — 2023 N, Exercice 1 (Chimie) §3 : estérification catalysée acide éthanoïque + méthanol ──
+  - id: bk-2023-n-x1
+    title: "Estérification de l'acide éthanoïque par le méthanol : comparaison catalysée / non catalysée, lecture graphique de l'équilibre, rendement et déplacement par ajout de réactif"
+    source:
+      year: 2023
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 1 (Chimie) — §3 : étude de la réaction de l'acide éthanoïque avec le méthanol"
+    bareme_total: 3.25
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2023 session normale — examen national PC BIOF, code NS 28F
+        (Exercice 1, §3 — étude de la réaction de l'acide éthanoïque avec le
+        méthanol ; barème du §3 = 3,25 pt sur les 7 pt de l'exercice complet,
+        dont le §1 — acide éthanoïque + eau — relève de etat-equilibre.md et
+        le §2 — acide éthanoïque + ion méthanoate — de
+        reactions-acido-basiques.md). Transcription vérifiée : passe de
+        vérification adversariale indépendante
+        (agent-vérificateur-adversarial, 2026-08-07) PUIS relecture de
+        contrôle indépendante d'un second vérificateur adversarial
+        (2026-08-07) confirmant point par point la figure corrigée (mesures
+        pixel refaites sur upload-85304/0002-big.jpg et 0003-big.jpg) —
+        docs/sujets/pc/esterification-hydrolyse.md, statut « vérifié ».
+        Barème en marge recompté : $0{,}5+0{,}5+0{,}5+0{,}5+0{,}75+0{,}5=
+        3{,}25$. Chimie re-dérivée et cohérente (recontrôlée indépendamment
+        ici) : composition à l'équilibre lue au palier commun aux deux
+        courbes ($n_{a,eq}=0{,}30$ mol pour les deux mélanges, $x_{eq}=
+        0{,}60$ mol) $\Rightarrow K=(0{,}60/0{,}30)^2=4$, identique au $K=4$
+        imprimé en tête de la question 3.6 (contrôle croisé) ; rendement
+        $r=x_{eq}/x_{max}=0{,}60/0{,}90\approx66{,}7\ \%$ ; après ajout de
+        $n=0{,}1$ mol d'acide à l'équilibre, $Q_r=0{,}36/0{,}12=3<K$,
+        l'avancement supplémentaire $y$ vérifie $3y^2-4y+0{,}12=0
+        \Rightarrow y\approx0{,}0307$ mol, avancement total
+        $\approx0{,}631$ mol pour $x_{max}=0{,}9$ mol $\Rightarrow$ nouveau
+        rendement $\approx70{,}1\ \%$. Aucun recoupement avec le sommet de
+        leçon (r-bac transcrit 2018, acide lactique + méthanol ; r-variation,
+        acide butanoïque + éthanol) ni avec bk-2018-n-x1 (même sujet 2018) —
+        voir l'en-tête du fichier.
+    intro: |-
+      **Étude de la réaction de l'acide éthanoïque avec le méthanol (examen national, session normale 2023, Exercice 1 — §3).**
+
+      On réalise deux mélanges équimolaires de l'acide éthanoïque avec du méthanol $CH_3OH$ : $n_0(CH_3COOH) = n_0(CH_3OH) = 0{,}9\ \text{mol}$.
+
+      Le suivi temporel de la quantité de matière $n_a$ de l'acide éthanoïque dans chaque mélange, à une même température $\theta$, a permis d'obtenir les courbes $C_1$ et $C_2$ de la figure ci-contre. L'une des deux courbes est obtenue en utilisant un catalyseur pour l'un des deux mélanges.
+
+      **Figure (courbes $n_a = f(t)$).** Axe des ordonnées $n_a$ (mol), traits principaux chiffrés $0{,}2$ et $0{,}4$ (une division $=0{,}2$ mol, bord supérieur du cadre $=1{,}0$ mol) ; axe des abscisses $t$ (h), traits principaux chiffrés $5$ et $10$ (une division $=5$ h, bord droit du cadre $=30$ h) ; sous-quadrillage fin à 10 subdivisions par division dans les deux sens.
+
+      Les deux courbes partent du même point, $n_a = 0{,}90\ \text{mol}$ à $t=0$ (conforme à $n_0$). La courbe $C_1$ (étiquette écrite sous la courbe) décroît vite et atteint son palier la première, vers $t\approx13$–$14$ h. La courbe $C_2$ (étiquette écrite au-dessus de la courbe) décroît plus progressivement et reste au-dessus de $C_1$ jusque vers $t\approx20$ h. Les deux courbes rejoignent ensuite le **même palier**, $n_a\approx0{,}30$ mol, et se confondent en un seul tracé de $t\approx20$ h jusqu'au bord droit du cadre ($t=30$ h).
+    questions:
+      - id: q1
+        part: "§3 — Étude de la réaction de l'acide éthanoïque avec le méthanol"
+        stem: |-
+          **(0,5 pt)** Écrire l'équation modélisant la réaction qui se produit, en utilisant les formules semi-développées.
+        reasoning: |-
+          On applique le geste du chapitre 2 : le groupe $-COOH$ de l'acide éthanoïque et le groupe $-OH$ du méthanol se combinent, une molécule d'eau en part, et ce qui reste des deux chaînes se relie par le groupe ester $-COO-$. Avec la double flèche de la réaction limitée (chapitre 3) :
+
+          $$CH_3-COOH + CH_3-OH \rightleftharpoons CH_3-COO-CH_3 + H_2O$$
+
+          (L'ester ainsi formé, non demandé ici, se nomme par la règle du chapitre 2 l'éthanoate de méthyle — le radical de l'acide éthanoïque donne « éthanoate », celui du méthanol donne « méthyle ».)
+      - id: q2
+        stem: |-
+          **(0,5 pt)** Indiquer, en justifiant la réponse, la courbe correspondant à la réaction utilisant le catalyseur.
+        reasoning: |-
+          Un catalyseur, au chapitre 5, ne déplace jamais la position de l'équilibre — il accélère seulement la vitesse à laquelle on l'atteint, dans les deux sens à la fois. Les deux courbes doivent donc, à terme, rejoindre le même palier — ce que la figure confirme ($n_a\approx0{,}30$ mol pour les deux). Seule la vitesse pour y parvenir les distingue : $C_1$ atteint son palier la première (vers $13$–$14$ h), $C_2$ met presque deux fois plus longtemps (vers $20$ h). La courbe qui rejoint l'équilibre le plus vite, sans en changer la position finale, est celle du mélange catalysé.
+
+          C'est donc la courbe $\boxed{C_1}$ qui correspond à la réaction catalysée.
+      - id: q3
+        stem: |-
+          **(0,5 pt)** Déterminer la composition du mélange réactionnel à l'équilibre.
+        reasoning: |-
+          Le palier commun aux deux courbes, lu sur le graphe, donne $n_a\approx0{,}30$ mol d'acide éthanoïque restant à l'équilibre, pour les deux mélanges (chapitre 3 : c'est un équilibre dynamique, pas un arrêt, et sa position ne dépend pas du catalyseur, question précédente). Par symétrie du mélange équimolaire (coefficients tous égaux à $1$), le méthanol restant vaut lui aussi $0{,}30$ mol. L'avancement à l'équilibre s'en déduit directement, puis la quantité d'ester et d'eau formés.
+        steps:
+          - math: 'n(CH_3COOH)_{eq} = n(CH_3OH)_{eq} \approx 0{,}30\ \text{mol}'
+            note: "Lecture du palier commun aux deux courbes sur le graphe."
+          - math: 'x_{eq} = n_0 - n_{a,eq} = 0{,}90-0{,}30'
+            note: "Avancement à l'équilibre, par différence avec la quantité initiale."
+          - math: '\boxed{x_{eq} = 0{,}60\ \text{mol}}'
+            note: "Donc n(ester)_eq = n(eau)_eq = 0,60 mol : c'est la composition complète du mélange à l'équilibre."
+      - id: q4
+        stem: |-
+          **(0,5 pt)** Trouver la valeur de $t_{1/2}$, le temps de demi-réaction dans le cas de la transformation chimique correspondant à la courbe $C_2$.
+        reasoning: |-
+          Le temps de demi-réaction $t_{1/2}$ n'est défini par aucun chapitre de cette leçon — les chapitres 2 à 7 portent sur l'écriture, la position et le déplacement de l'équilibre, jamais sur un repère de vitesse comme celui-ci. Il est défini au chapitre 5 de la notion « Suivi temporel d'une transformation — vitesse de réaction » : c'est l'instant où l'avancement atteint la moitié de sa valeur à l'équilibre. Ici $x_{eq}=0{,}60$ mol (question précédente), donc $t_{1/2}$ est l'instant où $x=0{,}30$ mol, c'est-à-dire où $n_a = n_0 - 0{,}30 = 0{,}60$ mol. Il reste à repérer, sur la courbe $C_2$, l'instant où elle croise cette valeur — une lecture graphique.
+        steps:
+          - math: 'n_a(t_{1/2}) = n_0 - \frac{x_{eq}}{2} = 0{,}90 - 0{,}30'
+            note: "Définition du temps de demi-réaction : l'instant où l'avancement vaut la moitié de x_eq."
+          - math: '\boxed{n_a(t_{1/2}) = 0{,}60\ \text{mol}}'
+            note: "Valeur à repérer sur l'axe des ordonnées."
+          - math: '\boxed{t_{1/2} \approx 3{,}7\ \text{h}}'
+            note: "Lecture graphique : instant où la courbe C2 croise n_a = 0,60 mol."
+      - id: q5
+        stem: |-
+          **(0,75 pt)** Calculer le rendement de la transformation chimique étudiée.
+        reasoning: |-
+          Le rendement rapporte l'avancement réellement atteint à celui qu'aurait donné une réaction totale : $r = x_{eq}/x_{max}$ — exactement le geste du chapitre 4, où $\tau$ jouait ce même rôle. Le mélange est équimolaire et tous les coefficients valent $1$ : si la réaction était totale, les deux réactifs s'épuiseraient ensemble, donc $x_{max} = n_0 = 0{,}90$ mol. L'avancement à l'équilibre, $x_{eq}=0{,}60$ mol, a déjà été lu au graphe (question 3).
+        steps:
+          - math: 'x_{max} = n_0 = 0{,}90\ \text{mol}'
+            note: "Mélange équimolaire, coefficients tous égaux à 1 (chapitre 4)."
+          - math: 'r = \frac{x_{eq}}{x_{max}} = \frac{0{,}60}{0{,}90}'
+            note: "On rapporte l'avancement à l'équilibre (lu au graphe, question 3) à l'avancement maximal."
+          - math: '\boxed{r \approx 0{,}667 = 66{,}7\ \%}'
+            note: "Exactement le cas particulier K=4 du chapitre 4 (tau = 2/3) : cohérence confirmée par la question suivante, qui donne K=4."
+      - id: q6
+        stem: |-
+          **(0,5 pt)** Quand l'état d'équilibre est atteint, on ajoute à l'un des deux mélanges réactionnels la quantité de matière $n = 0{,}1\ \text{mol}$ d'acide éthanoïque. Sachant que la constante d'équilibre de la transformation chimique étudiée est $K = 4$, trouver la nouvelle valeur du rendement de cette transformation.
+        reasoning: |-
+          On retrouve exactement le critère du chapitre 6 : comparer $Q_r$ à $K$ pour savoir dans quel sens le système va évoluer. Juste après l'ajout, avant toute nouvelle évolution, les quantités valent : acide $0{,}30+0{,}10=0{,}40$ mol (l'équilibre de la question 3, plus l'ajout), alcool $0{,}30$ mol (inchangé), ester et eau $0{,}60$ mol chacun (inchangés — l'ajout ne porte que sur l'acide).
+
+          $$Q_r = \frac{[ester][eau]}{[acide][alcool]} = \frac{0{,}60\times0{,}60}{0{,}40\times0{,}30} = \frac{0{,}36}{0{,}12} = 3$$
+
+          $Q_r = 3 < K = 4$ : exactement le signe du chapitre 6, le système repart dans le sens direct (l'estérification l'emporte de nouveau) jusqu'à ce que $Q_r$ rejoigne $K$. On construit alors un nouveau tableau d'avancement, avec $y$ l'avancement supplémentaire à partir de cet instant — même geste qu'au chapitre 6 pour l'excès d'alcool, mais ici on repart d'un état déjà partiellement avancé, pas de zéro.
+        steps:
+          - math: '\frac{(0{,}60+y)^2}{(0{,}40-y)(0{,}30-y)} = 4'
+            note: "Nouveau tableau d'avancement, y = avancement supplémentaire à partir de l'instant de l'ajout."
+          - math: '3y^2 - 4y + 0{,}12 = 0'
+            note: "Développement et simplification de l'équation précédente."
+          - math: 'y = \frac{4-\sqrt{16-1{,}44}}{6} = \frac{4-\sqrt{14{,}56}}{6}'
+            note: "Racine du polynôme ; seule la racine la plus petite a un sens physique (l'autre dépasserait les quantités disponibles d'acide et d'alcool)."
+          - math: '\boxed{y \approx 0{,}0307\ \text{mol}}'
+            note: "Avancement supplémentaire après le nouvel ajout."
+          - math: 'x_{total} = x_{eq} + y = 0{,}60+0{,}0307'
+            note: "Avancement total depuis le tout début de l'expérience (avant même l'ajout)."
+          - math: '\boxed{x_{total} \approx 0{,}631\ \text{mol}}'
+            note: "Application numérique."
+          - math: 'r_{nouveau} = \frac{x_{total}}{x_{max}} = \frac{0{,}631}{0{,}90}'
+            note: "Nouveau rendement, rapporté à x_max = 0,90 mol : l'alcool n'a jamais reçu d'ajout et reste le réactif limitant de tout le système — l'acide total disponible (0,9+0,1=1,0 mol) le dépasse désormais."
+          - math: '\boxed{r_{nouveau} \approx 0{,}701 = 70{,}1\ \%}'
+            note: "Rendement amélioré par rapport aux 66,7 % de la question 5 : ajouter de l'acide en cours de route a bien déplacé l'équilibre, exactement le premier geste du chapitre 6."
+
+  # ── bk-2025-r-x1b — 2025 R, Exercice 1 (§2) : esterification acide ethanoique + ethanol, dosage de l'acide restant ──
+  # Ses deux autres sous-parties, independantes, vivent ailleurs : le §1
+  # (solution d'acide ethanoique : tau, pK_A, diagramme de distribution,
+  # dilution) sous content/pc/reactions-acido-basiques, entree bk-2025-r-x1 ;
+  # le §3 (cinetique de la saponification) sous
+  # content/pc/suivi-temporel-vitesse, entree bk-2025-r-x1c.
+  #
+  # SCOPE NOTE (technique mobilisee au-dela de ce que la lecon montre pas a
+  # pas, pontee au point d'usage, PAS corrigee ici) :
+  #   - q2 (2-2) et q3 (2-3) : la RELATION D'EQUIVALENCE D'UN DOSAGE
+  #     (n(acide restant) = C_B.V_BE) n'est enseignee par aucun rung de CETTE
+  #     lecon (esterification-hydrolyse.md ne traite que l'equilibre estere/
+  #     hydrolyse, jamais un titrage). Elle appartient nommement au rung R9 de
+  #     la notion « Reactions acido-basiques », nomme et pontee au point
+  #     d'usage dans le raisonnement de la question 2-2.
+  #
+  # Pas de flag de jumelage : le geste dominant de cette entree — doser
+  # l'acide restant a la fin d'une esterification pour en tirer le rendement
+  # — est absent des deux autres entrees de cette banque (bk-2018-n-x1 donne
+  # directement n_E ; bk-2023-n-x1 lit x_eq sur une courbe n_a = f(t)).
+  #
+  # Le 2015 N (bk-2015-n-x1c, ajouté le 2026-08-28) est la QUATRIÈME entrée
+  # de cette banque. C'est le §2 de la Deuxième Partie de l'Exercice 1
+  # (étude de la réaction de l'acide benzoïque avec l'éthanol : rôle du
+  # catalyseur, équation, rendement, réactif de substitution ; 2,50 pt) ;
+  # le §1 de cette même Deuxième Partie (acide benzoïque + eau : taux
+  # d'avancement, pKA) est DÉJÀ en banque sous
+  # content/pc/etat-equilibre/bank.yaml, entrée bk-2015-n-x1 — pas de
+  # double comptage.
+  #
+  # ⚠️ CORRECTION ASSUMÉE DU SUJET OFFICIEL, portée par cette entrée. Le
+  # sujet imprime la masse volumique de l'éthanol « ρ = 0;78g.L⁻¹ » —
+  # séparateur décimal fautif (point-virgule) ET unité fausse d'un facteur
+  # 1000. Telle quelle, la question 2-3 est insoluble (rendement de
+  # 8846 %, physiquement impossible). L'entrée retient 0,78 g·mL⁻¹, la
+  # masse volumique RÉELLE de l'éthanol — une constante physique connue,
+  # pas une interprétation — sur le même principe que PC 2012 N
+  # (content/pc/transformations-deux-sens/bank.yaml, bloc « CORRECTION
+  # ASSUMÉE DU SUJET OFFICIEL »). Le détail complet, avec ce que le sujet
+  # imprime et sur quelle base la valeur est retenue, est déclaré au point
+  # d'usage dans l'`intro` de `bk-2015-n-x1c` (commentaire juste après la
+  # donnée) et rappelé dans son `sourcing.note`.
+  #
+  # CROSS-LIST `controle-catalyse`, RATTACHÉ À LA BONNE QUESTION. Le sujet
+  # source propose ce cross-list pour la question 2-1 (rôle du
+  # catalyseur) ; vérifié ici contre les deux leçons, ce n'est pas la
+  # bonne question : 2-1 est entièrement couverte par le rung R4 de CETTE
+  # leçon (le catalyseur accélère l'estérification et l'hydrolyse dans les
+  # mêmes proportions, sans déplacer l'équilibre). Le cross-list réel
+  # porte sur la question 2-4 (réactif de substitution pour améliorer le
+  # rendement) : c'est le rung R1 de « Contrôle par un réactif ou par
+  # catalyse » qui introduit l'anhydride d'acide, réactif « rapide et
+  # total » qui remplace l'acide carboxylique — exactement la réponse
+  # attendue ici. Nommé et ponté au point d'usage dans le raisonnement de
+  # la question 2-4, pas converti en entrée séparée (0,5 pt, un orphelin
+  # illisible s'il était détaché).
+  - id: bk-2025-r-x1b
+    title: "Estérification de l'acide éthanoïque par l'éthanol : acide restant dosé par la soude, rendement"
+    source:
+      year: 2025
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — §2 : étude d'une réaction d'estérification avec l'acide éthanoïque"
+    bareme_total: 2.0
+    duration_min: 12
+    sourcing:
+      status: sourced
+      note: >-
+        2025 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS28F, AlloSchool
+        https://www.alloschool.com/element/145799, scan
+        course-422/upload-87492/0002-big.jpg et 0003-big.jpg, pages 2 et 3
+        sur 6 (Exercice 1 — §2, étude d'une réaction d'estérification avec
+        l'acide éthanoïque : équation, quantité d'acide restant dosée par la
+        soude, rendement). Aucune figure dans cette sous-partie — énoncé
+        intégralement textuel. Barème du §2 recompté sur l'énoncé source :
+        0,75 (2-1) + 0,5 (2-2) + 0,75 (2-3) = 2,0 pt, sur les 7 pt de
+        l'exercice complet, dont le §1 — solution d'acide éthanoïque,
+        2,75 pt — est transcrit sous content/pc/reactions-acido-basiques,
+        entrée bk-2025-r-x1, et le §3 — cinétique de la saponification,
+        2,25 pt — sous content/pc/suivi-temporel-vitesse, entrée
+        bk-2025-r-x1c ; la somme des trois, 2,75+2,0+2,25 = 7,0 pt, coïncide
+        avec le recompte en marge du fichier source. Source :
+        docs/sujets/_incoming/pc-spc-2025-r.md, statut « vérifié — re-fetch
+        indépendant + re-dérivation (vérificateur adversarial, 2026-08-23) ».
+        Contre-calcul refait ici, indépendamment de la re-dérivation du
+        vérificateur (qui donne déjà un rendement de $67\,\%$ et que ce
+        contre-calcul confirme) : $n_r = C_B\,V_{BE} =
+        1{,}50\times22{,}0\times10^{-3} = 3{,}30\times10^{-2}\ \text{mol}$ ;
+        $x = n_0 - n_r = 0{,}100-0{,}0330 = 6{,}70\times10^{-2}\ \text{mol}$
+        (ester formé) ; $x_{max} = n_0 = 0{,}100\ \text{mol}$ (mélange
+        équimolaire, coefficients tous égaux à $1$) ; $r = x/x_{max} =
+        0{,}670 = 67{,}0\,\%$ — exactement la valeur du sujet. SCOPE NOTE
+        sur la relation d'équivalence du dosage, empruntée au rung 9 de
+        « Réactions acido-basiques » : voir le commentaire au-dessus de
+        cette entrée.
+    intro: |-
+      **Étude d'une réaction d'estérification avec l'acide éthanoïque (examen national, session de rattrapage 2025 — Exercice 1, §2, 2,0 points).**
+
+      *Cet exercice de 7 points étudie aussi, dans ses deux autres sous-parties : une solution aqueuse d'acide éthanoïque (§1, sous la notion « Réactions acido-basiques ») ; une hydrolyse basique d'un ester (§3, sous la notion « Suivi temporel d'une transformation — vitesse de réaction »).*
+
+      Pour synthétiser l'éthanoate d'éthyle noté E, on fait réagir $0{,}100\ \text{mol}$ d'acide éthanoïque avec $0{,}100\ \text{mol}$ d'éthanol $C_2H_5OH$. Lorsque la réaction est terminée, on dose, dans des conditions expérimentales bien déterminées, l'acide restant avec une solution aqueuse $S_B$ d'hydroxyde de sodium $Na^+_{(aq)} + HO^-_{(aq)}$ de concentration $C_B = 1{,}50\ \text{mol.L}^{-1}$. Le volume de $S_B$ versé à l'équivalence est $V_{BE} = 22{,}0\ \text{mL}$.
+    questions:
+      - id: q1
+        stem: |-
+          **2-1. (0,75 pt)** Écrire, en utilisant les formules semi-développées, l'équation de la réaction d'estérification qui s'est produite.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** On applique le geste du chapitre 2 : le groupe $-COOH$ de l'acide éthanoïque et le groupe $-OH$ de l'éthanol se combinent, une molécule d'eau en part, et ce qui reste des deux chaînes se relie par le groupe ester $-COO-$. C'est, au mot près, l'exemple travaillé qui ouvre ce chapitre.
+
+          $$\boxed{CH_3-COOH + CH_3-CH_2-OH \rightleftharpoons CH_3-COO-CH_2-CH_3 + H_2O}$$
+
+          Double flèche : c'est une estérification, réaction **limitée** (chapitre 3) — c'est ce que le rendement de la question 2-3 va confirmer.
+
+          **Le nom de l'ester, pour vérifier l'écriture.** Radical de l'acide éthanoïque : « éthanoate ». Radical de l'éthanol : « éthyle ». L'ester $E$ est donc l'**éthanoate d'éthyle** — exactement l'exemple nommé au chapitre 2.
+
+          **Le piège nommé de cette question.** L'énoncé demande les formules **semi-développées** : écrire l'équation générale $R-COOH + R'-OH \rightleftharpoons R-COO-R' + H_2O$ sans remplacer $R$ et $R'$ par $CH_3-$ et $CH_3-CH_2-$ ne répond pas à la consigne et coûte des points, même si la logique de construction est correcte.
+      - id: q2
+        stem: |-
+          **2-2. (0,5 pt)** Calculer la quantité de matière $n_r$ d'acide restant en fin de la réaction d'estérification.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** La relation d'équivalence d'un dosage n'est enseignée par aucun chapitre de cette leçon-ci, qui ne traite que l'équilibre estérification/hydrolyse. Elle appartient nommément au chapitre 10 de la notion **Réactions acido-basiques** : à l'équivalence, la quantité de réactif titré présent égale la quantité de réactif titrant versé, $n_r = C_B\,V_{BE}$ — l'acide restant, ici, joue le rôle du titré, et la soude celui du titrant.
+
+          $$n_r = C_B\,V_{BE} = 1{,}50 \times 22{,}0\times10^{-3}$$
+
+          $$\boxed{n_r \approx 3{,}30\times10^{-2}\ \text{mol}}$$
+
+          **Le piège nommé de cette question.** Convertis $V_{BE}$ en litres avant de multiplier ($22{,}0\ \text{mL} = 22{,}0\times10^{-3}\ \text{L}$) : $C_B$ est donnée en $\text{mol.L}^{-1}$, et laisser $V_{BE}$ en millilitres donnerait un résultat mille fois trop grand.
+      - id: q3
+        stem: |-
+          **2-3. (0,75 pt)** En exploitant le tableau d'avancement de la réaction d'estérification, déterminer son rendement.
+        reasoning: |-
+          **Ce qu'on cherche et pourquoi ce geste.** Le rendement rapporte l'ester réellement obtenu à celui qu'aurait donné une réaction **totale** : $r = x/x_{max}$ — le même geste qu'au chapitre 4 de cette leçon, où $\tau \approx 2/3$ jouait ce rôle pour le cas des quantités égales. Le mélange est équimolaire ($0{,}100\ \text{mol}$ d'acide, $0{,}100\ \text{mol}$ d'alcool) et tous les coefficients stœchiométriques valent $1$ : si la réaction était totale, les deux réactifs s'épuiseraient exactement ensemble, donc $x_{max} = n_0 = 0{,}100\ \text{mol}$.
+
+          **Le tableau d'avancement, exploité à l'état final.** L'acide restant, dosé à la question 2-2, donne l'avancement réellement atteint par différence :
+
+          $$x = n_0 - n_r = 0{,}100 - 3{,}30\times10^{-2}$$
+
+          $$\boxed{x \approx 6{,}70\times10^{-2}\ \text{mol}}$$
+
+          (C'est aussi la quantité d'ester $E$ formée : un mole d'ester par mole d'avancement, coefficient $1$.)
+
+          $$r = \frac{x}{x_{max}} = \frac{6{,}70\times10^{-2}}{0{,}100}$$
+
+          $$\boxed{r \approx 0{,}670 = 67{,}0\ \%}$$
+
+          **Le piège nommé de cette question.** Ne calcule pas le rendement à partir de l'acide **restant** directement ($n_r/n_0$) : ce rapport donnerait la fraction d'acide **n'ayant pas réagi**, pas la fraction convertie en ester. Il faut d'abord passer par l'avancement $x = n_0 - n_r$, puis rapporter $x$ à $x_{max}$ — deux soustractions dans des directions opposées, faciles à inverser sous pression.
+
+  # ── bk-2015-n-x1c — 2015 N, Exercice 1 (Deuxième Partie, §2) : estérification acide benzoïque + éthanol ──
+  # Voir la NOTE ÉDITORIALE au-dessus de bk-2025-r-x1b pour le choix du
+  # suffixe c (le §1 de cette même Deuxième Partie, DÉJÀ en banque sous
+  # content/pc/etat-equilibre/bank.yaml, porte x1 sans lettre ; ce §2-ci,
+  # transcrit par la même campagne que l'entrée sœur bk-2015-n-x1b
+  # d'`electrolyse` — Première Partie du même Exercice 1 — porte c) et pour
+  # la CORRECTION ASSUMÉE du sujet officiel, déclarée en détail ci-dessous
+  # dans l'`intro` de cette entrée, au point d'usage.
+  - id: bk-2015-n-x1c
+    title: "Estérification de l'acide benzoïque par l'éthanol : rôle du catalyseur, équation, rendement (donnée corrigée), et réactif de substitution"
+    source:
+      year: 2015
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Deuxième Partie, §2 : réaction de l'acide benzoïque avec l'éthanol"
+    bareme_total: 2.5
+    duration_min: 15
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28, AlloSchool element/94472 (Exercice 1,
+        Deuxième Partie, §2 — réaction de l'acide benzoïque avec l'éthanol ;
+        barème du §2 = 2,50 pt (0,5+0,5+1+0,5), pas de sous-total imprimé
+        pour le §2 seul — c'est le complément du §1 (2,25 pt, DÉJÀ en
+        banque sous content/pc/etat-equilibre/bank.yaml, entrée
+        bk-2015-n-x1) dans les 4,75 pt imprimés de la Deuxième Partie ; sur
+        les 07 pt de l'exercice complet, dont la Première Partie
+        (électrolyse, 2,25 pt) est transcrite sous
+        content/pc/electrolyse/bank.yaml, entrée bk-2015-n-x1b — pas de
+        double comptage entre les trois entrées. Transcription vérifiée par
+        une passe adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2015-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion, sous la seule réserve nommée » — précisément celle
+        traitée ici) : re-fetch indépendant, couche de texte native ET
+        rendu vectoriel 600 dpi relus sur les deux chaînes, 27/27 questions
+        du sujet re-dérivées. RÉSERVE NOMMÉE ET TRANCHÉE ICI (question
+        2-3) : le sujet imprime « La masse volumique de l'éthanol pur :
+        ρ = 0;78g.L⁻¹ » — point-virgule en guise de séparateur décimal, et
+        unité fausse d'un facteur 1000. Telle qu'imprimée, la donnée rend
+        la question 2-3 insoluble : avec $0{,}78\ \text{g.L}^{-1}$, les
+        $10$ mL d'éthanol ne pèseraient que $7{,}8\times10^{-3}$ g
+        ($1{,}70\times10^{-4}$ mol), l'éthanol deviendrait le réactif
+        limitant, et la masse maximale d'ester ne vaudrait que
+        $0{,}0254$ g — alors que l'énoncé annonce $2{,}25$ g d'ester
+        OBTENUS : un rendement de $8846\ \%$, physiquement impossible.
+        DÉCISION D'OWNER, PRISE ICI : convertir avec la valeur utilisable,
+        $\rho = 0{,}78\ \text{g.mL}^{-1}$ (= $0{,}78\ \text{kg.L}^{-1}$),
+        la masse volumique RÉELLE de l'éthanol — une constante physique
+        connue, pas une interprétation — et DÉCLARER la correction, plutôt
+        que de la faire en silence. Avec cette valeur : $n(\text{acide}) =
+        2{,}44/122 = 2{,}00\times10^{-2}$ mol (exactement) ; $n(\text{éthanol})
+        = (10\times0{,}78)/46 \approx 0{,}1696$ mol, en large excès ;
+        l'acide benzoïque est donc le réactif limitant,
+        $m_{max}(\text{ester}) = 2{,}00\times10^{-2}\times150 = 3{,}00$ g,
+        et le rendement $= 2{,}25/3{,}00 = \mathbf{75{,}00\ \%}$ exactement
+        — un nombre rond, qui confirme la lecture. Précédent maison
+        exactement de cette forme : PC 2012 N (les deux couples y étaient
+        étiquetés $pK_{A1}$), converti avec correction déclarée — voir
+        content/pc/transformations-deux-sens/bank.yaml, bloc « CORRECTION
+        ASSUMÉE DU SUJET OFFICIEL ». Aucun corrigé officiel n'existe pour
+        ce sujet (recherche faite par le vérificateur : la série SPC n'a de
+        corrigés qu'à partir de 2016, et les voisins d'élément dans les
+        trois cours AlloSchool sont tous des sujets, jamais des corrigés) :
+        la question devait être arbitrée sans corrigé, et l'est ici.
+        CROSS-LIST `controle-catalyse` (question 2-4, réactif de
+        substitution → anhydride d'acide, rung R1) : voir la note
+        éditoriale au-dessus de bk-2025-r-x1b pour pourquoi ce cross-list
+        est rattaché à 2-4 et non à 2-1, contrairement au classement
+        proposé par le sujet source.
+    # CORRECTION ASSUMÉE DU SUJET OFFICIEL, déclarée le 2026-08-28.
+    # Le sujet imprime, mot pour mot : « La masse volumique de l'éthanol
+    # pur : ρ = 0;78g.L-1 ». Deux fautes dans cette seule donnée : un
+    # point-virgule à la place de la virgule décimale, et une unité
+    # fausse d'un facteur 1000 (g.L-1 au lieu de g.mL-1).
+    # Telle quelle, la question 2-3 est INSOLUBLE : avec 0,78 g.L-1, les
+    # 10 mL d'éthanol ne pèsent que 7,8e-3 g (1,70e-4 mol), l'éthanol
+    # deviendrait le réactif limitant, et la masse maximale d'ester ne
+    # vaudrait que 0,0254 g — alors que l'énoncé annonce 2,25 g d'ester
+    # OBTENUS : un rendement de 8846 %, physiquement impossible.
+    # Cette entrée retient 0,78 g.mL-1 (= 0,78 kg.L-1) : c'est la masse
+    # volumique RÉELLE de l'éthanol, une constante physique connue, et
+    # non une interprétation — reconnaître une valeur que le sujet a
+    # mal typographiée deux fois à la fois (séparateur ET unité). Avec
+    # elle, le rendement vaut 75,00 % exactement — un nombre rond, ce
+    # qui confirme la lecture. C'est une réparation DÉLIBÉRÉE, faite
+    # ici et déclarée, pas une erreur de transcription : le même choix
+    # a déjà été fait sur PC 2012 N (les deux couples y étaient
+    # étiquetés pKA1 ; voir
+    # content/pc/transformations-deux-sens/bank.yaml, bloc "CORRECTION
+    # ASSUMÉE DU SUJET OFFICIEL"). Aucun corrigé officiel n'existe pour
+    # ce sujet (recherche faite, voir
+    # docs/sujets/_incoming/pc-2015-n.md, "Ce que la vérification a
+    # trouvé", point 3) : la décision est prise ici, au point d'usage,
+    # plutôt que tranchée par un corrigé.
+    intro: |-
+      **Réaction de l'acide benzoïque avec l'éthanol (examen national, session normale 2015, Exercice 1 — Deuxième Partie, §2, 2,50 points).**
+
+      *Le §1 de cette même Deuxième Partie — taux d'avancement final et $pK_A$ du couple $(\text{C}_6\text{H}_5\text{COOH}/\text{C}_6\text{H}_5\text{COO}^-)$ — vit sous la notion « État d'équilibre d'un système chimique », entrée du sujet 2015 (session normale). Cette entrée-ci en est indépendante.*
+
+      L'acide benzoïque est utilisé dans la conservation des aliments et des boissons non alcooliques, ainsi que dans la fabrication de plusieurs composés organiques.
+
+      **Données :**
+      - Toutes les mesures ont été faites à $25\ ^\circ\text{C}$ ;
+      - Masse molaire de l'acide benzoïque : $M(\text{C}_6\text{H}_5\text{COOH}) = 122\ \text{g.mol}^{-1}$ ;
+      - Masse molaire de l'éthanol : $M(\text{C}_2\text{H}_5\text{OH}) = 46\ \text{g.mol}^{-1}$ ;
+      - Masse volumique de l'éthanol pur : $\rho = 0{,}78\ \text{g.mL}^{-1}$ *(le sujet imprime « $\text{g.L}^{-1}$ » : c'est une coquille d'unité — avec des $\text{g.L}^{-1}$ la masse d'éthanol serait mille fois trop petite et le rendement dépasserait $100\ \%$)* ;
+      - Masse molaire du benzoate d'éthyle : $M(\text{C}_6\text{H}_5\text{COOC}_2\text{H}_5) = 150\ \text{g.mol}^{-1}$.
+
+      *Le benzoate d'éthyle est caractérisé par le goût des cerises, c'est pourquoi il est utilisé dans l'industrie alimentaire pour donner ce goût aux aliments synthétisés (encadré du sujet officiel).*
+
+      Pour préparer le benzoate d'éthyle au laboratoire, on mélange dans un ballon un échantillon d'acide benzoïque de masse $m_{ac} = 2{,}44\ \text{g}$ avec un volume $V_{a\ell} = 10\ \text{mL}$ d'éthanol pur, puis on y ajoute quelques gouttes d'acide sulfurique concentré jouant le rôle d'un catalyseur. Le mélange est chauffé à reflux à température constante.
+    questions:
+      - id: q1
+        part: "§2 — Réaction de l'acide benzoïque avec l'éthanol"
+        stem: |-
+          **2-1.** (0,5 pt) Quel est le rôle du catalyseur dans cette réaction ?
+        reasoning: |-
+          C'est très exactement le chapitre 5 de cette leçon : un catalyseur acide — ici quelques gouttes d'acide sulfurique concentré, le même réactif que celui du chapitre 1 — accélère l'estérification, mais **dans les deux sens à la fois** : il facilite tout autant l'hydrolyse inverse. Le rapport entre les deux vitesses, celui-là même qui fixe la position de l'équilibre, ne bouge donc pas.
+
+          Le catalyseur permet d'atteindre l'état final (l'équilibre entre l'acide, l'éthanol, l'ester et l'eau) **plus rapidement**, sans changer ni le rendement final ni la composition du mélange à l'équilibre.
+
+          **Le piège de cette question.** Répondre « il améliore le rendement » : c'est précisément l'idée fausse que le chapitre 5 démonte par le test des deux flacons (avec et sans catalyseur), qui atteignent la **même** composition finale à des vitesses différentes. Le catalyseur achète du temps, jamais de l'ester en plus.
+      - id: q2
+        stem: |-
+          **2-2.** (0,5 pt) Écrire, en utilisant les formules semi-développées, l'équation modélisant la transformation ayant lieu entre l'acide benzoïque et l'éthanol.
+        reasoning: |-
+          On applique le geste du chapitre 2 : le groupe $-COOH$ de l'acide et le groupe $-OH$ de l'alcool se combinent, une molécule d'eau en part, et ce qui reste des deux chaînes se relie par le groupe ester $-COO-$. Ici $R = \text{C}_6\text{H}_5-$ (le radical de l'acide benzoïque, un groupe phényle) et $R' = \text{C}_2\text{H}_5-$ (le radical de l'éthanol).
+
+          $$\boxed{\text{C}_6\text{H}_5-\text{COOH} + \text{C}_2\text{H}_5-\text{OH} \rightleftharpoons \text{C}_6\text{H}_5-\text{COO}-\text{C}_2\text{H}_5 + \text{H}_2\text{O}}$$
+
+          Double flèche, comme toujours pour une estérification (chapitre 3) : c'est une réaction limitée, pas totale — exactement ce que le rendement de la question 2-3 va vérifier avec un chiffre.
+
+          **Le nom de l'ester, pour vérifier l'écriture.** Radical de l'acide benzoïque : « benzoate ». Radical de l'éthanol : « éthyle ». L'ester formé est donc le **benzoate d'éthyle** — cohérent avec la masse molaire donnée dans l'énoncé, $M = 150\ \text{g.mol}^{-1}$, et avec le contrôle gratuit $M(\text{ester}) = M(\text{acide}) + M(\text{éthanol}) - M(\text{H}_2\text{O}) = 122+46-18 = 150$.
+
+          **Le piège de cette question.** L'énoncé demande les formules **semi-développées** : écrire l'équation générale $R-COOH + R'-OH \rightleftharpoons R-COO-R' + H_2O$ sans remplacer $R$ et $R'$ par $\text{C}_6\text{H}_5-$ et $\text{C}_2\text{H}_5-$ ne répond pas à la consigne.
+      - id: q3
+        stem: |-
+          **2-3.** (1 pt) On obtient à la fin de la réaction une quantité de masse $m_e = 2{,}25\ \text{g}$ de benzoate d'éthyle. Calculer le rendement de cette réaction.
+        reasoning: |-
+          Le rendement rapporte l'ester réellement obtenu à celui qu'aurait donné une réaction **totale** : $r = m_{obtenue}/m_{max}$, la version en masses du même geste qu'au chapitre 4 ($\tau$, en avancement). Il faut d'abord identifier le réactif limitant — et ici, contrairement au cas de l'estérification simple du chapitre 4 (quantités égales), les deux réactifs ne sont PAS en proportions égales : il faut convertir les deux masses en quantités de matière et comparer.
+
+          $$n(\text{acide}) = \frac{m_{ac}}{M(\text{acide})} = \frac{2{,}44}{122} = 2{,}00\times10^{-2}\ \text{mol}$$
+
+          Pour l'éthanol, il faut d'abord passer par sa masse — c'est ici qu'intervient la donnée $\rho$, dont la valeur utilisable est $0{,}78\ \text{g.mL}^{-1}$ (voir la correction déclarée dans les données ci-dessus) :
+
+          $$m(\text{éthanol}) = \rho \times V_{a\ell} = 0{,}78\times10 = 7{,}8\ \text{g} \implies n(\text{éthanol}) = \frac{7{,}8}{46} \approx 0{,}1696\ \text{mol}$$
+
+          L'éthanol ($\approx 0{,}17$ mol) est en **large excès** devant l'acide benzoïque ($0{,}0200$ mol) : avec une stœchiométrie $1{:}1{:}1{:}1$ (question 2-2), c'est l'acide benzoïque qui est le réactif **limitant**. La masse maximale d'ester correspond donc à la conversion totale de l'acide :
+
+          $$m_{max} = n(\text{acide})\times M(\text{ester}) = 2{,}00\times10^{-2}\times150 = 3{,}00\ \text{g}$$
+
+          $$r = \frac{m_e}{m_{max}} = \frac{2{,}25}{3{,}00}$$
+
+          $$\boxed{r = 0{,}75 = 75{,}00\ \%}$$
+
+          Un rendement rond, cohérent avec un couple acide/alcool tous deux sans empêchement stérique majeur — nettement au-dessus des $66{,}7\ \%$ de l'« estérification simple » du chapitre 4 (quantités égales), exactement ce que prédit le chapitre 6 : un réactif en excès pousse l'équilibre plus loin que $\tau \approx 2/3$.
+
+          **Le piège de cette question.** Prendre l'acide comme réactif limitant par réflexe (« c'est toujours l'acide dans les exercices simples ») sans vérifier le calcul : ici c'est vrai, mais seulement parce que $n(\text{éthanol}) \gg n(\text{acide})$ — un calcul qu'il faut refaire à chaque énoncé, jamais supposer. Deuxième piège : garder l'unité imprimée sans la questionner, alors qu'une masse volumique en g/L (ce que la coquille imprime) donnerait une masse d'éthanol mille fois trop petite et un rendement supérieur à $100\ \%$ — un signal qui doit alerter, jamais être accepté tel quel (voir la correction déclarée dans les données).
+        steps:
+          - math: 'n(\text{acide}) = \frac{2{,}44}{122} = 2{,}00\times10^{-2}\ \text{mol}'
+            note: "Quantité de matière d'acide benzoïque, depuis la masse donnée."
+          - math: 'm(\text{éthanol}) = \rho\times V_{a\ell} = 0{,}78\times10 = 7{,}8\ \text{g}'
+            note: "Masse d'éthanol, avec la valeur utilisable de rho (0,78 g/mL, corrigee - voir les données)."
+          - math: 'n(\text{éthanol}) = \frac{7{,}8}{46} \approx 0{,}1696\ \text{mol}'
+            note: "Quantité de matière d'éthanol : très supérieure a celle de l'acide, donc éthanol en excès."
+          - math: 'n(\text{éthanol}) \gg n(\text{acide}) \implies \text{acide benzoïque = réactif limitant}'
+            note: "Stoechiometrie 1:1:1:1 (question 2-2) : le réactif le moins abondant limite la réaction."
+          - math: 'm_{max} = n(\text{acide})\times M(\text{ester}) = 2{,}00\times10^{-2}\times150 = 3{,}00\ \text{g}'
+            note: "Masse maximale d'ester si l'acide, limitant, était totalement converti."
+          - math: 'r = \frac{m_e}{m_{max}} = \frac{2{,}25}{3{,}00}'
+            note: "Rendement = masse réellement obtenue / masse maximale théorique."
+          - math: '\boxed{r = 0{,}75 = 75{,}00\ \%}'
+            note: "Valeur ronde : coherente avec l'excès d'éthanol (chapitre 6), au-dessus des 66,7 pourcent de l'estérification simple (chapitre 4)."
+      - id: q4
+        stem: |-
+          **2-4.** (0,5 pt) Pour améliorer le rendement de synthèse de benzoate d'éthyle, on remplace l'acide benzoïque par un autre réactif. Donner le nom de ce réactif et écrire da formule semi-développée. *(« da » tel qu'imprimé — défaut du sujet officiel, sans incidence)*
+        reasoning: |-
+          SCOPE NOTE : le rendement obtenu à la question 2-3 ($75\ \%$) est déjà au-dessus des $66{,}7\ \%$ de l'estérification simple, grâce à l'excès d'éthanol — mais rester avec l'acide benzoïque, aussi favorisée soit la réaction, plafonne toujours à un équilibre. Pour dépasser tout plafond d'équilibre, le levier n'est ni un déplacement (chapitre 6 de cette leçon-ci, déjà exploité par l'excès d'éthanol) ni un catalyseur (question 2-1) : c'est de **changer de réactif**, le geste du chapitre 2 de la notion « Contrôle par un réactif ou par catalyse ».
+
+          On remplace l'acide benzoïque $\text{C}_6\text{H}_5-\text{COOH}$ par son **anhydride**, l'anhydride benzoïque : on prend deux molécules d'acide benzoïque, on leur retire une molécule d'eau, et on soude les deux restes par un atome d'oxygène central.
+
+          $$\boxed{\text{C}_6\text{H}_5-\text{CO}-\text{O}-\text{CO}-\text{C}_6\text{H}_5}$$
+
+          Avec l'éthanol, cet anhydride réagirait par une réaction à **une seule flèche** — rapide (quelques minutes, souvent sans chauffage) et **totale** ($\tau = 1$, pas de plafond à $2/3$ ni même à $75\ \%$) — puisque le sous-produit n'est plus de l'eau (qui pourrait réhydrolyser l'ester) mais de l'acide benzoïque lui-même.
+
+          **Le piège de cette question.** Répondre « il faut chauffer plus fort » ou « ajouter plus de catalyseur » : ce sont des leviers cinétiques (chapitre 5, question 2-1), qui accélèrent l'arrivée à l'équilibre sans jamais en changer la position. La question demande un réactif de substitution, pas un réglage des conditions expérimentales — c'est le signal qui pointe vers le chapitre 2 de « Contrôle par un réactif », pas vers un chapitre déjà mobilisé dans ce même exercice.
+
+  # ── bk-2017-n-x1c — 2017 N, Exercice I (Partie II, §2) : estérification vs anhydride sur l'éthanol ──
+  #
+  # NOTE ÉDITORIALE — LE CHOIX DE L'`id` (2026-08-28, ajout). Le sujet source
+  # (docs/sujets/_incoming/pc-2017-n.md, statut « VÉRIFIÉ — clearé pour
+  # conversion, réserves nommées », passe adversariale indépendante du
+  # 2026-08-28) NUMÉROTE ses exercices (I à IV, cartouche p. 1). Ce bloc est le
+  # §2 de la Partie II de l'Exercice I ; `x1` (Partie I, la pile aluminium-cuivre,
+  # content/pc/piles/bank.yaml) et `x1b` (§1, acide butanoïque + eau,
+  # content/pc/reactions-acido-basiques/bank.yaml) sont déjà pris — cette
+  # entrée-ci porte donc le suffixe `c`, même convention que
+  # bk-2015-n-x1/x1b/x1c (K-7 bis).
+  - id: bk-2017-n-x1c
+    title: "Estérification de l'acide butanoïque contre réaction de l'anhydride butanoïque sur l'éthanol : temps de demi-réaction, taux d'avancement final comparés, et l'équation de la réaction totale"
+    source:
+      year: 2017
+      session: normale
+      filiere: "SPC"
+      exercise_label: "Exercice I — Partie II, §2 : réactions de l'acide butanoïque et de son anhydride sur l'éthanol"
+    bareme_total: 2.75
+    duration_min: 17
+    sourcing:
+      status: sourced
+      note: >-
+        2017 session normale — examen national PC BIOF (Sciences Physiques,
+        SPC), code sujet NS 28F, AlloSchool element/57711
+        (course-422/upload-45103), page 3 sur 8 — Exercice I ( 7 points ),
+        Partie II, §2 : réactions de l'acide butanoïque et de son anhydride
+        sur l'éthanol, barème 2,75 pt (0,5+0,75+0,75+0,75), 4 questions, sur
+        les 7,00 pt de l'exercice complet dont la Partie I (pile
+        aluminium-cuivre, 2,25 pt) est transcrite sous
+        content/pc/piles/bank.yaml (bk-2017-n-x1) et le §1 de cette même
+        Partie II (acide butanoïque + eau, 2,00 pt) sous
+        content/pc/reactions-acido-basiques/bank.yaml (bk-2017-n-x1b) — pas de
+        double comptage : 2,25+2,00+2,75 = 7,00. Transcription vérifiée par
+        une passe adversariale indépendante (2026-08-28,
+        docs/sujets/_incoming/pc-2017-n.md, statut « VÉRIFIÉ — clearé pour
+        conversion »). FIGURE A (page 3, l'avancement x(t) des deux
+        expériences) mesurée sur les objets vectoriels du PDF natif (listes
+        de points des polylignes), calibrée sur les lignes de grille noires :
+        origine (t=0 ; x=0), une maille = 10 min horizontalement et 0,1 mol
+        verticalement. Courbe (2) (rapide) : plateau mesuré 0,2986-0,2998 mol
+        (sur la ligne de grille 0,3), t_1/2 mesuré a 2,30 min. Courbe (1)
+        (lente) : plateau mesure 0,2009-0,2013 mol (sur la ligne de grille
+        0,2), t_1/2 mesure a 8,26 min. ADJUDICATION DES ETIQUETTES (1)/(2),
+        par chaîne de mesure INDÉPENDANTE de la proximité des cadres : n0 =
+        0,3 mol des deux réactifs dans les deux expériences donne x_max =
+        0,3 mol ; la question 2.3 exige qu'une seule courbe soit totale ; la
+        courbe qui plafonne a 0,300 (courbe supérieure) est donc la totale,
+        c'est l'anhydride, la DEUXIÈME expérience, étiquette (2) ; la courbe
+        qui plafonne a 0,200 (courbe inférieure) est la LIMITÉE, c'est
+        l'estérification, la PREMIÈRE expérience, étiquette (1). Concorde
+        avec la rapidité demandee en 2.2 (la totale est aussi la plus
+        rapide). Contre-calcul refait ici, chiffre par chiffre : tau_f(1,
+        estérification) = 0,2013/0,3 ~ 0,671 ; tau_f(2, anhydride) =
+        0,2986/0,3 ~ 0,995. Ces valeurs coïncident avec le recompte
+        indépendant de la vérification adversariale (§ 13.9 et § 13.13 du
+        fichier source) et avec le corrige non officiel consulte par la
+        source (t_1/2 = 8 min et 2 min, tau_f = 0,67 et 1). REMARQUE
+        PÉDAGOGIQUE : le tau_f ~ 0,670 de l'estérification simple (question
+        2-3, courbe 1) retombe quasi exactement sur le cas canonique du rung
+        R3 de cette leçon (K=4, tau=2/3~0,667, deux réactifs a chaîne
+        linéaire en quantités égales) — n0 = 0,3 mol d'acide butanoïque ET de
+        éthanol ici, exactement les conditions du rung R3. Aucune valeur de
+        `bk-2017-n-x3` (Exercice III Partie II, F_p en litige) n'est mobilisée
+        ici.
+    intro: |-
+      **Réactions de l'acide butanoïque et de son anhydride sur l'éthanol (examen national, session normale 2017, Exercice I — Partie II, §2, 2,75 points sur les 7,00 de l'exercice).**
+
+      *La Partie I de cet exercice — la pile aluminium-cuivre — vit sous la notion « Piles ». Le §1 de cette même Partie II — l'acide butanoïque avec l'eau, taux d'avancement final et $pK_A$ — vit sous la notion « Réactions acido-basiques ».*
+
+      Pour comparer la réaction de l'acide butanoïque et la réaction de son anhydride sur l'éthanol, on réalise séparément deux expériences à la même température.
+
+      - **La première expérience** : on introduit dans un ballon la quantité $n_0 = 0{,}3\ \text{mol}$ d'éthanol, la même quantité $n_0$ d'acide butanoïque, et quelques gouttes d'acide sulfurique concentré ; puis on chauffe à reflux le mélange. Une réaction d'estérification se produit.
+      - **La deuxième expérience** : on introduit dans un autre ballon la quantité $n_0 = 0{,}3\ \text{mol}$ d'anhydride butanoïque et la même quantité $n_0$ d'éthanol, puis on chauffe à reflux le mélange. Une réaction chimique se produit.
+
+      Les courbes (1) et (2) de la figure ci-dessous représentent respectivement l'évolution temporelle de l'avancement de la réaction lors de la première et de la deuxième expérience.
+
+      **Figure A (courbes $x(t)$, mesurée sur les objets vectoriels du PDF natif).** Axe des abscisses $t\,(\text{min})$, gradué de $0$ à $70$ ; axe des ordonnées $x\,(\text{mol})$, gradué $0{,}1$ · $0{,}2$ · $0{,}3$. Deux courbes croissantes partant de l'origine, toutes deux asymptotiques. **La courbe (2)** (supérieure) plafonne à $x \approx 0{,}30\ \text{mol}$ et passe par $x = 0{,}15\ \text{mol}$ vers $t \approx 2{,}3\ \text{min}$. **La courbe (1)** (inférieure) plafonne à $x \approx 0{,}20\ \text{mol}$ et passe par $x = 0{,}10\ \text{mol}$ vers $t \approx 8{,}3\ \text{min}$. *(L'étiquetage (1)/(2) est confirmé par chaîne de mesure indépendante de la proximité des cadres imprimés — voir le sourcing de cette entrée.)*
+    questions:
+      - id: q1
+        part: "2.1 — Reflux : accélérer sans déplacer"
+        stem: |-
+          **(0,5 pt)** Quel est l'intérêt d'un chauffage à reflux ?
+        reasoning: |-
+          C'est exactement le chapitre 5 de cette leçon : le chauffage augmente l'agitation thermique, donc la fréquence des chocs efficaces (chapitre Transformations lentes et rapides), dans les deux sens à la fois — il accélère l'atteinte de l'équilibre sans en changer la position. Le montage à reflux permet de chauffer sans perdre de matière : les vapeurs qui s'échappent du mélange bouillant se condensent dans le réfrigérant et retombent dans le ballon, au lieu de s'évaporer dans l'air. *(Le catalyseur acide, quelques gouttes d'acide sulfurique concentré présentes dans la première expérience, joue le même rôle cinétique — voir la notion « Contrôle par un réactif ou par catalyse », chapitre 3 : il accélère l'estérification ET l'hydrolyse dans les mêmes proportions, sans déplacer l'équilibre.)*
+
+          **Le piège de cette question.** Répondre « pour obtenir plus d'ester » : c'est précisément l'idée que le chapitre 5 démonte par le test des deux flacons (avec et sans chauffage/catalyseur), qui atteignent la même composition finale à des vitesses différentes. Le reflux et le catalyseur achètent du temps, jamais de l'ester en plus — c'est tout l'intérêt de comparer ici deux réactifs différents (acide contre anhydride) pour changer réellement le rendement, question 2.3 et 2.4.
+      - id: q2
+        part: "2.2 — Lire deux temps de demi-réaction, comparer les vitesses"
+        stem: |-
+          **(0,75 pt)** Déterminer pour chaque expérience la valeur du temps de demi-réaction $t_{1/2}$. En déduire la réaction la plus rapide.
+        reasoning: |-
+          $t_{1/2}$ est défini, au chapitre 5 de la notion Suivi temporel d'une transformation — vitesse de réaction, comme l'instant où l'avancement atteint la moitié de son plateau observé : $x(t_{1/2}) = x_{plateau}/2$. C'est le plateau RÉELLEMENT atteint par CHAQUE courbe qui sert de référence — pas la valeur commune $n_0 = 0{,}3\ \text{mol}$ — puisqu'une des deux réactions, on va le voir à la question 2.3, ne va pas jusqu'au bout.
+
+          Sur la figure A, la courbe (1) (l'estérification, première expérience) plafonne à $x \approx 0{,}20\ \text{mol}$ ; elle atteint $0{,}10\ \text{mol}$ vers $t \approx 8{,}3\ \text{min}$. La courbe (2) (l'anhydride, deuxième expérience) plafonne à $x \approx 0{,}30\ \text{mol}$ ; elle atteint $0{,}15\ \text{mol}$ vers $t \approx 2{,}3\ \text{min}$.
+
+          $$\boxed{t_{1/2}(\text{estérification}) \approx 8\ \text{min} \qquad t_{1/2}(\text{anhydride}) \approx 2\ \text{min}}$$
+
+          Un $t_{1/2}$ plus petit signifie que l'état final est atteint plus vite : **la réaction de l'anhydride butanoïque sur l'éthanol (deuxième expérience) est la plus rapide.**
+
+          **Le piège de cette question.** Chercher la moitié de $n_0 = 0{,}3\ \text{mol}$ sur les DEUX courbes : ça marche pour la courbe (2), qui plafonne bien à $0{,}3$, mais donnerait une lecture fausse sur la courbe (1), dont le plateau réel ($0{,}20\ \text{mol}$) est inférieur à $n_0$ — exactement la trace visible d'une réaction limitée, objet de la question suivante.
+        steps:
+          - math: 't_{1/2}(1) : x(t_{1/2}) = 0{,}20/2 = 0{,}10\ \text{mol} \implies t_{1/2} \approx 8\ \text{min}'
+            note: "Plateau réellement atteint par la courbe (1), pas n0 = 0,3 mol."
+          - math: 't_{1/2}(2) : x(t_{1/2}) = 0{,}30/2 = 0{,}15\ \text{mol} \implies t_{1/2} \approx 2\ \text{min}'
+            note: "La courbe (2) plafonne bien près de n0 = 0,3 mol."
+          - math: '\boxed{t_{1/2}(2) < t_{1/2}(1) : \text{la deuxième expérience (anhydride) est la plus rapide}}'
+            note: "Un temps de demi-reaction plus petit signifie un état final atteint plus vite (chapitre 5, Suivi temporel)."
+      - id: q3
+        part: "2.3 — Comparer les taux d'avancement final, identifier la réaction totale"
+        stem: |-
+          **(0,75 pt)** Déterminer pour chaque expérience le taux d'avancement final de la réaction. En déduire laquelle des deux réactions chimiques est totale.
+        reasoning: |-
+          $\tau_f = x_f/x_{max}$, avec $x_{max} = n_0 = 0{,}3\ \text{mol}$ commun aux deux expériences (les deux réactifs sont introduits en quantités égales, stœchiométrie $1{:}1$ dans les deux cas), et $x_f$ le plateau réellement lu sur chaque courbe.
+
+          $$\tau_f(1) = \frac{0{,}20}{0{,}30} \approx 0{,}67 \qquad \tau_f(2) = \frac{0{,}30}{0{,}30} \approx 1{,}0$$
+
+          $\tau_f(2) \approx 1$ : la réaction de l'anhydride butanoïque sur l'éthanol (deuxième expérience) est **totale**. $\tau_f(1) \approx 0{,}67$ : la réaction de l'acide butanoïque sur l'éthanol (première expérience, une estérification classique) est **limitée** — et remarque ce que dit ce chiffre : $n_0$ égal des deux réactifs, tous deux à chaîne linéaire sans empêchement stérique, c'est très exactement le cas de l'« estérification simple » du chapitre 4 de cette leçon, dont le résultat canonique est $\tau = 2/3 \approx 0{,}667$. Le sujet retombe sur ce résultat presque au chiffre près.
+
+          **Conclusion.** La réaction de l’anhydride sur l’éthanol (deuxième expérience) est **totale** ; l’estérification (première expérience) est **limitée**.
+
+          **Le piège de cette question.** Diviser par $n_0$ commun, ce qui est correct ici, MAIS sans revérifier que les deux plateaux $x_f$ ont bien été relus sur CHAQUE courbe séparément (question 2.2) : une erreur de lecture de plateau se propage directement dans $\tau_f$, et c'est exactement ce qu'une réaction totale ($\tau_f \to 1$) contre une réaction limitée ($\tau_f < 1$) permet de trancher sans ambiguïté sur ce sujet.
+        steps:
+          - math: '\tau_f(1) = \frac{x_f(1)}{n_0} = \frac{0{,}20}{0{,}30} \approx 0{,}67'
+            note: "Estérification (première expérience) : proche de 2/3, le cas canonique du chapitre 4 (K=4, même n0)."
+          - math: '\tau_f(2) = \frac{x_f(2)}{n_0} = \frac{0{,}30}{0{,}30} \approx 1{,}0'
+            note: "Anhydride (deuxième expérience) : plateau confondu avec n0 = 0,3 mol."
+          - math: '\boxed{\tau_f(2) \approx 1 \implies \text{réaction de l anhydride TOTALE} \qquad \tau_f(1) \approx 0{,}67 \implies \text{estérification LIMITÉE}}'
+            note: "Conclusion demandee par l'énoncé."
+      - id: q4
+        part: "2.4 — Écrire l'équation de la réaction totale"
+        stem: |-
+          **(0,75 pt)** En utilisant les formules semi-développées, écrire l'équation de la réaction chimique qui se produit lors de la deuxième expérience.
+        reasoning: |-
+          La deuxième expérience met en jeu l'anhydride butanoïque, pas l'acide : c'est le geste du chapitre 2 de la notion Contrôle par un réactif ou par catalyse — remplacer l'acide carboxylique par son anhydride pour obtenir une réaction rapide ET totale, exactement ce que les questions 2.2 et 2.3 viennent de confirmer par la mesure. L'anhydride butanoïque s'obtient formellement en retirant une molécule d'eau à deux molécules d'acide butanoïque et en soudant les deux restes par un atome d'oxygène central :
+
+          $$\text{C}_3\text{H}_7-\text{CO}-\text{O}-\text{CO}-\text{C}_3\text{H}_7$$
+
+          Avec l'éthanol, il réagit — comme tout anhydride d'acide (chapitre 2 de « Contrôle par un réactif ou par catalyse ») — par une réaction à UNE SEULE FLÈCHE, puisque le sous-produit n'est plus l'eau (qui pourrait réhydrolyser l'ester formé) mais l'acide butanoïque lui-même :
+
+          $$\boxed{(\text{C}_3\text{H}_7\text{CO})_2\text{O} + \text{C}_2\text{H}_5-\text{OH} \longrightarrow \text{C}_3\text{H}_7-\text{COO}-\text{C}_2\text{H}_5 + \text{C}_3\text{H}_7\text{COOH}}$$
+
+          **Contrôle par le nom.** L'ester formé se nomme, par la règle du chapitre 2 de cette leçon-ci (radical de l'acide en « -oate », puis « de » et le radical de l'alcool en « -yle ») : **butanoate d'éthyle**.
+
+          **Le piège de cette question.** Écrire une double flèche $\rightleftharpoons$ par réflexe, comme pour l'estérification classique des chapitres 2 à 3 : la réaction d'un anhydride d'acide est TOTALE, une seule flèche $\longrightarrow$ — c'est précisément ce que la question 2.3 vient d'établir par le calcul ($\tau_f(2) \approx 1$), et l'équation doit le refléter.
+        steps:
+          - math: '(\text{C}_3\text{H}_7\text{CO})_2\text{O} + \text{C}_2\text{H}_5-\text{OH} \longrightarrow \text{C}_3\text{H}_7-\text{COO}-\text{C}_2\text{H}_5 + \text{C}_3\text{H}_7\text{COOH}'
+            note: "Réaction TOTALE (une seule fleche) : anhydride + alcool -> ester + acide carboxylique (chapitre 2, notion Controle par un réactif ou par catalyse)."
+
+  # ── bk-2015-r-x1b — 2015 R, Exercice 1 (Deuxième partie) : synthèse de la phéromone (P) ──
+  #
+  # ⚠️ DÉFAUT DU SUJET OFFICIEL (F4), DÉCLARÉ ET ARBITRÉ, porté par cette
+  # entrée. Sur la page 3 du sujet, la question « 2-2- Citer deux
+  # caractéristiques de cette réaction. » n'a AUCUNE valeur de barème alignée
+  # dans la marge : le « 0,5 » suivant est imprimé une ligne trop bas, en face
+  # du chapeau « 2-3- » — qui n'est qu'un paragraphe de données, sans
+  # consigne, et dont les vraies questions (a, b, c) portent déjà leurs
+  # propres marges (0,5 + 1 + 0,5). La lecture appliquée ici — le 0,5 paie
+  # 2-2 — est celle proposée par la transcription et ENDOSSÉE par la passe
+  # adversariale (pc-2015-r.md § V.3 : mêmes coordonnées retrouvées, seule
+  # lecture où chaque valeur paie une vraie question). La somme est
+  # INSENSIBLE à l'arbitrage : 3,00 pt pour cette partie et 20,00/20 pour le
+  # sujet dans les deux lectures ; seul le barème par question en dépend.
+  # L'arbitrage d'édition reste ouvert côté owner, comme le sas le classe.
+  # Pas de corrigé officiel pour trancher (la série SPC n'en a qu'à partir de
+  # 2016) ; le corrigé non officiel svt-assilah (t1887) n'a pu être lu que
+  # sur sa page 1 (Exercice 1, Première partie — le dosage) : il ne couvre
+  # PAS cette partie et n'est jamais une autorité.
+  #
+  # NOTE ÉDITORIALE — le suffixe b : la Première partie du même Exercice 1
+  # (dosage acide-base, 4,00 pt) vit sous
+  # content/pc/reactions-acido-basiques/bank.yaml, entrée bk-2015-r-x1 — pas
+  # de double comptage : 4,00 + 3,00 = 07 pt, le barème imprimé. Même
+  # convention K-7 bis que bk-2015-n-x1/x1b/x1c.
+  # CROSS-LIST `controle-catalyse` (question 2-3a : reflux + acide sulfurique,
+  # 0,5 pt — orphelin, ne devient pas une entrée) honoré dans le reasoning,
+  # PAS dupliqué — règle « barème réparti, jamais dupliqué » du sas.
+  - id: bk-2015-r-x1b
+    title: "Synthèse de la phéromone (P) : équation d'estérification, caractéristiques, reflux et catalyseur, composition à l'équilibre et rendement"
+    source:
+      year: 2015
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Exercice 1 — Deuxième partie : synthèse de la phéromone (P)"
+    bareme_total: 3
+    duration_min: 18
+    sourcing:
+      status: sourced
+      note: >-
+        2015 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code sujet RS 28 (3 h, coef 7), AlloSchool
+        element/94476 (course-422, jumeaux byte-identiques 94475/94477),
+        page 3 sur 7 — Exercice 1 ( 07 points ), Deuxième partie : synthèse
+        de la phéromone (P) ; barème 3,00 pt (0,5+0,5+0,5+1+0,5), 5
+        questions, AUCUN sous-total imprimé pour cette partie ; la Première
+        partie (dosage acide-base, 4,00 pt) est transcrite sous
+        content/pc/reactions-acido-basiques/bank.yaml, entrée bk-2015-r-x1 —
+        pas de double comptage : 4,00+3,00 = 07 pt. DÉFAUT F4 DU SUJET
+        OFFICIEL, porté par cette entrée : la valeur « 0,5 » de la question
+        2-2 est imprimée une ligne trop bas (en face du chapeau 2-3, qui n'a
+        pas de consigne) ; lecture 0,5 → 2-2 endossée par le vérificateur
+        (§ V.3), somme insensible (3,00 et 20,00/20 dans les deux lectures),
+        arbitrage d'édition owner laissé ouvert — voir le bloc de
+        commentaire au-dessus de cette entrée. Transcription vérifiée par
+        une passe adversariale indépendante (2026-08-29,
+        docs/sujets/_incoming/pc-2015-r.md, statut « ✅ VÉRIFIÉ — clearé pour
+        conversion ») : re-fetch de zéro, barème recompté par deux chemins
+        (34/34 valeurs, trou 2-2 compris et confirmé aux mêmes
+        coordonnées). Re-dérivation numérique (transcripteur PUIS
+        vérificateur, concordants) : n_A = ρV_A/M = 1,05×28,6/60 = 0,50 mol
+        = n_B (mélange équimolaire voulu) ; n_ester = 43,40/130 = 0,334
+        mol ; composition d'équilibre 0,166/0,166/0,334/0,334 mol ;
+        r = 0,334/0,50 = 66,8 % ≈ 2/3, l'équilibre classique de
+        l'estérification équimolaire. Pas de figure dans ce bloc. Aucun
+        corrigé officiel n'existe (la série SPC n'en a qu'à partir de
+        2016) ; le corrigé non officiel svt-assilah n'est corroborant que
+        sur sa page 1 (le dosage) et n'est jamais une autorité — le plafond
+        de preuve de CE bloc est la double re-dérivation concordante.
+        CROSS-LIST `controle-catalyse` (question 2-3a) honoré dans le
+        reasoning, pas dupliqué.
+    intro: |-
+      **Synthèse de la phéromone (P) (examen national, session de rattrapage 2015 — Exercice 1, Deuxième partie, 3,00 points sur les 07 de l'exercice complet).**
+
+      *La Première partie de cet exercice — le dosage de l'acide éthanoïque par la soude — est indépendante et traitée à part, sous la notion « Réactions acido-basiques » (entrée du sujet 2015, rattrapage). Rien de ce qui suit n'en dépend.*
+
+      Quelques insectes, commes les abeilles et les fourmies, communiquent entre elles à l'aide de substances chimiques organiques, appelées phéromones, pour se défendre ou se féconder… *(« commes », « fourmies », « entre elles » tels qu'imprimés — défauts du sujet officiel, sans incidence)*
+
+      **Données** (imprimées en tête de l'Exercice 1, communes aux deux parties) :
+      - Toutes les mesures ont été faites à $25\,^\circ\text{C}$ ;
+      - La masse molaire de l'acide éthanoïque est : $M(\text{CH}_3\text{COOH}) = 60\ \text{g.mol}^{-1}$ ;
+      - La masse volumique de l'acide éthanoïque pur est : $\rho = 1{,}05\ \text{g.mL}^{-1}$ ;
+      - La masse molaire de la phéromone est : $M(\text{P}) = 130\ \text{g.mol}^{-1}$.
+
+      **Deuxième partie :** *Synthèse de la phéromone (P)*
+
+      La synyhèse de la phéromone au laboratoire, peut être réalisée par la réaction entre l'acide éthanoïque (A) et un alcool (B) de formule $\text{C}_5\text{H}_{11}\text{-OH}$. *(« synyhèse » et la virgule entre sujet et verbe tels qu'imprimés — défauts du sujet officiel, sans incidence)*
+    questions:
+      - id: q2-1
+        part: "Deuxième partie — synthèse de la phéromone (P)"
+        stem: |-
+          **2-1-** (0,5 pt) Écrire l'équation modélisant la réaction entre (A) et (B).
+        reasoning: |-
+          On applique le geste du chapitre 2 : le groupe $-COOH$ de l'acide et le groupe $-OH$ de l'alcool se combinent, une molécule d'eau en part, et ce qui reste des deux chaînes se relie par le groupe ester $-COO-$. Ici $R = \text{CH}_3-$ (le radical de l'acide éthanoïque) et $R' = \text{C}_5\text{H}_{11}-$ (le radical de l'alcool (B)).
+
+          $$\boxed{\text{CH}_3-\text{COOH} + \text{C}_5\text{H}_{11}-\text{OH} \rightleftharpoons \text{CH}_3-\text{COO}-\text{C}_5\text{H}_{11} + \text{H}_2\text{O}}$$
+
+          Double flèche, comme toujours pour une estérification (chapitre 3) : réaction limitée, jamais totale — c'est précisément ce que le rendement de la question 2-3c va chiffrer.
+
+          **Le contrôle gratuit, offert par l'énoncé.** L'ester formé EST la phéromone (P) : sa masse molaire doit donc valoir $M(\text{P}) = 130\ \text{g.mol}^{-1}$. Or $M(\text{ester}) = M(\text{acide}) + M(\text{alcool}) - M(\text{H}_2\text{O}) = 60 + 88 - 18 = 130$ — l'équation est cohérente avec les données ($M(\text{C}_5\text{H}_{11}\text{OH}) = 5\times12+12\times1+16 = 88\ \text{g.mol}^{-1}$).
+
+          Le piège nommé de cette question. Écrire une flèche simple $\longrightarrow$ : l'estérification est LIMITÉE (chapitre 3), et la double flèche fait partie de la réponse attendue — l'oublier ici, c'est aussi se priver de la caractéristique que la question suivante demande.
+      - id: q2-2
+        # F4 : sur le sujet officiel, cette valeur « 0,5 » est imprimée une ligne trop bas, en face du chapeau 2-3 (sans consigne) ; lecture 0,5 → 2-2 endossée par la vérification, somme insensible — voir le bloc de commentaire et la note de sourcing de cette entrée.
+        stem: |-
+          **2-2-** (0,5 pt) Citer deux caractéristiques de cette réaction.
+        reasoning: |-
+          Les deux caractéristiques de toute estérification, posées aux chapitres 3 et 5 :
+
+          - **lente** : sans intervention, il faut des jours pour approcher l'état final (chapitre 5 — c'est exactement pour cela que l'énoncé chauffe à reflux et ajoute un catalyseur, question suivante) ;
+          - **limitée** : la réaction inverse — l'hydrolyse de l'ester — coexiste toujours avec elle (chapitre 3) ; le système s'arrête sur un équilibre où les quatre espèces coexistent, jamais sur la disparition d'un réactif.
+
+          $$\boxed{\text{Réaction lente et limitée}}$$
+
+          Le piège nommé de cette question. Répondre « athermique » n'est pas faux (l'estérification l'est, quasiment), mais ce n'est pas le couple attendu : « lente et limitée » est LE binôme canonique du cours, celui que le reste de l'exercice met en scène — le reflux et le catalyseur répondent à « lente », le rendement de 2-3c répond à « limitée ».
+      - id: q2-3a
+        part: "2-3 — Étude quantitative du mélange équimolaire"
+        stem: |-
+          **2-3-** On mélange le volume $V_A = 28{,}6\ \text{mL}$ d'acide (A) pur, avec la quantité de matière $n_B = 0{,}50\ \text{mol}$ de l'alcool (B). On ajoute quelques gouttes d'acide sulfurique. On chauffe à reflux, le mélange réactionnel pendant presque quatre heures. à l'équilibre, et après traitement nécéssaire, on obtient une quantité de la phéromone (P), de masse $m_P = 43{,}40\ \text{g}$. *(« On chauffe à reflux, le mélange » et « nécéssaire » tels qu'imprimés — défauts du sujet officiel, sans incidence)*
+
+          **a-** (0,5 pt) Quel est l'interêt du chauffage à reflux, et de l'addition d'acide sulfurique ? *(« interêt » tel qu'imprimé)*
+        reasoning: |-
+          Les deux leviers visent la même caractéristique — la LENTEUR (question 2-2) — et aucun des deux ne touche à l'équilibre. C'est le cœur du chapitre 5, et, dans sa formulation générale, le terrain de la notion « Contrôle par un réactif ou par catalyse » (chapitre 3 de cette notion-là pour le catalyseur) :
+
+          - le **chauffage à reflux** accélère la réaction (température plus élevée, chocs plus fréquents et plus efficaces) **sans perte de matière** : les vapeurs du mélange bouillant se condensent dans le réfrigérant vertical et retombent dans le ballon ;
+          - l'**acide sulfurique** est un **catalyseur** : il accélère l'estérification ET l'hydrolyse inverse dans les mêmes proportions, donc il raccourcit le temps d'atteinte de l'équilibre sans en déplacer la position.
+
+          **Conclusion.** Atteindre l’état d’équilibre plus rapidement — sans changer ni le rendement ni la composition finale.
+
+          Le piège nommé de cette question. Répondre « le catalyseur améliore le rendement » : c'est l'idée fausse que le chapitre 5 démonte par le test des deux flacons — même composition finale, vitesses différentes. Reflux et catalyseur achètent du temps, jamais de l'ester en plus ; pour obtenir PLUS d'ester, il faudrait changer de réactif ou déplacer l'équilibre (chapitre 6), ce que cet énoncé ne fait pas.
+      - id: q2-3b
+        stem: |-
+          **b-** (1 pt) Déterminer, à l'aide du tableau descriptif, la composition molaire du mélange réactionnel à l'équilibre.
+        reasoning: |-
+          D'abord convertir le volume d'acide PUR en quantité de matière — c'est ici que servent $\rho$ et $M$ des données :
+
+          $$n_A = \frac{\rho\,V_A}{M(\text{CH}_3\text{COOH})} = \frac{1{,}05\times28{,}6}{60} \approx 0{,}50\ \text{mol}$$
+
+          Le mélange est donc **équimolaire** ($n_A = n_B = 0{,}50\ \text{mol}$) — exactement le cas du chapitre 4. L'avancement à l'équilibre se lit sur l'ester obtenu, c'est-à-dire la phéromone :
+
+          $$x_{éq} = n_P = \frac{m_P}{M(\text{P})} = \frac{43{,}40}{130} \approx 0{,}334\ \text{mol}$$
+
+          Le tableau descriptif (chapitre 4), avec la stœchiométrie $1{:}1{:}1{:}1$ de la question 2-1 :
+
+          | État | $\text{CH}_3\text{COOH}$ | $\text{C}_5\text{H}_{11}\text{OH}$ | ester (P) | $\text{H}_2\text{O}$ |
+          |---|:---:|:---:|:---:|:---:|
+          | initial | $0{,}50$ | $0{,}50$ | $0$ | $0$ |
+          | équilibre | $0{,}50-x_{éq}$ | $0{,}50-x_{éq}$ | $x_{éq}$ | $x_{éq}$ |
+
+          $$\boxed{n(\text{acide})_{éq} = n(\text{alcool})_{éq} \approx 0{,}166\ \text{mol} \qquad n(\text{P})_{éq} = n(\text{H}_2\text{O})_{éq} \approx 0{,}334\ \text{mol}}$$
+
+          Le piège nommé de cette question. Oublier l'eau dans la composition : le tableau a QUATRE colonnes, et l'eau est produite mole pour mole avec l'ester — une « composition du mélange à l'équilibre » qui ne liste que trois espèces est incomplète, même si aucune question n'exploite l'eau ensuite.
+        steps:
+          - math: 'n_A = \frac{\rho\,V_A}{M} = \frac{1{,}05\times28{,}6}{60} \approx 0{,}50\ \text{mol} = n_B'
+            note: "Acide PUR : passer par la masse volumique. Mélange équimolaire, le cas du chapitre 4."
+          - math: 'x_{éq} = \frac{m_P}{M(\text{P})} = \frac{43{,}40}{130} \approx 0{,}334\ \text{mol}'
+            note: "L'avancement d'équilibre se lit sur l'ester (la phéromone) obtenu."
+          - math: 'n(\text{acide})_{éq} = n(\text{alcool})_{éq} = 0{,}50 - 0{,}334 \approx 0{,}166\ \text{mol}'
+            note: "Tableau d'avancement, stoechiometrie 1:1:1:1."
+          - math: '\boxed{0{,}166\ /\ 0{,}166\ /\ 0{,}334\ /\ 0{,}334\ \text{mol}}'
+            note: "Composition complete à l'équilibre : acide / alcool / ester / eau."
+      - id: q2-3c
+        stem: |-
+          **c-** (0,5 pt) Calculer le rendement r de la synthèse de la phéromone (P).
+        reasoning: |-
+          Le rendement rapporte l'ester réellement obtenu à celui qu'aurait donné une réaction **totale** (chapitre 4). Mélange équimolaire : une conversion totale donnerait $x_{max} = n_A = n_B = 0{,}50\ \text{mol}$ d'ester.
+
+          $$r = \frac{x_{éq}}{x_{max}} = \frac{0{,}334}{0{,}50}$$
+
+          $$\boxed{r \approx 0{,}668 = 66{,}8\ \%}$$
+
+          Et ce chiffre DIT quelque chose : $66{,}8\ \% \approx 2/3$, très exactement le taux canonique de l'estérification équimolaire du chapitre 4 ($K = 4$, deux réactifs sans empêchement stérique en quantités égales, $\tau = 2/3$). Le sujet retombe sur le résultat du cours presque au chiffre près — un indice fort que toute la chaîne de calcul est juste.
+
+          Le piège nommé de cette question. Calculer $r$ depuis l'acide RESTANT ($0{,}166/0{,}50 = 33{,}2\ \%$) : ce rapport mesure la fraction d'acide qui n'a PAS réagi, pas la fraction convertie en phéromone. Le rendement se rapporte toujours au produit obtenu (ou à l'avancement), jamais au réactif survivant.
+        steps:
+          - math: 'x_{max} = n_A = n_B = 0{,}50\ \text{mol}'
+            note: "Réaction supposée totale d'un mélange équimolaire : tout l'acide serait converti."
+          - math: 'r = \frac{x_{éq}}{x_{max}} = \frac{0{,}334}{0{,}50}'
+            note: "Rendement = avancement réel / avancement maximal (chapitre 4)."
+          - math: '\boxed{r \approx 66{,}8\ \% \approx \frac{2}{3}}'
+            note: "Le taux canonique de l'estérification équimolaire (chapitre 4, K = 4) : chaîne de calcul confirmée."
+
+  # ── bk-2013-r-x1c — 2013 R, Chimie, deuxième partie §2 : synthèse du méthanoate d'éthyle ──
+  #
+  # NOTE ÉDITORIALE — bk-2013-r-x1c (2026-09-04, ajout). Sujet SPC 2013
+  # SESSION DE RATTRAPAGE, code d'examen RS28, converti depuis
+  # docs/sujets/_incoming/pc-2013-r.md — statut « ✅ VÉRIFIÉ », passe
+  # adversariale indépendante close le 2026-09-03 (7 blocs sur 7, 33/33
+  # questions re-dérivées, barème 20,00 par quatre chemins).
+  # CHOIX DE L'`id` : le sujet NE NUMÉROTE AUCUN exercice (page 1 : « Le
+  # sujet se compose de quatre exercices », corps nommé par domaine). Les
+  # identifiants encodent la POSITION SUR LA COPIE (K-7 bis) : Chimie = x1,
+  # ses trois parties x1 / x1b / x1c. Les `exercise_label` restent FIDÈLES
+  # à ce que le sujet imprime, sans numéro inventé — depuis le correctif du
+  # 2026-09-03, `lib/examens.ts` lit la position sur l'identifiant dès
+  # qu'aucun libellé de l'épreuve ne porte « Exercice N ».
+  # RÉPARTITION DU BARÈME (aucun double comptage) : Chimie = 07,00 pt =
+  # 2,00 (bk-2013-r-x1, content/pc/electrolyse/bank.yaml) + 2,25
+  # (bk-2013-r-x1b, content/pc/reactions-acido-basiques/bank.yaml) + 2,75
+  # (cette entrée).
+  #
+  # ══════════════════════════════════════════════════════════════════════
+  # NOTE ÉDITORIALE — ROUTAGE : UNE ALTERNATIVE OWNER EST OUVERTE ICI.
+  # ══════════════════════════════════════════════════════════════════════
+  # ROUTAGE APPLIQUÉ : le bloc reste ENTIER dans `esterification-hydrolyse`
+  # (2,75 pt, 6 questions), et ses deux cross-lists — `suivi-temporel-vitesse`
+  # (t½ et vitesse volumique, questions 2-3 et 2-4, 1,00 pt) et
+  # `etat-equilibre` (constante d'équilibre K et nouvel avancement x'_éq,
+  # questions 2-5 et 2-6, 1,25 pt) — sont honorés dans le `reasoning`,
+  # jamais dédoublés en entrées.
+  #
+  # ALTERNATIVE DÉFENDABLE, NOMMÉE PAR LE SAS ET NON RETENUE : partitionner
+  # le bloc en deux entrées — questions 2-1 / 2-2 / 2-3 / 2-4 (1,50 pt) vers
+  # `suivi-temporel-vitesse`, questions 2-5 / 2-6 (1,25 pt) vers
+  # `etat-equilibre` —, l'estérification elle-même étant alors honorée au
+  # `reasoning`. 1,50 + 1,25 = 2,75 : la somme retomberait juste, la règle
+  # « barème réparti, jamais dupliqué » serait respectée, et les deux
+  # cross-lists sont ici RÉELS ET LOURDS (1,00 et 1,25 pt sur 2,75 —
+  # ensemble, 82 % du barème du bloc), ce qui rend l'alternative sérieuse.
+  #
+  # L'ARGUMENT DU SAS POUR NE PAS L'AVOIR RETENUE, mot pour mot : « Ses six
+  # questions forment une seule expérience (un seul ballon, une seule
+  # courbe, un seul K) : les découper en trois entrées produirait trois
+  # orphelins qui se renvoient l'un à l'autre. […] Non retenue ici : elle
+  # casse la courbe en deux. » Concrètement : la question 2-5 calcule K à
+  # partir du x_éq lu sur LA MÊME courbe que les questions 2-3 et 2-4, et la
+  # question 2-6 réutilise ce K ; séparer les deux moitiés obligerait la
+  # seconde entrée à re-citer une lecture graphique faite dans l'autre.
+  # L'OWNER RESTE JUGE — la décision est ici, écrite, sans qu'il ait à
+  # rouvrir le sujet.
+  # ══════════════════════════════════════════════════════════════════════
+  #
+  # DEUX DÉFAUTS DU DOCUMENT OFFICIEL, DÉCLARÉS AU POINT D'USAGE. L'édition
+  # française de ce sujet est MINISTÉRIELLE (code d'examen RS28 encadré,
+  # imprimé à l'identique dans les deux cartouches ; pieds de page vides sur
+  # 6/6 ; aucun crédit de traducteur) : ce qui suit sont donc des défauts
+  # de l'édition OFFICIELLE, pas des artefacts de traduction professorale.
+  #   • D2 — la consigne 2-4 imprime « la valeur de cette vitesse » alors
+  #     que le mot « vitesse » n'apparaît NULLE PART ailleurs dans les six
+  #     pages françaises : l'antécédent a été supprimé. L'original arabe
+  #     écrit « قيمة السرعة الحجمية v للتفاعل » = « la valeur de la vitesse
+  #     VOLUMIQUE v DE LA RÉACTION ». La consigne est reformulée ici pour
+  #     être lisible, et la reformulation est déclarée dans l'énoncé même.
+  #   • F2 — la droite (T), présentée comme « la tangente à la courbe au
+  #     point d'abscisse t = 20 min », est tracée 5,6 % sous la dérivée
+  #     réelle de la courbe et NE LA TOUCHE JAMAIS. Défaut du sujet présent
+  #     dans les DEUX éditions (c'est le même dessin), avec un précédent
+  #     maison exactement de cette forme : PC 2010 N, où « la tangente
+  #     dessinée qui n'est pas la tangente de la courbe (5,5 % d'écart, elle
+  #     porte une question) » figure parmi les neuf défauts relevés du sujet
+  #     officiel. Déclaré, non réparé — et la garde de tolérance qui en
+  #     découle est portée dans la question 2-4.
+  - id: bk-2013-r-x1c
+    title: "Synthèse du méthanoate d'éthyle suivie par l'avancement : catalyseur, lecture de l'équilibre et du temps de demi-réaction, vitesse volumique, constante d'équilibre et nouvel équilibre hors stœchiométrie"
+    source:
+      year: 2013
+      session: rattrapage
+      filiere: "SPC"
+      exercise_label: "Chimie — deuxième partie, §2 : Synthèse du méthanoate d'éthyle"
+    bareme_total: 2.75
+    duration_min: 17
+    sourcing:
+      status: sourced
+      note: >-
+        2013 session de rattrapage — examen national PC BIOF (Sciences
+        Physiques, SPC), code d'examen RS28 (durée 3 h, coefficient 7),
+        AlloSchool element/94461 (édition française, cours course-422 ;
+        jumeaux 94460 / 94462, upload-70329) ; original arabe element/39382
+        et son corrigé element/39383 (cours arabophone course-311). Chimie,
+        deuxième partie §2 — synthèse du méthanoate d'éthyle ; barème
+        2,75 pt (0,25 + 0,25 + 0,5 + 0,5 + 0,5 + 0,75), 6 questions.
+        RÉPARTITION SANS DOUBLE COMPTAGE : 2,25 (bk-2013-r-x1b,
+        content/pc/reactions-acido-basiques/bank.yaml) + 2,75 (cette
+        entrée) = 5,00, le sous-total imprimé « deuxième partie
+        (05 points) » ; et 2,00 (bk-2013-r-x1,
+        content/pc/electrolyse/bank.yaml) + 5,00 = 7,00, le sous-total
+        « Chimie : (07 points) ». Source vérifiée par une passe
+        adversariale indépendante du 2026-09-03
+        (docs/sujets/_incoming/pc-2013-r.md, statut « ✅ VÉRIFIÉ », 7 blocs
+        sur 7) : re-fetch complet, double téléchargement comparé octet à
+        octet, barème par quatre chemins, 33/33 questions re-dérivées, et
+        la figure re-mesurée sur DEUX chaînes indépendantes refaites de
+        zéro — géométrie vectorielle de l'original arabe (296 primitives de
+        tracé, polyligne de 97 sommets) puis pixels du bitmap français
+        (807 × 703 px à 213 dpi, ajustement RANSAC sur 199 pixels inliers).
+        LECTURES DE FIGURE RETENUES, ET LEUR PROVENANCE : x_éq = 67,000 mmol
+        (maximum exact de la polyligne, plateau plat dès t = 53,70 min,
+        posé sur une ligne de grille) ; t½ = 6,842 min (encadré par les
+        sommets (6,807 ; 33,351) et (7,105 ; 34,614)) ; la droite (T) est
+        LE SEUL tracé en tirets de la figure et c'est un SEGMENT UNIQUE, de
+        (5,000 min ; 50,000 mmol) à (36,000 min ; 70,000 mmol) — deux nœuds
+        exacts de la grille —, d'où une pente de 20/31 = 0,645161
+        mmol.min⁻¹ ; (T) passe donc par (0 ; 46,774) et (20 ; 59,68). Les
+        deux chaînes concordent à 0,3 % (bitmap : pente 0,6432, ordonnée à
+        l'origine 46,69). UNE VALEUR CORRIGÉE INLINE PAR LA VÉRIFICATION :
+        la transcription écrivait « (T) donne 59,87 mmol en t = 20 min » —
+        lapsus arithmétique, 50 + 15×20/31 = 59,677 ; la valeur juste est
+        59,68 mmol sur les deux chaînes, et l'écart (T) − courbe en
+        t = 20 min vaut 0,434 mmol (0,41 mmol est le MINIMUM de cet écart,
+        atteint à t = 21,40 min, pas sa valeur en t = 20). GARDE DE
+        CONVERSION OPPOSABLE (question 2-4) : la valeur à afficher est
+        v = 2,6×10⁻² mol.L⁻¹.min⁻¹ (pente de (T) telle qu'elle est tracée,
+        parce que la consigne dit explicitement de lire (T), et que (T) est
+        posée entre deux nœuds de grille — tracé délibéré, pas approximatif),
+        AVEC UNE TOLÉRANCE OUVERTE À 2,6 – 2,8×10⁻² : la dérivée réelle de
+        la courbe en t = 20 min donne 2,73×10⁻² (pente propre 0,6836,
+        stable à quatre largeurs de fenêtre) et le corrigé arabe publie
+        2,8×10⁻². Aucune de ces trois valeurs ne doit être présentée comme
+        LA valeur exacte. DÉFAUT DU SUJET F2, DÉCLARÉ, NON RÉPARÉ : la
+        droite (T) est tracée 5,6 % sous la dérivée réelle (0,6452 dessinée
+        contre 0,6836 mesurée) et l'écart (T) − courbe ne s'annule jamais —
+        (T) reste au-dessus de la courbe sur tout son parcours et NE LA
+        TOUCHE PAS. Défaut présent dans les DEUX éditions (même dessin) ;
+        précédent maison : PC 2010 N, même situation à 5,5 %, comptée parmi
+        les neuf défauts du sujet officiel. La question reste résoluble et
+        la tolérance ci-dessus l'absorbe. DÉFAUT DU DOCUMENT OFFICIEL D2,
+        DÉCLARÉ ET RÉPARÉ DANS L'ÉNONCÉ : la consigne 2-4 imprime « la
+        valeur de cette vitesse » alors que le mot « vitesse » n'apparaît
+        nulle part ailleurs dans les six pages françaises — l'antécédent a
+        été supprimé ; l'original arabe écrit « la vitesse VOLUMIQUE v DE
+        LA RÉACTION ». L'édition française étant MINISTÉRIELLE (code RS28
+        encadré, identique dans les deux cartouches), c'est un défaut du
+        DOCUMENT OFFICIEL francophone, pas un artefact de traduction
+        professorale. Coquilles reproduites verbatim : « le rôle de l'acide
+        sulfurique » (accent circonflexe absent), « Écrire » (E majuscule
+        non accentué). OBSERVATION, PAS DÉFAUT : la valeur x'_éq = 78,5 mmol
+        que la question 2-6 fait vérifier est exacte pour K = 4,00, donc
+        pour x_éq = 66,67 mmol, alors que le plateau est DESSINÉ à
+        67,0 mmol, sur une ligne de grille — le sujet a arrondi le dessin,
+        pas le calcul ; l'entrée ne présente donc pas K = 4,12 comme « la »
+        valeur exacte. CROSS-LISTS `suivi-temporel-vitesse` (1,00 pt) et
+        `etat-equilibre` (1,25 pt) honorés dans le `reasoning`, jamais
+        dédoublés — voir la NOTE ÉDITORIALE de routage ci-dessus, qui pose
+        l'alternative owner et l'argument du sas. LE CORRIGÉ ARABE N'EST
+        QU'UN TÉMOIN DE VALEURS, JAMAIS UN ARBITRE (K-8) : sur la question
+        2-4 il lit (T) en t = 0, c'est-à-dire cinq minutes AVANT le début du
+        segment dessiné, et arrondit vers l'extérieur aux deux bouts (46
+        pour 46,77 ; 60 pour 59,68), ce qui gonfle la pente de 8,5 % ; il
+        écrit par ailleurs « 150 » deux fois au lieu de 150 et 100 dans son
+        expression de K (silencieusement corrigé à la ligne suivante).
+        Aucune valeur de cette entrée n'en provient.
+    # DÉFAUT DU SUJET F2, DÉCLARÉ ET NON RÉPARÉ, 2026-09-04.
+    # Le sujet présente (T) comme « la tangente à la courbe au point
+    # d'abscisse t = 20 min ». Mesuré sur les deux éditions (le dessin est
+    # le même) : la pente DESSINÉE de (T) vaut 20/31 = 0,6452 mmol/min,
+    # tandis que la dérivée RÉELLE de la courbe en t = 20 min vaut 0,6836
+    # mmol/min (pente propre stable a 0,6825 / 0,6837 / 0,6836 / 0,6835 sur
+    # quatre largeurs de fenêtre). (T) est donc tracée 5,6 % trop plate, et
+    # l'écart (T) - courbe NE S'ANNULE JAMAIS : il passe par un minimum de
+    # 0,41 mmol (1,2 pt sur le papier) a t = 21,40 min, ce qui veut dire que
+    # (T) reste au-dessus de la courbe sur tout son parcours et ne la touche
+    # pas. En t = 20 min, (T) donne 59,68 mmol et la courbe 59,24 : écart
+    # 0,434 mmol.
+    # (La transcription d'origine écrivait 59,87 mmol pour (T) en t = 20 ;
+    # c'était un lapsus arithmétique — 50 + 15 x 20/31 = 59,677 — corrige
+    # inline par la vérification du 2026-09-03. Les deux chaînes de mesure
+    # donnent 59,68.)
+    # CE N'EST PAS UNE ERREUR DE TRANSCRIPTION : c'est un défaut du sujet
+    # officiel, present dans les DEUX éditions, avec un précédent maison
+    # exactement de cette forme — PC 2010 N, ou « la tangente dessinée qui
+    # n'est pas la tangente de la courbe (5,5 % d'écart, elle porte une
+    # question) » figure parmi les neuf défauts relevés du sujet officiel.
+    # CE QUE CA COUTE : 0,5 pt d'affichage, rien de plus. La question 2-4
+    # reste resoluble — la consigne dit de lire (T), et (T) est posée entre
+    # deux noeuds exacts de la grille, donc lisible sans ambiguïté. La garde
+    # de tolerance qui en découle (v entre 2,6 et 2,8 x 10^-2) est portée
+    # dans le raisonnement de la question 2-4.
+    # Voir docs/sujets/_incoming/pc-2013-r.md, F2 / V.4.
+    intro: |-
+      **Synthèse du méthanoate d'éthyle (examen national, session de rattrapage 2013 — Chimie, deuxième partie §2, 2,75 points sur les 05,00 de la deuxième partie).**
+
+      *Le §1 de cette même deuxième partie — la réaction de l'acide méthanoïque avec l'eau (2,25 pt) — est indépendant et vit sous « Réactions acido-basiques », entrée du sujet 2013. La Première partie du même exercice de Chimie (électrolyse, 2,00 pt) vit sous « Électrolyse », entrée du sujet 2013. 2,00 + 2,25 + 2,75 = 7,00, le barème imprimé.*
+
+      On pose un ballon, contenant une quantité de matière $n_0 = 100\ \text{mmol}$ d'acide méthanoïque, dans un bain marie de température constante, puis on lui ajoute une quantité de matière $n = n_0 = 100\ \text{mmol}$ d'éthanol et quelques gouttes d'acide sulfurique concentré ; on obtient ainsi un mélange de **volume constant $V = 25\ \text{mL}$**.
+
+      Le suivi de l'évolution au cours du temps de l'avancement $x$ de la réaction permet de tracer la courbe ci-dessous.
+
+      **La courbe $x(t)$, décrite pour être exploitée** *(le sujet imprime un tracé sur papier millimétré ; les repères ci-dessous sont ceux de la figure, mesurés sur les deux éditions)* **:**
+
+      - **axe vertical** $x\ (\text{mmol})$, graduations chiffrées $20$, $40$, $60$ ; **axe horizontal** $t\ (\text{min})$, graduations chiffrées $0$, $20$, $40$, $60$, $80$ ;
+      - **quadrillage** : maille fine de $1\ \text{min} \times 1\ \text{mmol}$, lignes fortes tous les $10\ \text{min}$ et tous les $10\ \text{mmol}$ ;
+      - **la courbe** part de l'origine, monte raide, s'infléchit vers $t \approx 12\ \text{min}$, et rejoint un **plateau parfaitement horizontal à $x = 67\ \text{mmol}$** à partir de $t \approx 53\ \text{min}$ ;
+      - **une droite en tirets, étiquetée $(T)$**, traverse la région de la courbe : elle joint exactement les deux points de grille $(5\ \text{min}\ ;\ 50\ \text{mmol})$ et $(36\ \text{min}\ ;\ 70\ \text{mmol})$.
+
+      *Le sujet ne numérote pas cette figure : son texte l'appelle « la courbe ci-contre ».*
+    questions:
+      - id: q1
+        part: "Chimie, deuxième partie §2 — Synthèse du méthanoate d'éthyle"
+        stem: |-
+          **2-1-** (0,25 pt) Écrire, en utilisant les formules semi-développées, l'équation modélisant la transformation. *(« Écrire », E majuscule non accentué, tel qu'imprimé.)*
+        reasoning: |-
+          C'est le geste du chapitre 2, appliqué au couple le plus simple de toute la chimie organique du programme : le groupe $-\text{COOH}$ de l'acide et le groupe $-\text{OH}$ de l'alcool se rencontrent, une molécule d'eau en part, et ce qui reste des deux chaînes se relie par le groupe ester $-\text{COO}-$.
+
+          Ici l'acide est l'**acide méthanoïque** $\text{HCOOH}$ — le plus court de tous, son « radical » se réduit à un simple atome d'hydrogène — et l'alcool est l'**éthanol** $\text{CH}_3-\text{CH}_2-\text{OH}$.
+
+          $$\boxed{\text{H}-\text{CO}-\text{OH} + \text{CH}_3-\text{CH}_2-\text{OH} \rightleftharpoons \text{H}-\text{CO}-\text{O}-\text{CH}_2-\text{CH}_3 + \text{H}_2\text{O}}$$
+
+          **La double flèche n'est pas décorative** (chapitre 3) : elle dit que l'hydrolyse inverse a lieu en même temps, que la transformation est **limitée**, et c'est exactement ce que le plateau de la courbe montre — $x$ s'arrête à $67\ \text{mmol}$ alors que $100\ \text{mmol}$ d'acide ont été introduites.
+
+          **Le nom, pour vérifier l'écriture.** Radical de l'acide méthanoïque : « méthanoate ». Radical de l'éthanol : « éthyle ». L'ester est donc le **méthanoate d'éthyle**, $\text{HCOOC}_2\text{H}_5$ — cohérent avec l'énoncé.
+
+          **Le piège de cette question.** Répondre par l'équation générale $\text{R}-\text{COOH} + \text{R}'-\text{OH} \rightleftharpoons \text{R}-\text{COO}-\text{R}' + \text{H}_2\text{O}$ sans remplacer $\text{R}$ et $\text{R}'$ : la consigne demande les formules **semi-développées**, donc les chaînes écrites.
+      - id: q2
+        stem: |-
+          **2-2-** (0,25 pt) Quel est le rôle *(sic, pour « rôle »)* de l'acide sulfurique concentré ajouté ?
+        reasoning: |-
+          C'est le chapitre 5, et il tient en une phrase que la question suivante va rendre visible : l'acide sulfurique concentré est un **catalyseur**.
+
+          Ce qu'il fait : il **accélère** la réaction — sans lui, une estérification à température modérée demande des heures, voire des jours.
+
+          Ce qu'il ne fait **pas**, et c'est là tout l'enjeu du chapitre 5 : il ne déplace pas l'équilibre. Il accélère l'estérification **et** l'hydrolyse inverse, exactement dans le même rapport ; la composition finale du mélange, donc $x_{éq}$, donc le rendement, sont rigoureusement les mêmes avec ou sans lui. Il n'apparaît pas non plus dans le bilan : il est régénéré.
+
+          **Le piège de cette question, nommé.** Répondre « il améliore le rendement ». C'est l'idée fausse que le chapitre 5 démonte par le test des deux flacons — avec et sans catalyseur, la **même** composition finale est atteinte, à des vitesses différentes. Le catalyseur achète du **temps**, jamais de l'ester en plus. Ce qui améliore le rendement, c'est le déplacement d'équilibre (chapitre 6), et la question 2-6 en donnera un exemple chiffré.
+      - id: q3
+        stem: |-
+          **2-3-** (0,5 pt) Déterminer la valeur de l'avancement final $x_{éq}$, et le temps de demi-réaction $t_{1/2}$.
+        reasoning: |-
+          **Un outil emprunté à une autre notion.** Le temps de demi-réaction est l'outil central de « Suivi temporel d'une transformation, vitesse ». La définition et le geste sont refaits ici en entier, pour que cette question se suffise à elle-même.
+
+          **Deux lectures graphiques, dans cet ordre — la seconde a besoin de la première.**
+
+          **$x_{éq}$, l'avancement final** : c'est la valeur du **plateau**, celle vers laquelle la courbe cesse de monter. Le plateau est parfaitement horizontal à partir de $t \approx 53\ \text{min}$, posé sur une ligne du quadrillage :
+
+          $$x_{éq} = 67\ \text{mmol}$$
+
+          *Ce que ce nombre raconte, avant même le calcul de K.* On a introduit $100\ \text{mmol}$ d'acide et $100\ \text{mmol}$ d'alcool, en quantités égales et sans empêchement stérique : le chapitre 4 prédit dans ce cas $\tau \approx 2/3$, soit $x_{éq} \approx 67\ \text{mmol}$. La courbe confirme le cas canonique — et ce n'est pas une coïncidence, c'est la signature de l'estérification équimolaire.
+
+          **$t_{1/2}$, le temps de demi-réaction** : par définition, l'instant où l'avancement atteint **la moitié de sa valeur finale**, pas la moitié de $x_{max}$. Il faut donc $x_{éq}$ d'abord, puis lire l'abscisse à mi-hauteur :
+
+          $$x(t_{1/2}) = \frac{x_{éq}}{2} = \frac{67}{2} = 33{,}5\ \text{mmol} \implies t_{1/2} \approx 6{,}8\ \text{min}$$
+
+          *(Mesure fine sur le tracé : $6{,}84\ \text{min}$. À l'échelle du quadrillage, un élève qui lit « environ $7\ \text{min}$ » lit juste.)*
+
+          **Le piège de cette question.** Prendre $x_{max} = 100\ \text{mmol}$ et chercher $t$ à $50\ \text{mmol}$ : cela donnerait $\approx 5\ \text{min}$, et c'est faux. Le temps de demi-réaction se définit sur l'avancement **final atteint**, pas sur l'avancement maximal théorique — la distinction n'existe que pour les transformations limitées, et c'en est une.
+        steps:
+          - math: 'x_{eq} = 67\ \text{mmol}'
+            note: "Lecture du plateau, atteint vers t = 53 min et pose sur une ligne de grille."
+          - math: '\tau = \frac{x_{eq}}{x_{max}} = \frac{67}{100} = 0{,}67 \approx \frac{2}{3}'
+            note: "Controle : mélange équimolaire sans empêchement stérique, le cas canonique du chapitre 4."
+          - math: 'x(t_{1/2}) = \frac{x_{eq}}{2} = 33{,}5\ \text{mmol}'
+            note: "Définition : moitié de l'avancement FINAL, pas de l'avancement maximal."
+          - math: '\boxed{t_{1/2} \approx 6{,}8\ \text{min}}'
+            note: "Abscisse du point d'ordonnée 33,5 mmol. Mesure fine sur le trace : 6,84 min."
+      - id: q4
+        stem: |-
+          **2-4-** (0,5 pt) La droite $(T)$ représente la tangente à la courbe au point d'abscisse $t = 20\ \text{min}$. Calculer, en $\text{mol.L}^{-1}.\text{min}^{-1}$, la valeur de **la vitesse volumique $v$ de la réaction** à cet instant.
+
+          *Le document officiel imprime ici « la valeur de **cette vitesse** à cet instant » — mais le mot « vitesse » n'apparaît nulle part ailleurs dans les six pages du sujet français : la consigne est référentiellement cassée telle qu'imprimée. L'original arabe écrit « قيمة السرعة الحجمية v للتفاعل », c'est-à-dire « la valeur de la vitesse **volumique** $v$ **de la réaction** » — trois éléments perdus dans l'édition française. La consigne est rétablie ici, et la réparation est déclarée. (L'édition française de ce sujet est ministérielle : c'est donc un défaut du document officiel, pas un artefact de traduction.)*
+        reasoning: |-
+          **La définition (chapitre 3 de « Suivi temporel d'une transformation »).** La vitesse **volumique** de réaction est la dérivée de l'avancement par rapport au temps, **rapportée au volume** du mélange :
+
+          $$v = \frac{1}{V}\left(\frac{dx}{dt}\right)_{t=20\ \text{min}}$$
+
+          Le volume est constant ($V = 25\ \text{mL}$, l'énoncé le précise) : il sort de la dérivée, et le calcul se réduit à une pente divisée par un volume.
+
+          **Lire la pente de $(T)$, et la lire sur ses deux extrémités.** La consigne dit explicitement que $(T)$ **est** la tangente : c'est donc sa pente qu'il faut mesurer, et non essayer de dériver la courbe à l'œil. $(T)$ joint deux nœuds exacts du quadrillage, ce qui rend la lecture nette :
+
+          $$\text{pente}(T) = \frac{70 - 50}{36 - 5} = \frac{20}{31} \approx 0{,}645\ \text{mmol.min}^{-1}$$
+
+          **Puis convertir, en une fois.** L'avancement est en millimoles et le volume en millilitres ; la vitesse demandée est en $\text{mol.L}^{-1}.\text{min}^{-1}$ :
+
+          $$v = \frac{0{,}645\times10^{-3}\ \text{mol.min}^{-1}}{25\times10^{-3}\ \text{L}} \approx 2{,}6\times10^{-2}\ \text{mol.L}^{-1}.\text{min}^{-1}$$
+
+          **⚠️ Ce que le sujet fait ici, et qu'il faut savoir.** La droite $(T)$ n'est **pas** exactement la tangente de la courbe qu'elle prétend toucher : mesurée sur le dessin, sa pente vaut $0{,}645\ \text{mmol.min}^{-1}$ alors que la dérivée réelle de la courbe en $t = 20\ \text{min}$ vaut $0{,}684$ — $(T)$ est tracée $5{,}6\ \%$ trop plate, et elle reste au-dessus de la courbe sur tout son parcours sans jamais la toucher (l'écart passe par un minimum de $0{,}41\ \text{mmol}$ vers $t = 21{,}4\ \text{min}$). C'est un **défaut du sujet officiel**, présent dans les deux éditions, déclaré et non réparé ici — le corpus a déjà rencontré exactement ce cas (PC 2010 N, $5{,}5\ \%$).
+
+          **La conséquence pratique, et c'est la seule qui compte pour toi :** trois valeurs sont défendables selon ce qu'on lit — $2{,}6\times10^{-2}$ (la pente de $(T)$ **telle qu'elle est tracée**, ce que la consigne demande), $2{,}7\times10^{-2}$ (la dérivée réelle de la courbe), $2{,}8\times10^{-2}$ (une lecture plus large de $(T)$). **Toute valeur entre $2{,}6$ et $2{,}8\times10^{-2}\ \text{mol.L}^{-1}.\text{min}^{-1}$ est juste** ; aucune de ces trois n'est « la » valeur exacte. La question reste parfaitement résoluble : c'est le geste — pente de la droite, puis division par le volume — qui est évalué.
+
+          **Le piège de cette question.** Oublier le $\dfrac{1}{V}$ et répondre $0{,}645\ \text{mmol.min}^{-1}$ : c'est une vitesse de réaction en avancement, pas une vitesse **volumique**, et l'unité demandée ($\text{mol.L}^{-1}.\text{min}^{-1}$) le dit. Second piège : diviser par $25$ au lieu de $25\times10^{-3}$ — le volume doit être en litres.
+        steps:
+          - math: 'v = \frac{1}{V}\left(\frac{dx}{dt}\right)_{t=20\ \text{min}}'
+            note: "Définition de la vitesse volumique, valable parce que le volume du mélange est constant."
+          - math: '\text{pente}(T) = \frac{70 - 50}{36 - 5} = \frac{20}{31} \approx 0{,}645\ \text{mmol.min}^{-1}'
+            note: "Lecture sur les deux extrémités de (T), qui tombent exactement sur des noeuds du quadrillage."
+          - math: 'V = 25\ \text{mL} = 25\times10^{-3}\ \text{L} \qquad \frac{dx}{dt} = 0{,}645\ \text{mmol.min}^{-1} = 0{,}645\times10^{-3}\ \text{mol.min}^{-1}'
+            note: "Les deux conversions a faire avant la division : millimoles en moles, millilitres en litres."
+          - math: 'v = \frac{0{,}645\times10^{-3}}{25\times10^{-3}}'
+            note: "Division de la pente par le volume."
+          - math: '\boxed{v \approx 2{,}6\times10^{-2}\ \text{mol.L}^{-1}.\text{min}^{-1}}'
+            note: "Tolerance a ouvrir : toute valeur entre 2,6 et 2,8 x 10^-2 est juste (voir le raisonnement : la droite (T) n'est pas exactement la tangente de la courbe)."
+      - id: q5
+        stem: |-
+          **2-5-** (0,5 pt) Déterminer la constante d'équilibre $K$ associée à cette réaction.
+        reasoning: |-
+          **Un outil emprunté à une autre notion.** La constante d'équilibre est l'outil central de « État d'équilibre d'un système chimique ». Les six questions décrivent une seule expérience, un seul ballon, une seule courbe : la démonstration est refaite ici en entier.
+
+          **Le tableau d'avancement, en quantités de matière**, avec $n_0 = n = 100\ \text{mmol}$ :
+
+          | | acide | + alcool | $\rightleftharpoons$ ester | + eau |
+          |---|---|---|---|---|
+          | initial | $100$ | $100$ | $0$ | $0$ |
+          | à l'équilibre | $100 - x_{éq}$ | $100 - x_{éq}$ | $x_{éq}$ | $x_{éq}$ |
+
+          **Pourquoi le volume disparaît, et c'est le point de la question.** $K$ s'écrit avec des concentrations :
+
+          $$K = \frac{[\text{ester}]_{éq}\,[\text{eau}]_{éq}}{[\text{acide}]_{éq}\,[\text{alcool}]_{éq}}$$
+
+          Il y a **autant d'espèces au numérateur qu'au dénominateur** (deux et deux), et toutes sont dans le **même** volume $V$ : chaque concentration s'écrit « quantité $/\,V$ », et les quatre $V$ se simplifient deux à deux. On peut donc calculer $K$ **directement en quantités de matière** — et même en millimoles, sans convertir.
+
+          $$K = \frac{x_{éq}^2}{\left(n_0 - x_{éq}\right)^2} = \left(\frac{x_{éq}}{n_0 - x_{éq}}\right)^2 = \left(\frac{67}{33}\right)^2$$
+
+          $$\boxed{K \approx 4{,}1}$$
+
+          C'est le $K = 4$ canonique du chapitre 4, celui qui produit $\tau = 2/3$ pour un mélange équimolaire : la boucle est fermée avec la lecture de la question 2-3.
+
+          **Un mot d'honnêteté sur ce nombre.** Le plateau est **dessiné** à $67{,}0\ \text{mmol}$, sur une ligne de grille ; un plateau à $66{,}67\ \text{mmol}$ donnerait exactement $K = 4{,}00$. Le sujet a arrondi le dessin, pas le calcul — c'est visible à la question suivante, dont la valeur à vérifier ($78{,}5\ \text{mmol}$) correspond à $K = 4{,}00$. Il ne faut donc pas présenter $4{,}12$ comme une valeur exacte : $K \approx 4$ est la lecture honnête.
+
+          **Le piège de cette question.** Convertir en $\text{mol.L}^{-1}$ « pour faire propre » : c'est du travail inutile, et c'est là qu'on se trompe. $K$ est **sans dimension** dès que les nombres d'espèces s'équilibrent de part et d'autre — vérifie-le sur l'écriture avant de sortir la calculatrice.
+        steps:
+          - math: 'K = \frac{[\text{ester}]_{eq}\,[\text{eau}]_{eq}}{[\text{acide}]_{eq}\,[\text{alcool}]_{eq}}'
+            note: "Définition du quotient de réaction à l'équilibre pour cette estérification."
+          - math: 'K = \frac{x_{eq}^2}{(n_0 - x_{eq})^2}'
+            note: "Deux espèces au numérateur, deux au dénominateur, même volume : les V se simplifient, on calcule en quantités de matière."
+          - math: 'K = \left(\frac{67}{33}\right)^2 = (2{,}0303)^2'
+            note: "x_eq = 67 mmol lu au plateau (question 2-3), n0 - x_eq = 33 mmol."
+          - math: '\boxed{K \approx 4{,}1}'
+            note: "Le K canonique de l'estérification équimolaire (chapitre 4). Le plateau dessine a 67,0 mmol donne 4,12 ; un plateau a 66,67 donnerait exactement 4,00."
+      - id: q6
+        stem: |-
+          **2-6-** (0,75 pt) On mélange dans les mêmes conditions expérimentales précédentes, la quantité de matière $n_1 = 150\ \text{mmol}$ d'acide méthanoïque avec la quantité de matière $n_2 = 100\ \text{mmol}$ d'éthanol. S'assurer que la nouvelle valeur de l'avancement de la réaction à l'équilibre est $x'_{éq} = 78{,}5\ \text{mmol}$.
+        reasoning: |-
+          **Ce que la consigne demande vraiment.** « S'assurer que » n'est pas « calculer » : on peut, et c'est le chemin le plus court et le plus sûr, **vérifier** que la valeur proposée satisfait la constante d'équilibre — plutôt que résoudre le trinôme et comparer.
+
+          **Pourquoi $K$ ne change pas.** « Dans les mêmes conditions expérimentales » veut dire à la **même température**. Or $K$ ne dépend que de la température, jamais des quantités initiales : c'est le pivot de tout le chapitre 6. On travaille donc avec le $K \approx 4$ de la question 2-5, sur un mélange qui n'est plus équimolaire.
+
+          **Le nouveau tableau**, avec $n_1 = 150$ et $n_2 = 100\ \text{mmol}$ :
+
+          | | acide | + alcool | $\rightleftharpoons$ ester | + eau |
+          |---|---|---|---|---|
+          | initial | $150$ | $100$ | $0$ | $0$ |
+          | à l'équilibre | $150 - x'_{éq}$ | $100 - x'_{éq}$ | $x'_{éq}$ | $x'_{éq}$ |
+
+          Les volumes se simplifient comme à la question 2-5, et il vient :
+
+          $$K = \frac{x'^2_{éq}}{\left(150 - x'_{éq}\right)\left(100 - x'_{éq}\right)}$$
+
+          **La vérification, en une ligne**, avec $x'_{éq} = 78{,}5\ \text{mmol}$ :
+
+          $$\frac{78{,}5^2}{(150-78{,}5)(100-78{,}5)} = \frac{6162{,}25}{71{,}5 \times 21{,}5} = \frac{6162{,}25}{1537{,}25} \approx 4{,}01$$
+
+          On retrouve bien $K \approx 4$ : la valeur proposée est cohérente, et l'écart aux $4{,}12$ lus sur la figure ($2{,}7\ \%$) est très en dessous de la précision d'une lecture graphique. **La valeur est vérifiée.**
+
+          *(Chemin inverse, si l'on préfère résoudre : avec $K = 4{,}12$, l'équation $3{,}12\,x'^2 - 1030{,}5\,x' + 61830 = 0$ donne $x'_{éq} \approx 78{,}8\ \text{mmol}$, à $0{,}4\ \%$ de la valeur à vérifier. La seconde racine, $\approx 251\ \text{mmol}$, est à **rejeter** : elle dépasse $x_{max} = 100\ \text{mmol}$, l'alcool étant le réactif limitant.)*
+
+          **Ce que le résultat enseigne, et c'est tout le chapitre 6.** Avec un mélange équimolaire, le rendement plafonnait à $\tau = 67/100 = 67\ \%$. Ici l'alcool est le réactif limitant ($100\ \text{mmol}$ contre $150$), et le rendement **par rapport à lui** devient :
+
+          $$\tau' = \frac{x'_{éq}}{x'_{max}} = \frac{78{,}5}{100} = 78{,}5\ \%$$
+
+          **Mettre un réactif en excès déplace l'équilibre dans le sens direct et améliore le rendement de l'autre réactif** — sans toucher à $K$, sans catalyseur, sans rien changer d'autre. C'est le premier des deux gestes du chapitre 6 (le second étant d'éliminer l'eau au fur et à mesure).
+
+          **Le piège de cette question.** Croire que $K$ a changé parce que les quantités initiales ont changé. $K$ est fixé par la température seule ; ce sont les **quantités à l'équilibre** qui s'ajustent, pas la constante.
+        steps:
+          - math: 'K = \frac{x^{\prime 2}_{eq}}{\left(150 - x^{\prime}_{eq}\right)\left(100 - x^{\prime}_{eq}\right)}'
+            note: "Nouveau tableau d'avancement, volumes simplifies comme a la question 2-5. K inchangé : même température."
+          - math: '150 - 78{,}5 = 71{,}5 \qquad 100 - 78{,}5 = 21{,}5'
+            note: "Quantités restantes à l'équilibre, avec la valeur proposée par la consigne."
+          - math: '\frac{78{,}5^2}{71{,}5\times 21{,}5} = \frac{6162{,}25}{1537{,}25} \approx 4{,}01'
+            note: "Vérification directe : on retrouve K voisin de 4, ce que la question demandait de s'assurer."
+          - math: '\boxed{x^{\prime}_{eq} = 78{,}5\ \text{mmol}\ \text{verifie} \quad (K \approx 4)}'
+            note: "Écart de 2,7 pourcent avec le K = 4,12 lu sur la figure : bien dans la tolerance d'une lecture graphique."
+          - math: '\tau^{\prime} = \frac{x^{\prime}_{eq}}{x^{\prime}_{max}} = \frac{78{,}5}{100} = 78{,}5\ \% \quad > \quad \tau = 67\ \%'
+            note: "L'alcool est limitant. Mettre l'acide en excès a fait passer le rendement de 67 a 78,5 pourcent : c'est le déplacement d'équilibre du chapitre 6."

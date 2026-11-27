@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 530" width="640" height="530"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img" aria-label="Les huit premiers termes de la suite du réservoir : u_0=100, u_1=60, u_2=40, u_3=30, u_4=25, u_5=22,5, u_6=21,25, u_7=20,625 — une descente qui ralentit visiblement, puis la droite y=20 révélée comme la valeur vers laquelle les termes s’entassent.">
+  <title>Le réservoir : les huit premiers termes, une descente qui se stabilise</title>
+  <!--
+    reservoir-premiers-termes.svg — STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md §2).
+    Graphe de l'accroche R0 — mêmes valeurs EXACTES que le texte (u0..u7),
+    et le même repère écran/échelle verticale que convergence-limite.svg
+    (R5, même suite) : py = 430 - 3,6·u (u=0 -> 430, u=100 -> 70). Seule
+    l'échelle horizontale diffère (ici n=0..7 seulement, espacement 60 px
+    au lieu de 50, puisqu'il n'y a que 8 points à montrer) :
+      px = 90 + 60·n
+
+      n=0 u=100    -> (90,70)      n=1 u=60     -> (150,214)
+      n=2 u=40     -> (210,286)    n=3 u=30     -> (270,322)
+      n=4 u=25     -> (330,340)    n=5 u=22,5   -> (390,349)
+      n=6 u=21,25  -> (450,353.5)  n=7 u=20,625 -> (510,355.75)
+
+    Ligne y=20 (la réponse du R8, "fermeture de l'arc") : py = 430-3,6×20 = 358.
+
+    STAGED, 3 étapes explicites (littéralement axes -> données -> lecture,
+    LESSON-EXPERIENCE-SPEC §2.5) :
+      step-1 : les axes seuls + une grille calme (lignes à u=20,40,60,80,100,
+               espacées régulièrement — AUCUNE n'est mise en avant, pour ne
+               pas trahir laquelle comptera ; le tick texte "20" est omis
+               ici précisément pour ne pas dévoiler le nombre avant l'étape
+               de lecture — la ligne existe déjà, discrète, mais sans nom).
+      step-2 : les huit points (n, u_n), reliés par un repère visuel discret
+               (pas une courbe continue — la suite est discrète).
+      step-3 : la droite y=20 en accent (par-dessus la ligne de grille déjà
+               là), avec son étiquette "20" — c'est la seule fois où ce
+               nombre est nommé dans la figure.
+
+    Couleurs : axes/grille en --figure-ink-soft / --figure-grid (neutres) ;
+    les huit points en --figure-ink (données, aucune interprétation encore) ;
+    la droite y=20 en --figure-accent (seul foyer, la réponse au mystère).
+
+    Les captions vivent dans reservoir-premiers-termes.stages.json — aucun
+    texte de légende baké ici (même convention que convergence-limite.svg).
+  -->
+
+  <rect x="20" y="34" width="600" height="430" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <text x="320" y="14" text-anchor="middle" font-size="12.5" font-weight="600"
+        fill="var(--figure-ink)">Le réservoir : les huit premiers termes</text>
+  <text x="320" y="28" text-anchor="middle" font-size="10.5"
+        fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="8">n+1</tspan><tspan dy="-3"> = 0,5 u</tspan><tspan dy="3" font-size="8">n</tspan><tspan dy="-3"> + 10, avec u</tspan><tspan dy="3" font-size="8">0</tspan><tspan dy="-3"> = 100</tspan></text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — axes : grille calme, aucune ligne cible nommée
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- grille horizontale, régulière, discrète -->
+    <line x1="90" y1="358" x2="530" y2="358" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="90" y1="286" x2="530" y2="286" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="90" y1="214" x2="530" y2="214" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="90" y1="142" x2="530" y2="142" stroke="var(--figure-grid)" stroke-width="1"/>
+    <line x1="90" y1="70"  x2="530" y2="70"  stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- axes -->
+    <line x1="90" y1="430" x2="560" y2="430" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="572,430 560,425.5 560,434.5" fill="var(--figure-ink-soft)"/>
+    <line x1="90" y1="430" x2="90" y2="51" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="90,40 85.5,51 94.5,51" fill="var(--figure-ink-soft)"/>
+    <text x="576" y="434" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">n</text>
+    <text x="70" y="48" text-anchor="end" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="8">n</tspan></text>
+
+    <!-- ticks y : 0, 40, 60, 80, 100 (20 omis à dessein, voir commentaire) -->
+    <line x1="82" y1="430" x2="90" y2="430" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="82" y1="358" x2="90" y2="358" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="82" y1="286" x2="90" y2="286" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="82" y1="214" x2="90" y2="214" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="82" y1="142" x2="90" y2="142" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="82" y1="70"  x2="90" y2="70"  stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="78" y="434" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">0</text>
+    <text x="78" y="290" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">40</text>
+    <text x="78" y="218" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">60</text>
+    <text x="78" y="146" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">80</text>
+    <text x="78" y="74"  text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">100</text>
+
+    <!-- ticks x : n = 0..7 -->
+    <line x1="90"  y1="430" x2="90"  y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="150" y1="430" x2="150" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="210" y1="430" x2="210" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="270" y1="430" x2="270" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="330" y1="430" x2="330" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="390" y1="430" x2="390" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="450" y1="430" x2="450" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="510" y1="430" x2="510" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <text x="90"  y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">0</text>
+    <text x="150" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">1</text>
+    <text x="210" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">2</text>
+    <text x="270" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">3</text>
+    <text x="330" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">4</text>
+    <text x="390" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">5</text>
+    <text x="450" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">6</text>
+    <text x="510" y="450" text-anchor="middle" font-size="9.5" fill="var(--figure-ink-soft)">7</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — données : les huit points (n, u_n)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <polyline points="90,70 150,214 210,286 270,322 330,340 390,349 450,353.5 510,355.75"
+              fill="none" stroke="var(--figure-ink-soft)" stroke-width="1" opacity="0.55"/>
+    <circle cx="90"  cy="70"     r="2.5" fill="var(--figure-ink)"/>
+    <circle cx="150" cy="214"    r="2.5" fill="var(--figure-ink)"/>
+    <circle cx="210" cy="286"    r="2.5" fill="var(--figure-ink)"/>
+    <circle cx="270" cy="322"    r="2.5" fill="var(--figure-ink)"/>
+    <circle cx="330" cy="340"    r="2.5" fill="var(--figure-ink)"/>
+    <circle cx="390" cy="349"    r="2.5" fill="var(--figure-ink)"/>
+    <circle cx="450" cy="353.5"  r="2.5" fill="var(--figure-ink)"/>
+    <circle cx="510" cy="355.75" r="2.5" fill="var(--figure-ink)"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : la droite y = 20, réponse au mystère du R0
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <line x1="90" y1="358" x2="530" y2="358" stroke="var(--figure-accent)" stroke-width="1.4" stroke-dasharray="5,3"/>
+    <text x="78" y="362" text-anchor="end" font-size="11" font-weight="600" fill="var(--figure-accent)">20</text>
+  </g><!-- /step-3 -->
+
+</svg>

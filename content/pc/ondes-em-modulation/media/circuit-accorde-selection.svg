@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-56 0 696 360" width="696" height="360"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Le circuit accordé : l’antenne reçoit plusieurs porteuses superposées (900, 1200, 1500 kHz) ; un circuit bouchon (bobine L en parallèle avec un condensateur variable C, de fréquence propre f0=1/(2π√LC)) est inséré entre l’antenne et le reste du récepteur ; en réglant C pour que f0 coïncide avec la porteuse voulue (900 kHz), cette porteuse traverse le circuit nettement renforcée tandis que les deux autres restent atténuées — sans qu’aucune courbe de résonance quantitative ne soit tracée.">
+  <title>Le circuit accordé — sélectionner une porteuse</title>
+  <!--
+    circuit-accorde-selection.svg — figure STAGED (3 étapes), R5
+    (ondes-em-modulation). Diagramme STRUCTUREL, cumulatif dans UNE seule
+    scène (même grammaire que pile-daniell.svg / rlc-schema.svg : chaque
+    étape AJOUTE une couche à la même scène, plutôt que 3 panneaux séparés
+    comme antenne-quart-onde.svg — ici le geste pédagogique est une seule
+    histoire continue : l'antenne, puis le circuit qu'on y insère, puis le
+    résultat du réglage).
+
+    CONTRAINTE DURE (cadre exclusion, régime sinusoïdal forcé non étudié) :
+    STRICTEMENT QUALITATIF. Aucune courbe amplitude-fréquence, aucune
+    valeur de sélectivité. La sélection est montrée UNIQUEMENT par
+    trait épais/plein (porteuse choisie) contre trait fin/atténué
+    (porteuses rejetées) — jamais par une courbe.
+
+      step-1 : l'antenne reçoit tout — 3 porteuses superposées (900, 1200,
+               1500 kHz), dessinées comme 3 ondulations distinctes
+               convergeant vers l'antenne, non différenciées (même teinte
+               neutre : rien n'est encore sélectionné).
+      step-2 : le circuit bouchon — L ∥ C inséré en dérivation entre
+               l'antenne et le reste du récepteur, étiqueté
+               f0 = 1/(2π√(LC)).
+      step-3 : l'accord — la porteuse à 900 kHz retracée en trait épais/
+               plein (--figure-accent) PAR-DESSUS son tracé d'origine
+               (maintenant atténué à opacity 0.55 par StagedFigure comme
+               tout step-1/2), continuant nettement au-delà du circuit
+               vers le récepteur ; deux traits fins et clairsemés
+               symbolisent les deux autres porteuses, très atténuées,
+               qui ne vont pas plus loin. Annotation "accord : f0 = fp".
+
+    Simplification assumée (schéma pédagogique, topologie simplifiée) : le
+    circuit bouchon est représenté comme une dérivation (L ∥ C) reliée à la
+    masse depuis le point où l'antenne rejoint le fil vers le récepteur —
+    topologie standard d'un "circuit bouchon" shunté à la masse, pas une
+    insertion série. Pas de détail de mise à la masse du récepteur (hors
+    propos qualitatif de ce rung).
+
+    Couleurs (5 tokens) : structure neutre (antenne, fils, boîtier
+    récepteur) = --figure-ink / --figure-ink-soft ; L = --figure-energy-L ;
+    C = --figure-energy-C ; SEULE emphase — la porteuse accordée, l'accord
+    lui-même — = --figure-accent.
+  -->
+
+  <!-- Titre (chrome) -->
+  <text x="292" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Le circuit accordé — sélectionner une porteuse
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — l'antenne reçoit tout : 3 porteuses superposées
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Antenne -->
+    <circle cx="70" cy="62" r="3" fill="var(--figure-ink)"/>
+    <line x1="70" y1="62" x2="70" y2="205" stroke="var(--figure-ink)" stroke-width="2.2" stroke-linecap="round"/>
+    <text x="84" y="150" font-size="10.5" fill="var(--figure-ink)">antenne</text>
+
+    <!-- 3 porteuses superposées, non différenciées (ondulations neutres).
+         Les trois étiquettes vivent dans une COLONNE hors tracé (x<0, cadre
+         élargi de 56 px à gauche le 2026-09-04) : posées dans le dessin,
+         « 1 200 kHz » était barré par la courbe de 900 kHz qui traverse
+         x∈[2;48] en descendant de y=16 à y≈43 — et le trait passe en accent
+         épais à l'étape 3, donc la barre s'aggravait au moment précis où
+         l'élève regarde. Élargir le cadre plutôt que déplacer une étiquette
+         bien placée : c'est la règle du skill figure-authoring. À savoir :
+         la sonde de figure-preview ne compare que les TEXTES entre eux, elle
+         est aveugle à cette collision-là — celle-ci s'est vue à l'œil. -->
+    <path d="M12,16 C30,10 46,70 66,64" fill="none"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+    <text x="-54" y="19" font-size="10" fill="var(--figure-ink-soft)">900 kHz</text>
+
+    <path d="M6,50 C26,44 44,74 66,68" fill="none"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+    <text x="-54" y="53" font-size="10" fill="var(--figure-ink-soft)">1 200 kHz</text>
+
+    <path d="M12,96 C30,102 46,68 66,72" fill="none"
+          stroke="var(--figure-ink-soft)" stroke-width="1.6" stroke-linecap="round"/>
+    <text x="-54" y="99" font-size="10" fill="var(--figure-ink-soft)">1 500 kHz</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — le circuit bouchon : L ∥ C entre l'antenne et le récepteur
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Fil antenne → dérivation -->
+    <line x1="70" y1="205" x2="280" y2="205" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="280" cy="205" r="3" fill="var(--figure-ink)"/>
+
+    <!-- Dérivation vers le circuit bouchon -->
+    <line x1="280" y1="205" x2="280" y2="225" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="280" y1="225" x2="255" y2="225" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="280" y1="225" x2="305" y2="225" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Bobine L (branche gauche, verticale) -->
+    <line x1="255" y1="225" x2="255" y2="233" stroke="var(--figure-energy-L)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M255,233 a9,8 0 0,0 0,17" fill="none" stroke="var(--figure-energy-L)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M255,250 a9,8 0 0,0 0,17" fill="none" stroke="var(--figure-energy-L)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M255,267 a9,8 0 0,0 0,17" fill="none" stroke="var(--figure-energy-L)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="255" y1="284" x2="255" y2="292" stroke="var(--figure-energy-L)" stroke-width="2" stroke-linecap="round"/>
+    <text x="238" y="260" text-anchor="end" font-size="12" font-style="italic" fill="var(--figure-energy-L)">L</text>
+
+    <!-- Condensateur variable C (branche droite, verticale) -->
+    <line x1="305" y1="225" x2="305" y2="248" stroke="var(--figure-energy-C)" stroke-width="2" stroke-linecap="round"/>
+    <line x1="292" y1="248" x2="318" y2="248" stroke="var(--figure-energy-C)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="292" y1="260" x2="318" y2="260" stroke="var(--figure-energy-C)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="305" y1="260" x2="305" y2="292" stroke="var(--figure-energy-C)" stroke-width="2" stroke-linecap="round"/>
+    <!-- Flèche diagonale = symbole "variable" -->
+    <line x1="290" y1="266" x2="320" y2="232" stroke="var(--figure-ink)" stroke-width="1.4" stroke-linecap="round"/>
+    <polygon points="320,232 310,234 316,241" fill="var(--figure-ink)"/>
+    <text x="326" y="258" text-anchor="start" font-size="12" font-style="italic" fill="var(--figure-energy-C)">C</text>
+
+    <!-- Masse (bas du circuit bouchon) -->
+    <line x1="255" y1="292" x2="305" y2="292" stroke="var(--figure-ink)" stroke-width="2"/>
+    <line x1="270" y1="292" x2="290" y2="292" stroke="var(--figure-ink-soft)" stroke-width="1.6"/>
+    <line x1="274" y1="298" x2="286" y2="298" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <line x1="278" y1="304" x2="282" y2="304" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+
+    <text x="280" y="320" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">circuit bouchon (L ∥ C)</text>
+
+    <!-- Formule f0 -->
+    <text x="280" y="160" text-anchor="middle" font-size="12.5" fill="var(--figure-ink)">f<tspan
+          dy="3" font-size="8.5">0</tspan><tspan dy="-3"> = 1 / (2π√(LC))</tspan></text>
+
+    <!-- Fil dérivation → reste du récepteur -->
+    <line x1="280" y1="205" x2="470" y2="205" stroke="var(--figure-ink)" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Boîtier "reste du récepteur" -->
+    <rect x="470" y="180" width="130" height="50" rx="6" fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1.2"/>
+    <text x="535" y="200" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--figure-ink)">reste du récepteur</text>
+    <text x="535" y="213" text-anchor="middle" font-size="8.5" fill="var(--figure-ink-soft)">(démodulation, ampli, HP)</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — l'accord : f0 = fp = 900 kHz → cette porteuse passe, en
+       trait épais ; les autres restent atténuées (qualitatif seulement)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Ré-emphase de la porteuse choisie (900 kHz), redessinée en accent
+         épais PAR-DESSUS son tracé d'origine (step-1, désormais atténué) -->
+    <path d="M12,16 C30,10 46,70 66,64" fill="none"
+          stroke="var(--figure-accent)" stroke-width="2.6" stroke-linecap="round"/>
+    <!-- Le tracé, plus épais, recouvre le sien de step-1 ; l'étiquette, NON :
+         « 900 kHz » en gras n'a pas les mêmes chasses qu'en romain, si bien
+         que les deux textes se lisaient l'un à travers l'autre en bavure
+         (mesuré 100 % de recouvrement, 2026-09-03). On efface donc d'abord
+         l'étiquette de step-1 par un aplat à la couleur du fond — même
+         technique que rlc-schema.svg, et --figure-surface vaut exactement
+         le fond de la carte (--color-surface-raised) dans les deux thèmes. -->
+    <rect x="-56" y="9" width="48" height="14" fill="var(--figure-surface)"/>
+    <!-- RECOUVREMENT ASSUMÉ : « 900 kHz » — l'étiquette du step-2 est
+         réécrite ICI, au même endroit, en accent gras. Les étapes étant
+         cumulatives, la sonde d'invisibilité voit « retirer ce texte ne
+         change rien à l'image » : c'est exact, et c'est le propos — la
+         porteuse choisie est mise en avant, pas effacée. -->
+    <text x="-54" y="19" font-size="10" font-weight="700" fill="var(--figure-accent)">900 kHz</text>
+
+    <!-- La porteuse accordée continue, nette, jusqu'au récepteur -->
+    <path d="
+      M285,205 C300,195 315,215 330,205
+      C345,195 360,215 375,205
+      C390,195 405,215 420,205
+      C435,195 450,215 465,205
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Les deux autres porteuses : trait fin, très atténué, qui ne va pas
+         jusqu'au bout — QUALITATIF seulement (pas de courbe, pas de valeur) -->
+    <path d="M285,207 C300,202 315,212 330,207 C345,202 360,212 375,207" fill="none"
+          stroke="var(--figure-ink-soft)" stroke-width="0.9" stroke-linecap="round" opacity="0.4"/>
+    <path d="M285,203 C297,199 309,207 321,203 C333,199 345,207 357,203" fill="none"
+          stroke="var(--figure-ink-soft)" stroke-width="0.8" stroke-linecap="round" opacity="0.32"/>
+
+    <!-- Petite flèche courbe "on règle C" -->
+    <path d="M330,240 A10,10 0 1,1 335,232" fill="none" stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <polygon points="335,232 328,231 332,238" fill="var(--figure-ink-soft)"/>
+    <text x="342" y="242" font-size="9" fill="var(--figure-ink-soft)">on règle C</text>
+
+    <!-- Annotation "accord" -->
+    <rect x="240" y="38" width="220" height="30" rx="6" fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="350" y="58" text-anchor="middle" font-size="12.5" font-weight="600" fill="var(--figure-accent)">accord : f<tspan
+          dy="3" font-size="9">0</tspan><tspan dy="-3"> = f</tspan><tspan
+          dy="3" font-size="9">p</tspan><tspan dy="-3"> (= 900 kHz)</tspan></text>
+  </g><!-- /step-3 -->
+
+</svg>

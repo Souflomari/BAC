@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 252" width="420" height="252"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Origine de la relation u_C = q/C : proportionnalité entre charge et tension aux bornes du condensateur">
+  <title>Pourquoi u_C = q/C ?</title>
+  <!--
+    origin-uc.svg — Origine de u_C = q/C
+    Deux panneaux côte à côte :
+      GAUCHE  : coupe transversale d'un condensateur (charges sur les armatures)
+      DROITE  : graphe qualitatif linéaire u_C = f(q)
+
+    Palette : var(--figure-*) CSS vars. Fond transparent.
+    Largeur : 420px, hauteur 252px.
+
+    Panneaux : --figure-surface fond + --figure-grid bordure (surface conçue, pas wireframe)
+    Axe 0 : --figure-ink-soft (lisible, cohérent avec regimes-uc)
+    Armature + : --figure-accent  (polarité positive)
+    Armature − : --figure-ink-soft (polarité négative)
+    Subscripts : dy="4" uniforme pour u_C partout
+
+    Mise en étapes (LESSON-EXPERIENCE-SPEC §2.5). Le panneau droit est un
+    vrai graphe u_C = f(q) tracé sur des axes : il suit le canon
+    axes → données → lecture. Le panneau gauche (schéma physique) précède,
+    en scène d'ouverture — geste d'enseignement : voir le mécanisme physique
+    d'abord, puis le formaliser par le graphe. Révélation progressive 4 étapes :
+      step-1 : la scène physique — condensateur, charges, champ, u_C, q
+      step-2 : le repère du graphe — les axes q / u_C
+      step-3 : les données — la droite u_C = f(q)
+      step-4 : la lecture — pente 1/C et boîte formule
+
+    Les deux légendes de bas de panneau ("Plus q est grande, plus u_C est
+    grande." / "relation linéaire, C = capacité (charge / volt)") ont été
+    retirées : elles dupliquaient ce que disent désormais les légendes
+    d'étapes.
+  -->
+
+  <g id="step-1">
+    <!-- ── Titre ──────────────────────────────────────────── -->
+    <text x="210" y="22" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Pourquoi u<tspan dy="3" font-size="8.5">C</tspan><tspan dy="-3"> = q/C ?</tspan>
+    </text>
+
+    <!-- ══════════════════════════════════════════════════════
+         PANNEAU GAUCHE — Coupe transversale du condensateur
+         x=14..212, y=34..242
+         ══════════════════════════════════════════════════════ -->
+    <rect x="14" y="34" width="198" height="208" rx="7"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Armature gauche (+) — plaque épaisse, accent -->
+    <rect x="72" y="54" width="11" height="126" rx="2"
+          fill="var(--figure-accent)"/>
+    <!-- Armature droite (−) — plaque épaisse, ink-soft -->
+    <rect x="142" y="54" width="11" height="126" rx="2"
+          fill="var(--figure-ink-soft)"/>
+
+    <!-- Signes +/− sur les armatures (polarité) -->
+    <text x="78" y="50" text-anchor="middle"
+          font-size="9" font-weight="700" fill="var(--figure-accent)">+</text>
+    <text x="148" y="50" text-anchor="middle"
+          font-size="9" font-weight="700" fill="var(--figure-ink-soft)">−</text>
+
+    <!-- Charges sur l'armature gauche (+ discrets, en colonne) -->
+    <text x="96" y="80"  font-size="11" fill="var(--figure-accent)" font-weight="600">+</text>
+    <text x="96" y="100" font-size="11" fill="var(--figure-accent)" font-weight="600">+</text>
+    <text x="96" y="120" font-size="11" fill="var(--figure-accent)" font-weight="600">+</text>
+    <text x="96" y="140" font-size="11" fill="var(--figure-accent)" font-weight="600">+</text>
+    <text x="96" y="160" font-size="11" fill="var(--figure-accent)" font-weight="600">+</text>
+
+    <!-- Charges sur l'armature droite (−) -->
+    <text x="130" y="80"  font-size="11" fill="var(--figure-ink-soft)" font-weight="600">−</text>
+    <text x="130" y="100" font-size="11" fill="var(--figure-ink-soft)" font-weight="600">−</text>
+    <text x="130" y="120" font-size="11" fill="var(--figure-ink-soft)" font-weight="600">−</text>
+    <text x="130" y="140" font-size="11" fill="var(--figure-ink-soft)" font-weight="600">−</text>
+    <text x="130" y="160" font-size="11" fill="var(--figure-ink-soft)" font-weight="600">−</text>
+
+    <!-- Champ électrique dans le gap (trois flèches horizontales, gauche→droite) -->
+    <line x1="107" y1="84"  x2="134" y2="84"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-linecap="round"/>
+    <polygon points="134,84 126,80.5 126,87.5" fill="var(--figure-ink-soft)"/>
+    <line x1="107" y1="117" x2="134" y2="117"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-linecap="round"/>
+    <polygon points="134,117 126,113.5 126,120.5" fill="var(--figure-ink-soft)"/>
+    <line x1="107" y1="150" x2="134" y2="150"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-linecap="round"/>
+    <polygon points="134,150 126,146.5 126,153.5" fill="var(--figure-ink-soft)"/>
+
+    <!-- Double flèche u_C (entre les armatures, sous les plaques) -->
+    <line x1="83" y1="192" x2="142" y2="192"
+          stroke="var(--figure-accent)" stroke-width="1.8" stroke-linecap="round"/>
+    <polygon points="142,192 133.5,187.5 133.5,196.5" fill="var(--figure-accent)"/>
+    <polygon points="83,192 91.5,187.5 91.5,196.5"  fill="var(--figure-accent)"/>
+    <!-- Label u_C directement sur la flèche — subscript dy uniforme -->
+    <text x="113" y="209" text-anchor="middle"
+          font-size="12" font-style="italic" fill="var(--figure-accent)">u<tspan
+          dy="4" font-size="8.5">C</tspan>
+    </text>
+
+    <!-- Label q à gauche de l'armature -->
+    <text x="60" y="121" text-anchor="end"
+          font-size="11" font-style="italic" fill="var(--figure-accent)">q</text>
+
+    <!-- ══════════════════════════════════════════════════════
+         PANNEAU DROIT — cadre (contenu ajouté aux étapes 2/3/4)
+         x=222..408, y=34..242
+         ══════════════════════════════════════════════════════ -->
+    <rect x="222" y="34" width="186" height="208" rx="7"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- Axes -->
+    <line x1="244" y1="210" x2="392" y2="210"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-linecap="round"/>
+    <polygon points="392,210 382,205.5 382,214.5" fill="var(--figure-ink-soft)"/>
+    <line x1="244" y1="210" x2="244" y2="52"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4" stroke-linecap="round"/>
+    <polygon points="244,52 239.5,63 248.5,63" fill="var(--figure-ink-soft)"/>
+
+    <!-- Labels d'axes -->
+    <text x="398" y="214" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">q</text>
+    <text x="236" y="52" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">u<tspan dy="3" font-size="7.5">C</tspan></text>
+    <text x="236" y="214" text-anchor="end" font-size="9.5"
+          fill="var(--figure-ink-soft)">0</text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- Droite u_C = q/C — de (244,210) vers (384,68) -->
+    <line x1="244" y1="210" x2="384" y2="68"
+          stroke="var(--figure-accent)" stroke-width="2.4"
+          stroke-linecap="round"/>
+  </g><!-- /step-3 -->
+
+  <g id="step-4">
+    <!-- Annotation pente -->
+    <text x="322" y="122" text-anchor="middle"
+          font-size="9.5" font-style="italic"
+          fill="var(--figure-accent)">pente = 1/C</text>
+
+    <!-- Boîte formule -->
+    <rect x="252" y="58" width="116" height="30" rx="5"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="310" y="78" text-anchor="middle"
+          font-size="13" font-style="italic" fill="var(--figure-accent)">u<tspan
+          dy="4" font-size="8.5">C</tspan><tspan dy="-4"> = q/C</tspan>
+    </text>
+  </g><!-- /step-4 -->
+
+</svg>

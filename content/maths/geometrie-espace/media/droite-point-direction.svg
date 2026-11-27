@@ -1,0 +1,82 @@
+<svg viewBox="0 0 640 490" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Un repère léger de l’espace ; un point A et un vecteur directeur u depuis A ; la droite complète passant par A selon u, prolongée bien au-delà de A dans les deux sens, avec un point M égal à A plus t fois u marqué pour t positif ; puis ce même point repéré beaucoup plus loin, pour t très négatif, confrontant l’idée qu’une droite n’est pas un segment.">
+  <title>La droite : point, direction, et le paramètre t qui balaie tout</title>
+  <!--
+    droite-point-direction.svg — figure du R5.
+    Repère léger (O;i,j,k), en coin, juste pour situer la scène — pas de
+    plan gridé ici (ce n'est pas l'objet de ce rung). Perspective
+    cavalière, mêmes conventions que les autres figures de cette leçon.
+
+    u⃗ est un vecteur directeur générique u⃗ = (100,−50) en pixels — une
+    pente 2:1 sur le dessin, ni horizontale ni à 45°, pour bien montrer
+    qu'une droite n'a pas besoin d'être alignée sur les axes du repère.
+    A = (280,320). Tous les points de cette figure (A, l'extrémité de u⃗,
+    M, M') sont construits comme A + t·u⃗ pour un t précis — colinéaires
+    par construction, pas approximés à l'oeil :
+      extrémité de u⃗ : t=1 → (380,270)
+      M  (étape 2)    : t=2 → (480,220)
+      M' (étape 3)    : t=−2,3 → (50,435)
+    La droite tracée (étape 2) va de t=−2,5 (30,445) à t=3 (580,170).
+
+    Mise en étapes (StagedFigure) — 3 couches, le geste exact du R5 :
+    d'abord le point et sa direction, puis la droite complète (prolongée,
+    avec un point M « raisonnable » dessus), puis le même point repéré
+    beaucoup plus loin — confrontant « droite » et « segment ».
+    step-1 : le point A et le vecteur directeur u⃗ (flèche depuis A).
+    step-2 : + la droite complète (flèches aux deux bouts), + M = A + t·u⃗
+             pour t = 2.
+    step-3 : + M' repéré pour t = -2,3 (bien au-delà de A, côté opposé à
+             u⃗).
+  -->
+  <rect width="640" height="490" fill="var(--figure-surface)"/>
+
+  <g id="step-1">
+    <!-- ── Repère léger, en coin ──────────────────────────────────────────  -->
+    <line x1="60" y1="460" x2="105" y2="460" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <polygon points="113,460 103,456 103,464" fill="var(--figure-ink-soft)"/>
+    <line x1="60" y1="460" x2="82" y2="438" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <polygon points="88,432 80,435 83,443" fill="var(--figure-ink-soft)"/>
+    <line x1="60" y1="460" x2="60" y2="415" stroke="var(--figure-ink-soft)" stroke-width="1.3"/>
+    <polygon points="60,407 56,415 64,415" fill="var(--figure-ink-soft)"/>
+    <circle cx="60" cy="460" r="2.5" fill="var(--figure-ink-soft)"/>
+    <text x="44" y="476" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">O</text>
+
+    <!-- ── Le point A ─────────────────────────────────────────────────────  -->
+    <circle cx="280" cy="320" r="4" fill="var(--figure-ink)"/>
+    <text x="258" y="312" font-size="16" font-style="italic" fill="var(--figure-ink)">A</text>
+
+    <!-- ── Le vecteur directeur u⃗, accent (A à t=1, soit (380,270)) ──────  -->
+    <line x1="280" y1="320" x2="369" y2="275" stroke="var(--figure-accent)" stroke-width="2.4"/>
+    <polygon points="380,270 372,280 367,271" fill="var(--figure-accent)"/>
+    <line x1="316" y1="252" x2="328" y2="252" stroke="var(--figure-accent)" stroke-width="1.3"/>
+    <polyline points="324,249 328,252 324,255" fill="none" stroke="var(--figure-accent)" stroke-width="1.3"/>
+    <text x="330" y="266" font-size="16" font-style="italic" fill="var(--figure-accent)">u</text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- ── La droite complète (D), de t=-2,4 (40,440) à t=2,9 (570,175) ── -->
+    <line x1="40" y1="440" x2="570" y2="175" stroke="var(--figure-ink)" stroke-width="1.8"/>
+    <polygon points="30,445 42,444 38,436" fill="var(--figure-ink)"/>
+    <polygon points="580,170 572,179 568,171" fill="var(--figure-ink)"/>
+    <text x="500" y="163" font-size="13" fill="var(--figure-ink-soft)">(<tspan font-style="italic">D</tspan>)</text>
+
+    <!-- ── M = A + t·u⃗, pour t = 2 → (480,220) ────────────────────────────  -->
+    <circle cx="480" cy="220" r="4" fill="var(--figure-ink)"/>
+    <!-- M et t·u étaient écrits SUR la droite qui les porte (mesuré 113 %
+         et 93 %). Toutes deux passent au-dessus d'elle. -->
+    <text x="472" y="205" text-anchor="end" font-size="16" font-style="italic" fill="var(--figure-ink)">M</text>
+    <text x="490" y="234" font-size="12" fill="var(--figure-ink-soft)">t = 2</text>
+    <text x="356" y="270" font-size="13" font-style="italic" fill="var(--figure-ink)">t&#183;u</text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- ── M' repéré beaucoup plus loin, t = -2,3 → (50,435) ─────────────── -->
+    <circle cx="50" cy="435" r="4" fill="var(--figure-accent)"/>
+    <text x="18" y="420" font-size="16" font-style="italic" fill="var(--figure-accent)">M'</text>
+    <!-- Le paramètre remonte sous M′ : posé à y=472 il s'écrasait sur le
+         « O » du repère, en bas à gauche (recouvrement mesuré 71 %) — on
+         lisait « t = −2,O3 ». -->
+    <text x="8" y="452" font-size="11" fill="var(--figure-accent)">t = &#8722;2,3</text>
+    <text x="90" y="477" font-size="12" fill="var(--figure-ink-soft)">bien au-delà de A — la droite ne s’arrête pas</text>
+  </g><!-- /step-3 -->
+</svg>

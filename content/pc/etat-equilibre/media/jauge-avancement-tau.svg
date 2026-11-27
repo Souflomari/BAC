@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 364"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Jauge du taux d’avancement final tau pour le mélange Fe3+/SCN- : une barre d’avancement de 0 à x_max se remplit jusqu’à x_f, avec tau = x_f/x_max = 0,60 — une part notable des réactifs reste présente, en coexistence avec le produit. Une seconde barre, comparative, montre le cas d’une transformation totale (tau = 1) où le réactif disparaît entièrement : transformation limitée n’est pas transformation totale. Révélation progressive en 3 étapes.">
+  <title>La jauge du taux d&#8217;avancement final τ</title>
+  <!--
+    jauge-avancement-tau.svg — STAGED (docs/design/LESSON-EXPERIENCE-SPEC.md
+    §2), 3 étapes, R2 (chiffrer l'avancement).
+
+    Ce n'est pas un graphe dans le temps (contrairement à
+    equilibre-concentrations.svg / quotient-vers-K.svg de ce même chapitre) :
+    c'est une JAUGE — une barre d'avancement statique qui se remplit, du type
+    "réservoir/gauge". Le seuil de mise en étapes retenu est donc celui des
+    schémas (§2.5) : l'ordre des couches est un geste d'enseignement (la
+    jauge vide, puis son remplissage réel, puis le cas de contraste), pas le
+    canon "axes → données → lecture" réservé aux courbes tracées dans le
+    temps.
+
+    Exemple travaillé repris tel quel du texte (rung R2) : c0 = 2,0×10⁻³
+    mol/L, [FeSCN2+]eq = 1,2×10⁻³ mol/L, τ = 1,2/2,0 = 0,60. La fraction de
+    remplissage de la barre 1 (0,60) est donc calculée EXACTEMENT depuis ces
+    valeurs, pas choisie pour l'esthétique — cohérent avec la convention de
+    la figure sœur equilibre-concentrations.svg de ce chapitre (paliers
+    calés en proportion exacte sur les mêmes valeurs de R2).
+
+    Géométrie (calculée) :
+      barre 1 (notre mélange) : x = 100 à 560 (largeur 460 px) → 0 à x_max
+        x_f = 100 + 0,60×460 = 376
+      barre 2 (comparaison, τ = 1) : même x-span (100 à 560), remplie en
+        totalité — pas une seconde valeur mesurée, une simple mise en
+        contraste du cas τ = 1 défini au texte (rung R2 : "τ = 1, ou très
+        proche : la transformation est totale").
+
+    Rôle des couleurs :
+      remplissage "produit formé" (barre 1, 0 → x_f) + son étiquette
+        τ = x_f/x_max = 0,60                                    : --figure-accent
+        (le seul foyer : LA fraction réellement atteinte)
+      remplissage entier de la barre 2 (comparaison τ = 1) + l'étiquette
+        « réactif → 0 »                                         : --figure-accent
+        (même idée répétée en contraste — convention "foyer répété"
+        déjà utilisée dans ce corpus, ex. zones-predominance-2.svg)
+      jauge vide (rail neutre), réactifs restants (barre 1, x_f → x_max),
+        ticks, "0"/"x_max", cadre pointillé de la barre 2            : --figure-ink
+        / --figure-ink-soft / --figure-grid — jamais en accent
+
+    Mise en étapes (geste d'enseignement, reprend le rung R2 du texte) :
+      step-1 : la jauge vide — la barre 1 seule, cadre + graduations
+               "0"/"x_max", rien n'est encore rempli.
+      step-2 : le cas limité — la barre 1 se remplit jusqu'à x_f (0,60),
+               avec ses deux étiquettes (produit formé / réactifs restants).
+      step-3 : le contraste — une seconde barre, comparative, apparaît en
+               dessous : remplie en totalité (τ = 1), réactif → 0.
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — la jauge vide (rien n'est encore rempli)
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      La jauge du taux d&#8217;avancement final τ
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="20" y="32" width="600" height="306" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Étiquette de cas : barre 1 -->
+    <text x="100" y="54" font-size="11.5" font-weight="600"
+          fill="var(--figure-ink)">Notre mélange &#8212; transformation limitée</text>
+
+    <!-- Rail de la jauge (vide) : 0 à x_max -->
+    <rect x="100" y="112" width="460" height="46" rx="6"
+          fill="var(--figure-grid)" fill-opacity="0.55"
+          stroke="var(--figure-ink-soft)" stroke-width="1" stroke-opacity="0.6"/>
+
+    <!-- Graduations 0 / x_max -->
+    <line x1="100" y1="158" x2="100" y2="166" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="100" y="180" text-anchor="middle" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+    <line x1="560" y1="158" x2="560" y2="166" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="560" y="180" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">x<tspan dy="3" font-size="7.5">max</tspan></text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — le cas limité : la barre se remplit jusqu'à x_f
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Remplissage : produit formé, 0 → x_f (=376, soit 60 % de la largeur) -->
+    <rect x="100" y="112" width="276" height="46" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.32"/>
+
+    <!-- Séparateur x_f -->
+    <line x1="376" y1="108" x2="376" y2="162"
+          stroke="var(--figure-accent)" stroke-width="1.8"/>
+    <text x="376" y="180" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-accent)">x<tspan dy="3" font-size="7.5">f</tspan></text>
+
+    <!-- Étiquette : produit formé + τ -->
+    <text x="238" y="80" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-accent)">produit formé</text>
+    <text x="238" y="96" text-anchor="middle" font-size="9.5" font-style="italic"
+          fill="var(--figure-accent)">τ = x<tspan
+          dy="3" font-size="7">f</tspan><tspan
+          dy="-3"> / x</tspan><tspan
+          dy="3" font-size="7">max</tspan><tspan
+          dy="-3"> = 0,60</tspan>
+    </text>
+
+    <!-- Étiquette : réactifs restants (coexistence) -->
+    <text x="468" y="80" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-ink)">réactifs restants</text>
+    <text x="468" y="96" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-ink-soft)">(coexistence)</text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — le contraste : une seconde barre, transformation totale
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Étiquette de cas : barre 2 (comparaison) -->
+    <text x="100" y="210" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">Comparaison &#8212; transformation totale (τ = 1)</text>
+
+    <!-- Rail pointillé (cas hypothétique, pas notre mélange) -->
+    <rect x="100" y="224" width="460" height="46" rx="6"
+          fill="var(--figure-grid)" fill-opacity="0.55"
+          stroke="var(--figure-ink-soft)" stroke-width="1.1" stroke-opacity="0.6"
+          stroke-dasharray="5,3"/>
+
+    <!-- Remplissage total : τ = 1 -->
+    <rect x="100" y="224" width="460" height="46" rx="6"
+          fill="var(--figure-accent)" fill-opacity="0.32"/>
+
+    <!-- Graduations 0 / x_max -->
+    <line x1="100" y1="270" x2="100" y2="278" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="100" y="292" text-anchor="middle" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+    <line x1="560" y1="270" x2="560" y2="278" stroke="var(--figure-ink-soft)" stroke-width="1.1"/>
+    <text x="560" y="292" text-anchor="middle" font-size="10.5" font-style="italic"
+          fill="var(--figure-ink-soft)">x<tspan dy="3" font-size="7.5">max</tspan></text>
+    <text x="560" y="308" text-anchor="middle" font-size="10"
+          fill="var(--figure-accent)">réactif &#8594; 0</text>
+
+    <!-- Contraste explicite : limité ≠ total -->
+    <text x="320" y="330" text-anchor="middle" font-size="11" font-weight="600"
+          fill="var(--figure-ink)">transformation limitée (τ = 0,60) ≠ transformation totale (τ = 1)</text>
+  </g><!-- /step-3 -->
+
+</svg>

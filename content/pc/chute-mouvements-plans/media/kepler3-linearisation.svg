@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Graphe T carré en fonction de r cube pour des satellites d’un même astre : une droite passant par l’origine, de pente 4 pi carré sur GM, avec trois satellites de rayons différents placés exactement sur cette droite.">
+  <title>3e loi de Kepler — T² = f(r³), une droite par l’origine</title>
+  <!--
+    kepler3-linearisation.svg — STAGED (LESSON-EXPERIENCE-SPEC §2.5 : un
+    graphe est TOUJOURS staged, axes → données → lecture).
+
+    Établi en R10 : T²/r³ = 4π²/(GM) = constante, pour tous les satellites
+    d'UN MÊME astre central. Le graphe T²=f(r³) est donc une droite qui
+    PASSE PAR L'ORIGINE, de pente 4π²/GM.
+
+    Échelle DÉLIBÉRÉMENT non-SI (comme table-groupe.svg / kepler3 ne se
+    prête à aucune valeur lisible à l'échelle d'un panneau — r³ et T² réels
+    diffèrent de plusieurs ordres de grandeur) : axes gradués en unités
+    génériques ("r³", "T²"), sans chiffres inventés. Seule la structure
+    (droite, origine, 3 points alignés) porte le sens, fidèle au cours.
+
+    Géométrie : origine (90,340). Droite jusqu'à (560,90), direction
+    (470,−250). Points à t=0.35 / 0.65 / 0.90 le long du segment :
+      satellite 1 : (254.5, 252.5)
+      satellite 2 : (395.5, 177.5)
+      satellite 3 : (513, 115)
+    Les trois sont, par construction, EXACTEMENT sur la droite — la preuve
+    visuelle que T²/r³ est la même constante quel que soit r.
+
+    Rôle des couleurs :
+      droite (loi T²=f(r³), grandeur d'intérêt) : --figure-accent
+      axes, points, labels                       : --figure-ink / --figure-ink-soft
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="22" text-anchor="middle" font-size="12" font-weight="600"
+        letter-spacing="0.01em" fill="var(--figure-ink)">
+    3e loi de Kepler (cas circulaire) — T² = f(r³)
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="30" y="34" width="580" height="340" rx="6"
+        fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — le repère : axes r³ / T²
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <line x1="90" y1="340" x2="600" y2="340" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="600,340 588,335.5 588,344.5" fill="var(--figure-ink-soft)"/>
+    <line x1="90" y1="340" x2="90" y2="62" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="90,62 85.5,73 94.5,73" fill="var(--figure-ink-soft)"/>
+    <text x="608" y="344" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">r³</text>
+    <text x="82" y="66" text-anchor="end" font-size="12" font-style="italic" fill="var(--figure-ink-soft)">T²</text>
+    <text x="82" y="348" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">0</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — données : la droite T² = (4π²/GM)·r³, passant par l'origine
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <line x1="90" y1="340" x2="560" y2="90"
+          stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+    <!-- L'étiquette de pente vit sur le SEGMENT LIBRE de la droite, entre
+         l'origine et le satellite 1. Posée à (470;140), près du haut, elle
+         percutait « satellite 3 » (recouvrement 100 %) : les deux se
+         lisaient l'un dans l'autre. Ce défaut était INVISIBLE pour la sonde
+         jusqu'au 2026-09-04 — getBBox() ignore le transform, donc la boîte
+         mesurée était celle du texte NON tourné, ailleurs. La sonde ramène
+         désormais toutes les boîtes dans le repère du SVG racine. -->
+    <text x="125" y="313" font-size="11" font-style="italic" fill="var(--figure-accent)" transform="rotate(-28 125 313)">
+      pente = 4π² / (GM)
+    </text>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : trois satellites, exactement sur la droite
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <circle cx="254.5" cy="252.5" r="4.2" fill="var(--figure-ink)"/>
+    <line x1="254.5" y1="252.5" x2="254.5" y2="340" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="90" y1="252.5" x2="254.5" y2="252.5" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="254.5" y="238" text-anchor="middle" font-size="10" fill="var(--figure-ink)">satellite 1</text>
+
+    <circle cx="395.5" cy="177.5" r="4.2" fill="var(--figure-ink)"/>
+    <line x1="395.5" y1="177.5" x2="395.5" y2="340" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="90" y1="177.5" x2="395.5" y2="177.5" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="395.5" y="163" text-anchor="middle" font-size="10" fill="var(--figure-ink)">satellite 2</text>
+
+    <circle cx="513" cy="115" r="4.2" fill="var(--figure-ink)"/>
+    <line x1="513" y1="115" x2="513" y2="340" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="90" y1="115" x2="513" y2="115" stroke="var(--figure-ink-soft)" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="513" y="101" text-anchor="middle" font-size="10" fill="var(--figure-ink)">satellite 3</text>
+
+    <text x="320" y="360" text-anchor="middle" font-size="11" fill="var(--figure-accent)">même astre central → même droite, quel que soit r</text>
+  </g><!-- /step-3 -->
+
+</svg>

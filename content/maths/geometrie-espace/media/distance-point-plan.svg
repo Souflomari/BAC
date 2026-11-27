@@ -1,0 +1,77 @@
+<svg viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Un plan P avec un point A zéro dans le plan et un point M zéro hors du plan, reliés par le vecteur A zéro M zéro ; le pied H de la perpendiculaire abaissée de M zéro sur le plan, avec la distance d le long de la normale et l’angle droit en H, et la composante A zéro H restée dans le plan ; puis le vecteur normal n montré en A zéro, illustrant que seule la partie le long de n mesure la distance.">
+  <title>La distance d’un point à un plan : seule la partie « le long de n » compte</title>
+  <!--
+    distance-point-plan.svg — figure du R8.
+    Même convention que plan-normal.svg : plan en perspective cavalière
+    (arête horizontale vraie grandeur, arête de profondeur à 45° réduite),
+    et la direction normale n⃗ tracée verticale, vraie grandeur — donc
+    l'angle droit en H (entre M₀H, vertical, et A₀H, une direction dans
+    le plan) est réel dans l'espace (M₀H ⊥ tout le plan, donc ⊥ à A₀H
+    en particulier) mais son dessin en équerre n'est pas visuellement
+    carré à l'écran dès que A₀H n'est pas elle-même horizontale — même
+    imprécision divulguée et acceptée que dans plan-normal.svg.
+    Focus accent : le segment M₀H (= d, la distance) et le vecteur
+    A₀M₀ initial — l'idée centrale du rung : seule la composante le
+    long de n⃗ mesure un écart au plan.
+
+    Mise en étapes (StagedFigure) — 3 couches, le geste exact du R8 :
+    le vecteur brut d'abord, puis sa décomposition (la partie qui compte,
+    la partie qui ne compte pas), puis la lecture par le produit
+    scalaire via n⃗.
+    step-1 : le plan (P), A₀ dans le plan, M₀ hors du plan, le vecteur
+             A₀M₀ (accent).
+    step-2 : + H (pied de la perpendiculaire), M₀H = d (accent, angle
+             droit en H), A₀H (la composante restée dans le plan).
+    step-3 : + n⃗ montré en A₀, + la formule, + note sur A₀H.
+  -->
+  <rect width="680" height="460" fill="var(--figure-surface)"/>
+
+  <g id="step-1">
+    <!-- ── Le plan P, en perspective cavalière ─────────────────────────── -->
+    <path d="M 90 380 L 520 380 L 590 310 L 160 310 Z"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1.5"/>
+    <text x="514" y="342" font-size="15" fill="var(--figure-ink-soft)">(<tspan font-style="italic">P</tspan>)</text>
+
+    <!-- ── A₀, dans le plan ──────────────────────────────────────────────  -->
+    <circle cx="300" cy="355" r="4" fill="var(--figure-ink)"/>
+    <text x="278" y="376" font-size="16" font-style="italic" fill="var(--figure-ink)">A<tspan dy="4" font-size="70%">0</tspan></text>
+
+    <!-- ── M₀, hors du plan ──────────────────────────────────────────────  -->
+    <circle cx="380" cy="210" r="4" fill="var(--figure-ink)"/>
+    <text x="390" y="206" font-size="16" font-style="italic" fill="var(--figure-ink)">M<tspan dy="4" font-size="70%">0</tspan></text>
+
+    <!-- ── Vecteur A₀M₀, accent ───────────────────────────────────────────  -->
+    <line x1="300" y1="355" x2="373" y2="221" stroke="var(--figure-accent)" stroke-width="2.4"/>
+    <polygon points="380,210 371,220 365,213" fill="var(--figure-accent)"/>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- ── H, pied de la perpendiculaire ─────────────────────────────────  -->
+    <circle cx="380" cy="340" r="3.5" fill="var(--figure-ink)"/>
+    <text x="388" y="358" font-size="15" font-style="italic" fill="var(--figure-ink)">H</text>
+
+    <!-- ── A₀H, composante restée dans le plan (ink-soft) ─────────────────  -->
+    <line x1="300" y1="355" x2="380" y2="340" stroke="var(--figure-ink-soft)" stroke-width="1.8"/>
+
+    <!-- ── Angle droit en H ───────────────────────────────────────────────  -->
+    <path d="M 380 328 L 368 330 L 368 342" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
+
+    <!-- ── M₀H = d, accent, verticale, vraie grandeur ─────────────────────  -->
+    <line x1="380" y1="210" x2="380" y2="340" stroke="var(--figure-accent)" stroke-width="2.6"/>
+    <text x="390" y="280" font-size="16" font-style="italic" fill="var(--figure-accent)">d</text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- ── n⃗, montré en A₀, parallèle à M₀H ────────────────────────────── -->
+    <line x1="300" y1="355" x2="300" y2="317" stroke="var(--figure-ink)" stroke-width="2"/>
+    <polygon points="300,305 295,317 305,317" fill="var(--figure-ink)"/>
+    <line x1="316" y1="315" x2="328" y2="315" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <polyline points="324,312 328,315 324,318" fill="none" stroke="var(--figure-ink)" stroke-width="1.3"/>
+    <text x="316" y="335" font-size="15" font-style="italic" fill="var(--figure-ink)">n</text>
+
+    <text x="242" y="392" font-size="11" fill="var(--figure-ink-soft)">(ne mesure pas la distance)</text>
+
+    <text x="80" y="50" font-size="15" fill="var(--figure-ink)">d(M<tspan dy="3" font-size="70%">0</tspan><tspan dy="-3">, P) = |n &#183; A</tspan><tspan dy="3" font-size="70%">0</tspan><tspan dy="-3">M</tspan><tspan dy="3" font-size="70%">0</tspan><tspan dy="-3">| / ||n||</tspan></text>
+  </g><!-- /step-3 -->
+</svg>

@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 415" width="640" height="415"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Propagation d’une perturbation le long d’une corde, observée à deux instants : à l’instant t1 la déformation est au niveau de la source S ; à l’instant t2 = t1 + tau, la même déformation, inchangée, est arrivée au niveau du point M, situé à la distance d de S. M rejoue donc le mouvement de S avec le retard tau = d / v.">
+  <title>Retard de propagation : y_M(t) = y_S(t - tau)</title>
+  <!--
+    onde-propagation-retard.svg — figure STATIQUE, deux instantanés empilés
+    de la même perturbation transversale sur une corde.
+
+    Bande A (t = t1)      : la bosse (perturbation) est centrée EXACTEMENT
+                            sur le point S — S est donc, à cet instant,
+                            au sommet de son élongation ; M est encore au
+                            repos (la perturbation ne l'a pas atteint).
+    Bande B (t = t2 = t1+tau) : LA MÊME bosse (même largeur, même hauteur —
+                            même chemin de construction, seulement translaté)
+                            est maintenant centrée sur M ; S est revenu au
+                            repos. Le décalage horizontal entre les deux
+                            positions de la bosse est exactement d = x_M - x_S,
+                            ce qui rend la légende « d = v·τ » géométriquement
+                            exacte (pas une approximation).
+
+    Repères communs aux deux bandes (mêmes coordonnées x, pour que l'œil
+    puisse suivre S et M d'une bande à l'autre) :
+      x_S = 150   x_M = 470   d(px) = 320
+      bosse : demi-largeur 55px, amplitude 58px, construite par 2 Bézier
+      cubiques symétriques (même schéma de contrôle que les arches
+      sinusoïdales de regimes-uc.svg : contrôle à ±18 du pied, ±28 du pic).
+
+    Rôle des couleurs :
+      corde / bosse (la grandeur y)      : --figure-accent
+      points de repère S, M (neutres)    : --figure-ink
+      accolade "d = v·τ" (grandeur dérivée, écho du rôle de τ dans
+        i-etablissement.svg)             : --figure-energy-L
+      axes, flèche de propagation, titres de bande : --figure-ink-soft
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="18" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Propagation d’une perturbation : le retard τ entre S et M
+  </text>
+
+  <!-- Boîte formule (résultat central) -->
+  <rect x="205" y="26" width="230" height="30" rx="6"
+        fill="var(--figure-accent)" fill-opacity="0.12"/>
+  <text x="320" y="46" text-anchor="middle" font-size="13" font-style="italic"
+        fill="var(--figure-accent)">y<tspan
+        dy="3" font-size="9">M</tspan><tspan
+        dy="-3">(t) = y</tspan><tspan
+        dy="3" font-size="9">S</tspan><tspan
+        dy="-3">(t − τ)</tspan>
+  </text>
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — BANDE A — instant t1 : la bosse est sur S, M au repos
+       (mise en étapes StagedFigure, LESSON-EXPERIENCE-SPEC §2.5 — graphe,
+       toujours stagé : ce step = le signal source, "données")
+       rect y=64..204, baseline (corde au repos) y=159
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <rect x="40" y="64" width="560" height="140" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Repère y (légende de direction, pas un axe gradué) -->
+    <line x1="76" y1="159" x2="76" y2="114"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <polygon points="76,114 71.5,122 80.5,122" fill="var(--figure-ink-soft)"/>
+    <text x="70" y="110" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">y</text>
+
+    <!-- Flèche de propagation (zone dégagée entre la bosse et M) -->
+    <line x1="290" y1="95" x2="350" y2="95"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="350,95 338,90.5 338,99.5" fill="var(--figure-ink-soft)"/>
+    <text x="320" y="82" text-anchor="middle" font-size="9.5"
+          fill="var(--figure-ink-soft)">sens de propagation</text>
+    <text x="356" y="99" font-size="10" font-style="italic"
+          fill="var(--figure-ink-soft)">v</text>
+
+    <!-- Corde + bosse centrée sur S (x=150) — pied 95/205, pic (150,101) -->
+    <path d="M64,159 L95,159 C113,159 122,101 150,101 C178,101 187,159 205,159 L576,159"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Point S — au sommet de son élongation à t1 -->
+    <circle cx="150" cy="101" r="3.2" fill="var(--figure-ink)"/>
+    <text x="150" y="88" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-ink)">S</text>
+
+    <!-- Point M — encore au repos à t1 -->
+    <circle cx="470" cy="159" r="3.2" fill="var(--figure-ink)"/>
+    <text x="470" y="174" text-anchor="middle" font-size="11" font-style="italic"
+          fill="var(--figure-ink)">M</text>
+
+    <!-- Étiquette de bande, coin dégagé (droite, la bosse est à gauche) -->
+    <text x="580" y="86" text-anchor="end" font-size="11" font-weight="600"
+          fill="var(--figure-ink-soft)">À l’instant t<tspan dy="3" font-size="8">1</tspan></text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — BANDE B — instant t2 = t1 + τ : même bosse, sur M ; S repos
+       (ce step = le signal reçu en M + la mesure du retard, "lecture" —
+       ajouté en dernier, jamais avant que la source ait été établie)
+       rect y=216..366, baseline y=306
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <rect x="40" y="216" width="560" height="150" rx="8"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Repère y -->
+    <line x1="76" y1="306" x2="76" y2="261"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <polygon points="76,261 71.5,269 80.5,269" fill="var(--figure-ink-soft)"/>
+    <text x="70" y="257" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">y</text>
+
+    <!-- Corde + bosse centrée sur M (x=470) — MÊME construction que
+         bande A, translatée de +320 (=d) : pied 415/525, pic (470,248) -->
+    <path d="M64,306 L415,306 C433,306 442,248 470,248 C498,248 507,306 525,306 L576,306"
+          fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+          stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Point S — revenu au repos à t2 (label décalé à gauche pour ne pas
+         croiser le trait pointillé de l'accolade) -->
+    <circle cx="150" cy="306" r="3.2" fill="var(--figure-ink)"/>
+    <text x="142" y="321" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink)">S</text>
+
+    <!-- Point M — au sommet de son élongation à t2 (label décalé à droite) -->
+    <circle cx="470" cy="248" r="3.2" fill="var(--figure-ink)"/>
+    <text x="478" y="235" text-anchor="start" font-size="11" font-style="italic"
+          fill="var(--figure-ink)">M</text>
+
+    <!-- Accolade d = v·τ : chute pointillée depuis chaque point jusqu'à
+         la ligne d'accolade, puis ligne + petites marques pleines -->
+    <line x1="150" y1="306" x2="150" y2="336"
+          stroke="var(--figure-energy-L)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="470" y1="248" x2="470" y2="336"
+          stroke="var(--figure-energy-L)" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="150" y1="344" x2="470" y2="344"
+          stroke="var(--figure-energy-L)" stroke-width="2"/>
+    <line x1="150" y1="339" x2="150" y2="349"
+          stroke="var(--figure-energy-L)" stroke-width="2"/>
+    <line x1="470" y1="339" x2="470" y2="349"
+          stroke="var(--figure-energy-L)" stroke-width="2"/>
+    <text x="310" y="341" text-anchor="middle" font-size="11" font-weight="600"
+          font-style="italic" fill="var(--figure-energy-L)">d = v · τ</text>
+
+    <!-- Étiquette de bande, coin dégagé (gauche, la bosse est à droite) -->
+    <text x="60" y="238" text-anchor="start" font-size="11" font-weight="600"
+          fill="var(--figure-ink-soft)">À l’instant t<tspan
+          dy="3" font-size="8">2</tspan><tspan
+          dy="-3"> = t</tspan><tspan
+          dy="3" font-size="8">1</tspan><tspan
+          dy="-3"> + τ</tspan>
+    </text>
+  </g><!-- /step-2 -->
+
+</svg>

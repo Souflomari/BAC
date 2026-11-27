@@ -1,0 +1,21 @@
+# Line endings: LF everywhere, on every machine. Several gates compare files byte for byte
+# (sealed maps, figure previews, generated learner inputs) and the bash helpers break on CRLF —
+# a Windows checkout with core.autocrlf=true would otherwise turn green gates red.
+* text=auto eol=lf
+
+# Binary assets: never touched.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.mp3 binary
+*.mp4 binary
+*.ogg binary
+*.webm binary
+*.zip binary

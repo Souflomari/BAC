@@ -1,0 +1,20 @@
+{
+  "slug": "distribution-curseur-pH",
+  "control": {
+    "kind": "slider",
+    "axis": "pH",
+    "domain": [1, 9],
+    "step": 0.2,
+    "initial": 3.8
+  },
+  "bindings": [
+    { "target": "#curseur-ligne", "recompute": "cursorLine" },
+    { "target": "#curseur-point-ah", "recompute": "pointAH" },
+    { "target": "#curseur-point-a", "recompute": "pointA" },
+    { "target": "#curseur-ph-label", "recompute": "phLabel" },
+    { "target": "#curseur-pct-ah", "recompute": "pctAH" },
+    { "target": "#curseur-pct-a", "recompute": "pctA" }
+  ],
+  "unlockAfterStage": 4,
+  "readoutTemplate": "pH = {value} : %AH = {pctAH} %, %A⁻ = {pctA} %"
+}

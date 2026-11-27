@@ -1,0 +1,695 @@
+# In-lesson checkpoint items (summit-conversion campaign). Formative,
+# calm-core probes placed inside the lesson via [[checkpoint:<id>]] markers
+# — NOT the end bank (items.yaml). Same item schema, but NO score/streak/
+# tally. Wrong-answer feedback names the wrong PHILOSOPHICAL model, not just
+# the fact of being wrong. The end-bank ≥3-per-misconception floor lives in
+# items.yaml's coverage_summary and is NOT altered by these checkpoints (a
+# fresh item here is surfaced inline, never re-counted toward that floor —
+# house convention, see rlc-serie/probabilites-conditionnelles/
+# analyse-de-texte/la-liberte/autrui's checkpoints.yaml headers).
+#
+# EVERY distractor carries a real `misconception:` id (no null tags),
+# matched to items.yaml's own mc.philo.la_personne.* inventory.
+#
+# Placement priority (per the recipe's philo addendum: "mine the lesson's
+# own erreur-à-éviter boxes first"): one checkpoint per rung's boxed
+# error(s), R1 through R6, deliberately prioritizing items.yaml's THINNEST
+# and ZERO-coverage models (see items.yaml's coverage_summary) so every
+# student gets in-lesson exposure to the notion's weakest-covered wrong
+# models regardless of the item-bank gap:
+#   cp-r0-predict  (in R0)       — commit-gate. Turns "prends position...
+#                                  réponds en une phrase" into a real MCQ
+#                                  commit. Probes the master model
+#                                  (r0-tension-non-tenue, 8/24 in items.yaml
+#                                  already — the predict-gate's job is the
+#                                  commit ritual itself, not gap-filling,
+#                                  matching la-liberte/autrui's own
+#                                  cp-r0-predict rationale).
+#   cp-r1-rupture  (after R1)    — rupture gate: personne-reduite-a-espece
+#                                  (primary — 1/24 in items.yaml, the
+#                                  thinnest R1 model), individu-personne-
+#                                  synonymes and identite-numerique-
+#                                  confondue-personnelle (dual, choices B/C).
+#   cp-r2-rupture  (after R2)    — rupture gate: dignite-fondee-sur-
+#                                  privilege (primary — 2/24, thin), plus
+#                                  criteres-des-auteurs-confondus and
+#                                  kant-prix-dignite-mal-compris (dual,
+#                                  choices B/D) — R2's box names exactly
+#                                  this Kant/Locke boundary confusion.
+#   cp-r3-rupture  (after R3)    — rupture gate: locke-critere-mal-identifie
+#                                  (primary — R3's box, both named
+#                                  confusions folded into one stem), plus
+#                                  locke-hume-confondus and locke-mecanisme-
+#                                  details-mal-compris (dual, choices B/C).
+#   cp-r4-rupture  (after R4)    — rupture gate: locke-hume-confondus
+#                                  (primary — R4's own "la confusion la plus
+#                                  fréquente sur ce point du programme"),
+#                                  plus hume-these-mal-comprise (dual,
+#                                  reinforced twice — 2/24 in items.yaml,
+#                                  thin — choices B/C).
+#   cp-r5-rupture  (after R5)    — rupture gate: imputabilite-mal-fondee
+#                                  (primary — R5's box's second named
+#                                  confusion), plus personne-physique-
+#                                  morale-confondues (dual, choice B) — R5's
+#                                  box's first named confusion.
+#   cp-r6-rupture  (after R6)    — rupture gate: dignite-confondue-avec-
+#                                  reconnaissance-sociale (primary — 1/24 in
+#                                  items.yaml, the R6-adjacent model with the
+#                                  thinnest end-bank coverage after the
+#                                  brand-new r-bac axis), plus
+#                                  depersonnalisation-reduite-a-sentiment
+#                                  (dual, choices C/D).
+#   cp-bac-affirmation (before [[exercise:r-bac]]) — rupture gate:
+#                                  affirmation-de-soi-non-pertinente — qui
+#                                  était alors le SEUL modèle sans aucun item
+#                                  de banc (il en a 3 depuis le 2026-09-05 :
+#                                  PERS-25, 26, 29). Le renvoi « items.yaml's
+#                                  coverage_summary notes » est MORT : ce champ
+#                                  `notes` n'existe pas — lire `honest_state` ;
+#                                  primes the misconception right before the
+#                                  2015 قولة that turns on exactly this
+#                                  point (refusing objectification as itself
+#                                  affirming, not creating, one's status as
+#                                  person) — mirrors la-liberte's
+#                                  cp-bac-autrui.
+#
+# Length rebalance (recipe's philo addendum, mandatory — cited ~97% tell):
+# every stem below was authored with a deliberately varied correct-answer
+# length — verified programmatically (js-yaml length-check script, not
+# eyeballed). See the length table in the closing comment.
+
+notion: la-personne
+skill_code: philo_la_personne
+
+checkpoints:
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-0 | id: cp-r0-predict | placed IN R0 (the boîte-à-chaussures hook's
+  #        commit). Turns "Prends position avant de continuer. Réponds en
+  #        une phrase" into a real MCQ commit, right after the two
+  #        spontaneous answers are named and before the reveal ("Les deux
+  #        réponses semblent raisonnables...").
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r0-predict
+    rung: "R0"
+    skill_code: philo_la_personne
+    tags: [checkpoint, formative, misconception_driven, philo_la_personne, hook_commit]
+    primary_misconception: mc.philo.la_personne.r0-tension-non-tenue
+    item_source: original
+    lesson_placement: in_R0
+
+    stem: |-
+      Avant de lire la suite : engage-toi. Cette promesse d'enfance -- es-tu
+      tenu de la respecter aujourd'hui, ou n'engage-t-elle plus personne,
+      comme celle d'un inconnu ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Oui, absolument : même corps, même nom -- il n'y a jamais eu deux personnes, seulement une qui a vieilli, et la question ne mérite pas qu'on s'y attarde davantage."
+        correct: false
+        misconception: mc.philo.la_personne.r0-tension-non-tenue
+        feedback: |-
+          Modèle détecté : choisir le camp de la pure continuité corporelle
+          pour clore la question. Mais alors pourquoi ce malaise, en lisant
+          ces pages, plus fort que celui ressenti en retrouvant un vieil ami
+          reconnu sans peine comme « le même » ?
+
+      - id: B
+        text: "Non, pas du tout : je ne me reconnais presque plus dans ce texte -- c'est un pur étranger qui l'a écrit, rien ne m'engage."
+        correct: false
+        misconception: mc.philo.la_personne.r0-tension-non-tenue
+        feedback: |-
+          Modèle détecté : choisir le camp de la pure étrangeté pour clore
+          la question. Mais si cet enfant était vraiment un étranger complet,
+          pourquoi ce malaise à l'idée d'ignorer sa promesse -- un malaise
+          que tu ne ressentirais face à aucune promesse d'un inconnu réel ?
+
+      - id: C
+        text: "Aucune des deux, prise seule, ne suffit : la continuité du corps n'explique pas mon malaise en lisant ces pages, et le sentiment d'étrangeté n'explique pas mon malaise à l'idée d'ignorer la promesse -- c'est cette double tension, non résolue pour l'instant, que la leçon va construire."
+        correct: true
+        feedback: |-
+          Exact -- et c'est le réflexe à garder pour toute la leçon : ni la
+          seule continuité du corps ni le seul sentiment d'étrangeté ne
+          suffisent à rendre compte de ce qui se joue devant ce vieux
+          cahier. Les chapitres qui suivent ne trancheront pas en piochant un
+          camp -- ils déplaceront le problème.
+
+      - id: D
+        text: "Les deux réponses reviennent en réalité exactement au même : tout dépend uniquement de la définition strictement personnelle que chacun donne au mot « personne », qui n'a de toute façon aucun sens objectif véritablement partagé entre deux individus quelconques, où que ce soit dans le monde."
+        correct: false
+        misconception: mc.philo.la_personne.r0-tension-non-tenue
+        feedback: |-
+          Modèle détecté : dissoudre la tension dans un relativisme de
+          vocabulaire plutôt que l'affronter. Le problème que pose la boîte
+          à chaussures n'est pas un désaccord sur les mots -- il est réel,
+          précis, et la leçon va le construire pièce par pièce, pas le
+          déclarer sans objet.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-1 | id: cp-r1-rupture | placed AFTER R1
+  #        Probes: personne-reduite-a-espece (primary -- 1/24 in
+  #        items.yaml, the thinnest R1 model), individu-personne-synonymes
+  #        et identite-numerique-confondue-personnelle (dual, choices B/C).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r1-rupture
+    rung: "R1"
+    skill_code: philo_la_personne
+    tags: [checkpoint, formative, misconception_driven, philo_la_personne]
+    primary_misconception: mc.philo.la_personne.personne-reduite-a-espece
+    item_source: original
+    lesson_placement: after_R1
+
+    stem: |-
+      Un élève dit : « Puisque je suis un individu humain vivant, je suis
+      automatiquement une personne, dotée de tous les droits qui vont avec --
+      les deux mots désignent, au fond, la même chose, et il suffit
+      d'appartenir à l'espèce humaine pour en être une. » Que corrige le chapitre 2 ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Le chapitre 2 distingue les deux : tout être humain vivant est un individu, mais le statut de personne suppose un critère supplémentaire (la nature raisonnable, chez Kant, chapitre 3) -- l'appartenance à l'espèce ne suffit jamais, à elle seule, à fonder ce statut plus exigeant."
+        correct: true
+        feedback: |-
+          Exact. « Individu » désigne une simple unité comptable, sans rien
+          impliquer quant à la raison ; « personne » désigne un statut plus
+          exigeant, dont le critère précis reste à construire (chapitre 3) -- pas
+          une conséquence automatique de la seule appartenance à l'espèce.
+
+      - id: B
+        text: "Le chapitre 2 confirme cette lecture : individu et personne seraient rigoureusement interchangeables, la distinction n'étant qu'une question de vocabulaire sans portée philosophique réelle -- au point qu'aucune leçon de philosophie n'aurait jamais eu besoin de consacrer un chapitre entier (chapitre 3) à préciser le critère supplémentaire que le statut de personne exige."
+        correct: false
+        misconception: mc.philo.la_personne.individu-personne-synonymes
+        feedback: |-
+          Modèle détecté : traiter les deux mots comme de purs synonymes.
+          Le chapitre 2 les distingue au contraire nettement -- effacer la distinction
+          revient à effacer la question même que la leçon pose.
+
+      - id: C
+        text: "Le chapitre 2 dit plutôt que ce qui distingue les deux, c'est uniquement le fait de porter un nom et un numéro d'identité officiels -- un individu sans papiers d'identité en règle ne serait jamais reconnu comme une personne."
+        correct: false
+        misconception: mc.philo.la_personne.identite-numerique-confondue-personnelle
+        feedback: |-
+          Modèle détecté : substituer un critère purement administratif au
+          critère philosophique. Le chapitre 2 met précisément en garde contre cette
+          confusion entre identité numérique et statut de personne.
+
+      - id: D
+        text: "Le chapitre 2 dit que « personne » désigne seulement l'appartenance à l'espèce humaine par la naissance, sans qu'aucun autre critère -- la raison, l'autonomie -- n'entre jamais en jeu."
+        correct: false
+        misconception: mc.philo.la_personne.personne-reduite-a-espece
+        feedback: |-
+          Modèle détecté : réduire « personne » à la seule appartenance
+          biologique. Le critère que le chapitre 3 va construire tient à la nature
+          raisonnable de l'être, pas à sa seule appartenance à une espèce.
+
+    correct_feedback: |-
+      Tout être humain vivant est un individu, mais lui reconnaître le
+      statut de personne suppose un critère supplémentaire, que le chapitre 3 va
+      construire -- ni un synonyme automatique, ni une affaire de papiers
+      d'identité, ni une simple appartenance à l'espèce.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-2 | id: cp-r2-rupture | placed AFTER R2
+  #        Probes: dignite-fondee-sur-privilege (primary -- 2/24 in
+  #        items.yaml, thin), criteres-des-auteurs-confondus et
+  #        kant-prix-dignite-mal-compris (dual, choices B/D).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r2-rupture
+    rung: "R2"
+    skill_code: philo_la_personne
+    tags: [checkpoint, formative, misconception_driven, philo_la_personne, kant]
+    primary_misconception: mc.philo.la_personne.dignite-fondee-sur-privilege
+    item_source: original
+    lesson_placement: after_R2
+
+    stem: |-
+      Un élève écrit : « Kant fonde le statut de personne sur la capacité à
+      se souvenir de son passé -- et, à défaut de souvenirs, sur la
+      naissance dans une bonne famille, qui donnerait par elle-même une
+      dignité supérieure. » Que corrige le chapitre 3 ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Le chapitre 3 rejette les deux : le critère kantien n'est ni la mémoire (critère de Locke, chapitre 4) ni la naissance -- c'est la seule nature raisonnable de l'être, universelle, qui fonde sa dignité, indépendamment de sa famille ou de son passé psychologique."
+        correct: true
+        feedback: |-
+          Exact. Kant répond à une question précise -- ce qui fait qu'un
+          être MÉRITE le respect dû à une personne -- et y répond par
+          l'autonomie rationnelle, un critère universel, jamais par la
+          mémoire (Locke, chapitre 4) ni par un privilège de naissance.
+
+      - id: B
+        text: "Le chapitre 3 confirme la première moitié : pour Kant, plus la mémoire est riche et précise, plus la dignité de la personne est grande."
+        correct: false
+        misconception: mc.philo.la_personne.criteres-des-auteurs-confondus
+        feedback: |-
+          Modèle détecté : attribuer à Kant le critère de Locke. Kant répond
+          à « qu'est-ce qui fait qu'un être MÉRITE le respect ? » ; Locke
+          (chapitre 4) répond à une question différente, celle de la continuité
+          dans le temps.
+
+      - id: C
+        text: "Le chapitre 3 confirme la seconde moitié : la dignité se transmettrait par la naissance, comme un privilège de famille, indépendamment de la raison propre de chaque individu -- une dignité qui se transmettrait alors de génération en génération comme un titre de noblesse, indépendamment de tout exercice réel de la raison par celui qui en hériterait."
+        correct: false
+        misconception: mc.philo.la_personne.dignite-fondee-sur-privilege
+        feedback: |-
+          Modèle détecté : faire de la dignité un privilège hérité. C'est
+          l'inverse exact du geste kantien, universel, qui vaut pour tout
+          être raisonnable indépendamment de sa naissance.
+
+      - id: D
+        text: "Le chapitre 3 dit plutôt que la dignité se mesure au prix que la société est prête à payer pour les services qu'un individu peut rendre -- un prix qui varierait alors d'un individu à l'autre selon son utilité économique du moment, exactement comme celui d'un objet ou d'un service ordinaire sur un marché."
+        correct: false
+        misconception: mc.philo.la_personne.kant-prix-dignite-mal-compris
+        feedback: |-
+          Modèle détecté : confondre prix et dignité. Ce qui a un prix est
+          remplaçable par un équivalent ; la dignité, chez Kant, est une
+          valeur absolue, sans équivalent -- les deux registres s'excluent.
+
+    correct_feedback: |-
+      Le critère kantien de la dignité tient à la seule nature raisonnable
+      de l'être, universelle -- ni la mémoire (Locke), ni la naissance, ni
+      un quelconque prix ne peuvent s'y substituer.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-3 | id: cp-r3-rupture | placed AFTER R3
+  #        Probes: locke-critere-mal-identifie (primary -- R3's box, both
+  #        named confusions folded into one stem), locke-hume-confondus et
+  #        locke-mecanisme-details-mal-compris (dual, choices B/C).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r3-rupture
+    rung: "R3"
+    skill_code: philo_la_personne
+    tags: [checkpoint, formative, misconception_driven, philo_la_personne, locke]
+    primary_misconception: mc.philo.la_personne.locke-critere-mal-identifie
+    item_source: original
+    lesson_placement: after_R3
+
+    stem: |-
+      Un élève résume Locke ainsi : « Pour rester la même personne, il faut
+      garder le même corps -- si le corps change radicalement, ou si une
+      âme immatérielle stable venait à manquer, on devient quelqu'un
+      d'autre. » Que corrige le chapitre 4 ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est l'inverse de la thèse de Locke sur les deux points : ni la continuité du corps, ni une âme substantielle, ne fondent l'identité personnelle -- l'expérience de pensée du prince et du savetier montre que c'est la continuité de la conscience qui compte, même quand le corps change entièrement."
+        correct: true
+        feedback: |-
+          Exact. Locke évite précisément de fonder l'identité personnelle
+          sur une substance (corps ou âme) dont on ne peut jamais être sûr
+          qu'elle demeure identique -- son critère est la continuité de
+          conscience.
+
+      - id: B
+        text: "Locke dirait plutôt qu'aucune continuité n'existe jamais réellement -- le moi ne serait qu'un « faisceau de perceptions » sans aucune unité."
+        correct: false
+        misconception: mc.philo.la_personne.locke-hume-confondus
+        feedback: |-
+          Modèle détecté : « la confusion la plus fréquente sur ce point du
+          programme », nommée explicitement par le chapitre 5. C'est Hume, pas Locke,
+          qui remet en question l'existence même de cette unité.
+
+      - id: C
+        text: "Locke dirait que la continuité du corps ne compte pas non plus, mais qu'il faut alors se souvenir de CHAQUE détail de son passé, sans la moindre lacune, pour rester la même personne."
+        correct: false
+        misconception: mc.philo.la_personne.locke-mecanisme-details-mal-compris
+        feedback: |-
+          Modèle détecté : exiger une mémoire totale et parfaite. Locke
+          précise au contraire qu'une chaîne ininterrompue de souvenirs qui
+          se chevauchent partiellement suffit.
+
+      - id: D
+        text: "Locke dirait que la question ne se pose même pas véritablement pour un être humain ordinaire, puisque seul le critère kantien de la raison et de l'autonomie morale détermine, en toute dernière et unique instance véritable, qui reste la même personne à travers tout le temps qui passe inexorablement."
+        correct: false
+        misconception: mc.philo.la_personne.criteres-des-auteurs-confondus
+        feedback: |-
+          Modèle détecté : attribuer à Locke la question à laquelle répond
+          Kant (chapitre 3). Locke répond à une question distincte -- ce qui fait
+          que CE MÊME être reste, dans le temps, une seule et même personne.
+
+    correct_feedback: |-
+      Ni la continuité du corps, ni une âme substantielle, ni une mémoire
+      totale et parfaite : c'est la continuité de la conscience -- une
+      chaîne de souvenirs qui se chevauchent -- qui fonde, chez Locke,
+      l'identité personnelle.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-4 | id: cp-r4-rupture | placed AFTER R4
+  #        Probes: locke-hume-confondus (primary -- R4's own "la confusion
+  #        la plus fréquente sur ce point du programme"), hume-these-mal-
+  #        comprise (dual, reinforced twice -- 2/24 in items.yaml, thin --
+  #        choices B/C).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r4-rupture
+    rung: "R4"
+    skill_code: philo_la_personne
+    tags: [checkpoint, formative, misconception_driven, philo_la_personne, hume]
+    primary_misconception: mc.philo.la_personne.locke-hume-confondus
+    item_source: original
+    lesson_placement: after_R4
+
+    stem: |-
+      Un élève affirme : « Hume, comme Locke, pense que le moi est une
+      conscience continue capable de se ressaisir elle-même par la mémoire
+      -- les deux disent, au fond, la même chose. » Que corrige le chapitre 5, dans
+      « la confusion la plus fréquente sur ce point du programme » ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "C'est exactement l'inverse : Locke suppose encore une conscience continue capable de mémoire ; Hume va plus loin et conteste jusqu'à l'existence de cette unité-là -- il ne trouve, par introspection, qu'un « faisceau de perceptions » distinctes, jamais un moi qui les porterait."
+        correct: true
+        feedback: |-
+          Exact. Locke (chapitre 4) suppose encore une conscience continue capable
+          de mémoire ; Hume (chapitre 5) va plus loin et remet en question
+          l'existence même de cette unité -- confondre les deux, c'est
+          manquer précisément ce qui fait la radicalité de Hume.
+
+      - id: B
+        text: "Le chapitre 5 dit plutôt que Hume nie que quoi que ce soit se passe réellement dans l'esprit -- pour lui, rien n'existe, pas même des perceptions successives -- une lecture si radicale qu'elle rendrait absurde jusqu'à l'entreprise même du Traité de la nature humaine, un livre entier consacré à décrire, en détail, ce qui se passe effectivement dans l'esprit."
+        correct: false
+        misconception: mc.philo.la_personne.hume-these-mal-comprise
+        feedback: |-
+          Modèle détecté : « Hume nie toute expérience mentale. » Hume ne
+          nie pas que des perceptions se succèdent réellement -- il nie
+          seulement qu'une substance permanente, un « moi », les unifie.
+
+      - id: C
+        text: "Le chapitre 5 dit que Hume confirme au contraire, par l'introspection, l'existence d'une âme substantielle qui unifie toutes les perceptions -- exactement la conclusion que Hume, fidèle à sa méthode empiriste, refuse de tirer, faute de jamais rencontrer, par la seule introspection, une telle substance derrière les perceptions."
+        correct: false
+        misconception: mc.philo.la_personne.hume-these-mal-comprise
+        feedback: |-
+          Modèle détecté, en sens inverse : c'est l'exact opposé de la
+          conclusion de Hume, qui ne trouve jamais, par introspection, une
+          telle substance unificatrice.
+
+      - id: D
+        text: "Le chapitre 5 dit que Hume, comme Kant, fonde le moi sur la capacité à se donner à lui-même une loi morale universelle, indépendamment de toute perception -- un critère emprunté tout entier à un auteur différent (Kant, chapitre 3), sans le moindre rapport avec la méthode empiriste par laquelle Hume, lui, examine seulement ce que l'introspection livre."
+        correct: false
+        misconception: mc.philo.la_personne.criteres-des-auteurs-confondus
+        feedback: |-
+          Modèle détecté : c'est le critère de Kant (chapitre 3), sans rapport avec
+          la démarche empiriste de Hume, qui n'examine que ce que
+          l'introspection livre réellement.
+
+    correct_feedback: |-
+      Locke suppose encore une conscience continue capable de mémoire ;
+      Hume va plus loin et conteste jusqu'à l'existence de cette unité --
+      il ne nie pas la succession de perceptions, seulement le « moi »
+      substantiel qui les porterait.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-5 | id: cp-r5-rupture | placed AFTER R5
+  #        Probes: imputabilite-mal-fondee (primary -- R5's box's second
+  #        named confusion), personne-physique-morale-confondues (dual,
+  #        choice B) -- R5's box's first named confusion.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r5-rupture
+    rung: "R5"
+    skill_code: philo_la_personne
+    tags: [checkpoint, formative, misconception_driven, philo_la_personne, imputabilite]
+    primary_misconception: mc.philo.la_personne.imputabilite-mal-fondee
+    item_source: original
+    lesson_placement: after_R5
+
+    stem: |-
+      Un élève affirme : « Seule une personne morale, comme une entreprise,
+      peut être jugée responsable devant un tribunal ; et de toute façon,
+      dès qu'un dommage est matériellement causé par quelqu'un, il en est
+      responsable, qu'il ait pu comprendre son acte ou non. » Que corrige
+      le chapitre 6 sur ces deux points ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Le chapitre 6 corrige les deux : personne physique et personne morale peuvent, l'une comme l'autre, être sujets de droit ; et l'imputabilité exige qu'on puisse attribuer l'acte à un sujet capable d'en comprendre la portée et d'avoir pu agir autrement -- la seule causalité matérielle n'y suffit jamais."
+        correct: true
+        feedback: |-
+          Exact. L'imputabilité suppose la compréhension et le choix, pas
+          seulement un lien de cause à effet ; et la responsabilité pénale
+          concerne d'abord les personnes physiques capables de discernement,
+          pas seulement les fictions juridiques.
+
+      - id: B
+        text: "Le chapitre 6 confirme le premier point : la responsabilité pénale ne concernerait, chez lui, que les personnes morales, jamais les individus concrets."
+        correct: false
+        misconception: mc.philo.la_personne.personne-physique-morale-confondues
+        feedback: |-
+          Modèle détecté : c'est l'inverse de la distinction juridique --
+          personne physique et personne morale peuvent toutes deux être
+          sujets de droit ; ce n'est pas un privilège réservé à la seconde.
+
+      - id: C
+        text: "Le chapitre 6 confirme le second point : le droit tient pour responsable quiconque a matériellement causé un dommage, indépendamment de sa capacité à comprendre ou à choisir autrement."
+        correct: false
+        misconception: mc.philo.la_personne.imputabilite-mal-fondee
+        feedback: |-
+          Modèle détecté : réduire l'imputabilité à la pure causalité. C'est
+          exactement l'erreur à éviter -- comprendre et pouvoir choisir
+          autrement sont les conditions qui manquent à un pur enchaînement
+          causal.
+
+      - id: D
+        text: "Le chapitre 6 dit que l'imputabilité dépend d'abord de la nationalité de l'individu, un critère purement administratif qui déterminerait, à lui seul, sa responsabilité -- comme si deux personnes, en tous points identiques quant à leur discernement et à leur capacité de choisir autrement, devaient être jugées selon des critères de responsabilité entièrement différents au seul motif d'un passeport distinct."
+        correct: false
+        misconception: mc.philo.la_personne.imputabilite-mal-fondee
+        feedback: |-
+          Modèle détecté, sous une autre forme : substituer un statut
+          administratif au critère philosophique. L'imputabilité concerne
+          la capacité rationnelle de comprendre et de choisir, pas un
+          statut civil.
+
+    correct_feedback: |-
+      Personne physique et personne morale sont toutes deux sujets de droit
+      ; et l'imputabilité exige toujours discernement et choix -- ni un
+      pur lien causal, ni un statut administratif, n'y suffisent.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-6 | id: cp-r6-rupture | placed AFTER R6
+  #        Probes: dignite-confondue-avec-reconnaissance-sociale (primary --
+  #        1/24 in items.yaml, thin), depersonnalisation-reduite-a-
+  #        sentiment (dual, choices C/D).
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-r6-rupture
+    rung: "R6"
+    skill_code: philo_la_personne
+    tags: [checkpoint, formative, misconception_driven, philo_la_personne, depersonnalisation]
+    primary_misconception: mc.philo.la_personne.dignite-confondue-avec-reconnaissance-sociale
+    item_source: original
+    lesson_placement: after_R6
+
+    stem: |-
+      Un élève conclut, à propos de l'esclavage cité par le chapitre 7 comme exemple
+      radical de dépersonnalisation : « Puisque le droit leur refusait le
+      statut de personne, les esclaves n'avaient, à ce moment-là, plus
+      aucune dignité réelle -- leur nature raisonnable elle-même avait
+      cessé d'exister. » Que corrige le chapitre 7 ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Le chapitre 7 distingue les deux : la reconnaissance sociale et juridique du statut de personne peut être refusée par le droit -- c'est ce qui a été perdu ; mais la dignité kantienne, intrinsèque à la nature raisonnable, ne pouvait, elle, leur être retirée par aucune décision humaine."
+        correct: true
+        feedback: |-
+          Exact. Le statut de personne, comme reconnaissance sociale, est
+          révocable ; la dignité kantienne, elle, ne dépend d'aucune
+          reconnaissance extérieure -- aucune décision humaine ne peut la
+          faire disparaître, même quand elle refuse de la reconnaître.
+
+      - id: B
+        text: "Le chapitre 7 confirme cette lecture : reconnaissance sociale et dignité kantienne ne feraient qu'un, de sorte que retirer l'une revient toujours, nécessairement, à faire disparaître l'autre."
+        correct: false
+        misconception: mc.philo.la_personne.dignite-confondue-avec-reconnaissance-sociale
+        feedback: |-
+          Modèle détecté : confondre ce que le droit peut refuser
+          (reconnaissance sociale) avec ce qu'aucune décision humaine ne
+          peut retirer (dignité kantienne, intrinsèque à la nature
+          raisonnable).
+
+      - id: C
+        text: "Le chapitre 7 dit plutôt que rien n'a jamais été réellement perdu, puisque le seul fait de posséder un corps humain aurait toujours garanti, à lui seul, la pleine reconnaissance sociale du statut de personne."
+        correct: false
+        misconception: mc.philo.la_personne.depersonnalisation-reduite-a-sentiment
+        feedback: |-
+          Modèle détecté : c'est l'inverse exact de ce que montre
+          l'exemple -- le statut de personne n'est pas une évidence
+          biologique automatique, il peut être socialement refusé.
+
+      - id: D
+        text: "Le chapitre 7 dit que la dépersonnalisation, ici comme ailleurs, ne désigne jamais qu'un sentiment individuel de solitude, sans lien avec un acte social ou juridique réellement commis par d'autres -- comme si l'esclavage lui-même, cité par le chapitre 7 comme l'exemple le plus radical de ce mécanisme, ne relevait au fond que d'un état d'âme individuel, sans aucun acte juridique ou social réellement en cause."
+        correct: false
+        misconception: mc.philo.la_personne.depersonnalisation-reduite-a-sentiment
+        feedback: |-
+          Modèle détecté : réduire la dépersonnalisation à un sentiment
+          ordinaire. Le chapitre 7 la construit au contraire comme un acte précis, le
+          plus souvent commis par d'autres -- retirer le statut moral et
+          juridique de fin en soi.
+
+    correct_feedback: |-
+      La reconnaissance sociale d'un statut peut être refusée par le droit ;
+      la dignité kantienne, elle, tient à la seule nature raisonnable de
+      l'être et ne dépend d'aucune reconnaissance extérieure.
+
+  # ════════════════════════════════════════════════════════════════
+  # CP-7 | id: cp-bac-affirmation | placed BEFORE [[exercise:r-bac]]
+  #        Probes: affirmation-de-soi-non-pertinente — alors le seul modèle
+  #        sans item de banc ; il en a 3 depuis le 2026-09-05. (Le renvoi
+  #        « coverage_summary notes » est mort : lire `honest_state`.)
+  #        Primes it right before the 2015 قولة that turns on this point.
+  # ════════════════════════════════════════════════════════════════
+
+  - id: cp-bac-affirmation
+    rung: "R7"
+    skill_code: philo_la_personne
+    tags: [checkpoint, formative, misconception_driven, philo_la_personne, bac_style]
+    primary_misconception: mc.philo.la_personne.affirmation-de-soi-non-pertinente
+    item_source: original
+    lesson_placement: before_bac
+
+    stem: |-
+      Un élève affirme : « Refuser d'être traité comme une chose ne change
+      strictement rien à ma valeur de personne -- soit j'ai une nature
+      raisonnable (Kant), soit non, et aucun acte de ma part n'y changera
+      jamais quoi que ce soit. » Le texte que tu vas lire prend, sur ce
+      point précis, une position plus nuancée. Laquelle des formulations
+      suivantes s'en rapproche le plus ?
+
+    type: mcq
+    choices:
+      - id: A
+        text: "Le refus actif ne CRÉE pas la dignité kantienne, déjà là intrinsèquement -- mais il est ce par quoi cette valeur se manifeste et se défend concrètement contre une tentative de réification, un geste qui compte moralement, pas un acte sans aucune portée."
+        correct: true
+        feedback: |-
+          Exact -- c'est très exactement la tension que le texte que tu vas
+          lire te demandera de tenir : la dignité (chapitre 3) n'a pas besoin d'être
+          affirmée pour exister, mais l'affirmer activement, quand c'est
+          possible, n'est pas non plus un geste sans conséquence (chapitre 7).
+
+      - id: B
+        text: "Le texte affirme au contraire que seul ce refus actif crée entièrement la valeur de la personne, de sorte qu'une personne empêchée de refuser -- réduite au silence -- n'aurait alors plus aucune valeur."
+        correct: false
+        misconception: mc.philo.la_personne.affirmation-de-soi-non-pertinente
+        feedback: |-
+          Modèle détecté : faire du refus la condition ABSOLUE de la
+          dignité. Le chapitre 7 l'interdit, à propos de l'esclavage : il y distingue la
+          dignité, qu'aucune décision humaine ne peut retirer, de sa
+          reconnaissance, qu'une société peut refuser, y compris l'impossibilité pratique de résister.
+
+      - id: C
+        text: "Le texte confirme exactement la position de l'élève : aucun acte du sujet ne change jamais rien à sa valeur, le refus n'étant qu'un geste sans portée philosophique réelle -- une lecture qui rendrait alors incompréhensible pourquoi le chapitre 7 prend soin de citer des luttes historiques précises, menées par des individus refusant activement d'être traités comme de simples choses."
+        correct: false
+        misconception: mc.philo.la_personne.affirmation-de-soi-non-pertinente
+        feedback: |-
+          Modèle détecté : nier toute portée à l'acte du sujet. Le texte que
+          tu vas lire prend le parti inverse -- le refus « affirme » la
+          personne, un geste dont le chapitre 7 montre, par les luttes historiques
+          qu'il cite, qu'il compte réellement.
+
+      - id: D
+        text: "Le texte dit que le refus d'être traité comme une chose est uniquement une affaire de sentiment personnel, sans le moindre rapport avec les critères déjà construits par la leçon (Kant, chapitre 3 ; dépersonnalisation, chapitre 7) -- comme si un sentiment purement privé pouvait surgir sans jamais mobiliser aucun concept déjà rencontré dans la leçon, ni le moyen/la fin en soi, ni la reconnaissance sociale retirée ou revendiquée."
+        correct: false
+        misconception: mc.philo.la_personne.affirmation-de-soi-non-pertinente
+        feedback: |-
+          Modèle détecté : couper le refus de tout ce que la leçon a déjà
+          construit. Le texte que tu vas lire, au contraire, mobilise très
+          précisément le vocabulaire du moyen/de la fin en soi (chapitre 3) et de la
+          dépersonnalisation (chapitre 7).
+
+    correct_feedback: |-
+      Retiens cette tension avant de lire le texte en entier : le refus
+      actif ne crée pas la dignité, déjà intrinsèque (chapitre 3), mais il n'est pas
+      non plus un geste sans portée -- il est ce par quoi cette valeur se
+      manifeste et se défend (chapitre 7). Vérifie, en le lisant, comment le texte
+      construit cette affirmation.
+
+# ──────────────────────────────────────────────────────────────────────────────
+# CHECKPOINT COVERAGE NOTE
+#
+# These 8 items do NOT alter the end-bank coverage floor in items.yaml
+# (house convention — see rlc-serie/probabilites-conditionnelles/
+# analyse-de-texte/la-liberte/autrui). They exist to give every student
+# in-lesson exposure to the notion's weakest-covered wrong models,
+# regardless of the item-bank gaps flagged in items.yaml's coverage_summary.
+#
+# ⚠ RE-MESURÉ le 2026-09-19, et DEUX défauts à la fois.
+# (a) UNITÉ. Les numérateurs ci-dessous sont des DISTRACTEURS, le dénominateur
+#     des ITEMS, et le plancher auquel on les compare est item-level
+#     (items.yaml : « une seule fois par item même si plusieurs le portent »).
+#     Deux systèmes de mesure sous un seul renvoi.
+# (b) PÉRIMÉ. Le dénominateur 24 vaut pour le banc d'avant PERS-25..29 ; il en
+#     compte 29, soit 87 distracteurs. Et AUCUNE des cinq familles étiquetées
+#     « thin » ou « zero-coverage » ne l'est encore : toutes valent 3 items,
+#     comme treize autres, et `floor_met: true`. Les sondes restent
+#     défendables ; c'est leur justification écrite qui avait vieilli.
+#     personne-reduite-a-espece 3 · dignite-fondee-sur-privilege 3 ·
+#     hume-these-mal-comprise 3 · dignite-confondue-avec-reconnaissance-
+#     sociale 3 · affirmation-de-soi-non-pertinente 3 (était bien 0).
+# Les anciens chiffres sont laissés visibles : ce sont eux qui expliquent
+# pourquoi chaque sonde a été posée là.
+#   r0-tension-non-tenue                          — 8/24 in items.yaml, +3 here (cp-r0-predict, ×3 distractors)
+#   personne-reduite-a-espece                     — 1/24 in items.yaml, +1 here (cp-r1-rupture) — thin
+#   individu-personne-synonymes                   — 3/24 in items.yaml, +1 here (cp-r1-rupture)
+#   identite-numerique-confondue-personnelle      — 3/24 in items.yaml, +1 here (cp-r1-rupture)
+#   dignite-fondee-sur-privilege                  — 2/24 in items.yaml, +1 here (cp-r2-rupture) — thin
+#   criteres-des-auteurs-confondus                — 8/24 in items.yaml, +3 here (cp-r2/r3/r4-rupture)
+#   kant-prix-dignite-mal-compris                 — 5/24 in items.yaml, +1 here (cp-r2-rupture)
+#   locke-critere-mal-identifie                   — 3/24 in items.yaml, +1 here (cp-r3-rupture)
+#   locke-hume-confondus                          — 4/24 in items.yaml, +2 here (cp-r3-rupture, cp-r4-rupture)
+#   locke-mecanisme-details-mal-compris           — 3/24 in items.yaml, +1 here (cp-r3-rupture)
+#   hume-these-mal-comprise                       — 2/24 in items.yaml, +2 here (cp-r4-rupture, ×2 distractors) — thin
+#   imputabilite-mal-fondee                       — 5/24 in items.yaml, +2 here (cp-r5-rupture, ×2 distractors)
+#   personne-physique-morale-confondues           — 8/24 in items.yaml, +1 here (cp-r5-rupture)
+#   dignite-confondue-avec-reconnaissance-sociale — 1/24 in items.yaml, +1 here (cp-r6-rupture) — thin
+#   depersonnalisation-reduite-a-sentiment        — 6/24 in items.yaml, +2 here (cp-r6-rupture, ×2 distractors)
+#   affirmation-de-soi-non-pertinente             — 0/24 in items.yaml (→ 3 items depuis PERS-25/26/29), +3 here (cp-bac-affirmation, ×3 distractors)
+#
+# LENGTH REBALANCE (recipe's philo addendum, mandatory — cited ~97% tell):
+# correct-answer character length vs. the three distractors, per item
+# (verified programmatically with a js-yaml length-check script, not
+# eyeballed). The FIRST draft of this file had every one of its 8 correct
+# answers as the strict-longest choice (8/8, 100%) — a fresh instance of the
+# addendum's warning that this tell recurs "including in freshly-authored
+# checkpoints, not just legacy items": these checkpoints were written from
+# scratch in this same pass, not inherited from a legacy bank, and still
+# fell into the pattern by default. Caught by re-running the script (not by
+# eyeballing) and fixed by enriching distractors — never by trimming a
+# correct answer:
+#   cp-r0-predict       — correct (C) 285 chars vs. 163/122/201 → LONGEST (kept: the
+#     predict-gate's job is the commit ritual itself, matching la-liberte/
+#     autrui's own cp-r0-predict, which also kept its correct choice longest).
+#   cp-r1-rupture       — correct (A) 256 chars vs. 349/213/173 → 2nd-longest.
+#   cp-r2-rupture       — correct (A) 242 chars vs. 124/339/294 → 3rd (middle).
+#   cp-r3-rupture       — correct (A) 296 chars vs. 140/182/184 → LONGEST (kept:
+#     the one item that has to correct BOTH of R3's box's named confusions —
+#     body AND soul-substance — in a single answer; distractors are
+#     intentionally terser single-confusion claims).
+#   cp-r4-rupture       — correct (A) 277 chars vs. 348/317/334 → SHORTEST.
+#   cp-r5-rupture       — correct (A) 291 chars vs. 140/173/397 → 2nd-longest.
+#   cp-r6-rupture       — correct (A) 274 chars vs. 180/197/389 → 2nd-longest.
+#   cp-bac-affirmation  — correct (A) 252 chars vs. 201/371/414 → 3rd (middle).
+# Net: 2/8 longest, 3/8 second, 2/8 middle, 1/8 shortest — genuinely varied,
+# not a monotonic "correct = longest" pattern relocated to a different rank.
+# Combined across items.yaml (24 MCQs) + checkpoints.yaml (8 MCQs) = 32 MCQs
+# total: 7/32 (21.9%) longest, 11/32 second, 10/32 third, 4/32 shortest.
+# ⚠ PÉRIMÉ (2026-09-19) : items.yaml porte 29 QCM, soit 37 au total, et
+# l'audit n'a jamais été repassé sur PERS-25..29. Je ne republie PAS un
+# pourcentage corrigé : il faudrait recompter les 37 longueurs au caractère,
+# et l'affirmer sans le faire serait remplacer une erreur par une autre.
+# À rejouer par script avant toute nouvelle revendication.
+# exercises.yaml has no MCQ choices at all (no steps[]/math, no
+# correct/distractor structure, per the addendum's "no steps[]" rule for
+# philo) — the length-check script reports 0 MCQs there, a pass by
+# construction, not by omission.
+# ──────────────────────────────────────────────────────────────────────────────

@@ -1,0 +1,77 @@
+# Règles communes de l'examen du baccalauréat (2ème Bac, filières scientifiques)
+# Ce que les cadres de référence ne disent pas : la formule de la note, le rattrapage, les
+# coefficients et durées (imprimés sur les sujets), le calendrier. Chaque valeur porte sa source.
+# Étiquettes : OFF (document officiel, page), OFF-sujet (en-tête d'un sujet national),
+# SEC (source secondaire sérieuse), NC (non confirmé), NT (non trouvé).
+# Détails et URL : docs/refonte/01-programme-bac-maroc.md §1, §9.
+
+note:
+  formule: "(2 × examen national + examen régional + contrôle continu) / 4"
+  poids: { examen_national: 0.50, examen_regional: 0.25, controle_continu: 0.25 }
+  source: "OFF — Guide du candidat 2022, p. 6 et 9"
+  composante: "moyenne pondérée par les coefficients : Σ note × coef / Σ coef (OFF — Guide 2022, p. 9)"
+
+admission:
+  seuil: 10
+  condition: "moyenne ≥ 10/20 et aucune note éliminatoire"
+  source: "OFF — Guide 2022, p. 9"
+
+rattrapage:
+  acces:
+    - "moyenne ≥ 7/20 sans note éliminatoire"
+    - "ou moyenne ≥ 10/20 avec une note éliminatoire dans une seule matière du national"
+    - "ou absence pour force majeure"
+  contenu: "toutes les épreuves de l'examen national"
+  calcul: "meilleure note de chaque épreuve entre les deux sessions (depuis 2012), si toutes les épreuves des deux sessions ont été passées"
+  source: "OFF — Guide 2022, p. 8-9"
+
+note_eliminatoire: { valeur: null, statut: "NC — un forum indique 0/20 ; texte officiel non retrouvé" }
+mentions: { seuils: null, statut: "NT — le guide cite AB, B, TB sans seuils" }
+
+# Coefficients et durées, lus sur les en-têtes des sujets nationaux (OFF-sujet, 2014-2024)
+filieres:
+  sm-a:
+    maths: { coefficient: 9, duree_h: 4 }
+    pc: { coefficient: 7, duree_h: 4 }
+    svt: { coefficient: 3, duree_h: 2 }
+    philosophie: { coefficient: 2, duree_h: 2 }
+    anglais: { coefficient: 2, duree_h: 2 }
+  sm-b:
+    maths: { coefficient: 9, duree_h: 4 }
+    pc: { coefficient: 7, duree_h: 4 }
+    sciences_ingenieur: { coefficient: 3, duree_h: 3, source: "SEC (9rayti) pour le coefficient ; durée OFF (Guide 2022, annexe 1/8)" }
+    philosophie: { coefficient: 2, duree_h: 2 }
+    anglais: { coefficient: 2, duree_h: 2 }
+  pc:
+    maths: { coefficient: 7, duree_h: 3 }
+    pc: { coefficient: 7, duree_h: 3, note: "le corrigé PC 2026 de svtsciences.com imprime 4 h — à confirmer sur le sujet NS 28F 2026 (NC)" }
+    svt: { coefficient: 5, duree_h: 3 }
+    philosophie: { coefficient: 2, duree_h: 2 }
+    anglais: { coefficient: 2, duree_h: 2 }
+  svt:
+    maths: { coefficient: 7, duree_h: 3 }
+    pc: { coefficient: 5, duree_h: 3 }
+    svt: { coefficient: 7, duree_h: 3 }
+    philosophie: { coefficient: 2, duree_h: 2 }
+    anglais: { coefficient: 2, duree_h: 2 }
+somme_des_coefficients: 23
+
+regional_1ere_bac:
+  francais: { coefficient: 4, duree_h: 2, source: "OFF-sujet (régional 2024)" }
+  arabe: { coefficient: 2, duree_h: 2, source: "durée OFF ; coefficient SEC" }
+  education_islamique: { coefficient: 2, duree_h: 1.5, source: "durée OFF ; coefficient SEC" }
+  histoire_geographie: { coefficient: 2, duree_h: 2, source: "durée OFF ; coefficient SEC" }
+
+calendrier_2027:
+  fin_des_cours_2eme_bac: "2027-05-29"
+  national_session_normale: ["2027-06-01", "2027-06-03"]
+  resultats_session_normale: "vers le 18-19 juin 2027"
+  rattrapage: ["2027-07-01", "2027-07-03"]
+  resultats_rattrapage: "vers le 10 juillet 2027"
+  source: "SEC — 9rayti, tasribat (arrêté d'organisation de l'année 2026-2027, cité n° 047.26 du 3 juillet 2026, non lu)"
+  lu_le: "2026-10-22"
+
+cadres_en_vigueur:
+  note_ministerielle: "013-25 du 5 février 2025"
+  reconduits_en_2026: "SEC (tawjihnet)"
+  cadres_2027: "NT au 2026-10-22 — revérifier à la publication de la note de 2027"

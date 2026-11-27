@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 560" width="640" height="560"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     role="img"
+     aria-label="La courbe de f(x) = x cube moins 3x : un maximum local en x = -1 (valeur 2) et un minimum local en x = 1 (valeur -2), avec une tangente horizontale à chaque extremum. Juste en dessous, le tableau de signes de f prime aligné sur le même axe : positif avant -1, négatif entre -1 et 1, positif après 1 — avec les flèches de variation correspondantes, croissante, décroissante, croissante.">
+  <title>Signe de f′ et sens de variation — la courbe de f(x) = x³ − 3x</title>
+  <!--
+    tableau-variations-courbe.svg — graphe STAGÉ (3 étapes, LESSON-EXPERIENCE-
+    SPEC §2.5 : "graphes toujours stagés") de f(x) = x³-3x (l'exemple travaillé
+    du R4 de la leçon : le "callback" au chapitre précédent), surmonté d'un
+    tableau de signes/variations de f' aligné sur le même axe des x, en
+    dessous du graphe.
+
+    step-1 : chrome — axes du graphe + structure du tableau (bornes −∞/−1/
+             1/+∞, ligne de domaine, coches), rien de la fonction encore.
+    step-2 : données — la courbe de f(x) = x³−3x se trace.
+    step-3 : lecture — tangentes horizontales aux extremums A/B, repères
+             −1/1 dans le graphe, et la lecture correspondante dans le
+             tableau (signe de f′, flèches de variation).
+
+    Les captions sont portées par tableau-variations-courbe.stages.json
+    (figcaption hors-SVG) — aucun texte de légende baké ici (convention
+    alignée sur regimes-uc.svg / tangente-derivee.svg).
+
+    Fonction : f(x) = x³ - 3x  =>  f'(x) = 3x² - 3 = 3(x-1)(x+1).
+    Racines de f' : x = -1 et x = 1 (les deux extremums locaux du texte).
+    f(-1) = -1+3 = 2 (maximum local)  ;  f(1) = 1-3 = -2 (minimum local)
+    — valeurs identiques à celles calculées dans la leçon (R4).
+
+    Géométrie du graphe (calculée, pas devinée) :
+      mapping : x_px = 320 + 110·x ,  y_px = 222 - 40·f(x)
+      donc l'origine (x=0, f=0) est en pixel (320, 222).
+
+      Courbe : échantillonnée pas=0,2 de x=-2,2 à x=2,2 (23 points),
+      f(x)=x³-3x exact à chaque point (fonction impaire, courbe
+      symétrique par rapport à l'origine — vérifiable point par point).
+
+      Point A (max local) : x=-1, f=2   -> x_px=210, y_px=142.
+      Point B (min local) : x=1,  f=-2  -> x_px=430, y_px=302.
+      (Symétrie vérifiée : réflexion de A par (320,222) donne bien
+      (430,302) = B.)
+
+    Tableau de signes/variations — MÊME échelle x_px que le graphe, pour
+    un alignement vertical exact (pas de "split attention" : les valeurs
+    -1 et 1 tombent aux mêmes x_px=210/430 dans les deux panneaux) :
+      intervalle ]-∞,-1[ : f'>0, milieu visuel x_px≈145 -> "+", "↗"
+      intervalle ]-1,1[  : f'<0, milieu visuel x_px=320  -> "−", "↘"
+      intervalle ]1,+∞[  : f'>0, milieu visuel x_px≈495 -> "+", "↗"
+
+    Rôle des couleurs :
+      tangentes horizontales aux extremums + points A,B + repères -1/1
+        dans le graphe : --figure-accent (LE sujet de cette figure)
+      courbe f(x), signes de f' et flèches de variation (contenu
+        pédagogique central, mais pas "le foyer" au sens de la consigne) :
+        --figure-ink
+      axes, tableau (ligne, coches, labels -∞/-1/1/+∞) : --figure-ink-soft
+        (chrome neutre, comme les axes des autres figures de la leçon)
+  -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 1 — chrome : axes du graphe + structure du tableau
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="320" y="20" text-anchor="middle"
+          font-size="12" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Signe de f′ et sens de variation — la courbe de f(x) = x³ − 3x
+    </text>
+
+    <!-- Fond du panneau graphe -->
+    <rect x="40" y="32" width="560" height="380" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- ── Axes du graphe — ink-soft, chrome neutre ─────────────── -->
+    <line x1="70" y1="222" x2="580" y2="222"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="580,222 568,217.5 568,226.5" fill="var(--figure-ink-soft)"/>
+    <line x1="320" y1="400" x2="320" y2="45"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="320,45 315.5,56 324.5,56" fill="var(--figure-ink-soft)"/>
+
+    <text x="589" y="226" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">x</text>
+    <text x="308" y="50" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">y</text>
+    <text x="308" y="236" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Fond du panneau tableau -->
+    <rect x="40" y="424" width="560" height="88" rx="6"
+          fill="var(--figure-surface)"
+          stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- Repères de bornes (valeurs de x) -->
+    <text x="72" y="444" font-size="10" fill="var(--figure-ink-soft)">−∞</text>
+    <text x="210" y="444" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">−1</text>
+    <text x="430" y="444" text-anchor="middle" font-size="11" fill="var(--figure-ink-soft)">1</text>
+    <text x="578" y="444" text-anchor="end" font-size="10" fill="var(--figure-ink-soft)">+∞</text>
+
+    <!-- Ligne de domaine + coches à −1 et 1 -->
+    <line x1="70" y1="454" x2="580" y2="454"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="210" y1="449" x2="210" y2="459"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+    <line x1="430" y1="449" x2="430" y2="459"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2"/>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 2 — données : la courbe de f(x) = x³ − 3x se trace
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-2">
+    <!-- Étiquette de la courbe -->
+    <text x="75" y="75" font-size="13" fill="var(--figure-ink)"
+      ><tspan font-style="italic">f</tspan><tspan>(</tspan><tspan font-style="italic">x</tspan
+      ><tspan>) = </tspan><tspan font-style="italic">x</tspan><tspan dy="-6" font-size="9">3</tspan
+      ><tspan dy="6"> − 3</tspan><tspan font-style="italic">x</tspan></text>
+
+    <!--
+      Courbe f(x) = x³-3x — polyligne calculée, pas=0,2, de x=-2,2 à x=2,2.
+      x_px = 320+110x ; y_px = 222-40·(x³-3x). Couleur ink : contenu
+      pédagogique central mais pas le "foyer accent" de cette figure.
+    -->
+    <path d="
+      M78,383.92 L100,302 L122,239.28 L144,193.84 L166,163.76
+      L188,147.12 L210,142 L232,146.48 L254,158.64 L276,176.56
+      L298,198.32 L320,222 L342,245.68 L364,267.44 L386,285.36
+      L408,297.52 L430,302 L452,296.88 L474,280.24 L496,250.16
+      L518,204.72 L540,142 L562,60.08
+    " fill="none"
+      stroke="var(--figure-ink)"
+      stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════════════════════════════
+       STEP 3 — lecture : tangentes horizontales aux extremums A/B,
+       repères −1/1, et la lecture correspondante dans le tableau
+       (signe de f′, flèches de variation) — LE sujet, en accent
+       ══════════════════════════════════════════════════════ -->
+  <g id="step-3">
+    <!-- Extremum A (maximum local, x=-1) -->
+    <line x1="185" y1="142" x2="235" y2="142"
+          stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="210" cy="142" r="3.2" fill="var(--figure-accent)"/>
+    <text x="210" y="124" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-ink)">A(−1 ; 2)</text>
+
+    <line x1="210" y1="145.2" x2="210" y2="217"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <line x1="210" y1="217" x2="210" y2="227"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="210" y="241" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">−1</text>
+
+    <!-- Extremum B (minimum local, x=1) -->
+    <line x1="405" y1="302" x2="455" y2="302"
+          stroke="var(--figure-accent)" stroke-width="2.4" stroke-linecap="round"/>
+    <circle cx="430" cy="302" r="3.2" fill="var(--figure-accent)"/>
+    <text x="430" y="320" text-anchor="middle" font-size="10.5" font-weight="600"
+          fill="var(--figure-ink)">B(1 ; −2)</text>
+
+    <line x1="430" y1="298.8" x2="430" y2="227"
+          stroke="var(--figure-accent)" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <line x1="430" y1="217" x2="430" y2="227"
+          stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <text x="430" y="241" text-anchor="middle" font-size="11"
+          fill="var(--figure-accent)">1</text>
+
+    <!-- Signe de f′ dans chaque intervalle -->
+    <text x="145" y="480" text-anchor="middle" font-size="14" font-weight="700"
+          fill="var(--figure-ink)">+</text>
+    <text x="320" y="480" text-anchor="middle" font-size="14" font-weight="700"
+          fill="var(--figure-ink)">−</text>
+    <text x="495" y="480" text-anchor="middle" font-size="14" font-weight="700"
+          fill="var(--figure-ink)">+</text>
+
+    <!-- Flèches de variation correspondantes -->
+    <text x="145" y="503" text-anchor="middle" font-size="16"
+          fill="var(--figure-ink)">↗</text>
+    <text x="320" y="503" text-anchor="middle" font-size="16"
+          fill="var(--figure-ink)">↘</text>
+    <text x="495" y="503" text-anchor="middle" font-size="16"
+          fill="var(--figure-ink)">↗</text>
+  </g><!-- /step-3 -->
+
+</svg>

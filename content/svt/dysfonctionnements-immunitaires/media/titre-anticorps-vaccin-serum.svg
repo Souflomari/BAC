@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-6 -2 708 404"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Titre d’anticorps au cours du temps, sur un même axe brisé (semaines puis années) : après une vaccination, le titre reste quasi nul les premiers jours, augmente progressivement jusqu’à un plateau maintenu pendant des années, puis remonte brutalement et plus haut lors d’un rappel — une immunité active et durable. Après une sérothérapie, le titre est déjà élevé dès les premières heures, sans délai, puis décline progressivement jusqu’à devenir quasi nul en quelques semaines, sans jamais remonter — une immunité passive et brève.">
+  <title>Titre d’anticorps : vaccination et sérothérapie, deux courbes en miroir</title>
+
+  <!--
+    titre-anticorps-vaccin-serum.svg — STAGED, 4 étapes cumulatives, les
+    courbes-miroir de R6 (« Teste ce modèle sur les courbes… »).
+    step-1 : les axes — temps depuis l'injection (x, échelle BRISÉE :
+             semaines puis années, étiquetée) et titre d'anticorps (y,
+             seul axe, partagé par les deux courbes). Rien de tracé.
+    step-2 : la courbe de vaccination (accent) — quasi nulle les premiers
+             jours, montée progressive, plateau durable (années), puis
+             remontée brutale et plus haute au rappel.
+    step-3 : la courbe de sérothérapie (ink-soft, neutre distinct) — déjà
+             élevée dès les premières heures, déclin progressif, quasi
+             nulle en quelques semaines.
+    step-4 : la lecture du contraste — délai (immédiat / progressif),
+             durée (années / semaines), et les deux étiquettes de synthèse
+             (« active + durable » / « passive + brève »). La courbe de
+             sérothérapie reste PLATE à zéro pendant tout le rappel — pas
+             de second pic, pas de mémoire.
+
+    UN SEUL jeu d'axes, les deux courbes superposées (la lecture en miroir
+    ne fonctionne que si elles sont visibles ensemble) — jamais deux
+    graphes séparés. L'échelle temporelle est brisée (marque de coupure
+    sur l'axe, zones « semaines » / « années » étiquetées) pour loger les
+    années du vaccin à côté des semaines du sérum sur la même figure —
+    formes SCHÉMATIQUES/QUALITATIVES uniquement, aucune donnée chiffrée.
+    Aucun second pic sur la courbe du sérum : l'absence de mémoire est
+    justement ce que cette figure montre.
+  -->
+
+  <!-- ══════════════════════════════ STEP 1 — les axes ═══════════════════ -->
+  <g id="step-1">
+    <!-- Titre -->
+    <text x="350" y="20" text-anchor="middle"
+          font-size="13" font-weight="600" letter-spacing="0.01em"
+          fill="var(--figure-ink)">
+      Titre d’anticorps : vaccination et sérothérapie
+    </text>
+
+    <!-- Fond du panneau -->
+    <rect x="40" y="30" width="630" height="274" rx="6"
+          fill="var(--figure-surface)" stroke="var(--figure-grid)" stroke-width="1"/>
+
+    <!-- axe des temps -->
+    <line x1="86" y1="270" x2="650" y2="270" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="650,270 638,265.5 638,274.5" fill="var(--figure-ink-soft)"/>
+    <text x="656" y="274" text-anchor="start" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">t</text>
+
+    <!-- axe y : titre d'anticorps -->
+    <line x1="86" y1="270" x2="86" y2="50" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="86,50 81.5,61 90.5,61" fill="var(--figure-ink-soft)"/>
+    <text x="80" y="46" text-anchor="end" font-size="10.5" fill="var(--figure-ink-soft)">titre d’anticorps</text>
+    <text x="78" y="274" text-anchor="end" font-size="9.5" fill="var(--figure-ink-soft)">0</text>
+
+    <!-- marque de coupure sur l'échelle temporelle -->
+    <line x1="293" y1="276" x2="299" y2="264" stroke="var(--figure-grid)" stroke-width="1.6"/>
+    <line x1="301" y1="276" x2="307" y2="264" stroke="var(--figure-grid)" stroke-width="1.6"/>
+
+    <!-- zones temporelles -->
+    <text x="188" y="292" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--figure-ink-soft)">semaines</text>
+    <text x="475" y="292" text-anchor="middle" font-size="9.5" font-weight="600" fill="var(--figure-ink-soft)">années</text>
+  </g><!-- /step-1 -->
+
+  <!-- ══════════════════════════════ STEP 2 — courbe vaccination ═════════ -->
+  <g id="step-2">
+    <line x1="185" y1="150" x2="199" y2="150" stroke="var(--figure-accent)" stroke-width="2.2"/>
+    <text x="203" y="153" text-anchor="start" font-size="10" font-weight="600" fill="var(--figure-accent)">vaccination</text>
+
+    <path d="
+      M90,268 L105,266 L120,260 L140,245 L160,222 L180,195 L200,168
+      L220,142 L240,120 L260,102 L278,90 L290,85 L296,83
+      L304,82 L340,79 L380,77 L420,76 L460,75 L500,75 L540,74
+      L555,72 L568,60 L578,46 L585,40 L590,37 L598,37 L608,42 L620,46 L628,48
+    " fill="none" stroke="var(--figure-accent)" stroke-width="2.4"
+      stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-2 -->
+
+  <!-- ══════════════════════════════ STEP 3 — courbe sérothérapie ═══════ -->
+  <g id="step-3">
+    <line x1="215" y1="205" x2="229" y2="205" stroke="var(--figure-ink-soft)" stroke-width="2.2"/>
+    <text x="233" y="208" text-anchor="start" font-size="10" font-weight="600" fill="var(--figure-ink-soft)">sérothérapie</text>
+
+    <path d="
+      M90,80 L100,80 L112,85 L130,100 L150,122 L170,148 L190,175
+      L210,200 L230,222 L250,242 L268,258 L282,266 L292,269 L296,270
+      L304,270 L350,270 L400,270 L450,270 L500,270 L550,270 L600,270 L628,270
+    " fill="none" stroke="var(--figure-ink-soft)" stroke-width="2.2"
+      stroke-linecap="round" stroke-linejoin="round"/>
+  </g><!-- /step-3 -->
+
+  <!-- ══════════════════════════════ STEP 4 — lecture du contraste ══════ -->
+  <g id="step-4">
+    <text x="100" y="68" text-anchor="start" font-size="9.5" font-weight="600" fill="var(--figure-ink-soft)">immédiat</text>
+    <line x1="92" y1="78" x2="98" y2="70" stroke="var(--figure-ink-soft)" stroke-width="0.9"/>
+
+    <text x="162" y="252" text-anchor="middle" font-size="9" font-weight="600" fill="var(--figure-accent)">délai (jours-semaines)</text>
+
+    <text x="450" y="58" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--figure-accent)">Vaccination : active + durable (mémoire)</text>
+
+    <text x="450" y="252" text-anchor="middle" font-size="10.5" font-weight="700" fill="var(--figure-ink-soft)">Sérothérapie : passive + brève (aucune mémoire)</text>
+
+    <text x="648" y="50" text-anchor="end" font-size="10" font-weight="700" fill="var(--figure-ink)">rappel</text>
+    <text x="648" y="63" text-anchor="end" font-size="8.5" fill="var(--figure-ink-soft)">réponse secondaire</text>
+  </g><!-- /step-4 -->
+
+</svg>

@@ -1,0 +1,55 @@
+{
+  "slug": "escalier-pas-a-pas",
+  "viewBox": "0 0 640 600",
+  "label": "Construction pas à pas de la suite récurrente uₙ₊₁ = f(uₙ) : montée jusqu'à f, report sur y = x, jusqu'à convergence vers le point fixe ℓ.",
+  "layout": "reserved-regions",
+  "regions": {
+    "chrome": { "x": 0, "y": 0, "w": 640, "h": 34 },
+    "figure": { "x": 20, "y": 34, "w": 600, "h": 506 },
+    "footer": { "x": 0, "y": 540, "w": 640, "h": 60 }
+  },
+  "beats": [
+    {
+      "id": "beat-0",
+      "caption": "Deux droites de référence : y = f(x), la règle de la suite, et y = x. Le point de départ, u₀ = 100, est marqué sur l'axe des abscisses.",
+      "tweens": []
+    },
+    {
+      "id": "beat-1",
+      "caption": "Monter jusqu'à la droite de f : la hauteur lue est u₁.",
+      "tweens": [
+        { "target": "#seg-v1", "verb": "trace", "duration": 0.6, "ease": "power2.out", "at": 0 },
+        { "target": "#dot-u1-f", "verb": "pulse-settle", "peak": 1, "settleTo": 1, "duration": 0.35, "at": 0.5 }
+      ]
+    },
+    {
+      "id": "beat-2",
+      "caption": "Glisser jusqu'à y = x : u₁ redevient une abscisse — prête à être réinjectée.",
+      "tweens": [
+        { "target": "#seg-h1", "verb": "trace", "duration": 0.55, "ease": "power2.out", "at": 0 },
+        { "target": "#tick-u1", "verb": "fade", "from": "down", "duration": 0.35, "at": 0.4 }
+      ]
+    },
+    {
+      "id": "beat-3",
+      "caption": "Même geste, encore.",
+      "tweens": [
+        { "target": "#seg-v2", "verb": "trace", "duration": 0.5, "ease": "power2.out", "at": 0 },
+        { "target": "#dot-u2-f", "verb": "pulse-settle", "peak": 1, "settleTo": 1, "duration": 0.3, "at": 0.4 },
+        { "target": "#seg-h2", "verb": "trace", "duration": 0.5, "ease": "power2.out", "at": 0.75 },
+        { "target": "#tick-u2", "verb": "fade", "from": "down", "duration": 0.35, "at": 1.1 }
+      ]
+    },
+    {
+      "id": "beat-4",
+      "caption": "Chaque aller-retour rapproche du point fixe ℓ, où f(ℓ) = ℓ.",
+      "tweens": [
+        { "target": "#seg-rest", "verb": "trace", "duration": 0.9, "ease": "power2.out", "at": 0 },
+        { "target": "#dots-rest", "verb": "fade", "from": "none", "duration": 0.35, "at": 0.8 },
+        { "target": "#fixed-guides", "verb": "fade", "from": "none", "duration": 0.35, "at": 1.05 },
+        { "target": "#dot-fixed", "verb": "pulse-settle", "peak": 1, "settleTo": 1, "duration": 0.4, "at": 1.15 },
+        { "target": "#tick-fixed", "verb": "fade", "from": "down", "duration": 0.4, "at": 1.3 }
+      ]
+    }
+  ]
+}

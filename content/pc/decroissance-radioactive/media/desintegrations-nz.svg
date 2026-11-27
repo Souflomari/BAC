@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Les désintégrations α, β⁻, β⁺ et γ replacées sur le même plan (Z,N) que la vallée de stabilité, avec les deux lois de conservation de Soddy (ΣA et ΣZ constants). La désintégration α déplace le noyau de ΔZ=−2, ΔN=−2 vers la vallée (exemple : radium 226 vers radon 222). La désintégration β⁻ déplace le noyau de ΔZ=+1, ΔN=−1 (exemple : carbone 14 vers azote 14). La désintégration β⁺ déplace le noyau de ΔZ=−1, ΔN=+1, un vecteur exactement opposé à β⁻ (exemple : sodium 22 vers néon 22). Le rayonnement γ ne déplace pas le noyau : ni A ni Z ne changent, seule l’énergie interne est évacuée.">
+  <title>Les désintégrations α, β⁻, β⁺, γ dans le plan (Z, N)</title>
+  <!--
+    desintegrations-nz.svg — diagramme STRUCTUREL STATIQUE, réutilise
+    EXACTEMENT le même repère (Z,N), la même droite N=Z et le même ruban
+    de stabilité que vallee-stabilite.svg (continuité visuelle R1→R2 —
+    voir ce fichier pour le détail du calcul du ruban et des échelles).
+    STAGED (LESSON-EXPERIENCE-SPEC §2.5), 5 étapes = un geste d'enseignement
+    (chaque type de désintégration s'ajoute un par un, sur le même fond) :
+      step-1 : cadre — la vallée calme (rappel, ink-soft ici : ce n'est
+               plus le sujet de CETTE figure) + les deux lois de Soddy
+      step-2 : α  — flèche vers le bas-gauche (ΔZ=−2, ΔN=−2)
+      step-3 : β⁻ — flèche vers le bas-droite (ΔZ=+1, ΔN=−1), exemple réel
+               ¹⁴C→¹⁴N (mêmes coordonnées que vallee-stabilite.svg)
+      step-4 : β⁺ — flèche vers le haut-gauche (ΔZ=−1, ΔN=+1), vecteur
+               EXACTEMENT opposé à celui de β⁻ (mêmes Δx,Δy, signe inversé)
+      step-5 : γ  — aucun déplacement ; un point qui reste en place + un
+               petit motif de rayonnement
+
+    Échelles (identiques à vallee-stabilite.svg) :
+      x = 80 + 25·Z px/proton ; y = 350 − 13·N px/neutron
+
+    DÉCISION DE CONCEPTION IMPORTANTE — schématique vs. littéral :
+    la loi (ΔZ,ΔN) de chaque désintégration est représentée EXACTEMENT ;
+    l'exemple β⁻ (¹⁴C→¹⁴N, Z:6→7, N:8→7) reprend les coordonnées réelles
+    de vallee-stabilite.svg (même ruban, même vérité géométrique). En
+    revanche le radium 226 (Z=88) et le sodium 22 (Z=11) ne peuvent pas
+    être placés à leurs coordonnées réelles sur ce même repère resserré
+    (Z≤~20, choisi en R1 pour loger le tritium et le chlore 37 lisiblement)
+    sans soit exclure Ra-226 du cadre, soit écraser toute la zone légère.
+    Les points de départ/arrivée de α et β⁺ sont donc des positions
+    SCHÉMATIQUES qui respectent exactement le VECTEUR (ΔZ,ΔN) demandé et
+    leur position qualitative par rapport au ruban (α : proche du bord
+    haut du ruban à grand Z, "trop lourd" plutôt que "hors bande
+    verticalement" — la physique réelle des émetteurs α ; β⁺ : nettement
+    sous le ruban, symétrique de β⁻) — l'équation réelle (Ra-226→Rn-222,
+    Na-22→Ne-22) est donnée par le texte flottant, jamais par la position
+    du point. Même principe de transparence que courbe-aston.svg (courbe
+    d'allure lissée hors des ancres réelles) et defaut-masse.svg (refus
+    de la fausse échelle).
+      α  : départ (Z=19,N=22)→(555,64) ; arrivée (Z=17,N=20)→(505,90)
+      β⁻ : départ (Z=6,N=8) →(230,246) [= ¹⁴C, RÉEL, cf vallee-stabilite.svg]
+           arrivée (Z=7,N=7)→(255,259) [= ¹⁴N, RÉEL]
+      β⁺ : départ (Z=9,N=7) →(305,259) (schématique, sous le ruban)
+           arrivée (Z=8,N=8)→(280,246) (dans le ruban)
+      Vérification du vecteur opposé : β⁻ Δ(x,y)=(+25,+13) ;
+        β⁺ Δ(x,y)=(−25,−13) — strictement opposés, pixel pour pixel.
+      γ  : point (Z=12,N=15)→(380,155), dans le ruban (upper à Z=12≈153,3 ;
+           point à 155, juste en dessous : un noyau déjà à la bonne
+           composition, seulement excité)
+
+    Flèches diagonales : triangle de pointe calculé (12 px de long, 4,5 px
+    de demi-largeur — mêmes proportions que les flèches d'axe de
+    decroissance-courbe.svg), pas de <marker> SVG (pas utilisé ailleurs
+    dans ce corpus de figures — cohérence avec l'existant).
+
+    Rôle des couleurs :
+      axes, droite N=Z, ruban (ici RAPPEL, pas le sujet) : --figure-ink-soft
+      flèches de désintégration, points de départ/arrivée, encadré des
+        lois de Soddy : --figure-accent (le sujet de CETTE figure)
+      équations nucléides (¹⁴C→¹⁴N, etc.) : --figure-ink
+      notes ΔZ/ΔN, "ni A ni Z ne changent" : --figure-ink-soft
+      phrase d'insistance "sens opposés" (step-4) : --figure-ink
+  -->
+
+  <!-- Titre -->
+  <text x="320" y="20" text-anchor="middle"
+        font-size="12" font-weight="600" letter-spacing="0.01em"
+        fill="var(--figure-ink)">
+    Les désintégrations α, β⁻, β⁺, γ — déplacements dans le plan (Z, N)
+  </text>
+
+  <!-- Fond du panneau -->
+  <rect x="40" y="32" width="590" height="350" rx="6"
+        fill="var(--figure-surface)"
+        stroke="var(--figure-grid)" stroke-width="1"/>
+
+  <g id="step-1">
+    <!-- ── Axes — ink-soft, chrome neutre (identique à vallee-stabilite.svg) -->
+    <line x1="80" y1="350" x2="610" y2="350"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="610,350 598,345.5 598,354.5" fill="var(--figure-ink-soft)"/>
+    <line x1="80" y1="350" x2="80" y2="50"
+          stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="80,50 75.5,61 84.5,61" fill="var(--figure-ink-soft)"/>
+    <text x="617" y="354" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">Z</text>
+    <text x="72" y="54" text-anchor="end" font-size="11" font-style="italic"
+          fill="var(--figure-ink-soft)">N</text>
+    <text x="72" y="354" text-anchor="end" font-size="10"
+          fill="var(--figure-ink-soft)">0</text>
+
+    <!-- Droite N = Z, rappel -->
+    <line x1="80" y1="350" x2="555" y2="103"
+          stroke="var(--figure-ink-soft)" stroke-width="1.2" stroke-dasharray="6,4"/>
+    <!-- L'étiquette passe AU-DESSUS de sa propre diagonale : à (515;118)
+         elle était traversée par la droite qu'elle nomme. -->
+    <text x="508" y="104" font-size="10" font-style="italic"
+          fill="var(--figure-ink-soft)">N = Z</text>
+
+    <!-- La vallée — rappel calme, ink-soft ici (le sujet de cette figure, ce sont les flèches) -->
+    <path d="M80,350 L130,329.85 L180,305.41 L230,279.93 L280,253.41 L330,225.85
+             L380,197.25 L430,167.61 L480,136.93 L505,121.2
+             L505,61.66 L480,80.51 L430,117.43 L380,153.31 L330,188.15
+             L280,221.95 L230,254.71 L180,286.43 L130,317.11 L80,346.75 Z"
+          fill="var(--figure-ink-soft)" fill-opacity="0.14"
+          stroke="var(--figure-ink-soft)" stroke-opacity="0.3" stroke-width="1"/>
+
+    <!-- Encadré des lois de conservation (Soddy) — top-left, zone libre -->
+    <rect x="90" y="44" width="230" height="40" rx="5"
+          fill="var(--figure-accent)" fill-opacity="0.12"/>
+    <text x="205" y="60" text-anchor="middle" font-size="10"
+          fill="var(--figure-accent)">conservation (Soddy) : ΣA avant = ΣA après</text>
+    <text x="205" y="76" text-anchor="middle" font-size="10"
+          fill="var(--figure-accent)">ΣZ avant = ΣZ après (la charge)</text>
+  </g><!-- /step-1 -->
+
+  <g id="step-2">
+    <!-- α : (Z=19,N=22)→(555,64) vers (Z=17,N=20)→(505,90) ; ΔZ=−2, ΔN=−2 -->
+    <circle cx="555" cy="64" r="3" fill="var(--figure-accent)"/>
+    <line x1="555" y1="64" x2="505" y2="90"
+          stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="505,90 513.57,80.47 517.73,88.45" fill="var(--figure-accent)"/>
+
+    <!-- Les deux lignes de l'exemple α reculent de 65 px : la seconde
+         courait jusqu'à x≈555 et s'imprimait sur l'étiquette « N = Z » de la
+         diagonale (recouvrement mesuré 45 %). La place existe à gauche, la
+         boîte de conservation s'arrêtant à x≈320. -->
+    <text x="335" y="108" font-size="9.5" fill="var(--figure-ink)"><tspan
+          dy="-5" font-size="7.5">226</tspan><tspan dy="5">Ra</tspan><tspan> → </tspan><tspan
+          dy="-5" font-size="7.5">222</tspan><tspan dy="5">Rn</tspan><tspan> + </tspan><tspan
+          dy="-5" font-size="7.5">4</tspan><tspan dy="5">He</tspan></text>
+    <text x="335" y="123" font-size="8.5" font-style="italic" fill="var(--figure-ink-soft)">
+      désintégration α : ΔZ = −2, ΔN = −2
+    </text>
+  </g><!-- /step-2 -->
+
+  <g id="step-3">
+    <!-- β⁻ : (Z=6,N=8)=¹⁴C →(230,246) vers (Z=7,N=7)=¹⁴N →(255,259) ; ΔZ=+1, ΔN=−1 -->
+    <circle cx="230" cy="246" r="3" fill="var(--figure-accent)"/>
+    <line x1="230" y1="246" x2="255" y2="259"
+          stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="255,259 242.27,257.45 246.43,249.47" fill="var(--figure-accent)"/>
+
+    <text x="95" y="275" font-size="9.5" fill="var(--figure-ink)"><tspan
+          dy="-5" font-size="7.5">14</tspan><tspan dy="5">C</tspan><tspan> → </tspan><tspan
+          dy="-5" font-size="7.5">14</tspan><tspan dy="5">N</tspan><tspan> + e</tspan><tspan
+          dy="-5" font-size="7.5">−</tspan><tspan dy="5"></tspan></text>
+    <text x="95" y="289" font-size="8.5" font-style="italic" fill="var(--figure-ink-soft)">
+      β⁻ : ΔZ = +1, ΔN = −1
+    </text>
+  </g><!-- /step-3 -->
+
+  <g id="step-4">
+    <!-- β⁺ : (Z=9,N=7)→(305,259) vers (Z=8,N=8)→(280,246) ; ΔZ=−1, ΔN=+1
+         (Δx,Δy)=(−25,−13), strictement opposé à celui de β⁻ ci-dessus -->
+    <circle cx="305" cy="259" r="3" fill="var(--figure-accent)"/>
+    <line x1="305" y1="259" x2="280" y2="246"
+          stroke="var(--figure-accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <polygon points="280,246 292.73,247.55 288.57,255.53" fill="var(--figure-accent)"/>
+
+    <text x="315" y="235" font-size="9.5" fill="var(--figure-ink)"><tspan
+          dy="-5" font-size="7.5">22</tspan><tspan dy="5">Na</tspan><tspan> → </tspan><tspan
+          dy="-5" font-size="7.5">22</tspan><tspan dy="5">Ne</tspan><tspan> + e</tspan><tspan
+          dy="-5" font-size="7.5">+</tspan><tspan dy="5"></tspan></text>
+    <text x="315" y="249" font-size="8.5" font-style="italic" fill="var(--figure-ink-soft)">
+      β⁺ : ΔZ = −1, ΔN = +1
+    </text>
+
+    <text x="335" y="315" text-anchor="middle" font-size="9.5" fill="var(--figure-ink)">
+      β⁻ et β⁺ vont en sens opposés — ils corrigent des déséquilibres opposés
+    </text>
+  </g><!-- /step-4 -->
+
+  <g id="step-5">
+    <!-- γ : (Z=12,N=15)→(380,155) — pas de déplacement, juste un point qui rayonne -->
+    <circle cx="380" cy="155" r="4" fill="var(--figure-accent)"/>
+    <line x1="384.24" y1="150.76" x2="387.78" y2="147.22"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="375.76" y1="150.76" x2="372.22" y2="147.22"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="384.24" y1="159.24" x2="387.78" y2="162.78"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
+    <line x1="375.76" y1="159.24" x2="372.22" y2="162.78"
+          stroke="var(--figure-accent)" stroke-width="1.6" stroke-linecap="round"/>
+
+    <!-- Le bloc γ glisse à DROITE de la diagonale, reliée par une amorce :
+         posé à x=395, « ni A ni Z ne changent » était barré en son milieu
+         par la droite N = Z (qui passe par y≈162 vers x≈441). À partir de
+         x=500 la droite est remontée au-dessus de y=131 : la place y est
+         libre, sous elle. -->
+    <line x1="398" y1="155" x2="492" y2="155" stroke="var(--figure-ink-soft)"
+          stroke-width="0.8" stroke-dasharray="2,2"/>
+    <text x="497" y="152" font-size="9.5" fill="var(--figure-ink)">Y* → Y + γ</text>
+    <text x="497" y="166" font-size="8.5" font-style="italic" fill="var(--figure-ink-soft)">
+      ni A ni Z ne changent
+    </text>
+  </g><!-- /step-5 -->
+
+</svg>

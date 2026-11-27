@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas, direction éditoriale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap">
+<style>
+/* ── Jetons ─────────────────────────────────────────── */
+:root{
+  color-scheme:light;
+  --paper:#FFFFFF; --ink:#111213; --ink-2:#45474B; --ink-3:#6B6E73;
+  --rule:#DADBDD; --rule-strong:#111213;
+  --cobalt:#1D3FD0; --on-cobalt:#FFFFFF; --cobalt-veil:#EEF1FC;
+  --slate:#7A8491; --slate-veil:#F2F3F5;
+  --hatch-a:#1D3FD0; --hatch-b:#7A8491;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --gutter:40px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#0E0F10; --ink:#EDEDEB; --ink-2:#BDBDB9; --ink-3:#8F908D;
+    --rule:#2C2D30; --rule-strong:#EDEDEB;
+    --cobalt:#8199FF; --on-cobalt:#0E0F10; --cobalt-veil:#161B30;
+    --slate:#8C95A1; --slate-veil:#18191B;
+    --hatch-a:#8199FF; --hatch-b:#8C95A1;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0E0F10; --ink:#EDEDEB; --ink-2:#BDBDB9; --ink-3:#8F908D;
+  --rule:#2C2D30; --rule-strong:#EDEDEB;
+  --cobalt:#8199FF; --on-cobalt:#0E0F10; --cobalt-veil:#161B30;
+  --slate:#8C95A1; --slate-veil:#18191B;
+  --hatch-a:#8199FF; --hatch-b:#8C95A1;
+}
+
+/* ── Base ───────────────────────────────────────────── */
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+.serif{font-family:var(--serif);font-optical-sizing:auto}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.kicker{font:500 11.5px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+.kicker.c{color:var(--cobalt)}
+.screen{display:none}
+.screen.on{display:block}
+.screen.fit.on{display:flex;flex-direction:column;height:calc(100vh - 44px);min-height:700px}
+body{padding-bottom:44px}
+.m{white-space:nowrap}
+mjx-container{position:relative}
+mjx-container[display="true"]{margin:.6em 0!important}
+mjx-assistive-mml{position:absolute!important;top:0;left:0;clip:rect(1px,1px,1px,1px);padding:1px 0 0!important;border:0!important;height:1px!important;width:1px!important;overflow:hidden!important;display:block!important}
+
+/* ── Bandeau (commun) ───────────────────────────────── */
+.mast{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:40px;height:72px;padding:0 var(--gutter);border-bottom:1px solid var(--rule-strong)}
+.word{display:flex;align-items:baseline;gap:14px;white-space:nowrap}
+.word b{font:italic 500 30px/1 var(--serif);letter-spacing:-.01em}
+.word span{font-size:13px;color:var(--ink-3)}
+.nav{display:flex;gap:28px;height:100%}
+.nav a{display:flex;align-items:center;height:100%;font-size:14px;color:var(--ink-2);text-decoration:none;border-bottom:2px solid transparent;margin-bottom:-1px}
+.nav a.on{color:var(--ink);font-weight:600;border-bottom-color:var(--cobalt)}
+.who{display:flex;gap:22px;align-items:baseline;white-space:nowrap;font-size:13px;color:var(--ink-2)}
+.who strong{color:var(--ink);font-weight:600}
+
+/* ── Accueil ────────────────────────────────────────── */
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:32px;padding:0 var(--gutter)}
+.hero{padding-top:44px;padding-bottom:40px}
+.hero-main{grid-column:1 / span 7}
+.hero-side{grid-column:9 / span 4;border-left:1px solid var(--rule);padding-left:32px}
+h1.head{font:400 58px/1.03 var(--serif);letter-spacing:-.018em;margin:18px 0 18px;text-wrap:balance}
+h1.head em{font-style:italic;color:var(--cobalt)}
+.lead{font:400 20px/1.5 var(--serif);color:var(--ink-2);max-width:62ch;margin:0 0 26px;text-wrap:pretty}
+.session{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule-strong)}
+.session li{display:grid;grid-template-columns:56px 1fr auto;gap:18px;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--rule)}
+.session .n{font:400 34px/1 var(--serif);color:var(--ink-3)}
+.session li.now .n{color:var(--cobalt)}
+.session h3{margin:0;font:600 16px/1.3 var(--sans)}
+.session p{margin:3px 0 0;font:400 16.5px/1.45 var(--serif);color:var(--ink-2)}
+.session .t{font:400 13px/1 var(--mono);color:var(--ink-3)}
+.session .tag{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--cobalt);margin-left:10px;vertical-align:2px}
+.actions{display:flex;gap:26px;align-items:center;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:12px;height:48px;padding:0 22px;border-radius:2px;border:1px solid var(--cobalt);background:var(--cobalt);color:var(--on-cobalt);font:600 15px/1 var(--sans);cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--rule-strong)}
+.btn[disabled]{background:transparent;color:var(--ink-3);border-color:var(--rule);cursor:not-allowed}
+.link{font-size:14px;color:var(--ink);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--rule)}
+.side-h{font:400 27px/1.15 var(--serif);margin:14px 0 6px;letter-spacing:-.01em}
+.side-sub{font:400 12px/1.4 var(--mono);color:var(--ink-3);margin:0 0 18px}
+table.stake{width:100%;border-collapse:collapse}
+table.stake th{font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:0 0 9px;border-bottom:1px solid var(--rule-strong)}
+table.stake th.r,table.stake td.r{text-align:right}
+table.stake td{padding:11px 0 10px;border-bottom:1px solid var(--rule);font-size:14.5px;vertical-align:middle}
+table.stake td.mono{font-size:13.5px;color:var(--ink-2)}
+table.stake td.big{font:500 15px/1 var(--mono);color:var(--ink)}
+.bar{height:6px;background:var(--slate-veil);position:relative;margin-top:7px}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--cobalt)}
+.note{font:italic 400 16px/1.5 var(--serif);color:var(--ink-2);margin:18px 0 0;padding-left:16px;border-left:2px solid var(--cobalt)}
+.sections{border-top:2px solid var(--rule-strong);padding-top:26px;padding-bottom:56px}
+.sec{grid-column:span 4}
+.sec + .sec{border-left:1px solid var(--rule);padding-left:32px}
+.sec h2{font:400 25px/1.15 var(--serif);margin:10px 0 18px;letter-spacing:-.01em}
+.stack{display:flex;height:34px;border:1px solid var(--rule-strong)}
+.stack div{position:relative;height:100%;border-right:1px solid var(--rule-strong);overflow:hidden}
+.stack div:last-child{border-right:0}
+.stack .got{position:absolute;left:0;top:0;bottom:0;background:var(--cobalt)}
+.stack .lost{position:absolute;right:0;top:0;bottom:0;background:repeating-linear-gradient(135deg,var(--hatch-b) 0 1px,transparent 1px 6px)}
+.dom{display:grid;grid-template-columns:1fr auto;gap:4px 12px;margin-top:14px}
+.dom dt{font-size:14px}
+.dom dt small{display:block;font:400 12px/1.4 var(--mono);color:var(--ink-3)}
+.dom dd{margin:0;font:500 14px/1.3 var(--mono);text-align:right}
+.dom dd small{display:block;font:400 12px/1.4 var(--mono);color:var(--ink-3)}
+.dom > *{padding:8px 0;border-bottom:1px solid var(--rule)}
+.errs{list-style:none;margin:0;padding:0}
+.errs li{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.errs li:first-child{border-top:1px solid var(--rule)}
+.errs .cnt{font:400 30px/1 var(--serif);color:var(--cobalt)}
+.errs .cnt.dim{color:var(--ink-3);font-size:22px;padding-top:4px}
+.errs q{font:italic 400 17px/1.4 var(--serif);quotes:"«\00a0" "\00a0»"}
+.errs .act{display:block;margin-top:5px;font:500 12.5px/1 var(--mono);color:var(--cobalt)}
+.road{list-style:none;margin:0;padding:0;position:relative}
+.road li{display:grid;grid-template-columns:86px 1fr;gap:14px;padding:10px 0 10px;border-bottom:1px solid var(--rule)}
+.road li:first-child{border-top:1px solid var(--rule)}
+.road .when{font:500 12px/1.5 var(--mono);color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em}
+.road .what{font:400 16px/1.4 var(--serif)}
+.road li.here .when{color:var(--cobalt)}
+.road li.here .what::after{content:"tu es ici";display:inline-block;white-space:nowrap;margin-left:10px;font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--on-cobalt);background:var(--cobalt);padding:3px 6px;vertical-align:2px}
+
+/* ── Leçon ──────────────────────────────────────────── */
+.lmast{display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;height:64px;padding:0 var(--gutter);border-bottom:1px solid var(--rule)}
+.back{display:flex;flex-direction:column;gap:5px;text-decoration:none;color:var(--ink);white-space:nowrap}
+.back b{font:500 15px/1 var(--sans)}
+.parts{display:flex;gap:4px;justify-content:center;flex-wrap:nowrap;min-width:0}
+.parts span{font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);padding:8px 9px;white-space:nowrap;border-bottom:2px solid transparent}
+.parts span i{font-style:normal;margin-right:6px;color:var(--ink-3)}
+.parts span.done{color:var(--ink-2)}
+.parts span.on{color:var(--cobalt);border-bottom-color:var(--cobalt)}
+.parts span.on i{color:var(--cobalt)}
+.stepno{font:500 13px/1 var(--mono);color:var(--ink-2);white-space:nowrap}
+.stepno b{color:var(--ink);font-weight:500}
+.prog{height:2px;background:var(--rule);position:relative}
+.prog i{position:absolute;left:0;top:0;bottom:0;width:calc(19/34*100%);background:var(--cobalt)}
+.lesson{display:grid;grid-template-columns:minmax(0,1fr) 470px;flex:1;min-height:0}
+.plate{display:flex;flex-direction:column;padding:26px 40px 22px;min-width:0}
+.plate svg{flex:1;width:100%;min-height:0}
+.cap{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-top:12px;border-top:1px solid var(--rule)}
+.cap p{margin:0;font:italic 400 15.5px/1.45 var(--serif);color:var(--ink-2)}
+.cap p b{font-style:normal;font-weight:600;color:var(--ink)}
+.cap .mono{font-size:12px;color:var(--ink-3);white-space:nowrap}
+.script{border-left:1px solid var(--rule-strong);padding:40px 40px 26px;display:flex;flex-direction:column}
+.say{font:400 27px/1.38 var(--serif);letter-spacing:-.005em;margin:18px 0 30px;text-wrap:pretty}
+.opts{list-style:none;margin:10px 0 0;padding:0;border-top:1px solid var(--rule-strong)}
+.opts button{display:grid;grid-template-columns:36px 1fr;gap:16px;align-items:center;width:100%;min-height:62px;padding:12px 0;background:none;border:0;border-bottom:1px solid var(--rule);text-align:left;cursor:pointer}
+.opts kbd{display:grid;place-items:center;width:30px;height:30px;border:1px solid var(--rule-strong);border-radius:2px;font:500 13px/1 var(--mono)}
+.opts span{font:400 20px/1.3 var(--serif)}
+.opts button:hover span{color:var(--cobalt)}
+.opts button:hover kbd{border-color:var(--cobalt);color:var(--cobalt)}
+.margin-note{display:grid;grid-template-columns:16px 1fr;gap:8px;margin-top:22px;font:italic 400 15px/1.45 var(--serif);color:var(--ink-3)}
+.margin-note::before{content:"†";font-style:normal;color:var(--cobalt)}
+.lnav{display:flex;justify-content:space-between;align-items:center;padding-top:20px;border-top:1px solid var(--rule)}
+.txtbtn{background:none;border:0;font:500 15px/1 var(--sans);color:var(--ink);cursor:pointer;padding:14px 0;min-height:44px}
+.keys{font:400 11.5px/1 var(--mono);color:var(--ink-3);letter-spacing:.03em}
+
+/* ── Examen ─────────────────────────────────────────── */
+.emast{display:grid;grid-template-columns:1fr auto auto;gap:40px;align-items:center;padding:16px var(--gutter);border-bottom:2px solid var(--rule-strong)}
+.emast h1{margin:0;font:400 23px/1.2 var(--serif);letter-spacing:-.005em}
+.emast .sub{margin-top:5px;font:400 12.5px/1.3 var(--mono);color:var(--ink-3)}
+.facts{display:flex;gap:26px;font:400 13px/1.3 var(--mono);color:var(--ink-2)}
+.facts b{display:block;font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.timer{display:flex;gap:22px;align-items:center}
+.timer .clock{font:500 26px/1 var(--mono);letter-spacing:.02em}
+.timer .clock small{display:block;font:500 10.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px}
+.ex-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr)) auto;padding:0 var(--gutter);border-bottom:1px solid var(--rule)}
+.ex-tabs button{display:flex;flex-direction:column;gap:5px;align-items:flex-start;padding:12px 18px 12px 0;background:none;border:0;border-top:3px solid transparent;margin-top:-1px;text-align:left;cursor:pointer;min-height:58px}
+.ex-tabs button b{font:600 13.5px/1.2 var(--sans)}
+.ex-tabs button span{font:400 12px/1 var(--mono);color:var(--ink-3)}
+.ex-tabs button.on{border-top-color:var(--cobalt)}
+.ex-tabs button.on b{color:var(--cobalt)}
+.ex-tabs .tot{align-self:center;font:500 13px/1 var(--mono);color:var(--ink-2);padding-left:20px}
+.exam{display:grid;grid-template-columns:minmax(0,1.38fr) minmax(0,1fr);flex:1;min-height:0}
+.paper{overflow:auto;padding:28px 40px 40px}
+.paper-in{display:grid;grid-template-columns:64px minmax(0,1fr);column-gap:22px;max-width:880px}
+.paper h2{grid-column:2;margin:0 0 6px;font:500 22px/1.25 var(--serif)}
+.paper .rules{grid-column:2;margin:0 0 16px;font:italic 400 15px/1.5 var(--serif);color:var(--ink-3)}
+.paper .stmt{grid-column:2;font:400 17.5px/1.6 var(--serif);margin:0 0 6px}
+.paper .stmt p{margin:0 0 4px}
+.q{display:contents}
+.q .pts{grid-column:1;text-align:right;font:500 13px/1 var(--mono);color:var(--ink-3);padding-top:14px}
+.q .pts small{display:block;margin-top:4px;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+.q .body{grid-column:2;padding:10px 0 10px 16px;border-left:2px solid transparent;font:400 17.5px/1.6 var(--serif)}
+.q .body b{font:600 15px/1 var(--sans);margin-right:8px}
+.q.cur .pts{color:var(--cobalt)}
+.q.cur .body{border-left-color:var(--cobalt);background:var(--cobalt-veil)}
+.qnum{grid-column:2;margin:18px 0 0;padding-top:12px;border-top:1px solid var(--rule);font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.source{grid-column:2;margin-top:26px;padding-top:12px;border-top:1px solid var(--rule);font:400 12px/1.5 var(--mono);color:var(--ink-3)}
+.work{border-left:1px solid var(--rule-strong);display:flex;flex-direction:column;min-height:0}
+.wtabs{display:flex;border-bottom:1px solid var(--rule);padding:0 32px}
+.wtabs button{background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:16px 0;margin-right:28px;font:500 14px/1 var(--sans);color:var(--ink-2);cursor:pointer;min-height:48px}
+.wtabs button.on{color:var(--ink);border-bottom-color:var(--ink)}
+.wtabs .lock{font:500 10.5px/1 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-left:8px}
+.wbody{flex:1;display:flex;flex-direction:column;padding:22px 32px 22px;min-height:0;gap:16px}
+.wq{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.wq h3{margin:0;font:600 15px/1.3 var(--sans)}
+.wq span{font:500 12.5px/1 var(--mono);color:var(--cobalt);white-space:nowrap}
+.wq-text{margin:0;font:italic 400 16px/1.5 var(--serif);color:var(--ink-2)}
+.copy{flex:1;min-height:180px;position:relative;border:1px solid var(--rule);background-image:repeating-linear-gradient(to bottom,transparent 0 31px,var(--rule) 31px 32px);background-position:0 11px;padding:14px 18px 14px 58px;font:400 17px/32px var(--serif);color:var(--ink-3)}
+.copy::before{content:"";position:absolute;left:44px;top:0;bottom:0;border-left:1px solid var(--slate)}
+.tools{display:flex;gap:10px;flex-wrap:wrap}
+.tool{height:36px;padding:0 12px;border:1px solid var(--rule);background:none;border-radius:2px;font:500 13px/1 var(--sans);color:var(--ink-2);cursor:pointer}
+.locked{border-top:1px solid var(--rule-strong);padding-top:14px;display:grid;grid-template-columns:1fr auto;gap:6px 20px;align-items:center}
+.locked h4{margin:0;font:600 14px/1.3 var(--sans)}
+.locked p{margin:0;grid-column:1;font:400 15px/1.45 var(--serif);color:var(--ink-2)}
+.locked .btn{grid-column:2;grid-row:1 / span 2}
+.wfoot{display:flex;justify-content:space-between;padding:12px 32px;border-top:1px solid var(--rule);font:400 12px/1 var(--mono);color:var(--ink-3)}
+
+/* ── Système ────────────────────────────────────────── */
+.sys{padding:30px var(--gutter) 24px}
+.sys-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:32px;border-bottom:2px solid var(--rule-strong);padding-bottom:20px;margin-bottom:22px}
+.sys-id{grid-column:1 / span 4}
+.sys-id h1{margin:10px 0 12px;font:400 60px/1 var(--serif);letter-spacing:-.02em}
+.sys-id h1 em{color:var(--cobalt)}
+.sys-id p{margin:0;font:400 17px/1.5 var(--serif);color:var(--ink-2)}
+.bet{grid-column:6 / span 7}
+.bet h2{margin:2px 0 8px;font:400 24px/1.15 var(--serif)}
+.bet ol{margin:0;padding:0;list-style:none;counter-reset:b;border-top:1px solid var(--rule-strong)}
+.bet li{counter-increment:b;display:grid;grid-template-columns:30px 1fr;gap:8px;padding:7px 0;border-bottom:1px solid var(--rule);font:400 15.5px/1.45 var(--serif)}
+.bet li::before{content:counter(b);font:400 19px/1.2 var(--serif);color:var(--cobalt)}
+.bet li strong{font-family:var(--sans);font-size:13.5px;font-weight:600;margin-right:4px}
+.sys-cols{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:32px}
+.sys-col{grid-column:span 4}
+.sys-col + .sys-col{border-left:1px solid var(--rule);padding-left:32px}
+.sys-col h2{margin:6px 0 10px;font:400 22px/1.2 var(--serif)}
+.sw{display:grid;grid-template-columns:40px 1fr auto;gap:12px;align-items:center;padding:6px 0;border-bottom:1px solid var(--rule)}
+.sw i{width:40px;height:26px;border:1px solid var(--rule)}
+.sw b{font:500 13.5px/1.2 var(--sans)}
+.sw small{display:block;font:400 11.5px/1.35 var(--mono);color:var(--ink-3)}
+.sw code{font:400 12px/1.3 var(--mono);color:var(--ink-2);text-align:right}
+.spec{padding:7px 0 9px;border-bottom:1px solid var(--rule)}
+.spec .kicker{display:block;margin-bottom:6px}
+.comp{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:9px 0;border-bottom:1px solid var(--rule)}
+.comp-label{display:block;width:100%;margin-bottom:2px}
+.comp .btn{height:42px;padding:0 16px}
+
+/* ── Barre de maquette (hors produit) ───────────────── */
+.maq{position:fixed;left:0;right:0;bottom:0;height:44px;z-index:10;display:flex;align-items:center;gap:2px;background:var(--ink);color:var(--paper);padding:0 16px;font:500 12px/1 var(--mono)}
+.maq span{margin-right:auto;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+.maq a,.maq button{color:var(--paper);text-decoration:none;padding:9px 10px;border:0;background:none;cursor:pointer;font:inherit;border-radius:2px}
+.maq a.on{background:var(--paper);color:var(--ink)}
+
+/* ── Étroit : empilement simple (le mobile sera soigné plus tard) ── */
+@media (max-width:900px){
+  :root{--gutter:16px}
+  .mast,.lmast,.emast{grid-template-columns:1fr;height:auto;gap:10px;padding-top:12px;padding-bottom:12px}
+  .nav,.parts{flex-wrap:wrap;height:auto}.nav a{height:40px}
+  .word,.who{flex-wrap:wrap;white-space:normal;gap:6px 14px}
+  .session li{grid-template-columns:40px 1fr}.session .t{grid-column:2}
+  table.stake{font-size:13px}
+  .grid,.sys-head,.sys-cols{grid-template-columns:1fr}
+  .hero-main,.hero-side,.sec,.sys-col,.sys-id,.bet{grid-column:1 / -1}
+  .hero-side,.sec + .sec,.sys-col + .sys-col{border-left:0;padding-left:0;margin-top:28px}
+  h1.head{font-size:38px}
+  .screen.fit.on{height:auto}
+  .lesson,.exam{grid-template-columns:1fr;height:auto}
+  .maq span{display:none}.maq{height:auto;padding:4px}body{padding-bottom:90px}
+  .script,.work{border-left:0;border-top:1px solid var(--rule-strong)}
+  .plate svg{height:300px;flex:none}
+  .ex-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .facts,.timer{flex-wrap:wrap}
+  .paper-in{grid-template-columns:44px minmax(0,1fr)}
+  .maq{left:8px;right:8px;flex-wrap:wrap;justify-content:center}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="hA" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="var(--cobalt-veil)"/><line x1="0" y1="0" x2="0" y2="8" stroke="var(--hatch-a)" stroke-width="1.4"/></pattern>
+    <pattern id="hB" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect width="8" height="8" fill="var(--slate-veil)"/><line x1="0" y1="0" x2="0" y2="8" stroke="var(--hatch-b)" stroke-width="1.1"/></pattern>
+  </defs>
+</svg>
+<!-- ═══════════════════════ ACCUEIL ═══════════════════════ -->
+<section class="screen" data-screen="accueil" aria-label="Accueil">
+  <header class="mast">
+    <div class="word"><b>bac</b><span>2ᵉ Bac Sciences Mathématiques A</span></div>
+    <nav class="nav" aria-label="Principale">
+      <a href="#accueil" class="on" aria-current="page">Aujourd’hui</a>
+      <a href="#accueil">Matières</a>
+      <a href="#examen">Examens</a>
+      <a href="#accueil">Carnet d’erreurs</a>
+    </nav>
+    <div class="who"><span class="mono">Mercredi 21 octobre 2026</span><span>Examen national · juin 2027 · <strong>≈ 33 semaines</strong></span><strong>Salma</strong></div>
+  </header>
+
+  <div class="grid hero">
+    <div class="hero-main">
+      <div class="kicker c">№ 1 — La séance du jour · 45 minutes</div>
+      <h1 class="head">Aujourd’hui, l’aire sous 1/<i>x</i> — et pourquoi elle <em>est</em> un logarithme.</h1>
+      <p class="lead">Quatre temps, dans cet ordre. Le rappel réveille la dérivation&#8239;; la leçon reprend là où tu t’es arrêtée&#8239;; les exercices visent l’erreur que tu as faite trois fois cette semaine.</p>
+      <ol class="session">
+        <li><span class="n">1</span><div><h3>Rappel</h3><p>Quatre questions sur la dérivation, pour garder ce qui est acquis.</p></div><span class="t">5 min</span></li>
+        <li class="now"><span class="n">2</span><div><h3>Leçon — Fonction logarithme<span class="tag">reprise · partie 5</span></h3><p>Partie 5, «&#8239;L’aire sous 1/<i>x</i>&#8239;» : pourquoi doubler en bas revient à ajouter en haut.</p></div><span class="t">12 min</span></li>
+        <li><span class="n">3</span><div><h3>Exercices ciblés<span class="tag">générés pour toi</span></h3><p>Huit exercices sur «&#8239;ln d’une somme&#8239;», du plus simple au niveau bac.</p></div><span class="t">15 min</span></li>
+        <li><span class="n">4</span><div><h3>Exercice type bac</h3><p>Étude de fonction avec ln, corrigée pas à pas après ta tentative.</p></div><span class="t">13 min</span></li>
+      </ol>
+      <div class="actions">
+        <a class="btn" href="#lecon">Commencer la séance <span aria-hidden="true">→</span></a>
+        <a class="link" href="#accueil">Changer l’ordre ou la durée</a>
+      </div>
+    </div>
+
+    <aside class="hero-side" aria-labelledby="stake-h">
+      <div class="kicker">Examen national</div>
+      <h2 class="side-h" id="stake-h">Où se perdent les points</h2>
+      <p class="side-sub">coefficient × part non maîtrisée</p>
+      <table class="stake">
+        <thead><tr><th>Matière</th><th class="r">Coef.</th><th class="r">Maîtrise</th><th class="r">En jeu</th></tr></thead>
+        <tbody>
+          <tr><td>Mathématiques<div class="bar"><i style="width:100%"></i></div></td><td class="r mono">9</td><td class="r mono">58&#8239;%</td><td class="r big">3,78</td></tr>
+          <tr><td>Physique-Chimie<div class="bar"><i style="width:100%"></i></div></td><td class="r mono">7</td><td class="r mono">46&#8239;%</td><td class="r big">3,78</td></tr>
+          <tr><td>SVT<div class="bar"><i style="width:54.8%"></i></div></td><td class="r mono">3</td><td class="r mono">31&#8239;%</td><td class="r big">2,07</td></tr>
+          <tr><td>Philosophie<div class="bar"><i style="width:31.7%"></i></div></td><td class="r mono">2</td><td class="r mono">40&#8239;%</td><td class="r big">1,20</td></tr>
+          <tr><td>Anglais<div class="bar"><i style="width:20.1%"></i></div></td><td class="r mono">2</td><td class="r mono">62&#8239;%</td><td class="r big">0,76</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Maths et physique-chimie pèsent exactement autant&#8239;: 3,78 chacune. La SVT, ta maîtrise la plus basse, en pèse presque deux fois moins.</p>
+    </aside>
+  </div>
+
+  <div class="grid sections">
+    <section class="sec" aria-labelledby="s2">
+      <div class="kicker">§ 2 — Mathématiques, épreuve sur 20</div>
+      <h2 id="s2">Les trois domaines du cadre de référence</h2>
+      <div class="stack" role="img" aria-label="Analyse 10 points dont 6,1 maîtrisés ; complexes et structures 7 points dont 3,6 ; arithmétique et probabilités 3 points dont 2,0">
+        <div style="width:50%"><span class="got" style="width:61%"></span><span class="lost" style="width:39%"></span></div>
+        <div style="width:35%"><span class="got" style="width:52%"></span><span class="lost" style="width:48%"></span></div>
+        <div style="width:15%"><span class="got" style="width:66%"></span><span class="lost" style="width:34%"></span></div>
+      </div>
+      <dl class="dom">
+        <dt>Analyse<small>50&#8239;% du sujet · maîtrise 61&#8239;%</small></dt><dd>6,1 / 10<small>3,9 en jeu</small></dd>
+        <dt>Complexes et structures<small>35&#8239;% · maîtrise 52&#8239;%</small></dt><dd>3,6 / 7<small>3,4 en jeu</small></dd>
+        <dt>Arithmétique et probabilités<small>15&#8239;% · maîtrise 66&#8239;%</small></dt><dd>2,0 / 3<small>1,0 en jeu</small></dd>
+      </dl>
+    </section>
+    <section class="sec" aria-labelledby="s3">
+      <div class="kicker">§ 3 — Carnet d’erreurs</div>
+      <h2 id="s3">Ce qui revient cette semaine</h2>
+      <ul class="errs">
+        <li><span class="cnt">3</span><div><q>ln(<i>a</i> + <i>b</i>) traité comme ln <i>a</i> + ln <i>b</i></q><span class="act">→ 8 exercices prêts, dans ta séance</span></div></li>
+        <li><span class="cnt dim">—</span><div><q>Primitive de <i>u</i>′/<i>u</i> : valeur absolue oubliée</q><span class="act">→ exercices prêts</span></div></li>
+        <li><span class="cnt dim">—</span><div><q>Récurrence : hérédité non rédigée</q><span class="act">→ exercices prêts</span></div></li>
+      </ul>
+    </section>
+    <section class="sec" aria-labelledby="s4">
+      <div class="kicker">§ 4 — D’ici juin 2027</div>
+      <h2 id="s4">Le chemin jusqu’à l’examen</h2>
+      <ol class="road">
+        <li class="here"><span class="when">Oct.–janv.</span><span class="what">Tout le programme une première fois</span></li>
+        <li><span class="when">Févr.–avr.</span><span class="what">Sujets par domaine, chronométrés</span></li>
+        <li><span class="when">Mai</span><span class="what">Sujets complets, en conditions réelles</span></li>
+        <li><span class="when">Juin</span><span class="what">Examen national</span></li>
+      </ol>
+    </section>
+  </div>
+</section>
+
+<!-- ═══════════════════════ LEÇON ═══════════════════════ -->
+<section class="screen fit" data-screen="lecon" aria-label="Leçon">
+  <header class="lmast">
+    <a class="back" href="#accueil"><span class="kicker">Analyse · leçon</span><b>← Fonction logarithme népérien</b></a>
+    <nav class="parts" aria-label="Parties de la leçon">
+      <span class="done"><i>I</i>Le problème</span><span class="done"><i>II</i>La table</span><span class="done"><i>III</i>Les trous</span><span class="done"><i>IV</i>La règle</span><span class="on" aria-current="step"><i>V</i>L’aire</span><span><i>VI</i>Ce que le bac appelle ln</span><span><i>VII</i>À toi</span>
+    </nav>
+    <div class="stepno">Étape <b>19</b> / 34</div>
+  </header>
+  <div class="prog" aria-hidden="true"><i></i></div>
+  <div class="lesson">
+    <figure class="plate" style="margin:0">
+      <svg viewBox="0 0 860 560" role="img" aria-label="Courbe de y = 1 sur x ; aire A de 1 à 2, aire B de 2 à 4">
+        <g id="fig19"></g>
+      </svg>
+      <figcaption class="cap"><p><b>Fig. 19.</b> Sous la courbe de <i>y</i> = 1/<i>x</i> : l’aire <b>A</b>, de 1 à 2, et l’aire <b>B</b>, de 2 à 4 — deux fois plus large, mais plus basse.</p><span class="mono">Planche V · 3</span></figcaption>
+    </figure>
+    <div class="script">
+      <div class="kicker c">V — L’aire</div>
+      <p class="say">Voici l’aire entre 2 et 4&#8239;: deux fois plus large, mais plus basse. Laquelle est la plus grande&#8239;?</p>
+      <div class="kicker">Ton pari — rien n’est encore choisi</div>
+      <ol class="opts">
+        <li><button><kbd>1</kbd><span>Celle de 2 à 4</span></button></li>
+        <li><button><kbd>2</kbd><span>Elles sont égales</span></button></li>
+        <li><button><kbd>3</kbd><span>Celle de 1 à 2</span></button></li>
+      </ol>
+      <p class="margin-note">Pas de calcul ici&#8239;: on parie d’abord, la planche répond ensuite.</p>
+      <p class="keys" style="margin:auto 0 12px">Clavier&#8239;: ← → pour avancer · 1 2 3 pour répondre</p>
+      <div class="lnav">
+        <button class="txtbtn">← Retour</button>
+        <button class="btn" disabled>Choisis d’abord</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ EXAMEN ═══════════════════════ -->
+<section class="screen fit" data-screen="examen" aria-label="Examen">
+  <header class="emast">
+    <div>
+      <h1>Examen national du baccalauréat — session de rattrapage 2024</h1>
+      <div class="sub">Mathématiques · Sciences Mathématiques A et B · option française · sujet RS 25</div>
+    </div>
+    <div class="facts"><div><b>Durée</b>4 heures</div><div><b>Coefficient</b>9</div><div><b>Barème</b>/ 20</div></div>
+    <div class="timer"><div class="clock" role="timer" aria-label="Temps restant 3 heures 12 minutes 40 secondes"><small>Temps restant</small>3:12:40</div><button class="btn ghost">Rendre la copie</button></div>
+  </header>
+  <nav class="ex-tabs" aria-label="Exercices">
+    <button class="on" aria-current="true"><b>1 · Analyse</b><span>6,5 pts · 13 questions</span></button>
+    <button><b>2 · Calcul intégral</b><span>3,5 pts</span></button>
+    <button><b>3 · Nombres complexes</b><span>3,5 pts</span></button>
+    <button><b>4 · Structures algébriques</b><span>3,5 pts</span></button>
+    <button><b>5 · Arithmétique</b><span>3 pts</span></button>
+    <span class="tot">Total 20 pts</span>
+  </nav>
+  <div class="exam">
+    <article class="paper" aria-label="Énoncé">
+      <div class="paper-in">
+        <h2>Exercice 1 — Analyse (6,5 points)</h2>
+        <p class="rules">L’épreuve dure 4 heures et comporte cinq exercices indépendants, traitables dans l’ordre choisi par le candidat. L’usage de la calculatrice n’est pas autorisé.</p>
+        <div class="stmt">
+          <p>Soit <span class="m" data-tex="n">n</span> un entier naturel supérieur ou égal à 2. On considère la fonction numérique <span class="m" data-tex="f_n">fₙ</span> définie sur <span class="m" data-tex="[0,+\infty[">[0, +∞[</span> par&#8239;:</p>
+          <div class="m" data-display="1" data-tex="f_n(0) = 0 \qquad\text{et}\qquad \forall x \in\, ]0, +\infty[\ ;\quad f_n(x) = x - x^n \ln x">fₙ(0) = 0 et ∀x ∈ ]0, +∞[ ; fₙ(x) = x − xⁿ ln x</div>
+          <p>et on note <span class="m" data-tex="(C_n)">(Cₙ)</span> sa courbe représentative dans un repère orthonormé.</p>
+        </div>
+
+        <div class="qnum">Question 1</div>
+        <div class="q"><div class="pts">0,25</div><div class="body"><b>1-a</b>Montrer que <span class="m" data-tex="f_n">fₙ</span> est continue à droite en 0.</div></div>
+        <div class="q cur"><div class="pts">0,75<small>en cours</small></div><div class="body"><b>1-b</b>Montrer que <span class="m" data-tex="\displaystyle\lim_{x\to+\infty} f_n(x) = -\infty">lim fₙ(x) = −∞</span> et <span class="m" data-tex="\displaystyle\lim_{x\to+\infty} \frac{f_n(x)}{x} = -\infty">lim fₙ(x)/x = −∞</span> puis interpréter graphiquement le résultat obtenu.</div></div>
+        <div class="q"><div class="pts">0,5</div><div class="body"><b>1-c</b>Montrer que <span class="m" data-tex="f_n">fₙ</span> est dérivable à droite en 0 et que son nombre dérivé à droite en 0 est égal à 1.</div></div>
+        <div class="q"><div class="pts">0,5</div><div class="body"><b>1-d</b>Montrer que <span class="m" data-tex="f_n">fₙ</span> est dérivable sur <span class="m" data-tex="]0,+\infty[">]0, +∞[</span> et que&#8239;: <span class="m" data-tex="\forall x \in\, ]0, +\infty[\ ;\ f_n'(x) = 1 - x^{n-1} - n\,x^{n-1}\ln x">∀x ∈ ]0, +∞[ ; fₙ′(x) = 1 − xⁿ⁻¹ − n xⁿ⁻¹ ln x</span>.</div></div>
+        <div class="q"><div class="pts">0,5</div><div class="body"><b>1-e</b>Montrer que <span class="m" data-tex="f_n">fₙ</span> est strictement croissante sur <span class="m" data-tex="[0\,;1]">[0 ; 1]</span> et strictement décroissante sur <span class="m" data-tex="[1,+\infty[">[1, +∞[</span>.</div></div>
+
+        <div class="qnum">Question 2</div>
+        <div class="q"><div class="pts">0,5</div><div class="body"><b>2-a</b>Montrer que pour tout entier <span class="m" data-tex="n \geq 2">n ≥ 2</span>, on a&#8239;: <span class="m" data-tex="\forall x \in [0, +\infty[\ ;\ f_{n+1}(x) \leq f_n(x)">∀x ∈ [0, +∞[ ; fₙ₊₁(x) ≤ fₙ(x)</span>.</div></div>
+        <div class="q"><div class="pts">0,25</div><div class="body"><b>2-b</b>En déduire la position relative des deux courbes <span class="m" data-tex="(C_n)">(Cₙ)</span> et <span class="m" data-tex="(C_{n+1})">(Cₙ₊₁)</span>.</div></div>
+
+        <div class="qnum">Question 3</div>
+        <div class="q"><div class="pts">0,5</div><div class="body"><b>3-a</b>Montrer que pour tout <span class="m" data-tex="n \geq 2">n ≥ 2</span>, il existe un unique réel <span class="m" data-tex="\alpha_n \in\, ]1\,;2[">αₙ ∈ ]1 ; 2[</span> tel que&#8239;: <span class="m" data-tex="f_n(\alpha_n) = 0">fₙ(αₙ) = 0</span>. <i>(On prendra ln 2 = 0,7.)</i></div></div>
+        <div class="q"><div class="pts">0,25</div><div class="body"><b>3-b</b>Vérifier que <span class="m" data-tex="(\forall n \geq 2)\quad \alpha_{n+1}^{\,n} \ln \alpha_{n+1} = 1">(∀n ≥ 2) αₙ₊₁ⁿ ln αₙ₊₁ = 1</span>.</div></div>
+        <div class="q"><div class="pts">0,25</div><div class="body"><b>3-c</b>En déduire que pour tout <span class="m" data-tex="n \geq 2">n ≥ 2</span>, <span class="m" data-tex="f_n(\alpha_{n+1}) = \alpha_{n+1} - 1">fₙ(αₙ₊₁) = αₙ₊₁ − 1</span>.</div></div>
+        <div class="q"><div class="pts">0,5</div><div class="body"><b>3-d</b>Montrer que la suite <span class="m" data-tex="(\alpha_n)_{n\geq 2}">(αₙ)ₙ≥₂</span> ainsi définie est strictement décroissante.</div></div>
+        <div class="q"><div class="pts">0,25</div><div class="body"><b>3-e</b>En déduire que la suite <span class="m" data-tex="(\alpha_n)_{n\geq 2}">(αₙ)ₙ≥₂</span> est convergente.</div></div>
+
+        <div class="qnum">Question 4</div>
+        <div class="q"><div class="pts">0,25</div><div class="body"><b>4-a</b>On pose <span class="m" data-tex="\ell = \displaystyle\lim_{n\to+\infty} \alpha_n">ℓ = lim αₙ</span>. Montrer que&#8239;: <span class="m" data-tex="1 \leq \ell \leq 2">1 ≤ ℓ ≤ 2</span>.</div></div>
+        <div class="q"><div class="pts">0,5</div><div class="body"><b>4-b</b>Montrer que pour tout <span class="m" data-tex="n \geq 2">n ≥ 2</span>, <span class="m" data-tex="n - 1 = -\dfrac{\ln(\ln(\alpha_n))}{\ln(\alpha_n)}">n − 1 = −ln(ln αₙ)/ln αₙ</span>.</div></div>
+        <div class="q"><div class="pts">0,25</div><div class="body"><b>4-c</b>On suppose que <span class="m" data-tex="\ell > 1">ℓ &gt; 1</span>. Calculer <span class="m" data-tex="\displaystyle\lim_{n\to+\infty} \dfrac{\ln(\ln(\alpha_n))}{\ln(\alpha_n)}">lim ln(ln αₙ)/ln αₙ</span> en fonction de <span class="m" data-tex="\ell">ℓ</span>.</div></div>
+        <div class="q"><div class="pts">0,5</div><div class="body"><b>4-d</b>En déduire la valeur de la limite <span class="m" data-tex="\ell">ℓ</span>.</div></div>
+
+        <p class="source">Source&#8239;: sujet officiel RS 25 — Bac Sciences Mathématiques, session de rattrapage 2024, exercice 1. Transcrit depuis le scan et vérifié (barème recompté&#8239;: 2,5 + 0,75 + 1,75 + 1,5 = 6,5).</p>
+      </div>
+    </article>
+
+    <aside class="work" aria-label="Espace de travail">
+      <div class="wtabs" role="tablist">
+        <button class="on" role="tab" aria-selected="true">Ma réponse</button>
+        <button role="tab" aria-selected="false">Brouillon</button>
+        <button role="tab" aria-selected="false">Corrigé<span class="lock">verrouillé</span></button>
+      </div>
+      <div class="wbody">
+        <div class="wq"><h3>Question 1-b</h3><span>0,75 pt</span></div>
+        <p class="wq-text">Deux limites en +∞, puis une interprétation graphique — c’est elle qu’on oublie.</p>
+        <div class="copy" role="textbox" aria-multiline="true" aria-label="Ta réponse à la question 1-b" tabindex="0">Rédige ta réponse ici. Les formules s’écrivent entre $…$.</div>
+        <div class="tools"><button class="tool">Formule</button><button class="tool">Tableau de variations</button><button class="tool">Photo de ma copie</button></div>
+        <div class="locked">
+          <h4>Corrigé pas à pas</h4>
+          <p>Verrouillé jusqu’à ta tentative. Il s’ouvre ensuite étape par étape&#8239;: arrête-toi dès que tu as compris.</p>
+          <button class="btn ghost" disabled>Ouvrir le corrigé</button>
+        </div>
+      </div>
+      <div class="wfoot"><span>Question 1-b · 2 sur 13</span><span>Enregistré il y a 4 s</span></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SYSTÈME ═══════════════════════ -->
+<section class="screen" data-screen="systeme" aria-label="Système">
+  <div class="sys">
+    <div class="sys-head">
+      <div class="sys-id">
+        <div class="kicker c">Direction de design · fiche du système</div>
+        <h1>Atlas<em>.</em></h1>
+        <p>Un livre de référence, pas un tableau de bord. Le papier est blanc, l’encre est noire&#8239;; le cobalt est l’encre du stylo de l’élève&#8239;: ce qu’elle choisit, réussit ou doit faire ensuite s’écrit dans cette couleur, et rien d’autre.</p>
+      </div>
+      <div class="bet">
+        <h2>Le pari de cette direction, et ses risques</h2>
+        <ol>
+          <li><span><strong>Pari.</strong> Deux heures de travail demandent un livre calme, pas un tableau de bord&#8239;: typographie et filets font la hiérarchie, sans carte ni ombre.</span></li>
+          <li><span><strong>Pari.</strong> Une seule couleur vive, réservée à l’élève&#8239;: ce qui est bleu, c’est à toi — ton choix, ton progrès, ta prochaine action.</span></li>
+          <li><span><strong>Pari.</strong> L’examen a la forme d’un vrai sujet imprimé, barème en marge&#8239;: on s’entraîne sur la forme qu’on retrouvera en juin.</span></li>
+          <li><span><strong>Risque.</strong> Sobre peut se lire «&#8239;austère&#8239;» à 17 ans&#8239;: l’énergie doit venir des planches animées, pas de l’habillage.</span></li>
+          <li><span><strong>Risque.</strong> Le serif veut de la place et un bon rendu&#8239;: à vérifier à 16 px sur un téléphone Android d’entrée de gamme.</span></li>
+        </ol>
+      </div>
+    </div>
+    <div class="sys-cols">
+      <div class="sys-col">
+        <div class="kicker">01 — Couleurs</div>
+        <h2>Sept jetons, une seule couleur vive</h2>
+        <div class="sw"><i style="background:var(--paper)"></i><div><b>papier</b><small>fond de toutes les pages</small></div><code>#FFFFFF · #0E0F10</code></div>
+        <div class="sw"><i style="background:var(--ink)"></i><div><b>encre</b><small>texte, filets forts</small></div><code>#111213 · #EDEDEB</code></div>
+        <div class="sw"><i style="background:var(--ink-2)"></i><div><b>encre-2</b><small>texte secondaire</small></div><code>#45474B · #BDBDB9</code></div>
+        <div class="sw"><i style="background:var(--ink-3)"></i><div><b>encre-3</b><small>légendes, contraste ≥ 4,5</small></div><code>#6B6E73 · #8F908D</code></div>
+        <div class="sw"><i style="background:var(--rule)"></i><div><b>filet</b><small>séparations, jamais d’ombre</small></div><code>#DADBDD · #2C2D30</code></div>
+        <div class="sw"><i style="background:var(--cobalt)"></i><div><b>cobalt</b><small>l’élève&#8239;: choix, progrès, action</small></div><code>#1D3FD0 · #8199FF</code></div>
+        <div class="sw"><i style="background:var(--slate)"></i><div><b>ardoise</b><small>données seulement</small></div><code>#7A8491 · #8C95A1</code></div>
+      </div>
+      <div class="sys-col">
+        <div class="kicker">02 — Typographie</div>
+        <h2>Le texte porte le design</h2>
+        <div class="spec"><span class="kicker">Titre · Newsreader, tailles optiques</span><span style="font:400 40px/1.05 var(--serif);letter-spacing:-.018em">L’aire <em style="color:var(--cobalt)">est</em> un logarithme</span></div>
+        <div class="spec"><span class="kicker">Lecture · Newsreader 20–27</span><span style="font:400 20px/1.45 var(--serif)">Voici l’aire entre 2 et 4&#8239;: deux fois plus large, mais plus basse.</span></div>
+        <div class="spec"><span class="kicker">Note marginale · Newsreader italique</span><span style="font:italic 400 15.5px/1.45 var(--serif);color:var(--ink-2)">Pas de calcul ici&#8239;: on parie d’abord.</span></div>
+        <div class="spec"><span class="kicker">Interface · IBM Plex Sans 14–16</span><span style="font:600 15px/1.4 var(--sans)">Commencer la séance</span> <span style="font:400 14px/1.4 var(--sans);color:var(--ink-2)">· Carnet d’erreurs</span></div>
+        <div class="spec"><span class="kicker">Données · IBM Plex Mono, chiffres tabulaires</span><span style="font:500 21px/1.2 var(--mono)">3:12:40 · 6,5 pts · 58&#8239;%</span></div>
+      </div>
+      <div class="sys-col">
+        <div class="kicker">03 — Composants</div>
+        <h2>Des filets, pas des cartes</h2>
+        <div class="comp"><span class="kicker comp-label">Actions</span><button class="btn">Commencer</button><button class="btn ghost">Rendre la copie</button><button class="btn" disabled>Choisis d’abord</button></div>
+        <div class="comp" style="display:block"><span class="kicker comp-label">Option de pari</span><ol class="opts" style="margin:6px 0 0"><li><button><kbd>2</kbd><span>Elles sont égales</span></button></li></ol></div>
+        <div class="comp"><span class="kicker comp-label">Hachures de planche · A cobalt, B ardoise</span>
+          <svg width="110" height="36" aria-hidden="true"><rect x=".5" y=".5" width="109" height="35" fill="url(#hA)" stroke="var(--rule-strong)"/></svg>
+          <svg width="110" height="36" aria-hidden="true"><rect x=".5" y=".5" width="109" height="35" fill="url(#hB)" stroke="var(--rule-strong)"/></svg>
+        </div>
+        <div class="comp" style="display:block"><span class="kicker comp-label">Barème en marge (examen)</span>
+          <div class="paper-in" style="grid-template-columns:52px 1fr;column-gap:14px"><div class="q cur"><div class="pts">0,75</div><div class="body" style="font-size:15.5px"><b>1-b</b>Deux limites, puis interpréter.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Barre de maquette, hors produit -->
+<nav class="maq" aria-label="Maquette">
+  <span>Maquette · direction Atlas — hors produit</span>
+  <a href="#accueil">Accueil</a><a href="#lecon">Leçon</a><a href="#examen">Examen</a><a href="#systeme">Système</a>
+  <button id="theme" aria-label="Basculer clair / sombre">Clair / sombre</button>
+</nav>
+
+<script>
+/* figure 19 : y = 1/x, aires A [1,2] et B [2,4] */
+(function(){
+  const NS='http://www.w3.org/2000/svg', g=document.getElementById('fig19');
+  const X=x=>70+87*x, Y=y=>500-172*y;
+  const E=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a){if(k==='text')e.textContent=a[k];else e.setAttribute(k,a[k]);}(p||g).appendChild(e);return e;};
+  const reg=(a,b)=>{let d=`M${X(a)} ${Y(0)}`;for(let i=0;i<=60;i++){const x=a+(b-a)*i/60;d+=`L${X(x).toFixed(1)} ${Y(1/x).toFixed(1)}`;}return d+`L${X(b)} ${Y(0)}Z`;};
+  E('path',{d:reg(1,2),fill:'url(#hA)'});E('path',{d:reg(2,4),fill:'url(#hB)'});
+  E('line',{x1:X(0),x2:X(8.95),y1:Y(0),y2:Y(0),stroke:'var(--ink)','stroke-width':1.2});
+  E('line',{x1:X(0),x2:X(0),y1:Y(0),y2:Y(2.65),stroke:'var(--ink)','stroke-width':1.2});
+  for(let i=1;i<=8;i++){E('line',{x1:X(i),x2:X(i),y1:Y(0),y2:Y(0)+7,stroke:'var(--ink)'});E('text',{x:X(i),y:Y(0)+28,'text-anchor':'middle',fill:'var(--ink-2)','font-family':'IBM Plex Mono, monospace','font-size':14,text:i});}
+  [[.5,'0,5'],[1,'1'],[1.5,'1,5'],[2,'2']].forEach(([v,t])=>{E('line',{x1:X(0)-7,x2:X(0),y1:Y(v),y2:Y(v),stroke:'var(--ink)'});E('text',{x:X(0)-14,y:Y(v)+5,'text-anchor':'end',fill:'var(--ink-2)','font-family':'IBM Plex Mono, monospace','font-size':14,text:t});});
+  let d='';for(let i=0;i<=400;i++){const x=.4+(8.8-.4)*i/400;d+=(i?'L':'M')+X(x).toFixed(1)+' '+Y(1/x).toFixed(1);}
+  E('path',{d,fill:'none',stroke:'var(--ink)','stroke-width':2.4});
+  const it=(x,y,s,txt,anchor)=>{const t=E('text',{x,y,'text-anchor':anchor||'start','font-family':'Newsreader, Georgia, serif','font-size':s,fill:'var(--ink)'});return t;};
+  const lab=it(X(.62)+14,Y(1/.62)+4,24);['y',' = 1/','x'].forEach((p,i)=>{const s=document.createElementNS(NS,'tspan');s.textContent=p;if(i!==1)s.setAttribute('font-style','italic');lab.appendChild(s);});
+  const A=it(X(1.5),Y(.24),32,'','middle');A.setAttribute('paint-order','stroke');A.setAttribute('stroke','var(--paper)');A.setAttribute('stroke-width','7');A.textContent='A';A.setAttribute('font-style','italic');A.setAttribute('fill','var(--cobalt)');
+  const B=it(X(3),Y(.1),32,'','middle');B.setAttribute('paint-order','stroke');B.setAttribute('stroke','var(--paper)');B.setAttribute('stroke-width','7');B.textContent='B';B.setAttribute('font-style','italic');B.setAttribute('fill','var(--ink)');
+  E('text',{x:X(8.9),y:Y(0)+28,'text-anchor':'end','font-family':'Newsreader, Georgia, serif','font-style':'italic','font-size':20,fill:'var(--ink-2)',text:'x'});
+})();
+
+/* écrans par hash */
+function show(){const h=(location.hash||'#accueil').slice(1);const ok=['accueil','lecon','examen','systeme'].includes(h)?h:'accueil';
+  document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('on',s.dataset.screen===ok));
+  document.querySelectorAll('.maq a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+ok));
+  window.scrollTo(0,0);}
+addEventListener('hashchange',show);show();
+
+/* thème */
+(function(){const r=document.documentElement;let t=null;try{t=localStorage.getItem('atlas-theme');}catch(e){}
+  if(t)r.dataset.theme=t;
+  document.getElementById('theme').addEventListener('click',()=>{const dark=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.dataset.theme=dark?'light':'dark';try{localStorage.setItem('atlas-theme',r.dataset.theme);}catch(e){}});})();
+
+/* maths */
+window.MathJax={startup:{typeset:false,ready(){MathJax.startup.defaultReady();MathJax.startup.promise.then(()=>{
+  document.querySelectorAll('.m[data-tex]').forEach(n=>{try{const node=MathJax.tex2svg(n.dataset.tex,{display:n.dataset.display==='1'});n.replaceChildren(node);}catch(e){}});
+  try{MathJax.startup.document.clear();MathJax.startup.document.updateDocument();}catch(e){}});}},svg:{fontCache:'local'}};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" async></script>
+</body>
+</html>

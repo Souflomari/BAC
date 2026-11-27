@@ -1,0 +1,40 @@
+/* Leçon « suites numériques » (V3) : ce qui est propre aux maths, par-dessus pilote.css (partagé).
+   Tout est scopé sous [data-pilote="suites"] ; couleurs : jetons seulement. */
+
+/* un exposant dans le panneau (2<sup>3</sup>) ne décale pas la ligne */
+.pilote[data-pilote="suites"] sup { line-height: 0; font-size: 0.72em; }
+
+/* un bouton d'action dans le panneau (« Montre-moi ») */
+.pilote[data-pilote="suites"] .ctl-btn { font: 700 1rem var(--font-ui); min-height: 48px; margin-top: 12px; padding: 12px 18px; cursor: pointer; background: var(--color-text-primary); color: var(--color-surface-base); border: 1px solid var(--color-text-primary); }
+.pilote[data-pilote="suites"] .ctl-btn.alt { background: transparent; color: var(--color-text-primary); }
+.pilote[data-pilote="suites"] .ctl-btn:disabled { opacity: .35; cursor: default; }
+.pilote[data-pilote="suites"] .ctl-btn:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+/* « Montre-moi » attend deux essais ou vingt secondes : présent, mais invisible jusque-là */
+.pilote[data-pilote="suites"] .lg-cache { visibility: hidden; }
+
+/* « Passer à l'énigme » : le test de « Ce qu'il faut savoir » réussi du premier coup */
+.pilote[data-pilote="suites"] .lg-saut { margin-top: 10px; font: 700 1rem var(--font-ui); padding: 12px 16px; cursor: pointer; background: transparent; color: var(--color-text-primary); border: 2px solid var(--color-text-primary); }
+.pilote[data-pilote="suites"] .lg-saut:hover { background: var(--color-surface-container-low); }
+.pilote[data-pilote="suites"] .lg-saut:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+
+/* la rédaction attendue au bac : une copie, ligne à ligne */
+.pilote[data-pilote="suites"] .lg-copie { margin: 4px 0 16px; padding: 12px 16px; border-left: 3px solid var(--color-text-primary); background: var(--color-surface-container-low); display: grid; gap: 6px; font-size: 1.0625rem; line-height: 1.45; }
+.pilote[data-pilote="suites"] .lg-copie p { margin: 0; }
+.pilote[data-pilote="suites"] .lg-copie i { font-family: var(--font-reading-serif), Georgia, serif; padding-right: .08em; }
+.dark .pilote[data-pilote="suites"] .lg-copie { background: var(--color-surface-container-high); }
+
+/* la fin : une ligne de résultat */
+.pilote[data-pilote="suites"] .lg-res { margin: 0 0 8px; font-size: 1.0625rem; line-height: 1.5; }
+
+/* un indice (u<sub>n</sub>) dans le panneau ne décale pas la ligne */
+.pilote[data-pilote="suites"] sub { line-height: 0; font-size: 0.72em; }
+
+/* la zone f(x) > x ou f(x) < x : un aplat d'accent très léger ; un peu plus soutenu en sombre, pour ne pas virer au brun */
+.dark .pilote[data-pilote="suites"] .su-zone { fill-opacity: 0.18; }
+
+/* au téléphone (390 px de large, la toile mesure 1 000 unités), le texte de la scène part de 28 unités, soit 11 px réels :
+   le noyau remonte déjà chaque texte à 11 px, mais il en rabat un dès que deux se touchent, et il ne s'en souvient plus d'une
+   étape à l'autre. Avec une taille d'origine à 28, aucun ne redescend sous 11 px. */
+@media (max-width: 639px) {
+  .pilote[data-pilote="suites"] [data-pilote-scene] :is(.t-tick, .t-sous, .t-lab, .t-lab2) { font-size: 28.4px; }
+}

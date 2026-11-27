@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 420" role="img"
+     font-family="'IBM Plex Sans', system-ui, sans-serif"
+     aria-label="Deux droites graduées aux multiples de 12. Sur la première, 157 tombe dans la cellule [156, 168) : quotient 13, reste 1. Sur la seconde, -157 tombe dans la cellule [-168, -156) : quotient -14, reste 11 — le quotient -13, qui placerait -157 hors de sa cellule et forcerait un reste négatif, est barré comme erreur fréquente.">
+  <title>Division euclidienne de 157 puis de -157 par 12 — la droite des multiples</title>
+  <!--
+    division-euclidienne-droite.svg — StagedFigure, R1 de arithmetique/lesson.md.
+    Ordre canonique "graphe" (LESSON-EXPERIENCE-SPEC §2.5) : axes -> données
+    -> lecture, avec un 4e palier ajouté pour le piège du signe (explicitement
+    demandé par le callout, au-delà de l'ordre canonique à 3).
+
+    ÉCHELLE : SCHÉMATIQUE, pas métrique — chaque cellule [12k, 12k+12) a la
+    MÊME largeur à l'écran (110 px), quel que soit k. C'est honnête : ce qui
+    compte pédagogiquement est la partition en cellules de longueur ÉGALE
+    (12), pas la position réelle de 156 par rapport à 0 sur une droite à
+    l'échelle (qui serait hors champ). À l'intérieur d'une cellule, en
+    revanche, la position du point EST proportionnelle à l'écart réel
+    (ex. 157 est à 1/12 du bord gauche de [156,168) — cf. step-2).
+
+    step-1 : la droite positive, multiples de 12 (144, 156, 168, 180),
+             partition en cellules de longueur 12 (accolade "12").
+    step-2 : 157 placé dans [156,168), q = 13.
+    step-3 : le reste r = 157-156 = 1, écart mesuré depuis 156.
+    step-4 : la droite négative, -157 placé dans [-168,-156), q=-14, r=11 —
+             et le q=-13 tentant, barré (il placerait -157 hors de sa
+             cellule, à droite de -156, ce qui forcerait un reste négatif).
+
+    Repère de la droite positive : x_144=120, pas de 110 px / cellule de 12
+    (donc 110/12 px par unité) -> x_156=230, x_168=340, x_180=450, y=140.
+    Repère de la droite négative (step-4), mêmes abscisses, y=300 :
+    x_-180=120, x_-168=230, x_-156=340, x_-144=450 (ordre croissant conservé
+    de gauche à droite, comme sur la vraie droite des entiers).
+
+    Rôle des couleurs : structure (droite, graduations, cellules) en
+    --figure-ink-soft ; les valeurs de a (157 puis -157) et les lectures
+    (q, r) correctes en --figure-accent ; l'erreur barrée (q=-13) reste en
+    --figure-ink-soft, simplement traversée d'un trait — aucune teinte
+    nouvelle pour signaler l'erreur (un seul accent, réservé au juste).
+  -->
+
+  <rect width="700" height="420" fill="var(--figure-surface)"/>
+
+  <text x="350" y="24" text-anchor="middle" font-size="13.5" font-weight="700"
+        fill="var(--figure-ink)">157 (puis -157) divisé par 12 — la droite des multiples</text>
+
+  <!-- ══════════════ Étape 1 : la droite positive, partition en cellules de 12 ══════════════ -->
+  <g id="step-1">
+    <line x1="30" y1="140" x2="580" y2="140" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="592,140 580,135.5 580,144.5" fill="var(--figure-ink-soft)"/>
+    <text x="60" y="145" font-size="16" fill="var(--figure-ink-soft)">&#8230;</text>
+    <text x="522" y="145" font-size="16" fill="var(--figure-ink-soft)">&#8230;</text>
+
+    <line x1="120" y1="132" x2="120" y2="148" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <line x1="230" y1="132" x2="230" y2="148" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <line x1="340" y1="132" x2="340" y2="148" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <line x1="450" y1="132" x2="450" y2="148" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <text x="120" y="164" text-anchor="middle" font-size="11.5" fill="var(--figure-ink-soft)">144</text>
+    <text x="230" y="164" text-anchor="middle" font-size="11.5" fill="var(--figure-ink-soft)">156</text>
+    <text x="340" y="164" text-anchor="middle" font-size="11.5" fill="var(--figure-ink-soft)">168</text>
+    <text x="450" y="164" text-anchor="middle" font-size="11.5" fill="var(--figure-ink-soft)">180</text>
+
+    <!-- accolade de longueur de cellule -->
+    <path d="M230,182 Q234,190 240,190 L280,190 Q285,190 285,196 Q285,190 290,190 L330,190 Q336,190 340,182"
+          fill="none" stroke="var(--figure-ink-soft)" stroke-width="1"/>
+    <text x="285" y="206" text-anchor="middle" font-size="11" font-style="italic" fill="var(--figure-ink-soft)">12</text>
+  </g>
+
+  <!-- ══════════════ Étape 2 : 157 placé dans [156,168), q = 13 ══════════════ -->
+  <g id="step-2">
+    <rect x="230" y="128" width="110" height="24" fill="var(--figure-accent)" fill-opacity="0.15"/>
+    <line x1="239.2" y1="128" x2="239.2" y2="152" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <circle cx="239.2" cy="140" r="4" fill="var(--figure-accent)"/>
+    <text x="239.2" y="112" text-anchor="middle" font-size="12.5" font-weight="700"
+          fill="var(--figure-accent)"><tspan font-style="italic">a</tspan> = 157</text>
+    <text x="285" y="222" text-anchor="middle" font-size="12" fill="var(--figure-ink)"><tspan
+          font-style="italic">q</tspan> = 13</text>
+  </g>
+
+  <!-- ══════════════ Étape 3 : le reste r = 157 - 156 = 1 ══════════════ -->
+  <g id="step-3">
+    <line x1="230" y1="118" x2="239.2" y2="118" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <line x1="230" y1="113" x2="230" y2="123" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <line x1="239.2" y1="113" x2="239.2" y2="123" stroke="var(--figure-accent)" stroke-width="1.4"/>
+    <text x="234.6" y="100" text-anchor="middle" font-size="11.5" font-weight="700"
+          fill="var(--figure-accent)"><tspan font-style="italic">r</tspan> = 1</text>
+  </g>
+
+  <!-- ══════════════ Étape 4 : la droite négative, -157, et le piège q=-13 ══════════════ -->
+  <g id="step-4">
+    <line x1="30" y1="300" x2="580" y2="300" stroke="var(--figure-ink-soft)" stroke-width="1.4"/>
+    <polygon points="592,300 580,295.5 580,304.5" fill="var(--figure-ink-soft)"/>
+    <text x="60" y="305" font-size="16" fill="var(--figure-ink-soft)">&#8230;</text>
+    <text x="522" y="305" font-size="16" fill="var(--figure-ink-soft)">&#8230;</text>
+
+    <line x1="120" y1="292" x2="120" y2="308" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <line x1="230" y1="292" x2="230" y2="308" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <line x1="340" y1="292" x2="340" y2="308" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <line x1="450" y1="292" x2="450" y2="308" stroke="var(--figure-ink)" stroke-width="1.4"/>
+    <text x="120" y="324" text-anchor="middle" font-size="11.5" fill="var(--figure-ink-soft)">-180</text>
+    <text x="230" y="324" text-anchor="middle" font-size="11.5" fill="var(--figure-ink-soft)">-168</text>
+    <text x="340" y="324" text-anchor="middle" font-size="11.5" fill="var(--figure-ink-soft)">-156</text>
+    <text x="450" y="324" text-anchor="middle" font-size="11.5" fill="var(--figure-ink-soft)">-144</text>
+
+    <!-- cellule correcte [-168,-156) -->
+    <rect x="230" y="288" width="110" height="24" fill="var(--figure-accent)" fill-opacity="0.15"/>
+    <line x1="330.8" y1="288" x2="330.8" y2="312" stroke="var(--figure-accent)" stroke-width="1.6"/>
+    <circle cx="330.8" cy="300" r="4" fill="var(--figure-accent)"/>
+    <text x="330.8" y="272" text-anchor="middle" font-size="12.5" font-weight="700"
+          fill="var(--figure-accent)"><tspan font-style="italic">a</tspan> = -157</text>
+    <text x="285" y="358" text-anchor="middle" font-size="12" font-weight="700" fill="var(--figure-accent)"><tspan
+          font-style="italic">q</tspan> = -14,  <tspan font-style="italic">r</tspan> = 11</text>
+
+    <!-- le piège : q = -13 (tentant, faux) -->
+    <text x="410" y="272" text-anchor="middle" font-size="12" fill="var(--figure-ink-soft)"><tspan
+          font-style="italic">q</tspan> = -13 ?</text>
+    <!-- data-rature : ce trait BARRE « q = -13 ? » exprès — c'est le piège de
+         la figure, et la rature est ce qui dit qu'il est faux. La sonde de
+         figure-preview signale les tracés qui traversent un texte ; cet
+         attribut lui dit que celui-là est voulu. -->
+    <line data-rature="1" x1="386" y1="266" x2="434" y2="278" stroke="var(--figure-ink)" stroke-width="1.6"/>
+    <text x="410" y="396" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">12&#215;(-13) = -156 &gt; -157</text>
+    <text x="410" y="410" text-anchor="middle" font-size="10.5" fill="var(--figure-ink-soft)">&#8594; -157 hors de sa cellule, reste &lt; 0 : interdit</text>
+  </g>
+
+</svg>

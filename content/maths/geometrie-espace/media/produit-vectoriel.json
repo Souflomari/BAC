@@ -1,0 +1,251 @@
+{
+  "slug": "produit-vectoriel",
+  "tool": "scene3d",
+  "scene": "produit-vectoriel",
+  "title_fr": "Le produit vectoriel, en trois dimensions",
+  "caption_fr": "Deux vecteurs, et celui que leur produit vectoriel fabrique. Cinq étapes : à chaque fois tu paries d'abord, puis tu vois. Les vecteurs sont ceux du tétraèdre de l'exemple travaillé.",
+  "etapes": [
+    {
+      "id": "direction",
+      "titre": "Perpendiculaire aux deux",
+      "consigne": "Deux vecteurs du plan horizontal, issus du point $A$ : $\\vec u = \\overrightarrow{AB} = (2\\,;0\\,;0)$ et $\\vec v = \\overrightarrow{AC} = (0\\,;2\\,;0)$. On cherche un vecteur perpendiculaire aux deux à la fois : c'est ce que fabrique le produit vectoriel.",
+      "pari": {
+        "question": "D'après la définition, $\\overrightarrow{AB}\\wedge\\overrightarrow{AC}$ vaut…",
+        "choix": [
+          {
+            "id": "somme",
+            "texte": "$(2\\,;2\\,;0)$, la diagonale du parallélogramme",
+            "juste": false,
+            "misconception": "mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme",
+            "retour": "$(2\\,;2\\,;0)$, c'est $\\overrightarrow{AB}+\\overrightarrow{AC}$ : une somme, pas un produit vectoriel. Ce vecteur est DANS le plan de $\\vec u$ et $\\vec v$ — il ne peut pas leur être perpendiculaire."
+          },
+          {
+            "id": "haut",
+            "texte": "$(0\\,;0\\,;4)$, vertical, vers le haut",
+            "juste": true,
+            "retour": "La troisième composante vaut $x y' - y x' = 2\\times2 - 0\\times0 = 4$, les deux autres $0$. Le produit est vertical : perpendiculaire au plan horizontal de $\\vec u$ et $\\vec v$, donc aux deux."
+          },
+          {
+            "id": "bas",
+            "texte": "$(0\\,;0\\,;-4)$, vertical, vers le bas",
+            "juste": false,
+            "misconception": "mc.math.maths_geometrie_espace.signe-arithmetique",
+            "retour": "La troisième composante est $x y' - y x' = 2\\times2 - 0\\times0 = +4$ : le produit pointe vers le haut. Le signe dépend de l'ORDRE des facteurs — c'est l'étape suivante."
+          }
+        ]
+      },
+      "suite": "Fais tourner $\\vec v$ dans le plan : le produit reste vertical — perpendiculaire à $\\vec u$ ET à $\\vec v$ —, seule sa longueur change. Les deux produits scalaires restent nuls.",
+      "controles": [
+        "angle"
+      ],
+      "lectures": [
+        "coordonnees",
+        "orthogonalite"
+      ],
+      "etat": {
+        "theta_deg": 90,
+        "v_norme": 2,
+        "phi_deg": 0,
+        "ordre": "uv",
+        "vue": "biais"
+      }
+    },
+    {
+      "id": "ordre",
+      "titre": "L'ordre compte",
+      "consigne": "Les mêmes vecteurs, $\\overrightarrow{AB}$ et $\\overrightarrow{AC}$, mais multipliés dans l'autre ordre : $\\overrightarrow{AC}\\wedge\\overrightarrow{AB}$.",
+      "pari": {
+        "question": "Comparé à $\\overrightarrow{AB}\\wedge\\overrightarrow{AC} = (0\\,;0\\,;4)$, le produit $\\overrightarrow{AC}\\wedge\\overrightarrow{AB}$ est…",
+        "choix": [
+          {
+            "id": "meme",
+            "texte": "le même, $(0\\,;0\\,;4)$ : comme pour le produit scalaire, l'ordre ne compte pas",
+            "juste": false,
+            "retour": "Le produit scalaire est symétrique ; le produit vectoriel, lui, change de signe. La troisième composante devient $x y' - y x' = 0\\times0 - 2\\times2 = -4$."
+          },
+          {
+            "id": "oppose",
+            "texte": "l'opposé, $(0\\,;0\\,;-4)$",
+            "juste": true,
+            "retour": "Échanger les facteurs échange les rôles de $(x, y, z)$ et $(x', y', z')$ dans chaque composante : toutes changent de signe. $\\vec v\\wedge\\vec u = -\\,\\vec u\\wedge\\vec v$."
+          },
+          {
+            "id": "nul",
+            "texte": "le vecteur nul : les deux ordres s'annulent",
+            "juste": false,
+            "retour": "Rien ne s'annule : $\\overrightarrow{AC}\\wedge\\overrightarrow{AB}$ a la même norme, $4$, et la direction opposée. C'est la SOMME des deux produits qui est nulle."
+          }
+        ]
+      },
+      "suite": "Passe d'un ordre à l'autre : la flèche se retourne, sa longueur ne change pas.",
+      "controles": [
+        "ordre"
+      ],
+      "lectures": [
+        "coordonnees"
+      ],
+      "etat": {
+        "theta_deg": 90,
+        "v_norme": 2,
+        "phi_deg": 0,
+        "ordre": "vu",
+        "vue": "biais"
+      }
+    },
+    {
+      "id": "aire",
+      "titre": "Une norme qui est une aire",
+      "consigne": "On garde $\\|\\vec u\\| = \\|\\vec v\\| = 2$, mais $\\vec v$ fait maintenant un angle de $150°$ avec $\\vec u$ : $\\vec v = (-\\sqrt3\\,;1\\,;0)$. La scène se regarde de dessus.",
+      "pari": {
+        "question": "L'aire du TRIANGLE construit sur $\\vec u$ et $\\vec v$ vaut…",
+        "choix": [
+          {
+            "id": "deux",
+            "texte": "$2$, la norme de $\\vec u\\wedge\\vec v$",
+            "juste": false,
+            "misconception": "mc.math.maths_geometrie_espace.aire-oubli-demi",
+            "retour": "$\\|\\vec u\\wedge\\vec v\\| = 2$ est l'aire du PARALLÉLOGRAMME construit sur $\\vec u$ et $\\vec v$ ; le triangle en est la moitié : $1$."
+          },
+          {
+            "id": "un",
+            "texte": "$1$",
+            "juste": true,
+            "retour": "$\\vec u\\wedge\\vec v = (0\\,;0\\,;2\\times1 - 0\\times(-\\sqrt3)) = (0\\,;0\\,;2)$ : le parallélogramme a une aire de $2$, le triangle la moitié, $1$. Et $2 = \\|\\vec u\\|\\,\\|\\vec v\\|\\sin150° = 2\\times2\\times\\tfrac12$."
+          },
+          {
+            "id": "quatre",
+            "texte": "$4$, comme à $90°$",
+            "juste": false,
+            "retour": "À $90°$, le triangle avait une aire de $2$, pas $4$ ; et en ouvrant l'angle à $150°$ le parallélogramme s'aplatit : sa hauteur $\\|\\vec v\\|\\sin\\theta$ passe de $2$ à $1$."
+          }
+        ]
+      },
+      "suite": "Fais varier l'angle et la norme de $\\vec v$ : la longueur de la flèche suit l'aire du parallélogramme, $\\|\\vec u\\|\\,\\|\\vec v\\|\\sin\\theta$ — maximale à $90°$.",
+      "controles": [
+        "angle",
+        "longueur"
+      ],
+      "lectures": [
+        "norme",
+        "aire"
+      ],
+      "etat": {
+        "theta_deg": 150,
+        "v_norme": 2,
+        "phi_deg": 0,
+        "ordre": "uv",
+        "vue": "dessus"
+      }
+    },
+    {
+      "id": "colineaires",
+      "titre": "Quand le parallélogramme s'aplatit",
+      "consigne": "$\\vec v$ est maintenant colinéaire à $\\vec u$ : l'angle est nul, $\\vec v = (2\\,;0\\,;0) = \\vec u$.",
+      "pari": {
+        "question": "Pour deux vecteurs colinéaires, $\\vec u\\wedge\\vec v$…",
+        "choix": [
+          {
+            "id": "nul",
+            "texte": "est le vecteur nul",
+            "juste": true,
+            "retour": "Toutes les composantes s'annulent : $(0\\times0 - 0\\times0\\,;0\\times2 - 2\\times0\\,;2\\times0 - 0\\times2) = (0\\,;0\\,;0)$. Le parallélogramme est aplati : son aire, donc la norme, est nulle."
+          },
+          {
+            "id": "quatre",
+            "texte": "a pour norme $4 = \\|\\vec u\\|\\,\\|\\vec v\\|$",
+            "juste": false,
+            "misconception": "mc.math.maths_geometrie_espace.scalaire-vectoriel-confondus",
+            "retour": "$4$, c'est le produit SCALAIRE $\\vec u\\cdot\\vec v = \\|\\vec u\\|\\,\\|\\vec v\\|\\cos0°$. Le produit vectoriel porte un $\\sin\\theta$, et $\\sin0° = 0$."
+          },
+          {
+            "id": "perp",
+            "texte": "reste perpendiculaire au plan de $\\vec u$ et $\\vec v$, comme toujours",
+            "juste": false,
+            "retour": "Deux vecteurs colinéaires ne définissent aucun plan : il n'y a pas de direction perpendiculaire privilégiée, et le produit est nul."
+          }
+        ]
+      },
+      "suite": "Écarte doucement $\\vec v$ de $\\vec u$ : la flèche renaît, de longueur $4\\sin\\theta$.",
+      "controles": [
+        "angle"
+      ],
+      "lectures": [
+        "coordonnees",
+        "norme"
+      ],
+      "etat": {
+        "theta_deg": 0,
+        "v_norme": 2,
+        "phi_deg": 0,
+        "ordre": "uv",
+        "vue": "biais"
+      }
+    },
+    {
+      "id": "perspective",
+      "titre": "Ne te fie pas au dessin",
+      "consigne": "Le plan de $\\vec u$ et $\\vec v$ est maintenant incliné de $50°$ autour de l'axe $(Ax)$. Vu de biais, le produit ne « paraît » plus perpendiculaire à $\\vec v$.",
+      "pari": {
+        "question": "$\\vec u\\wedge\\vec v$ est perpendiculaire à $\\vec v$…",
+        "choix": [
+          {
+            "id": "toujours",
+            "texte": "toujours : $\\vec v\\cdot(\\vec u\\wedge\\vec v) = 0$, quel que soit le plan",
+            "juste": true,
+            "retour": "Le calcul de la leçon ne suppose rien sur le plan : les six termes de $\\vec v\\cdot(\\vec u\\wedge\\vec v)$ s'annulent deux à deux, pour tous vecteurs. Tourne la scène : de côté, l'angle droit est là."
+          },
+          {
+            "id": "horizontal",
+            "texte": "seulement quand le plan est horizontal",
+            "juste": false,
+            "misconception": "mc.math.maths_geometrie_espace.perspective-fiable",
+            "retour": "C'est le dessin en perspective qui déforme l'angle, pas la géométrie. Le produit scalaire, lui, vaut $0$ — tourne la scène jusqu'à voir le plan par la tranche."
+          },
+          {
+            "id": "jamais",
+            "texte": "jamais exactement : il s'incline moins que le plan",
+            "juste": false,
+            "misconception": "mc.math.maths_geometrie_espace.raisonnement-spatial-naif",
+            "retour": "Aucun calcul ne dit cela — c'est un « fait » spatial inventé. $\\vec v\\cdot(\\vec u\\wedge\\vec v) = 0$ pour tout plan : la perpendicularité est exacte."
+          }
+        ]
+      },
+      "controles": [
+        "angle",
+        "longueur",
+        "inclinaison",
+        "ordre"
+      ],
+      "lectures": [
+        "coordonnees",
+        "norme",
+        "aire",
+        "orthogonalite"
+      ],
+      "etat": {
+        "theta_deg": 90,
+        "v_norme": 2,
+        "phi_deg": 50,
+        "ordre": "uv",
+        "vue": "biais"
+      }
+    }
+  ],
+  "boundary": "Cadre de la leçon (R3) : produit vectoriel de deux vecteurs de l'espace en repère orthonormé direct, défini par les coordonnées ; orthogonalité aux deux facteurs ; norme = aire du parallélogramme ; antisymétrie ; nullité pour des vecteurs colinéaires. Aucune identité hors leçon (double produit vectoriel, etc.).",
+  "fit_caveat": "Les vecteurs sont à la vraie grandeur de leurs coordonnées, y compris le produit : (0 ; 0 ; 4) est dessiné quatre unités au-dessus de A. Les curseurs avancent par pas de 5° et de 0,5 ; la caméra ne recadre que quand la norme de v change, jamais quand v tourne.",
+  "fallback_note": "Sans WebGL, le panneau le dit et garde les paris, les réglages et les calculs ; la figure du produit vectoriel, plus bas dans la leçon, en montre l'essentiel. À l'impression, le panneau disparaît et la figure figée reste.",
+  "pedagogy_wiring": {
+    "misconceptions": [
+      "mc.math.maths_geometrie_espace.operation-vectorielle-comme-somme",
+      "mc.math.maths_geometrie_espace.signe-arithmetique",
+      "mc.math.maths_geometrie_espace.aire-oubli-demi",
+      "mc.math.maths_geometrie_espace.scalaire-vectoriel-confondus",
+      "mc.math.maths_geometrie_espace.perspective-fiable",
+      "mc.math.maths_geometrie_espace.raisonnement-spatial-naif"
+    ],
+    "why_3d": "Le produit vectoriel fabrique une direction qui SORT du plan des deux facteurs : une figure plane doit la dessiner en perspective, et c'est là que l'œil se trompe (perspective-fiable). En tournant autour, l'angle droit se vérifie de côté, l'aire se lit de dessus, et l'ordre des facteurs retourne la flèche sous les yeux.",
+    "predict_then_reveal": "Chaque étape demande un pari AVANT toute preuve ; le produit, le parallélogramme et la fiche n'apparaissent qu'une fois le pari posé (§11.190)."
+  },
+  "spec_ref": "content/maths/geometrie-espace/lesson.md R3 (définition, orthogonalité, norme = aire, exemple travaillé du tétraèdre) ; items.yaml, misconceptions listées dans pedagogy_wiring. Aucun callout média ne prescrivait ce manipulable : il s'ajoute à R3 (un marqueur, un paragraphe d'annonce). Décision et critère : ADR 0041.",
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md"
+}

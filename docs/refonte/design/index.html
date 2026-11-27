@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Quatre directions de design</title>
+<style>
+*{box-sizing:border-box}
+:root{color-scheme:light;--bg:#F4F5F7;--panel:#FFFFFF;--ink:#111317;--muted:#5A616D;--line:#D9DDE3;--accent:#111317}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0E1013;--panel:#16191E;--ink:#ECEEF1;--muted:#9AA2AD;--line:#2B3038;--accent:#ECEEF1}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0E1013;--panel:#16191E;--ink:#ECEEF1;--muted:#9AA2AD;--line:#2B3038;--accent:#ECEEF1}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;padding:40px max(16px,env(safe-area-inset-right,0px)) 64px max(16px,env(safe-area-inset-left,0px))}
+.wrap{max-width:1680px;margin:0 auto}
+h1{font-size:32px;line-height:1.15;margin:0 0 10px;letter-spacing:-.01em}
+.lead{max-width:78ch;color:var(--muted);margin:0 0 8px}
+.how{display:flex;flex-wrap:wrap;gap:8px 22px;margin:18px 0 34px;font-size:14px;color:var(--muted)}
+.how b{color:var(--ink)}
+.dir{background:var(--panel);border:1px solid var(--line);padding:24px;margin-bottom:22px}
+.head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;margin-bottom:6px}
+.head h2{margin:0;font-size:24px}
+.head .tag{font:600 12px ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.head a.open{margin-left:auto;color:var(--ink);font-weight:600;text-decoration:none;border-bottom:2px solid var(--ink)}
+.bet{margin:0 0 16px;max-width:96ch}
+.shots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.shots a{display:block;color:var(--muted);text-decoration:none;font-size:13px}
+.shots img{display:block;width:100%;height:auto;aspect-ratio:1440/900;object-fit:cover;object-position:top;border:1px solid var(--line);background:var(--bg);margin-bottom:6px}
+.shots a:hover img{outline:2px solid var(--accent);outline-offset:2px}
+.pending{padding:18px;border:1px dashed var(--line);color:var(--muted)}
+.foot{margin-top:28px;font-size:14px;color:var(--muted);max-width:90ch}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (max-width:900px){.shots{grid-template-columns:repeat(2,minmax(0,1fr))}body{padding-top:24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Quatre directions de design, les mêmes écrans</h1>
+  <p class="lead">Chaque direction montre le même produit : l’accueil de l’élève, la leçon logarithme à l’étape d’un pari, une vraie épreuve du bac SM en mode examen (sujets réels transcrits dans le dépôt : 2023 ou 2024 selon la direction) et la fiche du système (couleurs, typographie, composants, le pari et ses risques). Les données de l’élève sont fictives et identiques partout ; les coefficients et les poids du programme sont les vrais.</p>
+  <div class="how"><span><b>Cliquer une image</b> ouvre l’écran en grand.</span><span>Dans chaque direction, une petite barre « Maquette » (hors produit) change d’écran et bascule <b>clair / sombre</b>.</span><span>On peut <b>mélanger</b> : « l’accueil de Grille avec la leçon d’Instrument » est une réponse valable.</span></div>
+  <div id="list"></div>
+  <p class="foot">Maquettes statiques, pensées pour l’ordinateur à 1440 px de large ; le mobile viendra après. Rien de tout cela n’est encore dans l’application.</p>
+</div>
+<script>
+const DIRS=[
+ {id:'atlas',name:'Atlas',tag:'éditorial',bet:'Un livre de référence calme plutôt qu’un tableau de bord : la typographie et les filets portent la hiérarchie, sans cartes, ombres ni coins arrondis. Papier blanc, encre noire, et une seule couleur vive, le cobalt, qui est « le stylo de l’élève » : tout ce qu’elle choisit, réussit ou doit faire est en cobalt. Newsreader + IBM Plex. L’examen ressemble à une vraie copie imprimée, barème en marge.'},
+ {id:'instrument',name:'Instrument',tag:'appareil de mesure, sombre d’abord',bet:'L’app se lit comme un instrument : chaque chiffre est une mesure (coefficients, minutes, points perdus), en chasse fixe. Sombre d’abord pour les séances du soir, clair en miroir. Quatre couleurs, quatre sens, aucun décor. Chivo + Chivo Mono. Risque : paraître froid ou « outil de développeur ».'},
+ {id:'majorelle',name:'Majorelle',tag:'marocain contemporain',bet:'Une identité qui ne peut être que marocaine, sans cliché touristique. Le bleu Majorelle en aplats, avec le safran, le cèdre et la grenade comme signaux, sur un blanc chaulé froid ; nuit bleue en sombre. La géométrie du zellige sert de structure, jamais de décor : l’étoile à 8 branches marque la progression, des joints de 2 px remplacent les ombres, les coins sont coupés à 45°. Readex Pro, une seule famille latin + arabe, permet une glose en darija en option (à faire relire).'},
+ {id:'grille',name:'Grille',tag:'typographie suisse',bet:'La clarté vient de l’alignement sur une grille stricte de 12 colonnes, jamais de l’ornement. Les chiffres qui décident du bac sont imprimés en très grand (33 semaines, coefficients, points en jeu) ; tout le reste se tait. Blanc, noir et un seul rouge, réservé à ce qui demande d’agir maintenant. Archivo seule, en jouant sur sa largeur. L’examen est un document précis, avec une horloge.'}
+];
+const SCREENS=[['accueil','Accueil'],['lecon','Leçon'],['examen','Examen'],['systeme','Système']];
+document.getElementById('list').innerHTML=DIRS.map(d=>`<section class="dir" id="${d.id}">
+  <div class="head"><h2>${d.name}</h2><span class="tag">${d.tag}</span>${d.ready!==false?`<a class="open" href="${d.id}/index.html#accueil">Ouvrir la direction →</a>`:''}</div>
+  ${d.bet?`<p class="bet">${d.bet}</p>`:''}
+  ${d.ready===false?`<div class="pending">En préparation.</div>`:`<div class="shots">${SCREENS.map(([h,l])=>`<a href="${d.id}/index.html#${h}"><img src="thumbs/${d.id}-${h}.jpg" alt="${d.name} — écran ${l}" loading="lazy">${l}</a>`).join('')}</div>`}
+</section>`).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+{
+  "slug": "echelle-des-quotients",
+  "tool": "scene2d",
+  "type": "manipulable",
+  "scene": "echelle-des-quotients",
+  "title_fr": "L'échelle des quotients : le mélange qu'on prépare face à la constante qu'on subit",
+  "caption_fr": "Cinq crans par solution, trois couples, un seul juge : $Q_{r,i}$ face à $K$. À chaque étape, tu paries d'abord — la marque répond ensuite, sur l'axe et dans la bande.",
+  "boundary": "Le critère d'évolution spontanée, $Q_{r,i}$ face à $K$, sur trois couples et cinq crans de concentration par solution — sans aucun potentiel standard ni relation de Nernst, sans thermodynamique, sans avancement ni $\\tau$, sans chaleur, sans pile ni montage électrique, sans acido-basique ni précipitation, sans graphe temporel, sans incertitude chiffrée, et sans jamais que $K$ ne soit calculé plutôt que donné.",
+  "fit_caveat": "1. L'axe est logarithmique : une même longueur y vaut toujours un même facteur, jamais une même différence. C'est ce qui permet de faire tenir $2{,}5$ et $1{,}8\\times10^{37}$ sur le même axe, et de rendre visible un écart qu'aucun texte ne pourrait montrer autrement. 2. La scène place le mélange ; elle ne le fait pas évoluer. La flèche dit vers où, et rien d'autre : ni à quelle vitesse, ni jusqu'où, ni en combien de temps — ces trois questions-là appartiennent à d'autres chapitres. 3. Les trois constantes sont données, à une température qu'on ne règle pas : $K$ dépend de la réaction et de la température, et la scène n'en montre qu'une, comme le fait chaque énoncé qui écrit « à la température de l'expérience ». Changer de bain change $K$ parce qu'on change de réaction, jamais de température. 4. Les concentrations affichées sont celles de l'instant où l'on vient de mélanger : on suppose la solution homogène et la réaction pas encore commencée — l'état $i$ du critère, une idéalisation de bécher, pas une mesure. 5. La bande de travail est un agrandissement, pas un second axe : elle montre huit décades autour de $K$ à une échelle plus fine, et le crochet posé sur l'axe d'ensemble dit exactement quelle portion elle agrandit. Quand le repère n'y est pas, c'est qu'aucun mélange préparable n'approche $K$ d'aussi près — un fait sur le couple, pas un défaut d'affichage.",
+  "fallback_note": "Sans JavaScript et à l'impression, le panneau disparaît. Les trois figures existantes du chapitre (l'axe qualitatif, le mécanisme du transfert direct, le montage pile) restent, mais aucune ne porte de nombre et aucune ne laisse choisir un mélange. L'élève sans JavaScript perd donc les trois faits centraux que la scène installe : que $Q_{r,i}$ se déplace pendant que $K$ ne bouge pas, que le même couple peut aller dans les deux sens, et qu'un coefficient de l'équation devient un exposant — la prose qui suit le marqueur les donne par le calcul, sur un seul mélange à la fois.",
+  "pedagogy_wiring": {
+    "why_manipulable": "Treize figures et zéro réglage dans les quatre notions de la chaîne du quotient : aucune ne laisse choisir un mélange, et la leçon elle-même ne travaille qu'un seul couple, avec un $K$ si écrasant que le sens ne s'y retourne jamais. Il faut voir plusieurs mélanges du même couple pour comprendre que $Q_{r,i}$ se déplace pendant que $K$ ne bouge pas ; il faut changer de couple, sans changer de geste, pour voir que ce n'est pas le métal qui décide ; et il faut un cran qui tombe exactement sur $K$ pour voir exister le troisième cas du critère. Aucune figure gelée ne peut montrer lequel des deux nombres est libre.",
+    "predict_then_reveal": "Cinq paris, verdict immédiat : tant que l'élève n'a pas répondu, aucun contrôle et aucune lecture qui dépendrait de l'issue n'existent dans le panneau. Après l'engagement, c'est le dessin qui répond avant le texte — la marque se pose sur l'axe et dans la bande, les flèches et les rôles apparaissent dans le bécher — et chaque « suite » fait regarder un geste précis, jamais relire ce qui vient d'être dit.",
+    "misconceptions": [
+      "mc.chemistry.pc_evolution_spontanee.critere-inverse",
+      "mc.chemistry.pc_evolution_spontanee.confond-qr-et-k",
+      "mc.chemistry.pc_evolution_spontanee.solide-dans-qr",
+      "mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe",
+      "mc.chemistry.pc_evolution_spontanee.sens-symetrique",
+      "mc.chemistry.pc_evolution_spontanee.pas-de-critere-predictif",
+      "mc.chemistry.pc_evolution_spontanee.exposants-oublies",
+      "mc.chemistry.pc_evolution_spontanee.qr-produits-reactifs-inverses",
+      "mc.chemistry.pc_evolution_spontanee.equilibre-egale-arret-total",
+      "mc.chemistry.pc_evolution_spontanee.spontane-egale-instantane",
+      "mc.chemistry.pc_evolution_spontanee.seuil-un-au-lieu-de-k"
+    ]
+  },
+  "spec_ref": "docs/pipeline/propositions/pc-evolution-spontanee-scene-quotient.md",
+  "adr_ref": "docs/decisions/0041-scenes-3d-de-premiere-partie.md",
+  "etapes": [
+    {
+      "id": "de-quel-cote",
+      "titre": "De quel côté ?",
+      "consigne": "Une lame de zinc plongée dans une solution où $[Cu^{2+}]_i = 1{,}0\\times10^{-1}$ mol/L, avec une faible concentration d'ions $Zn^{2+}$ déjà présente, $[Zn^{2+}]_i = 1{,}0\\times10^{-3}$ mol/L. L'équation, l'expression de $Q_r$, sa valeur et $K$ sont déjà écrites : $Q_{r,i} = 1{,}0\\times10^{-2}$ et $K = 1{,}8\\times10^{37}$.",
+      "pari": {
+        "question": "Ce mélange va évoluer…",
+        "choix": [
+          {
+            "id": "sens-direct",
+            "texte": "dans le sens direct : $Q_{r,i}$ est plus petit que $K$",
+            "juste": true,
+            "retour": "Proportionnellement, il y a peu de produit et beaucoup de réactif : le mélange est encore loin du point où la réaction changerait de sens. C'est le sens direct qui l'emporte."
+          },
+          {
+            "id": "petit-donc-recul",
+            "texte": "dans le sens inverse : $Q_{r,i}$ est minuscule, la réaction n'a presque pas eu lieu, donc c'est en arrière qu'elle a du chemin",
+            "juste": false,
+            "retour": "Un $Q_{r,i}$ petit ne dit pas qu'il reste peu de chemin à parcourir : il dit qu'on est loin, dans un sens, de la valeur qui ferait basculer le verdict — et ici $K$ est bien plus grand encore. La distance qui compte n'est pas la taille de $Q_{r,i}$ tout seul, c'est sa position par rapport à $K$.",
+            "misconception": "mc.chemistry.pc_evolution_spontanee.critere-inverse"
+          },
+          {
+            "id": "donnee-fausse",
+            "texte": "nulle part : $Q_{r,i}$ et $K$ devraient être égaux pour une même réaction — l'une des deux données est fausse",
+            "juste": false,
+            "retour": "$Q_r$ et $K$ ne sont pas deux mesures de la même chose : $Q_r$ décrit le mélange à l'instant où on le regarde, $K$ décrit la réaction elle-même, à cette température. Rien n'oblige les deux à coïncider — c'est même rarement le cas, et c'est justement leur écart qui donne le sens.",
+            "misconception": "mc.chemistry.pc_evolution_spontanee.confond-qr-et-k"
+          },
+          {
+            "id": "masse-manquante",
+            "texte": "on ne peut pas encore conclure : il manque la masse de la lame de zinc dans le quotient",
+            "juste": false,
+            "retour": "Le zinc solide ne figure dans aucun quotient de réaction : seules les espèces dissoutes y entrent. Le quotient est déjà complet avec les deux concentrations données ; rien ne manque.",
+            "misconception": "mc.chemistry.pc_evolution_spontanee.solide-dans-qr"
+          }
+        ]
+      },
+      "suite": "« Fais varier la solution de $Cu^{2+}$ sur ses cinq crans. Le repère glisse ; regarde ce que fait le pivot. »",
+      "controles": [
+        "oxydant"
+      ],
+      "lectures": [
+        "equation",
+        "expression",
+        "qri",
+        "k",
+        "sens"
+      ],
+      "etat": {
+        "bain": "A",
+        "c_produit": "1.0e-3",
+        "c_oxydant": "1.0e-1"
+      }
+    },
+    {
+      "id": "vingt-cinq-melanges",
+      "titre": "Vingt-cinq mélanges, un seul verdict",
+      "consigne": "Avec cinq crans par solution, on peut préparer vingt-cinq mélanges de ce même couple. On les a tous essayés.",
+      "pari": {
+        "question": "Combien de ces 25 mélanges évoluent dans le sens INVERSE ?",
+        "choix": [
+          {
+            "id": "tous-reculent",
+            "texte": "les 25 : dans tous, $Q_{r,i}$ est bien plus petit que $K$ — un quotient aussi petit annonce un recul",
+            "juste": false,
+            "retour": "Vingt-cinq mélanges sur vingt-cinq restent en sens direct : même le plus « défavorable » d'entre eux, à $Q_{r,i} = 5{,}0\\times10^{2}$, reste à au moins 34 ordres de grandeur sous $K$. Un $Q_{r,i}$ petit n'annonce pas un recul : il annonce seulement qu'on est loin de $K$, et ici on est loin dans l'autre sens.",
+            "misconception": "mc.chemistry.pc_evolution_spontanee.critere-inverse"
+          },
+          {
+            "id": "aucun",
+            "texte": "aucun",
+            "juste": true,
+            "retour": "Le plus « défavorable » des 25 donne $Q_{r,i} = 5{,}0\\times10^{2}$ — et il reste à au moins 34 ordres de grandeur de $K$. Tu as peut-être répondu « aucun » pour une raison qui n'est pas la bonne — parce que « le zinc gagne toujours ». Garde ta raison en tête : à l'étape suivante, on change de couple sans rien changer d'autre. Et retiens ceci : ce n'est pas le zinc qui empêche le retournement, c'est le nombre $K$."
+          },
+          {
+            "id": "dix-au-dessus-de-un",
+            "texte": "10 : ceux où il y a plus d'ions produits que d'ions réactifs — $Q_{r,i}$ au-dessus de $1$, donc trop de produits : ça recule",
+            "juste": false,
+            "retour": "Cinq des vingt-cinq mélanges donnent $Q_{r,i} = 1$ exactement — pose-les et regarde : le repère tombe exactement sur $1$, et le pivot est quelque part à trente-sept décades de là. Le seuil du critère n'est pas $1$ ; c'est $K$, et il change avec la réaction.",
+            "misconception": "mc.chemistry.pc_evolution_spontanee.seuil-un-au-lieu-de-k"
+          },
+          {
+            "id": "ca-s-observe",
+            "texte": "on ne peut pas les compter : le sens d'une réaction ne se prédit pas, il s'observe",
+            "juste": false,
+            "retour": "Le critère prédit avant toute observation, précisément parce qu'il compare deux nombres qu'on connaît déjà : $Q_{r,i}$, qu'on calcule depuis le mélange, et $K$, donné pour la réaction. Vingt-cinq comparaisons suffisent à trancher les vingt-cinq cas, sans qu'on en observe un seul.",
+            "misconception": "mc.chemistry.pc_evolution_spontanee.pas-de-critere-predictif"
+          }
+        ]
+      },
+      "suite": "« Essaie de pousser $Q_{r,i}$ encore plus à droite que ce réglage-là. » Tu ne peux pas : c'est déjà l'extrême, et l'écart y reste d'au moins 34 ordres de grandeur.",
+      "controles": [
+        "oxydant",
+        "produit"
+      ],
+      "lectures": [
+        "equation",
+        "expression",
+        "qri",
+        "k",
+        "ecart",
+        "sens"
+      ],
+      "etat": {
+        "bain": "A",
+        "c_produit": "1.0e-3",
+        "c_oxydant": "1.0e-1"
+      },
+      "etat_revele": {
+        "c_produit": "5.0e-1",
+        "c_oxydant": "1.0e-3"
+      }
+    },
+    {
+      "id": "un-autre-couple",
+      "titre": "Même geste, autre couple",
+      "consigne": "Dans le même bécher : une lame d'étain, et au fond un dépôt de plomb, laissé par un essai précédent. La solution contient $[Sn^{2+}]_i = 1{,}0\\times10^{-1}$ et $[Pb^{2+}]_i = 1{,}0\\times10^{-2}$ mol/L. Pour cette réaction, à la température de l'expérience, on donne $K = 2{,}5$.",
+      "pari": {
+        "question": "Ce mélange d'étain et de plomb va évoluer…",
+        "choix": [
+          {
+            "id": "etain-cede-toujours",
+            "texte": "dans le sens direct : l'étain cède ses électrons, comme le zinc le faisait — c'est ce que sont ces deux métaux",
+            "juste": false,
+            "retour": "L'étain ne cède pas ses électrons ici : c'est le dépôt de plomb qui les cède, et l'étain qui les capte. Rien, dans le métal lui-même, ne fixe qui s'oxyde et qui se réduit — c'est la comparaison $Q_{r,i}$ face à $K$ qui décide, et ici elle dit l'inverse de ce qu'un premier mélange laissait croire.",
+            "misconception": "mc.chemistry.pc_evolution_spontanee.reactivite-metal-fixe"
+          },
+          {
+            "id": "qri-grand-donc-avance",
+            "texte": "dans le sens direct : $Q_{r,i} = 10$ est grand, donc la réaction a déjà bien avancé et elle continue",
+            "juste": false,
+            "retour": "Un $Q_{r,i}$ grand ne dit rien tout seul : il dit quelque chose une fois comparé à $K$. Ici $Q_{r,i} = 10$ et $K = 2{,}5$ : $Q_{r,i}$ est au-dessus de $K$, donc c'est le sens inverse qui l'emporte, pas le sens direct.",
+            "misconception": "mc.chemistry.pc_evolution_spontanee.critere-inverse"
+          },
+          {
+            "id": "sens-inverse-plomb-oxyde",
+            "texte": "dans le sens inverse : c'est le plomb du dépôt qui est oxydé, et les ions $Sn^{2+}$ qui sont réduits",
+            "juste": true,
+            "retour": "$Q_{r,i} = 10$, et $K = 2{,}5$ : $10 > 2{,}5$, donc sens inverse. Ce n'est pas que les deux sens se valent : c'est que le même couple, avec un autre mélange, va dans l'autre sens. Change les quantités et tu le verras."
+          },
+          {
+            "id": "deux-sens-a-la-fois",
+            "texte": "dans les deux sens à la fois : si l'étain peut réduire les ions $Pb^{2+}$, le plomb peut tout aussi bien réduire les ions $Sn^{2+}$ — les deux réactions sont spontanées",
+            "juste": false,
+            "retour": "Une réaction et sa réaction inverse ne sont pas spontanées à la fois : à un instant donné, le mélange n'a qu'un seul $Q_{r,i}$, et $Q_{r,i}$ ne peut être que d'un seul côté de $K$. Ici $Q_{r,i} = 10 > K = 2{,}5$ : un seul sens l'emporte, l'inverse.",
+            "misconception": "mc.chemistry.pc_evolution_spontanee.sens-symetrique"
+          }
+        ]
+      },
+      "suite": "« Sans rien changer au mélange, passe au bain A. Regarde ce qui bouge, et ce qui ne bouge pas. » Le repère ne bouge pas d'un pixel ; le pivot saute de trente-sept décades ; et le verdict change : le seuil ne peut pas être un nombre fixe, puisque le même quotient vient de donner deux réponses.",
+      "controles": [
+        "bain"
+      ],
+      "lectures": [
+        "equation",
+        "expression",
+        "qri",
+        "k",
+        "sens",
+        "especes"
+      ],
+      "etat": {
+        "bain": "B",
+        "c_produit": "1.0e-1",
+        "c_oxydant": "1.0e-2"
+      }
+    },
+    {
+      "id": "l-exposant",
+      "titre": "Quand les coefficients ne valent pas 1",
+      "consigne": "Troisième bain : de la limaille de cuivre dans une solution de nitrate d'argent. $Cu + 2\\,Ag^+ \\rightleftharpoons Cu^{2+} + 2\\,Ag$. $[Cu^{2+}]_i = 1{,}0\\times10^{-1}$ mol/L, $[Ag^+]_i = 1{,}0\\times10^{-2}$ mol/L, $K = 4{,}0\\times10^{15}$.",
+      "pari": {
+        "question": "Quelle est l'expression de $Q_{r,i}$ pour cette réaction ?",
+        "choix": [
+          {
+            "id": "exposant-omis",
+            "texte": "$\\dfrac{[Cu^{2+}]}{[Ag^+]}$",
+            "juste": false,
+            "retour": "Sans l'exposant, $Q_{r,i}$ tombe à $10$ — deux décades à gauche de la valeur juste, $1{,}0\\times10^{3}$. Un sujet national a déjà posé ce calcul sur une équation à exposants $2$ et $3$ (aluminium et cuivre, session normale 2017).",
+            "misconception": "mc.chemistry.pc_evolution_spontanee.exposants-oublies"
+          },
+          {
+            "id": "coefficient-facteur",
+            "texte": "$\\dfrac{[Cu^{2+}]}{2\\,[Ag^+]}$",
+            "juste": false,
+            "retour": "Le coefficient $2$ de l'équation ne se met pas en facteur devant la concentration : il devient l'exposant de $[Ag^+]$. Cette expression donne $Q_{r,i} = 5{,}0$ — ni la valeur juste, $1{,}0\\times10^{3}$, ni celle de l'exposant complètement oublié, $10$.",
+            "misconception": "mc.chemistry.pc_evolution_spontanee.exposants-oublies"
+          },
+          {
+            "id": "produits-reactifs-inverses",
+            "texte": "$\\dfrac{[Ag^+]^2}{[Cu^{2+}]}$",
+            "juste": false,
+            "retour": "Inverser le quotient met un réactif au numérateur : la marque tombe six décades plus à gauche, et les deux rôles du bécher s'échangent. Sur ce bain-ci, le verdict ne change pas — $1{,}0\\times10^{3}$ et $1{,}0\\times10^{-3}$ sont tous deux écrasés par $K$. Mais passe au bain B, sans toucher à la concentration de cuivre, et règle le second ion à $1{,}0\\times10^{-2}$ : le quotient juste vaut $10$ et le critère dit « inverse » ; le quotient inversé vaudrait $0{,}10$ et dirait « direct ». Là, inverser coûte le verdict.",
+            "misconception": "mc.chemistry.pc_evolution_spontanee.qr-produits-reactifs-inverses"
+          },
+          {
+            "id": "expression-juste",
+            "texte": "$\\dfrac{[Cu^{2+}]}{[Ag^+]^2}$",
+            "juste": true,
+            "retour": "L'expression juste donne $Q_{r,i} = 1{,}0\\times10^{3}$ — un coefficient de l'équation devient une puissance, jamais un facteur, et c'est l'écriture de l'équation, pas la nature des espèces, qui le décide. Regarde où serait tombée la marque sans l'exposant : à $10$, deux décades plus à gauche. Élever au carré une concentration plus petite que $1$ rend le dénominateur plus petit encore — donc le quotient plus grand."
+          }
+        ]
+      },
+      "suite": "« Divise la concentration d'argent par dix (un rang vers le bas) et vérifie : combien de décades la marque a-t-elle parcourues ? » Deux — de $1{,}0\\times10^{3}$ à $1{,}0\\times10^{5}$.",
+      "controles": [
+        "bain",
+        "oxydant"
+      ],
+      "lectures": [
+        "equation",
+        "k",
+        "expression",
+        "qri",
+        "ecart",
+        "sens"
+      ],
+      "etat": {
+        "bain": "C",
+        "c_produit": "1.0e-1",
+        "c_oxydant": "1.0e-2"
+      }
+    },
+    {
+      "id": "pile-sur-le-pivot",
+      "titre": "Et si le repère tombait sur le pivot ?",
+      "consigne": "Retour au bécher étain / plomb — la lame et le dépôt, tous deux présents. On a préparé un mélange particulier : $[Sn^{2+}]_i = 2{,}5\\times10^{-2}$ et $[Pb^{2+}]_i = 1{,}0\\times10^{-2}$ mol/L. Regarde l'axe et la bande, puis parie.",
+      "pari": {
+        "question": "Que va-t-il se passer dans ce bécher ?",
+        "choix": [
+          {
+            "id": "reaction-epuisee",
+            "texte": "la réaction s'est déjà produite en entier : il ne reste plus d'ions $Pb^{2+}$",
+            "juste": false,
+            "retour": "Regarde la lecture des concentrations : $[Pb^{2+}]$ vaut encore $1{,}0\\times10^{-2}$ mol/L, exactement la valeur de départ. Cet état est un état final autant qu'initial — rien n'a été consommé.",
+            "misconception": "mc.chemistry.pc_evolution_spontanee.equilibre-egale-arret-total"
+          },
+          {
+            "id": "rien-ne-change",
+            "texte": "rien ne change, à l'échelle où l'on regarde : ni le dépôt de plomb, ni la lame d'étain, ni les concentrations",
+            "juste": true,
+            "retour": "C'est le troisième cas du critère : $Q_{r,i} = K$, le système est déjà à l'équilibre — et il ne l'est pas parce qu'un réactif aurait disparu. Les deux concentrations sont sous tes yeux, elles n'ont pas bougé, et les deux métaux sont dans le bécher. À l'échelle des ions, les deux réactions continuent ; elles se compensent exactement, et c'est pour cela que rien ne bouge à l'échelle où l'on regarde. Un mélange préparé exactement sur le pivot est rare — il faut le fabriquer exprès, et c'est pour cela que les sujets qui le posent l'ont toujours construit. Mais $Q_r = K$ n'est pas rare à l'arrivée : c'est là que finit toute évolution spontanée. Rare à préparer, inévitable à atteindre."
+          },
+          {
+            "id": "impossible-a-la-preparation",
+            "texte": "c'est impossible : on vient de préparer le mélange, $Q_{r,i}$ ne peut valoir $K$ qu'à la fin d'une évolution",
+            "juste": false,
+            "retour": "Le mélange est pourtant bien là, préparé exactement ainsi — et il y est resté : $Q_{r,i}$ peut valoir $K$ dès la préparation, si l'on choisit les concentrations pour cela. Rien dans le critère n'exige qu'on y arrive seulement après une évolution.",
+            "misconception": "mc.chemistry.pc_evolution_spontanee.confond-qr-et-k"
+          },
+          {
+            "id": "trop-lent-pour-se-voir",
+            "texte": "il va quand même évoluer, mais si lentement qu'on ne le verra pas",
+            "juste": false,
+            "retour": "Le critère $Q_r$ face à $K$ ne contient aucune grandeur de temps : il ne peut donc rien dire d'une vitesse, ni la confirmer ni l'exclure. Ce que la scène montre, c'est que ce mélange est déjà au troisième cas du critère — ni en train d'avancer, ni en train de reculer.",
+            "misconception": "mc.chemistry.pc_evolution_spontanee.spontane-egale-instantane"
+          }
+        ]
+      },
+      "suite": "« Descends la solution de $Sn^{2+}$ d'un seul cran et regarde ce que devient le verdict. » Le quotient passe de $2{,}5$ à $1{,}0$ — exactement sur le seuil que beaucoup prennent pour le bon — et le verdict dit pourtant « sens direct ».",
+      "controles": [
+        "oxydant",
+        "produit",
+        "bain"
+      ],
+      "lectures": [
+        "equation",
+        "melange",
+        "qri",
+        "k",
+        "sens",
+        "especes"
+      ],
+      "etat": {
+        "bain": "B",
+        "c_produit": "2.5e-2",
+        "c_oxydant": "1.0e-2"
+      }
+    }
+  ]
+}

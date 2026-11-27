@@ -1,128 +1,62 @@
 # CLAUDE.md
 
-> This file is read automatically by Claude Code at the start of every
-> session. It is an **index and orientation file** — it points to the
-> deeper documents and carries only the most essential always-on facts.
-> It deliberately does NOT contain the full product vision or the full
-> rules of work; those live in their own documents (linked below) to
-> keep this file short and to avoid burning context re-reading it.
+> Lu automatiquement au début de chaque session. C'est un **index** : il pointe vers les documents
+> qui comptent et ne porte que les faits toujours en vigueur.
 
----
+## Le projet
 
-## What this project is
+Une application de préparation au baccalauréat marocain pour les filières scientifiques (SM-A,
+SM-B, Sciences Physiques, SVT — 2ème Bac, en français). Le but : remplacer les cours particuliers par
+un tuteur patient, exact et toujours disponible, qui mène un élève en difficulté jusqu'à la réussite
+au bac.
 
-A Moroccan baccalauréat preparation app for science-stream students
-(SM-A, SM-B, Sciences Physiques, SVT — 2ème Bac, French first). The goal
-is to replace private tutoring with a more effective, far cheaper
-solution: a patient, omniscient, infinitely-available tutor that takes a
-struggling student to excelling at the bac.
+## Lire, selon la tâche
 
-**Read `docs/product/VISION.md` before making any product decision.** It
-is the canonical statement of what the app is and why; every decision
-answers to it.
+| Document | Pour |
+|---|---|
+| [`docs/product/VISION.md`](../docs/product/VISION.md) | toute décision produit : ce que l'application est, et pourquoi |
+| [`docs/Rules/RULES.md`](../docs/Rules/RULES.md) | comment on travaille (une page, 21 règles) |
+| [`docs/ETAT.md`](../docs/ETAT.md) | où on en est, et les décisions attendues du propriétaire |
+| [`docs/bible/`](../docs/bible/README.md) | notion par notion : ce que demande le bac, prérequis, pièges, représentations, histoire |
+| [`docs/referentiel/`](../docs/referentiel/README.md) | ce que l'examen national teste, mot pour mot des cadres officiels 2025 |
+| [`docs/refonte/`](../docs/refonte/00-plan.md) | le plan de refonte, le programme du bac (01), le format de leçon v3 (02) |
+| [`docs/product/DESIGN-BIBLE.md`](../docs/product/DESIGN-BIBLE.md), [`docs/design/TOKENS.md`](../docs/design/TOKENS.md) | tout travail d'interface |
+| [`docs/LOCAL-TRANSITION.md`](../docs/LOCAL-TRANSITION.md) | installer et travailler sur une machine locale |
+| [`docs/decisions/`](../docs/decisions/) | l'histoire des décisions (ADR, en ajout seul) — à consulter, pas à relire |
 
----
+## La pile
 
-## The documentation map
+- **Frontend** : Next.js (App Router) + React + Tailwind dans `web/`, déployé sur **Vercel**.
+- **Backend** : Supabase (Postgres, Auth, Storage, Edge Functions), projet `iwoydyudjondihzzsqay`,
+  EU-Central.
+- **Design** : une seule source, `web/src/lib/tokens.ts` (génère les variables CSS et la config
+  Tailwind) ; le code ne parle qu'en alias de jetons (`scripts/token-gate.mjs`).
+- **Contenu** : des fichiers sous `content/` (leçons Markdown, items YAML), validés par
+  `web/scripts/validate-content.mjs`.
 
-Read the right document for the task at hand:
+## Sécurité de production — toujours en vigueur
 
-- **`docs/product/VISION.md`** — *why and what.* The product vision. The
-  north star the whole project serves. Read before any product decision.
-- **`docs/Rules/RULES.md`** — *how we work.* The build discipline,
-  operating procedure, safety non-negotiables, and cadence. Authority
-  order: VISION → RULES → agents. A living document that evolves as the
-  build is figured out.
-- **`.claude/agents/*.md`** — *who does what.* The specialist subagents.
-  Loaded per task. **[STATUS: roster under revision to match the locked
-  vision and pending architecture decisions — see "Open decisions" below.]**
-- **`docs/grounding/`** — *where we are.* Current-state documents:
-  `architecture.md`, `schema-reconciliation.md`, `known-issues.md`.
-  **[STATUS: stale — reconciliation proposed in
-  `docs/reestablish-state/`, pending human review and merge.]**
-- **`docs/decisions/*.md`** — *what we decided and why.* The ADR trail.
-  Numbered, append-only history. Referenced for context on past
-  decisions.
+- **Les poussées en production sont décidées par un humain. Toujours.** Aucune poussée autonome.
+- **Aucune poussée en production sans branch-test vert** contre staging (`scripts/branch-test.ps1`, ADR 0005).
+- **Chaque migration porte un bloc de vérification qui affirme la cardinalité** après coup, pas
+  seulement la structure (leçon : migration 046).
+- **RLS activée dans la migration qui crée la table** ; les RPC d'écriture d'état utilisateur sont
+  réservées à `service_role` (leçons : migrations 040, 047).
+- **Aucun changement de production hors fichier de migration.** L'éditeur SQL du tableau de bord
+  sert à lire (leçon : les 73 arêtes non suivies, ADR 0003).
+- **Une migration passée en production ne se modifie jamais** : on en écrit une nouvelle.
+- **La synchronisation de production n'est pas vérifiée.** Avant toute nouvelle migration,
+  vérifier en séance supervisée que l'état de production correspond à l'historique local.
 
----
+## Le geste de travail
 
-## Stack (current, verified)
+- Travailler sur la branche, jamais sur `main` (`main` = production).
+- Avant chaque poussée : `scripts/verif-commit.sh` (le job `source` de la CI, sur le commit).
+- La CI (`.github/workflows/ci.yml`) doit être verte sur le commit poussé avant de dire « fait ».
+- Une décision durable fait un ADR court ; l'état courant se réécrit dans `docs/ETAT.md`.
 
-- **Frontend:** Flutter Web, deployed to **Vercel**.
-- **Backend:** Supabase (Postgres + Auth + Storage + Edge Functions),
-  project ref `iwoydyudjondihzzsqay`, EU-Central.
-- **Note:** a hybrid model (Next.js shell + Flutter Web for interactive
-  practice) was discussed but the shell does not exist and the decision
-  is **not yet recorded** — see "Open decisions."
+## Le rappel
 
----
-
-## Production-safety non-negotiables (always in force)
-
-These hold regardless of what else is or isn't decided. They are derived
-from hard-won lessons in the ADR trail; violating them has caused real
-incidents.
-
-- **Production pushes are human-gated. Always.** No autonomous push to
-  production, ever.
-- **No production push without a passing branch-test** against the
-  staging project, via `scripts/branch-test.ps1`. (See ADR 0005.)
-- **Every migration ships a verify block that asserts post-state
-  cardinality, not just structure.** A migration that appears to succeed
-  while silently doing nothing is the failure mode this prevents.
-  (Lesson: migration 046.)
-- **RLS enabled in the creating migration**; per-user-state write RPCs
-  get **service_role-only grants**. (Lessons: migrations 040, 047.)
-- **No out-of-band changes to production.** All schema and seed data flow
-  through migration files. The dashboard SQL editor is read-only on
-  production. (Lesson: the 73 untracked edges, ADR 0003.)
-- **Never edit a migration that has already run on production** — write a
-  new one. Migrations are append-only history.
-- **Production sync is currently UNVERIFIED** after a long dormancy.
-  Before any new migration ships, confirm the production migration state
-  matches local history in a supervised session.
-
----
-
-## How work is documented
-
-- Cross-cutting decisions get an **ADR** in `docs/decisions/`, numbered
-  sequentially, with a "Retractions and Corrections" section (present
-  even when empty).
-- Grounding docs are reconciled when they drift — and always after a
-  dormancy or major change. They are not write-once.
-
----
-
-## Open decisions (resolve before resuming build)
-
-These are known-unresolved and block a clean resumption. Do not paper
-over them.
-
-1. **The rules of work — RESOLVED.** Written and now living at
-   `docs/Rules/RULES.md` (the two-kinds-of-work split, the human gate,
-   cadence and working loop, the multi-model architecture, and the
-   documentation/rebuild discipline). A living document that continues to
-   evolve as the build is figured out.
-2. **The frontend architecture.** Flutter-on-Vercel today; a hybrid
-   (Next.js shell + Flutter practice) was discussed but never built or
-   recorded. The agent roster references a `nextjs-frontend` shell agent
-   that has no file. Decide and record.
-3. **The agent roster.** Needs revision to match the locked vision and
-   the generative-content tooling (see below). Some agents may merge,
-   some may be added.
-4. **Generative-content tooling.** Gemini (imagery, video) and ElevenLabs
-   (narration) are intended production tools. Their sanctioned uses — and
-   the hard line that generated assets never substitute for a manipulable
-   interactive where the pedagogy requires manipulation — need to be
-   written into the rules and the relevant agents.
-5. **Production sync verification.** See non-negotiables above.
-
----
-
-## The one-line reminder
-
-Everything here serves the vision in `docs/product/VISION.md`: a calm,
-deep, infinitely-patient tutor that takes a struggling student to bac
-mastery. When a build decision and the vision conflict, the vision wins —
-or the vision gets revisited deliberately, never overridden by accident.
+Tout ici sert la vision : un tuteur calme, profond, infiniment patient, qui mène un élève en
+difficulté à la maîtrise du bac. Quand une décision de construction et la vision divergent, la vision
+l'emporte — ou on la révise délibérément, jamais par accident.
