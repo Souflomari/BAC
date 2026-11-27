@@ -22,7 +22,38 @@
 
 ---
 
-## 0. La décision de périmètre : C4 et C5 ensemble, sans la conductance
+## 0. La leçon livrée (état au 2026-11-26, à relire)
+
+La leçon écrite (`web/src/components/pilote/acides-bases-moteur.js`) compte **51 étapes** (48 en filière SVT), dans l'ordre exact et sous les clés du plan : **le fichier de la leçon fait foi** ; les sections 0 bis à 8 ci-dessous conservent le plan d'origine (raisons, sources, leurres). Route `/pilote/acides-bases`, 12 gabarits d'exercices (`web/src/components/pilote/exercices/acides-bases.js`), catalogue d'apprentissage `web/src/lib/apprentissage-catalogue/acides-bases.ts` (44 étapes à options dont 40 notées, 12 gabarits, 43 conceptions propres `ab.*` et 3 arêtes depuis `transformations-non-totales` dans `web/src/lib/apprentissage-catalogue/graphe-transversal.ts`). Deuxième leçon de chimie au format v3 ; treizième leçon. Statut : **à relire** (flux `.agents/workflows/relire-lecon.md`).
+
+| # | Partie | Étapes (clés, dans l'ordre) |
+|---|---|---|
+| 0 | Ce qu'il faut savoir | `sav-test`, `sav-eq`, `sav-rappel` |
+| 1 | L'énigme | `helianthine`, `virage`, `question` |
+| 2 | Où en est le mélange | `qr-monte`, `qr-nom`, `qr-valeur`, `qr-solides`, `qr-exposants` |
+| 3 | Trois flacons, un même acide | `trois-flacons`, `meme-k-calc`, `k-nom`, `tau-k`, `dilution-k`, `dilution-sens` |
+| 4 | L'eau elle-même | `autoprotolyse`, `neutre`, `nature`, `ho-ph` |
+| 5 | La constante d'acidité | `rappel`, `ka-nom`, `comparer-acides`, `ka-tau`, `bases-comparer` |
+| 6 | Qui l'emporte ? | `rapport`, `egalite`, `predom`, `domaines`, `distribution` *(PC, SM)*, `croisement` *(PC, SM)*, `predom-distrib` *(PC, SM)* |
+| 7 | Deux couples face à face | `deux-couples`, `k-total`, `k-proches`, `ph-melange` |
+| 8 | L'indicateur coloré | `indicateur`, `zone-virage` |
+| 9 | Retour à l'énigme | `retour`, `retour-transfert` |
+| 10 | Au bac | `bac`, `bac-ed`, `bac-pka`, `bac-2a`, `bac-2b`, `bac-2c` |
+| 11 | Bilan | `q1`, `q2`, `q3`, `fin` |
+
+Le rappel (`rappel`) est la 22ᵉ étape sur 51 (43 %). La scène nouvelle est `axe` (`web/src/components/pilote/acides-bases-scenes-c.js`, 4,1 Ko compressé, sous le plafond de 5 Ko) ; `solution` (`web/src/components/pilote/acides-bases-scenes-a.js` et `web/src/components/pilote/acides-bases-scenes-b.js`, jeux `becher`, `zoom`, `trio`), `avancement`, `barres`, `bac`, `quiz` et `end` (`web/src/components/pilote/acides-bases-scenes-d.js`) sont des copies adaptées sans aucun import d'une autre scène de leçon (`outilsScene` et `mulberry32` proviennent de `web/src/components/pilote/radioactivite-outils.js`). Tous les nombres affichés sont calculés par `web/src/components/pilote/acides-bases-outils.js`.
+
+**Décisions appliquées et écarts au plan :**
+
+1. **Route `/pilote/acides-bases`** (décision du propriétaire, §8.4 question 7).
+2. **Aucune couleur nouvelle** (décision du propriétaire, §8.4 question 9) : `web/src/lib/tokens.ts` est intact ; les teintes des trois indicateurs (hélianthine, BBT, phénolphtaléine) s'écrivent en toutes lettres dans le cartouche de la scène (`solution` et `axe`), la solution et les bandes utilisant uniquement les jetons existants.
+3. **Les trois étapes de distribution (`distribution`, `croisement`, `predom-distrib`) sont marquées « PC et SM » et sautables** (décision du propriétaire, §8.4 question 8, sur le modèle de la partie SM de `complexes`) : un bouton permet aux élèves de SVT de passer directement à `deux-couples`, et le gabarit 10 (`ab-distribution`) porte `filieres: ["PC", "SM"]`.
+4. **Points « à vérifier » non affichés comme des faits** (§8.2) : l'énigme et la leçon disent « le pH calculé vaut » ou « donnée de l'énoncé » (jamais « mesuré » hors des sujets officiels cités) ; Guldberg et Waage (`1864`) sont cités sans détail historique non sourcé ; le pK_A ≈ 3,5 de l'hélianthine est présenté comme ordre de grandeur cohérent avec la zone 3,1 – 4,4 du sujet 2020 ; l'étape `autoprotolyse` ne cite aucun nombre de molécules dissociées sur un milliard.
+5. **Étape `bac`** : posée en « Vérifie » avec indices de second essai (et non en pari non noté), conformément aux retours de relecture des deux leçons précédentes (`docs/revue-externe/rapports/16-relectures-pedagogiques.md`).
+
+---
+
+## 0 bis. La décision de périmètre : C4 et C5 ensemble, sans la conductance
 
 **C4 et C5 tiennent ensemble en 51 étapes, à une capacité près.** Trois raisons. K_A n'est pas une notion
 nouvelle : c'est le K de la réaction d'un acide avec l'eau, et K_e celui de l'eau avec elle-même ; une fois Q_r
