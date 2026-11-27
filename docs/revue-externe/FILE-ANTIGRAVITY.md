@@ -10,7 +10,7 @@
 | # | Leçon | Branche | Rapport à suivre | État | PR | Bilan |
 |---|---|---|---|---|---|---|
 | 1 | dosage | `antigravity/dosage` | rapport 20, sur la branche `antigravity/relecture-dosage` | fait | 20 | 14 bloquants et 19 à corriger du rapport 20 repris + 3 points au balayage ; contrôles, parcours (desktop/mobile) et batterie verte (`next build` laissé à la CI). |
-| 2 | acides-bases | `antigravity/acides-bases` | rapport 17, sur la branche `antigravity/relecture-acides-bases` (à pousser d'abord). Cette relecture n'a pas ouvert le navigateur : balayage complet de chaque étape à question sous `next dev`. | bloquée | 19 | Branche `antigravity/relecture-acides-bases` (rapport 17) absente d’`origin` : à pousser d’abord avant reprise. |
+| 2 | acides-bases | `antigravity/acides-bases` | rapport 21, sur la branche `antigravity/relecture-acides-bases` (PR 22) | à faire | 19 | Rapport 21 livré sur `antigravity/relecture-acides-bases` (PR 22, relue sous `next dev` en mouvement réel) : 9 bloquants, 11 à corriger, 4 à discuter (24 constats). |
 
 ## Lot 2 — planifier
 
