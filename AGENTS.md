@@ -53,3 +53,5 @@ puis par [`.agents/workflows/corriger-lecon.md`](.agents/workflows/corriger-leco
 | [`ecrire-lecon`](.agents/workflows/ecrire-lecon.md) | écrire une leçon à partir de son plan de `docs/refonte/specs/` |
 | [`relire-lecon`](.agents/workflows/relire-lecon.md) | relire une leçon livrée, sans la modifier |
 | [`corriger-lecon`](.agents/workflows/corriger-lecon.md) | corriger une leçon d'après sa relecture |
+| [`planifier-lecon`](.agents/workflows/planifier-lecon.md) | écrire le plan d'une leçon (format allégé) |
+| [`lot`](.agents/workflows/lot.md) | traiter d'affilée, sans s'arrêter, les lignes de la file [`docs/revue-externe/FILE-ANTIGRAVITY.md`](docs/revue-externe/FILE-ANTIGRAVITY.md) |
