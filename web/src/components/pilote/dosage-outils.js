@@ -121,15 +121,49 @@ export const vPhL = (pH) => vDePhAcide(CA_L, VA_L, CB_L, PKA_ETH, pH);
 
 export const V_AV_G = Number((VE_L - V_GOUTTE).toFixed(2)); // 11,95 mL
 export const V_AP_G = Number((VE_L + V_GOUTTE).toFixed(2)); // 12,05 mL
+export const DV_SAUT = Number((V_AP_G - V_AV_G).toFixed(2)); // 0,10 mL
+export const V_AV_ENT = Math.floor(V_AV_G);                  // 11 mL
+export const V_LENT_1 = 4;                                   // mL
+export const V_LENT_2 = 8;                                   // mL
+export const V_APRES = 16;                                   // mL
+export const DV_APRES = V_APRES - VE_L;                      // 4 mL
+export const DPH_DOUBLE = Math.log10(2);                     // ≈ 0,30
+export const PH_EX_IND = 5;                                  // pH d'exemple pour l'indicateur
 export const PH_0 = phL(0);           // ≈ 2,99
-export const PH_4 = phL(4);           // ≈ 4,45
+export const PH_4 = phL(V_LENT_1);    // ≈ 4,45
 export const PH_6 = phL(6);           // ≈ 4,75
-export const PH_8 = phL(8);           // ≈ 5,05
+export const PH_8 = phL(V_LENT_2);    // ≈ 5,05
 export const PH_AV_G = phL(V_AV_G);   // ≈ 7,13
 export const PH_E = phL(VE_L);        // ≈ 8,66
 export const PH_AP_G = phL(V_AP_G);   // ≈ 10,19
-export const PH_16 = phL(16);         // ≈ 12,05
-export const PH_20 = phL(20);         // ≈ 12,30
+export const PH_16 = phL(V_APRES);    // ≈ 12,05
+export const PH_20 = phL(VMAX_L);     // ≈ 12,30
+
+/**
+ * Calcule deux vraies tangentes parallèles aux deux coudes d'une courbe de dosage pH = f(V)
+ * dont la médiane passe par E(ve, phe).
+ * Sur [ve/2, ve], la courbe est convexe (f'' > 0) : la tangente de pente m touche en v1 où f(v) - m·v est minimal.
+ * Sur [ve, vmax], la courbe est concave (f'' < 0) : la tangente de pente m touche en v2 où f(v) - m·v est maximal.
+ */
+export function tangentesParalleles(fn, ve, phe, vmax, m = 0.72) {
+  const N = 300;
+  const vLoMin = Math.max(0.2, ve * 0.52), vLoMax = Math.max(vLoMin + 0.2, ve - 0.05);
+  const vHiMin = Math.min(vmax - 0.2, ve + 0.05), vHiMax = Math.min(vmax, ve + Math.max(4, ve * 0.6));
+  let b1 = Infinity, v1 = vLoMin;
+  for (let i = 0; i <= N; i++) {
+    const v = vLoMin + ((vLoMax - vLoMin) * i) / N;
+    const b = fn(v) - m * v;
+    if (b < b1) { b1 = b; v1 = v; }
+  }
+  let b2 = -Infinity, v2 = vHiMin;
+  for (let i = 0; i <= N; i++) {
+    const v = vHiMin + ((vHiMax - vHiMin) * i) / N;
+    const b = fn(v) - m * v;
+    if (b > b2) { b2 = b; v2 = v; }
+  }
+  const bMed = (b1 + b2) / 2;
+  return { m, b1, b2, v1, v2, bMed, err: Math.abs(m * ve + bMed - phe) };
+}
 
 /** État déterministe de la scène `dosage` en fonction du seul paramètre V (mL) — règle M3 */
 export const PALIERS_DOSAGE = [
@@ -174,7 +208,9 @@ export const TAB_AV = (() => {
   const n0 = CA_L * VA_L * 1e-3;
   const nB = CB_L * V * 1e-3;
   const nAH = n0 - nB;
-  return { V, n0, nB, nAH };
+  const jetVerses = Math.round(V);
+  const jetRestants = Math.round(N_JETONS - V);
+  return { V, n0, nB, nAH, jetVerses, jetRestants };
 })();
 
 export const CA_STEP = {
@@ -194,17 +230,17 @@ export const POURCENT = (() => {
   const rap = VE_L / V - 1;            // 3
   const pctA = (rap / (1 + rap)) * 100; // 75
   const pctB = 100 - pctA;             // 25
-  return { V, rap, pctA, pctB };
+  return { V, rap, partsTot: rap + 1, pctA, pctB };
 })();
 
 /* Indicateurs colorés (plages des sujets 2018 et 2020) */
 export const IND = {
-  helianthine20: { nom: "hélianthine", min: 3.1, max: 4.4 },
-  helianthine18: { nom: "hélianthine", min: 3.0, max: 4.4 },
-  rougeMethyle: { nom: "rouge de méthyle", min: 4.2, max: 6.2 },
-  bbt: { nom: "B.B.T", min: 6.0, max: 7.6 },
-  rougeCresol: { nom: "rouge de crésol", min: 7.2, max: 8.8 },
-  phenolphtaleine: { nom: "phénolphtaléine", min: 8.2, max: 10.0 },
+  helianthine20: { nom: "hélianthine", de: "de l’hélianthine", min: 3.1, max: 4.4 },
+  helianthine18: { nom: "hélianthine", de: "de l’hélianthine", min: 3.0, max: 4.4 },
+  rougeMethyle: { nom: "rouge de méthyle", de: "du rouge de méthyle", min: 4.2, max: 6.2 },
+  bbt: { nom: "B.B.T", de: "du B.B.T", min: 6.0, max: 7.6 },
+  rougeCresol: { nom: "rouge de crésol", de: "du rouge de crésol", min: 7.2, max: 8.8 },
+  phenolphtaleine: { nom: "phénolphtaléine", de: "de la phénolphtaléine", min: 8.2, max: 10.0 },
 };
 
 export const VIR_LECON = {
@@ -229,7 +265,9 @@ export const S18 = (() => {
   const fauxInv = (CB * VA) / VE;      // 4,5 × 10⁻²
   const rapE = 10 ** (pHE - pKA);      // 10^(4,1) ≈ 1,26 × 10⁴
   const fauxRapInv = 1 / rapE;         // ≈ 7,9 × 10⁻⁵
-  return { VA, CB, pKA, VE, pHE, CA, fauxInv, rapE, fauxRapInv, pente: 0.89, bareme: [0.5, 0.5, 0.5, 0.5, 0.75] };
+  const bareme = [0.5, 0.5, 0.5, 0.5, 0.75];
+  const baremeTot = bareme.reduce((a, b) => a + b, 0);
+  return { VA, CB, pKA, VE, VE2: VE / 2, pHE, CA, fauxInv, rapE, fauxRapInv, pente: 0.89, bareme, baremeTot };
 })();
 export const ph18 = (V) => phDosageAcide(S18.CA, S18.VA, S18.CB, S18.pKA, V);
 
@@ -244,10 +282,10 @@ export const ph20 = (V) => phDosageBase(S20.Cb, S20.Vb, S20.Ca, S20.pKA, V);
 
 // 2021 N (source 3) : tableau des pK_A
 export const TABLE_2021 = [
-  { nom: "acide méthanoïque", couple: "HCOOH/HCOO⁻", AH: "HCOOH", A: "HCOO^-", pKA: 3.75 },
-  { nom: "acide benzoïque", couple: "C₆H₅COOH/C₆H₅COO⁻", AH: "C_6H_5COOH", A: "C_6H_5COO^-", pKA: 4.2 },
-  { nom: "acide éthanoïque", couple: "CH₃COOH/CH₃COO⁻", AH: "CH_3COOH", A: "CH_3COO^-", pKA: 4.75 },
-  { nom: "acide propanoïque", couple: "C₂H₅COOH/C₂H₅COO⁻", AH: "C_2H_5COOH", A: "C_2H_5COO^-", pKA: 4.9 },
+  { nom: "acide méthanoïque", nomArt: "l’acide méthanoïque", couple: "HCOOH/HCOO⁻", AH: "HCOOH", A: "HCOO^-", pKA: 3.75 },
+  { nom: "acide benzoïque", nomArt: "l’acide benzoïque", couple: "C₆H₅COOH/C₆H₅COO⁻", AH: "C_6H_5COOH", A: "C_6H_5COO^-", pKA: 4.2 },
+  { nom: "acide éthanoïque", nomArt: "l’acide éthanoïque", couple: "CH₃COOH/CH₃COO⁻", AH: "CH_3COOH", A: "CH_3COO^-", pKA: 4.75 },
+  { nom: "acide propanoïque", nomArt: "l’acide propanoïque", couple: "C₂H₅COOH/C₂H₅COO⁻", AH: "C_2H_5COOH", A: "C_2H_5COO^-", pKA: 4.9 },
 ];
 
 // 2022 N (source 4) : acide propanoïque + soude
@@ -258,7 +296,7 @@ export const S22 = (() => {
   const fauxDil = Ca * M;              // 3,7 g
   const fauxPrise = C0 * (Va * 1e-3) * M; // 0,74 g
   const CaCopie = (Cb * Vfleche) / Va; // ≈ 5,4 × 10⁻²
-  return { Ca, Va, Cb, VE, Vfleche, dil, M, pKA, C0, m, fauxDil, fauxPrise, CaCopie };
+  return { Ca, Va, Cb, VE, Vfleche, dil, M, pKA, C0, m, fauxDil, fauxPrise, CaCopie, baremeQ24: 0.5 };
 })();
 export const ph22 = (V) => phDosageAcide(S22.Ca, S22.Va, S22.Cb, S22.pKA, V);
 export const dph22 = (V) => dphDvAcide(S22.Ca, S22.Va, S22.Cb, S22.pKA, V);
@@ -270,7 +308,9 @@ export const S24 = (() => {
   const fauxInv = (CB * VA) / VBE;     // 9,0 × 10⁻³
   const mRest = CA * (VSA * 1e-3) * M; // 0,22 g
   const fauxPrise = CA * (VA * 1e-3) * M; // 0,066 g
-  return { mAnnonce, mAnnonceMg, VSA, VA, CB, M, VBE, pKA, CA, fauxInv, mRest, fauxPrise, bareme: [0.5, 0.5, 0.75] };
+  const VSA_L = VSA * 1e-3;            // 0,0500 L
+  const vFauxDer = VBE + 5.0;          // 30,0 mL
+  return { mAnnonce, mAnnonceMg, VSA, VSA_L, VA, CB, M, VBE, vFauxDer, pKA, CA, fauxInv, mRest, fauxPrise, bareme: [0.5, 0.5, 0.75] };
 })();
 export const ph24 = (V) => phDosageAcide(S24.CA, S24.VA, S24.CB, S24.pKA, V);
 export const dph24 = (V) => dphDvAcide(S24.CA, S24.VA, S24.CB, S24.pKA, V);
@@ -282,12 +322,13 @@ export const S25 = (() => {
   const C0 = dil * CA;                 // 4,80
   const fauxDilDiv = CA / dil;         // 4,8 × 10⁻⁴
   const Cm = C0 * M;                   // 499,2 g·L⁻¹
+  const fauxDivM = C0 / M;             // ≈ 0,046
   const ecartRel = (Math.abs(Cm - etiq) / etiq) * 100; // 0,16 %
   const xmax = CA * VA * 1e-3;         // 9,6 × 10⁻⁴ mol
   const Ceq = xmax / ((VA + VBE) * 1e-3); // ≈ 3,24 × 10⁻²
   const fauxVA = CA;                   // 4,8 × 10⁻²
   const fauxVBE = xmax / (VBE * 1e-3); // 0,10
-  return { etiq, M, pKA, dil, VA, CB, VBE, CA, C0, fauxDilDiv, Cm, ecartRel, xmax, Ceq, fauxVA, fauxVBE };
+  return { etiq, M, pKA, dil, VA, CB, VBE, CA, C0, fauxDilDiv, Cm, fauxDivM, ecartRel, xmax, Ceq, fauxVA, fauxVBE, baremeQ13: 0.25, baremeQ14: 0.75, baremeQ16: 0.75 };
 })();
 
 /* ---------- les outils de scène de la leçon ---------- */

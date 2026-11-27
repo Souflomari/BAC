@@ -27,7 +27,7 @@
   - Partie 1 (Énigme) : `goutte`, `combien`, `question`
   - Partie 2 (Réaction) : `equation`, `fleche-K`, `totale`, `montage`
   - Partie 3 (Bécher) : `avant-E`, `tableau-avant`, `pari-E`, `equivalence`, `ca`, `apres-E`
-  - Partie 4 (Courbe) : `allure`, `lent`, `saut`, `pHE`, `base-faible`
+  - Partie 4 (Courbe) : `pHE`, `allure`, `lent`, `saut`, `base-faible`
   - Partie 5 (Repérer) : `rappel` (pause + curseur libre $V_B$), `tangentes`, `derivee`, `demi`, `rapport`, `pourcent`
   - Partie 6 (Indicateur) : `indicateur`, `bande`, `choix`, `bbt`
   - Partie 7 (Exploiter) : `dilution`, `masse`, `etiquette`, `ceq`
@@ -38,7 +38,8 @@
   - `q1` utilise la scène `phv` (jeu `s22`, pic à 20,0 mL et flèche pointant vers 21,7 mL) plutôt que `quiz`, afin de montrer la figure réelle du sujet 2022.
   - Les teintes d'indicateurs sont écrites en toutes lettres (« incolore », « rose ») sans aucune couleur nouvelle hors jetons.
   - Les points « à vérifier » du §8.2 (goutte = 0,05 mL, pH-mètre « étalonné », rédaction exacte d'étiquette, notation des états au barème, conductimétrie) ne sont pas affirmés comme faits à l'élève.
-- **Statut** : à relire par le flux `relire-lecon` dans une conversation neuve.
+- **Reprise du 2026-11-27 (rapport 20)** : les 14 bloquants et 19 points à corriger ont été repris : masquage des compteurs et jetons avant réponse sur `avant-E` (`reac`), formule et encadré d'équivalence déplacés au `reveal`/`apres` sur `equivalence`, `V: 16` déplacé au `reveal` sur `apres-E`, `pHE` placé avant `allure` (sans courbe tracée), courbe masquée et curseur `V_B` verrouillé avant réponse sur `rappel`, bande hors tracé sur `bande` et masquée avant réponse sur `choix`/`bbt`/`bac-ind` (`bandeShow`), sous-titre neutre sur `q3`, `.deriv` raccourcies/scindées (`totale`, `tangentes`, `demi`), vraies tangentes parallèles calculées (`tangentesParalleles` sur `phv` et `dos-lecture`), `dos-becher` loin de `V_E/2` avec piège `C_B V_B`, `fr()` hors `$…$` sur `dos-demi` et `dos-indicateur`, 3 points et 2 décimales exactes sur `dos-demi`, séparation « deux gouttes » / `0,10 mL` et suppression de l'exigence d'écart relatif sur `etiquette`/`dos-chaine`, `P.label` enveloppé dans `<span>`, sous-titres `setFx`, `bac` en `VF`, `s24` sans `pH_E = 8,0`, `vitamine C` protégé dans `ix` et `S_0` unifié, géométrie et chevauchements corrigés (`1280` et `390 px`), nombres tous tirés de `dosage-outils.js`, `profileHTML` complet, impératif tutoyé, articles et étiquettes `erreur` réconciliés (catalogue `dosage.ts` régénéré), quadrillage secondaire sur `svgCourbe` et capacités alignées sur `dos-bac`.
+- **Statut** : corrigée d'après le rapport 20, contrôles verts.
 
 ---
 

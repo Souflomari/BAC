@@ -6,8 +6,8 @@
  * (classes de jetons seulement, teinte de l'indicateur écrite en toutes lettres) ; textes ≥ 22 unités (M5).
  */
 import {
-  CA_L, VA_L, CB_L, VE_L, VMAX_L, N_JETONS, PH_E,
-  phL, ph20, etatDosage, S20, S22, S24, S25, fr, sciF,
+  CA_L, VA_L, CB_L, VE_L, VMAX_L, N_JETONS, JETON_MOL, PH_E,
+  IND, phL, ph20, etatDosage, S20, S22, S24, S25, fr, sciF,
 } from "./dosage-outils";
 
 export function scenesA(ctx, O) {
@@ -51,7 +51,7 @@ export function scenesA(ctx, O) {
   scene("dosage", {
     p: {
       jeu: "enigme", V: 11.95, ind: 1, jet: 0, phm: 0, cv: 0, lab: 0,
-      zoom: 0, pe: 0, p7: 0, ghost: 0, ch: "", cas: "s25", rv: 0, hl: 0, eqc: 0, sub: "",
+      zoom: 0, pe: 0, p7: 0, ghost: 0, ch: "", cas: "s25", rv: 0, hl: 0, eqc: 0, reac: 1, sub: "",
     },
     build(g) {
       this.ti = titre(g, "", "");
@@ -77,7 +77,7 @@ export function scenesA(ctx, O) {
       E("rect", { x: 520, y: 210, width: 380, height: 220, rx: 8, class: "f-b k-ink", "stroke-width": 2.5 }, this.enPhBox);
       lab(this.enPhBox, 710, 256, "pH-mètre", "ds-s s-c", "middle", 22);
       this.enPhVal = lab(this.enPhBox, 710, 326, "", "ds-g s-a", "middle", 44);
-      lab(this.enPhBox, 710, 390, "phénolphtaléine : 8,2 – 10", "ds-s s-ink", "middle", 22);
+      lab(this.enPhBox, 710, 390, `phénolphtaléine : ${fr(IND.phenolphtaleine.min, 1)} – ${fr(IND.phenolphtaleine.max, 0)}`, "ds-s s-ink", "middle", 22);
 
       this.enGhost = E("g", {}, this.gEn);
       E("rect", { x: 684, y: 120, width: 32, height: 170, rx: 3, class: "nofill k-dim", "stroke-width": 2.5, "stroke-dasharray": "6 4" }, this.enGhost);
@@ -85,7 +85,7 @@ export function scenesA(ctx, O) {
       E("polygon", { points: "692,290 708,290 702,322 698,322", class: "nofill k-dim", "stroke-width": 2 }, this.enGhost);
       this.enGhBeq = E("rect", { x: 604, y: 425, width: 192, height: 111, class: "ds-liq" }, this.enGhost);
       E("path", { d: "M 600 370 L 600 538 L 800 538 L 800 370", class: "nofill k-dim", "stroke-width": 3 }, this.enGhost);
-      this.enGhTeinte = lab(this.enGhost, 700, 488, "2 × plus concentré", "ds-l s-c", "middle", 24);
+      this.enGhTeinte = lab(this.enGhost, 700, 488, "2 × concentré", "ds-s s-c", "middle", 22);
       this.enGhVol = lab(this.enGhost, 700, 585, "*V*_{B} = ?", "ds-g s-a", "middle", 28);
 
       /* ===== 2. JEU MONTAGE ===== */
@@ -149,7 +149,7 @@ export function scenesA(ctx, O) {
         const cx = 104 + i * 42, cy = 346;
         this.jeHo.push(E("circle", { cx, cy, r: 15, class: "ds-ho" }, this.gJe));
       }
-      // panneau compteur à droite (x=485..945, y=170..580)
+      // panneau compteur à droite (x=485..945, y=170..586)
       E("rect", { x: 485, y: 170, width: 460, height: 416, rx: 8, class: "f-b k-dim", "stroke-width": 2 }, this.gJe);
       this.jeVol = lab(this.gJe, 515, 224, "", "ds-g s-ink", "start", 28);
       this.jeC1 = lab(this.gJe, 515, 290, "", "ds-l s-ink", "start", 26);
@@ -157,16 +157,16 @@ export function scenesA(ctx, O) {
       this.jeC3 = lab(this.gJe, 515, 406, "", "ds-l s-a", "start", 26);
       this.jeEqBox = E("g", {}, this.gJe);
       E("rect", { x: 510, y: 454, width: 410, height: 96, rx: 6, class: "nofill k-a", "stroke-width": 2.5 }, this.jeEqBox);
-      lab(this.jeEqBox, 715, 494, "12 jetons HO^{−} versés", "ds-l s-a", "middle", 24);
-      lab(this.jeEqBox, 715, 530, "= 12 jetons d’acide au départ", "ds-l s-ink", "middle", 24);
-      // légende en bas
-      E("circle", { cx: 110, cy: 650, r: 12, class: "ds-ah" }, this.gJe);
-      lab(this.gJe, 134, 658, "CH_{3}COOH", "ds-s s-ink", "start", 22);
-      E("circle", { cx: 330, cy: 650, r: 12, class: "ds-am" }, this.gJe);
-      lab(this.gJe, 354, 658, "CH_{3}COO^{−}", "ds-s s-ink", "start", 22);
-      E("circle", { cx: 550, cy: 650, r: 12, class: "ds-ho" }, this.gJe);
-      lab(this.gJe, 574, 658, "HO^{−} libre", "ds-s s-a", "start", 22);
-      lab(this.gJe, 945, 658, "1 jeton = 1,0 × 10^{−4} mol", "ds-s s-c", "end", 22);
+      lab(this.jeEqBox, 715, 494, `${fr(N_JETONS, 0)} jetons HO^{−} versés`, "ds-l s-a", "middle", 24);
+      lab(this.jeEqBox, 715, 530, `= ${fr(N_JETONS, 0)} jetons d’acide au départ`, "ds-l s-ink", "middle", 24);
+      // légende en bas sur deux lignes pour éviter tout chevauchement à 390 px
+      E("circle", { cx: 140, cy: 638, r: 12, class: "ds-ah" }, this.gJe);
+      lab(this.gJe, 164, 646, "CH_{3}COOH", "ds-s s-ink", "start", 22);
+      E("circle", { cx: 400, cy: 638, r: 12, class: "ds-am" }, this.gJe);
+      lab(this.gJe, 424, 646, "CH_{3}COO^{−}", "ds-s s-ink", "start", 22);
+      E("circle", { cx: 680, cy: 638, r: 12, class: "ds-ho" }, this.gJe);
+      lab(this.gJe, 704, 646, "HO^{−} libre", "ds-s s-a", "start", 22);
+      lab(this.gJe, 500, 690, `1 jeton = ${sciF(JETON_MOL, 1)} mol`, "ds-s s-c", "middle", 22);
 
       /* ===== 4. JEU COURBE (couplée : bécher + pH-mètre + pH = f(V_B)) ===== */
       this.gCv = E("g", {}, g);
@@ -212,7 +212,7 @@ export function scenesA(ctx, O) {
       this.baAx = E("g", {}, this.gBa);
       const bX = (v) => 130 + (v / 24) * 780;
       const bY = (y) => 610 - (y / 14) * 440;
-      axes(this.baAx, bX, bY, 0, 24, 3, 14, 2, (v) => fr(v, 0), (v) => fr(v, 0), "*V*_{a} (mL)", "pH");
+      axes(this.baAx, bX, bY, 0, 24, 3, 14, 2, (v) => fr(v, 0), (v) => fr(v, 0), "*V*_{a} (mL)", "pH", 62);
       E("line", { x1: bX(0), x2: bX(24), y1: bY(7), y2: bY(7), class: "k-dim", "stroke-width": 2, "stroke-dasharray": "8 6" }, this.gBa);
       lab(this.gBa, bX(24), bY(7) - 10, "pH = 7", "ds-s s-c", "end", 22);
       this.baPt0 = E("circle", { cx: bX(0), cy: bY(ph20(0)), r: 7, class: "s-ink" }, this.gBa);
@@ -226,15 +226,15 @@ export function scenesA(ctx, O) {
 
       /* ===== 6. JEU CHAINE (flacon S0 → fiole → pipette → bécher) ===== */
       this.gCh = E("g", {}, g);
-      const chX = [145, 380, 615, 850];
+      const chX = [132, 377, 622, 868];
       const chIds = ["flacon", "fiole", "pipette", "becher"];
       this.chBoxes = chIds.map((id, i) => {
         const x = chX[i], gg = E("g", {}, this.gCh);
-        const r = E("rect", { x: x - 96, y: 230, width: 192, height: 220, rx: 10, class: "f-b k-ink", "stroke-width": 2.5 }, gg);
+        const r = E("rect", { x: x - 102, y: 230, width: 204, height: 220, rx: 10, class: "f-b k-ink", "stroke-width": 2.5 }, gg);
         const t1 = lab(gg, x, 286, "", "ds-t s-ink", "middle", 24);
         const t2 = lab(gg, x, 344, "", "ds-s s-ink", "middle", 22);
         const t3 = lab(gg, x, 398, "", "ds-s s-c", "middle", 22);
-        if (i < 3) E("path", { d: `M ${x + 102} 340 L ${x + 133} 340 M ${x + 123} 330 L ${x + 135} 340 L ${x + 123} 350`, class: "nofill k-dim", "stroke-width": 2.5 }, this.gCh);
+        if (i < 3) E("path", { d: `M ${x + 106} 340 L ${x + 137} 340 M ${x + 127} 330 L ${x + 139} 340 L ${x + 127} 350`, class: "nofill k-dim", "stroke-width": 2.5 }, this.gCh);
         return { id, r, t1, t2, t3 };
       });
     },
@@ -261,16 +261,15 @@ export function scenesA(ctx, O) {
         show(this.enPhBox, p.phm ? 1 : 0);
         if (p.phm) setFx(this.enPhVal, `pH = ${fr(st.pH, 1)}`);
         show(this.enGhost, !p.phm && p.ghost >= 0 ? (p.ghost > 0 || p.rv >= 0 ? 1 : 0) : 0);
-        // pour goutte : pas de 2e burette (ghost = -1)
         if (p.ghost < 0) show(this.enGhost, 0);
         else if (!p.phm) {
           show(this.enGhost, 1);
           const gVire = p.ghost > 0.5;
           this.enGhBeq.setAttribute("class", gVire ? "ds-liq-vir" : "ds-liq");
-          setFx(this.enGhTeinte, gVire ? "rose (2 × acide)" : "2 × plus concentré");
+          setFx(this.enGhTeinte, gVire ? "rose (2 × acide)" : "2 × concentré");
           setFx(this.enGhVol, gVire ? `*V*_{B} = ${fr(2 * VE_L, 1)} mL` : "*V*_{B} = ?");
         }
-        this.ti.set("Le bécher et la burette", p.sub || `20,0 mL d’acide éthanoïque · soude à ${fr(CB_L, 2)} mol·L^{−1}`);
+        this.ti.set("Le bécher et la burette", p.sub || `${fr(VA_L, 1)} mL d’acide éthanoïque · soude à ${fr(CB_L, 2)} mol·L^{−1}`);
       } else if (p.jeu === "montage") {
         this.moL.forEach((el, i) => show(el, clamp(p.lab - i, 0, 1)));
         this.ti.set("Le montage du dosage", p.sub || "dispositif expérimental d’un titrage pH-métrique");
@@ -278,19 +277,22 @@ export function scenesA(ctx, O) {
         const hBur = clamp(98 * (1 - p.V / 20), 10, 98);
         this.jeBurLiq.setAttribute("y", (230 - hBur).toFixed(1));
         this.jeBurLiq.setAttribute("height", hBur.toFixed(1));
-        const nA = Math.round(st.nA), nHO = Math.round(st.nHO);
+        const reac = p.reac > 0.5;
+        const nPour = Math.floor(p.V + 1e-6);
+        const nA = reac ? Math.floor(st.nA + 1e-6) : 0;
+        const nHO = reac ? Math.floor(st.nHO + 1e-6) : 0;
         this.jeTok.forEach((c, i) => c.setAttribute("class", i < nA ? "ds-am" : "ds-ah"));
         this.jeHo.forEach((c, i) => show(c, i < nHO ? 1 : 0));
-        setFx(this.jeVol, `*V*_{B} = ${fr(p.V, 1)} mL (${fr(p.V, 0)} jeton${p.V >= 1.5 ? "s" : ""} HO^{−})`);
-        setFx(this.jeC1, `CH_{3}COOH restants : ${fr(Math.max(0, N_JETONS - nA), 0)}`);
-        setFx(this.jeC2, `CH_{3}COO^{−} formés : ${fr(nA, 0)}`);
-        setFx(this.jeC3, `HO^{−} libres : ${fr(nHO, 0)}`);
+        setFx(this.jeVol, `*V*_{B} = ${fr(p.V, 1)} mL (${fr(nPour, 0)} jeton${nPour >= 2 ? "s" : ""} HO^{−})`);
+        setFx(this.jeC1, reac ? `CH_{3}COOH restants : ${fr(Math.max(0, N_JETONS - nA), 0)}` : "CH_{3}COOH restants : ?");
+        setFx(this.jeC2, reac ? `CH_{3}COO^{−} formés : ${fr(nA, 0)}` : "CH_{3}COO^{−} formés : ?");
+        setFx(this.jeC3, reac ? `HO^{−} libres : ${fr(nHO, 0)}` : "HO^{−} libres : ?");
         show(this.jeEqBox, p.eqc);
         this.ti.set("Dans le bécher, jeton par jeton", p.sub || "chaque mL de soude apporte 1 jeton HO^{−}");
       } else if (p.jeu === "courbe") {
         show(this.cvMini, p.jet);
         if (p.jet) {
-          const nA = Math.round(st.nA), nHO = Math.round(st.nHO);
+          const nA = Math.floor(st.nA + 1e-6), nHO = Math.floor(st.nHO + 1e-6);
           this.cvTok.forEach((c, i) => c.setAttribute("class", i < nA ? "ds-am" : "ds-ah"));
           this.cvHo.forEach((c, i) => show(c, i < nHO ? 1 : 0));
         }
@@ -302,8 +304,8 @@ export function scenesA(ctx, O) {
         const Y = z ? (y) => 636 - ((y - 5) / 7) * 290 : (y) => 636 - (y / 14) * 290;
         if (this._lastZoom !== z) {
           this._lastZoom = z;
-          if (z) axes(this.cvAx, X, Y, 11.9, 12.1, 0.05, 12, 2, (v) => fr(v, 2), (v) => fr(v, 0), "*V*_{B} (mL)", "pH", 50, 5);
-          else axes(this.cvAx, X, Y, 0, 20, 4, 14, 2, (v) => fr(v, 0), (v) => fr(v, 0), "*V*_{B} (mL)", "pH", 50, 0);
+          if (z) axes(this.cvAx, X, Y, 11.9, 12.1, 0.05, 12, 2, (v) => fr(v, 2), (v) => fr(v, 0), "*V*_{B} (mL)", "pH", 64, 5);
+          else axes(this.cvAx, X, Y, 0, 20, 4, 14, 2, (v) => fr(v, 0), (v) => fr(v, 0), "*V*_{B} (mL)", "pH", 64, 0);
         }
         const y7 = Y(7);
         this.cvP7L.setAttribute("y1", y7.toFixed(1));
@@ -345,7 +347,7 @@ export function scenesA(ctx, O) {
       } else if (p.jeu === "chaine") {
         const defs = {
           s25: [
-            ["Flacon (S_{0})", "solution mère", `étiquette ${fr(S25.etiq, 0)} g·L^{−1}`],
+            ["Flacon (S_{0})", "étiquette", `${fr(S25.etiq, 0)} g·L^{−1}`],
             ["Fiole jaugée", `dilution × ${fr(S25.dil, 0)}`, `*C*_{A} = ${sciF(S25.CA, 1)}`],
             ["Pipette jaugée", "prise d’essai", `*V*_{A} = ${fr(S25.VA, 1)} mL`],
             ["Bécher", "dosage", `*V*_{BE} = ${fr(S25.VBE, 1)} mL`],

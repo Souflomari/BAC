@@ -6,7 +6,7 @@
  */
 import { frTex, sciTex } from "./nombre.js";
 import {
-  phDosageAcide, phDosageBase, dphDvAcide, vDePhAcide,
+  phDosageAcide, phDosageBase, dphDvAcide, vDePhAcide, tangentesParalleles,
   TABLE_2021, IND, S18, S20, S22, S24, S25, fr,
 } from "../dosage-outils.js";
 
@@ -67,7 +67,7 @@ function tirageDosage(h, { acide = null, eviterEgal = true } = {}) {
 }
 
 /** Petite figure SVG d'une courbe de dosage (jetons CSS uniquement) */
-function svgCourbe({ vmax, fn, dfn, ve, phe, mode = "tg", xLab = "V_B (mL)" }) {
+function svgCourbe({ vmax, fn, dfn, ve, phe, mode = "tg" }) {
   const X0 = 56, X1 = 440, Y0 = 230, Y1 = 22;
   const X = (v) => X0 + (v / vmax) * (X1 - X0);
   const Y = (y) => Y0 - (y / 14) * (Y0 - Y1);
@@ -75,6 +75,16 @@ function svgCourbe({ vmax, fn, dfn, ve, phe, mode = "tg", xLab = "V_B (mL)" }) {
   for (let i = 0; i <= 140; i++) {
     const v = (vmax * i) / 140;
     d += `${i ? "L" : "M"} ${X(v).toFixed(1)} ${Y(fn(v)).toFixed(1)} `;
+  }
+  let grid = "";
+  const subX = vmax <= 25 ? 1 : 2.5;
+  for (let v = subX; v <= vmax + 1e-6; v += subX) {
+    const maj = Math.abs(v % 5) < 1e-6;
+    grid += `<line x1="${X(v).toFixed(1)}" y1="${Y1}" x2="${X(v).toFixed(1)}" y2="${Y0}" stroke="var(--color-text-secondary)" stroke-opacity="${maj ? "0.24" : "0.10"}" stroke-width="${maj ? "1" : "0.7"}"/>`;
+  }
+  for (let y = 1; y <= 14; y += 1) {
+    const maj = y % 2 === 0;
+    grid += `<line x1="${X0}" y1="${Y(y).toFixed(1)}" x2="${X1}" y2="${Y(y).toFixed(1)}" stroke="var(--color-text-secondary)" stroke-opacity="${maj ? "0.24" : "0.10"}" stroke-width="${maj ? "1" : "0.7"}"/>`;
   }
   let extra = "";
   if (mode === "der" && dfn) {
@@ -84,15 +94,20 @@ function svgCourbe({ vmax, fn, dfn, ve, phe, mode = "tg", xLab = "V_B (mL)" }) {
     const dd = pts.map(([v, dy], i) => `${i ? "L" : "M"} ${X(v).toFixed(1)} ${(Y0 - (dy / dm) * (Y0 - Y1 - 12)).toFixed(1)}`).join(" ");
     extra += `<path d="${dd}" fill="none" stroke="var(--color-signal)" stroke-width="2" stroke-dasharray="5 4"/>`;
   } else if (mode === "tg") {
-    const v1 = Math.max(0, ve - 3.5), v2 = Math.min(vmax, ve + 3.5), pente = 0.65;
-    const yM = (v) => phe + pente * (v - ve);
-    const seg = (off, cls, dash) => `<line x1="${X(v1).toFixed(1)}" y1="${Y(Math.max(0, Math.min(14, yM(v1) + off))).toFixed(1)}" x2="${X(v2).toFixed(1)}" y2="${Y(Math.max(0, Math.min(14, yM(v2) + off))).toFixed(1)}" stroke="${cls}" stroke-width="1.8" stroke-dasharray="${dash}"/>`;
-    extra += seg(2.6, "var(--color-text-secondary)", "5 4") + seg(-2.6, "var(--color-text-secondary)", "5 4") + seg(0, "var(--color-signal)", "4 3");
+    const { m: pente, b1, b2, bMed } = tangentesParalleles(fn, ve, phe, vmax);
+    const seg = (b, cls, dash) => {
+      let va = Math.max(0, ve - 4.0), vb = Math.min(vmax, ve + 4.0);
+      if (pente * va + b < 0) va = -b / pente;
+      if (pente * vb + b > 14) vb = (14 - b) / pente;
+      va = Math.max(0, Math.min(vmax, va));
+      vb = Math.max(0, Math.min(vmax, vb));
+      return `<line x1="${X(va).toFixed(1)}" y1="${Y(pente * va + b).toFixed(1)}" x2="${X(vb).toFixed(1)}" y2="${Y(pente * vb + b).toFixed(1)}" stroke="${cls}" stroke-width="1.8" stroke-dasharray="${dash}"/>`;
+    };
+    extra += seg(b2, "var(--color-text-secondary)", "5 4") + seg(b1, "var(--color-text-secondary)", "5 4") + seg(bMed, "var(--color-signal)", "4 3");
     extra += `<circle cx="${X(ve).toFixed(1)}" cy="${Y(phe).toFixed(1)}" r="4.5" fill="var(--color-signal)"/>`;
   }
   let ticks = "";
-  const stepX = vmax <= 25 ? 5 : 5;
-  for (let v = 0; v <= vmax; v += stepX) {
+  for (let v = 0; v <= vmax; v += 5) {
     ticks += `<line x1="${X(v).toFixed(1)}" y1="${Y0}" x2="${X(v).toFixed(1)}" y2="${Y0 + 5}" stroke="var(--color-text-secondary)"/>`;
     ticks += `<text x="${X(v).toFixed(1)}" y="${Y0 + 18}" text-anchor="middle" font-size="11" fill="var(--color-text-secondary)">${v}</text>`;
   }
@@ -101,10 +116,11 @@ function svgCourbe({ vmax, fn, dfn, ve, phe, mode = "tg", xLab = "V_B (mL)" }) {
     ticks += `<text x="${X0 - 9}" y="${(Y(y) + 4).toFixed(1)}" text-anchor="end" font-size="11" fill="var(--color-text-secondary)">${y}</text>`;
   }
   return `<svg viewBox="0 0 470 264" width="100%" role="img" aria-label="Courbe de dosage pH en fonction du volume versé" style="max-width:470px;display:block;margin:8px 0">
+    ${grid}
     <line x1="${X0}" y1="${Y0}" x2="${X1 + 10}" y2="${Y0}" stroke="var(--color-text-secondary)" stroke-width="1.5"/>
     <line x1="${X0}" y1="${Y0}" x2="${X0}" y2="${Y1 - 10}" stroke="var(--color-text-secondary)" stroke-width="1.5"/>
     ${ticks}
-    <text x="${X1 + 8}" y="${Y0 + 30}" text-anchor="end" font-size="12" fill="var(--color-text-primary)">${xLab}</text>
+    <text x="${X1 + 8}" y="${Y0 + 30}" text-anchor="end" font-size="12" fill="var(--color-text-primary)"><tspan font-style="italic">V</tspan><tspan dy="3" font-size="9">B</tspan><tspan dy="-3"> (mL)</tspan></text>
     <text x="${X0 + 8}" y="${Y1 - 2}" text-anchor="start" font-size="12" fill="var(--color-text-primary)">pH</text>
     <path d="${d}" fill="none" stroke="var(--color-text-primary)" stroke-width="2.2"/>
     ${extra}
@@ -129,7 +145,7 @@ export const EXERCICES = [
             options: h.melange([
               { t: `$${m("{NH_3}_{(aq)}")}+${m("{H_3O^+}_{(aq)}")}\\longrightarrow ${m("{NH_4^+}_{(aq)}")}+${m("{H_2O}_{(l)}")}$`, ok: true },
               { t: `$${m("{NH_3}_{(aq)}")}+${m("{H_2O}_{(l)}")}\\rightleftarrows ${m("{NH_4^+}_{(aq)}")}+${m("{HO^-}_{(aq)}")}$`, fb: "Tu as écrit la réaction de l’ammoniac avec l’eau. Ici, l’acide chlorhydrique apporte $\\mathrm{H_3O^+}$.", erreur: "réaction avec l’eau (+1)" },
-              { t: `$${m("NH_3")}+${m("H_3O^+")}+${m("Cl^-")}\\longrightarrow ${m("NH_4Cl")}+${m("H_2O")}$`, fb: "Tu as laissé l’ion spectateur $\\mathrm{Cl^-}$. On ne l’écrit pas dans l’équation.", erreur: "ions spectateurs (+2)" },
+              { t: `$${m("{NH_3}_{(aq)}")}+${m("{H_3O^+}_{(aq)}")}+${m("{Cl^-}_{(aq)}")}\\longrightarrow ${m("{NH_4Cl}_{(aq)}")}+${m("{H_2O}_{(l)}")}$`, fb: "Tu as laissé l’ion spectateur $\\mathrm{Cl^-}$. On ne l’écrit pas dans l’équation.", erreur: "ions spectateurs (+2)" },
               { t: `$${m("{NH_3}_{(aq)}")}+${m("{H_3O^+}_{(aq)}")}\\rightleftarrows ${m("{NH_4^+}_{(aq)}")}+${m("{H_2O}_{(l)}")}$`, fb: "Tu as mis une double flèche. Une réaction de dosage est totale : une seule flèche.", erreur: "double flèche (+3)" },
             ]),
           }],
@@ -172,11 +188,11 @@ export const EXERCICES = [
         return {
           enonce: `<p>On considère la réaction entre l’acide éthanoïque ($\\mathrm{p}K_{A1} = ${frTex(p1, 2)}$) et l’ion benzoate ($\\mathrm{p}K_{A2} = ${frTex(p2, 1)}$). Sa constante d’équilibre vaut $K = 10^{\\mathrm{p}K_{A2} - \\mathrm{p}K_{A1}} \\approx ${num(K, 2)}$.</p>`,
           questions: [{
-            type: "qcm", q: "Cette réaction peut-elle servir de support à un dosage ?",
+            type: "qcm", q: "Quelle conclusion tirer sur cette réaction pour un dosage ?",
             options: h.melange([
-              { t: "Non : K est petit, la réaction est limitée", ok: true },
-              { t: "Oui : toute réaction acido-basique sert à un dosage", fb: "Une réaction de dosage doit être totale ($K \\gg 1$). Ici $K < 1$ : la réaction est limitée.", erreur: "réaction limitée acceptée (AB-TIT-3)" },
-              { t: "Oui : il suffit d’attendre l’équivalence", fb: "Attendre ne rend pas totale une réaction limitée : $K$ reste inférieur à $1$.", erreur: "réaction limitée acceptée (AB-TIT-3)" },
+              { t: "Elle est limitée ($K < 1$) : elle ne convient pas pour un dosage", ok: true },
+              { t: "Elle est totale ($K > 0$) : toute réaction acido-basique convient pour un dosage", fb: "Une réaction de dosage doit être totale ($K \\gg 1$). Ici $K < 1$ : la réaction est limitée.", erreur: "réaction limitée acceptée (AB-TIT-3)" },
+              { t: "Elle devient totale à l’équivalence ($K$ grandit quand on verse)", fb: "$K$ ne dépend que de la température et reste inférieur à $1$ : la réaction demeure limitée.", erreur: "réaction limitée acceptée (AB-TIT-3)" },
             ]),
           }],
           correction: [{ t: `Avec $K \\approx ${num(K, 2)} < 1$, la réaction est limitée : elle ne convient pas pour un dosage.` }],
@@ -211,7 +227,7 @@ export const EXERCICES = [
     titre: "Le montage expérimental d’un dosage pH-métrique",
     niveau: 1,
     capacites: CAPD(11),
-    erreurs: ["titré et titrant échangés (+5)"],
+    erreurs: ["titré et titrant échangés (+5)", "verrerie imprécise"],
     gen(h) {
       const a = h.pick(ACIDES);
       return {
@@ -230,7 +246,7 @@ export const EXERCICES = [
             options: h.melange([
               { t: "Une pipette jaugée", ok: true },
               { t: "La burette graduée", fb: "La burette mesure le volume versé $V_B$ de titrant, pas la prise d’essai $V_A$.", erreur: "titré et titrant échangés (+5)" },
-              { t: "Les graduations du bécher", fb: "Un bécher n’est pas un instrument de mesure précis : on prélève $V_A$ à la pipette jaugée.", erreur: "titré et titrant échangés (+5)" },
+              { t: "Les graduations du bécher", fb: "Un bécher n’est pas un instrument de mesure précis : on prélève $V_A$ à la pipette jaugée.", erreur: "verrerie imprécise" },
             ]),
           },
         ],
@@ -290,12 +306,13 @@ export const EXERCICES = [
     titre: "Dans le bécher : avant, à et après l’équivalence",
     niveau: 2,
     capacites: CAPD(12),
-    erreurs: ["HO⁻ non consommé avant E (+6)", "AH et HO⁻ ensemble à E (+7)", "rien ne change après E (+9)"],
+    erreurs: ["HO⁻ non consommé avant E (+6)", "limitant inversé avant E", "acide restant confondu avec base formée", "AH et HO⁻ ensemble à E (+7)", "demi-équivalence confondue avec E (AB-EQU-3)", "rien ne change après E (+9)", "réaction entre deux bases"],
     gen(h) {
       const T = tirageDosage(h);
       const cas = h.int(0, 2); // 0 avant, 1 à E, 2 après
       if (cas === 0) {
-        const VB = Number((T.VE / 2).toFixed(1));
+        const VB = tire(() => Number((T.VE * h.pick([0.25, 0.3, 0.7, 0.75])).toFixed(1)), (v) => v >= 1.5 && v <= T.VE - 1.5 && Math.abs(v - T.VE / 2) >= 1.5);
+        const nB = T.CB * VB * 1e-3;
         const nAH = (T.CA * T.VA - T.CB * VB) * 1e-3;
         const n0 = T.CA * T.VA * 1e-3;
         const tol = { rel: 0.02 };
@@ -307,7 +324,7 @@ export const EXERCICES = [
               options: h.melange([
                 { t: "$\\mathrm{HO^-}$ versé : il est entièrement consommé", ok: true },
                 { t: "Aucun : la réaction attend l’équivalence", fb: "La réaction de dosage est totale dès la première goutte : chaque $\\mathrm{HO^-}$ réagit aussitôt.", erreur: "HO⁻ non consommé avant E (+6)" },
-                { t: "L’acide titré : il a déjà disparu", fb: "Puisque $V_B < V_E$, il reste encore de l’acide dans le bécher.", erreur: "HO⁻ non consommé avant E (+6)" },
+                { t: "L’acide titré : il a déjà disparu", fb: "Puisque $V_B < V_E$, il reste encore de l’acide dans le bécher.", erreur: "limitant inversé avant E" },
               ]),
             },
             {
@@ -315,6 +332,7 @@ export const EXERCICES = [
               indice: "$n(\\mathrm{AH}) = C_A V_A - C_B V_B$ avec les volumes en litres.",
               pieges: pieges(nAH, tol, [
                 { v: n0, fb: "Tu as donné la quantité initiale. Retire ce qui a réagi : $C_B V_B$.", erreur: "HO⁻ non consommé avant E (+6)" },
+                { v: nB, fb: "Tu as calculé la quantité de base formée $C_B V_B$, pas l’acide restant.", erreur: "acide restant confondu avec base formée" },
               ]),
             },
           ],
@@ -329,7 +347,7 @@ export const EXERCICES = [
             options: h.melange([
               { t: `Uniquement la base conjuguée $${m(T.a.A)}$`, ok: true },
               { t: `$${m(T.a.AH)}$ et $\\mathrm{HO^-}$ à parts égales`, fb: "Les deux réactifs ont été introduits en quantités égales et se sont consommés mutuellement : il ne reste que la base formée.", erreur: "AH et HO⁻ ensemble à E (+7)" },
-              { t: `$${m(T.a.AH)}$ et $${m(T.a.A)}$ en quantités égales`, fb: "Moitié-moitié, c’est à la demi-équivalence ($V_E/2$), pas à l’équivalence.", erreur: "AH et HO⁻ ensemble à E (+7)" },
+              { t: `$${m(T.a.AH)}$ et $${m(T.a.A)}$ en quantités égales`, fb: "Moitié-moitié, c’est à la demi-équivalence ($V_E/2$), pas à l’équivalence.", erreur: "demi-équivalence confondue avec E (AB-EQU-3)" },
             ]),
           }],
           correction: [{ t: `À l’équivalence, tout $${m(T.a.AH)}$ et tout $\\mathrm{HO^-}$ ont réagi : il ne reste que $${m(T.a.A)}$ (et $\\mathrm{Na^+}$).` }],
@@ -346,7 +364,7 @@ export const EXERCICES = [
             options: h.melange([
               { t: "Ils restent libres dans le bécher : il n’y a plus d’acide", ok: true },
               { t: "Rien ne change dans le bécher après l’équivalence", fb: "Les ions $\\mathrm{HO^-}$ continuent d’arriver et s’accumulent dans le bécher.", erreur: "rien ne change après E (+9)" },
-              { t: `Ils réagissent avec $${m(T.a.A)}$`, fb: `$${m(T.a.A)}$ est une base, comme $\\mathrm{HO^-}$ : deux bases ne réagissent pas ensemble.`, erreur: "rien ne change après E (+9)" },
+              { t: `Ils réagissent avec $${m(T.a.A)}$`, fb: `$${m(T.a.A)}$ est une base, comme $\\mathrm{HO^-}$ : deux bases ne réagissent pas ensemble.`, erreur: "réaction entre deux bases" },
             ]),
           },
           {
@@ -422,23 +440,30 @@ export const EXERCICES = [
   /* 7 : demi-équivalence et identification (tableau 2021) */
   {
     id: "dos-demi",
-    titre: "La demi-équivalence : lire pK_A et identifier un acide",
+    titre: "La demi-équivalence : lire pKₐ et identifier un acide",
     niveau: 2,
     capacites: CAPD(12),
-    erreurs: ["pH_E/2 (+15)", "égalité placée à pH = 7 (AB-DIST-3)", "demi-équivalence confondue avec E (AB-EQU-3)"],
+    erreurs: ["pH_E/2 (+15)", "égalité placée à pH = 7 (AB-DIST-3)", "demi-équivalence confondue avec E (AB-EQU-3)", "mauvaise lecture du tableau"],
     gen(h) {
       const item = h.pick(TABLE_2021);
-      const T = tirageDosage(h, { acide: { nom: `l’${item.nom}`, de: `d’${item.nom}`, AH: item.AH, A: item.A, pKA: item.pKA } });
+      const T = tirageDosage(h, { acide: { nom: item.nomArt, de: `d’${item.nom}`, AH: item.AH, A: item.A, pKA: item.pKA } });
       const demiV = T.VE / 2;
+      const decDemi = Math.abs(demiV * 10 - Math.round(demiV * 10)) > 1e-6 ? 2 : 1;
+      const v1 = Number((T.VE * 0.25).toFixed(2)), v3 = Number((T.VE * 0.75).toFixed(2));
+      const decQ = (v) => (Math.abs(v * 10 - Math.round(v * 10)) > 1e-6 ? 2 : 1);
+      const ph1 = phDosageAcide(T.CA, T.VA, T.CB, item.pKA, v1);
       const pHdemi = phDosageAcide(T.CA, T.VA, T.CB, item.pKA, demiV);
-      const lignes = TABLE_2021.map((x) => `${x.nom} (${frTex(x.pKA, 2)})`).join(" ; ");
+      const ph3 = phDosageAcide(T.CA, T.VA, T.CB, item.pKA, v3);
+      const lignes = TABLE_2021.map((x) => `${x.nom} (${fr(x.pKA, 2)})`).join(" ; ");
+      const autres = h.melange(TABLE_2021.filter((x) => x.nom !== item.nom)).slice(0, 2);
+      const phE2 = T.pHE / 2;
       return {
-        enonce: `<p>Lors du dosage d’un acide carboxylique inconnu par la soude, on trouve $V_E = ${frTex(T.VE, 1)}\\ \\text{mL}$ et $\\mathrm{pH}_E = ${frTex(T.pHE, 1)}$. À $V_B = ${frTex(demiV, 1)}\\ \\text{mL}$, on lit $\\mathrm{pH} = ${frTex(pHdemi, 2)}$. Tableau des $\\mathrm{p}K_A$ (sujet 2021) : ${lignes}.</p>`,
+        enonce: `<p>Lors du dosage d’un acide carboxylique inconnu par la soude, on trouve $V_E = ${frTex(T.VE, 1)}\\ \\text{mL}$ et $\\mathrm{pH}_E = ${frTex(T.pHE, 1)}$. Trois points sont relevés sur la courbe : $(${frTex(v1, decQ(v1))}\\ \\text{mL}\\,;\\,${frTex(ph1, 2)})$, $(${frTex(demiV, decDemi)}\\ \\text{mL}\\,;\\,${frTex(pHdemi, 2)})$ et $(${frTex(v3, decQ(v3))}\\ \\text{mL}\\,;\\,${frTex(ph3, 2)})$. Tableau des $\\mathrm{p}K_A$ (sujet 2021) : ${lignes}.</p>`,
         questions: [
           {
             type: "qcm", q: "À quel volume versé lit-on $\\mathrm{pH} = \\mathrm{p}K_A$ ?",
             options: h.melange([
-              { t: `$V_B = V_E / 2 = ${frTex(demiV, 1)}\\ \\text{mL}$`, ok: true },
+              { t: `$V_B = V_E / 2 = ${frTex(demiV, decDemi)}\\ \\text{mL}$`, ok: true },
               { t: `$V_B = V_E = ${frTex(T.VE, 1)}\\ \\text{mL}$`, fb: "À $V_E$, tout l’acide a réagi : $\\mathrm{pH} = \\mathrm{pH}_E$, pas $\\mathrm{p}K_A$.", erreur: "demi-équivalence confondue avec E (AB-EQU-3)" },
               { t: "Là où $\\mathrm{pH} = 7$", fb: "L’égalité $[\\mathrm{AH}] = [\\mathrm{A^-}]$ a lieu à $\\mathrm{pH} = \\mathrm{p}K_A$, pas à $7$.", erreur: "égalité placée à pH = 7 (AB-DIST-3)" },
             ]),
@@ -446,17 +471,20 @@ export const EXERCICES = [
           {
             type: "qcm", q: "Quel est l’acide dosé ?",
             options: h.melange([
-              { t: `${item.nom} ($\\mathrm{p}K_A = ${frTex(item.pKA, 2)}$)`, ok: true },
-              ...TABLE_2021.filter((x) => x.nom !== item.nom).slice(0, 2).map((x) => ({
-                t: `${x.nom} ($\\mathrm{p}K_A = ${frTex(x.pKA, 2)}$)`,
-                fb: `À la demi-équivalence, $\\mathrm{p}K_A = \\mathrm{pH} = ${frTex(pHdemi, 2)}$, ce qui correspond à ${item.nom}.`,
-                erreur: "pH_E/2 (+15)",
-              })),
+              { t: item.nomArt, ok: true },
+              ...autres.map((x) => {
+                const procheMoitie = Math.abs(x.pKA - phE2) < Math.abs(item.pKA - phE2) && Math.abs(x.pKA - phE2) < 0.45;
+                return {
+                  t: x.nomArt,
+                  fb: `À la demi-équivalence, $\\mathrm{p}K_A = \\mathrm{pH} = ${frTex(pHdemi, 2)}$, ce qui correspond à ${item.nomArt}.`,
+                  erreur: procheMoitie ? "pH_E/2 (+15)" : "mauvaise lecture du tableau",
+                };
+              }),
             ]),
           },
         ],
         correction: [
-          { tex: `V_B = \\dfrac{V_E}{2} = ${frTex(demiV, 1)}\\ \\text{mL} \\implies \\mathrm{p}K_A = \\mathrm{pH} = ${frTex(pHdemi, 2)}`, r: `L’acide identifié est l’${item.nom}.` },
+          { tex: `V_B = \\dfrac{V_E}{2} = ${frTex(demiV, decDemi)}\\ \\text{mL} \\implies \\mathrm{p}K_A = \\mathrm{pH} = ${frTex(pHdemi, 2)}`, r: `L’acide identifié est ${item.nomArt}.` },
         ],
       };
     },
@@ -519,7 +547,7 @@ export const EXERCICES = [
         ? [IND.helianthine20, IND.rougeMethyle, IND.phenolphtaleine]
         : (pHE >= 8.25 ? [IND.helianthine20, IND.bbt, IND.phenolphtaleine] : [IND.helianthine18, IND.bbt, IND.rougeCresol]);
       const bon = liste.find((x) => pHE >= x.min && pHE <= x.max) || liste[2];
-      const tab = liste.map((x) => `${x.nom} (${frTex(x.min, 1)}–${frTex(x.max, 1)})`).join(" ; ");
+      const tab = liste.map((x) => `${x.nom} (${fr(x.min, 1)}–${fr(x.max, 1)})`).join(" ; ");
       return {
         enonce: estBase
           ? `<p>On dose une solution d’ammoniac $\\mathrm{NH_3}$ par l’acide chlorhydrique. À l’équivalence, $\\mathrm{pH}_E = ${frTex(pHE, 1)}$. Indicateurs disponibles : ${tab}.</p>`
@@ -530,11 +558,11 @@ export const EXERCICES = [
             if (x === bon) return { t: x.nom, ok: true };
             if (estBase && x === IND.phenolphtaleine) return { t: x.nom, fb: `Tu as repris l’indicateur d’un acide faible. Ici $\\mathrm{pH}_E = ${frTex(pHE, 1)} < 7$.`, erreur: "pH_E > 7 recopié pour une base (+13)" };
             if (x === IND.bbt) return { t: x.nom, fb: `Tu as visé $\\mathrm{pH} = 7$. La zone du B.B.T ne contient pas $\\mathrm{pH}_E = ${frTex(pHE, 1)}$.`, erreur: "pH_E = 7 supposé (AB-TIT-1)" };
-            return { t: x.nom, fb: `Sa zone (${frTex(x.min, 1)}–${frTex(x.max, 1)}) ne contient pas $\\mathrm{pH}_E = ${frTex(pHE, 1)}$.`, erreur: "indicateur hors zone (AB-IND-1)" };
+            return { t: x.nom, fb: `Sa zone (${fr(x.min, 1)}–${fr(x.max, 1)}) ne contient pas $\\mathrm{pH}_E = ${frTex(pHE, 1)}$.`, erreur: "indicateur hors zone (AB-IND-1)" };
           })),
         }],
         correction: [
-          { t: `La zone de virage de ${bon.nom} (${frTex(bon.min, 1)}–${frTex(bon.max, 1)}) est la seule qui contient $\\mathrm{pH}_E = ${frTex(pHE, 1)}$.` },
+          { t: `La zone de virage ${bon.de} (${fr(bon.min, 1)}–${fr(bon.max, 1)}) est la seule qui contient $\\mathrm{pH}_E = ${frTex(pHE, 1)}$.` },
         ],
       };
     },
@@ -546,7 +574,7 @@ export const EXERCICES = [
     titre: "Dilution, prélèvement, masse et vérification d’étiquette",
     niveau: 2,
     capacites: CAPD(12),
-    erreurs: ["facteur de dilution oublié ou inversé (+17)", "prise d’essai confondue avec le volume total (+18)", "égalité stricte exigée (+19)"],
+    erreurs: ["facteur de dilution oublié ou inversé (+17)", "prise d’essai confondue avec le volume total (+18)", "égalité stricte exigée (+19)", "formule C_0·M inversée"],
     gen(h) {
       const cas = h.int(0, 2);
       const tol = { rel: 0.02 };
@@ -583,7 +611,7 @@ export const EXERCICES = [
         };
       }
       if (cas === 1) {
-        const VSA = h.pick([50.0, 100.0]), VA = 15.0, CA = h.pick([2.0, 2.5, 3.0]) * 1e-2, M = 176;
+        const VSA = h.pick([50.0, 100.0]), VA = S24.VA, CA = h.pick([2.0, 2.5, 3.0]) * 1e-2, M = S24.M;
         const mC = CA * (VSA * 1e-3) * M;
         return {
           enonce: `<p>Un comprimé de vitamine C ($M = ${M}\\ \\text{g·mol}^{-1}$) est dissous dans un volume $V_{SA} = ${frTex(VSA, 1)}\\ \\text{mL}$. On dose une prise d’essai $V_A = ${frTex(VA, 1)}\\ \\text{mL}$ et l’on trouve $C_A = ${sci(CA, 2)}\\ \\text{mol·L}^{-1}$.</p>`,
@@ -598,16 +626,16 @@ export const EXERCICES = [
         };
       }
       return {
-        enonce: `<p>Sujet 2025 : l’étiquette d’une solution commerciale $(S_0)$ annonce $500\\ \\text{g·L}^{-1}$ ($M = 104\\ \\text{g·mol}^{-1}$). Le dosage après dilution par $100$ donne $C_0 = 4{,}80\\ \\text{mol·L}^{-1}$, soit $C_0\\,M = 499{,}2\\ \\text{g·L}^{-1}$.</p>`,
+        enonce: `<p>Sujet 2025 : l’étiquette d’une solution commerciale $(S_0)$ annonce $${frTex(S25.etiq, 0)}\\ \\text{g·L}^{-1}$ ($M = ${frTex(S25.M, 0)}\\ \\text{g·mol}^{-1}$). Le dosage après dilution par $${frTex(S25.dil, 0)}$ donne $C_0 = ${frTex(S25.C0, 2)}\\ \\text{mol·L}^{-1}$.</p>`,
         questions: [{
-          type: "qcm", q: "L’indication de l’étiquette est-elle vérifiée ?",
+          type: "qcm", q: "Quelle concentration massique obtient-on et que conclure sur l’étiquette ?",
           options: h.melange([
-            { t: "Oui : l’écart relatif est de 0,2 %, donc négligeable", ok: true },
-            { t: "Non : 499,2 n’est pas strictement égal à 500", fb: "Une mesure expérimentale se compare avec son écart relatif : $0{,}2\\ \\%$ confirme l’étiquette.", erreur: "égalité stricte exigée (+19)" },
-            { t: "On ne peut pas conclure sans connaître pK_A", fb: "La masse par litre $C_0 M$ suffit directement.", erreur: "égalité stricte exigée (+19)" },
+            { t: `$C_0\\,M \\approx ${frTex(S25.Cm, 0)}\\ \\text{g·L}^{-1}$, proche de $${frTex(S25.etiq, 0)}\\ \\text{g·L}^{-1}$ : étiquette vérifiée`, ok: true },
+            { t: `$C_0\\,M \\approx ${frTex(S25.Cm, 0)}\\ \\text{g·L}^{-1}$, différent de $${frTex(S25.etiq, 0)}\\ \\text{g·L}^{-1}$ : étiquette non vérifiée`, fb: `En chimie expérimentale, $${frTex(S25.Cm, 0)}\\ \\text{g·L}^{-1}$ confirme l’indication $${frTex(S25.etiq, 0)}\\ \\text{g·L}^{-1}$.`, erreur: "égalité stricte exigée (+19)" },
+            { t: `$C_0 / M \\approx ${frTex(S25.fauxDivM, 3)}\\ \\text{g·L}^{-1}$, loin de $${frTex(S25.etiq, 0)}\\ \\text{g·L}^{-1}$ : étiquette non vérifiée`, fb: "Tu as divisé par $M$ au lieu de multiplier : la concentration massique vaut $C_0\\,M$.", erreur: "formule C_0·M inversée" },
           ]),
         }],
-        correction: [{ t: "$C_0 M = 499{,}2\\ \\text{g·L}^{-1}$ : l’écart relatif avec $500\\ \\text{g·L}^{-1}$ est de $0{,}16\\ \\%$, l’indication est vérifiée." }],
+        correction: [{ t: `$C_0\\,M = ${frTex(S25.C0, 2)} \\times ${frTex(S25.M, 0)} \\approx ${frTex(S25.Cm, 0)}\\ \\text{g·L}^{-1}$, valeur très proche des $${frTex(S25.etiq, 0)}\\ \\text{g·L}^{-1}$ annoncés : l’étiquette est vérifiée.` }],
       };
     },
   },
@@ -618,7 +646,7 @@ export const EXERCICES = [
     titre: "Concentration de l’espèce formée à l’équivalence",
     niveau: 2,
     capacites: CAPD(12, 13),
-    erreurs: ["volume total oublié (+20)", "C_B recopiée"],
+    erreurs: ["volume total oublié (+20)", "divisé par V_BE seul (+20)"],
     gen(h) {
       const T = tirageDosage(h);
       const xmax = T.CA * T.VA * 1e-3;
@@ -631,7 +659,7 @@ export const EXERCICES = [
           indice: "À l’équivalence, $n(\\mathrm{A^-})_E = C_A V_A$ est réparti dans le volume total $V_A + V_{BE}$.",
           pieges: pieges(Ceq, tol, [
             { v: T.CA, fb: "Tu as divisé par $V_A$ seul. La soude versée a augmenté le volume du mélange : $V_A + V_{BE}$.", erreur: "volume total oublié (+20)" },
-            { v: T.CB, fb: "Tu as divisé par $V_{BE}$ seul (ou recopié $C_B$). Divise par le volume total $V_A + V_{BE}$.", erreur: "C_B recopiée" },
+            { v: T.CB, fb: "Tu as divisé par $V_{BE}$ seul (ou recopié $C_B$). Divise par le volume total $V_A + V_{BE}$.", erreur: "divisé par V_BE seul (+20)" },
           ]),
         }],
         correction: [
@@ -641,18 +669,21 @@ export const EXERCICES = [
     },
   },
 
-  /* 12 : synthèse type bac (rejoue 2018, 2020, 2022, 2024, 2025) */
+  /* 12 : synthèse type bac (rejoue 2018, 2024, 2025) */
   {
     id: "dos-bac",
     titre: "Au bac : enchaîner lecture, calcul et justification",
     niveau: 3,
-    capacites: CAPD(10, 11, 12, 13, 14),
-    erreurs: ["rapport inversé (+8)", "concentrations égales (AB-TIT-2)", "indicateur hors zone (AB-IND-1)", "prise d’essai confondue (+18)", "volume total oublié (+20)"],
+    capacites: CAPD(12, 13, 14),
+    erreurs: ["rapport inversé (+8)", "concentrations égales (AB-TIT-2)", "indicateur hors zone (AB-IND-1)", "pH_E = 7 supposé (AB-TIT-1)", "prise d’essai confondue (+18)", "volume total oublié (+20)"],
     gen(h) {
       const s = h.int(0, 2);
       const tol = { rel: 0.02 };
       if (s === 0) {
         // 2018 N
+        const zH = `${fr(IND.helianthine18.min, 0)}–${fr(IND.helianthine18.max, 1)}`;
+        const zB = `${fr(IND.bbt.min, 0)}–${fr(IND.bbt.max, 1)}`;
+        const zR = `${fr(IND.rougeCresol.min, 1)}–${fr(IND.rougeCresol.max, 1)}`;
         return {
           enonce: `<p><b>Bac PC 2018 (NS28F)</b> : on dose $V_A = ${S18.VA}\\ \\text{mL}$ d’acide lactique $\\mathrm{AH}$ ($\\mathrm{p}K_A = ${frTex(S18.pKA, 1)}$) par la soude ($C_B = ${sci(S18.CB, 1)}\\ \\text{mol·L}^{-1}$). La méthode des tangentes donne $V_{BE} = ${frTex(S18.VE, 1)}\\ \\text{mL}$ et $\\mathrm{pH}_E = ${frTex(S18.pHE, 1)}$.</p>`,
           questions: [
@@ -665,17 +696,17 @@ export const EXERCICES = [
               ]),
             },
             {
-              type: "qcm", q: "Choisis l’indicateur adéquat : hélianthine (3–4,4), B.B.T (6–7,6), rouge de crésol (7,2–8,8).",
+              type: "qcm", q: `Choisis l’indicateur adéquat : hélianthine (${zH}), B.B.T (${zB}), rouge de crésol (${zR}).`,
               options: h.melange([
                 { t: "Rouge de crésol", ok: true },
-                { t: "B.B.T", fb: "Sa zone ne contient pas $\\mathrm{pH}_E = 8{,}0$.", erreur: "indicateur hors zone (AB-IND-1)" },
-                { t: "Hélianthine", fb: "Sa zone est loin sous $\\mathrm{pH}_E = 8{,}0$.", erreur: "indicateur hors zone (AB-IND-1)" },
+                { t: "B.B.T", fb: `Tu as visé $\\mathrm{pH} = 7$. Sa zone (${zB}) ne contient pas $\\mathrm{pH}_E = ${frTex(S18.pHE, 1)}$.`, erreur: "pH_E = 7 supposé (AB-TIT-1)" },
+                { t: "Hélianthine", fb: `Sa zone (${zH}) est loin sous $\\mathrm{pH}_E = ${frTex(S18.pHE, 1)}$.`, erreur: "indicateur hors zone (AB-IND-1)" },
               ]),
             },
           ],
           correction: [
             { tex: `C_A = \\dfrac{C_B\\,V_{BE}}{V_A} = ${sci(S18.CA, 2)}\\ \\text{mol·L}^{-1}`, r: "Expression littérale puis calcul." },
-            { t: "Le rouge de crésol convient : sa zone $7{,}2$–$8{,}8$ contient $\\mathrm{pH}_E = 8{,}0$." },
+            { t: `Le rouge de crésol convient : sa zone (${zR}) contient $\\mathrm{pH}_E = ${frTex(S18.pHE, 1)}$.` },
           ],
         };
       }
